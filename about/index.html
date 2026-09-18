@@ -3,81 +3,94 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About Us - MCRES</title>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700&display=swap" rel="stylesheet">
+<title>Mallaiah Center for River & Earth Sciences (MCRES)</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Plus Jakarta Sans',sans-serif;background:#f1f5f9;color:#1e293b}
-.hero{background:linear-gradient(135deg,#020617 0%,#1e3a8a 50%,#0ea5e9 100%);color:white;padding:70px 20px 100px;text-align:center;position:relative;overflow:hidden}
-.hero::after{content:'';position:absolute;top:-50%;left:-30%;width:160%;height:200%;background:radial-gradient(circle at center,rgba(255,255,255,0.08),transparent 60%)}
-.hero h1{font-size:34px;font-weight:700;position:relative;z-index:1;line-height:1.2}
-.hero span{color:#7dd3fc}
-.hero p{margin-top:12px;font-size:16px;opacity:0.9;position:relative;z-index:1}
-.wrap{max-width:1000px;margin:-60px auto 0;padding:0 16px 40px;position:relative;z-index:2}
-.card{background:white;border-radius:20px;box-shadow:0 20px 40px rgba(0,0,0,0.08);overflow:hidden}
-.profile-head{background:linear-gradient(135deg,#f8fafc,#e0f2fe);padding:35px 25px;text-align:center;border-bottom:1px solid #e2e8f0}
-.avatar{width:88px;height:88px;background:linear-gradient(135deg,#1e3a8a,#0ea5e9);border-radius:20px;display:flex;align-items:center;justify-content:center;color:white;font-size:36px;font-weight:700;margin:0 auto 15px;box-shadow:0 10px 20px rgba(30,58,138,0.25)}
-.badge{background:#1e3a8a;color:white;padding:8px 18px;border-radius:100px;font-size:13px;font-weight:700;letter-spacing:0.5px;display:inline-block}
-.profile-head h2{margin:14px 0 4px;font-size:24px;color:#0f172a}
-.profile-head p{color:#64748b;font-size:14px}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:#f8fafc;color:#1e293b}
+.hero{background:linear-gradient(180deg,#020617 0%,#0f172a 100%);color:white;padding:60px 20px 90px;text-align:center}
+.logo-wrap{width:165px;height:165px;margin:0 auto 20px;background:white;border-radius:50%;padding:6px;box-shadow:0 0 0 4px rgba(125,211,252,0.3),0 20px 40px rgba(0,0,0,0.4);animation:float 3s ease-in-out infinite}
+.logo-wrap img{width:100%;height:100%;border-radius:50%;object-fit:cover}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.hero h1{font-size:32px;font-weight:800;line-height:1.15}
+.hero h1 span{color:#7dd3fc}
+.tagline{margin-top:16px;display:inline-block;background:rgba(125,211,252,0.12);border:1px solid rgba(125,211,252,0.3);padding:8px 18px;border-radius:100px;color:#7dd3fc;font-weight:700;font-size:12.5px;letter-spacing:1.5px}
+.est{margin-top:10px;font-size:12px;letter-spacing:2px;color:#94a3b8;font-weight:700}
+.sub{max-width:700px;margin:18px auto 0;font-size:15.5px;line-height:1.7;opacity:0.88}
+.wrap{max-width:1050px;margin:-55px auto 0;padding:0 16px 50px;position:relative;z-index:2}
+.card{background:white;border-radius:22px;box-shadow:0 25px 50px -12px rgba(0,0,0,0.18);overflow:hidden;border:1px solid #e2e8f0}
+.profile{text-align:center;padding:32px 20px;background:linear-gradient(135deg,#f8fafc,#eff6ff);border-bottom:1px solid #e2e8f0}
+.badge{background:#0f172a;color:#7dd3fc;padding:7px 16px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:1px}
+.profile h2{font-size:24px;margin:12px 0 4px;color:#0f172a}
+.profile p{font-size:13.5px;color:#64748b}
 .content{padding:30px 28px}
-.section{margin-bottom:32px}
-.section-head{display:flex;align-items:center;gap:12px;margin-bottom:14px}
-.num{background:#0ea5e9;color:white;width:32px;height:32px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px}
-.section-head h3{font-size:20px;color:#0f172a}
-.vision-box{background:linear-gradient(135deg,#eff6ff,#f0f9ff);border:1px solid #bfdbfe;border-left:5px solid #2563eb;border-radius:14px;padding:20px}
-.vision-box p{font-size:15px;line-height:1.8;text-align:justify}
-.mission-grid{display:grid;gap:12px}
-.m-item{display:flex;gap:12px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:14px;align-items:flex-start}
-.m-icon{width:28px;height:28px;background:white;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 2px 6px rgba(0,0,0,0.05)}
-.m-item p{font-size:14.5px;line-height:1.6;text-align:left;margin:0}
-.footer{text-align:center;padding:22px;background:#020617;color:#94a3b8;font-size:13px}
-@media(max-width:600px){.hero h1{font-size:26px}.content{padding:22px 18px}}
+.intro{background:#0f172a;color:white;border-radius:16px;padding:24px;margin-bottom:32px}
+.intro h3{color:#7dd3fc;margin-bottom:10px}
+.intro p{font-size:14.8px;line-height:1.8;opacity:0.92;text-align:justify}
+.sec{margin-bottom:32px}
+.sec-head{display:flex;gap:10px;align-items:center;margin-bottom:14px}
+.n{width:34px;height:34px;background:#0ea5e9;color:white;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:800}
+.sec-head h3{font-size:20px}
+.vision{background:linear-gradient(135deg,#eff6ff,#f0fdfa);border-left:5px solid #0ea5e9;border-radius:14px;padding:20px;border-top:1px solid #bfdbfe;border-right:1px solid #bfdbfe;border-bottom:1px solid #bfdbfe}
+.vision p{font-size:15px;line-height:1.8;text-align:justify}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:700px){.grid{grid-template-columns:1fr}.hero h1{font-size:26px}}
+.item{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:14px;display:flex;gap:10px}
+.ic{width:32px;height:32px;background:white;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.item p{font-size:14px;line-height:1.6;margin:0}
+.foot{background:#020617;color:#94a3b8;text-align:center;padding:22px;font-size:12.5px}
 </style>
 </head>
 <body>
 <div class="hero">
-<h1>Mallaiah Center for <br><span>River System & Earth Sciences</span></h1>
-<p>MCRES • Research • Science • Sustainability</p>
+<div class="logo-wrap"><img src="logo.png" alt="MCRES Logo"></div>
+<h1>MALLAIAH CENTER FOR<br><span>RIVER & EARTH SCIENCES (MCRES)</span></h1>
+<div class="tagline">EXPLORING RIVERS • DECODING EARTH • ADVANCING SCIENCE</div>
+<div class="est">EST 2025</div>
+<p class="sub">A multidisciplinary research institution dedicated to understanding river systems, Earth processes, and their interactions with human society for sustainable futures.</p>
 </div>
 
 <div class="wrap">
 <div class="card">
-<div class="profile-head">
-<div class="avatar">RM</div>
+<div class="profile">
 <div class="badge">FOUNDER & DIRECTOR</div>
 <h2>Dr Ramakrishna Manimadde</h2>
-<p>Mallaiah Center for River System & Earth Sciences (MCRES)</p>
+<p>Mallaiah Center for River & Earth Sciences (MCRES) • Nellore, AP • mcres.in</p>
 </div>
-
 <div class="content">
-
-<div class="section">
-<div class="section-head"><div class="num">1</div><h3>Institutional Vision</h3></div>
-<div class="vision-box">
-<p>Mallaiah Center for River System & Earth Sciences (MCRES) aims to develop into a multidisciplinary research and scientific knowledge institution dedicated to understanding river systems, Earth processes, environmental change, and their interactions with human society.</p>
-<p style="margin-top:12px">MCRES will combine field-based research, scientific analysis, geospatial approaches, evidence synthesis, scientific documentation, education, and public science communication to generate knowledge that contributes to sustainable management of rivers, landscapes, water resources, and the environment.</p>
-</div>
+<div class="intro">
+<h3>About MCRES</h3>
+<p>Mallaiah Center for River & Earth Sciences (MCRES) is a growing scientific research centre inspired by the vision to understand our rivers as living systems and our Earth as a dynamic archive. We study how rivers shape landscapes, how landscapes influence water, and how human actions transform both. Through field research, geospatial science, and community engagement, MCRES creates knowledge that helps protect water resources and build climate-resilient futures.</p>
 </div>
 
-<div class="section">
-<div class="section-head"><div class="num">2</div><h3>Institutional Mission</h3></div>
-<div class="mission-grid">
-<div class="m-item"><div class="m-icon">🌊</div><p>Conduct research on river systems and their associated landscapes.</p></div>
-<div class="m-item"><div class="m-icon">🪨</div><p>Study geological, geomorphological, hydrological and environmental processes.</p></div>
-<div class="m-item"><div class="m-icon">📊</div><p>Document the changing condition of rivers, lakes, wetlands and watersheds.</p></div>
-<div class="m-item"><div class="m-icon">🏙️</div><p>Examine the relationship between urbanisation, land-use change, water systems and environmental risk.</p></div>
-<div class="m-item"><div class="m-icon">📄</div><p>Produce scientifically credible reports, research papers, datasets and knowledge resources.</p></div>
-<div class="m-item"><div class="m-icon">🤝</div><p>Promote interdisciplinary collaboration between Earth sciences, geography, environmental sciences and allied disciplines.</p></div>
-<div class="m-item"><div class="m-icon">🎓</div><p>Provide research opportunities, internships and scientific training for students and early-career researchers.</p></div>
-<div class="m-item"><div class="m-icon">📢</div><p>Translate scientific knowledge into accessible information for policymakers, institutions and the public.</p></div>
-<div class="m-item"><div class="m-icon">🌐</div><p>Build long-term collaborations with universities, research institutions, government agencies and other scientific organisations.</p></div>
+<div class="sec">
+<div class="sec-head"><div class="n">1</div><h3>Institutional Vision</h3></div>
+<div class="vision">
+<p><strong>MCRES aims to develop into a multidisciplinary research and scientific knowledge institution dedicated to understanding river systems, Earth processes, environmental change, and their interactions with human society.</strong></p>
+<p style="margin-top:10px">MCRES will combine field-based research, scientific analysis, geospatial approaches, evidence synthesis, scientific documentation, education, and public science communication to generate knowledge that contributes to sustainable management of rivers, landscapes, water resources, and the environment.</p>
 </div>
 </div>
 
+<div class="sec">
+<div class="sec-head"><div class="n">2</div><h3>Institutional Mission</h3></div>
+<div class="grid">
+<div class="item"><div class="ic">🌊</div><p>Conduct research on river systems and their associated landscapes.</p></div>
+<div class="item"><div class="ic">🪨</div><p>Study geological, geomorphological, hydrological and environmental processes.</p></div>
+<div class="item"><div class="ic">📊</div><p>Document the changing condition of rivers, lakes, wetlands and watersheds.</p></div>
+<div class="item"><div class="ic">🏙️</div><p>Examine urbanisation, land-use change, water systems and environmental risk.</p></div>
+<div class="item"><div class="ic">📄</div><p>Produce scientifically credible reports, research papers, datasets and knowledge resources.</p></div>
+<div class="item"><div class="ic">🤝</div><p>Promote interdisciplinary collaboration between Earth sciences, geography, environmental sciences.</p></div>
+<div class="item"><div class="ic">🎓</div><p>Provide research opportunities, internships and scientific training for students and early-career researchers.</p></div>
+<div class="item"><div class="ic">📢</div><p>Translate scientific knowledge into accessible information for policymakers, institutions and the public.</p></div>
+<div class="item" style="grid-column:1/-1"><div class="ic">🌐</div><p>Build long-term collaborations with universities, research institutions, government agencies and other scientific organisations.</p></div>
 </div>
-<div class="footer">
-© 2026 MCRES - Mallaiah Center for River System & Earth Sciences<br>Founder & Director: Dr Ramakrishna Manimadde | mcres.in | Nellore, AP
+</div>
+
+</div>
+<div class="foot">
+<strong style="color:white">MALLAIAH CENTER FOR RIVER & EARTH SCIENCES (MCRES)</strong><br>
+EXPLORING RIVERS • DECODING EARTH • ADVANCING SCIENCE | EST 2025<br>
+© 2026 MCRES | Founder: Dr Ramakrishna Manimadde | www.mcres.in
 </div>
 </div>
 </div>
