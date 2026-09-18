@@ -3,33 +3,41 @@
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MCRES - Mallaiah Center for River & Earth Sciences</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Merriweather:wght@700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&family=Merriweather:wght@800&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
-body{background:#f7f9fc}
-.top{background:#fff;display:flex;align-items:center;justify-content:space-between;padding:14px 32px;max-width:1360px;margin:0 auto;position:sticky;top:0;z-index:99;box-shadow:0 1px 10px rgba(0,0,0,0.05)}
-.logo{display:flex;align-items:center;gap:12px}.logo img{width:58px;height:58px;border-radius:50%;object-fit:cover}
-.logo b{font-family:'Merriweather',serif;font-size:34px;color:#11295a;letter-spacing:-1px;line-height:1}
-.logo b span{font-family:'Inter',sans-serif;display:block;font-size:11px;font-weight:600;color:#4a5c7a;letter-spacing:.3px;margin-top:2px}
-.nav{display:flex;align-items:center;gap:22px}.nav a{text-decoration:none;color:#1a2d50;font-size:14px;font-weight:600}.nav a.active{text-decoration:underline;text-underline-offset:6px}
-.btn-gold{background:#d9b268;color:#1a1a1a;padding:8px 18px;border-radius:6px;text-decoration:none;font-weight:700;font-size:13px}
-.hero{max-width:1360px;margin:0 auto;background:#0c1e3e;position:relative;overflow:hidden;display:flex;align-items:center;padding:0;color:#fff;min-height:440px}
-.hero-left{width:54%;padding:50px 40px;z-index:2;background:linear-gradient(to right,#0c1e3e 70%,transparent)}
-.hero-left h1{font-family:'Merriweather',serif;font-size:40px;font-weight:800;line-height:1.05}.hero-left h1 span{display:block;font-size:24px;margin-top:4px;font-weight:700}
-.hero-left .tag{font-size:13px;font-weight:700;margin:16px 0 10px;color:#d9b268}
-.hero-left p{font-size:13px;line-height:1.7;color:#b8c4d9;max-width:480px;margin-bottom:18px}
-.hero-bg{position:absolute;right:0;top:0;width:62%;height:100%;object-fit:cover;opacity:1}
-.stats-bar{max-width:1360px;margin:0 auto;background:#0a1930;display:flex;justify-content:center;gap:60px;padding:14px 20px;color:#a9c0e0;font-size:13px;font-weight:600}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;max-width:1160px;margin:0 auto}
-.card{background:#f8f9fb;border:1px solid #eef1f6;border-radius:10px;padding:20px 16px;box-shadow:0 4px 16px rgba(17,41,90,0.06)}
-.card .ic{font-size:28px;margin-bottom:8px}.card h3{font-size:13px;color:#11295a;margin-bottom:8px}
-.card p{font-size:11px;color:#5a6d8a;line-height:1.6}
-.focus{max-width:1360px;margin:0 auto;background:#fff;padding:30px 20px 40px;text-align:center}
-.focus h2{font-family:'Merriweather',serif;font-size:22px;color:#11295a}
-.footer{background:#0a1930;color:#8ea0bd;padding:30px 32px;display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr;gap:20px;max-width:1360px;margin:0 auto}
-.footer h4{color:#fff;font-size:13px;margin-bottom:10px}.footer a{color:#8ea0bd;text-decoration:none;font-size:12px;display:block;margin:5px 0}.footer p{font-size:12px;line-height:1.6}
-.copy{max-width:1360px;margin:0 auto;background:#070f24;color:#6b7e9e;text-align:center;padding:10px;font-size:10px}
-@media(max-width:900px){.hero{flex-direction:column}.hero-left{width:100%;background:#0c1e3e}.hero-bg{position:relative;width:100%;height:260px}.grid{grid-template-columns:1fr 1fr}.top{flex-direction:column}}
+body{background:#f5f7fb}
+.top{max-width:1380px;margin:0 auto;background:#ffffff;display:flex;justify-content:space-between;align-items:center;padding:16px 36px;position:sticky;top:0;z-index:99;border-bottom:1px solid #eef2f7}
+.logo{display:flex;align-items:center;gap:14px}.logo img{width:62px;height:62px;border-radius:50%}
+.logo b{font-family:'Merriweather',serif;font-size:36px;color:#12295d;line-height:1;letter-spacing:-1px}
+.logo b span{display:block;font-family:'Inter',sans-serif;font-size:11px;font-weight:600;color:#5c6e8a;letter-spacing:.4px;margin-top:3px}
+.nav{display:flex;align-items:center;gap:26px}.nav a{color:#1e3358;text-decoration:none;font-size:14px;font-weight:600;letter-spacing:.1px}
+.nav a.active{color:#12295d;border-bottom:2.5px solid #12295d;padding-bottom:4px}
+.btn-gold{background:linear-gradient(180deg,#e6c07a,#d3a95e);color:#1a1a1a;padding:10px 20px;border-radius:8px;text-decoration:none;font-weight:800;font-size:13px;box-shadow:0 4px 12px rgba(211,169,94,0.3)}
+.hero{max-width:1380px;margin:0 auto;position:relative;min-height:480px;display:flex;align-items:center;background:#0d2042;overflow:hidden}
+.hero-img{position:absolute;right:0;top:0;width:65%;height:100%;object-fit:cover}
+.hero-overlay{position:absolute;left:0;top:0;width:100%;height:100%;background:linear-gradient(90deg,#0d2042 35%,#0d2042cc 50%,transparent 85%);z-index:1}
+.hero-content{position:relative;z-index:2;width:50%;padding:60px 44px}
+.hero-content h1{font-family:'Merriweather',serif;font-size:46px;color:#fff;line-height:.95;letter-spacing:-1px;text-shadow:0 2px 20px rgba(0,0,0,0.4)}
+.hero-content h1 span{display:block;font-size:26px;margin-top:8px;color:#f0f2f8}
+.hero-content .tag{color:#e6c07a;font-size:13px;font-weight:700;margin:18px 0 12px;letter-spacing:.2px}
+.hero-content p{color:#b9c6dc;font-size:13.5px;line-height:1.7;max-width:480px;margin-bottom:22px}
+.stats{max-width:1380px;margin:0 auto;background:#081738;display:flex;justify-content:center;gap:70px;padding:16px 20px;color:#9fb2d0;font-size:13px;font-weight:600;letter-spacing:.2px}
+.stats span{color:#e6c07a;margin-right:6px}
+.focus{max-width:1380px;margin:0 auto;background:#ffffff;padding:44px 20px 50px;text-align:center}
+.focus h2{font-family:'Merriweather',serif;font-size:26px;color:#12295d}
+.focus .line{color:#d3a95e;font-size:12px;letter-spacing:6px;margin:8px 0 28px}
+.grid{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.card{background:#f8f9fb;border-radius:14px;padding:22px 18px;border:1px solid #eef2f7;position:relative;overflow:hidden;text-align:left;transition:.35s;box-shadow:0 6px 20px rgba(18,41,93,0.04)}
+.card::before{content:'';position:absolute;top:0;left:0;width:100%;height:4px;background:linear-gradient(90deg,#d3a95e,#e6c07a)}
+.card:hover{transform:translateY(-6px);box-shadow:0 18px 36px rgba(18,41,93,0.12);background:#fff}
+.card .ic{font-size:30px;margin-bottom:10px}.card h3{font-size:13.5px;color:#12295d;line-height:1.25;margin-bottom:10px;font-weight:800}
+.card p{font-size:11.8px;color:#5e738e;line-height:1.65}
+.footer{max-width:1380px;margin:0 auto;background:#081738;padding:36px 40px;display:grid;grid-template-columns:2fr 1fr 1fr 1.3fr;gap:30px;color:#8aa0c0}
+.footer h4{color:#fff;font-size:13px;margin-bottom:12px}.footer a{color:#8aa0c0;text-decoration:none;font-size:12.5px;display:block;margin:6px 0}.footer a:hover{color:#e6c07a}.footer p{font-size:12.5px;line-height:1.7}
+.copy{max-width:1380px;margin:0 auto;background:#06112a;color:#5e758e;text-align:center;padding:12px;font-size:10.5px;letter-spacing:.3px}
+@media(max-width:900px){.hero{flex-direction:column;min-height:auto}.hero-img{position:relative;width:100%;height:300px}.hero-overlay{background:linear-gradient(0deg,#0d2042 10%,transparent);top:auto;bottom:0;height:60%}.hero-content{width:100%;padding:28px}.grid{grid-template-columns:1fr 1fr}.footer{grid-template-columns:1fr 1fr}.top{flex-direction:column;gap:12px}}
+@media(max-width:600px){.grid{grid-template-columns:1fr}.stats{flex-direction:column;gap:10px;align-items:center}}
 </style>
 </head>
 <body>
@@ -43,37 +51,38 @@ body{background:#f7f9fc}
 </div>
 
 <div class="hero">
-<div class="hero-left">
+<img class="hero-img" src="https://images.unsplash.com/photo-1547036967-23d11aacaee0?q=80&w=1400">
+<div class="hero-overlay"></div>
+<div class="hero-content">
 <h1>MCRES<span>Mallaiah Center for River & Earth Sciences</span></h1>
 <div class="tag">Exploring Rivers • Decoding Earth • Advancing Science</div>
 <p>Advancing interdisciplinary research to understand river systems, Earth processes, and environmental resilience across India and beyond.</p>
 <a class="btn-gold" href="/research/">→ Explore Research</a>
 </div>
-<img class="hero-bg" src="https://images.unsplash.com/photo-1547036967-23d11aacaee0?q=80&w=1200">
 </div>
 
-<div class="stats-bar">
-<div>🌊 12+ Research Projects</div><div>📄 30+ Publications</div><div>📍 5+ Field Initiatives Across India</div>
+<div class="stats">
+<div><span>◍</span> 12+ Research Projects</div><div><span>◍</span> 30+ Publications</div><div><span>◍</span> 5+ Field Initiatives Across India</div>
 </div>
 
 <div class="focus">
-<h2 style="font-family:'Merriweather';color:#11295a">Our Research Focus</h2>
-<p style="color:#d9b268;font-size:12px;margin:8px 0 20px">~ • ~</p>
+<h2>Our Research Focus</h2>
+<div class="line">~ • ~</div>
 <div class="grid">
-<div class="card"><div class="ic">〰️</div><h3>River Hydrology & Management</h3><p>Studying river dynamics, basin management, and sustainable water resources for regional resilience.</p></div>
-<div class="card"><div class="ic">🌍</div><h3>Earth Systems & Geosciences</h3><p>Analyzing geological processes, climate interactions, and earth science data to decode environmental change.</p></div>
-<div class="card"><div class="ic">📄</div><h3>Policy & Environmental Science</h3><p>Developing evidence-based solutions and reports to support policy, ecology, and community engagement.</p></div>
-<div class="card"><div class="ic">🎯</div><h3>Field Research & Data</h3><p>Collecting field observations and datasets to monifor rivers, catchments, and environmental change across diverse regions.</p></div>
+<div class="card"><div class="ic">〰️</div><h3>River Hydrology & Management</h3><p>Studying river dynamics, basin management, and sustainable water resources for regional resilience and long-term water security.</p></div>
+<div class="card"><div class="ic">🌍</div><h3>Earth Systems & Geosciences</h3><p>Analyzing geological processes, climate interactions, and earth science data to decode environmental change across India.</p></div>
+<div class="card"><div class="ic">📑</div><h3>Policy & Environmental Science</h3><p>Developing evidence-based solutions and reports to support policy, ecology, and community engagement for rivers.</p></div>
+<div class="card"><div class="ic">🎯</div><h3>Field Research & Data</h3><p>Collecting field observations and datasets to monitor rivers, catchments, and environmental change across diverse regions.</p></div>
 </div>
 </div>
 
 <div class="footer">
-<div><img src="https://drramakrishnanmadde-cyber.github.io/tourism-research/logo.png" style="width:48px;border-radius:50%;background:#fff;padding:4px"><p style="margin-top:10px">Mallaiah Center for River & Earth Sciences<br>Exploring rivers, earth and sustainability.</p></div>
+<div><img src="https://drramakrishnanmadde-cyber.github.io/tourism-research/logo.png" style="width:54px;border-radius:50%;background:#fff;padding:4px"><p style="margin-top:14px">Mallaiah Center for River & Earth Sciences<br>Exploring rivers, earth and sustainability.<br>Hyderabad, India</p></div>
 <div><h4>Quick Links</h4><a href="/">Home</a><a href="/about/">About</a><a href="/research/">Research</a><a href="/projects/">Projects</a></div>
-<div><h4>Resources</h4><a href="/publications/">Publications</a><a href="/research/">Data & Reports</a><a href="/">News</a></div>
-<div><h4>Contact</h4><p>Email: info@mcres.in<br>Hyderabad, Telangana, India</p></div>
+<div><h4>Resources</h4><a href="/publications/">Publications</a><a href="/research/">Data & Reports</a><a href="/">News & Updates</a></div>
+<div><h4>Contact</h4><p>Email: info@mcres.in<br>Hyderabad, Telangana, India<br><br>MCRES • Est. 2025</p></div>
 </div>
-<div class="copy">© 2025 Mallaiah Center for River & Earth Sciences (MCRES). All rights reserved. • www.mcres.in</div>
+<div class="copy">© 2025 Mallaiah Center for River & Earth Sciences (MCRES). All rights reserved. • www.mcres.in • Privacy • Terms</div>
 
 </body>
 </html>
