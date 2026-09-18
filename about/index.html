@@ -3,65 +3,83 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About Us - MCRES | Malavathu Centre for Rural and Environmental Studies</title>
+<title>About Us - MCRES</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Segoe UI',sans-serif;background:#f8fafc;color:#1e293b;line-height:1.7}
-.header{background:linear-gradient(135deg,#0f172a,#1e3a8a);color:white;padding:60px 20px;text-align:center}
-.header h1{font-size:32px;margin-bottom:10px}
-.header p{opacity:0.9;font-size:18px}
-.container{max-width:900px;margin:-40px auto 40px;background:white;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,0.1);padding:40px 30px}
-.profile{text-align:center;margin-bottom:30px}
-.profile img{width:140px;height:140px;border-radius:50%;border:5px solid #e0f2fe;object-fit:cover}
-.badge{background:#dbeafe;color:#1e40af;padding:6px 16px;border-radius:20px;font-weight:600;display:inline-block;margin:15px 0}
-h2{color:#1e3a8a;margin:25px 0 12px;font-size:22px;border-left:4px solid #2563eb;padding-left:12px}
-p{margin-bottom:12px;text-align:justify}
-.highlight{background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;padding:18px;margin:20px 0}
-.footer{background:#0f172a;color:#94a3b8;text-align:center;padding:25px;margin-top:30px}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:#f1f5f9;color:#1e293b}
+.hero{background:linear-gradient(135deg,#020617 0%,#1e3a8a 50%,#0ea5e9 100%);color:white;padding:70px 20px 100px;text-align:center;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;top:-50%;left:-30%;width:160%;height:200%;background:radial-gradient(circle at center,rgba(255,255,255,0.08),transparent 60%)}
+.hero h1{font-size:34px;font-weight:700;position:relative;z-index:1;line-height:1.2}
+.hero span{color:#7dd3fc}
+.hero p{margin-top:12px;font-size:16px;opacity:0.9;position:relative;z-index:1}
+.wrap{max-width:1000px;margin:-60px auto 0;padding:0 16px 40px;position:relative;z-index:2}
+.card{background:white;border-radius:20px;box-shadow:0 20px 40px rgba(0,0,0,0.08);overflow:hidden}
+.profile-head{background:linear-gradient(135deg,#f8fafc,#e0f2fe);padding:35px 25px;text-align:center;border-bottom:1px solid #e2e8f0}
+.avatar{width:88px;height:88px;background:linear-gradient(135deg,#1e3a8a,#0ea5e9);border-radius:20px;display:flex;align-items:center;justify-content:center;color:white;font-size:36px;font-weight:700;margin:0 auto 15px;box-shadow:0 10px 20px rgba(30,58,138,0.25)}
+.badge{background:#1e3a8a;color:white;padding:8px 18px;border-radius:100px;font-size:13px;font-weight:700;letter-spacing:0.5px;display:inline-block}
+.profile-head h2{margin:14px 0 4px;font-size:24px;color:#0f172a}
+.profile-head p{color:#64748b;font-size:14px}
+.content{padding:30px 28px}
+.section{margin-bottom:32px}
+.section-head{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.num{background:#0ea5e9;color:white;width:32px;height:32px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px}
+.section-head h3{font-size:20px;color:#0f172a}
+.vision-box{background:linear-gradient(135deg,#eff6ff,#f0f9ff);border:1px solid #bfdbfe;border-left:5px solid #2563eb;border-radius:14px;padding:20px}
+.vision-box p{font-size:15px;line-height:1.8;text-align:justify}
+.mission-grid{display:grid;gap:12px}
+.m-item{display:flex;gap:12px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:14px;align-items:flex-start}
+.m-icon{width:28px;height:28px;background:white;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 2px 6px rgba(0,0,0,0.05)}
+.m-item p{font-size:14.5px;line-height:1.6;text-align:left;margin:0}
+.footer{text-align:center;padding:22px;background:#020617;color:#94a3b8;font-size:13px}
+@media(max-width:600px){.hero h1{font-size:26px}.content{padding:22px 18px}}
 </style>
 </head>
 <body>
-<div class="header">
-<h1>Malavathu Centre for Rural & Environmental Studies</h1>
-<p>Tourism Research & Rural Development</p>
+<div class="hero">
+<h1>Mallaiah Center for <br><span>River System & Earth Sciences</span></h1>
+<p>MCRES • Research • Science • Sustainability</p>
 </div>
 
-<div class="container">
-<div class="profile">
-<h2 style="border:none;text-align:center;margin:10px">Dr. R. Krishna Manimadde</h2>
-<div class="badge">Founder Director - MCRES</div>
-<p style="text-align:center"><strong>S/o Late Shri. R. Venkataiah</strong><br>Dedicated to Rural Empowerment & Sustainable Tourism</p>
+<div class="wrap">
+<div class="card">
+<div class="profile-head">
+<div class="avatar">RM</div>
+<div class="badge">FOUNDER & DIRECTOR</div>
+<h2>Dr Ramakrishna Manimadde</h2>
+<p>Mallaiah Center for River System & Earth Sciences (MCRES)</p>
 </div>
 
-<div class="highlight">
-<strong>Welcome to MCRES:</strong> MCRES is a research centre committed to tribal development, rural livelihoods, environmental sustainability and responsible tourism research across India.
+<div class="content">
+
+<div class="section">
+<div class="section-head"><div class="num">1</div><h3>Institutional Vision</h3></div>
+<div class="vision-box">
+<p>Mallaiah Center for River System & Earth Sciences (MCRES) aims to develop into a multidisciplinary research and scientific knowledge institution dedicated to understanding river systems, Earth processes, environmental change, and their interactions with human society.</p>
+<p style="margin-top:12px">MCRES will combine field-based research, scientific analysis, geospatial approaches, evidence synthesis, scientific documentation, education, and public science communication to generate knowledge that contributes to sustainable management of rivers, landscapes, water resources, and the environment.</p>
+</div>
 </div>
 
-<h2>About Founder</h2>
-<p>Dr. R. Krishna Manimadde is the Founder Director of MCRES (Malavathu Centre for Rural and Environmental Studies). With deep commitment to rural communities, he established MCRES to promote research in tourism, rural development and environmental studies.</p>
-<p>He is S/o Late Shri. R. Venkataiah, whose values of service and integrity continue to guide the mission of MCRES.</p>
-
-<h2>Vision</h2>
-<p>To become a leading research centre for sustainable rural development, tribal empowerment and responsible tourism that balances livelihoods with environmental conservation.</p>
-
-<h2>Mission</h2>
-<p>To conduct high-quality research, document grassroots knowledge, support rural communities, and provide policy inputs for sustainable development in Nellore, Andhra Pradesh and beyond.</p>
-
-<h2>Focus Areas</h2>
-<p>✔ Tribal & Rural Livelihoods<br>
-✔ Sustainable & Responsible Tourism<br>
-✔ Environmental Conservation<br>
-✔ Community Based Research & Documentation<br>
-✔ Rural Entrepreneurship Development</p>
-
-<h2>Contact</h2>
-<p><strong>Website:</strong> www.mcres.in<br>
-<strong>Location:</strong> Nellore, Andhra Pradesh, India<br>
-<strong>Email:</strong> contact@mcres.in</p>
+<div class="section">
+<div class="section-head"><div class="num">2</div><h3>Institutional Mission</h3></div>
+<div class="mission-grid">
+<div class="m-item"><div class="m-icon">🌊</div><p>Conduct research on river systems and their associated landscapes.</p></div>
+<div class="m-item"><div class="m-icon">🪨</div><p>Study geological, geomorphological, hydrological and environmental processes.</p></div>
+<div class="m-item"><div class="m-icon">📊</div><p>Document the changing condition of rivers, lakes, wetlands and watersheds.</p></div>
+<div class="m-item"><div class="m-icon">🏙️</div><p>Examine the relationship between urbanisation, land-use change, water systems and environmental risk.</p></div>
+<div class="m-item"><div class="m-icon">📄</div><p>Produce scientifically credible reports, research papers, datasets and knowledge resources.</p></div>
+<div class="m-item"><div class="m-icon">🤝</div><p>Promote interdisciplinary collaboration between Earth sciences, geography, environmental sciences and allied disciplines.</p></div>
+<div class="m-item"><div class="m-icon">🎓</div><p>Provide research opportunities, internships and scientific training for students and early-career researchers.</p></div>
+<div class="m-item"><div class="m-icon">📢</div><p>Translate scientific knowledge into accessible information for policymakers, institutions and the public.</p></div>
+<div class="m-item"><div class="m-icon">🌐</div><p>Build long-term collaborations with universities, research institutions, government agencies and other scientific organisations.</p></div>
+</div>
 </div>
 
+</div>
 <div class="footer">
-© 2026 MCRES - Malavathu Centre for Rural and Environmental Studies | Founder Director: Dr. R. Krishna Manimadde
+© 2026 MCRES - Mallaiah Center for River System & Earth Sciences<br>Founder & Director: Dr Ramakrishna Manimadde | mcres.in | Nellore, AP
+</div>
+</div>
 </div>
 </body>
 </html>
