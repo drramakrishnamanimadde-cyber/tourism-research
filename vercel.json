@@ -3,14 +3,17 @@
   "trailingSlash": false,
   "rewrites": [
     { "source": "/about", "destination": "/about/index.html" },
-    { "source": "/about/", "destination": "/about/index.html" },
+    { "source": "/About", "destination": "/about/index.html" },
+    { "source": "/ABOUT", "destination": "/about/index.html" },
     { "source": "/contact", "destination": "/contact/index.html" },
-    { "source": "/contact/", "destination": "/contact/index.html" },
+    { "source": "/Contact", "destination": "/contact/index.html" },
+    { "source": "/CONTACT", "destination": "/contact/index.html" },
     { "source": "/projects", "destination": "/projects/index.html" },
-    { "source": "/projects/", "destination": "/projects/index.html" },
+    { "source": "/Projects", "destination": "/projects/index.html" },
+    { "source": "/PROJECTS", "destination": "/projects/index.html" },
     { "source": "/publications", "destination": "/publications/index.html" },
-    { "source": "/publications/", "destination": "/publications/index.html" },
+    { "source": "/Publications", "destination": "/publications/index.html" },
     { "source": "/research", "destination": "/research/index.html" },
-    { "source": "/research/", "destination": "/research/index.html" }
+    { "source": "/Research", "destination": "/research/index.html" }
   ]
 }
