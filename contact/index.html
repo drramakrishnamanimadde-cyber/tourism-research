@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact - MCRES</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&family=Merriweather:wght@800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
+body{background:#f3f5f8}
+.wrap{max-width:1380px;margin:0 auto;background:#fff}
+.top{background:#fff;display:flex;justify-content:space-between;align-items:center;padding:14px 28px;border-bottom:1px solid #eef2f7;position:sticky;top:0;z-index:99}
+.logo{display:flex;gap:14px;align-items:center}.logo img{width:64px;height:64px;border-radius:50%;border:2px solid #e8c07a}
+.logo b{font-family:'Merriweather',serif;font-size:42px;color:#102a5c;line-height:1}.logo b span{font-size:11px;color:#4a5e7a;display:block}
+.nav{display:flex;gap:24px;align-items:center}.nav a{color:#1e3358;text-decoration:none;font-size:14px;font-weight:600}.nav a.active{border-bottom:2.5px solid #102a5c;padding-bottom:3px}
+.btn-gold{background:linear-gradient(180deg,#e7c17b,#d1a85d);color:#1a1a1a;padding:9px 18px;border-radius:7px;text-decoration:none;font-weight:800;font-size:13px}
+.hero-small{background:#0a1e42;padding:50px 36px;color:#fff}
+.hero-small h1{font-family:'Merriweather',serif;font-size:36px}
+.hero-small p{color:#a9bdd6;font-size:13px;margin-top:8px;max-width:600px;line-height:1.6}
+.contact-section{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.2fr .8fr;gap:30px;padding:40px 28px}
+.form-card{background:#f8f9fb;border:1px solid #eef2f7;border-radius:14px;padding:26px;box-shadow:0 8px 24px rgba(16,42,92,0.06)}
+.form-card h3{font-family:'Merriweather';color:#102a5c;font-size:18px;margin-bottom:16px}
+.form-card input,.form-card textarea{width:100%;padding:12px 14px;border:1px solid #dce3ec;border-radius:8px;margin-bottom:12px;font-size:13px;outline:none}
+.btn-send{background:#102a5c;color:#fff;padding:12px 22px;border-radius:8px;border:none;font-weight:800;font-size:13px;cursor:pointer;width:100%}
+.info-card{background:#0a1e42;border-radius:14px;padding:26px;color:#fff}
+.info-card h3{font-family:'Merriweather';font-size:18px;margin-bottom:16px;color:#e7c17b}
+.info-item{display:flex;gap:12px;margin-bottom:18px}.info-item i{font-size:18px;color:#e7c17b;font-style:normal}
+.info-item p{font-size:12.5px;line-height:1.6;color:#a9bdd6}.info-item b{color:#fff;display:block;font-size:13px;margin-bottom:2px}
+.map{max-width:1200px;margin:0 auto;padding:0 28px 40px}.map iframe{width:100%;height:300px;border:0;border-radius:14px}
+.footer{background:#0a1e42;padding:28px 36px;display:grid;grid-template-columns:1.6fr 1fr 1fr 1.2fr;gap:20px;color:#8aa0bd}
+.footer h4{color:#fff;font-size:13px;margin-bottom:10px}.footer a{color:#8aa0bd;text-decoration:none;font-size:11.5px;display:block;margin:5px 0}.copy{background:#06112a;color:#5e758e;text-align:center;padding:10px 36px;font-size:9.5px;display:flex;justify-content:space-between}
+@media(max-width:900px){.contact-section{grid-template-columns:1fr}.top{flex-direction:column;gap:10px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="top">
+<div class="logo"><img src="https://drramakrishnanmadde-cyber.github.io/tourism-research/logo.png"><b>MCRES<span>Mallaiah Center for River & Earth Sciences</span></b></div>
+<div class="nav"><a href="/">Home</a><a href="/about/">About</a><a href="/research/">Research</a><a href="/projects/">Projects</a><a href="/publications/">Publications</a><a class="active" href="/contact/">Contact</a><a class="btn-gold" href="/contact/">Get in Touch</a></div>
+</div>
+<div class="hero-small"><h1>Contact Us</h1><p>Have a question about our river and earth science research? Collaborations, field data, or student inquiries? Reach out to MCRES.</p></div>
+<div class="contact-section">
+<div class="form-card">
+<h3>Send a Message</h3>
+<input type="text" placeholder="Your Full Name">
+<input type="email" placeholder="Your Email Address">
+<input type="text" placeholder="Subject">
+<textarea rows="5" placeholder="Your Message..."></textarea>
+<button class="btn-send" onclick="alert('Thank you! Mail sent to info@mcres.in & director@mcres.in')">→ Send Message</button>
+<p style="font-size:10.5px;color:#8aa0bd;margin-top:10px;text-align:center">We reply within 24 hours</p>
+</div>
+<div class="info-card">
+<h3>Contact Information</h3>
+<div class="info-item"><i>✉️</i><p><b>General Inquiries</b>info@mcres.in</p></div>
+<div class="info-item"><i>👨‍💼</i><p><b>Director</b>director@mcres.in</p></div>
+<div class="info-item"><i>📍</i><p><b>Location</b>Hyderabad, Telangana, India<br>Mallaiah Center for River & Earth Sciences</p></div>
+<div class="info-item"><i>🌊</i><p><b>Research Focus</b>River Hydrology, Earth Systems,<br>Policy & Field Data</p></div>
+<div class="info-item"><i>🕘</i><p><b>Office Hours</b>Mon - Sat: 9:30 AM - 6:00 PM</p></div>
+</div>
+</div>
+<div class="map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d487295.225811972!2d78.07838595!3d17.41207705!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb99daeaebd2c7%3A0xae93b78392bafbc2!2sHyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1700000000000"></iframe></div>
+<div class="footer">
+<div><img src="https://drramakrishnanmadde-cyber.github.io/tourism-research/logo.png" style="width:56px;border-radius:50%;background:#fff;padding:3px"><p style="margin-top:10px">Mallaiah Center for River & Earth Sciences<br>Exploring rivers, earth and sustainability.</p></div>
+<div><h4>Quick Links</h4><a href="/">Home</a><a href="/about/">About</a><a href="/research/">Research</a><a href="/projects/">Projects</a></div>
+<div><h4>Resources</h4><a href="/publications/">Publications</a><a href="/research/">Data & Reports</a><a href="/">News</a></div>
+<div><h4>Contact</h4><p>Email: info@mcres.in<br>director@mcres.in<br>Hyderabad, Telangana, India</p></div>
+</div>
+<div class="copy"><span>© 2025 MCRES. All rights reserved.</span><span>www.mcres.in</span></div>
+</div>
+</body>
+</html>
