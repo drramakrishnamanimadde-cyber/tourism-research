@@ -1,12 +1,73 @@
 <!DOCTYPE html>
-<html>
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Research - MCRES</title>
-<style>body{margin:0;font-family:Arial;background:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url('https://images.unsplash.com/photo-1501785888041-af3ef285b470');background-size:cover;background-attachment:fixed}.container{max-width:1000px;margin:20px auto;padding:20px;background:rgba(255,255,255,0.95);border-radius:15px}.nav{background:#001a33;padding:15px;text-align:center;border-radius:10px}.nav a{color:white;text-decoration:none;margin:0 15px;font-weight:bold}.header{text-align:center;padding:30px;background:linear-gradient(135deg,#0d4f3c,#1a8a5c);color:white;border-radius:10px;margin:20px 0}.btn{display:inline-block;background:#ffcc00;color:#001a33;padding:12px 25px;border-radius:25px;text-decoration:none;font-weight:bold;margin:10px}.card{background:white;padding:20px;border-radius:10px;margin:20px 0}.footer{text-align:center;padding:20px;background:#0d4f3c;color:white;border-radius:10px}</style>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MCRES - Mallaiah Center for River & Earth Sciences</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:Arial,sans-serif;background:#fff;color:#333}
+.topnav{display:flex;justify-content:space-between;align-items:center;padding:15px 40px;background:white;box-shadow:0 2px 10px rgba(0,0,0,0.1);position:sticky;top:0;z-index:100}
+.logo{display:flex;align-items:center;gap:12px}.logo h1{color:#0a285e;font-size:38px;line-height:1}.logo p{font-size:12px;color:#333}
+.menu{display:flex;gap:20px;align-items:center}.menu a{text-decoration:none;color:#0a285e;font-weight:bold;font-size:14px}.menu a.active{border-bottom:2px solid #0a285e}
+.btn-gold{background:#d4a43c;color:white;padding:8px 18px;border-radius:6px;text-decoration:none;font-weight:bold}
+.hero{background:linear-gradient(90deg,rgba(10,25,60,0.95) 40%,rgba(10,25,60,0.3)),url('https://images.unsplash.com/photo-1546587348-d12660c30c50?q=80&w=2000');background-size:cover;background-position:center;color:white;padding:60px 40px;display:flex}
+.hero-text{max-width:550px}.hero-text h1{font-size:42px}.hero-text h2{font-size:26px;margin:10px 0}.hero-text p{font-size:14px;line-height:1.6;margin:15px 0}
+.btn-explore{background:#d4a43c;color:#0a193c;padding:10px 20px;border-radius:6px;display:inline-block;text-decoration:none;font-weight:bold;margin-top:10px}
+.stats-bar{background:#0a193c;color:white;display:flex;justify-content:center;gap:60px;padding:18px;text-align:center;font-size:14px}
+.focus{padding:40px;text-align:center}.focus h2{color:#0a285e;margin-bottom:25px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;max-width:1100px;margin:0 auto}
+.card{background:#f8f9fc;padding:25px;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,0.08);text-align:center}
+.card h3{font-size:16px;color:#0a285e;margin:10px 0}.card p{font-size:13px;line-height:1.5;color:#555}
+.footer{background:#0a193c;color:white;padding:30px 40px;display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:20px;font-size:13px}
+.footer a{color:#ccc;text-decoration:none;display:block;margin:4px 0}
+@media(max-width:768px){.topnav{flex-direction:column;gap:10px}.hero{padding:30px 20px}.stats-bar{flex-direction:column;gap:15px}.footer{grid-template-columns:1fr}}
+</style>
 </head>
-<body><div class="container">
-<div class="nav"><a href="index.html">🏠 HOME</a><a href="research.html">📘 RESEARCH</a><a href="paper.pdf" target="_blank">📄 PDF</a></div>
-<div class="header"><h2>ANALYSIS OF TOURISM RESOURCES FOR SUSTAINABLE TOURISM DEVELOPMENT OF HYDERABAD CITY</h2><p>Dr RAMAKRISHNA MANIMADDE | MCRES RESEARCH ARCHIVE 2026</p><p>477 Resources | 247 Spots | GIS Based Study</p></div>
-<div class="card"><h3>📘 Research Overview</h3><p>GIS-based sustainable tourism planning research for Hyderabad. Full PDF available.</p><p><b>DOWNLOAD:</b> <a href="paper.pdf" target="_blank">View PDF</a> | <a href="paper.pdf" download>Download paper.pdf (1.64 MB)</a></p></div>
-<div class="card" style="background:#001a33;color:white;text-align:center"><h3>Download Research</h3><a href="paper.pdf" target="_blank" class="btn">📄 View Full Research</a><a href="paper.pdf" download class="btn" style="background:#ffc107">⬇️ Download PDF</a><br><br><a href="index.html" style="color:#ffcc00">← Back to HOME</a></div>
-<div class="footer">MCRES 2026 | Dr RAMAKRISHNA MANIMADDE | mcres.in | paper.pdf working 100%</div>
-</div></body></html>
+<body>
+<div class="topnav">
+<div class="logo"><img src="https://mcres.in/logo.png" onerror="this.style.display='none'" width="50"><div><h1>MCRES</h1><p>Mallaiah Center for River & Earth Sciences</p></div></div>
+<div class="menu">
+<a href="index.html" class="active">Home</a>
+<a href="#about">About</a>
+<a href="research.html">Research</a>
+<a href="#projects">Projects</a>
+<a href="#publications">Publications</a>
+<a href="#contact">Contact</a>
+<a href="#contact" class="btn-gold">Get in Touch</a>
+</div>
+</div>
+
+<div class="hero">
+<div class="hero-text">
+<h1>MCRES</h1>
+<h2>Mallaiah Center for River & Earth Sciences</h2>
+<p><b>Exploring Rivers • Decoding Earth • Advancing Science</b></p>
+<p>Advancing interdisciplinary research to understand river systems, Earth processes, and environmental resilience across India and beyond.</p>
+<a href="research.html" class="btn-explore">→ Explore Research</a>
+</div>
+</div>
+
+<div class="stats-bar">
+<div>🔬 12+ Research Projects</div>
+<div>📄 30+ Publications</div>
+<div>📍 5+ Field Initiatives Across India</div>
+</div>
+
+<div id="research" class="focus">
+<h2>Our Research Focus</h2>
+<div class="cards">
+<div class="card"><div style="font-size:30px">〰️</div><h3>River Hydrology & Management</h3><p>Studying river dynamics, basin management, and sustainable water resources for regional resilience.</p></div>
+<div class="card"><div style="font-size:30px">🌍</div><h3>Earth Systems & Geosciences</h3><p>Analyzing geological processes, climate interactions, and earth science data to decode environmental change.</p></div>
+<div class="card"><div style="font-size:30px">📄</div><h3>Policy & Environmental Science</h3><p>Developing evidence-based solutions and reports to support policy, ecology, and community engagement.</p></div>
+<div class="card"><div style="font-size:30px">🎯</div><h3>Field Research & Data</h3><p>Collecting field observations and datasets to monitor rivers, catchments, and environmental change across diverse regions.</p></div>
+</div>
+<div style="margin-top:30px"><a href="research.html" style="background:#0a285e;color:white;padding:12px 25px;border-radius:25px;text-decoration:none">View Hyderabad Tourism Research - 2026 →</a></div>
+</div>
+
+<div class="footer">
+<div><b>MCRES</b><br>Mallaiah Center for River & Earth Sciences<br><br>© 2025 MCRES. All rights reserved. • www.mcres.in</div>
+<div><b>Quick Links</b><a>Home</a><a>About</a><a href="research.html">Research</a><a>Projects</a></div>
+<div><b>Resources</b><a>Publications</a><a>Data & Reports</a><a>News</a></div>
+<div id="contact"><b>Contact</b><br>Email: info@mcres.in<br>Hyderabad, Telangana, India<br><br>Dr RAMAKRISHNA MANIMADDE</div>
+</div>
+</body>
+</html>
