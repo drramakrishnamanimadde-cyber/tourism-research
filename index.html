@@ -1,82 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MCRES - Mallaiah Center for River & Earth Sciences</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Merriweather:wght@600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&family=Merriweather:wght@700&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:"Inter",sans-serif}
-.wrap{max-width:1380px;margin:0 auto;background:#fff;box-shadow:0 0 12px #f2f2f0}
-.top{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;position:sticky;top:0;background:#fff;z-index:99;border-bottom:1px solid #eee}
-.logo{display:flex;align-items:center;gap:14px}
-.logo img{width:44px;height:44px;border-radius:50%;border:2px solid #0c5}
-.logo b{font-family:"Merriweather",serif;font-size:20px;color:#102c5c;line-height:1;letter-spacing:-1px}
-.logo p{font-size:11px;font-weight:600;color:#5a7a;letter-spacing:2px;display:block;margin-top:2px}
-.nav{display:flex;align-items:center;gap:24px}
-.nav a{color:#334;text-decoration:none;font-size:14px;font-weight:500}
-.nav a.activa{color:#fff;background:#0A2A5E;padding:5px 14px;border-radius:7px;text-decoration:none;font-weight:800}
-.nav a.info-desk{background:#0F4C81;color:white;padding:5px 14px;border-radius:7px;text-decoration:none;font-weight:800;border:1px solid #0A2A5E}
-.hero{position:relative;background:#0a1a42;min-height:44vh;display:flex;align-items:center;overflow:hidden}
-.hero-img{position:absolute;right:0;top:0;width:62%;height:100%;object-fit:cover}
-.hero-grad{position:absolute;left:0;top:0;width:100%;height:100%;background:linear-gradient(90deg,#0a1a42 29%,#0a1a42aa 42%,transparent 70%)}
-.hero-content{position:relative;z-index:2;width:54%;padding:40px 20px}
-.hero-content h1{font-family:"Merriweather";font-size:42px;line-height:95%;letter-spacing:-2px;color:#fff}
-.hero-content h1 span{display:block;font-size:24px;margin-top:14px;color:#9fb4ff;font-weight:600}
-.tag{color:#7c97c8;font-size:12px;font-weight:700;margin:14px 0 10px}
-.hero-content p{color:#e6f0ff;font-size:15px;line-height:1.7;margin-bottom:16px}
-.btn-explore{background:#0c5a9a;color:#fff;padding:9px 18px;border-radius:7px;text-decoration:none;font-weight:800;display:inline-block}
-.stats{background:#1a2e6d;display:flex;gap:50px;padding:12px 20px;color:#f8b400;font-size:12.5px;font-weight:800;border-top:1px solid #2a3a8d}
-.stats b{color:#fff}
-.focus{background:#fff;padding:20px 18px}
-.focus h2{font-family:"Merriweather";font-size:26px;color:#2c2c2c;margin:10px 0}
-.deco{color:#0a2a5e;font-size:10px;letter-spacing:3px}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.card{background:#f3f6f0;border:1px solid #e0e8d0;border-radius:12px;padding:16px 18px;border-top:3px solid #f2f7cc;box-shadow:0 4px 16px rgba(16,42,92,0.06)}
-.card h3{font-size:16px;margin-bottom:6px}
-.card p{font-size:12px;color:#5a7a70;line-height:1.6}
-.card .ic{font-size:26px;margin-bottom:8px}
-.footer{background:#0a1a42;padding:28px 20px;display:grid;grid-template-columns:1.6fr 1fr 1fr 1.2fr;gap:20px;color:#9aaab8}
-.footer b{color:#fff}
-.footer a{color:#9aaab8;text-decoration:none;display:block;margin-top:4px;font-size:13.5px}
-.footer h4{color:#fff;margin-bottom:8px}
-.copy{background:#09142a;color:#7a8a9a;text-align:center;padding:10px;font-size:11px}
-.cers{font-size:9px}
-.info-banner{background:#0F4C81;color:white;text-align:center;padding:10px;font-size:14px;}
-.info-banner a{color:#FFD700;font-weight:800;text-decoration:none;}
-.info-banner a:hover{text-decoration:underline;}
-@media(max-width:900px){.grid{grid-template-columns:1fr 1fr}.footer{grid-template-columns:1fr 1fr}.hero-img{position:relative;width:100%;height:280px}.hero-content{width:100%}.hero{flex-direction:column}}
+*{margin:0;padding:0;box-sizing:border-box;font-family:"Plus Jakarta Sans",sans-serif}
+body{background:#f6f8ff}
+.wrap{max-width:1440px;margin:0 auto;background:#fff;box-shadow:0 20px 60px rgba(10,42,94,0.08)}
+/* TOP NAV - GLASS */
+.top{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);display:flex;justify-content:space-between;align-items:center;padding:12px 28px;border-bottom:1px solid #eaf0ff}
+.logo{display:flex;gap:12px;align-items:center}
+.logo img{width:42px;height:42px;border-radius:50%;box-shadow:0 2px 8px rgba(0,0,0,0.1)}
+.logo b{font-family:"Merriweather";font-size:20px;color:#0A2A5E}
+.logo span{font-size:10px;letter-spacing:2px;color:#6b7daa;font-weight:700;text-transform:uppercase}
+.nav{display:flex;gap:18px;align-items:center}
+.nav a{color:#334155;text-decoration:none;font-size:13.5px;font-weight:600;padding:7px 14px;border-radius:100px;transition:0.2s}
+.nav a:hover{background:#f1f5ff;color:#0A2A5E}
+.nav a.activa{background:#0A2A5E;color:white}
+.nav a.info-desk{background:linear-gradient(135deg,#0F4C81,#0A2A5E);color:white;box-shadow:0 4px 12px rgba(15,76,129,0.3);font-weight:800;animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 4px 12px rgba(15,76,129,0.3)}50%{box-shadow:0 6px 20px rgba(15,76,129,0.5)}100%{box-shadow:0 4px 12px rgba(15,76,129,0.3)}}
+
+/* NEW ATTRACTIVE BANNER */
+.info-banner{background:linear-gradient(90deg,#0A2A5E,#0F4C81,#1a6fc4);color:white;text-align:center;padding:9px;font-size:13.5px;letter-spacing:0.3px;position:relative;overflow:hidden}
+.info-banner::before{content:"";position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent);animation:shine 3s infinite}
+@keyframes shine{100%{left:100%}}
+.info-banner a{color:#FFD700;font-weight:800;text-decoration:none}
+
+/* HERO - PREMIUM */
+.hero{position:relative;background:#070f2b;min-height:62vh;display:flex;align-items:center;overflow:hidden}
+.hero-img{position:absolute;right:0;top:0;width:65%;height:100%;object-fit:cover;opacity:0.85}
+.hero-overlay{position:absolute;inset:0;background:radial-gradient(circle at 20% 50%,#0A2A5E 0%,#070f2b 40%,transparent 75%),linear-gradient(90deg,#070f2b 28%,rgba(7,15,43,0.2) 70%)}
+.hero-content{position:relative;z-index:2;width:56%;padding:60px 32px}
+.badge-hero{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:#a3c1ff;padding:6px 14px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:1px;display:inline-block;margin-bottom:18px;backdrop-filter:blur(10px)}
+.hero-content h1{font-family:"Merriweather";font-size:52px;line-height:0.95;letter-spacing:-2px;color:white}
+.hero-content h1 span{font-family:"Plus Jakarta Sans";display:block;font-size:20px;font-weight:500;color:#8fb1ff;margin-top:14px;letter-spacing:0;line-height:1.4}
+.hero-content p{color:#c7d7ff;font-size:15.5px;line-height:1.7;margin:18px 0 26px;max-width:520px}
+.hero-btns{display:flex;gap:12px}
+.btn-primary{background:white;color:#0A2A5E;padding:12px 22px;border-radius:10px;text-decoration:none;font-weight:800;font-size:14px;box-shadow:0 8px 20px rgba(0,0,0,0.2);transition:0.2s}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(0,0,0,0.25)}
+.btn-secondary{background:rgba(255,255,255,0.12);color:white;border:1px solid rgba(255,255,255,0.25);padding:12px 22px;border-radius:10px;text-decoration:none;font-weight:700;font-size:14px;backdrop-filter:blur(8px)}
+
+/* STATS - MODERN */
+.stats{background:linear-gradient(90deg,#0f2c73,#1a3e9a);display:flex;justify-content:space-around;padding:16px 20px;color:white;font-size:13px;font-weight:700;border-top:1px solid rgba(255,255,255,0.1)}
+.stats span{color:#ffd86e}
+
+/* RESEARCH CARDS - ATTRACTIVE */
+.focus{padding:38px 28px}
+.focus-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:20px}
+.focus-head h2{font-family:"Merriweather";font-size:30px;color:#0A2A5E}
+.focus-head p{color:#64748b;font-size:13.5px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.card{background:white;border:1px solid #eef2ff;border-radius:18px;padding:22px;box-shadow:0 8px 30px rgba(10,42,94,0.06);transition:0.3s;position:relative;overflow:hidden}
+.card::before{content:"";position:absolute;top:0;left:0;width:100%;height:4px;background:linear-gradient(90deg,#0F4C81,#5aa9ff)}
+.card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(10,42,94,0.12)}
+.card .ic{width:48px;height:48px;border-radius:12px;background:#eef5ff;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:14px}
+.card h3{font-size:16px;color:#0f172a;margin-bottom:8px;line-height:1.3}
+.card p{font-size:13px;color:#64748b;line-height:1.6}
+
+/* INFO DESK SECTION - SUPER ATTRACTIVE */
+.info-section{background:linear-gradient(135deg,#f0f6ff,#e6f0ff);padding:36px 28px;border-top:1px solid #dbe7ff;border-bottom:1px solid #dbe7ff;position:relative}
+.info-section h2{font-family:"Merriweather";font-size:26px;color:#0A2A5E;margin-bottom:4px}
+.info-section .sub{color:#475569;font-size:13.5px;margin-bottom:22px}
+.info-grid{display:grid;grid-template-columns:1.3fr 0.7fr;gap:18px}
+.info-card-main{background:linear-gradient(135deg,#0A2A5E,#123d8a);border-radius:20px;padding:28px;color:white;position:relative;overflow:hidden;box-shadow:0 12px 32px rgba(10,42,94,0.25)}
+.info-card-main::after{content:"🗳️";position:absolute;right:20px;top:20px;font-size:80px;opacity:0.08}
+.info-card-main h3{font-size:22px;margin-bottom:10px}
+.info-card-main p{color:#b9d0ff;font-size:14px;line-height:1.6;margin-bottom:18px}
+.info-btn{background:#FFD700;color:#0A2A5E;padding:10px 18px;border-radius:10px;text-decoration:none;font-weight:800;display:inline-block}
+.info-card-side{background:white;border-radius:20px;padding:22px;border:1px dashed #a3c1e8;display:flex;flex-direction:column;justify-content:center}
+.footer{background:#070f2b;padding:32px 28px;display:grid;grid-template-columns:1.6fr 1fr 1fr 1.2fr;gap:24px;color:#8ea0c0}
+.footer b{color:white}
+.footer a{color:#8ea0c0;text-decoration:none;display:block;margin-top:6px;font-size:13.5px}
+.footer a:hover{color:white}
+.footer h4{color:white;margin-bottom:10px;font-size:14px}
+.copy{background:#050b20;color:#5a6d8a;text-align:center;padding:12px;font-size:11px;letter-spacing:0.5px}
+@media(max-width:900px){.grid{grid-template-columns:1fr 1fr}.hero-img{width:100%;opacity:0.3}.hero-content{width:100%;padding:36px 20px}.hero-content h1{font-size:36px}.info-grid{grid-template-columns:1fr}.footer{grid-template-columns:1fr 1fr}.stats{flex-wrap:wrap;gap:12px}}
 </style>
 </head>
 <body>
 <div class="wrap">
-<!-- INFO DESK TOP BANNER - PERMANENT -->
-<div class="info-banner">
-📚 New Update: <a href="/info-desk/">MCRES INFO DESK</a> Started | 
-<a href="/info-desk/graduate-mlc-form-18-guide/" style="color:white; text-decoration:underline;">Graduate MLC Form 18 Guide Live →</a>
-</div>
+<div class="info-banner">✨ New Launch: <a href="/info-desk/">MCRES INFO DESK</a> — Your Guide for Student Services | <a href="/info-desk/graduate-mlc-form-18-guide/" style="color:white;text-decoration:underline;">Graduate MLC Form 18 Guide Live →</a></div>
 
 <div class="top">
-<div class="logo"><img src="https://drramakrishnamanimadde-cyber.github.io/tourism-research/logo.png"><div><b>MCRES</b><span>Mallaiah Center for River & Earth Sciences</span></div></div>
-<div class="nav"><a class="activa" href="/">Home</a><a href="/about/">About</a><a class="info-desk" href="/info-desk/">INFO DESK</a><a href="/research/">Research</a><a href="/publications/">Publications</a><a href="/projects/">Projects</a><a href="/contact/">Contact</a></div>
+<div class="logo"><img src="https://drramakrishnamanimadde-cyber.github.io/tourism-research/logo.png"><div><b>MCRES</b><br><span>Mallaiah Center for River & Earth Sciences</span></div></div>
+<div class="nav"><a class="activa" href="/">Home</a><a href="/about/">About</a><a class="info-desk" href="/info-desk/">✨ INFO DESK</a><a href="/research/">Research</a><a href="/publications/">Publications</a><a href="/projects/">Projects</a><a href="/contact/">Contact</a></div>
 </div>
 
 <div class="hero">
-<!-- 1008 KGAL RIVER IMAGE - AERIAL VIEW -->
-<img class="hero-img" src="https://images.unsplash.com/photo-1547036967-23d11aaca0a0?auto=format&fit=crop&w=1200&q=80">
-<div class="hero-grad"></div>
+<img class="hero-img" src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1400&q=80">
+<div class="hero-overlay"></div>
 <div class="hero-content">
-<h1>MCRES <span>Mallaiah Center for River & Earth Sciences</span></h1>
-<div class="tag">Exploring Rivers • Decoding Earth • Advancing Science</div>
-<p>Advancing interdisciplinary research to understand river systems, Earth processes, and environmental resilience across India and beyond.</p>
-<a class="btn-explore" href="/research/">→ Explore Research</a>
+<div class="badge-hero">🌊 EXPLORING RIVERS • DECODING EARTH • ADVANCING SCIENCE</div>
+<h1>MCRES <span>Mallaiah Center for River & Earth Sciences<br>Interdisciplinary research for water, earth & environmental resilience across India</span></h1>
+<p>We are an independent research initiative bringing field science, geospatial data and policy insights together.</p>
+<div class="hero-btns"><a class="btn-primary" href="/research/">→ Explore Research</a><a class="btn-secondary" href="/info-desk/">📚 Info Desk</a></div>
 </div>
 </div>
 
-<div class="stats"><div>🌿 12+ Research Projects</div><div>📄 36+ Publications</div><div>📍 5+ Field Initiatives Across India</div><div>🎓 MCRES INFO DESK Live</div></div>
+<div class="stats"><div><span>12+</span> Research Projects</div><div><span>36+</span> Publications</div><div><span>5+</span> Field Initiatives Across India</div><div><span>●</span> MCRES INFO DESK Live</div></div>
 
 <div class="focus">
-<h2>Our Research Focus</h2><div class="deco">• • •</div>
+<div class="focus-head"><h2>Our Research Focus</h2><p>Evidence-based science for rivers & earth</p></div>
 <div class="grid">
 <div class="card"><div class="ic">🌊</div><h3>River Hydrology & Management</h3><p>Studying river dynamics, basin management, and sustainable water resources for India.</p></div>
 <div class="card"><div class="ic">🌍</div><h3>Earth Systems & Geosciences</h3><p>Analyzing geological processes, climate change impacts, and earth surface dynamics.</p></div>
@@ -85,18 +110,31 @@
 </div>
 </div>
 
-<!-- INFO DESK HIGHLIGHT SECTION -->
-<div class="focus" style="background:#E6F0FF; border-top:3px solid #0F4C81;">
-<h2>📚 MCRES INFO DESK - Latest</h2>
-<div class="grid" style="grid-template-columns:1fr 1fr;">
-<div class="card" style="background:white; border-top-color:#0F4C81;">
-<div class="ic">🗳️</div><h3>Graduate MLC Form 18 Guide</h3><p>Complete eligibility, documents & online registration process as per CEO Telangana. Informational guide for graduates.</p><br><a href="/info-desk/graduate-mlc-form-18-guide/" style="background:#0F4C81; color:white; padding:8px 14px; border-radius:6px; text-decoration:none; font-weight:700;">Read Guide →</a>
+<div class="info-section">
+<h2>📚 MCRES INFO DESK - Latest Updates</h2>
+<p class="sub">Non-Governmental • Informational Guides for Students & Graduates • Awareness Purpose Only</p>
+<div class="info-grid">
+<div class="info-card-main">
+<h3>Graduate MLC Voter Registration – Form 18 Complete Guide (Telangana)</h3>
+<p>Complete eligibility criteria, documents checklist, online registration step-by-step as per CEO Telangana official guidelines. Prepared for graduate awareness.</p>
+<a class="info-btn" href="/info-desk/graduate-mlc-form-18-guide/">Read Full Guide →</a>
+<span style="margin-left:12px; font-size:12px; color:#8fb1ff;">Source: ceotelangana.nic.in</span>
 </div>
-<div class="card" style="background:white; border-style:dashed;">
-<div class="ic">📖</div><h3>More Guides Coming Soon</h3><p>CPGET, Scholarships, Research Fellowships, Academic Updates - MCRES Info Desk will update regularly for students.</p><br><a href="/info-desk/" style="background:#333; color:white; padding:8px 14px; border-radius:6px; text-decoration:none;">Visit Info Desk →</a>
+<div class="info-card-side">
+<h4 style="color:#0A2A5E;">More Guides Coming Soon</h4>
+<p style="font-size:13px; color:#64748b; margin:10px 0 16px; line-height:1.6;">TG CPGET Admissions Guide • Scholarships Awareness • Research Fellowships • Academic Updates</p>
+<a href="/info-desk/" style="background:#0A2A5E; color:white; padding:9px 16px; border-radius:10px; text-decoration:none; font-weight:700; text-align:center;">Visit Info Desk →</a>
 </div>
 </div>
 </div>
 
 <div class="footer">
-<div><img src="https://drramakrishnamanimadde-cyber.github.io/tourism-research/logo.png"
+<div><img src="https://drramakrishnamanimadde-cyber.github.io/tourism-research/logo.png" style="width:38px;border-radius:50%"><br><br><b>MCRES</b><p style="font-size:13px;margin-top:8px;line-height:1.6;">Mallaiah Center for River & Earth Sciences is an independent research initiative focused on river systems and earth sciences.</p></div>
+<div><h4>Quick Links</h4><a href="/">Home</a><a href="/about/">About</a><a href="/info-desk/" style="color:#FFD700;font-weight:700;">✨ Info Desk (New)</a><a href="/research/">Research</a><a href="/projects/">Projects</a></div>
+<div><h4>Resources</h4><a href="/publications/">Publications</a><a href="/research/">Data & Reports</a><a href="/info-desk/graduate-mlc-form-18-guide/">MLC Guide</a><a href="/contact/">Contact Us</a></div>
+<div><h4>Contact</h4><p style="font-size:13px;line-height:1.7;">Email: infomcres.in@hyd.rrc.ac.in<br>Hyderabad, Telangana, India<br><br><b style="color:#5a8dee;">www.mcres.in</b></p></div>
+</div>
+<div class="copy">© 2025 MCRES • Mallaiah Center for River & Earth Sciences • All rights reserved | Independent Research Initiative</div>
+</div>
+</body>
+</html>
