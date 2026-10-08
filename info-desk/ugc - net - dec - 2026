@@ -1,19 +1,55 @@
 <!DOCTYPE html>
-<html lang="te">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>UGC NET Dec 2026 Guide - MCRES Info Desk</title></head>
-<body style="font-family:Arial; padding:15px; max-width:800px; margin:auto;">
-<h2>UGC NET December 2026 - Complete Guide</h2>
-<p>Notification Released on 08-10-2026 by NTA</p>
-<div style="background:#e8f0fe; padding:12px; border-radius:8px; border-left:4px solid #0b5ed7;">
-<b>Important Dates:</b><br>
-Apply: 08 Oct - 28 Oct 2026<br>
-Last Date with Late Fee: 31 Oct 2026<br>
-Exam: 14-19 Dec 2026<br>
-Website: ugcnet.nta.nic.in
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UGC NET December 2026 Notification | MCRES Info Desk</title>
+<style>
+body{font-family:Arial, sans-serif; max-width:850px; margin:auto; padding:15px; line-height:1.6; color:#222;}
+.header{background:#0b2a4a; color:#fff; padding:15px; border-radius:8px; text-align:center;}
+.card{border:1px solid #ddd; border-radius:8px; padding:15px; margin:15px 0; background:#fff;}
+.imp{background:#e8f0fe; border-left:4px solid #0b5ed7; padding:12px; border-radius:6px;}
+.btn{display:inline-block; padding:12px 22px; border-radius:6px; text-decoration:none; font-weight:bold; margin:6px 6px 0; color:#fff;}
+.btn-blue{background:#0b5ed7;}
+.btn-green{background:#198754;}
+.btn-orange{background:#ff6a00;}
+</style>
+</head>
+<body>
+
+<div class="header">
+<h2 style="margin:0;">Mallaiah Center for River & Earth Sciences | Hyderabad</h2>
+<p style="margin:5px 0 0;">MCRES Info Desk - UGC NET Guide 2026</p>
 </div>
+
+<div class="card">
+<h2>📢 UGC NET December 2026 - Notification Released</h2>
+<p><b>National Testing Agency (NTA)</b> has released UGC NET Dec 2026 notification on <b>08-10-2026</b>.</p>
+
+<div class="imp">
+<b>Important Dates:</b><br>
+• Notification: 08 Oct 2026<br>
+• Apply Online: 08 Oct - 28 Oct 2026<br>
+• Last Date with Late Fee: 31 Oct 2026<br>
+• Exam Dates: 14-19 Dec 2026<br>
+• Mode: Computer Based Test (CBT)<br>
+• Subjects: 87 Subjects<br>
+• Official Website: ugcnet.nta.nic.in
+</div>
+
 <br>
-<a href="https://ugcnet.nta.nic.in" target="_blank" style="background:#0b5ed7; color:#fff; padding:12px 20px; border-radius:6px; text-decoration:none; font-weight:bold; display:inline-block;">🔗 Apply Now - Official Website</a>
-<br><br>
-<p>Eligibility, Syllabus, Fees - Full Details...</p>
+<a class="btn btn-blue" href="https://ugcnet.nta.nic.in" target="_blank">🔗 Apply Now - Official Link</a>
+<a class="btn btn-green" href="https://ugcnet.nta.ac.in" target="_blank">📄 Download Notification PDF</a>
+<a class="btn btn-orange" href="../">🏠 Back to Info Desk</a>
+
+<h3>Who Can Apply?</h3>
+<p>Master's Degree with 55% marks (50% for reserved). Final year students can also apply. No age limit for Assistant Professor.</p>
+
+<h3>Fees</h3>
+<p>General: Rs.1150 | OBC/EWS: Rs.600 | SC/ST/PwD: Rs.325</p>
+
+<p style="font-size:12px; color:#666; margin-top:20px;">Source: NTA UGC NET Official Website. This page is for student awareness by MCRES - Mallaiah Center for River & Earth Sciences, Hyderabad.</p>
+</div>
+
 </body>
 </html>
