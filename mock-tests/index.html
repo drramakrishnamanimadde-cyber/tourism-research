@@ -1,1 +1,119 @@
-<!DOCTYPE html><html lang="te"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MCRES Mock Test 01</title><style>*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui}body{background:#f0f2ff}.header{background:linear-gradient(135deg,#6a11cb 0%,#2575fc 100%);color:#fff;padding:20px;text-align:center;position:sticky;top:0;box-shadow:0 4px 15px rgba(106,17,203,.3)}.header h3{font-size:18px;letter-spacing:.5px}.card{background:#fff;border-radius:16px;padding:20px;margin:14px;box-shadow:0 8px 25px rgba(0,0,0,.08);border:1px solid #eef}.timer{position:fixed;top:75px;right:12px;background:linear-gradient(135deg,#ff416c,#ff4b2b);color:#fff;padding:9px 16px;border-radius:25px;font-weight:800;box-shadow:0 4px 12px rgba(255,65,108,.4)}.btn{background:linear-gradient(135deg,#6a11cb 0%,#2575fc 100%);color:#fff;border:none;padding:14px;border-radius:12px;width:100%;font-weight:700;cursor:pointer;font-size:16px;box-shadow:0 4px 15px rgba(106,17,203,.3)}.btn:active{transform:scale(.97)}.opt{border:2px solid #e8e8ff;border-radius:12px;padding:12px;margin:10px 0;cursor:pointer;background:#fafaff;transition:.2s}.opt:hover{border-color:#6a11cb;background:#f0e6ff;transform:translateX(4px)}.opt.selected{border-color:#6a11cb;background:#e9d6ff;font-weight:600}.opt.correct{background:#e8f5e9;border-color:#2e7d32}.opt.wrong{background:#ffebee;border-color:#d32f2f}.exp{background:#fff8e1;border-left:4px solid #ffb300;padding:12px;border-radius:8px;margin-top:10px;font-size:14px;display:none}</style></head><body><div class="header"><h3>✨ MCRES - Constable GS Mock Test 01 ✨</h3><p style="opacity:.9;margin-top:4px;font-size:13px">తెలుగు | 25Q | 25 Marks | 25 Min | ఉచితం</p></div><div class="timer" id="timer">⏱ 25:00</div><div id="startScreen" class="card" style="text-align:center"><div style="font-size:40px">📚</div><h2 style="color:#6a11cb;margin:8px 0">MCRES ఉచిత మాక్ టెస్ట్</h2><p style="margin:10px 0;color:#666;font-size:14px">తెలంగాణ చరిత్ర, భూగోళికం, పాలిటీ - 25 ప్రశ్నలు<br>ప్రతి ప్రశ్నకు తెలుగు వివరణ</p><input id="sName" placeholder="మీ పేరు రాయండి" style="width:100%;padding:14px;border-radius:12px;border:2px solid #e8e8ff;margin-top:8px"><button class="btn" style="margin-top:14px" onclick="startTest()">🚀 పరీక్ష ప్రారంభించండి</button><p style="font-size:11px;color:#999;margin-top:12px">MCRES Publications | mcres.in</p></div><div id="quizBox" style="display:none"></div><div id="resultBox" class="card" style="display:none"></div><script>const questions=[{q:"తెలంగాణ రాష్ట్రం ఏర్పడిన తేదీ?",o:["2 జూన్ 2014","1 జూన్ 2014","2 జూన్ 2013","15 ఆగస్టు 2014"],a:0,e:"తెలంగాణ 2 జూన్ 2014న 29వ రాష్ట్రంగా ఏర్పడింది."},{q:"గోల్కొండ కోటను మొదట నిర్మించినవారు?",o:["కుతుబ్ షాహీలు","కాకతీయులు","చాళుక్యులు","ముసునూరి"],a:1,e:"11వ శతాబ్దంలో కాకతీయ రాజు ప్రోలరాజు నిర్మించారు."},{q:"తెలంగాణలో అతి పొడవైన నది?",o:["కృష్ణా","గోదావరి","మూసీ","మంజీరా"],a:1,e:"గోదావరి అతి పొడవైన నది."},{q:"రామప్ప ఆలయం ఏ జిల్లాలో?",o:["వరంగల్","ములుగు","భూపాలపల్లి","హనుమకొండ"],a:1,e:"ములుగు జిల్లాలో, UNESCO సైట్."},{q:"తెలంగాణ తొలి ముఖ్యమంత్రి?",o:["కెసిఆర్","రేవంత్ రెడ్డి","ఈటల","కడియం"],a:0,e:"కె. చంద్రశేఖర్ రావు."},{q:"బతుకమ్మ ఎన్ని రోజులు?",o:["7","9","5","10"],a:1,e:"9 రోజులు, రాష్ట్ర పండుగ."},{q:"మూసీ ఏ నదికి ఉపనది?",o:["కృష్ణా","గోదావరి","తుంగభద్ర","భీమా"],a:0,e:"కృష్ణాకు ఉపనది."},{q:"జిల్లాల సంఖ్య?",o:["31","32","33","35"],a:2,e:"ప్రస్తుతం 33."},{q:"కాకతీయుల రాజధాని?",o:["వరంగల్","హైదరాబాద్","గోల్కొండ","దేవగిరి"],a:0,e:"ఓరుగల్లు."},{q:"నాగార్జున సాగర్ ఏ నదిపై?",o:["కృష్ణా","గోదావరి","మూసీ","పెన్నా"],a:0,e:"కృష్ణా నదిపై."},{q:"రాష్ట్ర చిహ్నంలో ఏముంది?",o:["చార్మినార్, తోరణం","గోల్కొండ","రామప్ప","వరంగల్ కోట"],a:0,e:"కాకతీయ తోరణం, చార్మినార్."},{q:"బొగ్గు గనులు ఎక్కడ?",o:["సింగరేణి","బెల్లంపల్లి","కొత్తగూడెం","పైవన్నీ"],a:3,e:"సింగరేణి ప్రాంతంలో."},{q:"కొలనుపాక ఎక్కడ?",o:["యాదాద్రి","నల్గొండ","సూర్యాపేట","జనగామ"],a:0,e:"యాదాద్రి-భువనగిరిలో."},{q:"రాష్ట్ర పక్షి?",o:["నెమలి","పాలపిట్ట","రామచిలుక","కోయిల"],a:1,e:"పాలపిట్ట."},{q:"మలిదశ ఉద్యమం ఎప్పుడు?",o:["1997","2001","2009","1969"],a:1,e:"2001 TRS ఏర్పాటుతో."},{q:"శ్రీశైలం ఏ రాష్ట్రాల మధ్య?",o:["TS-AP","TS-KA","TS-MH","AP-KA"],a:0,e:"TS-AP మధ్య."},{q:"కాళేశ్వరం ఏ నదిపై?",o:["గోదావరి","కృష్ణా","మంజీరా","ప్రాణహిత"],a:0,e:"గోదావరి."},{q:"హైదరాబాద్ ఎవరు స్థాపించారు?",o:["కులీ కుతుబ్","మహమ్మద్ కులీ","అబ్దుల్లా","జంషీద్"],a:1,e:"1591లో మహమ్మద్ కులీ."},{q:"తొలి గవర్నర్?",o:["నరసింహన్","తమిళిసై","విద్యాసాగర్","దత్తాత్రేయ"],a:0,e:"ఈ.ఎస్.ఎల్. నరసింహన్."},{q:"యాదాద్రి ఏ దేవుడు?",o:["శివుడు","నరసింహ స్వామి","వేంకటేశ్వర","ఆంజనేయ"],a:1,e:"లక్ష్మీ నరసింహ స్వామి."},{q:"రెవెన్యూ డివిజన్లు?",o:["50","62","70","74"],a:3,e:"74."},{q:"కోహినూర్ ఎక్కడ దొరికింది?",o:["గోల్కొండ","కొల్లూరు","సింగరేణి","పన్నా"],a:0,e:"గోల్కొండ సమీపంలో."},{q:"భాషా దినోత్సవం?",o:["సెప్టెం 9","అక్టో 9","నవం 9","ఆగ 9"],a:0,e:"సెప్టెం 9, కాళోజీ జయంతి."},{q:"మేడారం జాతర ఎన్ని ఏళ్లకు?",o:["ప్రతి ఏటా","2 ఏళ్లకు","3 ఏళ్లకు","4 ఏళ్లకు"],a:1,e:"2 ఏళ్లకు."},{q:"బిల్లు ఆమోదం ఎప్పుడు?",o:["18 ఫిబ్ర 2014","20 ఫిబ్ర 2014","18 మార్చి","2 జూన్"],a:0,e:"లోక్ సభలో 18 ఫిబ్ర 2014."}];let answers={},timeLeft=1500,timerInt;function startTest(){document.getElementById('startScreen').style.display='none';document.getElementById('quizBox').style.display='block';renderQuiz();timerInt=setInterval(()=>{timeLeft--;let m=Math.floor(timeLeft/60),s=timeLeft%60;document.getElementById('timer').innerText=`⏱ ${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;if(timeLeft<=0){clearInterval(timerInt);submitTest()}},1000)}function renderQuiz(){let html='';questions.forEach((q,i)=>{html+=`<div class="card"><div style="font-weight:700;color:#2d2d2d">Q${i+1}. ${q.q}</div>`;q.o.forEach((opt,j)=>{html+=`<div class="opt" onclick="selectOpt(${i},${j})" id="q${i}o${j}">${String.fromCharCode(65+j)}. ${opt}</div>`});html+=`<div class="exp" id="exp${i}"><b>💡 వివరణ:</b> ${q.e}</div></div>`});html+=`<div class="card"><button class="btn" onclick="submitTest()">✅ Submit - ఫలితం చూడండి</button></div>`;document.getElementById('quizBox').innerHTML=html}function selectOpt(qi,oi){answers[qi]=oi;for(let j=0;j<4;j++){let el=document.getElementById(`q${qi}o${j}`);if(el)el.classList.remove('selected')}document.getElementById(`q${qi}o${oi}`).classList.add('selected')}function submitTest(){clearInterval(timerInt);let score=0;questions.forEach((q,i)=>{let exp=document.getElementById(`exp${i}`);if(exp)exp.style.display='block';let correct=q.a;let chosen=answers[i];for(let j=0;j<4;j++){let el=document.getElementById(`q${i}o${j}`);if(!el)continue;if(j===correct)el.classList.add('correct');if(chosen!==undefined&&j===chosen&&chosen!==correct)el.classList.add('wrong')}if(chosen===correct)score++});let box=document.getElementById('quizBox');box.style.opacity='.7';box.style.pointerEvents='none';let rBox=document.getElementById('resultBox');rBox.style.display='block';let perc=Math.round((score/25)*100);rBox.innerHTML=`<div style="text-align:center;font-weight:700;color:#6a11cb">🎉 మీ ఫలితం 🎉</div><div style="text-align:center;font-size:48px;font-weight:900;background:linear-gradient(135deg,#6a11cb,#2575fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:10px 0">${score} / 25</div><div style="text-align:center"><span style="background:linear-gradient(135deg,#6a11cb,#2575fc);color:#fff;padding:6px 14px;border-radius:20px;font-size:12px">శాతం: ${perc}%</span> <span style="background:${perc>=50?'#e8f5e9':'#ffebee'};color:${perc>=50?'#2e7d32':'#d32f2f'};padding:6px 14px;border-radius:20px;font-size:12px">${perc>=50?'🌟 ఉత్తీర్ణత':'💪 మరింత సాధన'}</span></div><p style="text-align:center;font-size:14px;margin-top:14px;color:#555">ప్రతి ప్రశ్న కింద సరైన సమాధానం ఆకుపచ్చలో చూడండి</p><button class="btn" style="margin-top:14px" onclick="location.reload()">🔄 మళ్లీ ప్రయత్నించండి</button><button class="btn" style="margin-top:10px;background:#fff;color:#6a11cb;border:2px solid #6a11cb;box-shadow:none" onclick="window.location.href='/'">🏠 MCRES హోమ్ కి వెళ్ళండి</button>`;window.scrollTo(0,0)}</script></body></html>
+<!DOCTYPE html>
+<html lang="te">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MCRES - Constable GS Mock Test 01</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui}
+body{background:#f0f2ff}
+.header{background:linear-gradient(135deg,#6a11cb 0%,#2575fc 100%);color:#fff;padding:20px;text-align:center;position:sticky;top:0;box-shadow:0 4px 15px rgba(106,17,203,.3)}
+.card{background:#fff;border-radius:16px;padding:20px;margin:14px;box-shadow:0 8px 25px rgba(0,0,0,.08);border:1px solid #eef}
+.timer{position:fixed;top:75px;right:12px;background:linear-gradient(135deg,#ff416c,#ff4b2b);color:#fff;padding:9px 16px;border-radius:25px;font-weight:800;box-shadow:0 4px 12px rgba(255,65,108,.4);z-index:10}
+.btn{background:linear-gradient(135deg,#6a11cb 0%,#2575fc 100%);color:#fff;border:none;padding:14px;border-radius:12px;width:100%;font-weight:700;cursor:pointer;font-size:16px;box-shadow:0 4px 15px rgba(106,17,203,.3)}
+.btn:active{transform:scale(.97)}
+.opt{border:2px solid #e8e8ff;border-radius:12px;padding:12px;margin:10px 0;cursor:pointer;background:#fafaff}
+.opt:hover{border-color:#6a11cb;background:#f0e6ff}
+.opt.selected{border-color:#6a11cb;background:#e9d6ff;font-weight:600}
+.opt.correct{background:#e8f5e9;border-color:#2e7d32}
+.opt.wrong{background:#ffebee;border-color:#d32f2f}
+.exp{background:#fff8e1;border-left:4px solid #ffb300;padding:12px;border-radius:8px;margin-top:10px;font-size:14px;display:none}
+</style>
+</head>
+<body>
+<div class="header">
+<h3>✨ MCRES - Constable GS Mock Test 01 ✨</h3>
+<p style="opacity:.9;margin-top:4px;font-size:13px">తెలుగు | 25Q | 25 Marks | 25 Min | ఉచితం</p>
+</div>
+<div class="timer" id="timer">⏱ 25:00</div>
+
+<div id="startScreen" class="card" style="text-align:center">
+<div style="font-size:40px">📚</div>
+<h2 style="color:#6a11cb;margin:8px 0">MCRES ఉచిత మాక్ టెస్ట్</h2>
+<p style="margin:10px 0;color:#666;font-size:14px">తెలంగాణ చరిత్ర, భూగోళికం, పాలిటీ - 25 ప్రశ్నలు<br>ప్రతి ప్రశ్నకు తెలుగు వివరణ</p>
+<input id="sName" placeholder="మీ పేరు రాయండి" style="width:100%;padding:14px;border-radius:12px;border:2px solid #e8e8ff;margin-top:8px">
+<button class="btn" style="margin-top:14px" onclick="startTest()">🚀 పరీక్ష ప్రారంభించండి</button>
+</div>
+
+<div id="quizBox" style="display:none"></div>
+<div id="resultBox" class="card" style="display:none"></div>
+
+<script>
+const questions=[
+{q:"తెలంగాణ రాష్ట్రం ఏర్పడిన తేదీ?",o:["2 జూన్ 2014","1 జూన్ 2014","2 జూన్ 2013","15 ఆగస్టు 2014"],a:0,e:"2 జూన్ 2014న 29వ రాష్ట్రంగా ఏర్పడింది."},
+{q:"గోల్కొండ కోటను మొదట నిర్మించినవారు?",o:["కుతుబ్ షాహీలు","కాకతీయులు","చాళుక్యులు","ముసునూరి"],a:1,e:"11వ శతాబ్దంలో కాకతీయ రాజు ప్రోలరాజు నిర్మించారు."},
+{q:"తెలంగాణలో అతి పొడవైన నది?",o:["కృష్ణా","గోదావరి","మూసీ","మంజీరా"],a:1,e:"గోదావరి అతి పొడవైన నది."},
+{q:"రామప్ప ఆలయం ఏ జిల్లాలో?",o:["వరంగల్","ములుగు","భూపాలపల్లి","హనుమకొండ"],a:1,e:"ములుగు జిల్లాలో, UNESCO సైట్."},
+{q:"తెలంగాణ తొలి ముఖ్యమంత్రి?",o:["కెసిఆర్","రేవంత్ రెడ్డి","ఈటల","కడియం"],a:0,e:"కె. చంద్రశేఖర్ రావు."},
+{q:"బతుకమ్మ ఎన్ని రోజులు?",o:["7","9","5","10"],a:1,e:"9 రోజులు, రాష్ట్ర పండుగ."},
+{q:"మూసీ ఏ నదికి ఉపనది?",o:["కృష్ణా","గోదావరి","తుంగభద్ర","భీమా"],a:0,e:"కృష్ణాకు ఉపనది."},
+{q:"జిల్లాల సంఖ్య?",o:["31","32","33","35"],a:2,e:"ప్రస్తుతం 33."},
+{q:"కాకతీయుల రాజధాని?",o:["వరంగల్","హైదరాబాద్","గోల్కొండ","దేవగిరి"],a:0,e:"ఓరుగల్లు."},
+{q:"నాగార్జున సాగర్ ఏ నదిపై?",o:["కృష్ణా","గోదావరి","మూసీ","పెన్నా"],a:0,e:"కృష్ణా నదిపై."},
+{q:"రాష్ట్ర చిహ్నంలో ఏముంది?",o:["చార్మినార్, తోరణం","గోల్కొండ","రామప్ప","వరంగల్ కోట"],a:0,e:"కాకతీయ తోరణం, చార్మినార్."},
+{q:"బొగ్గు గనులు ఎక్కడ?",o:["సింగరేణి","బెల్లంపల్లి","కొత్తగూడెం","పైవన్నీ"],a:3,e:"సింగరేణి ప్రాంతంలో."},
+{q:"కొలనుపాక ఎక్కడ?",o:["యాదాద్రి","నల్గొండ","సూర్యాపేట","జనగామ"],a:0,e:"యాదాద్రి-భువనగిరిలో."},
+{q:"రాష్ట్ర పక్షి?",o:["నెమలి","పాలపిట్ట","రామచిలుక","కోయిల"],a:1,e:"పాలపిట్ట."},
+{q:"మలిదశ ఉద్యమం ఎప్పుడు?",o:["1997","2001","2009","1969"],a:1,e:"2001 TRS ఏర్పాటుతో."},
+{q:"శ్రీశైలం ఏ రాష్ట్రాల మధ్య?",o:["TS-AP","TS-KA","TS-MH","AP-KA"],a:0,e:"TS-AP మధ్య."},
+{q:"కాళేశ్వరం ఏ నదిపై?",o:["గోదావరి","కృష్ణా","మంజీరా","ప్రాణహిత"],a:0,e:"గోదావరి."},
+{q:"హైదరాబాద్ ఎవరు స్థాపించారు?",o:["కులీ కుతుబ్","మహమ్మద్ కులీ","అబ్దుల్లా","జంషీద్"],a:1,e:"1591లో మహమ్మద్ కులీ."},
+{q:"తొలి గవర్నర్?",o:["నరసింహన్","తమిళిసై","విద్యాసాగర్","దత్తాత్రేయ"],a:0,e:"ఈ.ఎస్.ఎల్. నరసింహన్."},
+{q:"యాదాద్రి ఏ దేవుడు?",o:["శివుడు","నరసింహ స్వామి","వేంకటేశ్వర","ఆంజనేయ"],a:1,e:"లక్ష్మీ నరసింహ స్వామి."},
+{q:"రెవెన్యూ డివిజన్లు?",o:["50","62","70","74"],a:3,e:"74."},
+{q:"కోహినూర్ ఎక్కడ దొరికింది?",o:["గోల్కొండ","కొల్లూరు","సింగరేణి","పన్నా"],a:0,e:"గోల్కొండ సమీపంలో."},
+{q:"భాషా దినోత్సవం?",o:["సెప్టెం 9","అక్టో 9","నవం 9","ఆగ 9"],a:0,e:"సెప్టెం 9, కాళోజీ జయంతి."},
+{q:"మేడారం జాతర ఎన్ని ఏళ్లకు?",o:["ప్రతి ఏటా","2 ఏళ్లకు","3 ఏళ్లకు","4 ఏళ్లకు"],a:1,e:"2 ఏళ్లకు."},
+{q:"బిల్లు ఆమోదం ఎప్పుడు?",o:["18 ఫిబ్ర 2014","20 ఫిబ్ర 2014","18 మార్చి","2 జూన్"],a:0,e:"లోక్ సభలో 18 ఫిబ్ర 2014."}
+];
+let answers={},timeLeft=1500,timerInt;
+function startTest(){
+document.getElementById('startScreen').style.display='none';
+document.getElementById('quizBox').style.display='block';
+renderQuiz();
+timerInt=setInterval(()=>{
+timeLeft--;let m=Math.floor(timeLeft/60),s=timeLeft%60;
+document.getElementById('timer').innerText=`⏱ ${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
+if(timeLeft<=0){clearInterval(timerInt);submitTest()}
+},1000)
+}
+function renderQuiz(){
+let html='';questions.forEach((q,i)=>{
+html+=`<div class="card"><div style="font-weight:700;color:#2d2d2d">Q${i+1}. ${q.q}</div>`;
+q.o.forEach((opt,j)=>{html+=`<div class="opt" onclick="selectOpt(${i},${j})" id="q${i}o${j}">${String.fromCharCode(65+j)}. ${opt}</div>`});
+html+=`<div class="exp" id="exp${i}"><b>💡 వివరణ:</b> ${q.e}</div></div>`;
+});
+html+=`<div class="card"><button class="btn" onclick="submitTest()">✅ Submit - ఫలితం చూడండి</button></div>`;
+document.getElementById('quizBox').innerHTML=html;
+}
+function selectOpt(qi,oi){
+answers[qi]=oi;
+for(let j=0;j<4;j++){let el=document.getElementById(`q${qi}o${j}`);if(el)el.classList.remove('selected')}
+document.getElementById(`q${qi}o${oi}`).classList.add('selected');
+}
+function submitTest(){
+clearInterval(timerInt);let score=0;
+questions.forEach((q,i)=>{
+let exp=document.getElementById(`exp${i}`);if(exp)exp.style.display='block';
+let correct=q.a;let chosen=answers[i];
+for(let j=0;j<4;j++){
+let el=document.getElementById(`q${i}o${j}`);if(!el)continue;
+if(j===correct)el.classList.add('correct');
+if(chosen!==undefined&&j===chosen&&chosen!==correct)el.classList.add('wrong');
+}
+if(chosen===correct)score++;
+});
+let box=document.getElementById('quizBox');box.style.opacity='.7';box.style.pointerEvents='none';
+let rBox=document.getElementById('resultBox');rBox.style.display='block';
+let perc=Math.round((score/25)*100);
+rBox.innerHTML=`<div style="text-align:center;font-weight:700;color:#6a11cb">🎉 మీ ఫలితం 🎉</div>
+<div style="text-align:center;font-size:48px;font-weight:900;background:linear-gradient(135deg,#6a11cb,#2575fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:10px 0">${score} / 25</div>
+<div style="text-align:center"><span style="background:linear-gradient(135deg,#6a11cb,#2575fc);color:#fff;padding:6px 14px;border-radius:20px;font-size:12px">శాతం: ${perc}%</span> <span style="background:${perc>=50?'#e8f5e9':'#ffebee'};color:${perc>=50?'#2e7d32':'#d32f2f'};padding:6px 14px;border-radius:20px;font-size:12px">${perc>=50?'🌟 ఉత్తీర్ణత':'💪 మరింత సాధన'}</span></div>
+<p style="text-align:center;font-size:14px;margin-top:14px;color:#555">సరైన సమాధానం ఆకుపచ్చలో చూడండి</p>
+<button class="btn" style="margin-top:14px" onclick="location.reload()">🔄 మళ్లీ ప్రయత్నించండి</button>
+<button class="btn" style="margin-top:10px;background:#fff;color:#6a11cb;border:2px solid #6a11cb;box-shadow:none" onclick="window.location.href='/'">🏠 MCRES హోమ్ కి వెళ్ళండి</button>`;
+window.scrollTo(0,0);
+}
+</script>
+</body>
+</html>
