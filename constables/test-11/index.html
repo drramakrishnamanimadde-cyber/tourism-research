@@ -3,137 +3,139 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TEST-11 Final - MCRES</title>
+<title>TEST-11 Final Q3 New - 240 | MCRES</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu:wght@400;500;700&display=swap');
-*{margin:0; padding:0; box-sizing:border-box; font-family:'Noto Sans Telugu', sans-serif;}
-body{background:#eef1f8; padding:10px;}
-.top-bar{background:#fff; padding:8px 12px; display:flex; align-items:center; justify-content:space-between; border-radius:10px; margin-bottom:10px; box-shadow:0 2px 6px rgba(0,0,0,0.1);}
-.top-bar .logo{display:flex; align-items:center; gap:8px;}
-.top-bar .logo img{width:42px;}
-.top-bar .title{font-weight:700; font-size:13px; line-height:1.2;}
-.top-bar .title span{color:#6b21a8; font-size:11px; display:block;}
-.header{background:linear-gradient(90deg,#4f46e5,#7c3aed); color:#fff; padding:12px; border-radius:12px; display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;}
-.header .test-name{font-weight:700; font-size:14px;}
-.header .timer{background:#ffffff22; padding:5px 12px; border-radius:20px; font-size:13px;}
-.q-card{background:#fff; border-radius:14px; margin-bottom:14px; overflow:hidden; box-shadow:0 3px 8px rgba(0,0,0,0.08); border-left:6px solid #f59e0b;}
-.q-head{padding:10px 12px; font-weight:700; font-size:14px;}
-.q1 .q-head{background:#fef08a;} .q2 .q-head{background:#bfdbfe;} .q3 .q-head{background:#fed7aa;} .q4 .q-head{background:#fef08a;} .q5 .q-head{background:#bfdbfe;} .q6 .q-head{background:#fed7aa;}
-.q7 .q-head{background:#fef08a;} .q8 .q-head{background:#bfdbfe;} .q9 .q-head{background:#fed7aa;} .q10 .q-head{background:#fef08a;} .q11 .q-head{background:#bfdbfe;} .q12 .q-head{background:#fed7aa;}
-.q13 .q-head{background:#fef08a;} .q14 .q-head{background:#bfdbfe;} .q15 .q-head{background:#fed7aa;} .q16 .q-head{background:#fef08a;} .q17 .q-head{background:#bfdbfe;} .q18 .q-head{background:#fed7aa;}
-.q19 .q-head{background:#fef08a;} .q20 .q-head{background:#bfdbfe;} .q21 .q-head{background:#fed7aa;} .q22 .q-head{background:#fef08a;} .q23 .q-head{background:#bfdbfe;} .q24 .q-head{background:#fed7aa;}
-
-.q-card.q1{border-left-color:#eab308;} .q-card.q2{border-left-color:#3b82f6;} .q-card.q3{border-left-color:#f97316;} .q-card.q4{border-left-color:#16a34a;} .q-card.q5{border-left-color:#dc2626;} .q-card.q6{border-left-color:#9333ea;}
-.q-card.q7{border-left-color:#eab308;} .q-card.q8{border-left-color:#3b82f6;} .q-card.q9{border-left-color:#f97316;} .q-card.q10{border-left-color:#16a34a;} .q-card.q11{border-left-color:#dc2626;} .q-card.q12{border-left-color:#9333ea;}
-.q-card.q13{border-left-color:#eab308;} .q-card.q14{border-left-color:#3b82f6;} .q-card.q15{border-left-color:#f97316;} .q-card.q16{border-left-color:#16a34a;} .q-card.q17{border-left-color:#dc2626;} .q-card.q18{border-left-color:#9333ea;}
-.q-card.q19{border-left-color:#eab308;} .q-card.q20{border-left-color:#3b82f6;} .q-card.q21{border-left-color:#f97316;} .q-card.q22{border-left-color:#16a34a;} .q-card.q23{border-left-color:#dc2626;} .q-card.q24{border-left-color:#9333ea;}
-
-.options{padding:10px 12px; display:flex; flex-direction:column; gap:8px;}
-.opt{display:flex; align-items:center; gap:10px; padding:10px; border-radius:10px; cursor:pointer; border:1px solid #e5e7eb; transition:0.2s;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Noto Sans Telugu',sans-serif;}
+body{background:#f0f2fb; padding:0 0 20px 0;}
+.top{position:sticky;top:0;z-index:99;background:#fff;box-shadow:0 2px 12px rgba(0,0,0,.08);}
+.top1{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;}
+.brand{display:flex;align-items:center;gap:8px;}
+.logo{width:52px;height:42px;background:linear-gradient(135deg,#fffbe6,#fef3c7);border:2px solid #f59e0b;border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1;font-weight:800;font-size:11px;color:#92400e;}
+.logo span{font-size:7px;font-weight:600;color:#b45309;margin-top:2px;}
+.btitle{font-size:11px;font-weight:700;line-height:1.25;color:#111827;}
+.btitle i{font-style:normal;color:#6d28d9;font-size:9px;display:block;font-weight:600;margin-top:2px;}
+.top2{background:linear-gradient(90deg,#4f46e5,#7c3aed,#a855f7);color:#fff;padding:9px 12px;display:flex;justify-content:space-between;align-items:center;}
+.top2 .tname{font-size:13px;font-weight:700;letter-spacing:.2px;}
+.pill{background:rgba(255,255,255,.2);backdrop-filter:blur(6px);padding:4px 12px;border-radius:20px;font-size:11px;font-weight:600;border:1px solid rgba(255,255,255,.3);}
+.progress{height:4px;background:#e0e7ff;width:100%;}
+.progress-bar{height:100%;background:linear-gradient(90deg,#4f46e5,#a855f7);width:0%;transition:.4s;}
+.wrap{max-width:700px;margin:0 auto;padding:10px;}
+.qcard{background:#fff;border-radius:16px;margin-bottom:12px;overflow:hidden;box-shadow:0 4px 14px rgba(0,0,0,.06);border:1px solid #eef2ff;transition:.2s;}
+.qcard:hover{box-shadow:0 8px 24px rgba(79,70,229,.12);transform:translateY(-1px);}
+.qhead{padding:12px 14px 10px 14px;font-size:13.5px;font-weight:700;line-height:1.4;color:#1e1b4b;background:linear-gradient(90deg,#fef9c3,#fef08a);border-bottom:1px solid #fde68a;display:flex;gap:8px;}
+.qhead b{color:#4f46e5;min-width:28px;}
+.opts{padding:10px 10px 12px 10px;display:flex;flex-direction:column;gap:8px;}
+.opt{position:relative;display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:12px;cursor:pointer;border:1.5px solid #f1f5f9;transition:.18s;font-size:12.8px;line-height:1.35;background:#f8fafc;}
+.opt:hover{border-color:#c7d2fe;background:#eef2ff;}
+.opt .ab{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:800;flex-shrink:0;box-shadow:0 2px 6px rgba(0,0,0,.15);}
+.opt[data-l=A] .ab{background:linear-gradient(135deg,#16a34a,#22c55e);} .opt[data-l=A]{background:#f0fdf4;border-color:#dcfce7;}
+.opt[data-l=B] .ab{background:linear-gradient(135deg,#2563eb,#3b82f6);} .opt[data-l=B]{background:#eff6ff;border-color:#dbeafe;}
+.opt[data-l=C] .ab{background:linear-gradient(135deg,#9333ea,#a855f7);} .opt[data-l=C]{background:#faf5ff;border-color:#f3e8ff;}
+.opt[data-l=D] .ab{background:linear-gradient(135deg,#dc2626,#ef4444);} .opt[data-l=D]{background:#fef2f2;border-color:#fee2e2;}
 .opt input{display:none;}
-.opt .ab{width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:12px; color:#fff; flex-shrink:0;}
-.opt.a .ab{background:#16a34a;} .opt.b .ab{background:#2563eb;} .opt.c .ab{background:#9333ea;} .opt.d .ab{background:#dc2626;}
-.opt.a{background:#dcfce7;} .opt.b{background:#dbeafe;} .opt.c{background:#f3e8ff;} .opt.d{background:#fee2e2;}
-.opt.selected{outline:2px solid #4f46e5; background:#fff!important;}
-.opt.correct{background:#bbf7d0!important; outline:2px solid #16a34a;}
-.opt.wrong{background:#fecaca!important; outline:2px solid #dc2626;}
-.submit{width:100%; background:linear-gradient(90deg,#4f46e5,#7c3aed); color:#fff; padding:14px; border:none; border-radius:12px; font-size:16px; font-weight:700; margin-top:10px; cursor:pointer;}
-.result{text-align:center; margin-top:14px; font-weight:700; font-size:18px; color:#4f46e5; background:#fff; padding:12px; border-radius:12px;}
+.opt.sel{border-color:#4f46e5!important;background:#eef2ff!important;box-shadow:0 0 0 3px rgba(79,70,229,.15);}
+.opt.correct{border-color:#16a34a!important;background:#dcfce7!important;box-shadow:0 0 0 3px rgba(22,163,74,.15);}
+.opt.wrong{border-color:#dc2626!important;background:#fee2e2!important;box-shadow:0 0 0 3px rgba(220,38,38,.12);}
+.btn{width:100%;background:linear-gradient(90deg,#4f46e5,#7c3aed);color:#fff;border:none;padding:14px;border-radius:14px;font-size:15px;font-weight:800;letter-spacing:.3px;box-shadow:0 6px 18px rgba(79,70,229,.35);cursor:pointer;margin-top:8px;}
+.btn:active{transform:scale(.98);}
+.result{background:#fff;border-radius:14px;padding:14px;text-align:center;font-weight:800;font-size:16px;color:#4f46e5;margin-top:12px;box-shadow:0 4px 14px rgba(0,0,0,.06);border:1px solid #e0e7ff;display:none;}
 </style>
 </head>
 <body>
 
-<div class="top-bar">
-<div class="logo">
-<div style="background:#fffbe6; border:2px solid #f59e0b; padding:4px 6px; border-radius:6px; font-weight:800; font-size:10px;">MCRES<br><span style="font-size:8px; font-weight:400;">SINCE 2015</span></div>
-<div class="title">MALLAIAH CENTER FOR<br>RIVER & EARTH SCIENCES (MCRES)<br><span>TELANGANA POLICE RECRUITMENT FOR CONSTABLE</span></div>
+<div class="top">
+<div class="top1">
+<div class="brand">
+<div class="logo">MCRES<span>SINCE 2015</span></div>
+<div class="btitle">MALLAIAH CENTER FOR RIVER & EARTH SCIENCES (MCRES)<i>TELANGANA POLICE RECRUITMENT FOR CONSTABLE</i></div>
 </div>
+</div>
+<div class="top2">
+<div class="tname">TEST-11 Final Q3 New - 24Q</div>
+<div class="pill" id="timer">⏱ 36:39 &nbsp;|&nbsp; <span id="progressText">0/24</span></div>
+</div>
+<div class="progress"><div class="progress-bar" id="pbar"></div></div>
 </div>
 
-<div class="header">
-<div class="test-name">TEST-11 Final Q3 New - 24Q</div>
-<div class="timer" id="timer">⏱ 36:00</div>
-</div>
-
+<div class="wrap">
 <div id="quiz"></div>
-<button class="submit" onclick="submitQuiz()">Submit Test</button>
-<div id="result"></div>
+<button class="btn" onclick="submitQuiz()">SUBMIT TEST ✅</button>
+<div class="result" id="result"></div>
+</div>
 
 <script>
 const questions=[
-{q:"Q1. 1969 తెలంగాణ ఉద్యమానికి ప్రధాన కారణం ఏమిటి?",opts:["ముల్కీ నిబంధనల ఉల్లంఘన - ఆంధ్ర ఉద్యోగుల నియామకం","భాషా వివక్ష - తెలుగు భాషను తొలగించడం","నీటి పంపకంలో అన్యాయం - కృష్ణా జలాల్లో 50% కోత","రాజధాని మార్పు - హైదరాబాద్ నుండి విజయవాడకు"],ans:0},
-{q:"Q2. పెద్ద మనుషుల ఒప్పందం 1956 లో ఎన్ని అంశాలతో కుదిరింది?",opts:["8 అంశాలు - తెలంగాణకు ఉప ముఖ్యమంత్రి, మంత్రివర్గంలో 40%","5 అంశాలు - ఆంధ్రకు పూర్తి అధికారం","12 అంశాలు - మద్రాసు రాజధాని","15 అంశాలు - ఢిల్లీ రాజధాని"],ans:0},
-{q:"Q3. ముల్కీ అంటే అర్థం ఏమిటి? ఎన్ని సంవత్సరాల నివాసం?",opts:["స్థానికుడు - 15 ఏళ్లు నిజాం రాష్ట్రంలో నివసించిన వారు","వలసదారు - 5 ఏళ్లు నివసించిన వారు","విదేశీయుడు - 20 ఏళ్లు నివసించిన వారు","రైతు - 10 ఏళ్లు వ్యవసాయం చేసిన వారు"],ans:0},
-{q:"Q4. 1969 తెలంగాణ ప్రజా సమితి (TPS) ఎవరు స్థాపించారు? మొదటి అధ్యక్షుడు?",opts:["మర్రి చెన్నారెడ్డి - అధ్యక్షుడు - T. అంజయ్య ప్రధాన కార్యదర్శి","బూర్గుల రామకృష్ణారావు - అధ్యక్షుడు - రావి నారాయణ రెడ్డి","P.V. నరసింహారావు - అధ్యక్షుడు - జలగం వెంగళరావు","బద్దం ఎల్లారెడ్డి - అధ్యక్షుడు - మగ్దూం మొహియుద్దీన్"],ans:0},
-{q:"Q5. హైదరాబాద్ సంస్థానం చివరి నిజాం ఎవరు?",opts:["మీర్ ఉస్మాన్ అలీ ఖాన్ - 7వ నిజాం - 1911-1948","మీర్ మహబూబ్ అలీ ఖాన్ - 6వ నిజాం","అఫ్జల్ ఉద్దౌలా - 5వ నిజాం","నాసిర్ ఉద్దౌలా - 4వ నిజాం"],ans:0},
-{q:"Q6. ఆపరేషన్ పోలోలో భారత సైన్యాధిపతి ఎవరు?",opts:["మేజర్ జనరల్ J.N. చౌదరి - సర్దార్ పటేల్ ఆదేశంతో","జనరల్ కరియప్ప - నెహ్రూ ఆదేశంతో","జనరల్ మానేక్షా - ఇందిరా గాంధీ ఆదేశంతో","జనరల్ సుందర్ జీ - రాజీవ్ గాంధీ ఆదేశంతో"],ans:0},
-{q:"Q7. 1969 తెలంగాణ ఉద్యమంలో తొలి ఆమరణ నిరాహార దీక్ష ఎవరు చేశారు? ఎక్కడ?",opts:["రవీంద్రనాథ్ - 1969 జనవరి 8 - ఖమ్మంలో - నాన్ ముల్కీ గో బ్యాక్","పొటు కృష్ణమూర్తి - 1969 జనవరి 10 - పాల్వంచలో","మర్రి చెన్నారెడ్డి - 1969 మార్చి 25 - హైదరాబాద్ లో","T. పురుషోత్తం రావు - 1969 జనవరి 12 - OU లో"],ans:0},
-{q:"Q8. శ్రీకృష్ణ కమిటీలో ఎంత మంది సభ్యులు? చైర్మన్?",opts:["5 మంది - జస్టిస్ B.N. శ్రీకృష్ణ చైర్మన్ - 2010 ఫిబ్రవరి 3","3 మంది - జస్టిస్ రెడ్డి చైర్మన్","8 మంది - జస్టిస్ రావు చైర్మన్","11 మంది - జస్టిస్ శర్మ చైర్మన్"],ans:0},
-{q:"Q9. సకల జనుల సమ్మెలో పాల్గొన్న ప్రధాన సంఘం ఏది?",opts:["TNGO's, TGO's, RTC, సింగరేణి కార్మికులు - 42 రోజులు","ఆంధ్ర NGO's - 10 రోజులు - విజయవాడ","కర్ణాటక NGO's - 5 రోజులు - బెంగళూరు","తమిళనాడు NGO's - 20 రోజులు - చెన్నై"],ans:0},
-{q:"Q10. మిలియన్ మార్చ్ ప్రధాన డిమాండ్ ఏమిటి? ఎవరి నేతృత్వం?",opts:["తెలంగాణ బిల్లును పార్లమెంటులో ప్రవేశపెట్టాలి - TJAC - కోదండరామ్","సమైక్యాంధ్రను కొనసాగించాలి - సమైక్యాంధ్ర JAC","రాజధానిని విజయవాడకు మార్చాలి - AP NGO's","ఉద్యోగాల్లో 50% రిజర్వేషన్ - TNGO's"],ans:0},
-{q:"Q11. 1956 పెద్ద మనుషుల ఒప్పందంలో తెలంగాణకు ఇచ్చిన ప్రధాన హామీ?",opts:["తెలంగాణ మిగులు ఆదాయం తెలంగాణకే - ఉప CM తెలంగాణ వాడే","ఆదాయం మొత్తం ఆంధ్రకు - CM ఆంధ్ర వాడే","హైదరాబాద్ ఆంధ్ర రాజధాని మాత్రమే","ఉద్యోగాలన్నీ ఆంధ్ర వారికే"],ans:0},
-{q:"Q12. తెలంగాణ రాష్ట్ర బిల్లుకు రాష్ట్రపతి ఆమోదం ఎప్పుడు?",opts:["2014 మార్చి 1 - ప్రణబ్ ముఖర్జీ ఆమోదం","2014 జూన్ 2 - ప్రణబ్ ముఖర్జీ ఆమోదం","2013 డిసెంబర్ 1 - ప్రతిభా పాటిల్","2010 మార్చి 1 - APJ అబ్దుల్ కలాం"],ans:0},
-{q:"Q13. 1956-2014 వరకు ఉమ్మడి AP లో తెలంగాణ ముఖ్యమంత్రులు?",opts:["3 మంది - మర్రి చెన్నారెడ్డి (2 సార్లు), P.V., జలగం వెంగళరావు","10 మంది - నీలం సంజీవరెడ్డి, కాసు బ్రహ్మానందరెడ్డి","1 మాత్రమే - ప్రకాశం పంతులు","6 మంది - చంద్రబాబు, YSR, రోశయ్య"],ans:0},
-{q:"Q14. 1952 మొదటి ఎన్నికల్లో హైదరాబాద్ అసెంబ్లీ స్థానాలు?",opts:["175 స్థానాలు - కాంగ్రెస్ 93 - బూర్గుల CM","294 స్థానాలు - కాంగ్రెస్ 200 - నీలం సంజీవరెడ్డి","119 స్థానాలు - కాంగ్రెస్ 90 - P.V.","70 స్థానాలు - కాంగ్రెస్ 50 - మర్రి చెన్నారెడ్డి"],ans:0},
-{q:"Q15. తెలంగాణ ఉద్యమంలో విద్యార్థుల పాత్ర ఎక్కడ నుండి ఎక్కువ?",opts:["ఉస్మానియా యూనివర్సిటీ - OU JAC - ఆర్ట్స్ కాలేజీ","ఆంధ్ర యూనివర్సిటీ - వైజాగ్ - సమైక్యాంధ్ర","మద్రాస్ యూనివర్సిటీ - చెన్నై - ద్రవిడ","ఢిల్లీ యూనివర్సిటీ - ఢిల్లీ"],ans:0},
-{q:"Q16. OU JAC ఎప్పుడు ఏర్పడింది?",opts:["2009 - OU JAC - ఆర్ట్స్ కాలేజీ వేదిక","1969 - ఆంధ్ర యూనివర్సిటీ JAC","1956 - మద్రాస్ యూనివర్సిటీ JAC","2001 - కాకతీయ యూనివర్సిటీ JAC"],ans:0},
-{q:"Q17. తెలంగాణ మార్టర్స్ మెమోరియల్ ఎక్కడ ఉంది?",opts:["గన్ పార్క్, హైదరాబాద్ - అసెంబ్లీ ఎదురుగా","ట్యాంక్ బండ్ - హుస్సేన్ సాగర్ మధ్యలో","చార్మినార్ - పాతబస్తీలో","గోల్కొండ - కోటపై"],ans:0},
-{q:"Q18. 2009 డిసెంబర్ 9న తెలంగాణ ప్రక్రియ ప్రకటించిన హోం మంత్రి?",opts:["P. చిదంబరం - రాత్రి 11:30 గంటలకు","సుశీల్ కుమార్ షిండే - ఉదయం 11:30","రాజ్ నాథ్ సింగ్ - సాయంత్రం 5 గంటలకు","అమిత్ షా - మధ్యాహ్నం 2 గంటలకు"],ans:0},
-{q:"Q19. తెలంగాణ అమరవీరులకు అసెంబ్లీలో తీర్మానం ఎప్పుడు?",opts:["1969 - తెలంగాణ అమరులకు నివాళి","1956 - ఆంధ్ర అమరులకు నివాళి","2001 - రాయలసీమ అమరులకు","2010 - కోస్తా అమరులకు"],ans:0},
-{q:"Q20. ఉమ్మడి AP లో చివరి ముఖ్యమంత్రి ఎవరు?",opts:["N. కిరణ్ కుమార్ రెడ్డి - 2010-2014","Y.S. రాజశేఖర్ రెడ్డి - 2004-2009","చంద్రబాబు నాయుడు - 1995-2004","నీలం సంజీవరెడ్డి - 1956-1960"],ans:0},
-{q:"Q21. తెలంగాణ రాష్ట్ర తొలి ఎన్నికలు ఎప్పుడు? ఎన్ని సీట్లు?",opts:["2014 ఏప్రిల్ 30 - 119 అసెంబ్లీ, 17 MP - 63 సీట్లు TRS","2018 డిసెంబర్ 7 - 119 అసెంబ్లీ - 88 సీట్లు TRS","2009 ఏప్రిల్ - 294 అసెంబ్లీ - 50 సీట్లు TRS","2004 ఏప్రిల్ - 175 అసెంబ్లీ - 30 సీట్లు TRS"],ans:0},
-{q:"Q22. హైదరాబాద్ ఉమ్మడి రాజధాని ఏ సెక్షన్ ప్రకారం?",opts:["AP పునర్వ్యవస్థీకరణ చట్టం 2014 - సెక్షన్ 5 - 10 ఏళ్లు","సెక్షన్ 10 - 5 ఏళ్లు - విద్యా సంస్థలు","సెక్షన్ 8 - 2 ఏళ్లు - పోలీసు","సెక్షన్ 12 - 15 ఏళ్లు - నీటి"],ans:0},
-{q:"Q23. తెలంగాణ ఉద్యమంలో సాంస్కృతిక బృందం పేరు?",opts:["తెలంగాణ సాంస్కృతిక సారథి","ఆంధ్ర సాంస్కృతిక సారథి","రాయలసీమ సారథి","కోస్తా సారథి"],ans:0},
-{q:"Q24. తెలంగాణ రాష్ట్ర అధికారిక చిహ్నాలు ఏవి? - 2014 లో ప్రకటించారు",opts:["రాష్ట్ర పక్షి - పాలపిట్ట, జంతువు - జింక, వృక్షం - జమ్మి, పుష్పం - తంగేడు","పక్షి - నెమలి, జంతువు - పులి, వృక్షం - మర్రి, పుష్పం - తామర","పక్షి - చిలుక, జంతువు - ఏనుగు, వృక్షం - వేప, పుష్పం - మల్లె","పక్షి - కాకి, జంతువు - సింహం, వృక్షం - రావి, పుష్పం - గులాబీ"],ans:0}
+{q:"1969 తెలంగాణ ఉద్యమానికి ప్రధాన కారణం ఏమిటి?",o:["ముల్కీ నిబంధనల ఉల్లంఘన - ఆంధ్ర ఉద్యోగుల నియామకం","భాషా వివక్ష - తెలుగు భాషను తొలగించడం","నీటి పంపకంలో అన్యాయం - కృష్ణా జలాల్లో 50% కోత","రాజధాని మార్పు - హైదరాబాద్ నుండి విజయవాడకు"],a:0},
+{q:"పెద్ద మనుషుల ఒప్పందం 1956 లో ఎన్ని అంశాలతో కుదిరింది?",o:["8 అంశాలు - తెలంగాణకు ఉప ముఖ్యమంత్రి, మంత్రివర్గంలో 40%","5 అంశాలు - ఆంధ్రకు పూర్తి అధికారం","12 అంశాలు - మద్రాసు రాజధాని","15 అంశాలు - ఢిల్లీ రాజధాని"],a:0},
+{q:"ముల్కీ అంటే అర్థం ఏమిటి? ఎన్ని సంవత్సరాల నివాసం?",o:["స్థానికుడు - 15 ఏళ్లు నిజాం రాష్ట్రంలో నివసించిన వారు","వలసదారు - 5 ఏళ్లు నివసించిన వారు","విదేశీయుడు - 20 ఏళ్లు నివసించిన వారు","రైతు - 10 ఏళ్లు వ్యవసాయం చేసిన వారు"],a:0},
+{q:"1969 తెలంగాణ ప్రజా సమితి (TPS) ఎవరు స్థాపించారు? మొదటి అధ్యక్షుడు?",o:["మర్రి చెన్నారెడ్డి - అధ్యక్షుడు - T. అంజయ్య ప్రధాన కార్యదర్శి","బూర్గుల రామకృష్ణారావు - అధ్యక్షుడు - రావి నారాయణ రెడ్డి","P.V. నరసింహారావు - అధ్యక్షుడు - జలగం వెంగళరావు","బద్దం ఎల్లారెడ్డి - అధ్యక్షుడు - మగ్దూం మొహియుద్దీన్"],a:0},
+{q:"హైదరాబాద్ సంస్థానం చివరి నిజాం ఎవరు?",o:["మీర్ ఉస్మాన్ అలీ ఖాన్ - 7వ నిజాం - 1911-1948","మీర్ మహబూబ్ అలీ ఖాన్ - 6వ నిజాం","అఫ్జల్ ఉద్దౌలా - 5వ నిజాం","నాసిర్ ఉద్దౌలా - 4వ నిజాం"],a:0},
+{q:"ఆపరేషన్ పోలోలో భారత సైన్యాధిపతి ఎవరు?",o:["మేజర్ జనరల్ J.N. చౌదరి - సర్దార్ పటేల్ ఆదేశంతో","జనరల్ కరియప్ప - నెహ్రూ ఆదేశంతో","జనరల్ మానేక్షా - ఇందిరా గాంధీ ఆదేశంతో","జనరల్ సుందర్ జీ - రాజీవ్ గాంధీ ఆదేశంతో"],a:0},
+{q:"1969 తెలంగాణ ఉద్యమంలో తొలి ఆమరణ నిరాహార దీక్ష ఎవరు చేశారు? ఎక్కడ?",o:["రవీంద్రనాథ్ - 1969 జనవరి 8 - ఖమ్మంలో - నాన్ ముల్కీ గో బ్యాక్","పొటు కృష్ణమూర్తి - 1969 జనవరి 10 - పాల్వంచలో","మర్రి చెన్నారెడ్డి - 1969 మార్చి 25 - హైదరాబాద్ లో","T. పురుషోత్తం రావు - 1969 జనవరి 12 - OU లో"],a:0},
+{q:"శ్రీకృష్ణ కమిటీలో ఎంత మంది సభ్యులు? చైర్మన్?",o:["5 మంది - జస్టిస్ B.N. శ్రీకృష్ణ చైర్మన్ - 2010 ఫిబ్రవరి 3","3 మంది - జస్టిస్ రెడ్డి చైర్మన్","8 మంది - జస్టిస్ రావు చైర్మన్","11 మంది - జస్టిస్ శర్మ చైర్మన్"],a:0},
+{q:"సకల జనుల సమ్మెలో పాల్గొన్న ప్రధాన సంఘం ఏది?",o:["TNGO's, TGO's, RTC, సింగరేణి కార్మికులు - 42 రోజులు","ఆంధ్ర NGO's - 10 రోజులు - విజయవాడ","కర్ణాటక NGO's - 5 రోజులు - బెంగళూరు","తమిళనాడు NGO's - 20 రోజులు - చెన్నై"],a:0},
+{q:"మిలియన్ మార్చ్ ప్రధాన డిమాండ్ ఏమిటి? ఎవరి నేతృత్వం?",o:["తెలంగాణ బిల్లును పార్లమెంటులో ప్రవేశపెట్టాలి - TJAC - కోదండరామ్","సమైక్యాంధ్రను కొనసాగించాలి - సమైక్యాంధ్ర JAC","రాజధానిని విజయవాడకు మార్చాలి - AP NGO's","ఉద్యోగాల్లో 50% రిజర్వేషన్ - TNGO's"],a:0},
+{q:"1956 పెద్ద మనుషుల ఒప్పందంలో తెలంగాణకు ఇచ్చిన ప్రధాన హామీ?",o:["తెలంగాణ మిగులు ఆదాయం తెలంగాణకే - ఉప CM తెలంగాణ","ఆదాయం మొత్తం ఆంధ్రకు - CM ఆంధ్ర","హైదరాబాద్ ఆంధ్ర రాజధాని మాత్రమే","ఉద్యోగాలన్నీ ఆంధ్ర వారికే"],a:0},
+{q:"తెలంగాణ రాష్ట్ర బిల్లుకు రాష్ట్రపతి ఆమోదం ఎప్పుడు?",o:["2014 మార్చి 1 - ప్రణబ్ ముఖర్జీ ఆమోదం","2014 జూన్ 2 - ప్రణబ్ ముఖర్జీ ఆమోదం","2013 డిసెంబర్ 1 - ప్రతిభా పాటిల్","2010 మార్చి 1 - APJ అబ్దుల్ కలాం"],a:0},
+{q:"1956-2014 వరకు ఉమ్మడి AP లో తెలంగాణ ముఖ్యమంత్రులు?",o:["3 మంది - మర్రి చెన్నారెడ్డి (2 సార్లు), P.V., జలగం","10 మంది - నీలం సంజీవరెడ్డి, కాసు బ్రహ్మానందరెడ్డి","1 మాత్రమే - ప్రకాశం పంతులు","6 మంది - చంద్రబాబు, YSR, రోశయ్య"],a:0},
+{q:"1952 మొదటి ఎన్నికల్లో హైదరాబాద్ అసెంబ్లీ స్థానాలు?",o:["175 స్థానాలు - కాంగ్రెస్ 93 - బూర్గుల CM","294 స్థానాలు - కాంగ్రెస్ 200 - నీలం సంజీవరెడ్డి","119 స్థానాలు - కాంగ్రెస్ 90 - P.V.","70 స్థానాలు - కాంగ్రెస్ 50 - మర్రి చెన్నారెడ్డి"],a:0},
+{q:"తెలంగాణ ఉద్యమంలో విద్యార్థుల పాత్ర ఎక్కడ నుండి ఎక్కువ?",o:["ఉస్మానియా యూనివర్సిటీ - OU JAC - ఆర్ట్స్ కాలేజీ","ఆంధ్ర యూనివర్సిటీ - వైజాగ్","మద్రాస్ యూనివర్సిటీ - చెన్నై","ఢిల్లీ యూనివర్సిటీ - ఢిల్లీ"],a:0},
+{q:"OU JAC ఎప్పుడు ఏర్పడింది?",o:["2009 - OU JAC - ఆర్ట్స్ కాలేజీ వేదిక","1969 - ఆంధ్ర యూనివర్సిటీ JAC","1956 - మద్రాస్ యూనివర్సిటీ JAC","2001 - కాకతీయ యూనివర్సిటీ JAC"],a:0},
+{q:"తెలంగాణ మార్టర్స్ మెమోరియల్ ఎక్కడ ఉంది?",o:["గన్ పార్క్, హైదరాబాద్ - అసెంబ్లీ ఎదురుగా","ట్యాంక్ బండ్ - హుస్సేన్ సాగర్ మధ్యలో","చార్మినార్ - పాతబస్తీలో","గోల్కొండ - కోటపై"],a:0},
+{q:"2009 డిసెంబర్ 9న తెలంగాణ ప్రక్రియ ప్రకటించిన హోం మంత్రి?",o:["P. చిదంబరం - రాత్రి 11:30 గంటలకు","సుశీల్ కుమార్ షిండే - ఉదయం 11:30","రాజ్ నాథ్ సింగ్ - సాయంత్రం 5","అమిత్ షా - మధ్యాహ్నం 2"],a:0},
+{q:"తెలంగాణ అమరవీరులకు అసెంబ్లీలో తీర్మానం ఎప్పుడు?",o:["1969 - తెలంగాణ అమరులకు నివాళి","1956 - ఆంధ్ర అమరులకు నివాళి","2001 - రాయలసీమ అమరులకు","2010 - కోస్తా అమరులకు"],a:0},
+{q:"ఉమ్మడి AP లో చివరి ముఖ్యమంత్రి ఎవరు?",o:["N. కిరణ్ కుమార్ రెడ్డి - 2010-2014","Y.S. రాజశేఖర్ రెడ్డి - 2004-2009","చంద్రబాబు నాయుడు - 1995-2004","నీలం సంజీవరెడ్డి - 1956-1960"],a:0},
+{q:"తెలంగాణ రాష్ట్ర తొలి ఎన్నికలు ఎప్పుడు? ఎన్ని సీట్లు?",o:["2014 ఏప్రిల్ 30 - 119 అసెంబ్లీ, 17 MP - 63 సీట్లు TRS","2018 డిసెంబర్ 7 - 119 - 88 సీట్లు TRS","2009 ఏప్రిల్ - 294 - 50 సీట్లు TRS","2004 ఏప్రిల్ - 175 - 30 సీట్లు TRS"],a:0},
+{q:"హైదరాబాద్ ఉమ్మడి రాజధాని ఏ సెక్షన్ ప్రకారం?",o:["AP పునర్వ్యవస్థీకరణ చట్టం 2014 - సెక్షన్ 5 - 10 ఏళ్లు","సెక్షన్ 10 - 5 ఏళ్లు","సెక్షన్ 8 - 2 ఏళ్లు","సెక్షన్ 12 - 15 ఏళ్లు"],a:0},
+{q:"తెలంగాణ ఉద్యమంలో సాంస్కృతిక బృందం పేరు?",o:["తెలంగాణ సాంస్కృతిక సారథి","ఆంధ్ర సాంస్కృతిక సారథి","రాయలసీమ సారథి","కోస్తా సారథి"],a:0},
+{q:"తెలంగాణ రాష్ట్ర అధికారిక చిహ్నాలు ఏవి? - 2014 లో ప్రకటించారు",o:["రాష్ట్ర పక్షి - పాలపిట్ట, జంతువు - జింక, వృక్షం - జమ్మి, పుష్పం - తంగేడు","పక్షి - నెమలి, జంతువు - పులి, వృక్షం - మర్రి, పుష్పం - తామర","పక్షి - చిలుక, జంతువు - ఏనుగు, వృక్షం - వేప, పుష్పం - మల్లె","పక్షి - కాకి, జంతువు - సింహం, వృక్షం - రావి, పుష్పం - గులాబీ"],a:0}
 ];
 
-const quizDiv=document.getElementById("quiz");
+const quiz=document.getElementById("quiz");
 questions.forEach((qq,i)=>{
-let cls=`q-card q${i+1} q${(i%6)+1}`;
-let html=`<div class="${cls}" id="q${i}"><div class="q-head">${qq.q}</div><div class="options">`;
-qq.opts.forEach((op,j)=>{
-let letter=String.fromCharCode(65+j);
-html+=`<label class="opt ${letter.toLowerCase()}" onclick="selectOpt(${i},${j},this)"><div class="ab">${letter}</div><div style="flex:1;">${op}</div><input type="radio" name="q${i}" value="${j}"></label>`;
+let html=`<div class="qcard" id="q${i}"><div class="qhead"><b>Q${i+1}.</b> ${qq.q}</div><div class="opts">`;
+qq.o.forEach((op,j)=>{
+let L=["A","B","C","D"][j];
+html+=`<label class="opt" data-l="${L}" onclick="sel(${i},${j},this)"><div class="ab">${L}</div><span>${op}</span><input type="radio" name="q${i}" value="${j}"></label>`;
 });
 html+=`</div></div>`;
-quizDiv.innerHTML+=html;
+quiz.innerHTML+=html;
 });
 
-function selectOpt(qi,oi,el){
-let parent=document.getElementById(`q${qi}`);
-parent.querySelectorAll('.opt').forEach(o=>o.classList.remove('selected'));
-el.classList.add('selected');
-el.querySelector('input').checked=true;
+function sel(qi,oi,el){
+document.querySelectorAll(`#q${qi} .opt`).forEach(e=>e.classList.remove("sel"));
+el.classList.add("sel");
+el.querySelector("input").checked=true;
+let done=document.querySelectorAll("input:checked").length;
+document.getElementById("progressText").innerText=`${done}/24`;
+document.getElementById("pbar").style.width=`${(done/24)*100}%`;
 }
 
 function submitQuiz(){
 let score=0;
 questions.forEach((qq,i)=>{
-let sel=document.querySelector(`input[name="q${i}"]:checked`);
+let s=document.querySelector(`input[name="q${i}"]:checked`);
 let box=document.getElementById(`q${i}`);
-box.querySelectorAll('.opt').forEach((lab,idx)=>{
-lab.classList.remove('correct','wrong');
-if(idx===qq.ans) lab.classList.add('correct');
+box.querySelectorAll(".opt").forEach((lab,idx)=>{
+lab.classList.remove("correct","wrong");
+if(idx===qq.a) lab.classList.add("correct");
 });
-if(sel){
-if(parseInt(sel.value)===qq.ans) score++;
+if(s){
+if(parseInt(s.value)===qq.a) score++;
 else{
-let wrongOpt=box.querySelectorAll('.opt')[sel.value];
-if(!wrongOpt.classList.contains('correct')) wrongOpt.classList.add('wrong');
+let w=box.querySelectorAll(".opt")[s.value];
+if(!w.classList.contains("correct")) w.classList.add("wrong");
 }
 }
 });
-document.getElementById("result").innerHTML=`మీ స్కోర్: ${score} / ${questions.length} <br> జై తెలంగాణ!`;
-window.scrollTo({top:document.body.scrollHeight, behavior:'smooth'});
+let r=document.getElementById("result");
+r.style.display="block";
+r.innerHTML=`🎯 మీ స్కోర్: ${score} / 24 - ${score>=20?'Excellent! 🌟':score>=15?'Good Job! 👏':'Try Again! 💪'} <br><small style="font-weight:600;color:#6b7280;">జై తెలంగాణ! - MCRES</small>`;
+window.scrollTo({top:document.body.scrollHeight,behavior:"smooth"});
 }
-
-// Timer
-let time=36*60;
-setInterval(()=>{
-let m=Math.floor(time/60), s=time%60;
-document.getElementById("timer").innerText=`⏱ ${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
-if(time>0) time--;
-},1000);
+let t=36*60+39;
+setInterval(()=>{let m=Math.floor(t/60),s=t%60;document.getElementById("timer").innerHTML=`⏱ ${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')} &nbsp;|&nbsp; <span id="progressText">${document.querySelectorAll("input:checked").length}/24</span>`; if(t>0) t--;},1000);
 </script>
 </body>
 </html>
