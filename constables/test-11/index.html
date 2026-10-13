@@ -1,11 +1,92 @@
-<div style="background:linear-gradient(90deg,#4a148c,#7b1fa2,#9c27b0);padding:12px 14px;display:flex;align-items:center;gap:12px;border-bottom:3px solid #ffca28">
-<div style="background:#fff;border:3px solid #ffca28;border-radius:14px;padding:8px 10px;text-align:center;min-width:82px">
-<div style="color:#4a148c;font-weight:900;font-size:18px;font-family:Outfit,sans-serif;line-height:1">MCRES</div>
-<div style="font-size:6px;color:#333;font-weight:700;line-height:1.1;margin-top:2px">MALLAIAH<br>CENTER FOR<br>RIVER & EARTH<br>SCIENCES</div>
+<!DOCTYPE html>
+<html lang="te">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MCRES - TEST-11 Grand Test • 24Q</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800&family=Noto+Sans+Telugu:wght@500;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans Telugu',sans-serif;background:#f3f0fa;padding-bottom:30px}
+.header{background:linear-gradient(90deg,#4a148c,#7b1fa2,#9c27b0);padding:14px 14px;display:flex;align-items:center;gap:12px;border-bottom:3px solid #ffca28;position:sticky;top:0;z-index:99}
+.logo-box{background:#fff;border:3px solid #ffca28;border-radius:14px;padding:8px 10px;text-align:center;min-width:84px}
+.logo-box.m{color:#4a148c;font-weight:900;font-size:20px;font-family:Outfit,sans-serif;line-height:1}
+.logo-box.sub{font-size:6.5px;color:#222;font-weight:700;line-height:1.1;margin-top:3px}
+.head-text{flex:1}
+.head-text.t1{color:#fff;font-weight:800;font-size:12.5px;line-height:1.25;font-family:Outfit,sans-serif}
+.head-text.t2{color:#ffeb3b;font-size:10px;font-weight:700;margin-top:4px}
+.founder{margin-top:7px;background:linear-gradient(90deg,#ffca28,#ffeb3b);color:#4a148c;padding:5px 14px;border-radius:20px;font-size:10px;font-weight:800;display:inline-block}
+.test-bar{background:#fff;margin:12px;border-radius:14px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 10px rgba(0,0,0,.06);border-left:5px solid #7b1fa2}
+.test-bar.left{font-weight:800;font-size:14px;color:#222}
+.test-bar.timer{background:linear-gradient(90deg,#4a148c,#7b1fa2);color:#fff;padding:7px 16px;border-radius:20px;font-size:13px;font-weight:800}
+.q-card{background:#fff;margin:14px;border-radius:14px;overflow:hidden;box-shadow:0 3px 14px rgba(0,0,0,.08)}
+.q-head{padding:12px 14px;font-weight:700;font-size:14px;line-height:1.4}
+.c1.q-head{background:#ffe082;border-left:6px solid #ff9800}
+.c2.q-head{background:#bbdefb;border-left:6px solid #1565c0}
+.c3.q-head{background:#ffcc80;border-left:6px solid #2e7d32}
+.c4.q-head{background:#e1bee7;border-left:6px solid #6a1b9a}
+.options{padding:10px 10px 12px;display:flex;flex-direction:column;gap:8px}
+.opt{display:flex;align-items:flex-start;gap:10px;padding:11px 12px;border-radius:12px;font-size:13.5px;line-height:1.4;cursor:pointer;background:#f1f8e9}
+.c1.opt{background:#c8e6c9}.c2.opt{background:#f8bbd0}.c3.opt{background:#d1c4e9}.c4.opt{background:#ffecb3}
+.opt span.letter{min-width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:12px;font-family:Outfit;flex-shrink:0}
+.c1.letter{background:#2e7d32}.c2.letter{background:#c2185b}.c3.letter{background:#7b1fa2}.c4.letter{background:#ef6c00}
+.opt:hover{transform:scale(1.01)}
+.correct{background:#a5d6a7!important;border:2px solid #2e7d32}
+.wrong{background:#ef9a9a!important;border:2px solid #c62828}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo-box"><div class="m">MCRES</div><div class="sub">MALLAIAH<br>CENTER FOR<br>RIVER & EARTH<br>SCIENCES</div></div>
+  <div class="head-text">
+    <div class="t1">MALLAIAH CENTER FOR RIVER & EARTH SCIENCES (MCRES)</div>
+    <div class="t2">TELANGANA POLICE RECRUITMENT FOR CONSTABLE</div>
+    <div class="founder">Founder & Director : Dr Ramakrishna Manimadde</div>
+  </div>
 </div>
-<div>
-<div style="color:#fff;font-weight:800;font-size:13px;line-height:1.2">MALLAIAH CENTER FOR<br>RIVER & EARTH SCIENCES (MCRES)</div>
-<div style="color:#ffeb3b;font-size:10px;font-weight:700;margin-top:3px">TELANGANA POLICE RECRUITMENT FOR CONSTABLE</div>
-<div style="margin-top:6px;background:rgba(255,202,40,.9);color:#4a148c;padding:4px 12px;border-radius:20px;font-size:10px;font-weight:800;display:inline-block">Founder & Director : Dr Ramakrishna Manimadde</div>
-</div>
-</div>
+
+<div class="test-bar"><div class="left">🔥 TEST-11 Grand Test • 24Q</div><div class="timer">◷ 30:00</div></div>
+
+<div id="quiz"></div>
+
+<script>
+const qs=[
+["తెలంగాణ తల్లి విగ్రహాన్ని రూపొందించినది ఎవరు?","బి.వి.ఆర్. చారి","ఎం.ఎఫ్. హుస్సేన్","రవీంద్రనాథ్ ఠాగూర్","రాజా రవివర్మ",0],
+["తెలంగాణ రాష్ట్రం ఏర్పడిన తేదీ?","2 జూన్ 2014","1 నవంబర్ 2013","10 జూన్ 2014","2 జూన్ 2013",0],
+["గోల్కొండ కోటను నిర్మించిన రాజవంశం?","కాకతీయులు","కుతుబ్ షాహీలు","బహమనీలు","విజయనగర",0],
+["తెలంగాణలో అతి పొడవైన నది?","గోదావరి","కృష్ణా","మంజీరా","మూసీ",0],
+["బతుకమ్మ పండుగ ఎన్ని రోజులు జరుగుతుంది?","9 రోజులు","5 రోజులు","7 రోజులు","11 రోజులు",0],
+["తెలంగాణ సచివాలయం పేరు?","డా.బి.ఆర్. అంబేద్కర్ సచివాలయం","ట్యాంక్ బండ్ సచివాలయం","తెలంగాణ సచివాలయం","కెసిఆర్ సచివాలయం",0],
+["చార్మినార్ ను నిర్మించిన సంవత్సరం?","1591","1687","1518","1724",0],
+["తెలంగాణలో మొత్తం జిల్లాల సంఖ్య?","33","31","32","35",0],
+["యాద్రి ఆలయం ఏ జిల్లాలో ఉంది?","యాదాద్రి భువనగిరి","నల్గొండ","రంగారెడ్డి","మేడ్చల్",0],
+["తెలంగాణ రాష్ట్ర పక్షి?","పాలపిట్ట","నెమలి","పిచ్చుక","కాకి",0],
+["తెలంగాణ రాష్ట్ర వృక్షం?","జమ్మి చెట్టు","వేప","మర్రి","రావి",0],
+["సమ్మక్క సారలమ్మ జాతర ఎక్కడ?","మేడారం - ములుగు","వరంగల్ కోట","భద్రాచలం","యాదగిరిగుట్ట",0],
+["కాకతీయుల రాజధాని?","ఓరుగల్లు","వరంగల్","రెండూ","హన్మకొండ",2],
+["తెలంగాణలో బొగ్గు గనులు ఎక్కడ?","సింగరేణి","బెల్లంపల్లి","రామగుండం","పైవన్నీ",3],
+["నాగార్జున సాగర్ డ్యామ్ ఏ నదిపై?","కృష్ణా","గోదావరి","మంజీరా","తుంగభద్ర",0],
+["తెలంగాణ ఉద్యమ తొలి అమరవీరుడు?","శ్రీకాంతాచారి","కొమురం భీం","పోట్టి శ్రీరాములు","తెలంగాణ వీరుడు",0],
+["హైదరాబాద్ నగరాన్ని స్థాపించినది?","మహమ్మద్ కులీ కుతుబ్ షా","నిజాం","ఔరంగజేబు","కాకతీయులు",0],
+["తెలంగాణలో ఐటీ హబ్ గా పేరుగాంచిన ప్రాంతం?","హైటెక్ సిటీ","గచ్చిబౌలి","మాదాపూర్","పైవన్నీ",3],
+["పోచంపల్లి ఏ వస్త్రానికి ప్రసిద్ధి?","ఇక్కత్ చీరలు","పట్టు చీరలు","ఖాదీ","కాటన్",0],
+["తెలంగాణ రాష్ట్ర గీతం?","జయ జయహే తెలంగాణ","జనగణమన","వందేమాతరం","మా తెలంగాణ",0],
+["మిషన్ భగీరథ లక్ష్యం?","ప్రతి ఇంటికి మంచినీరు","విద్యుత్","రోడ్లు","ఇల్లు",0],
+["కాళేశ్వరం ప్రాజెక్ట్ ఏ నదిపై?","గోదావరి","కృష్ణా","మంజీరా","మూసీ",0],
+["తెలంగాణ పోలీస్ వ్యవస్థ మాతృసంస్థ?","SVP నేషనల్ పోలీస్ అకాడమీ","TG పోలీస్ అకాడమీ","హైదరాబాద్ పోలీస్","రాచకొండ",0],
+["2026 లో తెలంగాణ ముఖ్యమంత్రి ఎవరు? (Current Affairs)","రేవంత్ రెడ్డి","కెసిఆర్","బండి సంజయ్","ఉత్తమ్ కుమార్",0]
+];
+const cont=document.getElementById('quiz');
+qs.forEach((q,i)=>{
+ let cls=['c1','c2','c3','c4'][i%4];
+ let html=`<div class="q-card ${cls}"><div class="q-head">Q${i+1}. ${q[0]}</div><div class="options">`;
+ for(let j=1;j<=4;j++){ html+=`<div class="opt" onclick="check(this,${i},${j-1})"><span class="letter">${String.fromCharCode(64+j)}</span>${q[j]}</div>` }
+ html+=`</div></div>`;
+ cont.innerHTML+=html;
+});
+function check(el,i,ans){let p=el.parentNode; if(p.dataset.done) return; p.dataset.done=1;
+ let correct=qs[i][5]; [...p.children].forEach((c,k)=>{ if(k==correct) c.classList.add('correct'); if(k==ans && k!=correct) c.classList.add('wrong') }) }
+</script>
+</body>
+</html>
