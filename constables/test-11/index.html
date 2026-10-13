@@ -2,32 +2,34 @@
 <html lang="te">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>TEST-11 Final Clear - 24Q | MCRES</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800&family=Noto+Sans+Telugu:wght@600;700&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@600;800&family=Noto+Sans+Telugu:wght@500;700&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Noto Sans Telugu','Outfit',sans-serif;background:#eef2f7}
-.header{background:linear-gradient(90deg,#4a148c 0%,#6a1b9a 50%,#8e24aa 100%);display:flex;align-items:center;gap:10px;padding:8px 10px;border-top:3px solid #ffca28;border-bottom:3px solid #ffca28;position:sticky;top:0;z-index:100}
+.header{background:linear-gradient(90deg,#4a148c,#6a1b9a);display:flex;align-items:center;gap:10px;padding:8px 10px;border-top:3px solid #ffca28;border-bottom:3px solid #ffca28;position:sticky;top:0;z-index:100}
 .logo{background:#fff;border:3px solid #ffca28;border-radius:12px;padding:6px 9px;min-width:88px;text-align:center;flex-shrink:0}
-.logo b{color:#4a148c;font-size:14px;font-family:Outfit;display:block;line-height:1}
-.logo span{font-size:5.2px;font-weight:700;line-height:1.1;color:#000;display:block;margin-top:3px}
-.t1{color:#fff;font-weight:800;font-size:9px;line-height:1.2;text-transform:uppercase;letter-spacing:.2px;font-family:Outfit}
-.t2{color:#ffeb3b;font-weight:700;font-size:7px;margin-top:2px;letter-spacing:.3px}
-.badge{margin-top:4px;background:#ffca28;color:#4a148c;padding:3px 12px;border-radius:12px;font-size:7px;font-weight:800;display:inline-block}
-.wrap{max-width:500px;margin:0 auto;background:#eef2f7;min-height:100vh}
+.logo b{color:#4a148c;font-size:14px;font-family:Outfit;display:block}
+.logo span{font-size:5px;font-weight:700;line-height:1.1;color:#000}
+.t1{color:#fff;font-weight:800;font-size:9px;text-transform:uppercase;font-family:Outfit;line-height:1.2}
+.t2{color:#ffeb3b;font-weight:700;font-size:7px;margin-top:2px}
+.badge{background:#ffca28;color:#4a148c;padding:3px 12px;border-radius:12px;font-size:7px;font-weight:800;display:inline-block;margin-top:4px}
+.wrap{max-width:500px;margin:0 auto;min-height:100vh;background:#eef2f7}
 .topbar{background:#ede7f6;border-left:5px solid #7b1fa2;margin:10px;border-radius:12px;padding:10px 12px;display:flex;justify-content:space-between;align-items:center}
 .timer{background:#7b1fa2;color:#fff;padding:5px 12px;border-radius:15px;font-size:11px;font-weight:700}
 .qcard{background:#fff;margin:0 10px 12px 10px;border-radius:14px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.08);border-left:6px solid}
-.qh{padding:9px 12px;font-weight:800;font-size:12.5px;line-height:1.4;color:#000}
-.opt{background:#e8f5e9;margin:6px 8px;padding:9px 10px;border-radius:10px;font-size:11.5px;line-height:1.4;display:flex;gap:8px;align-items:flex-start;cursor:pointer}
-.opt b{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;flex-shrink:0;font-family:Outfit}
-.c1{border-color:#ff9800}.c1 .qh{background:#ffeb3b}.c1 .opt{background:#e8f5e9}.c1 .opt b{background:#4caf50}
+.qh{padding:10px 12px;font-weight:800;font-size:12.5px;line-height:1.4;color:#000}
+.opt{margin:6px 8px;padding:9px 10px;border-radius:10px;font-size:11.5px;line-height:1.4;display:flex;gap:8px;align-items:flex-start;cursor:pointer}
+.opt b{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;flex-shrink:0;font-family:Outfit;font-weight:800}
+.c1{border-color:#ff9800}.c1 .qh{background:#ffeb3b}.c1 .opt{background:#e8f5e9}.c1 .opt b{background:#2e7d32}
 .c2{border-color:#1976d2}.c2 .qh{background:#90caf9}.c2 .opt{background:#fce4ec}.c2 .opt b{background:#e91e63}
-.c3{border-color:#388e3c}.c3 .qh{background:#ffab40}.c3 .opt{background:#ede7f6}.c3 .opt b{background:#7b1fa2}
-.c4{border-color:#f57c00}.c4 .qh{background:#ffeb3b}.c4 .opt{background:#e8f5e9}.c4 .opt b{background:#388e3c}
-.footer{display:flex;gap:10px;padding:12px}
-.btn{flex:1;padding:12px;border-radius:12px;font-weight:800;font-size:13px;border:none;cursor:pointer}
+.c3{border-color:#2e7d32}.c3 .qh{background:#ffab40}.c3 .opt{background:#ede7f6}.c3 .opt b{background:#6a1b9a}
+.c4{border-color:#00897b}.c4 .qh{background:#a5d6a7}.c4 .opt{background:#fff3e0}.c4 .opt b{background:#ef6c00}
+.c5{border-color:#ad1457}.c5 .qh{background:#f48fb1}.c5 .opt{background:#e3f2fd}.c5 .opt b{background:#1565c0}
+.c6{border-color:#f57f17}.c6 .qh{background:#fff59d}.c6 .opt{background:#f3e5f5}.c6 .opt b{background:#4527a0}
+.footer{display:flex;gap:10px;padding:14px 10px}
+.btn{flex:1;padding:13px;border-radius:12px;font-weight:800;font-size:13px;border:none;cursor:pointer}
 .btn1{background:#fff;border:1.5px solid #7b1fa2;color:#7b1fa2}
 .btn2{background:linear-gradient(90deg,#4a148c,#ad1457);color:#fff}
 </style>
@@ -41,173 +43,53 @@ body{font-family:'Noto Sans Telugu','Outfit',sans-serif;background:#eef2f7}
 
 <div class="topbar"><div style="font-weight:800;font-size:12px">🔥 TEST-11 Final Clear - 24Q</div><div class="timer">● 24:17</div></div>
 
-<!-- Q1 -->
-<div class="qcard c1"><div class="qh">Q1. 1969 తెలంగాణ ఉద్యమానికి ప్రధాన కారణం ఏమిటి?</div>
-<div class="opt"><b>a</b><span>A) ముల్కీ నిబంధనల ఉల్లంఘన - ఆంధ్ర ఉద్యోగుల నియామకం</span></div>
-<div class="opt"><b>b</b><span>B) భాషా వివక్ష - తెలుగు భాషను తొలగించడం</span></div>
-<div class="opt"><b>c</b><span>C) నీటి పంపకంలో అన్యాయం - కృష్ణా జలాల్లో 50% కోత</span></div>
-<div class="opt"><b>d</b><span>D) రాజధాని మార్పు - హైదరాబాద్ నుండి విజయవాడకు</span></div></div>
+<div class="qcard c1"><div class="qh">Q1. 1969 తెలంగాణ ఉద్యమానికి ప్రధాన కారణం ఏమిటి?</div><div class="opt"><b>a</b><span>A) ముల్కీ నిబంధనల ఉల్లంఘన - ఆంధ్ర ఉద్యోగుల నియామకం</span></div><div class="opt"><b>b</b><span>B) భాషా వివక్ష - తెలుగు భాషను తొలగించడం</span></div><div class="opt"><b>c</b><span>C) నీటి పంపకంలో అన్యాయం - కృష్ణా జలాల్లో 50% కోత</span></div><div class="opt"><b>d</b><span>D) రాజధాని మార్పు - హైదరాబాద్ నుండి విజయవాడకు</span></div></div>
 
-<!-- Q2 -->
-<div class="qcard c2"><div class="qh">Q2. పెద్ద మనుషుల ఒప్పందం 1956 లో ఎన్ని అంశాలతో కుదిరింది?</div>
-<div class="opt"><b>a</b><span>A) 8 అంశాలు - తెలంగాణకు ఉప ముఖ్యమంత్రి, మంత్రివర్గంలో 40%</span></div>
-<div class="opt"><b>b</b><span>B) 5 అంశాలు - ఆంధ్రకు పూర్తి అధికారం</span></div>
-<div class="opt"><b>c</b><span>C) 12 అంశాలు - మద్రాసు రాజధాని</span></div>
-<div class="opt"><b>d</b><span>D) 15 అంశాలు - ఢిల్లీ రాజధాని</span></div></div>
+<div class="qcard c2"><div class="qh">Q2. పెద్ద మనుషుల ఒప్పందం 1956 లో ఎన్ని అంశాలతో కుదిరింది?</div><div class="opt"><b>a</b><span>A) 8 అంశాలు - తెలంగాణకు ఉప ముఖ్యమంత్రి, మంత్రివర్గంలో 40%</span></div><div class="opt"><b>b</b><span>B) 5 అంశాలు - ఆంధ్రకు పూర్తి అధికారం</span></div><div class="opt"><b>c</b><span>C) 12 అంశాలు - మద్రాసు రాజధాని</span></div><div class="opt"><b>d</b><span>D) 15 అంశాలు - ఢిల్లీ రాజధాని</span></div></div>
 
-<!-- Q3 -->
-<div class="qcard c3"><div class="qh">Q3. ముల్కీ అంటే అర్థం ఏమిటి? ఎన్ని సంవత్సరాల నివాసం?</div>
-<div class="opt"><b>a</b><span>A) స్థానికుడు - 15 ఏళ్లు నిజాం రాష్ట్రంలో నివసించిన వారు</span></div>
-<div class="opt"><b>b</b><span>B) వలసదారు - 5 ఏళ్లు నివసించిన వారు</span></div>
-<div class="opt"><b>c</b><span>C) విదేశీయుడు - 20 ఏళ్లు నివసించిన వారు</span></div>
-<div class="opt"><b>d</b><span>D) రైతు - 10 ఏళ్లు వ్యవసాయం చేసిన వారు</span></div></div>
+<div class="qcard c3"><div class="qh">Q3. ముల్కీ అంటే అర్థం ఏమిటి? ఎన్ని సంవత్సరాల నివాసం?</div><div class="opt"><b>a</b><span>A) స్థానికుడు - 15 ఏళ్లు నిజాం రాష్ట్రంలో నివసించిన వారు</span></div><div class="opt"><b>b</b><span>B) వలసదారు - 5 ఏళ్లు నివసించిన వారు</span></div><div class="opt"><b>c</b><span>C) విదేశీయుడు - 20 ఏళ్లు నివసించిన వారు</span></div><div class="opt"><b>d</b><span>D) రైతు - 10 ఏళ్లు వ్యవసాయం చేసిన వారు</span></div></div>
 
-<!-- Q4 -->
-<div class="qcard c4"><div class="qh">Q4. 1969 తెలంగాణ ప్రజా సమితి (TPS) ఎవరు స్థాపించారు? మొదటి అధ్యక్షుడు?</div>
-<div class="opt"><b>a</b><span>A) మర్రి చెన్నారెడ్డి - అధ్యక్షుడు - T. అంజయ్య ప్రధాన కార్యదర్శి - 1969 ఉద్యమానికి నేతృత్వం</span></div>
-<div class="opt"><b>b</b><span>B) బూర్గుల రామకృష్ణారావు - అధ్యక్షుడు - రావి నారాయణ రెడ్డి ప్రధాన కార్యదర్శి</span></div>
-<div class="opt"><b>c</b><span>C) P.V. నరసింహారావు - అధ్యక్షుడు - జలగం వెంగళరావు ప్రధాన కార్యదర్శి</span></div>
-<div class="opt"><b>d</b><span>D) బద్దం ఎల్లారెడ్డి - అధ్యక్షుడు - మగ్దూం మొహియుద్దీన్ ప్రధాన కార్యదర్శి</span></div></div>
+<div class="qcard c4"><div class="qh">Q4. 1969 తెలంగాణ ప్రజా సమితి (TPS) ఎవరు స్థాపించారు? మొదటి అధ్యక్షుడు?</div><div class="opt"><b>a</b><span>A) మర్రి చెన్నారెడ్డి - అధ్యక్షుడు - T. అంజయ్య ప్రధాన కార్యదర్శి - 1969 ఉద్యమానికి నేతృత్వం</span></div><div class="opt"><b>b</b><span>B) బూర్గుల రామకృష్ణారావు - అధ్యక్షుడు - రావి నారాయణ రెడ్డి ప్రధాన కార్యదర్శి</span></div><div class="opt"><b>c</b><span>C) P.V. నరసింహారావు - అధ్యక్షుడు - జలగం వెంగళరావు ప్రధాన కార్యదర్శి</span></div><div class="opt"><b>d</b><span>D) బద్దం ఎల్లారెడ్డి - అధ్యక్షుడు - మగ్దూం మొహియుద్దీన్ ప్రధాన కార్యదర్శి</span></div></div>
 
-<!-- Q5 -->
-<div class="qcard c1"><div class="qh">Q5. హైదరాబాద్ సంస్థానం చివరి నిజాం ఎవరు?</div>
-<div class="opt"><b>a</b><span>A) మీర్ ఉస్మాన్ అలీ ఖాన్ - 7వ నిజాం - 1911-1948 పాలన</span></div>
-<div class="opt"><b>b</b><span>B) మీర్ మహబూబ్ అలీ ఖాన్ - 6వ నిజాం</span></div>
-<div class="opt"><b>c</b><span>C) అఫ్జల్ ఉద్దౌలా - 5వ నిజాం</span></div>
-<div class="opt"><b>d</b><span>D) నాసిర్ ఉద్దౌలా - 4వ నిజాం</span></div></div>
+<div class="qcard c5"><div class="qh">Q5. హైదరాబాద్ సంస్థానం చివరి నిజాం ఎవరు?</div><div class="opt"><b>a</b><span>A) మీర్ ఉస్మాన్ అలీ ఖాన్ - 7వ నిజాం - 1911-1948 పాలన</span></div><div class="opt"><b>b</b><span>B) మీర్ మహబూబ్ అలీ ఖాన్ - 6వ నిజాం</span></div><div class="opt"><b>c</b><span>C) అఫ్జల్ ఉద్దౌలా - 5వ నిజాం</span></div><div class="opt"><b>d</b><span>D) నాసిర్ ఉద్దౌలా - 4వ నిజాం</span></div></div>
 
-<!-- Q6 -->
-<div class="qcard c2"><div class="qh">Q6. ఆపరేషన్ పోలోలో భారత సైన్యాధిపతి ఎవరు?</div>
-<div class="opt"><b>a</b><span>A) మేజర్ జనరల్ J.N. చౌదరి - సర్దార్ పటేల్ ఆదేశంతో</span></div>
-<div class="opt"><b>b</b><span>B) జనరల్ కరియప్ప - నెహ్రూ ఆదేశంతో</span></div>
-<div class="opt"><b>c</b><span>C) జనరల్ మానేక్షా - ఇందిరా గాంధీ ఆదేశంతో</span></div>
-<div class="opt"><b>d</b><span>D) జనరల్ సుందర్ జీ - రాజీవ్ గాంధీ ఆదేశంతో</span></div></div>
+<div class="qcard c6"><div class="qh">Q6. ఆపరేషన్ పోలోలో భారత సైన్యాధిపతి ఎవరు?</div><div class="opt"><b>a</b><span>A) మేజర్ జనరల్ J.N. చౌదరి - సర్దార్ పటేల్ ఆదేశంతో</span></div><div class="opt"><b>b</b><span>B) జనరల్ కరియప్ప - నెహ్రూ ఆదేశంతో</span></div><div class="opt"><b>c</b><span>C) జనరల్ మానేక్షా - ఇందిరా గాంధీ ఆదేశంతో</span></div><div class="opt"><b>d</b><span>D) జనరల్ సుందర్ జీ - రాజీవ్ గాంధీ ఆదేశంతో</span></div></div>
 
-<!-- Q7 -->
-<div class="qcard c3"><div class="qh">Q7. 1969 తెలంగాణ ఉద్యమంలో తొలి ఆమరణ నిరాహార దీక్ష ఎవరు చేశారు? ఎక్కడ?</div>
-<div class="opt"><b>a</b><span>A) రవీంద్రనాథ్ - 1969 జనవరి 8 - ఖమ్మంలో - కవిరాజమూర్తితో కలిసి - నాన్ ముల్కీ గో బ్యాక్ నినాదం</span></div>
-<div class="opt"><b>b</b><span>B) పొటు కృష్ణమూర్తి - 1969 జనవరి 10 - పాల్వంచలో - ముల్కీ నిబంధనల కోసం</span></div>
-<div class="opt"><b>c</b><span>C) మర్రి చెన్నారెడ్డి - 1969 మార్చి 25 - హైదరాబాద్ లో - ప్రజా సమితి కోసం</span></div>
-<div class="opt"><b>d</b><span>D) T. పురుషోత్తం రావు - 1969 జనవరి 12 - ఉస్మానియా యూనివర్సిటీలో - విద్యార్థి JAC కోసం</span></div></div>
+<div class="qcard c1"><div class="qh">Q7. 1969 తెలంగాణ ఉద్యమంలో తొలి ఆమరణ నిరాహార దీక్ష ఎవరు చేశారు? ఎక్కడ?</div><div class="opt"><b>a</b><span>A) రవీంద్రనాథ్ - 1969 జనవరి 8 - ఖమ్మంలో - కవిరాజమూర్తితో కలిసి - నాన్ ముల్కీ గో బ్యాక్ నినాదం</span></div><div class="opt"><b>b</b><span>B) పొటు కృష్ణమూర్తి - 1969 జనవరి 10 - పాల్వంచలో - ముల్కీ నిబంధనల కోసం</span></div><div class="opt"><b>c</b><span>C) మర్రి చెన్నారెడ్డి - 1969 మార్చి 25 - హైదరాబాద్ లో - ప్రజా సమితి కోసం</span></div><div class="opt"><b>d</b><span>D) T. పురుషోత్తం రావు - 1969 జనవరి 12 - ఉస్మానియా యూనివర్సిటీలో - విద్యార్థి JAC కోసం</span></div></div>
 
-<!-- Q8 -->
-<div class="qcard c4"><div class="qh">Q8. శ్రీకృష్ణ కమిటీలో ఎంత మంది సభ్యులు? చైర్మన్?</div>
-<div class="opt"><b>a</b><span>A) 5 మంది - జస్టిస్ B.N. శ్రీకృష్ణ చైర్మన్ - 2010 ఫిబ్రవరి 3</span></div>
-<div class="opt"><b>b</b><span>B) 3 మంది - జస్టిస్ రెడ్డి చైర్మన్</span></div>
-<div class="opt"><b>c</b><span>C) 8 మంది - జస్టిస్ రావు చైర్మన్</span></div>
-<div class="opt"><b>d</b><span>D) 11 మంది - జస్టిస్ శర్మ చైర్మన్</span></div></div>
+<div class="qcard c2"><div class="qh">Q8. శ్రీకృష్ణ కమిటీలో ఎంత మంది సభ్యులు? చైర్మన్?</div><div class="opt"><b>a</b><span>A) 5 మంది - జస్టిస్ B.N. శ్రీకృష్ణ చైర్మన్ - 2010 ఫిబ్రవరి 3</span></div><div class="opt"><b>b</b><span>B) 3 మంది - జస్టిస్ రెడ్డి చైర్మన్</span></div><div class="opt"><b>c</b><span>C) 8 మంది - జస్టిస్ రావు చైర్మన్</span></div><div class="opt"><b>d</b><span>D) 11 మంది - జస్టిస్ శర్మ చైర్మన్</span></div></div>
 
-<!-- Q9 -->
-<div class="qcard c1"><div class="qh">Q9. సకల జనుల సమ్మెలో పాల్గొన్న ప్రధాన సంఘం ఏది?</div>
-<div class="opt"><b>a</b><span>A) TNGO's, TGO's, RTC, సింగరేణి కార్మికులు - 42 రోజులు</span></div>
-<div class="opt"><b>b</b><span>B) ఆంధ్ర NGO's - 10 రోజులు - విజయవాడ కేంద్రం</span></div>
-<div class="opt"><b>c</b><span>C) కర్ణాటక NGO's - 5 రోజులు - బెంగళూరు కేంద్రం</span></div>
-<div class="opt"><b>d</b><span>D) తమిళనాడు NGO's - 20 రోజులు - చెన్నై కేంద్రం</span></div></div>
+<div class="qcard c3"><div class="qh">Q9. సకల జనుల సమ్మెలో పాల్గొన్న ప్రధాన సంఘం ఏది?</div><div class="opt"><b>a</b><span>A) TNGO's, TGO's, RTC, సింగరేణి కార్మికులు - 42 రోజులు</span></div><div class="opt"><b>b</b><span>B) ఆంధ్ర NGO's - 10 రోజులు - విజయవాడ కేంద్రం</span></div><div class="opt"><b>c</b><span>C) కర్ణాటక NGO's - 5 రోజులు - బెంగళూరు కేంద్రం</span></div><div class="opt"><b>d</b><span>D) తమిళనాడు NGO's - 20 రోజులు - చెన్నై కేంద్రం</span></div></div>
 
-<!-- Q10 -->
-<div class="qcard c2"><div class="qh">Q10. మిలియన్ మార్చ్ ప్రధాన డిమాండ్ ఏమిటి? ఎవరి నేతృత్వం?</div>
-<div class="opt"><b>a</b><span>A) తెలంగాణ బిల్లును పార్లమెంటులో ప్రవేశపెట్టాలి - TJAC - ప్రొఫెసర్ కోదండరామ్ నేతృత్వం</span></div>
-<div class="opt"><b>b</b><span>B) సమైక్యాంధ్రను కొనసాగించాలి - సమైక్యాంధ్ర JAC నేతృత్వం</span></div>
-<div class="opt"><b>c</b><span>C) రాజధానిని విజయవాడకు మార్చాలి - AP NGO's నేతృత్వం</span></div>
-<div class="opt"><b>d</b><span>D) ఉద్యోగాల్లో 50% రిజర్వేషన్ - TNGO's నేతృత్వం</span></div></div>
+<div class="qcard c4"><div class="qh">Q10. మిలియన్ మార్చ్ ప్రధాన డిమాండ్ ఏమిటి? ఎవరి నేతృత్వం?</div><div class="opt"><b>a</b><span>A) తెలంగాణ బిల్లును పార్లమెంటులో ప్రవేశపెట్టాలి - TJAC - ప్రొఫెసర్ కోదండరామ్ నేతృత్వం</span></div><div class="opt"><b>b</b><span>B) సమైక్యాంధ్రను కొనసాగించాలి - సమైక్యాంధ్ర JAC నేతృత్వం</span></div><div class="opt"><b>c</b><span>C) రాజధానిని విజయవాడకు మార్చాలి - AP NGO's నేతృత్వం</span></div><div class="opt"><b>d</b><span>D) ఉద్యోగాల్లో 50% రిజర్వేషన్ - TNGO's నేతృత్వం</span></div></div>
 
-<!-- Q11 -->
-<div class="qcard c3"><div class="qh">Q11. 1956 పెద్ద మనుషుల ఒప్పందంలో తెలంగాణకు ఇచ్చిన ప్రధాన హామీ ఏమిటి?</div>
-<div class="opt"><b>a</b><span>A) తెలంగాణ ప్రాంత మిగులు ఆదాయం తెలంగాణ అభివృద్ధికే ఖర్చు చేయాలి - ఉప ముఖ్యమంత్రి తెలంగాణ వాడే</span></div>
-<div class="opt"><b>b</b><span>B) తెలంగాణ ఆదాయం మొత్తం ఆంధ్రకు తరలించాలి - ముఖ్యమంత్రి ఆంధ్ర వాడే</span></div>
-<div class="opt"><b>c</b><span>C) హైదరాబాద్ ను ఆంధ్ర రాజధానిగా మాత్రమే ఉంచాలి - తెలంగాణకు ఏ హామీ లేదు</span></div>
-<div class="opt"><b>d</b><span>D) ఉద్యోగాలన్నీ ఆంధ్ర వారికే ఇవ్వాలి - తెలంగాణకు ఏ కోటా లేదు</span></div></div>
+<div class="qcard c5"><div class="qh">Q11. 1956 పెద్ద మనుషుల ఒప్పందంలో తెలంగాణకు ఇచ్చిన ప్రధాన హామీ ఏమిటి?</div><div class="opt"><b>a</b><span>A) తెలంగాణ ప్రాంత మిగులు ఆదాయం తెలంగాణ అభివృద్ధికే ఖర్చు చేయాలి - ఉప ముఖ్యమంత్రి తెలంగాణ వాడే</span></div><div class="opt"><b>b</b><span>B) తెలంగాణ ఆదాయం మొత్తం ఆంధ్రకు తరలించాలి - ముఖ్యమంత్రి ఆంధ్ర వాడే</span></div><div class="opt"><b>c</b><span>C) హైదరాబాద్ ను ఆంధ్ర రాజధానిగా మాత్రమే ఉంచాలి - తెలంగాణకు ఏ హామీ లేదు</span></div><div class="opt"><b>d</b><span>D) ఉద్యోగాలన్నీ ఆంధ్ర వారికే ఇవ్వాలి - తెలంగాణకు ఏ కోటా లేదు</span></div></div>
 
-<!-- Q12 -->
-<div class="qcard c4"><div class="qh">Q12. తెలంగాణ రాష్ట్ర బిల్లుకు రాష్ట్రపతి ఆమోదం ఎప్పుడు?</div>
-<div class="opt"><b>a</b><span>A) 2014 మార్చి 1 - ప్రణబ్ ముఖర్జీ ఆమోదం - గెజిట్ నోటిఫికేషన్</span></div>
-<div class="opt"><b>b</b><span>B) 2014 జూన్ 2 - ప్రణబ్ ముఖర్జీ ఆమోదం - గెజిట్ నోటిఫికేషన్</span></div>
-<div class="opt"><b>c</b><span>C) 2013 డిసెంబర్ 1 - ప్రతిభా పాటిల్ ఆమోదం - గెజిట్ నోటిఫికేషన్</span></div>
-<div class="opt"><b>d</b><span>D) 2010 మార్చి 1 - APJ అబ్దుల్ కలాం ఆమోదం - గెజిట్ నోటిఫికేషన్</span></div></div>
+<div class="qcard c6"><div class="qh">Q12. తెలంగాణ రాష్ట్ర బిల్లుకు రాష్ట్రపతి ఆమోదం ఎప్పుడు?</div><div class="opt"><b>a</b><span>A) 2014 మార్చి 1 - ప్రణబ్ ముఖర్జీ ఆమోదం - గెజిట్ నోటిఫికేషన్</span></div><div class="opt"><b>b</b><span>B) 2014 జూన్ 2 - ప్రణబ్ ముఖర్జీ ఆమోదం - గెజిట్ నోటిఫికేషన్</span></div><div class="opt"><b>c</b><span>C) 2013 డిసెంబర్ 1 - ప్రతిభా పాటిల్ ఆమోదం - గెజిట్ నోటిఫికేషన్</span></div><div class="opt"><b>d</b><span>D) 2010 మార్చి 1 - APJ అబ్దుల్ కలాం ఆమోదం - గెజిట్ నోటిఫికేషన్</span></div></div>
 
-<!-- Q13 -->
-<div class="qcard c1"><div class="qh">Q13. 1956-2014 వరకు ఉమ్మడి AP లో తెలంగాణ ముఖ్యమంత్రులు ఎంత మంది?</div>
-<div class="opt"><b>a</b><span>A) 3 మంది - మర్రి చెన్నారెడ్డి (2 సార్లు), P.V. నరసింహారావు, జలగం వెంగళరావు</span></div>
-<div class="opt"><b>b</b><span>B) 10 మంది - నీలం సంజీవరెడ్డి, కాసు బ్రహ్మానందరెడ్డి, బెజవాడ గోపాలరెడ్డి</span></div>
-<div class="opt"><b>c</b><span>C) 1 మాత్రమే - టంగుటూరి ప్రకాశం పంతులు</span></div>
-<div class="opt"><b>d</b><span>D) 6 మంది - చంద్రబాబు నాయుడు, YSR, రోశయ్య, కిరణ్ కుమార్ రెడ్డి</span></div></div>
+<div class="qcard c1"><div class="qh">Q13. 1956-2014 వరకు ఉమ్మడి AP లో తెలంగాణ ముఖ్యమంత్రులు ఎంత మంది?</div><div class="opt"><b>a</b><span>A) 3 మంది - మర్రి చెన్నారెడ్డి (2 సార్లు), P.V. నరసింహారావు, జలగం వెంగళరావు</span></div><div class="opt"><b>b</b><span>B) 10 మంది - నీలం సంజీవరెడ్డి, కాసు బ్రహ్మానందరెడ్డి, బెజవాడ గోపాలరెడ్డి</span></div><div class="opt"><b>c</b><span>C) 1 మాత్రమే - టంగుటూరి ప్రకాశం పంతులు</span></div><div class="opt"><b>d</b><span>D) 6 మంది - చంద్రబాబు నాయుడు, YSR, రోశయ్య, కిరణ్ కుమార్ రెడ్డి</span></div></div>
 
-<!-- Q14 -->
-<div class="qcard c2"><div class="qh">Q14. 1952 మొదటి ఎన్నికల్లో హైదరాబాద్ రాష్ట్ర అసెంబ్లీ స్థానాలు ఎన్ని?</div>
-<div class="opt"><b>a</b><span>A) 175 స్థానాలు - కాంగ్రెస్ 93 గెలుపు - బూర్గుల CM</span></div>
-<div class="opt"><b>b</b><span>B) 294 స్థానాలు - కాంగ్రెస్ 200 గెలుపు - నీలం సంజీవరెడ్డి CM</span></div>
-<div class="opt"><b>c</b><span>C) 119 స్థానాలు - కాంగ్రెస్ 90 గెలుపు - P.V. నరసింహారావు CM</span></div>
-<div class="opt"><b>d</b><span>D) 70 స్థానాలు - కాంగ్రెస్ 50 గెలుపు - మర్రి చెన్నారెడ్డి CM</span></div></div>
+<div class="qcard c2"><div class="qh">Q14. 1952 మొదటి ఎన్నికల్లో హైదరాబాద్ రాష్ట్ర అసెంబ్లీ స్థానాలు ఎన్ని?</div><div class="opt"><b>a</b><span>A) 175 స్థానాలు - కాంగ్రెస్ 93 గెలుపు - బూర్గుల CM</span></div><div class="opt"><b>b</b><span>B) 294 స్థానాలు - కాంగ్రెస్ 200 గెలుపు - నీలం సంజీవరెడ్డి CM</span></div><div class="opt"><b>c</b><span>C) 119 స్థానాలు - కాంగ్రెస్ 90 గెలుపు - P.V. నరసింహారావు CM</span></div><div class="opt"><b>d</b><span>D) 70 స్థానాలు - కాంగ్రెస్ 50 గెలుపు - మర్రి చెన్నారెడ్డి CM</span></div></div>
 
-<!-- Q15 -->
-<div class="qcard c3"><div class="qh">Q15. తెలంగాణ ఉద్యమంలో విద్యార్థుల పాత్ర ఎక్కడ నుండి ఎక్కువ?</div>
-<div class="opt"><b>a</b><span>A) ఉస్మానియా యూనివర్సిటీ - OU JAC - తెలంగాణ ఉద్యమానికి కేంద్రం - ఆర్ట్స్ కాలేజీ</span></div>
-<div class="opt"><b>b</b><span>B) ఆంధ్ర యూనివర్సిటీ - వైజాగ్ - సమైక్యాంధ్ర ఉద్యమానికి కేంద్రం</span></div>
-<div class="opt"><b>c</b><span>C) మద్రాస్ యూనివర్సిటీ - చెన్నై - ద్రవిడ ఉద్యమానికి కేంద్రం</span></div>
-<div class="opt"><b>d</b><span>D) ఢిల్లీ యూనివర్సిటీ - ఢిల్లీ - విద్యార్థి ఉద్యమానికి కేంద్రం</span></div></div>
+<div class="qcard c3"><div class="qh">Q15. తెలంగాణ ఉద్యమంలో విద్యార్థుల పాత్ర ఎక్కడ నుండి ఎక్కువ?</div><div class="opt"><b>a</b><span>A) ఉస్మానియా యూనివర్సిటీ - OU JAC - తెలంగాణ ఉద్యమానికి కేంద్రం - ఆర్ట్స్ కాలేజీ</span></div><div class="opt"><b>b</b><span>B) ఆంధ్ర యూనివర్సిటీ - వైజాగ్ - సమైక్యాంధ్ర ఉద్యమానికి కేంద్రం</span></div><div class="opt"><b>c</b><span>C) మద్రాస్ యూనివర్సిటీ - చెన్నై - ద్రవిడ ఉద్యమానికి కేంద్రం</span></div><div class="opt"><b>d</b><span>D) ఢిల్లీ యూనివర్సిటీ - ఢిల్లీ - విద్యార్థి ఉద్యమానికి కేంద్రం</span></div></div>
 
-<!-- Q16 -->
-<div class="qcard c4"><div class="qh">Q16. తెలంగాణ ఉద్యమంలో ఉస్మానియా యూనివర్సిటీ విద్యార్థుల JAC ఎప్పుడు ఏర్పడింది?</div>
-<div class="opt"><b>a</b><span>A) 2009 - OU JAC - ఉస్మానియా క్యాంపస్ ఉద్యమానికి కేంద్ర బిందువు - ఆర్ట్స్ కాలేజీ వేదిక</span></div>
-<div class="opt"><b>b</b><span>B) 1969 - ఆంధ్ర యూనివర్సిటీ JAC - వైజాగ్ క్యాంపస్ కేంద్రం</span></div>
-<div class="opt"><b>c</b><span>C) 1956 - మద్రాస్ యూనివర్సిటీ JAC - చెన్నై క్యాంపస్ కేంద్రం</span></div>
-<div class="opt"><b>d</b><span>D) 2001 - కాకతీయ యూనివర్సిటీ JAC - వరంగల్ క్యాంపస్ కేంద్రం</span></div></div>
+<div class="qcard c4"><div class="qh">Q16. తెలంగాణ ఉద్యమంలో ఉస్మానియా యూనివర్సిటీ విద్యార్థుల JAC ఎప్పుడు ఏర్పడింది?</div><div class="opt"><b>a</b><span>A) 2009 - OU JAC - ఉస్మానియా క్యాంపస్ ఉద్యమానికి కేంద్ర బిందువు - ఆర్ట్స్ కాలేజీ వేదిక</span></div><div class="opt"><b>b</b><span>B) 1969 - ఆంధ్ర యూనివర్సిటీ JAC - వైజాగ్ క్యాంపస్ కేంద్రం</span></div><div class="opt"><b>c</b><span>C) 1956 - మద్రాస్ యూనివర్సిటీ JAC - చెన్నై క్యాంపస్ కేంద్రం</span></div><div class="opt"><b>d</b><span>D) 2001 - కాకతీయ యూనివర్సిటీ JAC - వరంగల్ క్యాంపస్ కేంద్రం</span></div></div>
 
-<!-- Q17 -->
-<div class="qcard c1"><div class="qh">Q17. తెలంగాణ మార్టర్స్ మెమోరియల్ (అమరవీరుల స్తూపం) ఎక్కడ ఉంది?</div>
-<div class="opt"><b>a</b><span>A) గన్ పార్క్, హైదరాబాద్ - అసెంబ్లీ ఎదురుగా - 1969 అమరుల స్మారకం</span></div>
-<div class="opt"><b>b</b><span>B) ట్యాంక్ బండ్ - హుస్సేన్ సాగర్ మధ్యలో - 2009 అమరుల స్మారకం</span></div>
-<div class="opt"><b>c</b><span>C) చార్మినార్ - పాతబస్తీలో - 1956 అమరుల స్మారకం</span></div>
-<div class="opt"><b>d</b><span>D) గోల్కొండ - కోటపై - 1948 అమరుల స్మారకం</span></div></div>
+<div class="qcard c5"><div class="qh">Q17. తెలంగాణ మార్టర్స్ మెమోరియల్ (అమరవీరుల స్తూపం) ఎక్కడ ఉంది?</div><div class="opt"><b>a</b><span>A) గన్ పార్క్, హైదరాబాద్ - అసెంబ్లీ ఎదురుగా - 1969 అమరుల స్మారకం</span></div><div class="opt"><b>b</b><span>B) ట్యాంక్ బండ్ - హుస్సేన్ సాగర్ మధ్యలో - 2009 అమరుల స్మారకం</span></div><div class="opt"><b>c</b><span>C) చార్మినార్ - పాతబస్తీలో - 1956 అమరుల స్మారకం</span></div><div class="opt"><b>d</b><span>D) గోల్కొండ - కోటపై - 1948 అమరుల స్మారకం</span></div></div>
 
-<!-- Q18 -->
-<div class="qcard c2"><div class="qh">Q18. 2009 డిసెంబర్ 9న తెలంగాణ ప్రక్రియ ప్రారంభిస్తామని ప్రకటించిన కేంద్ర హోం మంత్రి ఎవరు?</div>
-<div class="opt"><b>a</b><span>A) P. చిదంబరం - రాత్రి 11:30 గంటలకు ప్రకటన - అర్ధరాత్రి</span></div>
-<div class="opt"><b>b</b><span>B) సుశీల్ కుమార్ షిండే - ఉదయం 11:30 గంటలకు - మధ్యాహ్నం</span></div>
-<div class="opt"><b>c</b><span>C) రాజ్ నాథ్ సింగ్ - సాయంత్రం 5 గంటలకు - సాయంత్రం</span></div>
-<div class="opt"><b>d</b><span>D) అమిత్ షా - మధ్యాహ్నం 2 గంటలకు - మధ్యాహ్నం</span></div></div>
+<div class="qcard c6"><div class="qh">Q18. 2009 డిసెంబర్ 9న తెలంగాణ ప్రక్రియ ప్రారంభిస్తామని ప్రకటించిన కేంద్ర హోం మంత్రి ఎవరు?</div><div class="opt"><b>a</b><span>A) P. చిదంబరం - రాత్రి 11:30 గంటలకు ప్రకటన - అర్ధరాత్రి</span></div><div class="opt"><b>b</b><span>B) సుశీల్ కుమార్ షిండే - ఉదయం 11:30 గంటలకు - మధ్యాహ్నం</span></div><div class="opt"><b>c</b><span>C) రాజ్ నాథ్ సింగ్ - సాయంత్రం 5 గంటలకు - సాయంత్రం</span></div><div class="opt"><b>d</b><span>D) అమిత్ షా - మధ్యాహ్నం 2 గంటలకు - మధ్యాహ్నం</span></div></div>
 
-<!-- Q19 -->
-<div class="qcard c3"><div class="qh">Q19. తెలంగాణ ఉద్యమంలో అమరవీరులకు నివాళిగా అసెంబ్లీలో తీర్మానం ఎప్పుడు?</div>
-<div class="opt"><b>a</b><span>A) 1969 - తెలంగాణ అమరులకు నివాళి - అసెంబ్లీలో సంతాప తీర్మానం</span></div>
-<div class="opt"><b>b</b><span>B) 1956 - ఆంధ్ర అమరులకు నివాళి - మద్రాస్ అసెంబ్లీలో</span></div>
-<div class="opt"><b>c</b><span>C) 2001 - రాయలసీమ అమరులకు నివాళి - కర్నూలు అసెంబ్లీలో</span></div>
-<div class="opt"><b>d</b><span>D) 2010 - కోస్తా అమరులకు నివాళి - విజయవాడ అసెంబ్లీలో</span></div></div>
+<div class="qcard c1"><div class="qh">Q19. తెలంగాణ ఉద్యమంలో అమరవీరులకు నివాళిగా అసెంబ్లీలో తీర్మానం ఎప్పుడు?</div><div class="opt"><b>a</b><span>A) 1969 - తెలంగాణ అమరులకు నివాళి - అసెంబ్లీలో సంతాప తీర్మానం</span></div><div class="opt"><b>b</b><span>B) 1956 - ఆంధ్ర అమరులకు నివాళి - మద్రాస్ అసెంబ్లీలో</span></div><div class="opt"><b>c</b><span>C) 2001 - రాయలసీమ అమరులకు నివాళి - కర్నూలు అసెంబ్లీలో</span></div><div class="opt"><b>d</b><span>D) 2010 - కోస్తా అమరులకు నివాళి - విజయవాడ అసెంబ్లీలో</span></div></div>
 
-<!-- Q20 -->
-<div class="qcard c4"><div class="qh">Q20. ఉమ్మడి AP లో చివరి ముఖ్యమంత్రి ఎవరు?</div>
-<div class="opt"><b>a</b><span>A) N. కిరణ్ కుమార్ రెడ్డి - 2010-2014 - రాష్ట్ర విభజన సమయంలో</span></div>
-<div class="opt"><b>b</b><span>B) Y.S. రాజశేఖర్ రెడ్డి - 2004-2009 - జలయజ్ఞం ప్రారంభం</span></div>
-<div class="opt"><b>c</b><span>C) చంద్రబాబు నాయుడు - 1995-2004 - హైటెక్ సిటీ నిర్మాణం</span></div>
-<div class="opt"><b>d</b><span>D) నీలం సంజీవరెడ్డి - 1956-1960 - మొదటి AP CM</span></div></div>
+<div class="qcard c2"><div class="qh">Q20. ఉమ్మడి AP లో చివరి ముఖ్యమంత్రి ఎవరు?</div><div class="opt"><b>a</b><span>A) N. కిరణ్ కుమార్ రెడ్డి - 2010-2014 - రాష్ట్ర విభజన సమయంలో</span></div><div class="opt"><b>b</b><span>B) Y.S. రాజశేఖర్ రెడ్డి - 2004-2009 - జలయజ్ఞం ప్రారంభం</span></div><div class="opt"><b>c</b><span>C) చంద్రబాబు నాయుడు - 1995-2004 - హైటెక్ సిటీ నిర్మాణం</span></div><div class="opt"><b>d</b><span>D) నీలం సంజీవరెడ్డి - 1956-1960 - మొదటి AP CM</span></div></div>
 
-<!-- Q21 -->
-<div class="qcard c1"><div class="qh">Q21. తెలంగాణ రాష్ట్ర తొలి ఎన్నికలు ఎప్పుడు? ఎన్ని సీట్లు?</div>
-<div class="opt"><b>a</b><span>A) 2014 ఏప్రిల్ 30 - 119 అసెంబ్లీ, 17 MP - 63 సీట్లు TRS గెలుపు</span></div>
-<div class="opt"><b>b</b><span>B) 2018 డిసెంబర్ 7 - 119 అసెంబ్లీ - 88 సీట్లు TRS గెలుపు</span></div>
-<div class="opt"><b>c</b><span>C) 2009 ఏప్రిల్ - 294 అసెంబ్లీ - 50 సీట్లు TRS గెలుపు</span></div>
-<div class="opt"><b>d</b><span>D) 2004 ఏప్రిల్ - 175 అసెంబ్లీ - 30 సీట్లు TRS గెలుపు</span></div></div>
+<div class="qcard c3"><div class="qh">Q21. తెలంగాణ రాష్ట్ర తొలి ఎన్నికలు ఎప్పుడు? ఎన్ని సీట్లు?</div><div class="opt"><b>a</b><span>A) 2014 ఏప్రిల్ 30 - 119 అసెంబ్లీ, 17 MP - 63 సీట్లు TRS గెలుపు</span></div><div class="opt"><b>b</b><span>B) 2018 డిసెంబర్ 7 - 119 అసెంబ్లీ - 88 సీట్లు TRS గెలుపు</span></div><div class="opt"><b>c</b><span>C) 2009 ఏప్రిల్ - 294 అసెంబ్లీ - 50 సీట్లు TRS గెలుపు</span></div><div class="opt"><b>d</b><span>D) 2004 ఏప్రిల్ - 175 అసెంబ్లీ - 30 సీట్లు TRS గెలుపు</span></div></div>
 
-<!-- Q22 -->
-<div class="qcard c2"><div class="qh">Q22. హైదరాబాద్ ఉమ్మడి రాజధాని నిర్ణయం ఏ సెక్షన్ ప్రకారం?</div>
-<div class="opt"><b>a</b><span>A) AP పునర్వ్యవస్థీకరణ చట్టం 2014 - సెక్షన్ 5 - 10 ఏళ్లు</span></div>
-<div class="opt"><b>b</b><span>B) సెక్షన్ 10 - 5 ఏళ్లు - విద్యా సంస్థల విభజన</span></div>
-<div class="opt"><b>c</b><span>C) సెక్షన్ 8 - 2 ఏళ్లు - పోలీసు విభజన</span></div>
-<div class="opt"><b>d</b><span>D) సెక్షన్ 12 - 15 ఏళ్లు - నీటి విభజన</span></div></div>
+<div class="qcard c4"><div class="qh">Q22. హైదరాబాద్ ఉమ్మడి రాజధాని నిర్ణయం ఏ సెక్షన్ ప్రకారం?</div><div class="opt"><b>a</b><span>A) AP పునర్వ్యవస్థీకరణ చట్టం 2014 - సెక్షన్ 5 - 10 ఏళ్లు</span></div><div class="opt"><b>b</b><span>B) సెక్షన్ 10 - 5 ఏళ్లు - విద్యా సంస్థల విభజన</span></div><div class="opt"><b>c</b><span>C) సెక్షన్ 8 - 2 ఏళ్లు - పోలీసు విభజన</span></div><div class="opt"><b>d</b><span>D) సెక్షన్ 12 - 15 ఏళ్లు - నీటి విభజన</span></div></div>
 
-<!-- Q23 -->
-<div class="qcard c3"><div class="qh">Q23. తెలంగాణ ఉద్యమంలో సాంస్కృతిక బృందం పేరు?</div>
-<div class="opt"><b>a</b><span>A) తెలంగాణ సాంస్కృతిక సారథి</span></div>
-<div class="opt"><b>b</b><span>B) ఆంధ్ర సాంస్కృతిక సారథి</span></div>
-<div class="opt"><b>c</b><span>C) రాయలసీమ సారథి</span></div>
-<div class="opt"><b>d</b><span>D) కోస్తా సారథి</span></div></div>
+<div class="qcard c5"><div class="qh">Q23. తెలంగాణ ఉద్యమంలో సాంస్కృతిక బృందం పేరు?</div><div class="opt"><b>a</b><span>A) తెలంగాణ సాంస్కృతిక సారథి</span></div><div class="opt"><b>b</b><span>B) ఆంధ్ర సాంస్కృతిక సారథి</span></div><div class="opt"><b>c</b><span>C) రాయలసీమ సారథి</span></div><div class="opt"><b>d</b><span>D) కోస్తా సారథి</span></div></div>
 
-<!-- Q24 NEW -->
-<div class="qcard c4"><div class="qh">Q24. తెలంగాణ సాంస్కృతిక పునరుజ్జీవనంలో భాగంగా బతుకమ్మ, బోనాలను రాష్ట్ర పండుగలుగా గుర్తించి, తెలంగాణ సాంస్కృతిక సారథిని ఏర్పాటు చేసిన ప్రభుత్వం ఏది? ఎప్పుడు?</div>
-<div class="opt"><b>a</b><span>A) తెలంగాణ ప్రభుత్వం - 2014 లో KCR - తెలంగాణ సాంస్కృతిక సారథి - బతుకమ్మ, బోనాలు రాష్ట్ర పండుగలు</span></div>
-<div class="opt"><b>b</b><span>B) ఆంధ్రప్రదేశ్ ప్రభుత్వం - 1956 లో నీలం సంజీవరెడ్డి - ఆంధ్ర సాంస్కృతిక సారథి</span></div>
-<div class="opt"><b>c</b><span>C) ఉమ్మడి AP ప్రభుత్వం - 2009 లో YSR - రాయలసీమ సారథి</span></div>
-<div class="opt"><b>d</b><span>D) ఉమ్మడి AP ప్రభుత్వం - 2001 లో చంద్రబాబు నాయుడు - కోస్తా సారథి</span></div></div>
+<div class="qcard c6"><div class="qh">Q24. తెలంగాణ సాంస్కృతిక పునరుజ్జీవనంలో బతుకమ్మ, బోనాలను రాష్ట్ర పండుగలుగా గుర్తించి, తెలంగాణ సాంస్కృతిక సారథిని ఏర్పాటు చేసిన ప్రభుత్వం ఏది? ఎప్పుడు?</div><div class="opt"><b>a</b><span>A) తెలంగాణ ప్రభుత్వం - 2014 లో KCR - తెలంగాణ సాంస్కృతిక సారథి - బతుకమ్మ, బోనాలు రాష్ట్ర పండుగలు</span></div><div class="opt"><b>b</b><span>B) ఆంధ్రప్రదేశ్ ప్రభుత్వం - 1956 లో నీలం సంజీవరెడ్డి - ఆంధ్ర సాంస్కృతిక సారథి</span></div><div class="opt"><b>c</b><span>C) ఉమ్మడి AP ప్రభుత్వం - 2009 లో YSR - రాయలసీమ సారథి</span></div><div class="opt"><b>d</b><span>D) ఉమ్మడి AP ప్రభుత్వం - 2001 లో చంద్రబాబు నాయుడు - కోస్తా సారథి</span></div></div>
 
 <div class="footer"><button class="btn btn1">.. Previous</button><button class="btn btn2">Submit (24)</button></div>
 <div style="text-align:center;padding:12px;font-size:9px;color:#777">© MCRES • TEST-11/24Q • Founder & Director : Dr Ramakrishna Manimadde • e-cyber.github.io</div>
