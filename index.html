@@ -1,103 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MCRES - Mallaiah Center for River & Earth Sciences | Hyderabad</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MCRES - Mallaiah Center for River & Earth Sciences</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800;900&family=Fraunces:opsz,wght@9..144,700;800&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:"Plus Jakarta Sans",sans-serif;background:#020617;color:#e2e8f0}
-.ann{background:linear-gradient(90deg,#fde68a,#f59e0b);color:#000;text-align:center;padding:10px 14px;font-size:13px;font-weight:800;display:flex;justify-content:center;align-items:center;gap:12px;flex-wrap:wrap}
-.ann a{background:#000;color:#fde68a;padding:6px 16px;border-radius:99px;text-decoration:none;font-size:11px;font-weight:800;box-shadow:0 2px 10px rgba(0,0,0,0.2)}
-.header{position:sticky;top:0;z-index:99;background:rgba(2,6,23,0.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.08);display:flex;justify-content:space-between;align-items:center;padding:12px 24px}
-.logo{display:flex;align-items:center;gap:10px}
-.logo-icon{width:42px;height:42px;background:linear-gradient(135deg,#fde68a,#f59e0b);border-radius:12px;display:grid;place-items:center;font-size:18px;box-shadow:0 0 20px rgba(253,230,138,0.4)}
-.logo-text{font-family:"Fraunces";font-weight:800;color:#fff;line-height:1}
-.logo-text b{display:block;font-size:19px;letter-spacing:0.5px}
-.logo-text span{display:block;font-size:9px;font-family:"Plus Jakarta Sans";color:#94a3b8;letter-spacing:0.8px;font-weight:500}
-.nav{display:flex;gap:22px;align-items:center}
-.nav a{color:#cbd5e1;text-decoration:none;font-size:14px;font-weight:600;transition:0.2s}
-.nav a:hover{color:#fff}
-.nav a.active{color:#fde68a;border-bottom:2px solid #fde68a;padding-bottom:2px}
-.btn-y{background:linear-gradient(135deg,#fde68a,#fcd34d);color:#000;padding:9px 18px;border-radius:99px;text-decoration:none;font-weight:900;font-size:13px;box-shadow:0 0 20px rgba(253,230,138,0.3);transition:0.2s}
-.btn-y:hover{transform:translateY(-1px);box-shadow:0 0 30px rgba(253,230,138,0.5)}
-.btn-d{background:#fff;color:#000;padding:9px 18px;border-radius:99px;text-decoration:none;font-weight:800;font-size:13px;transition:0.2s}
-.btn-d:hover{background:#fde68a}
-.hamburger{display:none;font-size:26px;cursor:pointer;background:none;border:none;color:#fff}
-.mob-menu{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#020617;z-index:100;padding:30px}
-.mob-menu a{display:block;color:#fff;text-decoration:none;padding:16px 0;border-bottom:1px solid rgba(255,255,255,0.08);font-size:18px;font-weight:600}
-.mob-menu .close{position:absolute;top:20px;right:20px;font-size:32px;color:#fff;background:none;border:none}
-.hero{position:relative;background:radial-gradient(ellipse at 10% 0%,#1e1b4b 0%,#0f172a 40%,#020617 100%);display:grid;grid-template-columns:48% 52%;min-height:82vh;overflow:hidden}
-.h-left{padding:70px 44px;z-index:3;display:flex;flex-direction:column;justify-content:center}
-.badge{display:inline-block;border:1px solid rgba(253,230,138,0.25);color:#fde68a;font-size:10px;letter-spacing:1.8px;padding:8px 16px;border-radius:99px;margin-bottom:22px;background:rgba(253,230,138,0.08);font-weight:800;backdrop-filter:blur(10px);width:fit-content}
-.h-left h1{font-family:"Fraunces";font-size:46px;line-height:1.02;color:#fff;font-weight:800;letter-spacing:-1px}
-.h-left h1 .gold{background:linear-gradient(135deg,#fde68a,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.sub{color:#fde68a;font-size:15px;font-weight:700;margin:16px 0 12px;line-height:1.4}
-.desc{color:#94a3b8;font-size:14px;line-height:1.8;max-width:520px;margin-bottom:28px}
-.btns{display:flex;gap:12px;flex-wrap:wrap}
-.be{background:linear-gradient(135deg,#fde68a,#fbbf24);color:#000;padding:14px 26px;border-radius:99px;text-decoration:none;font-weight:900;font-size:14px;box-shadow:0 8px 30px rgba(252,211,77,0.35),0 0 0 1px rgba(253,230,138,0.3);transition:0.25s;display:inline-block}
-.be:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(252,211,77,0.5)}
-.bi{background:rgba(255,255,255,0.06);color:#fff;border:1px solid rgba(255,255,255,0.18);padding:14px 26px;border-radius:99px;text-decoration:none;font-size:14px;font-weight:700;backdrop-filter:blur(10px);transition:0.25s;display:inline-block}
-.bi:hover{background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.3);transform:translateY(-2px)}
-.h-right{position:relative;overflow:hidden}
-.h-right img{width:100%;height:100%;object-fit:cover;filter:brightness(0.9) contrast(1.1)}
-.h-right::before{content:"";position:absolute;left:-1px;top:0;width:45%;height:100%;background:linear-gradient(90deg,#020617 15%,#020617cc 40%,transparent 100%);z-index:2}
-.h-right::after{content:"";position:absolute;width:400px;height:400px;background:radial-gradient(circle,rgba(253,230,138,0.15),transparent 70%);top:15%;right:15%;filter:blur(40px);z-index:1}
-.shape{position:absolute;left:-90px;top:0;width:200px;height:100%;background:#020617;z-index:3;clip-path:ellipse(70% 52% at 0% 50%)}
-.stats{background:linear-gradient(90deg,#08152e,#0f172a);display:flex;padding:0;border-top:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06)}
-.st{flex:1;text-align:center;padding:24px 10px;border-right:1px solid rgba(255,255,255,0.06);position:relative;overflow:hidden}
+body{font-family:"Plus Jakarta Sans",sans-serif;background:#f8fafc}
+.ann{background:#fef08a;color:#422006;text-align:center;padding:10px 12px;font-size:12px;font-weight:800;display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.ann a{background:#0f172a;color:#fde68a;padding:5px 14px;border-radius:99px;text-decoration:none;font-size:11px}
+.header{position:sticky;top:0;z-index:99;background:rgba(255,255,255,0.95);backdrop-filter:blur(20px);border-bottom:1px solid #e2e8f0;display:flex;justify-content:space-between;align-items:center;padding:10px 20px}
+.logo{display:flex;align-items:center;gap:8px}
+.logo-icon{width:32px;height:32px;background:#0f172a;color:#fff;border-radius:50%;display:grid;place-items:center;font-family:"Fraunces";font-weight:800}
+.logo-text{font-family:"Fraunces";font-weight:800;color:#0f172a;font-size:13px;line-height:1}
+.logo-text span{display:block;font-size:7.5px;font-family:"Plus Jakarta Sans";color:#475569;font-weight:500}
+.nav{display:flex;gap:18px;align-items:center}
+.nav a{color:#334155;text-decoration:none;font-size:13px;font-weight:600}
+.nav a.test{background:linear-gradient(135deg,#fef08a,#fde047);color:#000 !important;padding:7px 14px;border-radius:99px;font-weight:900 !important;border:2px solid #000;box-shadow:0 0 20px rgba(254,240,138,0.7);animation:glow 2s infinite}
+@keyframes glow{0%,100%{box-shadow:0 0 15px rgba(254,240,138,0.6)}50%{box-shadow:0 0 30px rgba(254,240,138,0.9),0 0 0 3px rgba(254,240,138,0.2)}}
+.btn-d{background:#0f172a;color:#fff;padding:7px 16px;border-radius:99px;text-decoration:none;font-weight:700;font-size:12px}
+.hamburger{display:none;font-size:24px;background:none;border:none;cursor:pointer}
+.mob-menu{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#020617;z-index:100;padding:30px;flex-direction:column;gap:20px}
+.mob-menu a{color:#fff;text-decoration:none;font-size:18px}
+.mob-menu .close{position:absolute;top:20px;right:20px;font-size:28px;color:#fff;background:none;border:none}
+.hero{position:relative;background:#f8fafc;display:grid;grid-template-columns:48% 52%;min-height:78vh;overflow:hidden;border-bottom:1px solid #e2e8f0}
+.h-left{padding:50px 32px;z-index:3;display:flex;flex-direction:column;justify-content:center;background:#ffffff}
+.badge{display:inline-block;border:1px solid #e2e8f0;background:#fff;color:#0f172a;font-size:9px;letter-spacing:1px;padding:7px 12px;border-radius:99px;margin-bottom:16px;font-weight:700}
+.h-left h1{font-family:"Fraunces";font-size:38px;line-height:1.05;color:#0f172a;font-weight:800}
+.h-left h1 .gold{color:#854d0e}
+.h-left .subdesc{color:#475569;font-size:12.5px;line-height:1.6;margin:12px 0 20px;max-width:420px}
+.btns{display:flex;gap:10px;flex-wrap:wrap}
+.be{background:#0f172a;color:#fff;padding:12px 20px;border-radius:99px;text-decoration:none;font-weight:800;font-size:13px;box-shadow:0 8px 20px rgba(15,23,42,0.15);transition:0.2s}
+.be:hover{transform:translateY(-2px)}
+.bi{background:linear-gradient(135deg,#fef08a,#fde047);color:#000 !important;padding:12px 20px;border-radius:99px;text-decoration:none;font-weight:900;font-size:13px;border:2px solid #000;box-shadow:0 0 25px rgba(254,240,138,0.7);animation:glow2 2s infinite;transition:0.2s}
+@keyframes glow2{0%,100%{box-shadow:0 0 20px rgba(254,240,138,0.6)}50%{box-shadow:0 0 35px rgba(254,240,138,0.9)}}
+.stats{display:flex;gap:0;margin-top:24px;background:#fff;border:1px solid #e2e8f0;border-radius:14px;overflow:hidden;width:fit-content;box-shadow:0 4px 20px rgba(0,0,0,0.04)}
+.st{padding:12px 18px;text-align:center;border-right:1px solid #f1f5f9;min-width:85px}
 .st:last-child{border:none}
-.st::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:60px;height:1px;background:linear-gradient(90deg,transparent,#fde68a44,transparent)}
-.st b{font-size:36px;color:#fde68a;display:block;font-weight:900;letter-spacing:-1px}
-.st span{font-size:11px;color:#94a3b8;letter-spacing:0.5px;font-weight:600;display:block;margin-top:4px}
-.focus{padding:70px 24px;background:radial-gradient(ellipse at center,#0f172a,#020617);position:relative}
-.focus::before{content:"";position:absolute;top:0;left:0;width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.1),transparent)}
-.focus h2{text-align:center;font-family:"Fraunces";font-size:36px;color:#fff;font-weight:800;letter-spacing:-0.5px}
-.focus .sh{text-align:center;color:#64748b;font-size:13px;margin:10px 0 36px;letter-spacing:0.3px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:1100px;margin:0 auto}
-.card{border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:28px;background:rgba(255,255,255,0.03);backdrop-filter:blur(16px);box-shadow:0 8px 32px rgba(0,0,0,0.2);transition:0.35s;position:relative;overflow:hidden}
-.card::before{content:"";position:absolute;top:0;left:0;width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.15),transparent)}
-.card:hover{transform:translateY(-8px);border-color:rgba(253,230,138,0.25);box-shadow:0 20px 50px rgba(0,0,0,0.4),0 0 0 1px rgba(253,230,138,0.1)}
-.card h3{font-size:18px;color:#fff;margin-bottom:10px;font-weight:800}
-.card p{font-size:14px;color:#94a3b8;line-height:1.7}
-@media(max-width:900px){.hero{grid-template-columns:1fr}.h-right{height:420px;order:-1}.h-right::before{width:100%;height:50%;top:auto;bottom:-1px;background:linear-gradient(0deg,#020617 15%,transparent 100%)}.shape{display:none}.h-left{padding:36px 20px}.h-left h1{font-size:32px}.nav{display:none}.hamburger{display:block}.grid{grid-template-columns:1fr}.st b{font-size:28px}.st{padding:18px 6px}}
+.st b{font-size:22px;color:#0f172a;display:block;font-weight:900}
+.st span{font-size:9px;color:#64748b;font-weight:600}
+.h-right{position:relative;overflow:hidden;background:#000}
+.h-right img{width:100%;height:100%;object-fit:cover}
+.h-right::before{content:"";position:absolute;left:-1px;top:0;width:35%;height:100%;background:linear-gradient(90deg,#ffffff 10%,transparent 100%);z-index:2}
+.focus{padding:50px 20px;background:#ffffff}
+.focus h2{text-align:center;font-family:"Fraunces";font-size:28px;color:#0f172a;font-weight:800}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:1100px;margin:24px auto 0}
+.card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:20px;box-shadow:0 8px 30px rgba(0,0,0,0.04);transition:0.3s;position:relative}
+.card:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(0,0,0,0.08)}
+.card h3{font-size:14px;color:#0f172a;margin:10px 0 6px;font-weight:800}
+.card p{font-size:12px;color:#64748b;line-height:1.5;margin-bottom:10px}
+.card a{font-size:11px;font-weight:800;color:#0f172a;text-decoration:none}
+.card.live{background:linear-gradient(135deg,#fefce8,#fef9c3);border:2px solid #fde047;box-shadow:0 8px 30px rgba(253,224,71,0.25)}
+.card.live a.main{background:#0f172a;color:#fff;padding:7px 14px;border-radius:99px;font-size:11px;display:inline-block}
+.live-badge{position:absolute;top:10px;right:10px;background:linear-gradient(135deg,#ff4e00,#ff6b00);color:#fff;padding:4px 10px;border-radius:20px;font-size:9px;font-weight:900;animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+.view-btn{background:#fff;border:1px solid #e2e8f0;color:#0f172a;padding:6px 12px;border-radius:20px;font-size:10px;font-weight:700;text-decoration:none;display:inline-block;margin-top:8px}
+@media(max-width:900px){.hero{grid-template-columns:1fr}.h-right{height:380px;order:-1}.h-right::before{width:100%;height:35%;top:auto;bottom:-1px;background:linear-gradient(0deg,#ffffff 15%,transparent 100%)}.h-left{padding:28px 20px}.h-left h1{font-size:30px}.nav,.btn-d{display:none}.hamburger{display:block}.grid{grid-template-columns:1fr}.stats{width:100%}.st{flex:1}}
 </style>
 </head>
 <body>
-<div class="ann">UGC NET December 2026 Notification Released - 08 Oct - 28 Oct 2026 | Exam: 14-19 Dec 2026 <a href="/info-desk/ugc-net-dec-2026/">Apply Now - Click Here</a></div>
+<div class="ann">AUG - NET December 2026 Notification Released - 08 Oct - 20 Oct 2026 <a href="/info-desk/ugc-net-dec-2026/">Apply Now</a></div>
 <div class="header">
-<div class="logo"><div class="logo-icon">⛰️</div><div class="logo-text"><b>MCRES</b><span>MALLAIAH CENTER FOR RIVER & EARTH</span></div></div>
+<div class="logo"><div class="logo-icon">M</div><div class="logo-text">MCRES/<span>MALLAIAH CENTER FOR RIVER & EARTH SCIENCES</span></div></div>
 <div class="nav">
-<a class="active" href="/">Home</a><a href="/about/">About</a><a href="/research/">Research</a><a href="/info-desk/">Info Desk</a><a href="/contact/">Contact</a>
-<a class="btn-y" href="/info-desk/">Info Desk</a><a class="btn-d" href="/contact/">Get in Touch</a>
+<a href="/">Home</a><a href="/about/">About</a><a href="/research/">Research</a><a href="/info-desk/">Info Desk</a>
+<a href="/test-series.html" class="test">🎯 Test Series</a>
+<a href="/contact/">Get in Touch</a>
 </div>
-<button class="hamburger" onclick="document.getElementById('mob').style.display='block'">☰</button>
+<button class="hamburger" onclick="document.getElementById('mob').style.display='flex'">☰</button>
+<a href="/contact/" class="btn-d">Get in Touch</a>
 </div>
 <div id="mob" class="mob-menu">
 <button class="close" onclick="document.getElementById('mob').style.display='none'">✕</button>
-<a href="/">Home</a><a href="/about/">About</a><a href="/research/">Research Projects</a><a href="/info-desk/">Info Desk</a><a href="/info-desk/ugc-net-dec-2026/">UGC NET 2026</a><a href="/contact/">Contact</a>
+<a href="/">Home</a><a href="/about/">About</a><a href="/research/">Research</a><a href="/info-desk/">Info Desk</a>
+<a href="/test-series.html" style="background:#fef08a;color:#000;padding:12px 20px;border-radius:30px;font-weight:900;text-align:center;">🎯 Test Series - LIVE NOW</a>
+<a href="/constables/" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);padding:12px 20px;border-radius:30px;text-align:center;">🚔 Constable Tests - View</a>
+<a href="/contact/">Contact</a>
 </div>
 <div class="hero">
 <div class="h-left">
-<div class="badge">EXPLORING RIVERS • DECODING EARTH • ADVANCING SCIENCE</div>
-<h1>MCRES <span class="gold">Mallaiah Center</span> for River & Earth Sciences</h1>
-<div class="sub">Interdisciplinary research for water, earth & environmental resilience across India</div>
-<div class="desc">Advancing science through field studies, data-driven analysis, and collaboration with communities to understand and protect India's rivers, watersheds, and earth systems for a sustainable future.</div>
-<div class="btns"><a class="be" href="/research/">Explore Research →</a><a class="bi" href="/info-desk/">Info Desk</a></div>
-</div>
-<div class="h-right"><div class="shape"></div><img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070&auto=format&fit=crop" alt="Mountains"></div>
+<div class="badge">🔵 Mallaiah Center for River & Earth Sciences</div>
+<h1>Advancing <span class="gold">River & Earth</span> Science Research</h1>
+<div class="subdesc">MCRES is dedicated to cutting-edge research in fluvial geomorphology, flood management, sediment studies, and sustainable river basin development.</div>
+<div class="btns">
+<a class="be" href="/research/">Explore Research →</a>
+<a class="bi" href="/test-series.html">🎯 Take Free Test Series</a>
 </div>
 <div class="stats">
-<div class="st"><b>12+</b><span>Research Projects</span></div>
-<div class="st"><b>30+</b><span>Publications</span></div>
-<div class="st"><b>5+</b><span>Field Initiatives Across India</span></div>
+<div class="st"><b>15+</b><span>Research Projects</span></div>
+<div class="st"><b>50+</b><span>Publications</span></div>
+<div class="st"><b>10+</b><span>Years Experience</span></div>
+</div>
+</div>
+<div class="h-right"><img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070&auto=format&fit=crop" alt="Mountains"></div>
 </div>
 <div class="focus">
-<h2>Our Research Focus</h2>
-<div class="sh">Integrated interdisciplinary approaches to river and earth science research</div>
+<h2>Our Focus Areas</h2>
 <div class="grid">
-<div class="card"><h3>🌊 River Hydrology & Management</h3><p>Studying river systems, flood resilience, sediment dynamics, watershed management, and sustainable water resource solutions across Indian river basins.</p></div>
-<div class="card"><h3>⛰️ Earth Systems & Geosciences</h3><p>Examining geological processes, climate-earth interactions, soil stability, and landscape evolution to support environmental resilience and policy.</p></div>
+<div class="card">
+<div style="font-size:20px">🌊</div>
+<h3>River Studies</h3>
+<p>Musi River floods, sediment history, and flood-safe city planning research.</p>
+<a href="/research/">Learn More →</a>
+</div>
+<div class="card live">
+<div class="live-badge">🔥 LIVE NOW</div>
+<div style="font-size:20px">📚</div>
+<h3>Free Test Series</h3>
+<p>Constable, SI, Groups - Daily free mock tests with detailed analysis.</p>
+<p style="font-size:11px;font-weight:800;color:#a16207;margin-bottom:10px">New: Test-01 Live Now!</p>
+<a href="/test-series.html" class="main">Start Test →</a>
+<br>
+<a href="/constables/" class="view-btn">🚔 Constable View →</a>
+<a href="/constables/" class="view-btn" style="margin-left:6px">View All Tests →</a>
+</div>
+<div class="card">
+<div style="font-size:20px">🎯</div>
+<h3>Competitive Exams</h3>
+<p>CSIR, UGC, TGPSC guidance and materials for earth science aspirants.</p>
+<a href="/info-desk/">Explore →</a>
+</div>
 </div>
 </div>
 </body>
