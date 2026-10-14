@@ -1,98 +1,147 @@
 <!DOCTYPE html>
-<html lang="te"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Mock Test 1 - 24 Questions</title>
+<html lang="te">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>TEST-01 - Constable/SI - MCRES</title>
 <style>
-*{box-sizing:border-box}body{font-family:system-ui,sans-serif;background:#eef2ff;margin:0}
-.top{background:#0d2fa3;color:#fff;text-align:center;padding:15px;font-weight:bold;font-size:18px}
-.wrap{max-width:850px;margin:10px auto;padding:8px}
-.card{background:#fff;border-radius:12px;margin-bottom:12px;border:1px solid #d9e2ff;box-shadow:0 2px 6px rgba(0,0,0,.06)}
-.qbody{padding:14px;font-weight:700;font-size:14.5px;color:#111;line-height:1.5}
-.opts{padding:0 8px 10px}
-.opt{display:flex;align-items:center;border:1px solid #d5ddf5;border-radius:9px;padding:11px 12px;margin:7px 4px;cursor:pointer;background:#fff;font-size:13.5px}
-.opt:hover{background:#eef3ff}
-.btn{background:#0d2fa3;color:#fff;border:none;width:100%;padding:15px;font-size:18px;font-weight:bold;border-radius:12px;margin-top:12px}
-#res{display:none;background:#e8f5e9;padding:18px;border-radius:12px;text-align:center;margin-top:12px}
-</style></head><body>
-<div class="top">Mock Test - 1</div>
-<div class="wrap"><form id="f">
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Arial}
+body{background:#f0f4ff;-webkit-user-select:none;user-select:none}
+.header{background:#1e3a8a;color:#fff;padding:12px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:1000}
+.timer{color:#fbbf24;font-weight:800;font-size:18px}
+.q-box{margin:10px;background:#fff;border-radius:12px;padding:14px;box-shadow:0 2px 8px rgba(0,0,0,0.1)}
+.q-no{background:#1e3a8a;color:#fff;padding:4px 10px;border-radius:20px;font-size:12px;display:inline-block;margin-bottom:8px}
+.q-text{font-size:15px;font-weight:600;color:#111827;line-height:1.4;margin-bottom:12px}
+.opt{border:1.5px solid #d1d5db;border-radius:10px;padding:10px 12px;margin:6px 0;display:flex;align-items:center;gap:8px;cursor:pointer}
+.opt.selected{border-color:#1e3a8a;background:#eff6ff}
+.opt input{accent-color:#1e3a8a}
+.nav-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:10px}
+.nav-btn{padding:8px;border-radius:8px;border:1.5px solid #d1d5db;background:#fff;text-align:center;font-size:12px;font-weight:700;cursor:pointer}
+.nav-btn.answered{background:#10b981;color:#fff;border-color:#10b981}
+.nav-btn.current{border-color:#1e3a8a;background:#1e3a8a;color:#fff}
+.action-bar{position:fixed;bottom:0;left:0;right:0;background:#fff;padding:10px;display:flex;gap:8px;box-shadow:0 -2px 10px rgba(0,0,0,0.1)}
+.action-bar button{flex:1;padding:12px;border:none;border-radius:10px;font-weight:800}
+#prevBtn{background:#e5e7eb}
+#nextBtn{background:#1e3a8a;color:#fff}
+#submitBtn{background:#dc2626;color:#fff;display:none}
+</style>
+</head>
+<body oncontextmenu="return false">
+<div class="header">
+<div><b>MCRES</b> | TEST-01 • 25 Q</div>
+<div class="timer">⏱ <span id="timer">30:00</span></div>
+</div>
 
-<div class="card"><div class="qbody">Q1. Match: (i)Congestion (ii)Collision (iii)Bottleneck (iv)Breakdown → A-Pile-up B-Traffic jam C-Mechanical failure D-Narrowing</div><div class="opts">
-<label class="opt"><input type="radio" name="q1" value="1"> A) (i)-A, (ii)-B, (iii)-C, (iv)-D</label><label class="opt"><input type="radio" name="q1" value="2"> B) (i)-B, (ii)-D, (iii)-A, (iv)-C</label><label class="opt"><input type="radio" name="q1" value="3"> C) (i)-D, (ii)-C, (iii)-A, (iv)-B</label><label class="opt"><input type="radio" name="q1" value="4"> D) (i)-B, (ii)-A, (iii)-D, (iv)-C</label></div></div>
+<div class="q-box">
+<div class="q-no" id="qNo">Q 1 / 25</div>
+<div class="q-text" id="qText"></div>
+<div id="options"></div>
+</div>
 
-<div class="card"><div class="qbody">Q2. Rearrange: E-Small part west of Washington... Correct order?</div><div class="opts">
-<label class="opt"><input type="radio" name="q2" value="1"> A) EDACB</label><label class="opt"><input type="radio" name="q2" value="2"> B) BACDE</label><label class="opt"><input type="radio" name="q2" value="3"> C) DBACE</label><label class="opt"><input type="radio" name="q2" value="4"> D) CDAEB</label></div></div>
+<div class="q-box">
+<h4 style="font-size:13px;margin-bottom:8px">Question Navigation</h4>
+<div class="nav-grid" id="navGrid"></div>
+</div>
 
-<div class="card"><div class="qbody">Q3. If you __ hard, you __ the exam today?</div><div class="opts">
-<label class="opt"><input type="radio" name="q3" value="1"> A) Studied, will clear</label><label class="opt"><input type="radio" name="q3" value="2"> B) Study, will clear</label><label class="opt"><input type="radio" name="q3" value="3"> C) Had studied, would have cleared</label><label class="opt"><input type="radio" name="q3" value="4"> D) Had studied, cleared</label></div></div>
+<div style="height:80px"></div>
 
-<div class="card"><div class="qbody">Q4. Error: Children washed / hands / after they played / with puppy</div><div class="opts">
-<label class="opt"><input type="radio" name="q4" value="1"> A) A</label><label class="opt"><input type="radio" name="q4" value="2"> B) B</label><label class="opt"><input type="radio" name="q4" value="3"> C) C</label><label class="opt"><input type="radio" name="q4" value="4"> D) No error</label></div></div>
+<div class="action-bar">
+<button id="prevBtn">← PREV</button>
+<button id="nextBtn">NEXT →</button>
+<button id="submitBtn" onclick="submitTest()">SUBMIT TEST</button>
+</div>
 
-<div class="card"><div class="qbody">Q5. You cannot have cake and eat it too = ?</div><div class="opts">
-<label class="opt"><input type="radio" name="q5" value="1"> A) Enjoy forever</label><label class="opt"><input type="radio" name="q5" value="2"> B) Enjoy without payment</label><label class="opt"><input type="radio" name="q5" value="3"> C) Have it both ways</label><label class="opt"><input type="radio" name="q5" value="4"> D) Lose everything</label></div></div>
-
-<div class="card"><div class="qbody">Q6. Put in order: a-and I / b-together / c-Satish / d-travel / e-usually</div><div class="opts">
-<label class="opt"><input type="radio" name="q6" value="1"> A) eacbd</label><label class="opt"><input type="radio" name="q6" value="2"> B) ecbad</label><label class="opt"><input type="radio" name="q6" value="3"> C) eabcd</label><label class="opt"><input type="radio" name="q6" value="4"> D) edcba</label></div></div>
-
-<div class="card"><div class="qbody">Q7. 'Take a leaf out of someone's book' means?</div><div class="opts">
-<label class="opt"><input type="radio" name="q7" value="1"> A) Tear a page</label><label class="opt"><input type="radio" name="q7" value="2"> B) Read a book</label><label class="opt"><input type="radio" name="q7" value="3"> C) Write a book</label><label class="opt"><input type="radio" name="q7" value="4"> D) To imitate somebody</label></div></div>
-
-<div class="card"><div class="qbody">Q8. KUDOS means?</div><div class="opts">
-<label class="opt"><input type="radio" name="q8" value="1"> A) Insult</label><label class="opt"><input type="radio" name="q8" value="2"> B) Blame</label><label class="opt"><input type="radio" name="q8" value="3"> C) Criticism</label><label class="opt"><input type="radio" name="q8" value="4"> D) Praise</label></div></div>
-
-<div class="card"><div class="qbody">Q9. Synonym of AMENABLE?</div><div class="opts">
-<label class="opt"><input type="radio" name="q9" value="1"> A) Doubtful</label><label class="opt"><input type="radio" name="q9" value="2"> B) Unwilling</label><label class="opt"><input type="radio" name="q9" value="3"> C) Responsive</label><label class="opt"><input type="radio" name="q9" value="4"> D) Disagreeable</label></div></div>
-
-<div class="card"><div class="qbody">Q10. Synonym of ANTIDOTE?</div><div class="opts">
-<label class="opt"><input type="radio" name="q10" value="1"> A) Poisonous</label><label class="opt"><input type="radio" name="q10" value="2"> B) Remedy</label><label class="opt"><input type="radio" name="q10" value="3"> C) Equivalent</label><label class="opt"><input type="radio" name="q10" value="4"> D) Dangerous</label></div></div>
-
-<div class="card"><div class="qbody">Q11. Antonym of TRANSPARENT?</div><div class="opts">
-<label class="opt"><input type="radio" name="q11" value="1"> A) Opaque</label><label class="opt"><input type="radio" name="q11" value="2"> B) Translucent</label><label class="opt"><input type="radio" name="q11" value="3"> C) Susceptible</label><label class="opt"><input type="radio" name="q11" value="4"> D) Fragile</label></div></div>
-
-<div class="card"><div class="qbody">Q12. Antonym of UNANIMOUS?</div><div class="opts">
-<label class="opt"><input type="radio" name="q12" value="1"> A) United</label><label class="opt"><input type="radio" name="q12" value="2"> B) Partial / Divided</label><label class="opt"><input type="radio" name="q12" value="3"> C) Compatible</label><label class="opt"><input type="radio" name="q12" value="4"> D) Harmonious</label></div></div>
-
-<div class="card"><div class="qbody">Q13. His mother was __ American, father was __ European?</div><div class="opts">
-<label class="opt"><input type="radio" name="q13" value="1"> A) a, a</label><label class="opt"><input type="radio" name="q13" value="2"> B) a, an</label><label class="opt"><input type="radio" name="q13" value="3"> C) an, a</label><label class="opt"><input type="radio" name="q13" value="4"> D) an, an</label></div></div>
-
-<div class="card"><div class="qbody">Q14. Please attend __ the issue?</div><div class="opts">
-<label class="opt"><input type="radio" name="q14" value="1"> A) by</label><label class="opt"><input type="radio" name="q14" value="2"> B) in</label><label class="opt"><input type="radio" name="q14" value="3"> C) to</label><label class="opt"><input type="radio" name="q14" value="4"> D) No preposition</label></div></div>
-
-<div class="card"><div class="qbody">Q15. Either of the roads __ to Vasantha Nagar?</div><div class="opts">
-<label class="opt"><input type="radio" name="q15" value="1"> A) lead</label><label class="opt"><input type="radio" name="q15" value="2"> B) leads</label><label class="opt"><input type="radio" name="q15" value="3"> C) have led</label><label class="opt"><input type="radio" name="q15" value="4"> D) are led</label></div></div>
-
-<div class="card"><div class="qbody">Q16. I __ the coins now?</div><div class="opts">
-<label class="opt"><input type="radio" name="q16" value="1"> A) have been counting</label><label class="opt"><input type="radio" name="q16" value="2"> B) count</label><label class="opt"><input type="radio" name="q16" value="3"> C) was counting</label><label class="opt"><input type="radio" name="q16" value="4"> D) am counting</label></div></div>
-
-<div class="card"><div class="qbody">Q17. Which Article usage is WRONG?</div><div class="opts">
-<label class="opt"><input type="radio" name="q17" value="1"> A) the Mount Kilimanjaro</label><label class="opt"><input type="radio" name="q17" value="2"> B) the USA</label><label class="opt"><input type="radio" name="q17" value="3"> C) an hour</label><label class="opt"><input type="radio" name="q17" value="4"> D) a European</label></div></div>
-
-<div class="card"><div class="qbody">Q18. Where did you come __?</div><div class="opts">
-<label class="opt"><input type="radio" name="q18" value="1"> A) in</label><label class="opt"><input type="radio" name="q18" value="2"> B) from</label><label class="opt"><input type="radio" name="q18" value="3"> C) at</label><label class="opt"><input type="radio" name="q18" value="4"> D) to</label></div></div>
-
-<div class="card"><div class="qbody">Q19. Raghu __ cricket when his friend went yesterday?</div><div class="opts">
-<label class="opt"><input type="radio" name="q19" value="1"> A) plays</label><label class="opt"><input type="radio" name="q19" value="2"> B) played</label><label class="opt"><input type="radio" name="q19" value="3"> C) has played</label><label class="opt"><input type="radio" name="q19" value="4"> D) was playing</label></div></div>
-
-<div class="card"><div class="qbody">Q20. Passive: We would have painted the walls green.</div><div class="opts">
-<label class="opt"><input type="radio" name="q20" value="1"> A) The walls would have been painted green by us</label><label class="opt"><input type="radio" name="q20" value="2"> B) Green walls would have been painted</label><label class="opt"><input type="radio" name="q20" value="3"> C) Walls are painted green</label><label class="opt"><input type="radio" name="q20" value="4"> D) We painted walls green</label></div></div>
-
-<div class="card"><div class="qbody">Q21. Indirect: Politician said, "It gives me great pleasure to be here this morning"</div><div class="opts">
-<label class="opt"><input type="radio" name="q21" value="1"> A) Politician said that it gave him great pleasure to be there that morning</label><label class="opt"><input type="radio" name="q21" value="2"> B) Politician said it gives pleasure</label><label class="opt"><input type="radio" name="q21" value="3"> C) Politician says it gave pleasure</label><label class="opt"><input type="radio" name="q21" value="4"> D) Politician is saying pleasure</label></div></div>
-
-<div class="card"><div class="qbody">Q22. Indirect: Spectators said, "Bravo! Well played, Sachin."</div><div class="opts">
-<label class="opt"><input type="radio" name="q22" value="1"> A) Spectators said bravo</label><label class="opt"><input type="radio" name="q22" value="2"> B) Spectators shouted bravo</label><label class="opt"><input type="radio" name="q22" value="3"> C) Spectators told well played</label><label class="opt"><input type="radio" name="q22" value="4"> D) Spectators applauded Sachin saying he had played well</label></div></div>
-
-<div class="card"><div class="qbody">Q23. S1-Proverbs contain homely truths... S6-They are everyman's philosophy. Order?</div><div class="opts">
-<label class="opt"><input type="radio" name="q23" value="1"> A) PSQR</label><label class="opt"><input type="radio" name="q23" value="2"> B) QSPR</label><label class="opt"><input type="radio" name="q23" value="3"> C) QPSR</label><label class="opt"><input type="radio" name="q23" value="4"> D) SPQR</label></div></div>
-
-<div class="card"><div class="qbody">Q24. Passive: Do you imitate others?</div><div class="opts">
-<label class="opt"><input type="radio" name="q24" value="1"> A) Are others imitated by you?</label><label class="opt"><input type="radio" name="q24" value="2"> B) Are you imitated?</label><label class="opt"><input type="radio" name="q24" value="3"> C) Do others imitate you?</label><label class="opt"><input type="radio" name="q24" value="4"> D) Were others imitated?</label></div></div>
-
-<button class="btn" type="button" onclick="check()">SUBMIT TEST</button>
-<div id="res"></div>
-</form></div>
 <script>
-const ans={q1:"4",q2:"1",q3:"3",q4:"3",q5:"3",q6:"2",q7:"4",q8:"4",q9:"3",q10:"2",q11:"1",q12:"2",q13:"3",q14:"3",q15:"2",q16:"4",q17:"1",q18:"2",q19:"4",q20:"1",q21:"1",q22:"4",q23:"2",q24:"1"};
-function check(){let s=0;for(let i=1;i<=24;i++){let e=document.querySelector('input[name="q'+i+'"]:checked');if(e&&e.value==ans["q"+i])s++;}let r=document.getElementById("res");r.style.display="block";r.innerHTML="<h2>✅ Score: "+s+"/24 = "+(s*4)+"/96 Marks</h2><p>Test 1 Completed - 24Q</p>";window.scrollTo(0,document.body.scrollHeight);}
+// COPY PROTECTION
+document.addEventListener('keydown',e=>{
+ if((e.ctrlKey && (e.key=='c' || e.key=='u' || e.key=='p')) || e.key=='F12'){e.preventDefault();return false}
+});
+document.addEventListener('copy',e=>e.preventDefault());
+
+// QUESTIONS - 25 Q SAMPLE - మీరు ఇక్కడ మీ Questions మార్చుకోవచ్చు
+const questions=[
+{q:"భారత రాజ్యాంగం ఏ తేదీన అమల్లోకి వచ్చింది?",o:["26 Jan 1950","15 Aug 1947","26 Nov 1949","2 Oct 1950"],a:0},
+{q:"AP లో కొత్తగా ఏర్పడిన జిల్లాల సంఖ్య?",o:["13","26","25","23"],a:1},
+{q:"IPC Section 302 దేనికి సంబంధించింది?",o:["Theft","Murder","Cheating","Dowry"],a:1},
+{q:"తెలంగాణ రాష్ట్ర అవతరణ దినోత్సవం?",o:["June 2","June 1","July 2","Aug 15"],a:0},
+{q:"విజయవాడ ఏ నది ఒడ్డున ఉంది?",o:["గోదావరి","కృష్ణా","తుంగభద్ర","పెన్నా"],a:1},
+{q:"Article 21 దేని గురించి?",o:["Equality","Life & Liberty","Freedom","Religion"],a:1},
+{q:"SI యొక్క పూర్తి రూపం?",o:["Sub Inspector","Station Inspector","Super Inspector","Senior Inspector"],a:0},
+{q:"FIR అంటే?",o:["First Info Report","Final Investigation Report","First Investigation Report","None"],a:0},
+{q:"భారత జాతీయ జెండా రూపకర్త?",o:["Gandhi","Nehru","Pingali Venkayya","Patel"],a:2},
+{q:"2024 ఒలింపిక్స్ ఎక్కడ జరిగాయి?",o:["Tokyo","Paris","London","Beijing"],a:1},
+{q:"AP పోలీస్ హెడ్ క్వార్టర్స్ ఎక్కడ?",o:["Vizag","Mangalagiri","Vijayawada","Tirupati"],a:1},
+{q:"CrPC Section 41 దేనికి?",o:["Arrest without warrant","Bail","Search","Charge sheet"],a:0},
+{q:"భారతదేశంలో మొదటి మహిళా IPS?",o:["Kiran Bedi","Saritha","Lakshmi","Usha"],a:0},
+{q:"Zero FIR అంటే?",o:["Anywhere register","No FIR","Fake FIR","Closed FIR"],a:0},
+{q:"AP లో మొత్తం పోలీస్ కమిషనరేట్లు?",o:["2","3","4","5"],a:1},
+{q:"Article 32 ను ఎవరు ప్రవేశపెట్టారు?",o:["Ambedkar - Heart & Soul","Nehru","Gandhi","Patel"],a:0},
+{q:"Disha Act మొదట ఏ రాష్ట్రంలో?",o:["AP","TS","TN","KA"],a:0},
+{q:"POCSO Act సంవత్సరం?",o:["2010","2012","2014","2015"],a:1},
+{q:"Cyber Crime Complaint Portal?",o:["cybercrime.gov.in","police.gov.in","cbi.gov.in","None"],a:0},
+{q:"తెలంగాణ పోలీస్ మోటో?",o:["Duty, Honour, Compassion","With you For you","Truth Alone Triumphs","Service"],a:0},
+{q:"AP పోలీస్ మోటో?",o:["Service","Truth Alone Triumphs","With you For you","Honour"],a:2},
+{q:"Section 144 CrPC ఎవరు విధిస్తారు?",o:["Magistrate","SI","CI","SP"],a:0},
+{q:"భారతదేశంలో అతిపెద్ద జైలు?",o:["Tihar","Yerwada","Cherlapally","Rajahmundry"],a:0},
+{q:"NDPS Act దేనికి?",o:["Drugs","Terror","Cyber","Dowry"],a:0},
+{q:"Right to Information Act Year?",o:["2005","2002","2010","2000"],a:0},
+];
+
+let cur=0, ans=new Array(25).fill(-1);
+
+// Render Nav
+const grid=document.getElementById('navGrid');
+questions.forEach((_,i)=>{
+ let d=document.createElement('div');
+ d.className='nav-btn'; d.textContent=i+1;
+ d.onclick=()=>{cur=i;render();};
+ grid.appendChild(d);
+});
+
+function render(){
+ document.getElementById('qNo').textContent=`Q ${cur+1} / 25`;
+ document.getElementById('qText').textContent=questions[cur].q;
+ let optBox=document.getElementById('options');
+ optBox.innerHTML='';
+ questions[cur].o.forEach((op,i)=>{
+   let div=document.createElement('div');
+   div.className='opt'+(ans[cur]==i?' selected':'');
+   div.innerHTML=`<input type="radio" ${ans[cur]==i?'checked':''}> <span>${op}</span>`;
+   div.onclick=()=>{ans[cur]=i;render();updateNav();};
+   optBox.appendChild(div);
+ });
+ document.getElementById('prevBtn').style.display=cur==0?'none':'block';
+ document.getElementById('nextBtn').style.display=cur==24?'none':'block';
+ document.getElementById('submitBtn').style.display=cur==24?'block':'none';
+ document.querySelectorAll('.nav-btn').forEach((b,i)=>{
+   b.className='nav-btn'+(ans[i]!=-1?' answered':'')+(i==cur?' current':'');
+ });
+}
+function updateNav(){render();}
+
+document.getElementById('nextBtn').onclick=()=>{if(cur<24){cur++;render();}};
+document.getElementById('prevBtn').onclick=()=>{if(cur>0){cur--;render();}};
+
+// Timer 30 Min
+let time=30*60;
+setInterval(()=>{
+ time--; let m=Math.floor(time/60), s=time%60;
+ document.getElementById('timer').textContent=`${m}:${s<10?'0':''}${s}`;
+ if(time<=0) submitTest();
+},1000);
+
+function submitTest(){
+ let score=0;
+ ans.forEach((a,i)=>{if(a==questions[i].a) score++;});
+ document.body.innerHTML=`<div style="text-align:center;padding:40px 20px;background:#fff;min-height:100vh">
+ <h2 style="color:#1e3a8a">TEST-01 Completed! 🎉</h2>
+ <div style="font-size:48px;font-weight:800;color:#1e3a8a;margin:20px 0">${score}/25</div>
+ <p>Correct: ${score} | Wrong: ${25-score}</p>
+ <p style="margin-top:15px">MCRES - Mallaiah Center</p>
+ <a href="../"><button style="margin-top:20px;background:#1e3a8a;color:#fff;padding:12px 24px;border:none;border-radius:10px;font-weight:700">Back to Tests</button></a>
+ </div>`;
+}
+render();
 </script>
-</body></html>
+</body>
+</html>
