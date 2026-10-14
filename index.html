@@ -7,95 +7,98 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800;900&family=Fraunces:opsz,wght@9..144,900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:"Plus Jakarta Sans",sans-serif;background:#f8fafc;overflow-x:hidden}
-.top-header{background:#0f172a;padding:20px 10px;text-align:center;border-bottom:5px solid #facc15}
-.top-header h1{font-family:"Fraunces";font-weight:900;font-size:54px;color:#fff;line-height:0.85;letter-spacing:-1.5px}
-.top-header h2{font-family:"Fraunces";font-weight:800;font-size:20px;color:#e2e8f0;margin-top:10px;line-height:1.15;letter-spacing:0.5px}
-.top-header p{font-size:13px;color:#facc15;font-weight:800;letter-spacing:1.2px;margin-top:12px;text-transform:uppercase}
-.sub-header{background:linear-gradient(90deg,#fde047,#facc15);color:#000;text-align:center;padding:12px;font-weight:900;font-size:15px;letter-spacing:1px}
-.wrap{max-width:540px;margin:0 auto;padding:18px 14px;background:#f8fafc;min-height:80vh}
-.card{display:flex;justify-content:space-between;align-items:center;padding:18px 14px;border-radius:20px;margin-bottom:14px;color:#fff;box-shadow:0 10px 28px rgba(0,0,0,0.22);cursor:pointer;transition:transform 0.2s}
+body{font-family:"Plus Jakarta Sans",sans-serif;background:#f1f5f9}
+.top{background:#0f172a;padding:22px 12px;text-align:center;border-bottom:5px solid #facc15}
+.top h1{font-family:"Fraunces";font-weight:900;font-size:56px;color:#fff;line-height:0.85;letter-spacing:-1px}
+.top h2{font-family:"Fraunces";font-weight:800;font-size:20px;color:#e2e8f0;margin-top:10px;line-height:1.2}
+.top h2 span{color:#fde047}
+.top p{color:#facc15;font-size:13px;font-weight:800;margin-top:12px;letter-spacing:1.2px;text-transform:uppercase}
+.sub{ background:linear-gradient(90deg,#fde047,#facc15);color:#000;text-align:center;padding:12px;font-weight:900;font-size:14px;letter-spacing:1px}
+.wrap{max-width:540px;margin:0 auto;padding:18px 14px}
+.card{display:flex;justify-content:space-between;align-items:center;padding:18px 14px;border-radius:20px;margin-bottom:14px;color:#fff;box-shadow:0 10px 28px rgba(0,0,0,0.22);cursor:pointer;transition:0.2s}
 .card:active{transform:scale(0.97)}
-.left{display:flex;gap:13px;align-items:center}
-.icon{width:46px;height:46px;background:#fff;border-radius:14px;display:grid;place-items:center;font-size:22px;box-shadow:0 4px 12px rgba(0,0,0,0.2);flex-shrink:0}
-.card b{font-size:15px;display:block;line-height:1.1}
-.card span{font-size:11px;opacity:0.95;display:block;margin-top:3px;font-weight:600;line-height:1.2}
-.view-btn{background:#fff;color:#000;padding:9px 20px;border-radius:99px;text-decoration:none;font-size:12px;font-weight:900;border:none;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,0.25);flex-shrink:0}
-.c1{background:linear-gradient(135deg,#f59e0b,#d97706)}
-.c2{background:linear-gradient(135deg,#ef4444,#dc2626)}
-.c3{background:linear-gradient(135deg,#8b5cf6,#7c3aed)}
-.c4{background:linear-gradient(135deg,#ec4899,#db2777)}
-.c5{background:linear-gradient(135deg,#06b6d4,#0891b2)}
-.c6{background:linear-gradient(135deg,#10b981,#059669)}
-.detail-box{background:#fff;border-radius:18px;padding:18px;margin:-8px 0 16px 0;display:none;border:3px solid #facc15;box-shadow:0 10px 30px rgba(0,0,0,0.12);animation:pop 0.3s ease}
-@keyframes pop{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:translateY(0)}}
-.detail-box h3{font-size:15px;font-weight:900;color:#0f172a}
-.detail-box p{font-size:12px;color:#334155;margin:8px 0 12px;line-height:1.6}
-.detail-box a{background:#0f172a;color:#facc15;padding:10px 20px;border-radius:99px;text-decoration:none;font-size:12px;font-weight:900;display:inline-block}
-.back-home{display:block;width:fit-content;margin:24px auto;background:#0f172a;color:#facc15;padding:12px 26px;border-radius:99px;text-decoration:none;font-size:13px;font-weight:800;border:1px solid #facc15}
+.left{display:flex;gap:12px;align-items:center}
+.icon{width:46px;height:46px;background:#fff;border-radius:14px;display:grid;place-items:center;font-size:22px;flex-shrink:0;box-shadow:0 4px 10px rgba(0,0,0,0.2)}
+.card b{font-size:15px;display:block}
+.card span{font-size:11px;opacity:0.95;display:block;margin-top:2px;font-weight:600}
+.view{background:#fff;color:#000;padding:9px 20px;border-radius:99px;border:none;font-weight:900;font-size:12px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,0.2)}
+.c1{background:linear-gradient(135deg,#f59e0b,#d97706)} .c2{background:linear-gradient(135deg,#ef4444,#dc2626)} .c3{background:linear-gradient(135deg,#8b5cf6,#7c3aed)} .c4{background:linear-gradient(135deg,#ec4899,#db2777)} .c5{background:linear-gradient(135deg,#06b6d4,#0891b2)} .c6{background:linear-gradient(135deg,#10b981,#059669)}
+.detail{display:none;background:#fff;border-radius:18px;padding:18px;margin:-8px 0 16px 0;border:3px solid #facc15;box-shadow:0 10px 30px rgba(0,0,0,0.12)}
+.detail h3{font-size:15px;font-weight:900;color:#0f172a}
+.detail p{font-size:12px;color:#475569;margin:8px 0 12px;line-height:1.6}
+.start{background:#0f172a;color:#facc15;padding:10px 22px;border-radius:99px;border:none;font-weight:900;font-size:12px;cursor:pointer;display:inline-block;text-decoration:none}
+.quiz{display:none;background:#fff;border-radius:20px;padding:20px;margin:20px auto;max-width:540px;border:3px solid #0f172a}
+.quiz h2{font-family:"Fraunces";font-size:18px;font-weight:900}
+.quiz .q{margin:14px 0;padding:14px;background:#f8fafc;border-radius:12px;border:1px solid #e2e8f0}
+.quiz .q b{font-size:13px}
+.quiz .q label{display:block;font-size:12px;margin-top:6px;cursor:pointer}
+.back{display:block;width:fit-content;margin:20px auto;background:#0f172a;color:#facc15;padding:12px 26px;border-radius:99px;text-decoration:none;font-size:12px;font-weight:800;border:1px solid #facc15}
 </style>
 </head>
 <body>
 
-<div class="top-header">
+<div class="top">
 <h1>MCRES</h1>
-<h2>MALLAIAH CENTER FOR<br>RIVER & EARTH SCIENCES</h2>
+<h2>MALLAIAH CENTER FOR<br><span>RIVER & EARTH SCIENCES</span></h2>
 <p>Exploring River • Decoding Earth • Advancing Science</p>
 </div>
+<div class="sub">🎯 MCRES - TEST SERIES - COLOUR FULL</div>
 
-<div class="sub-header">🎯 MCRES - TEST SERIES - COLOUR FULL</div>
+<div class="wrap" id="list">
 
-<div class="wrap">
+<div class="card c1" onclick="toggleBox('b1')"><div class="left"><div class="icon">📚</div><div><b>TSPSC Groups</b><span>Group 1,2,3,4 - Prelims & Mains</span></div></div><button class="view" onclick="event.stopPropagation();toggleBox('b1')">View →</button></div>
+<div id="b1" class="detail"><h3>📚 TSPSC Groups</h3><p>Full Mock Tests with Detailed Solutions.</p><button class="start" onclick="startQuiz('TSPSC Groups')">Start Test →</button></div>
 
-<div class="card c1" onclick="openDetail('box1')">
-<div class="left"><div class="icon">📚</div><div><b>TSPSC Groups</b><span>Group 1,2,3,4 - Prelims & Mains</span></div></div>
-<button class="view-btn" onclick="event.stopPropagation(); openDetail('box1')">View →</button>
-</div>
-<div id="box1" class="detail-box"><h3>📚 TSPSC Groups - View Working!</h3><p>Group 1,2,3,4 Prelims + Mains Full Mock Tests, Daily Current Affairs, Detailed Solutions Available Now.</p><a href="#">Start Test Now →</a></div>
+<div class="card c2" onclick="toggleBox('b2')"><div class="left"><div class="icon">🚔</div><div><b>SI / Constable</b><span>Telangana Police SI & Constable</span></div></div><button class="view" onclick="event.stopPropagation();toggleBox('b2')">View →</button></div>
+<div id="b2" class="detail"><h3>🚔 SI / Constable - Constable View Working!</h3><p>Telangana SI & Constable - 50 Full Tests, Previous Papers, Physical Test Tips - Live Now!</p><button class="start" onclick="startQuiz('SI / Constable')">Start Constable Test →</button></div>
 
-<div class="card c2" onclick="openDetail('box2')">
-<div class="left"><div class="icon">🚔</div><div><b>SI / Constable</b><span>Telangana Police SI & Constable</span></div></div>
-<button class="view-btn" onclick="event.stopPropagation(); openDetail('box2')">View →</button>
-</div>
-<div id="box2" class="detail-box"><h3>🚔 SI / Constable - Constable View Working!</h3><p>Telangana SI & Constable - 50 Full Tests, Previous Papers, Physical Test Tips. Constable Tests Live!</p><a href="#">Start Constable Test →</a></div>
+<div class="card c3" onclick="toggleBox('b3')"><div class="left"><div class="icon">🎓</div><div><b>DSC / Gurukul / TET</b><span>SGT, SA, LP, PET, Gurukul, TET</span></div></div><button class="view" onclick="event.stopPropagation();toggleBox('b3')">View →</button></div>
+<div id="b3" class="detail"><h3>🎓 DSC / Gurukul / TET</h3><p>All Teaching Exams Full Series.</p><button class="start" onclick="startQuiz('DSC / Gurukul / TET')">Start Test →</button></div>
 
-<div class="card c3" onclick="openDetail('box3')">
-<div class="left"><div class="icon">🎓</div><div><b>DSC / Gurukul / TET</b><span>SGT, SA, LP, PET, Gurukul, TET</span></div></div>
-<button class="view-btn" onclick="event.stopPropagation(); openDetail('box3')">View →</button>
-</div>
-<div id="box3" class="detail-box"><h3>🎓 DSC / Gurukul / TET</h3><p>SGT, SA, Language Pandit, PET, Gurukul, TET Paper 1 & 2 Full Test Series.</p><a href="#">Start Test →</a></div>
+<div class="card c4" onclick="toggleBox('b4')"><div class="left"><div class="icon">📖</div><div><b>NET / SET</b><span>UGC NET Paper 1 & 2, TS SET</span></div></div><button class="view" onclick="event.stopPropagation();toggleBox('b4')">View →</button></div>
+<div id="b4" class="detail"><h3>📖 NET / SET</h3><p>UGC NET Earth Science Mock Tests.</p><button class="start" onclick="startQuiz('NET / SET')">Start Test →</button></div>
 
-<div class="card c4" onclick="openDetail('box4')">
-<div class="left"><div class="icon">📖</div><div><b>NET / SET</b><span>UGC NET Paper 1 & 2, TS SET</span></div></div>
-<button class="view-btn" onclick="event.stopPropagation(); openDetail('box4')">View →</button>
-</div>
-<div id="box4" class="detail-box"><h3>📖 NET / SET</h3><p>UGC NET Paper 1 & Earth Science Paper 2, TS SET - New Pattern Tests.</p><a href="#">Start Test →</a></div>
+<div class="card c5" onclick="toggleBox('b5')"><div class="left"><div class="icon">👨‍🏫</div><div><b>DL / JL</b><span>Degree & Junior Lecturer</span></div></div><button class="view" onclick="event.stopPropagation();toggleBox('b5')">View →</button></div>
+<div id="b5" class="detail"><h3>👨‍🏫 DL / JL</h3><p>Degree & Junior Lecturer Tests.</p><button class="start" onclick="startQuiz('DL / JL')">Start Test →</button></div>
 
-<div class="card c5" onclick="openDetail('box5')">
-<div class="left"><div class="icon">👨‍🏫</div><div><b>DL / JL</b><span>Degree & Junior Lecturer</span></div></div>
-<button class="view-btn" onclick="event.stopPropagation(); openDetail('box5')">View →</button>
-</div>
-<div id="box5" class="detail-box"><h3>👨‍🏫 DL / JL</h3><p>Degree Lecturer & Junior Lecturer Subject Wise Mock Tests.</p><a href="#">Start Test →</a></div>
-
-<div class="card c6" onclick="openDetail('box6')">
-<div class="left"><div class="icon">📝</div><div><b>Others</b><span>SSC, RRB, Banking & More Tests</span></div></div>
-<button class="view-btn" onclick="event.stopPropagation(); openDetail('box6')">View →</button>
-</div>
-<div id="box6" class="detail-box"><h3>📝 Others</h3><p>SSC, RRB, Banking & All Competitive Exams in One Place.</p><a href="#">Start Test →</a></div>
+<div class="card c6" onclick="toggleBox('b6')"><div class="left"><div class="icon">📝</div><div><b>Others</b><span>SSC, RRB, Banking & More Tests</span></div></div><button class="view" onclick="event.stopPropagation();toggleBox('b6')">View →</button></div>
+<div id="b6" class="detail"><h3>📝 Others</h3><p>All Competitive Exams.</p><button class="start" onclick="startQuiz('Others')">Start Test →</button></div>
 
 </div>
 
-<a class="back-home" href="/">← Back to Home - MCRES</a>
+<div id="quizBox" class="quiz">
+<h2 id="quizTitle">Test Series</h2>
+<div class="q"><b>Q1. Musi River originates from?</b><label><input type="radio" name="q1"> Ananthagiri Hills</label><label><input type="radio" name="q1"> Nallamala Hills</label></div>
+<div class="q"><b>Q2. Telangana formation year?</b><label><input type="radio" name="q2"> 2014</label><label><input type="radio" name="q2"> 2016</label></div>
+<button class="start" style="margin-top:10px" onclick="alert('Test Submitted! MCRES - Result will be sent!')">Submit Test</button>
+<button class="view" style="margin-left:8px;background:#f1f5f9" onclick="closeQuiz()">← Back to Tests</button>
+</div>
+
+<a class="back" href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">↑ Back to Top - MCRES</a>
 
 <script>
-function openDetail(id){
-var box=document.getElementById(id);
-var isOpen=box.style.display==='block';
-document.querySelectorAll('.detail-box').forEach(function(d){d.style.display='none'});
-if(!isOpen){
-box.style.display='block';
-setTimeout(function(){box.scrollIntoView({behavior:'smooth',block:'center'})},100);
+function toggleBox(id){
+var el=document.getElementById(id);
+var open=el.style.display==='block';
+document.querySelectorAll('.detail').forEach(function(d){d.style.display='none'});
+if(!open){
+el.style.display='block';
+setTimeout(function(){el.scrollIntoView({behavior:'smooth',block:'center'})},100);
 }
+}
+function startQuiz(name){
+document.getElementById('list').style.display='none';
+document.querySelector('.sub').style.display='none';
+var qb=document.getElementById('quizBox');
+qb.style.display='block';
+document.getElementById('quizTitle').innerText=name+' - Test Started';
+qb.scrollIntoView({behavior:'smooth',block:'start'});
+}
+function closeQuiz(){
+document.getElementById('quizBox').style.display='none';
+document.getElementById('list').style.display='block';
+document.querySelector('.sub').style.display='block';
+document.getElementById('list').scrollIntoView({behavior:'smooth'});
 }
 </script>
 
