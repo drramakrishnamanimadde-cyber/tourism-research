@@ -3,53 +3,58 @@
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MCRES - Mallaiah Center for River & Earth Sciences</title>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&family=Fraunces:opsz,wght@9..144,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800;900&family=Fraunces:opsz,wght@9..144,700;800&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:"Plus Jakarta Sans",sans-serif;background:#f8fafc}
-.ann{background:#fef08a;color:#422006;text-align:center;padding:10px 12px;font-size:12px;font-weight:700;display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.ann{background:#fef08a;color:#422006;text-align:center;padding:10px 12px;font-size:12px;font-weight:800;display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
 .ann a{background:#0f172a;color:#fde68a;padding:5px 14px;border-radius:99px;text-decoration:none;font-size:11px}
-.header{position:sticky;top:0;z-index:99;background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);border-bottom:1px solid #e2e8f0;display:flex;justify-content:space-between;align-items:center;padding:10px 20px}
+.header{position:sticky;top:0;z-index:99;background:rgba(255,255,255,0.95);backdrop-filter:blur(20px);border-bottom:1px solid #e2e8f0;display:flex;justify-content:space-between;align-items:center;padding:10px 20px}
 .logo{display:flex;align-items:center;gap:8px}
 .logo-icon{width:32px;height:32px;background:#0f172a;color:#fff;border-radius:50%;display:grid;place-items:center;font-family:"Fraunces";font-weight:800}
 .logo-text{font-family:"Fraunces";font-weight:800;color:#0f172a;font-size:13px;line-height:1}
 .logo-text span{display:block;font-size:7.5px;font-family:"Plus Jakarta Sans";color:#475569;font-weight:500}
 .nav{display:flex;gap:18px;align-items:center}
 .nav a{color:#334155;text-decoration:none;font-size:13px;font-weight:600}
-.nav a.test{background:#fef08a;color:#000 !important;padding:7px 14px;border-radius:99px;font-weight:800 !important}
+.nav a.test{background:#fef08a;color:#000 !important;padding:7px 14px;border-radius:99px;font-weight:900 !important;border:1px solid #000}
 .btn-d{background:#0f172a;color:#fff;padding:7px 16px;border-radius:99px;text-decoration:none;font-weight:700;font-size:12px}
 .hamburger{display:none;font-size:24px;background:none;border:none;cursor:pointer}
-.mob-menu{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#08152e;z-index:100;padding:30px;flex-direction:column;gap:0}
+.mob-menu{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#020617;z-index:100;padding:30px;flex-direction:column;gap:0}
 .mob-menu a{display:block;color:#fff;text-decoration:none;padding:16px 0;border-bottom:1px solid rgba(255,255,255,0.1);font-size:18px}
 .mob-menu .close{position:absolute;top:20px;right:20px;font-size:28px;color:#fff;background:none;border:none}
-.hero{position:relative;background:#fff;display:grid;grid-template-columns:48% 52%;min-height:78vh;overflow:hidden;border-bottom:1px solid #e2e8f0}
-.h-left{padding:50px 32px;z-index:3;display:flex;flex-direction:column;justify-content:center;background:#fff}
-.badge{display:inline-block;border:1px solid #e2e8f0;background:#fff;color:#0f172a;font-size:9px;letter-spacing:1px;padding:7px 12px;border-radius:99px;margin-bottom:16px;font-weight:700}
-.h-left h1{font-family:"Fraunces";font-size:38px;line-height:1.05;color:#0f172a;font-weight:800}
-.h-left h1 .gold{color:#854d0e}
-.h-left .subdesc{color:#475569;font-size:12.5px;line-height:1.6;margin:12px 0 20px;max-width:420px}
+.hero{position:relative;background:#fff;display:grid;grid-template-columns:50% 50%;min-height:82vh;overflow:hidden;border-bottom:1px solid #e2e8f0}
+.h-left{padding:45px 32px;z-index:3;display:flex;flex-direction:column;justify-content:center;background:#fff}
+.main-header{font-family:"Fraunces";font-weight:900;font-size:42px;line-height:0.9;color:#0f172a;letter-spacing:-0.5px}
+.main-header span{display:block;font-size:11px;font-family:"Plus Jakarta Sans";font-weight:600;color:#475569;letter-spacing:1px;margin-top:6px;text-transform:uppercase}
+.caption-box{margin:18px 0 10px;border-left:3px solid #facc15;padding-left:14px}
+.caption-box p{font-family:"Fraunces";font-size:22px;line-height:1.2;font-weight:700;color:#0f172a}
+.caption-box p:nth-child(1){color:#0e7490}
+.caption-box p:nth-child(2){color:#854d0e}
+.caption-box p:nth-child(3){color:#0f172a}
+.caption-box p em{font-style:normal;color:#a16207}
+.subdesc{color:#475569;font-size:12.5px;line-height:1.6;margin:14px 0 20px;max-width:420px}
 .btns{display:flex;gap:10px;flex-wrap:wrap}
 .be{background:#0f172a;color:#fff;padding:12px 20px;border-radius:99px;text-decoration:none;font-weight:800;font-size:13px}
-.bi{background:#fef08a;color:#000;padding:12px 20px;border-radius:99px;text-decoration:none;font-weight:800;font-size:13px;border:1px solid #000}
-.stats{display:flex;gap:0;margin-top:24px;background:#fff;border:1px solid #e2e8f0;border-radius:14px;overflow:hidden;width:fit-content}
+.bi{background:#fef08a;color:#000;padding:12px 20px;border-radius:99px;text-decoration:none;font-weight:900;font-size:13px;border:1px solid #000}
+.stats{display:flex;gap:0;margin-top:22px;background:#fff;border:1px solid #e2e8f0;border-radius:14px;overflow:hidden;width:fit-content;box-shadow:0 4px 20px rgba(0,0,0,0.04)}
 .st{padding:12px 18px;text-align:center;border-right:1px solid #f1f5f9;min-width:85px}
 .st:last-child{border:none}
 .st b{font-size:22px;color:#0f172a;display:block;font-weight:900}
 .st span{font-size:9px;color:#64748b;font-weight:600}
 .h-right{position:relative;overflow:hidden;background:#000}
 .h-right img{width:100%;height:100%;object-fit:cover}
-.h-right::before{content:"";position:absolute;left:-1px;top:0;width:35%;height:100%;background:linear-gradient(90deg,#ffffff 10%,transparent 100%);z-index:2}
+.h-right::before{content:"";position:absolute;left:-1px;top:0;width:40%;height:100%;background:linear-gradient(90deg,#ffffff 15%,transparent 100%);z-index:2}
 .focus{padding:50px 20px;background:#fff}
-.focus h2{text-align:center;font-family:"Fraunces";font-size:28px;color:#0f172a}
+.focus h2{text-align:center;font-family:"Fraunces";font-size:28px;color:#0f172a;font-weight:800}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:1100px;margin:24px auto 0}
 .card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:20px;box-shadow:0 8px 30px rgba(0,0,0,0.04);position:relative}
 .card h3{font-size:14px;color:#0f172a;margin:10px 0 6px;font-weight:800}
 .card p{font-size:12px;color:#64748b;line-height:1.5;margin-bottom:10px}
 .card a{font-size:11px;font-weight:800;color:#0f172a;text-decoration:none}
-.card.live{background:#fefce8;border:1px solid #fde047}
+.card.live{background:#fefce8;border:2px solid #fde047}
 .card.live a.main{background:#0f172a;color:#fff;padding:7px 14px;border-radius:99px;font-size:11px;display:inline-block}
 .view-btn{background:#fff;border:1px solid #e2e8f0;color:#0f172a;padding:6px 12px;border-radius:20px;font-size:10px;font-weight:700;text-decoration:none;display:inline-block;margin-top:8px;margin-right:6px}
-@media(max-width:900px){.hero{grid-template-columns:1fr}.h-right{height:380px;order:-1}.h-right::before{width:100%;height:35%;top:auto;bottom:-1px;background:linear-gradient(0deg,#ffffff 15%,transparent 100%)}.h-left{padding:28px 20px}.h-left h1{font-size:30px}.nav,.btn-d{display:none}.hamburger{display:block}.grid{grid-template-columns:1fr}.stats{width:100%}.st{flex:1}}
+@media(max-width:900px){.hero{grid-template-columns:1fr}.h-right{height:380px;order:-1}.h-right::before{width:100%;height:40%;top:auto;bottom:-1px;background:linear-gradient(0deg,#ffffff 20%,transparent 100%)}.h-left{padding:28px 20px}.main-header{font-size:36px}.caption-box p{font-size:19px}.nav,.btn-d{display:none}.hamburger{display:block}.grid{grid-template-columns:1fr}.stats{width:100%}.st{flex:1}}
 </style>
 </head>
 <body>
@@ -67,18 +72,27 @@ body{font-family:"Plus Jakarta Sans",sans-serif;background:#f8fafc}
 <button class="close" onclick="document.getElementById('mob').style.display='none'">✕</button>
 <a href="/">Home</a><a href="/about/">About</a><a href="/research/">Research</a><a href="/info-desk/">Info Desk</a>
 <a href="/test-series.html">🎯 Test Series</a>
-<a href="/constables/">🚔 Constable Tests</a>
+<a href="/test-series.html">🚔 Constable Tests</a>
 <a href="/contact/">Contact</a>
 </div>
+
 <div class="hero">
 <div class="h-left">
-<div class="badge">🔵 Mallaiah Center for River & Earth Sciences</div>
-<h1>Advancing <span class="gold">River & Earth</span> Science Research</h1>
+<div class="main-header">MCRES<span>Mallaiah Center for River & Earth Sciences</span></div>
+
+<div class="caption-box">
+<p>Exploring River</p>
+<p>Decoding Earth</p>
+<p>Advancing <em>Science</em></p>
+</div>
+
 <div class="subdesc">MCRES is dedicated to cutting-edge research in fluvial geomorphology, flood management, sediment studies, and sustainable river basin development.</div>
+
 <div class="btns">
 <a class="be" href="/research/">Explore Research →</a>
 <a class="bi" href="/test-series.html">🎯 Take Free Test Series</a>
 </div>
+
 <div class="stats">
 <div class="st"><b>15+</b><span>Research Projects</span></div>
 <div class="st"><b>50+</b><span>Publications</span></div>
@@ -87,6 +101,7 @@ body{font-family:"Plus Jakarta Sans",sans-serif;background:#f8fafc}
 </div>
 <div class="h-right"><img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070&auto=format&fit=crop" alt="Mountains"></div>
 </div>
+
 <div class="focus">
 <h2>Our Focus Areas</h2>
 <div class="grid">
@@ -103,7 +118,7 @@ body{font-family:"Plus Jakarta Sans",sans-serif;background:#f8fafc}
 <p style="font-size:11px;font-weight:800;color:#a16207;margin-bottom:10px">New: Test-01 Live Now!</p>
 <a href="/test-series.html" class="main">Start Test →</a>
 <br>
-<a href="/constables/" class="view-btn">🚔 Constable - View →</a>
+<a href="/test-series.html" class="view-btn">🚔 Constable - View →</a>
 <a href="/test-series.html" class="view-btn">View All Tests →</a>
 </div>
 <div class="card">
