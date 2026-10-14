@@ -3,18 +3,49 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MCRES - Test Series</title>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800;900&family=Fraunces:wght@900&display=swap" rel="stylesheet">
+<title>MCRES - Mallaiah Center for River & Earth Sciences</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800;900&family=Fraunces:opsz,wght@9..144,700;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:"Plus Jakarta Sans",sans-serif;background:#f1f5f9}
-.top{background:#08152e;padding:20px 12px;text-align:center;border-bottom:5px solid #fde68a}
-.top h1{font-family:"Fraunces";font-size:50px;color:#fff;font-weight:900;line-height:0.85}
-.top h2{font-family:"Fraunces";font-size:18px;color:#e2e8f0;margin-top:8px;line-height:1.2}
-.top p{color:#fde68a;font-size:11px;font-weight:700;margin-top:8px;letter-spacing:1px}
-.sub{background:linear-gradient(90deg,#fde68a,#fcd34d);color:#000;text-align:center;padding:12px;font-weight:900;font-size:13px}
-.wrap{max-width:540px;margin:0 auto;padding:18px 14px}
-.card{display:flex;justify-content:space-between;align-items:center;padding:18px 14px;border-radius:20px;margin-bottom:14px;color:#fff;box-shadow:0 10px 28px rgba(0,0,0,0.22);cursor:pointer}
+body{font-family:"Plus Jakarta Sans",sans-serif;background:#f8fafc;scroll-behavior:smooth}
+.ann{background:#fef08a;color:#422006;text-align:center;padding:10px 12px;font-size:13px;font-weight:700;display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap}
+.ann a{background:#0f172a;color:#fde68a;padding:5px 14px;border-radius:99px;text-decoration:none;font-size:12px}
+.header{position:sticky;top:0;z-index:99;background:rgba(255,255,255,0.96);backdrop-filter:blur(12px);border-bottom:1px solid #e2e8f0;display:flex;justify-content:space-between;align-items:center;padding:10px 20px}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-icon{width:38px;height:38px;background:linear-gradient(135deg,#0f2452,#1e40af);border-radius:50%;display:grid;place-items:center;color:#fde68a;font-size:18px;border:2px solid #fde68a}
+.logo-text{font-family:"Fraunces";font-weight:800;color:#0f2452;line-height:1}
+.logo-text b{display:block;font-size:18px;letter-spacing:1px}
+.logo-text span{display:block;font-size:9px;font-family:"Plus Jakarta Sans";color:#475569;letter-spacing:0.5px}
+.nav{display:flex;gap:18px;align-items:center}
+.nav a{color:#334155;text-decoration:none;font-size:13px;font-weight:700}
+.nav a.active{color:#0f172a;border-bottom:2px solid #fbbf24}
+.btn-y{background:#fde68a;color:#0f172a;padding:8px 16px;border-radius:99px;text-decoration:none;font-weight:800;font-size:12px}
+.btn-d{background:#0f2452;color:#fff;padding:8px 16px;border-radius:99px;text-decoration:none;font-weight:700;font-size:12px}
+.hamburger{display:none;font-size:24px;cursor:pointer;background:none;border:none}
+.hero{position:relative;background:#08152e;display:grid;grid-template-columns:48% 52%;min-height:72vh;overflow:hidden}
+.h-left{padding:50px 36px;z-index:3;display:flex;flex-direction:column;justify-content:center}
+.badge{display:inline-block;border:1px solid rgba(253,230,138,0.25);color:#fde68a;font-size:10px;letter-spacing:1.8px;padding:8px 14px;border-radius:99px;margin-bottom:18px;background:rgba(253,230,138,0.07)}
+.h-left h1{font-family:"Fraunces";font-size:40px;line-height:1.05;color:#fff}
+.h-left h1 .gold{color:#fde68a}
+.sub{color:#fde68a;font-size:14px;font-weight:600;margin:12px 0;line-height:1.4}
+.desc{color:#94a3b8;font-size:13px;line-height:1.7;max-width:500px;margin-bottom:22px}
+.btns{display:flex;gap:10px;flex-wrap:wrap}
+.be{background:#fcd34d;color:#08152e;padding:12px 20px;border-radius:99px;text-decoration:none;font-weight:800;font-size:13px}
+.bi{background:rgba(255,255,255,0.06);color:#fff;border:1px solid rgba(255,255,255,0.2);padding:12px 20px;border-radius:99px;text-decoration:none;font-size:13px}
+.h-right{position:relative}
+.h-right img{width:100%;height:100%;object-fit:cover}
+.stats{background:#081a3a;display:flex;padding:18px 0;border-top:1px solid rgba(255,255,255,0.06)}
+.st{flex:1;text-align:center;border-right:1px solid rgba(255,255,255,0.07)}
+.st b{font-size:28px;color:#fcd34d;display:block;font-weight:800}
+.st span{font-size:11px;color:#94a3b8}
+.sec{padding:50px 20px}
+.sec h2{text-align:center;font-family:"Fraunces";font-size:32px;color:#08152e}
+.sec .sh{text-align:center;color:#64748b;font-size:13px;margin:8px 0 24px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:1100px;margin:0 auto}
+.card2{border:1px solid #e2e8f0;border-radius:18px;padding:20px;background:#fff;box-shadow:0 8px 30px rgba(0,0,0,0.04)}
+.test-sec{background:#f1f5f9;border-top:6px solid #fde68a}
+.test-wrap{max-width:560px;margin:0 auto}
+.tcard{display:flex;justify-content:space-between;align-items:center;padding:18px 16px;border-radius:20px;margin-bottom:14px;color:#fff;box-shadow:0 10px 28px rgba(0,0,0,0.22);cursor:pointer}
 .left{display:flex;gap:12px;align-items:center}
 .icon{width:46px;height:46px;background:#fff;border-radius:14px;display:grid;place-items:center;font-size:22px}
 .view{background:#fff;color:#000;padding:9px 20px;border-radius:99px;border:none;font-weight:900;font-size:12px;cursor:pointer}
@@ -22,28 +53,77 @@ body{font-family:"Plus Jakarta Sans",sans-serif;background:#f1f5f9}
 .detail{display:none;background:#fff;border-radius:18px;padding:18px;margin:-8px 0 16px 0;border:3px solid #fde68a}
 .detail h3{font-size:15px;font-weight:900;color:#08152e}
 .detail p{font-size:12px;color:#475569;margin:8px 0}
-.start{display:inline-block;background:#08152e;color:#fde68a;padding:10px 22px;border-radius:99px;text-decoration:none;font-weight:900;font-size:12px}
-.back{display:block;width:fit-content;margin:24px auto;background:#08152e;color:#fde68a;padding:12px 28px;border-radius:99px;text-decoration:none;font-weight:900;font-size:13px;border:2px solid #fde68a}
+.start{display:inline-block;background:#08152e;color:#fde68a;padding:10px 22px;border-radius:99px;text-decoration:none;font-weight:900;font-size:12px;margin-right:8px}
+.footer{background:#08152e;color:#94a3b8;text-align:center;padding:30px 20px;font-size:12px}
+@media(max-width:900px){.hero{grid-template-columns:1fr}.h-right{height:380px;order:-1}.h-left{padding:28px 18px}.h-left h1{font-size:30px}.nav{display:none}.hamburger{display:block}.grid2{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-<div class="top"><h1>MCRES</h1><h2>MALLAIAH CENTER FOR<br>RIVER & EARTH SCIENCES</h2><p>EXPLORING RIVER • DECODING EARTH • ADVANCING SCIENCE</p></div>
-<div class="sub">🎯 MCRES - TEST SERIES - COLOUR FULL</div>
-<div class="wrap">
-<div class="card c1" onclick="toggleBox('b1')"><div class="left"><div class="icon">📚</div><div><b>TSPSC Groups</b></div></div><button class="view" onclick="event.stopPropagation();toggleBox('b1')">View →</button></div>
-<div id="b1" class="detail"><h3>TSPSC Groups</h3><p>Group 1,2,3,4 Prelims & Mains Full Tests.</p><a class="start" href="#">Start Test →</a></div>
-<div class="card c2" onclick="toggleBox('b2')"><div class="left"><div class="icon">🚔</div><div><b>SI / Constable</b></div></div><button class="view" onclick="event.stopPropagation();toggleBox('b2')">View →</button></div>
-<div id="b2" class="detail"><h3>SI / Constable</h3><p>Telangana SI & Constable - 50 Tests Live!</p><a class="start" href="#">Start Constable Test →</a></div>
-<div class="card c3" onclick="toggleBox('b3')"><div class="left"><div class="icon">🎓</div><div><b>DSC / Gurukul / TET</b></div></div><button class="view" onclick="event.stopPropagation();toggleBox('b3')">View →</button></div>
-<div id="b3" class="detail"><h3>DSC / Gurukul / TET</h3><p>SGT, SA, LP, PET, Gurukul, TET Series.</p><a class="start" href="#">Start Test →</a></div>
-<div class="card c4" onclick="toggleBox('b4')"><div class="left"><div class="icon">📖</div><div><b>NET / SET</b></div></div><button class="view" onclick="event.stopPropagation();toggleBox('b4')">View →</button></div>
-<div id="b4" class="detail"><h3>NET / SET</h3><p>UGC NET Paper 1 & 2, TS SET.</p><a class="start" href="#">Start Test →</a></div>
-<div class="card c5" onclick="toggleBox('b5')"><div class="left"><div class="icon">👨‍🏫</div><div><b>DL / JL</b></div></div><button class="view" onclick="event.stopPropagation();toggleBox('b5')">View →</button></div>
-<div id="b5" class="detail"><h3>DL / JL</h3><p>Degree & Junior Lecturer Tests.</p><a class="start" href="#">Start Test →</a></div>
-<div class="card c6" onclick="toggleBox('b6')"><div class="left"><div class="icon">📝</div><div><b>Others</b></div></div><button class="view" onclick="event.stopPropagation();toggleBox('b6')">View →</button></div>
-<div id="b6" class="detail"><h3>Others</h3><p>SSC, RRB, Banking & More.</p><a class="start" href="#">Start Test →</a></div>
+<div class="ann">UGC NET Dec 2026 Notification - 08 Oct - 28 Oct 2026 <a href="#testseries">Test Series - Click Here</a></div>
+<div class="header">
+<div class="logo"><div class="logo-icon">⛰️</div><div class="logo-text"><b>MCRES</b><span>MALLAIAH CENTER FOR RIVER & EARTH</span></div></div>
+<div class="nav">
+<a class="active" href="#home">Home</a><a href="#research">Research</a><a href="#testseries">Test Series</a><a href="#contact">Contact</a>
+<a class="btn-y" href="#testseries">Info Desk</a><a class="btn-d" href="#contact">Get in Touch</a>
 </div>
-<a class="back" href="/">← Back to Main Website - MCRES</a>
+</div>
+
+<div id="home" class="hero">
+<div class="h-left">
+<div class="badge">EXPLORING RIVERS • DECODING EARTH • ADVANCING SCIENCE</div>
+<h1>MCRES <span class="gold">Mallaiah Center</span> for River & Earth Sciences</h1>
+<div class="sub">Interdisciplinary research for water, earth & environmental resilience across India</div>
+<div class="desc">Advancing science through field studies, data-driven analysis, and collaboration with communities to understand and protect India's rivers, watersheds, and earth systems.</div>
+<div class="btns"><a class="be" href="#research">Explore Research →</a><a class="bi" href="#testseries">Test Series</a></div>
+</div>
+<div class="h-right"><img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070&auto=format&fit=crop" alt="Mountains"></div>
+</div>
+
+<div class="stats">
+<div class="st"><b>12+</b><span>Research Projects</span></div>
+<div class="st"><b>30+</b><span>Publications</span></div>
+<div class="st"><b>5+</b><span>Field Initiatives</span></div>
+</div>
+
+<div id="research" class="sec">
+<h2>Our Research Focus</h2>
+<div class="sh">Integrated interdisciplinary approaches to river and earth science research</div>
+<div class="grid2">
+<div class="card2"><h3>🌊 River Hydrology & Management</h3><p style="font-size:13px;color:#475569;margin-top:8px">Studying river systems, flood resilience, sediment dynamics, watershed management, and sustainable water resource solutions across Indian river basins.</p></div>
+<div class="card2"><h3>⛰️ Earth Systems & Geosciences</h3><p style="font-size:13px;color:#475569;margin-top:8px">Examining geological processes, climate-earth interactions, soil stability, and landscape evolution to support environmental resilience and policy.</p></div>
+</div>
+</div>
+
+<div id="testseries" class="sec test-sec">
+<h2>MCRES Test Series - Colour Full</h2>
+<div class="sh">TSPSC, SI, DSC, NET/SET, DL/JL & More - View + Start 100% Working</div>
+<div class="test-wrap">
+<div class="tcard c1" onclick="toggleBox('b1')"><div class="left"><div class="icon">📚</div><div><b>TSPSC Groups</b><div style="font-size:11px;opacity:0.9">Group 1,2,3,4</div></div></div><button class="view" onclick="event.stopPropagation();toggleBox('b1')">View →</button></div>
+<div id="b1" class="detail"><h3>TSPSC Groups - 120 Tests</h3><p>Prelims + Mains + Mock Tests - Telugu & English Medium</p><a class="start" href="#">Start Group-2 Test →</a><a class="start" href="#">View Syllabus</a></div>
+
+<div class="tcard c2" onclick="toggleBox('b2')"><div class="left"><div class="icon">🚔</div><div><b>SI / Constable</b><div style="font-size:11px;opacity:0.9">50 Tests Live</div></div></div><button class="view" onclick="event.stopPropagation();toggleBox('b2')">View →</button></div>
+<div id="b2" class="detail"><h3>SI / Constable</h3><p>Telangana SI & Constable - 50 Tests Live! Physical + Written</p><a class="start" href="#">Start Constable Test →</a></div>
+
+<div class="tcard c3" onclick="toggleBox('b3')"><div class="left"><div class="icon">🎓</div><div><b>DSC / Gurukul / TET</b><div style="font-size:11px;opacity:0.9">SGT, SA, LP</div></div></div><button class="view" onclick="event.stopPropagation();toggleBox('b3')">View →</button></div>
+<div id="b3" class="detail"><h3>DSC / Gurukul / TET</h3><p>SGT, SA, LP, PET, Gurukul, TET Complete Series</p><a class="start" href="#">Start DSC Test →</a></div>
+
+<div class="tcard c4" onclick="toggleBox('b4')"><div class="left"><div class="icon">📖</div><div><b>NET / SET</b><div style="font-size:11px;opacity:0.9">Paper 1 & 2</div></div></div><button class="view" onclick="event.stopPropagation();toggleBox('b4')">View →</button></div>
+<div id="b4" class="detail"><h3>NET / SET</h3><p>UGC NET Paper 1 & 2, TS SET - 80 Tests</p><a class="start" href="#">Start NET Test →</a></div>
+
+<div class="tcard c5" onclick="toggleBox('b5')"><div class="left"><div class="icon">👨‍🏫</div><div><b>DL / JL</b><div style="font-size:11px;opacity:0.9">Degree & Junior</div></div></div><button class="view" onclick="event.stopPropagation();toggleBox('b5')">View →</button></div>
+<div id="b5" class="detail"><h3>DL / JL</h3><p>Degree & Junior Lecturer - Subject Wise Tests</p><a class="start" href="#">Start DL Test →</a></div>
+
+<div class="tcard c6" onclick="toggleBox('b6')"><div class="left"><div class="icon">📝</div><div><b>Others</b><div style="font-size:11px;opacity:0.9">SSC, RRB, Banking</div></div></div><button class="view" onclick="event.stopPropagation();toggleBox('b6')">View →</button></div>
+<div id="b6" class="detail"><h3>Others</h3><p>SSC, RRB, Banking, Group-D & More Exams</p><a class="start" href="#">Start Test →</a></div>
+</div>
+</div>
+
+<div id="contact" class="footer">
+<b style="color:#fde68a;font-size:16px">MCRES - Mallaiah Center for River & Earth Sciences</b><br><br>
+Hyderabad | Exploring River - Decoding Earth - Advancing Science<br>
+© 2026 MCRES - All Rights Reserved
+</div>
+
 <script>
 function toggleBox(id){
 var el=document.getElementById(id);
