@@ -1,34 +1,47 @@
 <!DOCTYPE html>
-<html lang="te">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>TEST-01 - Constable/SI - MCRES</title>
+<title>TEST SERIES 01 - English 25 Q | AP Constable SI | MCRES</title>
+<meta name="description" content="TEST SERIES 01 - English 25 Questions with Answers - AP Police Constable SI Test Series by MCRES Mallaiah Center Vijayawada.">
+<meta name="keywords" content="AP Constable Test Series 01, SI Test Series English, AP Police Test Series 01, MCRES Test Series">
+<meta property="og:title" content="TEST SERIES 01 - English 25 Q - AP Constable SI | MCRES">
+<meta property="og:description" content="Practice TEST SERIES 01 English 25 Questions - AP Constable SI by MCRES">
+<meta property="og:url" content="https://mcres.in/constables/test-01/">
+<meta name="robots" content="index, follow">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Arial}
 body{background:#f0f4ff;-webkit-user-select:none;user-select:none}
-.header{background:#1e3a8a;color:#fff;padding:12px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:1000}
-.timer{color:#fbbf24;font-weight:800;font-size:18px}
+.header{background:#0a1e7a;color:#fff;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:1000}
+.timer{color:#ffeb3b;font-weight:800;font-size:18px}
 .q-box{margin:10px;background:#fff;border-radius:12px;padding:14px;box-shadow:0 2px 8px rgba(0,0,0,0.1)}
-.q-no{background:#1e3a8a;color:#fff;padding:4px 10px;border-radius:20px;font-size:12px;display:inline-block;margin-bottom:8px}
-.q-text{font-size:15px;font-weight:600;color:#111827;line-height:1.4;margin-bottom:12px}
-.opt{border:1.5px solid #d1d5db;border-radius:10px;padding:10px 12px;margin:6px 0;display:flex;align-items:center;gap:8px;cursor:pointer}
-.opt.selected{border-color:#1e3a8a;background:#eff6ff}
-.opt input{accent-color:#1e3a8a}
+.q-no{background:#0a1e7a;color:#fff;padding:4px 10px;border-radius:20px;font-size:12px;display:inline-block;margin-bottom:8px}
+.q-text{font-size:14px;font-weight:600;color:#111827;line-height:1.5;margin-bottom:12px;white-space:pre-line}
+.opt{border:1.5px solid #d1d5db;border-radius:10px;padding:10px 12px;margin:7px 0;display:flex;align-items:flex-start;gap:8px;cursor:pointer;font-size:13.5px;line-height:1.4}
+.opt.selected{border-color:#0a1e7a;background:#eff6ff}
+.opt input{margin-top:3px;accent-color:#0a1e7a;min-width:16px}
 .nav-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:10px}
 .nav-btn{padding:8px;border-radius:8px;border:1.5px solid #d1d5db;background:#fff;text-align:center;font-size:12px;font-weight:700;cursor:pointer}
 .nav-btn.answered{background:#10b981;color:#fff;border-color:#10b981}
-.nav-btn.current{border-color:#1e3a8a;background:#1e3a8a;color:#fff}
-.action-bar{position:fixed;bottom:0;left:0;right:0;background:#fff;padding:10px;display:flex;gap:8px;box-shadow:0 -2px 10px rgba(0,0,0,0.1)}
-.action-bar button{flex:1;padding:12px;border:none;border-radius:10px;font-weight:800}
-#prevBtn{background:#e5e7eb}
-#nextBtn{background:#1e3a8a;color:#fff}
+.nav-btn.current{border-color:#0a1e7a;background:#0a1e7a;color:#fff}
+.action-bar{position:fixed;bottom:0;left:0;right:0;background:#fff;padding:10px;display:flex;gap:8px;box-shadow:0 -2px 10px rgba(0,0,0,0.1);z-index:999}
+.action-bar button{flex:1;padding:12px;border:none;border-radius:10px;font-weight:800;font-size:13px}
+#prevBtn{background:#e5e7eb;color:#111}
+#nextBtn{background:#0a1e7a;color:#fff}
 #submitBtn{background:#dc2626;color:#fff;display:none}
+.line1{color:#ffeb3b;font-size:11px;display:block}
+.line2{color:#fff;font-size:13px;display:block;font-weight:900}
+.line3{color:#7ed6ff;font-size:10px;display:block}
 </style>
 </head>
 <body oncontextmenu="return false">
 <div class="header">
-<div><b>MCRES</b> | TEST-01 • 25 Q</div>
+<div>
+<span class="line1">MCRES - Mallaiah Center for River & Earth Sciences</span>
+<span class="line2">TEST SERIES - 01 (English - 25 Q)</span>
+<span class="line3">Founder & Director Dr. Ramakrishna Manimadde | mcres.in</span>
+</div>
 <div class="timer">⏱ <span id="timer">30:00</span></div>
 </div>
 
@@ -39,11 +52,11 @@ body{background:#f0f4ff;-webkit-user-select:none;user-select:none}
 </div>
 
 <div class="q-box">
-<h4 style="font-size:13px;margin-bottom:8px">Question Navigation</h4>
+<h4 style="font-size:12px;margin-bottom:8px;color:#374151">Question Navigation</h4>
 <div class="nav-grid" id="navGrid"></div>
 </div>
 
-<div style="height:80px"></div>
+<div style="height:90px"></div>
 
 <div class="action-bar">
 <button id="prevBtn">← PREV</button>
@@ -52,44 +65,80 @@ body{background:#f0f4ff;-webkit-user-select:none;user-select:none}
 </div>
 
 <script>
-// COPY PROTECTION
 document.addEventListener('keydown',e=>{
- if((e.ctrlKey && (e.key=='c' || e.key=='u' || e.key=='p')) || e.key=='F12'){e.preventDefault();return false}
+ if((e.ctrlKey && (e.key=='c' || e.key=='u' || e.key=='p' || e.key=='s' || e.key=='a')) || e.key=='F12' || (e.ctrlKey && e.shiftKey && (e.key=='I' || e.key=='J'))){e.preventDefault();return false}
 });
 document.addEventListener('copy',e=>e.preventDefault());
+document.addEventListener('cut',e=>e.preventDefault());
+document.addEventListener('selectstart',e=>e.preventDefault());
 
-// QUESTIONS - 25 Q SAMPLE - మీరు ఇక్కడ మీ Questions మార్చుకోవచ్చు
 const questions=[
-{q:"భారత రాజ్యాంగం ఏ తేదీన అమల్లోకి వచ్చింది?",o:["26 Jan 1950","15 Aug 1947","26 Nov 1949","2 Oct 1950"],a:0},
-{q:"AP లో కొత్తగా ఏర్పడిన జిల్లాల సంఖ్య?",o:["13","26","25","23"],a:1},
-{q:"IPC Section 302 దేనికి సంబంధించింది?",o:["Theft","Murder","Cheating","Dowry"],a:1},
-{q:"తెలంగాణ రాష్ట్ర అవతరణ దినోత్సవం?",o:["June 2","June 1","July 2","Aug 15"],a:0},
-{q:"విజయవాడ ఏ నది ఒడ్డున ఉంది?",o:["గోదావరి","కృష్ణా","తుంగభద్ర","పెన్నా"],a:1},
-{q:"Article 21 దేని గురించి?",o:["Equality","Life & Liberty","Freedom","Religion"],a:1},
-{q:"SI యొక్క పూర్తి రూపం?",o:["Sub Inspector","Station Inspector","Super Inspector","Senior Inspector"],a:0},
-{q:"FIR అంటే?",o:["First Info Report","Final Investigation Report","First Investigation Report","None"],a:0},
-{q:"భారత జాతీయ జెండా రూపకర్త?",o:["Gandhi","Nehru","Pingali Venkayya","Patel"],a:2},
-{q:"2024 ఒలింపిక్స్ ఎక్కడ జరిగాయి?",o:["Tokyo","Paris","London","Beijing"],a:1},
-{q:"AP పోలీస్ హెడ్ క్వార్టర్స్ ఎక్కడ?",o:["Vizag","Mangalagiri","Vijayawada","Tirupati"],a:1},
-{q:"CrPC Section 41 దేనికి?",o:["Arrest without warrant","Bail","Search","Charge sheet"],a:0},
-{q:"భారతదేశంలో మొదటి మహిళా IPS?",o:["Kiran Bedi","Saritha","Lakshmi","Usha"],a:0},
-{q:"Zero FIR అంటే?",o:["Anywhere register","No FIR","Fake FIR","Closed FIR"],a:0},
-{q:"AP లో మొత్తం పోలీస్ కమిషనరేట్లు?",o:["2","3","4","5"],a:1},
-{q:"Article 32 ను ఎవరు ప్రవేశపెట్టారు?",o:["Ambedkar - Heart & Soul","Nehru","Gandhi","Patel"],a:0},
-{q:"Disha Act మొదట ఏ రాష్ట్రంలో?",o:["AP","TS","TN","KA"],a:0},
-{q:"POCSO Act సంవత్సరం?",o:["2010","2012","2014","2015"],a:1},
-{q:"Cyber Crime Complaint Portal?",o:["cybercrime.gov.in","police.gov.in","cbi.gov.in","None"],a:0},
-{q:"తెలంగాణ పోలీస్ మోటో?",o:["Duty, Honour, Compassion","With you For you","Truth Alone Triumphs","Service"],a:0},
-{q:"AP పోలీస్ మోటో?",o:["Service","Truth Alone Triumphs","With you For you","Honour"],a:2},
-{q:"Section 144 CrPC ఎవరు విధిస్తారు?",o:["Magistrate","SI","CI","SP"],a:0},
-{q:"భారతదేశంలో అతిపెద్ద జైలు?",o:["Tihar","Yerwada","Cherlapally","Rajahmundry"],a:0},
-{q:"NDPS Act దేనికి?",o:["Drugs","Terror","Cyber","Dowry"],a:0},
-{q:"Right to Information Act Year?",o:["2005","2002","2010","2000"],a:0},
+{q:`1. Choose the correct matching of the words with their descriptions.
+
+(i) Congestion
+(ii) Collision
+(iii) Bottleneck
+(iv) Breakdown
+
+(A) An accident in which two vehicles hit each other
+(B) A situation in which roads are full of traffic
+(C) An occasion when a vehicle stops working
+(D) A place on a road where traffic cannot pass easily`,o:["(1) (i)-(C), (ii)-(B), (iii)-(A), (iv)-(D)","(2) (i)-(A), (ii)-(D), (iii)-(B), (iv)-(C)","(3) (i)-(D), (ii)-(C), (iii)-(A), (iv)-(B)","(4) (i)-(B), (ii)-(A), (iii)-(D), (iv)-(C)"],a:3},
+{q:`2. Choose the correct option to complete the sentence.
+
+If you had studied hard, you ______ the examination.`,o:["(1) Will clear","(2) Would clear","(3) Would have cleared","(4) Cleared"],a:2},
+{q:`3. Identify whether the sentence contains an error.
+
+The children (A) / washed their hands (B) / before they ate (C) / their lunch (D).`,o:["(1) Part (A)","(2) Part (B)","(3) Part (C)","(4) No error"],a:3},
+{q:`4. What does the idiom "You cannot have your cake and eat it too" mean?`,o:["(1) Enjoy forever","(2) Enjoy without payment","(3) Have it both ways","(4) Forgive yourself of guilt"],a:2},
+{q:`5. Arrange the words in the correct order to form a sentence.
+
+(a) travel
+(b) I
+(c) and
+(d) together
+(e) Satish`,o:["(1) b-c-e-d-a","(2) e-c-b-a-d","(3) e-c-b-d-a","(4) b-c-e-a-d"],a:1},
+{q:`6. The idiom "to take a leaf out of someone's book" means:`,o:["(1) Steal something","(2) Damage something","(3) Cheat someone","(4) Imitate someone or follow their example"],a:3},
+{q:`7. The idiom "to show someone the ropes" means:`,o:["(1) Influence someone","(2) Show someone how powerful you are","(3) Hang someone","(4) Teach someone how to do a job"],a:3},
+{q:`8. Select the pair of synonymous words.`,o:["(1) Colloquial — Grammatical","(2) Excess — Surplus","(3) Fair — Strong","(4) Alert — Inactive"],a:1},
+{q:`9. What does the idiom "They left no stone unturned to trace the culprits" mean?`,o:["(1) Combed the whole area","(2) Used all available means","(3) Ransacked the place","(4) Searched every corner"],a:1},
+{q:`10. Choose the most appropriate words to complete the sentence.
+
+The festival is a three-day-long celebration that combines ______ feasts with periods of ______ fasting.`,o:["(1) Unornamented, resolute","(2) Paltry, obstinate","(3) Scanty, parsimonious","(4) Sumptuous, strict"],a:3},
+{q:`11. Choose the correct sequence of articles.
+
+______ uranium is ______ toxic metal. ______ uranium found in Australia accounts for 31% of ______ world's known uranium ore reserves.`,o:["(1) No article, a, the, the","(2) The, a, the, no article","(3) No article, a, no article, the","(4) The, the, no article, the"],a:0},
+{q:`12. Tea may be used to ______ coffee.`,o:["(1) Compliment","(2) Complementation","(3) Complement","(4) Complementary"],a:2},
+{q:`13. What is the antonym of "pious" in the sentence "She is a pious woman"?`,o:["(1) Sweet","(2) Famed","(3) Ungodly","(4) Cruel"],a:2},
+{q:`14. Choose the synonym of "amenable" in the sentence "Both parties were amenable to a peaceful settlement of the land dispute."`,o:["(1) Doubtful","(2) Unwilling","(3) Receptive","(4) Disagreeable"],a:2},
+{q:`15. Choose the synonym of "antidote" in the sentence "Jogging is considered an antidote to mental stress."`,o:["(1) Poisonous substance","(2) Remedy","(3) Equivalent","(4) Dangerous substance"],a:1},
+{q:`16. What is the antonym of "transparent" in the sentence "The window glass is transparent"?`,o:["(1) Opaque","(2) Translucent","(3) Susceptible","(4) Fragile"],a:0},
+{q:`17. What is the antonym of "unanimous" in the sentence "It was a unanimous decision"?`,o:["(1) United","(2) Divided","(3) Compatible","(4) Harmonious"],a:1},
+{q:`18. Choose the correct articles.
+
+His mother was ______ American, though his father was ______ European.`,o:["(1) A, a","(2) A, an","(3) An, a","(4) An, an"],a:2},
+{q:`19. Choose the correct preposition.
+
+The coordinator was asked to attend ______ the issue and resolve it immediately.`,o:["(1) By","(2) In","(3) To","(4) No preposition required"],a:2},
+{q:`20. Choose the correct verb.
+
+Either of the roads ______ to Vasantha Nagar.`,o:["(1) Lead","(2) Leads","(3) Have led","(4) Are led"],a:1},
+{q:`21. Choose the correct tense.
+
+Please don't disturb me; I ______ the coins now.`,o:["(1) Have been counting","(2) Count","(3) Was counting","(4) Am counting"],a:3},
+{q:`22. Choose the correct verb form.
+
+Rishi ______ his engineering course by the end of 2027.`,o:["(1) Will completed","(2) Complete","(3) Will have completed","(4) Was completed"],a:2},
+{q:`23. Choose the correctly spelt word.`,o:["(1) Occasional","(2) Occassional","(3) Ocassional","(4) Occational"],a:0},
+{q:`24. What does the expression "put you up" mean in the sentence below?
+
+"We would be glad to put you up for a few days if you would like to stay."`,o:["(1) Tolerate someone","(2) Build something","(3) Provide accommodation","(4) Contribute something"],a:2},
+{q:`25. Choose the correct question tag.
+
+Manoj played cricket for two days, ______?`,o:["(1) Did","(2) Didn't","(3) Wasn't","(4) Wouldn't"],a:1},
 ];
 
 let cur=0, ans=new Array(25).fill(-1);
-
-// Render Nav
 const grid=document.getElementById('navGrid');
 questions.forEach((_,i)=>{
  let d=document.createElement('div');
@@ -107,7 +156,7 @@ function render(){
    let div=document.createElement('div');
    div.className='opt'+(ans[cur]==i?' selected':'');
    div.innerHTML=`<input type="radio" ${ans[cur]==i?'checked':''}> <span>${op}</span>`;
-   div.onclick=()=>{ans[cur]=i;render();updateNav();};
+   div.onclick=()=>{ans[cur]=i;render();};
    optBox.appendChild(div);
  });
  document.getElementById('prevBtn').style.display=cur==0?'none':'block';
@@ -117,12 +166,9 @@ function render(){
    b.className='nav-btn'+(ans[i]!=-1?' answered':'')+(i==cur?' current':'');
  });
 }
-function updateNav(){render();}
+document.getElementById('nextBtn').onclick=()=>{if(cur<24){cur++;render();window.scrollTo(0,0);}};
+document.getElementById('prevBtn').onclick=()=>{if(cur>0){cur--;render();window.scrollTo(0,0);}};
 
-document.getElementById('nextBtn').onclick=()=>{if(cur<24){cur++;render();}};
-document.getElementById('prevBtn').onclick=()=>{if(cur>0){cur--;render();}};
-
-// Timer 30 Min
 let time=30*60;
 setInterval(()=>{
  time--; let m=Math.floor(time/60), s=time%60;
@@ -133,12 +179,21 @@ setInterval(()=>{
 function submitTest(){
  let score=0;
  ans.forEach((a,i)=>{if(a==questions[i].a) score++;});
- document.body.innerHTML=`<div style="text-align:center;padding:40px 20px;background:#fff;min-height:100vh">
- <h2 style="color:#1e3a8a">TEST-01 Completed! 🎉</h2>
- <div style="font-size:48px;font-weight:800;color:#1e3a8a;margin:20px 0">${score}/25</div>
- <p>Correct: ${score} | Wrong: ${25-score}</p>
- <p style="margin-top:15px">MCRES - Mallaiah Center</p>
- <a href="../"><button style="margin-top:20px;background:#1e3a8a;color:#fff;padding:12px 24px;border:none;border-radius:10px;font-weight:700">Back to Tests</button></a>
+ let details='';
+ questions.forEach((q,i)=>{
+   let correct=q.o[q.a];
+   let user=ans[i]==-1?'Not Attempted':q.o[ans[i]];
+   let isCorrect=ans[i]==q.a;
+   details+=`<div style="text-align:left;background:${isCorrect?'#ecfdf5':'#fef2f2'};border:1px solid ${isCorrect?'#10b981':'#ef4444'};border-radius:8px;padding:8px;margin:6px 0;font-size:12px"><b>Q${i+1}:</b> ${isCorrect?'✅':'❌'} Your: ${user}<br>Correct: ${correct}</div>`;
+ });
+ document.body.innerHTML=`<div style="text-align:center;padding:20px;background:#fff;min-height:100vh">
+ <h2 style="color:#0a1e7a">TEST SERIES 01 - Result 🎉</h2>
+ <div style="font-size:48px;font-weight:800;color:#0a1e7a;margin:16px 0">${score}/25</div>
+ <p><b>Correct:</b> ${score} | <b>Wrong:</b> ${ans.filter(a=>a!=-1).length-score} | <b>Not Attempted:</b> ${ans.filter(a=>a==-1).length}</p>
+ <div style="margin-top:16px;max-height:60vh;overflow-y:auto">${details}</div>
+ <div style="margin-top:12px"><b>Answer Key:</b><br>1-4, 2-3, 3-4, 4-3, 5-2, 6-4, 7-4, 8-2, 9-2, 10-4, 11-1, 12-3, 13-3, 14-3, 15-2, 16-1, 17-2, 18-3, 19-3, 20-2, 21-4, 22-3, 23-1, 24-3, 25-2</div>
+ <a href="../"><button style="margin-top:20px;background:#0a1e7a;color:#fff;padding:12px 24px;border:none;border-radius:10px;font-weight:700">Back to Tests</button></a>
+ <p style="margin-top:12px;color:#6b7280">MCRES - Mallaiah Center Vijayawada</p>
  </div>`;
 }
 render();
