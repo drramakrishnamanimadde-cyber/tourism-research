@@ -15,13 +15,12 @@ body{font-family:"Plus Jakarta Sans",sans-serif;background:#f8fafc;scroll-behavi
 .logo-icon{width:38px;height:38px;background:linear-gradient(135deg,#0f2452,#1e40af);border-radius:50%;display:grid;place-items:center;color:#fde68a;font-size:18px;border:2px solid #fde68a}
 .logo-text{font-family:"Fraunces";font-weight:800;color:#0f2452;line-height:1}
 .logo-text b{display:block;font-size:18px;letter-spacing:1px}
-.logo-text span{display:block;font-size:9px;font-family:"Plus Jakarta Sans";color:#475569;letter-spacing:0.5px}
+.logo-text span{display:block;font-size:9px;color:#475569;letter-spacing:0.5px}
 .nav{display:flex;gap:18px;align-items:center}
 .nav a{color:#334155;text-decoration:none;font-size:13px;font-weight:700}
 .nav a.active{color:#0f172a;border-bottom:2px solid #fbbf24}
 .btn-y{background:#fde68a;color:#0f172a;padding:8px 16px;border-radius:99px;text-decoration:none;font-weight:800;font-size:12px}
 .btn-d{background:#0f2452;color:#fff;padding:8px 16px;border-radius:99px;text-decoration:none;font-weight:700;font-size:12px}
-.hamburger{display:none;font-size:24px;cursor:pointer;background:none;border:none}
 .hero{position:relative;background:#08152e;display:grid;grid-template-columns:48% 52%;min-height:72vh;overflow:hidden}
 .h-left{padding:50px 36px;z-index:3;display:flex;flex-direction:column;justify-content:center}
 .badge{display:inline-block;border:1px solid rgba(253,230,138,0.25);color:#fde68a;font-size:10px;letter-spacing:1.8px;padding:8px 14px;border-radius:99px;margin-bottom:18px;background:rgba(253,230,138,0.07)}
@@ -53,19 +52,17 @@ body{font-family:"Plus Jakarta Sans",sans-serif;background:#f8fafc;scroll-behavi
 .detail{display:none;background:#fff;border-radius:18px;padding:18px;margin:-8px 0 16px 0;border:3px solid #fde68a}
 .detail h3{font-size:15px;font-weight:900;color:#08152e}
 .detail p{font-size:12px;color:#475569;margin:8px 0}
-.start{display:inline-block;background:#08152e;color:#fde68a;padding:10px 22px;border-radius:99px;text-decoration:none;font-weight:900;font-size:12px;margin-right:8px}
+.start{display:inline-block;background:#08152e;color:#fde68a;padding:10px 22px;border-radius:99px;text-decoration:none;font-weight:900;font-size:12px;margin:4px 6px 4px 0;cursor:pointer;border:none}
+#testRunner{display:none;background:#fff;border:3px solid #08152e;border-radius:20px;padding:22px;max-width:600px;margin:20px auto}
 .footer{background:#08152e;color:#94a3b8;text-align:center;padding:30px 20px;font-size:12px}
-@media(max-width:900px){.hero{grid-template-columns:1fr}.h-right{height:380px;order:-1}.h-left{padding:28px 18px}.h-left h1{font-size:30px}.nav{display:none}.hamburger{display:block}.grid2{grid-template-columns:1fr}}
+@media(max-width:900px){.hero{grid-template-columns:1fr}.h-right{height:380px;order:-1}.h-left{padding:28px 18px}.h-left h1{font-size:30px}.grid2{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-<div class="ann">UGC NET Dec 2026 Notification - 08 Oct - 28 Oct 2026 <a href="#testseries">Test Series - Click Here</a></div>
+<div class="ann">UGC NET Dec 2026 - 08 Oct - 28 Oct 2026 <a href="#testseries">Test Series - Click Here</a></div>
 <div class="header">
 <div class="logo"><div class="logo-icon">⛰️</div><div class="logo-text"><b>MCRES</b><span>MALLAIAH CENTER FOR RIVER & EARTH</span></div></div>
-<div class="nav">
-<a class="active" href="#home">Home</a><a href="#research">Research</a><a href="#testseries">Test Series</a><a href="#contact">Contact</a>
-<a class="btn-y" href="#testseries">Info Desk</a><a class="btn-d" href="#contact">Get in Touch</a>
-</div>
+<div class="nav"><a class="active" href="#home">Home</a><a href="#research">Research</a><a href="#testseries">Test Series</a><a href="#contact">Contact</a><a class="btn-y" href="#testseries">Test Series</a><a class="btn-d" href="#contact">Get in Touch</a></div>
 </div>
 
 <div id="home" class="hero">
@@ -79,58 +76,34 @@ body{font-family:"Plus Jakarta Sans",sans-serif;background:#f8fafc;scroll-behavi
 <div class="h-right"><img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070&auto=format&fit=crop" alt="Mountains"></div>
 </div>
 
-<div class="stats">
-<div class="st"><b>12+</b><span>Research Projects</span></div>
-<div class="st"><b>30+</b><span>Publications</span></div>
-<div class="st"><b>5+</b><span>Field Initiatives</span></div>
-</div>
+<div class="stats"><div class="st"><b>12+</b><span>Research Projects</span></div><div class="st"><b>30+</b><span>Publications</span></div><div class="st"><b>5+</b><span>Field Initiatives</span></div></div>
 
 <div id="research" class="sec">
 <h2>Our Research Focus</h2>
 <div class="sh">Integrated interdisciplinary approaches to river and earth science research</div>
 <div class="grid2">
-<div class="card2"><h3>🌊 River Hydrology & Management</h3><p style="font-size:13px;color:#475569;margin-top:8px">Studying river systems, flood resilience, sediment dynamics, watershed management, and sustainable water resource solutions across Indian river basins.</p></div>
-<div class="card2"><h3>⛰️ Earth Systems & Geosciences</h3><p style="font-size:13px;color:#475569;margin-top:8px">Examining geological processes, climate-earth interactions, soil stability, and landscape evolution to support environmental resilience and policy.</p></div>
+<div class="card2"><h3>🌊 River Hydrology & Management</h3><p style="font-size:13px;color:#475569;margin-top:8px">Studying river systems, flood resilience, sediment dynamics, watershed management.</p></div>
+<div class="card2"><h3>⛰️ Earth Systems & Geosciences</h3><p style="font-size:13px;color:#475569;margin-top:8px">Examining geological processes, climate-earth interactions, soil stability.</p></div>
 </div>
 </div>
 
 <div id="testseries" class="sec test-sec">
 <h2>MCRES Test Series - Colour Full</h2>
-<div class="sh">TSPSC, SI, DSC, NET/SET, DL/JL & More - View + Start 100% Working</div>
+<div class="sh">View → Details Open | Start → Test దగ్గరికి వెళ్తుంది - 100% Working</div>
 <div class="test-wrap">
 <div class="tcard c1" onclick="toggleBox('b1')"><div class="left"><div class="icon">📚</div><div><b>TSPSC Groups</b><div style="font-size:11px;opacity:0.9">Group 1,2,3,4</div></div></div><button class="view" onclick="event.stopPropagation();toggleBox('b1')">View →</button></div>
-<div id="b1" class="detail"><h3>TSPSC Groups - 120 Tests</h3><p>Prelims + Mains + Mock Tests - Telugu & English Medium</p><a class="start" href="#">Start Group-2 Test →</a><a class="start" href="#">View Syllabus</a></div>
+<div id="b1" class="detail"><h3>TSPSC Groups - 120 Tests</h3><p>Prelims + Mains + Mock Tests - Telugu & English</p><button class="start" onclick="openTest('TSPSC Groups')">Start Group Test →</button></div>
 
 <div class="tcard c2" onclick="toggleBox('b2')"><div class="left"><div class="icon">🚔</div><div><b>SI / Constable</b><div style="font-size:11px;opacity:0.9">50 Tests Live</div></div></div><button class="view" onclick="event.stopPropagation();toggleBox('b2')">View →</button></div>
-<div id="b2" class="detail"><h3>SI / Constable</h3><p>Telangana SI & Constable - 50 Tests Live! Physical + Written</p><a class="start" href="#">Start Constable Test →</a></div>
+<div id="b2" class="detail"><h3>SI / Constable</h3><p>Telangana SI & Constable - 50 Tests Live!</p><button class="start" onclick="openTest('SI / Constable')">Start Constable Test →</button></div>
 
 <div class="tcard c3" onclick="toggleBox('b3')"><div class="left"><div class="icon">🎓</div><div><b>DSC / Gurukul / TET</b><div style="font-size:11px;opacity:0.9">SGT, SA, LP</div></div></div><button class="view" onclick="event.stopPropagation();toggleBox('b3')">View →</button></div>
-<div id="b3" class="detail"><h3>DSC / Gurukul / TET</h3><p>SGT, SA, LP, PET, Gurukul, TET Complete Series</p><a class="start" href="#">Start DSC Test →</a></div>
+<div id="b3" class="detail"><h3>DSC / Gurukul / TET</h3><p>SGT, SA, LP, PET, Gurukul, TET Series</p><button class="start" onclick="openTest('DSC / Gurukul')">Start DSC Test →</button></div>
 
 <div class="tcard c4" onclick="toggleBox('b4')"><div class="left"><div class="icon">📖</div><div><b>NET / SET</b><div style="font-size:11px;opacity:0.9">Paper 1 & 2</div></div></div><button class="view" onclick="event.stopPropagation();toggleBox('b4')">View →</button></div>
-<div id="b4" class="detail"><h3>NET / SET</h3><p>UGC NET Paper 1 & 2, TS SET - 80 Tests</p><a class="start" href="#">Start NET Test →</a></div>
+<div id="b4" class="detail"><h3>NET / SET</h3><p>UGC NET Paper 1 & 2, TS SET - 80 Tests</p><button class="start" onclick="openTest('NET / SET')">Start NET Test →</button></div>
 
 <div class="tcard c5" onclick="toggleBox('b5')"><div class="left"><div class="icon">👨‍🏫</div><div><b>DL / JL</b><div style="font-size:11px;opacity:0.9">Degree & Junior</div></div></div><button class="view" onclick="event.stopPropagation();toggleBox('b5')">View →</button></div>
-<div id="b5" class="detail"><h3>DL / JL</h3><p>Degree & Junior Lecturer - Subject Wise Tests</p><a class="start" href="#">Start DL Test →</a></div>
+<div id="b5" class="detail"><h3>DL / JL</h3><p>Degree & Junior Lecturer Tests</p><button class="start" onclick="openTest('DL / JL')">Start DL Test →</button></div>
 
-<div class="tcard c6" onclick="toggleBox('b6')"><div class="left"><div class="icon">📝</div><div><b>Others</b><div style="font-size:11px;opacity:0.9">SSC, RRB, Banking</div></div></div><button class="view" onclick="event.stopPropagation();toggleBox('b6')">View →</button></div>
-<div id="b6" class="detail"><h3>Others</h3><p>SSC, RRB, Banking, Group-D & More Exams</p><a class="start" href="#">Start Test →</a></div>
-</div>
-</div>
-
-<div id="contact" class="footer">
-<b style="color:#fde68a;font-size:16px">MCRES - Mallaiah Center for River & Earth Sciences</b><br><br>
-Hyderabad | Exploring River - Decoding Earth - Advancing Science<br>
-© 2026 MCRES - All Rights Reserved
-</div>
-
-<script>
-function toggleBox(id){
-var el=document.getElementById(id);
-var open=el.style.display==='block';
-document.querySelectorAll('.detail').forEach(function(d){d.style.display='none'});
-if(!open){el.style.display='block';el.scrollIntoView({behavior:'smooth',block:'center'})}
-}
-</script>
-</body>
-</html>
+<div class="tcard c6" onclick="toggleBox('b6')"><div class="left
