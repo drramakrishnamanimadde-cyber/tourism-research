@@ -1,141 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MCRES - Mallaiah Center for River & Earth Sciences</title>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;800;900&family=Fraunces:opsz,wght@9..144,700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800;900&family=Fraunces:wght@800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:"Plus Jakarta Sans",sans-serif;background:#f8fafc}
-.ann{background:linear-gradient(90deg,#fde047,#facc15);color:#422006;text-align:center;padding:10px;font-size:12px;font-weight:800;display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
-.ann a{background:#0f172a;color:#fde68a;padding:5px 14px;border-radius:99px;text-decoration:none;font-size:11px}
-.header{position:sticky;top:0;z-index:99;background:rgba(255,255,255,0.9);backdrop-filter:blur(20px);border-bottom:1px solid #e2e8f0;display:flex;justify-content:space-between;align-items:center;padding:10px 20px}
-.logo{display:flex;align-items:center;gap:8px}
-.logo-icon{width:32px;height:32px;background:linear-gradient(135deg,#0f172a,#1e3a8a);color:#fff;border-radius:50%;display:grid;place-items:center;font-family:"Fraunces";font-weight:900}
-.logo-text{font-family:"Fraunces";font-weight:800;color:#0f172a;font-size:13px;line-height:1}
-.logo-text span{display:block;font-size:7px;font-family:"Plus Jakarta Sans";color:#475569;font-weight:600}
-.nav{display:flex;gap:18px;align-items:center}
-.nav a{color:#334155;text-decoration:none;font-size:13px;font-weight:600}
-.nav a.test{background:linear-gradient(135deg,#fde047,#facc15);color:#000 !important;padding:7px 14px;border-radius:99px;font-weight:900 !important;border:1px solid #000}
-.btn-d{background:#0f172a;color:#fff;padding:7px 16px;border-radius:99px;text-decoration:none;font-weight:700;font-size:12px}
-.hamburger{display:none;font-size:24px;background:none;border:none;cursor:pointer}
-.mob-menu{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#020617;z-index:100;padding:30px;flex-direction:column;gap:0}
-.mob-menu a{display:block;color:#fff;text-decoration:none;padding:16px 0;border-bottom:1px solid rgba(255,255,255,0.1);font-size:18px}
-.mob-menu .close{position:absolute;top:20px;right:20px;font-size:28px;color:#fff;background:none;border:none}
-
-/* COLOUR FULL HERO */
-.hero{position:relative;display:grid;grid-template-columns:52% 48%;min-height:84vh;overflow:hidden;background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 40%,#0e7490 100%)}
-.h-left{position:relative;z-index:3;padding:40px 32px;display:flex;flex-direction:column;justify-content:center;background:linear-gradient(135deg,rgba(255,255,255,0.97) 0%,rgba(254,249,195,0.95) 50%,rgba(255,255,255,0.96) 100%);backdrop-filter:blur(10px)}
-.main-title{font-family:"Fraunces";font-weight:900;font-size:48px;line-height:0.85;letter-spacing:-1px;background:linear-gradient(135deg,#0f172a,#1e3a8a,#0e7490);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.full-form{font-size:11px;font-weight:800;color:#1e3a8a;letter-spacing:1.2px;margin-top:8px;line-height:1.3;text-transform:uppercase}
-.caption{margin:20px 0 12px;display:flex;flex-direction:column;gap:4px}
-.caption p{font-family:"Fraunces";font-size:24px;font-weight:800;line-height:1.1;letter-spacing:-0.3px}
-.caption p:nth-child(1){background:linear-gradient(90deg,#0e7490,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.caption p:nth-child(2){background:linear-gradient(90deg,#92400e,#d97706);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.caption p:nth-child(3){background:linear-gradient(90deg,#0f172a,#1e40af);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.caption p b{font-weight:900}
-.sub{color:#334155;font-size:12.5px;line-height:1.6;margin:10px 0 20px;max-width:430px;font-weight:500}
-.btns{display:flex;gap:10px;flex-wrap:wrap}
-.be{background:linear-gradient(135deg,#0f172a,#1e3a8a);color:#fff;padding:13px 22px;border-radius:99px;text-decoration:none;font-weight:800;font-size:13px;box-shadow:0 8px 25px rgba(15,23,42,0.3)}
-.bi{background:linear-gradient(135deg,#fde047,#facc15);color:#000;padding:13px 22px;border-radius:99px;text-decoration:none;font-weight:900;font-size:13px;border:2px solid #000;box-shadow:0 8px 25px rgba(250,204,21,0.4)}
-.stats{display:flex;gap:0;margin-top:22px;background:rgba(255,255,255,0.9);border:1px solid #e2e8f0;border-radius:16px;overflow:hidden;width:fit-content;box-shadow:0 8px 30px rgba(0,0,0,0.08);backdrop-filter:blur(10px)}
-.st{padding:12px 18px;text-align:center;border-right:1px solid #f1f5f9;min-width:88px}
-.st:last-child{border:none}
-.st b{font-size:22px;color:#0f172a;display:block;font-weight:900}
-.st span{font-size:9px;color:#475569;font-weight:700}
-.h-right{position:relative;overflow:hidden}
-.h-right img{width:100%;height:100%;object-fit:cover;filter:saturate(1.2) contrast(1.1)}
-.h-right::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,0.9) 0%,transparent 30%,transparent 100%)}
-.h-right::before{content:"";position:absolute;left:0;top:0;width:30%;height:100%;background:linear-gradient(90deg,#fef9c3,transparent);z-index:2}
-
-.focus{padding:50px 20px;background:linear-gradient(180deg,#fff,#f8fafc)}
-.focus h2{text-align:center;font-family:"Fraunces";font-size:28px;color:#0f172a;font-weight:800}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:1100px;margin:24px auto 0}
-.card{border-radius:20px;padding:22px;box-shadow:0 8px 30px rgba(0,0,0,0.08);position:relative;transition:0.3s;border:1px solid rgba(255,255,255,0.5)}
-.card:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(0,0,0,0.15)}
-.card:nth-child(1){background:linear-gradient(135deg,#ecfeff,#cffafe);border:1px solid #a5f3fc}
-.card:nth-child(2){background:linear-gradient(135deg,#fefce8,#fef9c3);border:2px solid #fde047}
-.card:nth-child(3){background:linear-gradient(135deg,#f0fdf4,#dcfce7);border:1px solid #86efac}
-.card h3{font-size:14px;color:#0f172a;margin:10px 0 6px;font-weight:800}
-.card p{font-size:12px;color:#334155;line-height:1.5;margin-bottom:10px;font-weight:500}
-.card a.main{background:#0f172a;color:#fff;padding:8px 16px;border-radius:99px;font-size:11px;display:inline-block;text-decoration:none;font-weight:800}
-.view-btn{background:#fff;border:1px solid #cbd5e1;color:#0f172a;padding:6px 12px;border-radius:20px;font-size:10px;font-weight:700;text-decoration:none;display:inline-block;margin-top:8px;margin-right:6px}
-
-@media(max-width:900px){.hero{grid-template-columns:1fr}.h-right{height:380px;order:-1}.h-right::after{background:linear-gradient(0deg,rgba(255,255,255,0.95) 0%,transparent 50%)}.h-left{padding:26px 20px}.main-title{font-size:38px}.caption p{font-size:20px}.nav,.btn-d{display:none}.hamburger{display:block}.grid{grid-template-columns:1fr}.stats{width:100%}.st{flex:1}}
+body{font-family:"Plus Jakarta Sans",sans-serif;background:#0f172a}
+.top{background:#0f172a;padding:14px 10px;text-align:center;border-bottom:4px solid #facc15}
+.top h1{font-family:"Fraunces";font-weight:900;font-size:32px;color:#fff;line-height:0.9;letter-spacing:-0.5px}
+.top h1 span{color:#fde047}
+.top h2{font-family:"Fraunces";font-weight:800;font-size:14px;color:#e2e8f0;margin-top:8px;line-height:1.2;letter-spacing:0.5px}
+.top p{font-size:11px;color:#facc15;font-weight:800;letter-spacing:1px;margin-top:8px}
+.sub{ background:linear-gradient(90deg,#fde047,#facc15);color:#000;text-align:center;padding:10px;font-weight:900;font-size:14px;letter-spacing:1px}
+.wrap{max-width:520px;margin:0 auto;padding:16px;background:#f8fafc;min-height:70vh}
+.card{position:relative;display:flex;justify-content:space-between;align-items:center;padding:16px 14px;border-radius:18px;margin-bottom:12px;color:#fff;box-shadow:0 8px 25px rgba(0,0,0,0.25);cursor:pointer}
+.left{display:flex;gap:12px;align-items:center}
+.icon{width:44px;height:44px;background:#fff;border-radius:12px;display:grid;place-items:center;font-size:20px;box-shadow:0 4px 10px rgba(0,0,0,0.2);flex-shrink:0}
+.card b{font-size:14px;display:block}
+.card span{font-size:10px;opacity:0.95;display:block;margin-top:2px;font-weight:600}
+.view{background:#fff;color:#000;padding:8px 18px;border-radius:99px;text-decoration:none;font-size:12px;font-weight:900;border:none;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,0.2)}
+.c1{background:linear-gradient(135deg,#f59e0b,#d97706)}
+.c2{background:linear-gradient(135deg,#ef4444,#dc2626)}
+.c3{background:linear-gradient(135deg,#8b5cf6,#7c3aed)}
+.c4{background:linear-gradient(135deg,#ec4899,#db2777)}
+.c5{background:linear-gradient(135deg,#06b6d4,#0891b2)}
+.c6{background:linear-gradient(135deg,#10b981,#059669)}
+.detail{background:#fff;border-radius:16px;padding:16px;margin:-6px 0 14px 0;display:none;border:2px solid #facc15;box-shadow:0 8px 20px rgba(0,0,0,0.1)}
+.detail h3{font-size:14px;font-weight:900;color:#0f172a}
+.detail p{font-size:11px;color:#334155;margin:6px 0 10px;line-height:1.5}
+.detail a{background:#0f172a;color:#facc15;padding:8px 16px;border-radius:99px;text-decoration:none;font-size:11px;font-weight:900;display:inline-block}
+.back{display:block;width:fit-content;margin:20px auto;background:#0f172a;color:#facc15;padding:10px 22px;border-radius:99px;text-decoration:none;font-size:12px;font-weight:800;border:1px solid #facc15}
 </style>
 </head>
 <body>
-<div class="ann">AUG - NET December 2026 Notification Released - 08 Oct - 20 Oct 2026 <a href="/info-desk/ugc-net-dec-2026/">Apply Now</a></div>
-<div class="header">
-<div class="logo"><div class="logo-icon">M</div><div class="logo-text">MCRES/<span>MALLAIAH CENTER FOR RIVER & EARTH SCIENCES</span></div></div>
-<div class="nav">
-<a href="/">Home</a><a href="/about/">About</a><a href="/research/">Research</a><a href="/info-desk/">Info Desk</a>
-<a href="/test-series.html" class="test">🎯 Test Series</a>
+<div class="top">
+<h1>MCRES</h1>
+<h2>MALLAIAH CENTER FOR<br>RIVER & EARTH SCIENCES</h2>
+<p>Exploring River • Decoding Earth • Advancing Science</p>
 </div>
-<button class="hamburger" onclick="document.getElementById('mob').style.display='flex'">☰</button>
-<a href="/contact/" class="btn-d">Get in Touch</a>
-</div>
-<div id="mob" class="mob-menu">
-<button class="close" onclick="document.getElementById('mob').style.display='none'">✕</button>
-<a href="/">Home</a><a href="/about/">About</a><a href="/research/">Research</a><a href="/info-desk/">Info Desk</a>
-<a href="/test-series.html">🎯 Test Series</a>
-<a href="/test-series.html">🚔 Constable Tests</a>
-<a href="/contact/">Contact</a>
-</div>
+<div class="sub">🎯 MCRES - TEST SERIES - COLOUR FULL</div>
+<div class="wrap">
 
-<div class="hero">
-<div class="h-left">
-<div class="main-title">MCRES</div>
-<div class="full-form">MALLAIAH CENTER FOR<br>RIVER & EARTH SCIENCES</div>
+<div class="card c1" onclick="openBox('d1')"><div class="left"><div class="icon">📚</div><div><b>TSPSC Groups</b><span>Group 1,2,3,4 - Prelims & Mains</span></div></div><button class="view" onclick="openBox('d1')">View →</button></div>
+<div id="d1" class="detail"><h3>📚 TSPSC Groups - View Working!</h3><p>Full Mock Tests Available. Click Start to Begin Test.</p><a href="#">Start Test Now →</a></div>
 
-<div class="caption">
-<p>Exploring River</p>
-<p>Decoding Earth</p>
-<p>Advancing <b>Science</b></p>
-</div>
+<div class="card c2" onclick="openBox('d2')"><div class="left"><div class="icon">🚔</div><div><b>SI / Constable</b><span>Telangana Police SI & Constable</span></div></div><button class="view" onclick="openBox('d2')">View →</button></div>
+<div id="d2" class="detail"><h3>🚔 SI / Constable - View Working!</h3><p>Constable View - Telangana SI & Constable Tests Live Now! 50 Tests, Detailed Solutions.</p><a href="#">Start Constable Test →</a></div>
 
-<div class="sub">MCRES is dedicated to cutting-edge research in fluvial geomorphology, flood management, sediment studies, and sustainable river basin development.</div>
+<div class="card c3" onclick="openBox('d3')"><div class="left"><div class="icon">🎓</div><div><b>DSC / Gurukul / TET</b><span>SGT, SA, LP, PET, Gurukul, TET</span></div></div><button class="view" onclick="openBox('d3')">View →</button></div>
+<div id="d3" class="detail"><h3>🎓 DSC / Gurukul / TET</h3><p>All Teaching Exams Full Series Available.</p><a href="#">Start Test →</a></div>
 
-<div class="btns">
-<a class="be" href="/research/">Explore Research →</a>
-<a class="bi" href="/test-series.html">🎯 Take Free Test Series</a>
-</div>
+<div class="card c4" onclick="openBox('d4')"><div class="left"><div class="icon">📖</div><div><b>NET / SET</b><span>UGC NET Paper 1 & 2, TS SET</span></div></div><button class="view" onclick="openBox('d4')">View →</button></div>
+<div id="d4" class="detail"><h3>📖 NET / SET</h3><p>UGC NET Earth Science Mock Tests.</p><a href="#">Start Test →</a></div>
 
-<div class="stats">
-<div class="st"><b>15+</b><span>Research Projects</span></div>
-<div class="st"><b>50+</b><span>Publications</span></div>
-<div class="st"><b>10+</b><span>Years Experience</span></div>
-</div>
-</div>
-<div class="h-right"><img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070&auto=format&fit=crop" alt="Mountains"></div>
-</div>
+<div class="card c5" onclick="openBox('d5')"><div class="left"><div class="icon">👨‍🏫</div><div><b>DL / JL</b><span>Degree & Junior Lecturer</span></div></div><button class="view" onclick="openBox('d5')">View →</button></div>
+<div id="d5" class="detail"><h3>👨‍🏫 DL / JL</h3><p>Degree & Junior Lecturer Tests.</p><a href="#">Start Test →</a></div>
 
-<div class="focus">
-<h2>Our Focus Areas</h2>
-<div class="grid">
-<div class="card">
-<div style="font-size:22px">🌊</div>
-<h3>River Studies</h3>
-<p>Musi River floods, sediment history, and flood-safe city planning research.</p>
-<a href="/research/" style="font-size:11px;font-weight:800;color:#0f172a;text-decoration:none">Learn More →</a>
+<div class="card c6" onclick="openBox('d6')"><div class="left"><div class="icon">📝</div><div><b>Others</b><span>SSC, RRB, Banking & More Tests</span></div></div><button class="view" onclick="openBox('d6')">View →</button></div>
+<div id="d6" class="detail"><h3>📝 Others</h3><p>All Competitive Exams.</p><a href="#">Start Test →</a></div>
+
 </div>
-<div class="card">
-<div style="font-size:22px">📚</div>
-<h3>Free Test Series</h3>
-<p>Constable, SI, Groups - Daily free mock tests with detailed analysis.</p>
-<p style="font-size:11px;font-weight:800;color:#a16207;margin-bottom:10px">New: Test-01 Live Now!</p>
-<a href="/test-series.html" class="main">Start Test →</a>
-<br>
-<a href="/test-series.html" class="view-btn">🚔 Constable - View →</a>
-<a href="/test-series.html" class="view-btn">View All Tests →</a>
-</div>
-<div class="card">
-<div style="font-size:22px">🎯</div>
-<h3>Competitive Exams</h3>
-<p>CSIR, UGC, TGPSC guidance and materials for earth science aspirants.</p>
-<a href="/info-desk/" style="font-size:11px;font-weight:800;color:#0f172a;text-decoration:none">Explore →</a>
-</div>
-</div>
-</div>
-</body>
-</html>
+<a class="back"
