@@ -3,55 +3,63 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MCRES TEST SERIES | Mallaiah Center</title>
+<title>MCRES TEST SERIES | Dr. Ramakrishna Manimadde</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Arial}
-body{background:#eef3ff}
-.header{background:#0a1e7a;color:#fff;padding:18px 14px;text-align:center;position:sticky;top:0;z-index:100}
-.header h1{color:#ffeb3b;font-size:20px;font-weight:900}
-.header p{color:#7ed6ff;font-size:13px;margin-top:4px}
-.container{max-width:900px;margin:18px auto;padding:0 12px}
-.card{background:#fff;border-radius:16px;padding:18px 16px;margin:12px 0;box-shadow:0 6px 18px rgba(0,0,0,0.12);border-left:7px solid #0a1e7a;display:flex;justify-content:space-between;align-items:center;cursor:pointer}
-.card:hover{transform:scale(1.02);box-shadow:0 8px 22px rgba(0,0,0,0.18)}
-.card-title{font-size:16px;font-weight:800;color:#0a1e7a;line-height:1.4}
-.card-no{color:#fff;background:linear-gradient(90deg,#0a1e7a,#3b82f6);padding:8px 14px;border-radius:20px;font-weight:900;font-size:13px;min-width:42px;text-align:center}
-.footer{text-align:center;padding:22px;color:#6b7280;font-size:12px;font-weight:700}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI', system-ui, Arial}
+body{background:linear-gradient(180deg,#eef3ff,#dbeafe);min-height:100vh}
+.header{background:linear-gradient(135deg,#081a6b 0%,#0a1e7a 50%,#1e3a8a 100%);color:#fff;padding:20px 14px 18px;text-align:center;position:sticky;top:0;z-index:100;box-shadow:0 6px 24px rgba(10,30,122,0.35);border-bottom:3px solid #ffeb3b}
+.header h1{color:#ffeb3b;font-size:23px;font-weight:900;letter-spacing:0.8px;text-shadow:0 2px 8px rgba(0,0,0,0.3)}
+.header h2{color:#fff;font-size:12.5px;font-weight:700;margin-top:5px;letter-spacing:0.3px}
+.header .subtitle{font-size:11.8px;color:#a5d8ff;margin-top:7px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase}
+.header .founder{margin-top:12px;background:linear-gradient(90deg,rgba(255,235,59,0.15),rgba(126,214,255,0.15));display:inline-block;padding:7px 18px;border-radius:24px;font-size:12px;font-weight:800;color:#7ed6ff;border:1.5px solid rgba(255,235,59,0.4);box-shadow:0 2px 10px rgba(0,0,0,0.2)}
+.header .founder b{color:#ffeb3b}
+.container{max-width:920px;margin:18px auto;padding:0 12px 20px}
+.card{border-radius:20px;padding:19px 18px;margin:14px 0;display:flex;justify-content:space-between;align-items:center;box-shadow:0 10px 24px rgba(0,0,0,0.12);transition:all 0.25s ease;border-left:7px solid;position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,rgba(255,255,255,0.4),transparent);pointer-events:none}
+.card:hover{transform:translateY(-3px) scale(1.015);box-shadow:0 16px 32px rgba(0,0,0,0.20)}
+.card-title{font-size:15.8px;font-weight:900;color:#0a1e7a;line-height:1.35;position:relative;z-index:1}
+.card-no{color:#fff;padding:9px 18px;border-radius:24px;font-weight:900;font-size:12px;box-shadow:0 4px 12px rgba(0,0,0,0.25);position:relative;z-index:1;letter-spacing:0.3px}
+.c1{background:linear-gradient(135deg,#e0f2fe,#bae6fd);border-left-color:#0284c7}
+.c2{background:linear-gradient(135deg,#dcfce7,#bbf7d0);border-left-color:#16a34a}
+.c3{background:linear-gradient(135deg,#ffedd5,#fed7aa);border-left-color:#ea580c}
+.c4{background:linear-gradient(135deg,#f3e8ff,#e9d5ff);border-left-color:#9333ea}
+.c5{background:linear-gradient(135deg,#fee2e2,#fecaca);border-left-color:#dc2626}
+.c6{background:linear-gradient(135deg,#dbeafe,#bfdbfe);border-left-color:#2563eb}
+.c7{background:linear-gradient(135deg,#ccfbf1,#99f6e0);border-left-color:#0d9488}
+.c8{background:linear-gradient(135deg,#fef9c3,#fde68a);border-left-color:#d97706}
+.c9{background:linear-gradient(135deg,#ede9fe,#ddd6fe);border-left-color:#7c3aed}
+.c10{background:linear-gradient(135deg,#ffe4e6,#fecdd3);border-left-color:#e11d48}
+.c11{background:linear-gradient(135deg,#e0e7ff,#c7d2fe);border-left-color:#4f46e5}
+.b1{background:linear-gradient(90deg,#0284c7,#0ea5e9)} .b2{background:linear-gradient(90deg,#16a34a,#22c55e)} .b3{background:linear-gradient(90deg,#ea580c,#fb923c)} .b4{background:linear-gradient(90deg,#9333ea,#a855f7)} .b5{background:linear-gradient(90deg,#dc2626,#ef4444)} .b6{background:linear-gradient(90deg,#2563eb,#3b82f6)} .b7{background:linear-gradient(90deg,#0d9488,#14b8a6)} .b8{background:linear-gradient(90deg,#d97706,#f59e0b)} .b9{background:linear-gradient(90deg,#7c3aed,#8b5cf6)} .b10{background:linear-gradient(90deg,#e11d48,#fb7185)} .b11{background:linear-gradient(90deg,#4f46e5,#6366f1)}
+.footer{text-align:center;padding:24px 12px;color:#64748b;font-size:11px;font-weight:700;line-height:1.6}
+.footer b{color:#0a1e7a}
 </style>
 </head>
 <body>
 <div class="header">
 <h1>MCRES TEST SERIES</h1>
-<p>MALLAIAH CENTER FOR RIVER & EARTH SCIENCES (MCRES)</p>
-<p>Competitive Examinations – Online Test Series</p>
+<h2>MALLAIAH CENTER FOR RIVER & EARTH SCIENCES (MCRES)</h2>
+<div class="subtitle">Competitive Examinations – Online Test Series</div>
+<div class="founder">Founder & Director: <b>Dr. Ramakrishna Manimadde</b></div>
 </div>
 
 <div class="container">
-
-<a href="./tg-current-affairs/" style="text-decoration:none"><div class="card"><div class="card-title">1. TG Current Affairs – Daily</div><div class="card-no">Go →</div></div></a>
-
-<a href="./tgpsc-gs/" style="text-decoration:none"><div class="card" style="border-left-color:#059669"><div class="card-title">2. TGPSC General Studies – Test Series</div><div class="card-no" style="background:linear-gradient(90deg,#059669,#10b981)">Go →</div></div></a>
-
-<a href="./tgpsc-groups/" style="text-decoration:none"><div class="card" style="border-left-color:#ea580c"><div class="card-title">3. TGPSC Group I, II, III & IV – Test Series</div><div class="card-no" style="background:linear-gradient(90deg,#ea580c,#fb923c)">Go →</div></div></a>
-
-<a href="./constables/" style="text-decoration:none"><div class="card" style="border-left-color:#7e22ce"><div class="card-title">4. SI / Constable – Test Series</div><div class="card-no" style="background:linear-gradient(90deg,#7e22ce,#a855f7)">Go →</div></div></a>
-
-<a href="./tet-dsc/" style="text-decoration:none"><div class="card" style="border-left-color:#b91c1c"><div class="card-title">5. TG TET / DSC / Gurukul – Test Series</div><div class="card-no" style="background:linear-gradient(90deg,#dc2626,#ef4444)">Go →</div></div></a>
-
-<a href="./jl-dl/" style="text-decoration:none"><div class="card"><div class="card-title">6. JL / DL – Test Series</div><div class="card-no">Go →</div></div></a>
-
-<a href="./rrb-ssc/" style="text-decoration:none"><div class="card" style="border-left-color:#059669"><div class="card-title">7. RRB / SSC – Test Series</div><div class="card-no" style="background:linear-gradient(90deg,#059669,#10b981)">Go →</div></div></a>
-
-<a href="./ugc-net-geography/" style="text-decoration:none"><div class="card" style="border-left-color:#ea580c"><div class="card-title">8. UGC NET – Geography Test Series</div><div class="card-no" style="background:linear-gradient(90deg,#ea580c,#fb923c)">Go →</div></div></a>
-
-<a href="./csir-net-es/" style="text-decoration:none"><div class="card" style="border-left-color:#7e22ce"><div class="card-title">9. CSIR NET – Earth Sciences Test Series</div><div class="card-no" style="background:linear-gradient(90deg,#7e22ce,#a855f7)">Go →</div></div></a>
-
-<a href="./set/" style="text-decoration:none"><div class="card" style="border-left-color:#b91c1c"><div class="card-title">10. SET – Subject-wise Test Series</div><div class="card-no" style="background:linear-gradient(90deg,#dc2626,#ef4444)">Go →</div></div></a>
-
-<a href="./group1-mains/" style="text-decoration:none"><div class="card"><div class="card-title">11. TGPSC Group I – Mains Descriptive Notes</div><div class="card-no">Go →</div></div></a>
-
+<a href="./tg-current-affairs/" style="text-decoration:none"><div class="card c1"><div class="card-title">1. TG Current Affairs – Daily</div><div class="card-no b1">Go →</div></div></a>
+<a href="./tgpsc-gs/" style="text-decoration:none"><div class="card c2"><div class="card-title">2. TGPSC General Studies – Test Series</div><div class="card-no b2">Go →</div></div></a>
+<a href="./tgpsc-groups/" style="text-decoration:none"><div class="card c3"><div class="card-title">3. TGPSC Group I, II, III & IV – Test Series</div><div class="card-no b3">Go →</div></div></a>
+<a href="./constables/" style="text-decoration:none"><div class="card c4"><div class="card-title">4. SI / Constable – Test Series</div><div class="card-no b4">Go →</div></div></a>
+<a href="./tet-dsc/" style="text-decoration:none"><div class="card c5"><div class="card-title">5. TG TET / DSC / Gurukul – Test Series</div><div class="card-no b5">Go →</div></div></a>
+<a href="./jl-dl/" style="text-decoration:none"><div class="card c6"><div class="card-title">6. JL / DL – Test Series</div><div class="card-no b6">Go →</div></div></a>
+<a href="./rrb-ssc/" style="text-decoration:none"><div class="card c7"><div class="card-title">7. RRB / SSC – Test Series</div><div class="card-no b7">Go →</div></div></a>
+<a href="./ugc-net-geography/" style="text-decoration:none"><div class="card c8"><div class="card-title">8. UGC NET – Geography Test Series</div><div class="card-no b8">Go →</div></div></a>
+<a href="./csir-net-es/" style="text-decoration:none"><div class="card c9"><div class="card-title">9. CSIR NET – Earth Sciences Test Series</div><div class="card-no b9">Go →</div></div></a>
+<a href="./set/" style="text-decoration:none"><div class="card c10"><div class="card-title">10. SET – Subject-wise Test Series</div><div class="card-no b10">Go →</div></div></a>
+<a href="./group1-mains/" style="text-decoration:none"><div class="card c11"><div class="card-title">11. TGPSC Group I – Mains Descriptive Notes</div><div class="card-no b11">Go →</div></div></a>
 </div>
 
-<div class="footer">MCRES Hyderabad - Founder & Director Dr. Ramakrishna Manimadde | mcres.in<br>Protected Content</div>
-
+<div class="footer">
+<b>MCRES Hyderabad</b> | Founder & Director Dr. Ramakrishna Manimadde | <b>mcres.in</b><br>
+© 2026 MCRES - Protected Content | All Rights Reserved
+</div>
 </body>
 </html>
