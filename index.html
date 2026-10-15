@@ -8,19 +8,16 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:"Plus Jakarta Sans",sans-serif;background:#f8fafc}
-/* COLORFUL HEADER - NEW */
-.header{position:sticky;top:0;z-index:99;background:linear-gradient(90deg,#08152e 0%,#0f2a6b 50%,#1e40af 100%);border-bottom:2px solid #fcd34d;display:flex;justify-content:space-between;align-items:center;padding:12px 24px;box-shadow:0 4px 20px rgba(8,21,46,0.25)}
-.logo{display:flex;align-items:center;gap:10px}
-.logo-icon{width:38px;height:38px;background:linear-gradient(135deg,#fde68a,#fbbf24);border-radius:50%;display:grid;place-items:center;color:#08152e;font-size:18px;border:2px solid #fff;font-weight:800}
-.logo-text{font-family:"Fraunces";font-weight:800;line-height:1}
-.logo-text b{display:block;font-size:18px;letter-spacing:1px;color:#fff}
-.logo-text span{display:block;font-size:9px;font-family:"Plus Jakarta Sans";color:#fde68a;letter-spacing:0.6px;font-weight:600}
-.nav{display:flex;gap:20px;align-items:center}
-.nav a{color:#cbd5e1;text-decoration:none;font-size:14px;font-weight:600;transition:0.2s}
+.header{position:sticky;top:0;z-index:99;background:linear-gradient(90deg,#08152e 0%,#0f2a6b 50%,#1e40af 100%);border-bottom:2px solid #fcd34d;display:flex;justify-content:space-between;align-items:center;padding:10px 18px;box-shadow:0 4px 20px rgba(8,21,46,0.25)}
+.logo{display:flex;align-items:center;gap:9px;flex-shrink:0}
+.logo-icon{width:38px;height:38px;min-width:38px;background:linear-gradient(135deg,#fde68a,#fbbf24);border-radius:50%;display:grid;place-items:center;color:#08152e;font-size:18px;border:2px solid #fff;font-weight:800}
+.logo-text{font-family:"Fraunces";font-weight:800;line-height:1;display:flex;flex-direction:column}
+.logo-text b{font-size:17px;letter-spacing:0.5px;color:#fff;line-height:1}
+.logo-text span{font-size:8.5px;font-family:"Plus Jakarta Sans";color:#fde68a;letter-spacing:0.4px;font-weight:700;white-space:nowrap;line-height:1.1;margin-top:2px}
+.nav{display:flex;gap:18px;align-items:center}
+.nav a{color:#cbd5e1;text-decoration:none;font-size:14px;font-weight:600}
 .nav a:hover{color:#fde68a}
 .nav a.active{color:#fde68a;border-bottom:2px solid #fbbf24;padding-bottom:2px;font-weight:800}
-.btn-y{background:linear-gradient(90deg,#fde68a,#fbbf24);color:#08152e;padding:9px 20px;border-radius:99px;text-decoration:none;font-weight:800;font-size:13px;box-shadow:0 4px 15px rgba(253,230,138,0.35);transition:0.2s}
-.btn-y:hover{transform:scale(1.05)}
 .hamburger{display:none;font-size:24px;cursor:pointer;background:none;border:none;color:#fff}
 .mob-menu{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#08152e;z-index:100;padding:30px}
 .mob-menu a{display:block;color:#fff;text-decoration:none;padding:16px 0;border-bottom:1px solid rgba(255,255,255,0.1);font-size:18px}
@@ -58,15 +55,14 @@ body{font-family:"Plus Jakarta Sans",sans-serif;background:#f8fafc}
 .ico{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;color:#fff;font-size:22px;margin-bottom:16px}
 .card h3{font-size:17px;color:#0f172a;margin-bottom:10px}
 .card p{font-size:13.5px;color:#475569;line-height:1.7}
-@media(max-width:900px){.hero{grid-template-columns:1fr}.h-right{height:420px;order:-1}.h-right::before{width:100%;height:40%;top:auto;bottom:-1px;background:linear-gradient(0deg,#08152e 10%,transparent 100%)}.shape{display:none}.h-left{padding:32px 20px}.h-left h1{font-size:32px}.nav{display:none}.hamburger{display:block}.grid{grid-template-columns:1fr}.st b{font-size:24px}}
+@media(max-width:900px){.header{padding:10px 12px}.logo-text b{font-size:15px}.logo-text span{font-size:7.5px}.hero{grid-template-columns:1fr}.h-right{height:420px;order:-1}.h-right::before{width:100%;height:40%;top:auto;bottom:-1px;background:linear-gradient(0deg,#08152e 10%,transparent 100%)}.shape{display:none}.h-left{padding:32px 20px}.h-left h1{font-size:32px}.nav{display:none}.hamburger{display:block}.grid{grid-template-columns:1fr}.st b{font-size:24px}}
 </style>
 </head>
 <body>
 <div class="header">
-<div class="logo"><div class="logo-icon">⛰️</div><div class="logo-text"><b>MCRES</b><span>MALLAIAH CENTER FOR RIVER & EARTH</span></div></div>
+<div class="logo"><div class="logo-icon">⛰️</div><div class="logo-text"><b>MCRES</b><span>MALLAIAH CENTER FOR RIVER & EARTH SCIENCES</span></div></div>
 <div class="nav">
 <a class="active" href="/">Home</a><a href="/about/">About</a><a href="/research/">Research</a><a href="/info-desk/">Info Desk</a><a href="/contact/">Contact</a>
-<a class="btn-y" href="/info-desk/">Info Desk</a>
 </div>
 <button class="hamburger" onclick="document.getElementById('mob').style.display='block'">☰</button>
 </div>
@@ -93,16 +89,8 @@ body{font-family:"Plus Jakarta Sans",sans-serif;background:#f8fafc}
 <h2>Our Research Focus</h2>
 <div class="sh">Integrated interdisciplinary approaches to river and earth science research</div>
 <div class="grid">
-<div class="card river">
-<div class="ico">🌊</div>
-<h3>River Hydrology & Management</h3>
-<p>Studying river systems, flood resilience, sediment dynamics, watershed management, and sustainable water resource solutions across Indian river basins.</p>
-</div>
-<div class="card earth">
-<div class="ico">⛰️</div>
-<h3>Earth Systems & Geosciences</h3>
-<p>Examining geological processes, climate-earth interactions, soil stability, and landscape evolution to support environmental resilience and policy.</p>
-</div>
+<div class="card river"><div class="ico">🌊</div><h3>River Hydrology & Management</h3><p>Studying river systems, flood resilience, sediment dynamics, watershed management, and sustainable water resource solutions across Indian river basins.</p></div>
+<div class="card earth"><div class="ico">⛰️</div><h3>Earth Systems & Geosciences</h3><p>Examining geological processes, climate-earth interactions, soil stability, and landscape evolution to support environmental resilience and policy.</p></div>
 </div>
 </div>
 </body>
