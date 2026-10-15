@@ -7,21 +7,22 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI', Arial}
 body{background:#f2f4f7;min-height:100vh}
-.header{background:linear-gradient(135deg,#081a6b,#0a1e7a);color:#fff;text-align:center;padding:16px 12px 14px;box-shadow:0 4px 12px rgba(0,0,0,0.2);border-bottom:2.5px solid #ffeb3b}
-.header h1{color:#ffeb3b;font-size:18px;font-weight:900;letter-spacing:0.5px}
-.header h2{font-size:11.5px;font-weight:700;margin-top:4px;color:#fff}
-.header h3{font-size:10.5px;font-weight:600;margin-top:5px;color:#a5d8ff;text-transform:uppercase;letter-spacing:0.3px}
-.header .founder{margin-top:10px;background:rgba(255,255,255,0.12);display:inline-block;padding:5px 14px;border-radius:16px;font-size:11px;font-weight:700;color:#7ed6ff;border:1px solid rgba(255,235,59,0.3)}
+.header{background:linear-gradient(135deg,#07124a 0%,#0a1e7a 50%,#102a9c 100%);color:#fff;text-align:center;padding:22px 10px 18px;box-shadow:0 6px 20px rgba(0,0,0,0.25);border-bottom:3px solid #ffeb3b;width:100%}
+.header h1{color:#ffeb3b;font-size:20px;font-weight:900;letter-spacing:0.8px;text-transform:uppercase}
+.header h2{font-size:13px;font-weight:800;margin-top:8px;color:#ffffff;letter-spacing:0.3px;line-height:1.3;white-space:nowrap}
+.header h3{font-size:12px;font-weight:700;margin-top:6px;color:#a5d8ff;letter-spacing:0.8px;text-transform:uppercase;white-space:nowrap}
+.header .founder{margin-top:14px;background:linear-gradient(90deg,rgba(255,235,59,0.18),rgba(125,211,252,0.18));display:inline-block;padding:7px 20px;border-radius:20px;font-size:12px;font-weight:800;color:#7ed6ff;border:1.5px solid rgba(255,235,59,0.4);letter-spacing:0.2px}
 .header .founder b{color:#ffeb3b}
-.wrap{max-width:400px;margin:0 auto;padding:16px 10px;display:flex;flex-direction:column;align-items:center;gap:10px}
-.card{width:94%;max-width:360px;border-radius:11px;padding:11px 13px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 4px 10px rgba(0,0,0,0.12)}
-.left{display:flex;align-items:center;gap:11px;flex:1}
-.ico{width:32px;height:32px;background:#fff;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:16px;box-shadow:0 2px 5px rgba(0,0,0,0.12);flex-shrink:0}
-.title{font-size:12.8px;font-weight:900;color:#081a6b;line-height:1.2}
-.btn{background:#fff;color:#111;padding:5px 11px;border-radius:14px;font-size:9.5px;font-weight:800;box-shadow:0 2px 5px rgba(0,0,0,0.12);flex-shrink:0}
+.wrap{max-width:420px;margin:0 auto;padding:16px 8px;display:flex;flex-direction:column;align-items:center;gap:11px}
+.card{width:98%;max-width:395px;border-radius:12px;padding:14px 14px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 4px 12px rgba(0,0,0,0.13)}
+.left{display:flex;align-items:center;gap:10px;flex:1;min-width:0}
+.ico{width:30px;height:30px;background:#fff;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 2px 5px rgba(0,0,0,0.12);flex-shrink:0}
+.title{font-size:11.8px;font-weight:900;color:#081a6b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.btn{background:#fff;color:#111;padding:5px 10px;border-radius:14px;font-size:9px;font-weight:800;box-shadow:0 2px 5px rgba(0,0,0,0.12);flex-shrink:0;margin-left:8px}
 a{width:100%;display:flex;justify-content:center;text-decoration:none}
 .c1{background:linear-gradient(135deg,#7dd3fc,#38bdf8)} .c2{background:linear-gradient(135deg,#86efac,#4ade80)} .c3{background:linear-gradient(135deg,#fdba74,#fb923c)} .c4{background:linear-gradient(135deg,#c4b5fd,#a78bfa)} .c5{background:linear-gradient(135deg,#fca5a5,#f87171)} .c6{background:linear-gradient(135deg,#93c5fd,#60a5fa)} .c7{background:linear-gradient(135deg,#5eead4,#2dd4bf)} .c8{background:linear-gradient(135deg,#fde68a,#fcd34d)} .c9{background:linear-gradient(135deg,#c7d2fe,#a5b4fc)} .c10{background:linear-gradient(135deg,#fda4af,#fb7185)} .c11{background:linear-gradient(135deg,#a5b4fc,#818cf8)}
 .footer{text-align:center;padding:18px 10px;color:#64748b;font-size:10px;font-weight:600}
+@media(max-width:400px){.header h2{font-size:11px} .header h3{font-size:10px} .header h1{font-size:18px}}
 </style>
 </head>
 <body>
@@ -34,32 +35,19 @@ a{width:100%;display:flex;justify-content:center;text-decoration:none}
 </div>
 
 <div class="wrap">
-
 <a href="./tg-current-affairs/"><div class="card c1"><div class="left"><div class="ico">📰</div><div class="title">1. TG Current Affairs – Daily</div></div><div class="btn">View →</div></div></a>
-
 <a href="./tgpsc-gs/"><div class="card c2"><div class="left"><div class="ico">📚</div><div class="title">2. TGPSC General Studies – Test Series</div></div><div class="btn">View →</div></div></a>
-
 <a href="./tgpsc-groups/"><div class="card c3"><div class="left"><div class="ico">🏛️</div><div class="title">3. TGPSC Group I, II, III & IV – Test Series</div></div><div class="btn">View →</div></div></a>
-
 <a href="./constables/"><div class="card c4"><div class="left"><div class="ico">👮</div><div class="title">4. SI / Constable – Test Series</div></div><div class="btn">View →</div></div></a>
-
 <a href="./tet-dsc/"><div class="card c5"><div class="left"><div class="ico">🎓</div><div class="title">5. TG TET / DSC / Gurukul – Test Series</div></div><div class="btn">View →</div></div></a>
-
 <a href="./jl-dl/"><div class="card c6"><div class="left"><div class="ico">👨‍🏫</div><div class="title">6. JL / DL – Test Series</div></div><div class="btn">View →</div></div></a>
-
 <a href="./rrb-ssc/"><div class="card c7"><div class="left"><div class="ico">🚆</div><div class="title">7. RRB / SSC – Test Series</div></div><div class="btn">View →</div></div></a>
-
 <a href="./ugc-net-geography/"><div class="card c8"><div class="left"><div class="ico">🌍</div><div class="title">8. UGC NET – Geography Test Series</div></div><div class="btn">View →</div></div></a>
-
 <a href="./csir-net-es/"><div class="card c9"><div class="left"><div class="ico">🌋</div><div class="title">9. CSIR NET – Earth Sciences Test Series</div></div><div class="btn">View →</div></div></a>
-
 <a href="./set/"><div class="card c10"><div class="left"><div class="ico">📝</div><div class="title">10. SET – Subject-wise Test Series</div></div><div class="btn">View →</div></div></a>
-
 <a href="./group1-mains/"><div class="card c11"><div class="left"><div class="ico">✍️</div><div class="title">11. TGPSC Group I – Mains Descriptive Notes</div></div><div class="btn">View →</div></div></a>
-
 </div>
 
-<div class="footer">MCRES Hyderabad | Founder & Director Dr Ramakrishna Manimadde | mcres.in<br>© 2026 MCRES - Protected Content</div>
-
+<div class="footer">MCRES Hyderabad | Founder & Director Dr Ramakrishna Manimadde | mcres.in</div>
 </body>
 </html>
