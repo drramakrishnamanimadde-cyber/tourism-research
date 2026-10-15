@@ -3,22 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MCRES - Mallaiah Center for River & Earth Sciences | Hyderabad</title>
+<title>MCRES - Mallaiah Center for River & Earth Sciences</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&family=Fraunces:opsz,wght@9..144,700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:"Plus Jakarta Sans",sans-serif;background:#f8fafc}
-.header{position:sticky;top:0;z-index:99;background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);border-bottom:1px solid #e2e8f0;display:flex;justify-content:space-between;align-items:center;padding:10px 24px}
+/* COLORFUL HEADER - NEW */
+.header{position:sticky;top:0;z-index:99;background:linear-gradient(90deg,#08152e 0%,#0f2a6b 50%,#1e40af 100%);border-bottom:2px solid #fcd34d;display:flex;justify-content:space-between;align-items:center;padding:12px 24px;box-shadow:0 4px 20px rgba(8,21,46,0.25)}
 .logo{display:flex;align-items:center;gap:10px}
-.logo-icon{width:38px;height:38px;background:linear-gradient(135deg,#0f2452,#1e40af);border-radius:50%;display:grid;place-items:center;color:#fde68a;font-size:18px;border:2px solid #fde68a}
-.logo-text{font-family:"Fraunces";font-weight:800;color:#0f2452;line-height:1}
-.logo-text b{display:block;font-size:18px;letter-spacing:1px}
-.logo-text span{display:block;font-size:9px;font-family:"Plus Jakarta Sans";color:#475569;letter-spacing:0.5px}
+.logo-icon{width:38px;height:38px;background:linear-gradient(135deg,#fde68a,#fbbf24);border-radius:50%;display:grid;place-items:center;color:#08152e;font-size:18px;border:2px solid #fff;font-weight:800}
+.logo-text{font-family:"Fraunces";font-weight:800;line-height:1}
+.logo-text b{display:block;font-size:18px;letter-spacing:1px;color:#fff}
+.logo-text span{display:block;font-size:9px;font-family:"Plus Jakarta Sans";color:#fde68a;letter-spacing:0.6px;font-weight:600}
 .nav{display:flex;gap:20px;align-items:center}
-.nav a{color:#334155;text-decoration:none;font-size:14px;font-weight:600}
-.nav a.active{color:#0f172a;border-bottom:2px solid #fbbf24}
-.btn-y{background:#fde68a;color:#0f172a;padding:8px 18px;border-radius:99px;text-decoration:none;font-weight:800;font-size:13px}
-.hamburger{display:none;font-size:24px;cursor:pointer;background:none;border:none}
+.nav a{color:#cbd5e1;text-decoration:none;font-size:14px;font-weight:600;transition:0.2s}
+.nav a:hover{color:#fde68a}
+.nav a.active{color:#fde68a;border-bottom:2px solid #fbbf24;padding-bottom:2px;font-weight:800}
+.btn-y{background:linear-gradient(90deg,#fde68a,#fbbf24);color:#08152e;padding:9px 20px;border-radius:99px;text-decoration:none;font-weight:800;font-size:13px;box-shadow:0 4px 15px rgba(253,230,138,0.35);transition:0.2s}
+.btn-y:hover{transform:scale(1.05)}
+.hamburger{display:none;font-size:24px;cursor:pointer;background:none;border:none;color:#fff}
 .mob-menu{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#08152e;z-index:100;padding:30px}
 .mob-menu a{display:block;color:#fff;text-decoration:none;padding:16px 0;border-bottom:1px solid rgba(255,255,255,0.1);font-size:18px}
 .mob-menu .close{position:absolute;top:20px;right:20px;font-size:28px;color:#fff;background:none;border:none}
@@ -40,14 +43,11 @@ body{font-family:"Plus Jakarta Sans",sans-serif;background:#f8fafc}
 .st:last-child{border:none}
 .st b{font-size:32px;color:#fcd34d;display:block;font-weight:800}
 .st span{font-size:11px;color:#94a3b8;letter-spacing:0.3px}
-
-/* COLORFUL BUT SAME TEXT */
 .focus{padding:60px 24px;background:linear-gradient(180deg,#eef6ff 0%,#fffbeb 60%,#ffffff 100%)}
 .focus h2{text-align:center;font-family:"Fraunces";font-size:32px;color:#0f2452}
 .focus .sh{text-align:center;color:#64748b;font-size:13px;margin:8px 0 32px}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:1100px;margin:0 auto}
-.card{border-radius:20px;padding:26px;background:#fff;box-shadow:0 12px 35px rgba(0,0,0,0.07);border:1px solid #e2e8f0;position:relative;overflow:hidden;transition:0.3s}
-.card:hover{transform:translateY(-4px);box-shadow:0 18px 45px rgba(0,0,0,0.12)}
+.card{border-radius:20px;padding:26px;background:#fff;box-shadow:0 12px 35px rgba(0,0,0,0.07);border:1px solid #e2e8f0;position:relative;overflow:hidden}
 .card::before{content:"";position:absolute;top:0;left:0;width:100%;height:5px}
 .card.river{background:linear-gradient(135deg,#ffffff,#eff6ff);border-color:#bfdbfe}
 .card.river::before{background:linear-gradient(90deg,#2563eb,#06b6d4)}
@@ -58,7 +58,6 @@ body{font-family:"Plus Jakarta Sans",sans-serif;background:#f8fafc}
 .ico{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;color:#fff;font-size:22px;margin-bottom:16px}
 .card h3{font-size:17px;color:#0f172a;margin-bottom:10px}
 .card p{font-size:13.5px;color:#475569;line-height:1.7}
-
 @media(max-width:900px){.hero{grid-template-columns:1fr}.h-right{height:420px;order:-1}.h-right::before{width:100%;height:40%;top:auto;bottom:-1px;background:linear-gradient(0deg,#08152e 10%,transparent 100%)}.shape{display:none}.h-left{padding:32px 20px}.h-left h1{font-size:32px}.nav{display:none}.hamburger{display:block}.grid{grid-template-columns:1fr}.st b{font-size:24px}}
 </style>
 </head>
