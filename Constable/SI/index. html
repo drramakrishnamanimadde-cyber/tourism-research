@@ -7,50 +7,41 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Arial}
 body{background:#eef2f7;min-height:100vh}
-.header{background:linear-gradient(180deg,#0a1e7a,#08165c);color:#fff;text-align:center;padding:20px 10px;box-shadow:0 8px 0 #071042,0 12px 24px rgba(0,0,0,0.3);border-bottom:4px solid #ffeb3b}
-.header h1{color:#ffeb3b;font-size:16px;font-weight:900;letter-spacing:0.5px}
+.header{background:linear-gradient(180deg,#0a1e7a,#08165c);color:#ffeb3b;text-align:center;padding:20px;box-shadow:0 8px 0 #071042;border-bottom:4px solid #ffeb3b}
+.header h1{color:#ffeb3b;font-size:16px;font-weight:900}
 .wrap{max-width:420px;margin:18px auto;padding:0 10px;display:flex;flex-direction:column;align-items:center;gap:10px}
 .main{width:100%;max-width:400px;background:linear-gradient(90deg,#0a1e7a,#1e40af);color:#ffeb3b;padding:11px 14px;border-radius:11px;font-size:13px;font-weight:900;box-shadow:0 4px 0 #071042;margin-top:14px}
-.sub{width:100%;max-width:400px;background:#ffffff;padding:8px 12px;border-radius:8px;font-size:11px;font-weight:900;color:#334155;box-shadow:0 2px 0 #cbd5e1;margin-top:6px;border-left:4px solid #0a1e7a}
-.card{width:100%;max-width:400px;border-radius:12px;padding:14px 14px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 1px 0 rgba(255,255,255,0.8) inset,0 5px 0 rgba(0,0,0,0.18),0 8px 16px rgba(0,0,0,0.12)}
-.card:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(255,255,255,0.8) inset,0 2px 0 rgba(0,0,0,0.18)}
+.sub{width:100%;max-width:400px;background:#fff;padding:8px 12px;border-radius:8px;font-size:11px;font-weight:900;color:#334155;box-shadow:0 2px 0 #cbd5e1;margin-top:6px;border-left:4px solid #0a1e7a}
+.card{width:100%;max-width:400px;border-radius:12px;padding:14px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 1px 0 rgba(255,255,255,0.8) inset,0 5px 0 rgba(0,0,0,0.18),0 8px 16px rgba(0,0,0,0.12)}
 .left{display:flex;align-items:center;gap:10px}
-.ico{width:34px;height:34px;background:linear-gradient(180deg,#fff,#e2e8f0);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:16px;box-shadow:0 2px 0 rgba(0,0,0,0.2)}
-.t{font-size:12.5px;font-weight:900;color:#081a6b;line-height:1.1}
-.t span{font-size:9.5px;font-weight:700;opacity:0.65;display:block;margin-top:2px}
-.btn{background:linear-gradient(180deg,#fff,#e2e8f0);padding:6px 12px;border-radius:16px;font-size:9.5px;font-weight:900;box-shadow:0 2px 0 #94a3b8;color:#081a6b}
+.ico{width:34px;height:34px;background:#fff;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:16px;box-shadow:0 2px 0 rgba(0,0,0,0.2)}
+.t{font-size:12.5px;font-weight:900;color:#081a6b} .t span{font-size:9.5px;font-weight:700;opacity:0.6;display:block}
+.btn{background:#fff;padding:6px 12px;border-radius:16px;font-size:9.5px;font-weight:900;box-shadow:0 2px 0 #94a3b8}
 .si1{background:linear-gradient(180deg,#93c5fd,#60a5fa)} .si2{background:linear-gradient(180deg,#a5b4fc,#818cf8)}
 .co1{background:linear-gradient(180deg,#86efac,#4ade80)} .co2{background:linear-gradient(180deg,#fde68a,#fcd34d)}
 a{width:100%;display:flex;justify-content:center;text-decoration:none}
-.back{width:100%;max-width:400px;margin:22px auto;display:block;text-align:center;background:linear-gradient(180deg,#0a1e7a,#08165c);color:#ffeb3b;padding:12px;border-radius:12px;font-weight:900;font-size:12px;text-decoration:none;box-shadow:0 4px 0 #071042}
+.back{width:100%;max-width:400px;margin:22px auto;display:block;text-align:center;background:#0a1e7a;color:#ffeb3b;padding:12px;border-radius:12px;font-weight:900;font-size:12px;text-decoration:none;box-shadow:0 4px 0 #071042}
 </style>
 </head>
 <body>
 <div class="header"><h1>CONSTABLE / SI - TESTS</h1></div>
 <div class="wrap">
-
 <div class="main">📝 PRELIMS</div>
-
-<div class="sub">👮‍♂️ SI - SUB INSPECTOR</div>
+<div class="sub">👮‍♂️ SI</div>
 <a href="./si-prelims-grand/"><div class="card si1"><div class="left"><div class="ico">🏆</div><div class="t">SI Grand Tests<span>6 Tests</span></div></div><div class="btn">View →</div></div></a>
 <a href="./si-prelims-series/"><div class="card si2"><div class="left"><div class="ico">📚</div><div class="t">SI Test Series<span>60 Tests</span></div></div><div class="btn">View →</div></div></a>
-
-<div class="sub">👮 Constable - కానిస్టేబుల్</div>
+<div class="sub">👮 Constable</div>
 <a href="./constable-prelims-grand/"><div class="card co1"><div class="left"><div class="ico">🏆</div><div class="t">Constable Grand Tests<span>6 Tests</span></div></div><div class="btn">View →</div></div></a>
 <a href="./constable-prelims-series/"><div class="card co2"><div class="left"><div class="ico">📚</div><div class="t">Constable Test Series<span>60 Tests</span></div></div><div class="btn">View →</div></div></a>
 
 <div class="main">📚 MAINS</div>
-
-<div class="sub">👮‍♂️ SI - SUB INSPECTOR</div>
+<div class="sub">👮‍♂️ SI</div>
 <a href="./si-mains-grand/"><div class="card si1"><div class="left"><div class="ico">🏆</div><div class="t">SI Grand Tests<span>6 Tests</span></div></div><div class="btn">View →</div></div></a>
 <a href="./si-mains-series/"><div class="card si2"><div class="left"><div class="ico">📚</div><div class="t">SI Test Series<span>60 Tests</span></div></div><div class="btn">View →</div></div></a>
-
-<div class="sub">👮 Constable - కానిస్టేబుల్</div>
+<div class="sub">👮 Constable</div>
 <a href="./constable-mains-grand/"><div class="card co1"><div class="left"><div class="ico">🏆</div><div class="t">Constable Grand Tests<span>6 Tests</span></div></div><div class="btn">View →</div></div></a>
 <a href="./constable-mains-series/"><div class="card co2"><div class="left"><div class="ico">📚</div><div class="t">Constable Test Series<span>60 Tests</span></div></div><div class="btn">View →</div></div></a>
-
-<a href="../" class="back">← Back to Police Recruitment</a>
-
+<a href="../../" class="back">← Back</a>
 </div>
 </body>
 </html>
