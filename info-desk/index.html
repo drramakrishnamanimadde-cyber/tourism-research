@@ -3,164 +3,72 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MCRES Info Desk - Founder & Director Dr Ramakrishna Manimadde</title>
+<title>MCRES INFO DESK - Founder Dr Ramakrishna Manimadde</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Fraunces:opsz,wght@9..144,700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:"Plus Jakarta Sans",sans-serif;background:linear-gradient(180deg,#fffaf5,#fdf6ee,#f8f9ff);min-height:100vh;color:#1e293b}
-
-/* TOP BAR - WITH FOUNDER */
-.top-dark{
-background:linear-gradient(90deg,#1e3a5f,#234b7e);
-color:#fff;text-align:center;
-padding:14px 12px 16px;
-box-shadow:0 4px 12px rgba(0,0,0,0.15)
-}
-.top-dark .main-title{
-font-size:13.5px;font-weight:800;
-letter-spacing:0.8px;line-height:1.35
-}
-.top-dark .founder{
-font-size:11.5px;font-weight:600;
-color:#e2e8f0;margin-top:7px;
-letter-spacing:0.2px
-}
-
-/* WRAPPER */
+body{font-family:"Plus Jakarta Sans",sans-serif;background:linear-gradient(180deg,#fffaf5,#fdf6ee,#f8f9ff);min-height:100vh}
+.top-dark{background:linear-gradient(90deg,#1e3a5f,#234b7e);color:#fff;text-align:center;padding:14px 12px 16px}
+.top-dark .main-title{font-size:13.5px;font-weight:800;letter-spacing:0.8px;line-height:1.35}
+.top-dark .founder{font-size:11.5px;font-weight:600;color:#e2e8f0;margin-top:7px}
 .wrapper{max-width:760px;margin:0 auto;padding:22px 16px 40px}
-.title{
-font-family:"Fraunces";font-size:28px;
-color:#1e3a5f;text-align:center;
-margin:8px 0 16px;letter-spacing:0.3px
-}
-.banner{
-background:linear-gradient(90deg,#2a7de1,#1e5bb5);
-color:#fff;text-align:center;
-padding:14px 16px;border-radius:12px;
-font-size:12px;font-weight:700;line-height:1.6;
-box-shadow:0 8px 20px rgba(42,125,225,0.25);
-margin-bottom:18px
-}
-.intro{
-text-align:center;color:#57534e;
-font-size:12.5px;line-height:1.6;
-margin-bottom:20px;padding:0 8px
-}
-
-/* CARDS */
-.card{
-background:#fff;border-radius:16px;
-padding:22px;border-left:5px solid #60a5fa;
-box-shadow:0 12px 32px rgba(0,0,0,0.07);
-margin-bottom:18px;transition:0.25s
-}
-.card:hover{transform:translateY(-2px);box-shadow:0 18px 40px rgba(0,0,0,0.1)}
+.title{font-family:"Fraunces";font-size:28px;color:#1e3a5f;text-align:center;margin:8px 0 16px}
+.banner{background:linear-gradient(90deg,#2a7de1,#1e5bb5);color:#fff;text-align:center;padding:14px 16px;border-radius:12px;font-size:12px;font-weight:700;line-height:1.6;margin-bottom:18px}
+.intro{text-align:center;color:#57534e;font-size:12.5px;line-height:1.6;margin-bottom:20px}
+.card{background:#fff;border-radius:16px;padding:22px;border-left:5px solid #60a5fa;box-shadow:0 12px 32px rgba(0,0,0,0.07);margin-bottom:18px}
 .card.ugc{border-left-color:#fb7185}
-.card h3{font-size:16px;color:#1e293b;margin-bottom:8px;line-height:1.4}
+.card.csir{border-left-color:#34d399}
+.card h3{font-size:16px;color:#1e293b;margin-bottom:8px}
 .card p{font-size:12.5px;color:#57534e;line-height:1.6;margin-bottom:14px}
 .btns{display:flex;gap:10px;flex-wrap:wrap}
-.btn{
-flex:1;min-width:120px;max-width:180px;
-padding:11px 14px;border-radius:10px;
-font-size:13px;font-weight:800;
-text-align:center;text-decoration:none;transition:0.2s
-}
-.btn.telugu{background:linear-gradient(135deg,#f59e6b,#fbbf6b);color:#fff;box-shadow:0 4px 14px rgba(245,158,107,0.3)}
+.btn{flex:1;min-width:120px;max-width:220px;padding:11px 14px;border-radius:10px;font-size:13px;font-weight:800;text-align:center;text-decoration:none}
+.btn.telugu{background:linear-gradient(135deg,#f59e6b,#fbbf6b);color:#fff}
 .btn.english{background:#fff;color:#2563eb;border:2px solid #2563eb}
-.btn.ugc1{background:linear-gradient(135deg,#fb7185,#f472b6);color:#fff;box-shadow:0 4px 14px rgba(251,113,133,0.3)}
-.btn:hover{transform:translateY(-1px)}
-
-/* MORE GUIDES */
-.dashed{
-background:linear-gradient(135deg,#fff7ed,#fef3c7);
-border:2px dashed #fbbf6b;border-radius:16px;
-padding:20px;text-align:center;
-margin-bottom:18px;box-shadow:0 8px 20px rgba(251,191,107,0.12)
-}
-.dashed h4{font-size:14px;color:#78350f;margin-bottom:8px}
-.dashed p{font-size:12px;color:#57534e;line-height:1.6}
-
-/* STANDARDS */
-.std{
-background:#fff;border-radius:16px;
-padding:20px;box-shadow:0 12px 32px rgba(0,0,0,0.06);
-margin-bottom:14px;display:flex;gap:14px;
-align-items:flex-start;border:1px solid #f1f5f9
-}
-.std .icon{
-width:44px;height:44px;
-background:linear-gradient(135deg,#ffedd5,#fed7aa);
-border-radius:12px;display:grid;place-items:center;
-font-size:22px;flex-shrink:0
-}
-.std h4{font-size:15px;color:#1e293b;margin-bottom:6px}
-.std a{font-size:12px;color:#ea580c;font-weight:700;text-decoration:none}
-.disclaimer{
-background:#f8fafc;border-radius:8px;
-padding:12px 14px;font-size:11px;
-color:#78716c;line-height:1.5;
-margin-top:6px;text-align:center
-}
+.btn.ugc1{background:linear-gradient(135deg,#fb7185,#f472b6);color:#fff}
+.btn.csir1{background:linear-gradient(135deg,#10b981,#34d399);color:#fff}
+.disclaimer{background:#f8fafc;border-radius:8px;padding:12px 14px;font-size:11px;color:#78716c;text-align:center;margin-top:18px}
 .back{display:block;text-align:center;margin-top:18px;font-size:13px;color:#2563eb;font-weight:700;text-decoration:none}
-@media(max-width:600px){.title{font-size:22px}.wrapper{padding:16px 12px 30px}}
 </style>
 </head>
 <body>
-
-<!-- TOP WITH FOUNDER -->
 <div class="top-dark">
 <div class="main-title">MALLAIAH CENTER FOR<br>RIVER & EARTH SCIENCES</div>
 <div class="founder">Founder & Director : Dr Ramakrishna Manimadde</div>
 </div>
-
 <div class="wrapper">
 <h1 class="title">MCRES INFO DESK</h1>
+<div class="banner">Info Desk - Informational Guide - Non-Governmental<br>For Student & Graduate Awareness</div>
+<p class="intro">MCRES Info Desk is a non-governmental informational initiative by Mallaiah Center. Helping students stay informed for 2026.</p>
 
-<div class="banner">Info Desk - Informational Guide - Non-Governmental<br>- For Student & Graduate Awareness</div>
-
-<p class="intro">MCRES Info Desk is a non-governmental informational initiative by Mallaiah Center for River & Earth Sciences. We share official information in simple language for students and graduates. Helping students stay informed for 2026.</p>
-
-<!-- GRADUATE MLC CARD -->
 <div class="card">
-<h3>🎓 Graduate MLC Voter Registration - Form 18 Guide 2026</h3>
-<p>Complete eligibility, documents, online & offline procedure as per CEO Telangana. Official links + latest schedule 2026-27. Step-by-step guide explained in simple Telugu & English.</p>
+<h3>🗳️ Graduate MLC Voter Registration - Form 18 Guide 2026</h3>
+<p>Mahabubnagar-RangaReddy-Hyderabad & Warangal-Khammam-Nalgonda. Last Date: 06-11-2026.</p>
 <div class="btns">
-<a class="btn telugu" href="/graduate-mlc-telugu/">తెలుగు / Telugu</a>
-<a class="btn english" href="/graduate-mlc-english/">English Version</a>
+<a class="btn telugu" href="https://drramakrishnamanimadde-cyber.github.io/tourism-research/info-desk/graduate-mlc-form-18-guide/">తెలుగు / Telugu</a>
+<a class="btn english" href="https://drramakrishnamanimadde-cyber.github.io/tourism-research/info-desk/graduate-mlc-form-18-guide-english/">English Version</a>
 </div>
 </div>
 
-<!-- UGC NET CARD -->
 <div class="card ugc">
-<h3>📚 UGC NET Complete Guide 2026 <span style="background:#fef08a;color:#854d0e;font-size:10px;padding:2px 6px;border-radius:99px">NEW</span></h3>
-<p>Syllabus, PYQs, Paper-1 & Paper-2 strategy, practice mocks. For Earth Sciences, Environmental Sciences & Geography. Updated for 2026.</p>
+<h3>🎓 UGC NET December 2026 Notification OUT!</h3>
+<p>Apply Online Started! Fees, Syllabus, Eligibility. Complete Guide by MCRES Hyderabad.</p>
 <div class="btns">
-<a class="btn ugc1" href="/ugc-net-guide/">UGC NET Guide</a>
-<a class="btn english" href="/ugc-net-syllabus/">Syllabus</a>
+<a class="btn ugc1" href="https://mcres.in/ugc-net-dec-2026-apply-online.html">UGC NET Apply Guide</a>
+<a class="btn english" href="https://mcres.in/ugc-net">UGC NET Full Info</a>
 </div>
 </div>
 
-<!-- MORE GUIDES -->
-<div class="dashed">
-<h4>📄 More Guides</h4>
-<p>• PGCET Admissions Guide • Scholarships Awareness • Government Academic Updates<br>• UGC NET Previous Papers & Mock Tests</p>
-<p style="font-size:10px;color:#a8a29e;margin-top:6px">Coming Soon...</p>
-</div>
-
-<!-- STANDARDS -->
-<div class="std">
-<div class="icon">🛡️</div>
-<div>
-<h4>About Our Standards</h4>
-<p style="font-size:11.5px;color:#57534e;margin-bottom:6px">How we verify information and maintain editorial transparency.</p>
-<a href="/standards/">Read Our Standards - Telugu →</a>
+<div class="card csir">
+<h3>🧪 CSIR NET December 2026 Notification OUT!</h3>
+<p>Apply Online Started! Application, Fee, Syllabus. Complete Info by MCRES Hyderabad.</p>
+<div class="btns">
+<a class="btn csir1" href="https://mcres.in/csir-net">CSIR NET Guide</a>
+<a class="btn english" href="https://mcres.in/csir-net">Syllabus & Details</a>
 </div>
 </div>
 
-<div class="disclaimer">Disclaimer: This is an informational initiative, not an official government website. Always verify with official sources - ceotelangana.nic.in, ugcnet.nta.nic.in</div>
-
+<div class="disclaimer">Disclaimer: Informational guide only. MCRES is non-governmental. Verify with official sources.</div>
 <a class="back" href="/">← Back to Home</a>
 </div>
-
 </body>
 </html>
