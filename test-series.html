@@ -6,34 +6,32 @@
 <title>MCRES TEST SERIES</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI', Arial}
-body{background:#f2f4f7;min-height:100vh}
-.header{background:linear-gradient(135deg,#07124a 0%,#0a1e7a 50%,#102a9c 100%);color:#fff;text-align:center;padding:22px 10px 18px;box-shadow:0 6px 20px rgba(0,0,0,0.25);border-bottom:3px solid #ffeb3b;width:100%}
-.header h1{color:#ffeb3b;font-size:20px;font-weight:900;letter-spacing:0.8px;text-transform:uppercase}
-.header h2{font-size:13px;font-weight:800;margin-top:8px;color:#ffffff;letter-spacing:0.3px;line-height:1.3;white-space:nowrap}
-.header h3{font-size:12px;font-weight:700;margin-top:6px;color:#a5d8ff;letter-spacing:0.8px;text-transform:uppercase;white-space:nowrap}
-.header .founder{margin-top:14px;background:linear-gradient(90deg,rgba(255,235,59,0.18),rgba(125,211,252,0.18));display:inline-block;padding:7px 20px;border-radius:20px;font-size:12px;font-weight:800;color:#7ed6ff;border:1.5px solid rgba(255,235,59,0.4);letter-spacing:0.2px}
-.header .founder b{color:#ffeb3b}
-.wrap{max-width:420px;margin:0 auto;padding:16px 8px;display:flex;flex-direction:column;align-items:center;gap:11px}
-.card{width:98%;max-width:395px;border-radius:12px;padding:14px 14px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 4px 12px rgba(0,0,0,0.13)}
-.left{display:flex;align-items:center;gap:10px;flex:1;min-width:0}
-.ico{width:30px;height:30px;background:#fff;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 2px 5px rgba(0,0,0,0.12);flex-shrink:0}
-.title{font-size:11.8px;font-weight:900;color:#081a6b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.btn{background:#fff;color:#111;padding:5px 10px;border-radius:14px;font-size:9px;font-weight:800;box-shadow:0 2px 5px rgba(0,0,0,0.12);flex-shrink:0;margin-left:8px}
-a{width:100%;display:flex;justify-content:center;text-decoration:none}
-.c1{background:linear-gradient(135deg,#7dd3fc,#38bdf8)} .c2{background:linear-gradient(135deg,#86efac,#4ade80)} .c3{background:linear-gradient(135deg,#fdba74,#fb923c)} .c4{background:linear-gradient(135deg,#c4b5fd,#a78bfa)} .c5{background:linear-gradient(135deg,#fca5a5,#f87171)} .c6{background:linear-gradient(135deg,#93c5fd,#60a5fa)} .c7{background:linear-gradient(135deg,#5eead4,#2dd4bf)} .c8{background:linear-gradient(135deg,#fde68a,#fcd34d)} .c9{background:linear-gradient(135deg,#c7d2fe,#a5b4fc)} .c10{background:linear-gradient(135deg,#fda4af,#fb7185)} .c11{background:linear-gradient(135deg,#a5b4fc,#818cf8)}
+body{background:#eef2f7;min-height:100vh}
+.header{background:linear-gradient(180deg,#0a1e7a 0%,#08165c 100%);color:#fff;text-align:center;padding:20px 10px 16px;box-shadow:0 8px 0 #071042, 0 12px 24px rgba(0,0,0,0.3);border-bottom:4px solid #ffeb3b;width:100%;position:relative;z-index:10}
+.header h1{color:#ffeb3b;font-size:20px;font-weight:900;letter-spacing:0.8px;text-shadow:0 2px 0 #c5a600, 0 3px 4px rgba(0,0,0,0.4)}
+.header h2{font-size:12px;font-weight:800;margin-top:8px;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,0.5);white-space:nowrap}
+.header h3{font-size:11px;font-weight:700;margin-top:6px;color:#7ed6ff;letter-spacing:0.6px;text-transform:uppercase;white-space:nowrap}
+.header .founder{margin-top:12px;background:linear-gradient(180deg,#fff,#e2e8f0);color:#0a1e7a;display:inline-block;padding:6px 18px;border-radius:20px;font-size:11px;font-weight:900;box-shadow:0 4px 0 #94a3b8, 0 6px 12px rgba(0,0,0,0.25);border:1.5px solid #ffeb3b}
+.wrap{max-width:420px;margin:20px auto;padding:0 8px;display:flex;flex-direction:column;align-items:center;gap:13px}
+.card{width:97%;max-width:395px;border-radius:13px;padding:14px 14px;display:flex;justify-content:space-between;align-items:center;position:relative;transform-style:preserve-3d;transition:0.2s;box-shadow:0 1px 0 rgba(255,255,255,0.8) inset, 0 6px 0 rgba(0,0,0,0.15), 0 8px 18px rgba(0,0,0,0.18)}
+.card:active{transform:translateY(4px);box-shadow:0 1px 0 rgba(255,255,255,0.8) inset, 0 2px 0 rgba(0,0,0,0.15), 0 4px 10px rgba(0,0,0,0.18)}
+.card:hover{transform:translateY(-2px);box-shadow:0 1px 0 rgba(255,255,255,0.9) inset, 0 8px 0 rgba(0,0,0,0.15), 0 12px 22px rgba(0,0,0,0.22)}
+.left{display:flex;align-items:center;gap:11px;flex:1;min-width:0}
+.ico{width:32px;height:32px;background:linear-gradient(180deg,#fff,#e2e8f0);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 3px 0 rgba(0,0,0,0.2), 0 4px 8px rgba(0,0,0,0.15), 0 1px 0 #fff inset;flex-shrink:0;border:1px solid rgba(0,0,0,0.05)}
+.title{font-size:11.8px;font-weight:900;color:#081a6b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-shadow:0 1px 0 #fff, 0 2px 2px rgba(0,0,0,0.08);letter-spacing:0.2px}
+.btn{background:linear-gradient(180deg,#ffffff,#e2e8f0);color:#111;padding:6px 12px;border-radius:15px;font-size:9px;font-weight:900;box-shadow:0 3px 0 #94a3b8, 0 4px 8px rgba(0,0,0,0.15), 0 1px 0 #fff inset;border:1px solid rgba(0,0,0,0.06);flex-shrink:0;margin-left:8px}
+.c1{background:linear-gradient(180deg,#7dd3fc,#38bdf8);border:1.5px solid #0ea5e9} .c2{background:linear-gradient(180deg,#86efac,#4ade80);border:1.5px solid #22c55e} .c3{background:linear-gradient(180deg,#fdba74,#fb923c);border:1.5px solid #f97316} .c4{background:linear-gradient(180deg,#c4b5fd,#a78bfa);border:1.5px solid #8b5cf6} .c5{background:linear-gradient(180deg,#fca5a5,#f87171);border:1.5px solid #ef4444} .c6{background:linear-gradient(180deg,#93c5fd,#60a5fa);border:1.5px solid #3b82f6} .c7{background:linear-gradient(180deg,#5eead4,#2dd4bf);border:1.5px solid #14b8a6} .c8{background:linear-gradient(180deg,#fde68a,#fcd34d);border:1.5px solid #eab308} .c9{background:linear-gradient(180deg,#c7d2fe,#a5b4fc);border:1.5px solid #6366f1} .c10{background:linear-gradient(180deg,#fda4af,#fb7185);border:1.5px solid #f43f5e} .c11{background:linear-gradient(180deg,#a5b4fc,#818cf8);border:1.5px solid #6366f1}
 .footer{text-align:center;padding:18px 10px;color:#64748b;font-size:10px;font-weight:600}
-@media(max-width:400px){.header h2{font-size:11px} .header h3{font-size:10px} .header h1{font-size:18px}}
+a{width:100%;display:flex;justify-content:center;text-decoration:none}
 </style>
 </head>
 <body>
-
 <div class="header">
 <h1>MCRES TEST SERIES</h1>
 <h2>MALLAIAH CENTER FOR RIVER & EARTH SCIENCES (MCRES)</h2>
 <h3>Competitive Examinations – Online Test Series</h3>
-<div class="founder">Founder & Director: <b>Dr Ramakrishna Manimadde</b></div>
+<div class="founder">Founder & Director: Dr Ramakrishna Manimadde</div>
 </div>
-
 <div class="wrap">
 <a href="./tg-current-affairs/"><div class="card c1"><div class="left"><div class="ico">📰</div><div class="title">1. TG Current Affairs – Daily</div></div><div class="btn">View →</div></div></a>
 <a href="./tgpsc-gs/"><div class="card c2"><div class="left"><div class="ico">📚</div><div class="title">2. TGPSC General Studies – Test Series</div></div><div class="btn">View →</div></div></a>
@@ -47,7 +45,6 @@ a{width:100%;display:flex;justify-content:center;text-decoration:none}
 <a href="./set/"><div class="card c10"><div class="left"><div class="ico">📝</div><div class="title">10. SET – Subject-wise Test Series</div></div><div class="btn">View →</div></div></a>
 <a href="./group1-mains/"><div class="card c11"><div class="left"><div class="ico">✍️</div><div class="title">11. TGPSC Group I – Mains Descriptive Notes</div></div><div class="btn">View →</div></div></a>
 </div>
-
 <div class="footer">MCRES Hyderabad | Founder & Director Dr Ramakrishna Manimadde | mcres.in</div>
 </body>
 </html>
