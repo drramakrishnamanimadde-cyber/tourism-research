@@ -7,35 +7,40 @@
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#fff7ed;font-family:'Outfit',sans-serif}
+body{background:#ffffff;font-family:'Outfit',sans-serif}
 .top{width:100%;background:linear-gradient(135deg,#7c3aed 0%,#e11d48 50%,#ea580c 100%);padding:0;text-align:center;border-bottom:4px solid #fde047}
-.bar{width:100%;background:linear-gradient(90deg,#a5f3fc,#fde68a,#fbcfe8);color:#0f172a;text-align:center;padding:10px;font-size:10px;font-weight:900}
-.head{max-width:760px;margin:10px auto 0;padding:0 10px}
-.hTitle{background:linear-gradient(90deg,#7c3aed,#e11d48);color:#fff;text-align:center;padding:10px;border-radius:10px;font-size:11px;font-weight:900;box-shadow:0 3px 0 #4c1d95}
-.grid{max-width:760px;margin:0 auto;padding:10px 8px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
-.card{background:#fff;border-radius:12px;padding:10px 6px;text-align:center;border-bottom:4px solid #eab308;box-shadow:0 2px 6px rgba(0,0,0,.08);cursor:pointer}
+.bar{width:100%;background:#0f172a;color:#fde047;text-align:center;padding:10px;font-size:10px;font-weight:900;letter-spacing:1px}
+.head{max-width:1200px;margin:10px auto 0;padding:0 10px}
+.hTitle{background:#fff;border:2px solid #7c3aed;color:#7c3aed;text-align:center;padding:9px;border-radius:10px;font-size:11px;font-weight:900}
+.gridWrap{max-width:1200px;margin:0 auto;padding:10px 10px;background:#f1f5f9;border-radius:14px;border:2px solid #e2e8f0;margin-top:10px}
+.grid2{display:grid;grid-template-rows:1fr 1fr;grid-auto-flow:column;grid-auto-columns:110px;gap:9px;overflow-x:auto;padding-bottom:8px}
+.grid2::-webkit-scrollbar{height:6px}
+.grid2::-webkit-scrollbar-thumb{background:#7c3aed;border-radius:10px}
+.card{background:#fff;border-radius:12px;padding:10px 6px;text-align:center;border-bottom:4px solid #eab308;box-shadow:0 2px 6px rgba(0,0,0,.12);cursor:pointer;border:1px solid #e2e8f0;min-height:72px;display:flex;flex-direction:column;justify-content:center}
 .card:active{transform:scale(.95)}
-.card b{font-size:10px;color:#0f172a;display:block;font-weight:900}
-.card span{font-size:7.5px;color:#64748b;display:block;margin:2px 0 6px;font-weight:600}
-.btn{color:#fff;padding:4px 10px;border-radius:10px;font-size:8px;font-weight:800;display:inline-block}
-.back{max-width:760px;margin:12px auto;background:linear-gradient(90deg,#7c3aed,#e11d48);color:#fff;text-align:center;padding:11px;border-radius:12px;font-weight:800;font-size:11px;display:block;text-decoration:none;box-shadow:0 3px 0 #4c1d95}
+.card b{font-size:11px;color:#0f172a;display:block;font-weight:900}
+.card span{font-size:7px;color:#64748b;display:block;margin:2px 0 5px;font-weight:600}
+.btn{color:#fff;padding:3px 10px;border-radius:8px;font-size:8px;font-weight:800;display:inline-block;margin:0 auto}
+.back{max-width:1200px;margin:12px auto;background:#0f172a;color:#fde047;text-align:center;padding:11px;border-radius:12px;font-weight:800;font-size:11px;display:block;text-decoration:none}
 </style>
 </head>
 <body>
 <div class="top">
 <div style="padding:14px 12px 6px"><div style="color:#fff;font-size:21px;font-weight:900;text-shadow:0 2px 0 #4c1d95,0 4px 12px rgba(0,0,0,.6)">MCRES Online Exams</div></div>
-<div style="padding:6px 12px"><div style="display:inline-block;color:#7c3aed;font-size:8px;font-weight:900;padding:7px 16px;border-radius:16px;background:linear-gradient(180deg,#fff,#fef9c3);box-shadow:0 3px 0 #facc15;border:2px solid #fff">MALLAIAH CENTER FOR RIVER & EARTH SCIENCES (MCRES)</div></div>
-<div style="padding:6px 12px 14px"><div style="display:inline-block;padding:7px 18px;border-radius:16px;background:linear-gradient(90deg,#f59e0b,#facc15);color:#7c2d12;box-shadow:0 4px 0 #b45309;border:2px solid #fff;font-size:9px;font-weight:900">Founder & Director Dr Ramakrishna Manimadde</div></div>
+<div style="padding:6px 12px"><div style="display:inline-block;color:#7c3aed;font-size:8px;font-weight:900;padding:7px 16px;border-radius:16px;background:#fff;box-shadow:0 3px 0 #facc15;border:2px solid #fff">MALLAIAH CENTER FOR RIVER & EARTH SCIENCES (MCRES)</div></div>
+<div style="padding:6px 12px 14px"><div style="display:inline-block;padding:7px 18px;border-radius:16px;background:#facc15;color:#7c2d12;box-shadow:0 4px 0 #b45309;border:2px solid #fff;font-size:9px;font-weight:900">Founder & Director Dr Ramakrishna Manimadde</div></div>
 </div>
-<div class="bar">🌈 CONSTABLE / SI - TEST SERIES (60) - 60 UNIQUE COLORS 🌈</div>
-<div class="head"><div class="hTitle">📝 Test Series - 60 Tests - 3x20 Grid</div></div>
-<div class="grid" id="grid"></div>
+<div class="bar">CONSTABLE / SI - TEST SERIES (60) - 2 LINES VIEW</div>
+<div class="head"><div class="hTitle">📝 60 Tests - Scroll Left-Right → 2 Lines Only</div></div>
+
+<div class="gridWrap"><div class="grid2" id="grid"></div></div>
+
 <a class="back" href="../">← Back to Constable</a>
 <script>
 const g=document.getElementById('grid');
 for(let i=1;i<=60;i++){
-let hue=(i*6)%360;let color=`hsl(${hue},85%,55%)`;let light=`hsl(${hue},85%,92%)`;
-g.innerHTML+=`<div class="card" style="border-bottom-color:${color};background:linear-gradient(180deg,#fff,${light})" onclick="location.href='./test-${i}/'"><b>Test - ${i}</b><span>Topic Wise</span><div class="btn" style="background:${color}">View →</div></div>`;
+let hue=(i*6)%360;let color=`hsl(${hue},85%,55%)`;
+g.innerHTML+=`<div class="card" style="border-bottom-color:${color}" onclick="location.href='./test-${i}/'"><b>Test - ${i}</b><span>Topic Wise</span><div class="btn" style="background:${color}">View →</div></div>`;
 }
 </script>
 </body>
