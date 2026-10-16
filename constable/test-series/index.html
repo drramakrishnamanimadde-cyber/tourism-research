@@ -4,45 +4,68 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Test Series 60 - MCRES</title>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#f0f9ff;font-family:'Outfit',sans-serif}
-.top{width:100%;background:linear-gradient(180deg,#0c4a6e 0%,#075985 40%,#0284c7 100%);padding:0;text-align:center;border-bottom:4px solid #facc15}
-.bar{width:100%;background:#0f172a;color:#7dd3fc;text-align:center;padding:10px;font-size:10px;font-weight:900;letter-spacing:1px}
-.head{max-width:600px;margin:12px auto 0;padding:0 12px}
-.hTitle{background:#fff;border:2px solid #0284c7;color:#0c4a6e;text-align:center;padding:11px;border-radius:12px;font-size:12px;font-weight:900;box-shadow:0 2px 0 #bae6fd}
-.wrap{max-width:600px;margin:12px auto;padding:12px;background:#ffffff;border-radius:16px;border:1px solid #bae6fd;box-shadow:0 4px 12px rgba(2,132,199,.1)}
-.grid{display:grid;grid-template-columns:1fr;gap:12px}
-.card{background:#fff;border-radius:14px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;border:1px solid #e0f2fe;border-left:6px solid #0284c7;box-shadow:0 2px 6px rgba(0,0,0,.06);cursor:pointer}
-.card:active{transform:scale(.98)}
-.card b{font-size:14px;color:#0f172a;font-weight:900}
-.card span{font-size:9px;color:#64748b;font-weight:700;display:block;margin-top:2px}
-.btn{color:#fff;padding:7px 16px;border-radius:20px;font-size:10px;font-weight:800}
-.back{max-width:600px;margin:14px auto;background:#0c4a6e;color:#7dd3fc;text-align:center;padding:13px;border-radius:12px;font-weight:800;font-size:12px;display:block;text-decoration:none}
+body{background:#f1f5f9;font-family:'Outfit',sans-serif}
+/* WHITE HEADER WITH 3D COLOURFUL TITLES */
+.top{background:#ffffff;text-align:center;padding:0 0 14px;border-bottom:4px solid #1e3a8a;box-shadow:0 4px 14px rgba(0,0,0,.08)}
+.bar{width:100%;background:#1e3a8a;color:#facc15;text-align:center;padding:11px;font-size:11px;font-weight:900;letter-spacing:.5px}
+.wrap{max-width:560px;margin:14px auto;padding:0 12px;display:grid;grid-template-columns:1fr;gap:12px}
+.card{width:100%;border-radius:12px;padding:12px 14px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 3px 0 rgba(0,0,0,.15),0 4px 10px rgba(0,0,0,.08);border:1px solid #fff;cursor:pointer}
+.card:active{transform:scale(.97)}
+.card:nth-child(3n+1){background:linear-gradient(90deg,#dbeafe,#93c5fd)}
+.card:nth-child(3n+2){background:linear-gradient(90deg,#dcfce7,#86efac)}
+.card:nth-child(3n+3){background:linear-gradient(90deg,#fef9c3,#fde68a)}
+.left{display:flex;align-items:center;gap:10px}
+.icon{width:34px;height:34px;background:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;box-shadow:0 2px 4px rgba(0,0,0,.15);border:1px solid #fff}
+.txt b{display:block;font-size:12px;color:#0f172a;font-weight:900;line-height:1.1}
+.txt span{display:block;font-size:9px;color:#475569;font-weight:700;margin-top:2px}
+.btn{background:#fff;color:#0f172a;padding:6px 14px;border-radius:20px;font-size:9px;font-weight:900;box-shadow:0 2px 0 #cbd5e1;border:1px solid #e2e8f0}
+.back{max-width:560px;margin:18px auto;background:#1e3a8a;color:#facc15;text-align:center;padding:12px;border-radius:10px;font-weight:800;font-size:11px;display:block;text-decoration:none}
 </style>
 </head>
 <body>
-<!-- BLUE HEADER - YOUR FAVOURITE BLUE -->
+
+<!-- WHITE BACKGROUND + 3D COLOURFUL TITLES -->
 <div class="top">
-<div style="padding:18px 12px 6px"><div style="color:#facc15;font-size:24px;font-weight:900;text-shadow:0 2px 0 #082f49,0 4px 16px rgba(0,0,0,.5)">MCRES Online Exams</div></div>
-<div style="padding:6px 12px"><div style="display:inline-block;color:#0c4a6e;font-size:8.5px;font-weight:900;padding:8px 18px;border-radius:20px;background:#fff;box-shadow:0 3px 0 #7dd3fc,0 6px 12px rgba(0,0,0,.2);border:2px solid #e0f2fe">MALLAIAH CENTER FOR RIVER & EARTH SCIENCES (MCRES)</div></div>
-<div style="padding:8px 12px 18px"><div style="display:inline-block;padding:8px 22px;border-radius:20px;background:linear-gradient(90deg,#facc15,#fde047);color:#713f12;box-shadow:0 4px 0 #ca8a04,0 6px 14px rgba(0,0,0,.2);border:2px solid #fff;font-size:10px;font-weight:900">Founder & Director Dr Ramakrishna Manimadde</div></div>
+<div style="padding:18px 12px 8px">
+<div style="font-size:26px;font-weight:900;letter-spacing:.5px;
+background:linear-gradient(90deg,#1e3a8a,#0284c7,#7c3aed,#e11d48,#ea580c);
+-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+filter:drop-shadow(0 2px 0 #facc15) drop-shadow(0 4px 6px rgba(0,0,0,.2));
+line-height:1.1">MCRES Online Exams</div>
 </div>
-<div class="bar">CONSTABLE / SI - TEST SERIES (60) - VERTICAL VIEW</div>
-<div class="head"><div class="hTitle">📝 Test Series - 60 Tests - Scroll Down 👇</div></div>
 
-<div class="wrap"><div class="grid" id="grid"></div></div>
+<div style="padding:6px 12px">
+<div style="display:inline-block;font-size:9px;font-weight:900;padding:9px 18px;border-radius:20px;
+background:linear-gradient(180deg,#fff,#dbeafe);color:#1e3a8a;
+box-shadow:0 3px 0 #1e3a8a,0 4px 0 #60a5fa,0 6px 14px rgba(30,58,138,.25);
+border:2px solid #1e3a8a;transform:rotate(-1deg)">MALLAIAH CENTER FOR RIVER & EARTH SCIENCES (MCRES)</div>
+</div>
 
-<a class="back" href="../">← Back to Constable</a>
+<div style="padding:8px 12px 4px">
+<div style="display:inline-block;font-size:10px;font-weight:900;padding:9px 22px;border-radius:20px;
+background:linear-gradient(90deg,#7c3aed,#e11d48,#f59e0b);color:#fff;
+box-shadow:0 3px 0 #4c1d95,0 6px 14px rgba(124,58,237,.35);
+border:2px solid #fff;transform:rotate(1deg);
+text-shadow:0 1px 2px rgba(0,0,0,.3)">Founder & Director Dr Ramakrishna Manimadde</div>
+</div>
+</div>
+
+<div class="bar">CONSTABLE / SI - TEST SERIES (60)</div>
+
+<div class="wrap" id="grid"></div>
+
+<a class="back" href="../">← Back</a>
+
 <script>
 const g=document.getElementById('grid');
 for(let i=1;i<=60;i++){
-let hue=(i*6)%360;
-let color=`hsl(${hue},85%,55%)`;
-g.innerHTML+=`<div class="card" style="border-left-color:${color}" onclick="location.href='./test-${i}/'">
-<div><b>Test - ${i}</b><span>Topic Wise - Full Syllabus</span></div>
-<div class="btn" style="background:${color}">View →</div>
+let icon = i%3==1 ? '📘' : i%3==2 ? '🏆' : '📝';
+g.innerHTML+=`<div class="card" onclick="location.href='./test-${i}/'">
+<div class="left"><div class="icon">${icon}</div><div class="txt"><b>Test - ${i}</b><span>60 Tests • Topic Wise</span></div></div>
+<div class="btn">View →</div>
 </div>`;
 }
 </script>
