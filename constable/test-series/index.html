@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test Series 60</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:"Plus Jakarta Sans",sans-serif;background:#fffbeb}
+.header{background:#1a2744;color:#facc15;text-align:center;padding:12px;font-weight:800;font-size:12px}
+.container{max-width:420px;margin:14px auto;padding:0 12px}
+.title{background:#1a2744;color:#facc15;text-align:center;padding:10px;border-radius:8px;font-weight:800;margin-bottom:12px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.card{background:#fff;border-radius:8px;padding:10px;text-align:center;box-shadow:0 2px 6px rgba(0,0,0,0.07);border-top:3px solid #facc15}
+.card b{font-size:12px;color:#1a2744;display:block}.card span{font-size:10px;color:#64748b}
+.card button{background:#1a2744;color:#fff;padding:5px 12px;border-radius:12px;font-size:10px;font-weight:800;border:none;margin-top:6px}
+.back{background:#1a2744;color:#facc15;display:block;text-align:center;padding:11px;border-radius:8px;text-decoration:none;font-weight:800;margin-top:14px}
+#view{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#fffbeb;z-index:100;overflow:auto}
+.inner{max-width:500px;margin:0 auto;padding:20px;text-align:center}
+.box{background:#fff;border-radius:12px;padding:30px;box-shadow:0 4px 12px rgba(0,0,0,0.1);margin-top:20px}
+</style>
+</head>
+<body>
+<div class="header">CONSTABLE / SI - TEST SERIES (60)</div>
+<div class="container">
+<div class="title">📝 Test Series - 60 Tests</div>
+<div class="grid" id="grid"></div>
+<a class="back" href="/constable/">← Back to Constable</a>
+</div>
+<div id="view"><div class="header" id="h">TEST</div><div class="inner"><div class="box"><h2 id="t">Test - 1</h2><p style="color:#64748b;font-size:13px;margin:10px 0 18px">50 Questions • 100 Marks • 90 Min</p><button style="background:#eab308;color:#1a2744;padding:10px 20px;border-radius:20px;font-weight:800;border:none">Start →</button><p style="margin-top:14px;font-size:12px;color:#ca8a04">Coming Soon...</p></div><button onclick="document.getElementById('view').style.display='none'" style="background:#1a2744;color:#facc15;padding:11px;border-radius:8px;width:100%;font-weight:800;margin-top:16px;border:none">← Back to 60 Tests</button></div></div>
+<script>
+const g=document.getElementById('grid');for(let i=1;i<=60;i++){g.innerHTML+=`<div class="card"><b>Test - ${i}</b><span>Topic Wise</span><br><button onclick="openT(${i})">View →</button></div>`;}
+function openT(n){document.getElementById('t').innerText='📝 Test Series - '+n;document.getElementById('h').innerText='TS - '+n+' : CONSTABLE TEST SERIES';document.getElementById('view').style.display='block';window.scrollTo(0,0);}
+</script>
+</body>
+</html>
