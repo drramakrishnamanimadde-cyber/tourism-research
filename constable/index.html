@@ -8,43 +8,59 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#ffffff;font-family:'Outfit',sans-serif;min-height:100vh}
-.top{background:linear-gradient(180deg,#1a2744 0%,#0f172a 100%);padding:20px 12px;text-align:center}
-.top h1{color:#facc15;font-size:19px;font-weight:900;letter-spacing:.5px}
-.top h2{color:#e2e8f0;font-size:10.5px;font-weight:700;margin-top:6px;line-height:1.4}
-.top p{margin-top:10px;display:inline-block;background:#facc15;color:#0f172a;padding:5px 16px;border-radius:20px;font-size:11px;font-weight:800}
-.bar{background:#facc15;color:#0f172a;text-align:center;padding:9px;font-size:11px;font-weight:900;letter-spacing:1.6px}
-.wrap{max-width:440px;margin:0 auto;padding:22px 16px;background:#fff}
-.card{display:flex;align-items:center;justify-content:space-between;padding:19px;border-radius:18px;margin-bottom:20px;transition:.2s}
-.card:active{transform:scale(.97) translateY(4px)}
-.c1{background:linear-gradient(145deg,#ffffff,#f8fafc);box-shadow:0 7px 0 #cbd5e1,0 14px 28px rgba(0,0,0,.10);border:1px solid #e2e8f0}
-.c2{background:linear-gradient(145deg,#dcfce7,#bbf7d0);box-shadow:0 7px 0 #16a34a,0 14px 28px rgba(22,163,74,.28);border:1px solid #86efac}
-.c3{background:linear-gradient(145deg,#fef9c3,#fde68a);box-shadow:0 7px 0 #eab308,0 14px 28px rgba(234,179,8,.30);border:1px solid #facc15}
+.top{background:linear-gradient(180deg,#1e2f5a 0%,#0f172a 100%);padding:30px 14px;text-align:center;box-shadow:0 6px 24px rgba(0,0,0,.3)}
+.top h1{color:#facc15;font-size:28px;font-weight:900;letter-spacing:1px;line-height:1.2;text-shadow:0 0 25px rgba(250,204,21,.6),0 4px 0 #854d0e,0 8px 15px rgba(0,0,0,.4)}
+.top h2{color:#fff;font-size:13.5px;font-weight:800;margin-top:14px;line-height:1.5;background:rgba(255,255,255,.10);display:inline-block;padding:10px 20px;border-radius:12px;border:1.5px solid rgba(250,204,21,.3);box-shadow:0 4px 15px rgba(0,0,0,.3);max-width:95%}
+.top p{margin-top:18px;display:inline-block;background:linear-gradient(145deg,#facc15,#fde047);color:#0f172a;padding:11px 30px;border-radius:30px;font-size:14px;font-weight:900;box-shadow:0 0 30px rgba(250,204,21,.6),0 5px 0 #ca8a04,0 12px 24px rgba(0,0,0,.3)}
+.bar{background:#facc15;color:#0f172a;text-align:center;padding:10px;font-size:12px;font-weight:900;letter-spacing:1.8px}
+.wrap{max-width:440px;margin:0 auto;padding:24px 16px;background:#fff}
+.card{display:flex;align-items:center;justify-content:space-between;padding:20px;border-radius:20px;margin-bottom:22px;transition:.2s}
+.card:active{transform:scale(.97) translateY(5px)}
+.c1{background:linear-gradient(145deg,#ffffff,#f1f5f9);box-shadow:0 8px 0 #cbd5e1,0 16px 32px rgba(0,0,0,.12);border:1px solid #e2e8f0}
+.c2{background:linear-gradient(145deg,#dcfce7,#bbf7d0);box-shadow:0 8px 0 #16a34a,0 16px 32px rgba(22,163,74,.28);border:1px solid #86efac}
+.c3{background:linear-gradient(145deg,#fef9c3,#fde68a);box-shadow:0 8px 0 #eab308,0 16px 32px rgba(234,179,8,.32);border:1px solid #facc15}
 .c1:active{box-shadow:0 2px 0 #cbd5e1}
 .c2:active{box-shadow:0 2px 0 #16a34a}
 .c3:active{box-shadow:0 2px 0 #eab308}
-.left{display:flex;align-items:center;gap:13px}
-.icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:25px;background:#fff;box-shadow:0 4px 10px rgba(0,0,0,.10)}
-.txt b{font-size:14px;color:#0f172a;font-weight:800;display:block}
-.txt span{font-size:11px;color:#475569;font-weight:600;margin-top:3px;display:block}
-.btn{border:none;padding:9px 20px;border-radius:22px;font-weight:800;font-size:11px;cursor:pointer}
-.b2{background:#16a34a;color:#fff;box-shadow:0 4px 0 #15803d,0 8px 16px rgba(22,163,74,.35)}
-.b3{background:#0f172a;color:#facc15;box-shadow:0 4px 0 #020617,0 8px 16px rgba(0,0,0,.3)}
-.back{margin-top:10px;background:linear-gradient(145deg,#1e293b,#0f172a);color:#facc15;text-align:center;padding:15px;border-radius:16px;font-weight:800;font-size:12px;cursor:pointer;box-shadow:0 5px 0 #020617,0 12px 24px rgba(0,0,0,.25)}
-.back:active{transform:translateY(4px);box-shadow:0 1px 0 #020617}
+.left{display:flex;align-items:center;gap:14px}
+.icon{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:28px;background:#fff;box-shadow:0 5px 12px rgba(0,0,0,.12)}
+.txt b{font-size:15px;color:#0f172a;font-weight:800;display:block}
+.txt span{font-size:11.5px;color:#475569;font-weight:600;margin-top:4px;display:block}
+.btn{border:none;padding:10px 22px;border-radius:24px;font-weight:800;font-size:12px;cursor:pointer;transition:.15s}
+.b2{background:#16a34a;color:#fff;box-shadow:0 5px 0 #15803d,0 8px 16px rgba(22,163,74,.35)}
+.b3{background:#0f172a;color:#facc15;box-shadow:0 5px 0 #020617,0 8px 16px rgba(0,0,0,.3)}
+.btn:active{transform:translateY(4px);box-shadow:0 1px 0 rgba(0,0,0,.3)}
+.back{margin-top:12px;background:linear-gradient(145deg,#1e293b,#0f172a);color:#facc15;text-align:center;padding:16px;border-radius:16px;font-weight:800;font-size:13px;cursor:pointer;box-shadow:0 6px 0 #020617,0 14px 28px rgba(0,0,0,.25)}
+.back:active{transform:translateY(5px);box-shadow:0 1px 0 #020617}
 </style>
 </head>
 <body>
+
 <div class="top">
 <h1>MCRES Online Exams</h1>
 <h2>MALLAIAH CENTER FOR RIVER & EARTH SCIENCES (MCRES)</h2>
 <p>Founder & Director Dr Ramakrishna Manimadde</p>
 </div>
+
 <div class="bar">CONSTABLE / SI - TESTS</div>
+
 <div class="wrap">
-<div class="card c1"><div class="left"><div class="icon">📘</div><div class="txt"><b>Constable Prelims</b><span>Syllabus & Exam Pattern</span></div></div></div>
-<div class="card c2"><div class="left"><div class="icon">🏆</div><div class="txt"><b>Constable Grand Tests</b><span>6 Full Syllabus Tests</span></div></div><button class="btn b2" onclick="location.href='./grand-tests/'">View →</button></div>
-<div class="card c3"><div class="left"><div class="icon">📝</div><div class="txt"><b>Constable Test Series</b><span>60 Chapter Wise Tests</span></div></div><button class="btn b3" onclick="location.href='./test-series/'">View →</button></div>
+<div class="card c1">
+<div class="left"><div class="icon">📘</div><div class="txt"><b>Constable Prelims</b><span>Syllabus & Exam Pattern</span></div></div>
+</div>
+
+<div class="card c2">
+<div class="left"><div class="icon">🏆</div><div class="txt"><b>Constable Grand Tests</b><span>6 Full Syllabus Tests</span></div></div>
+<button class="btn b2" onclick="location.href='./grand-tests/'">View →</button>
+</div>
+
+<div class="card c3">
+<div class="left"><div class="icon">📝</div><div class="txt"><b>Constable Test Series</b><span>60 Chapter Wise Tests</span></div></div>
+<button class="btn b3" onclick="location.href='./test-series/'">View →</button>
+</div>
+
 <div class="back" onclick="location.href='../'">← Back to Home</div>
 </div>
+
 </body>
 </html>
