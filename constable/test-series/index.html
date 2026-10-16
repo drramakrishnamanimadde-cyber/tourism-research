@@ -1,35 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Test Series 60</title>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test Series 60 - MCRES</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}body{font-family:"Plus Jakarta Sans",sans-serif;background:#fffbeb}
-.header{background:#1a2744;color:#facc15;text-align:center;padding:12px;font-weight:800;font-size:12px}
-.container{max-width:420px;margin:14px auto;padding:0 12px}
-.title{background:#1a2744;color:#facc15;text-align:center;padding:10px;border-radius:8px;font-weight:800;margin-bottom:12px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.card{background:#fff;border-radius:8px;padding:10px;text-align:center;box-shadow:0 2px 6px rgba(0,0,0,0.07);border-top:3px solid #facc15}
-.card b{font-size:12px;color:#1a2744;display:block}.card span{font-size:10px;color:#64748b}
-.card button{background:#1a2744;color:#fff;padding:5px 12px;border-radius:12px;font-size:10px;font-weight:800;border:none;margin-top:6px}
-.back{background:#1a2744;color:#facc15;display:block;text-align:center;padding:11px;border-radius:8px;text-decoration:none;font-weight:800;margin-top:14px}
-#view{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#fffbeb;z-index:100;overflow:auto}
-.inner{max-width:500px;margin:0 auto;padding:20px;text-align:center}
-.box{background:#fff;border-radius:12px;padding:30px;box-shadow:0 4px 12px rgba(0,0,0,0.1);margin-top:20px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#fff7ed;font-family:'Outfit',sans-serif}
+.top{width:100%;background:linear-gradient(135deg,#7c3aed 0%,#e11d48 50%,#ea580c 100%);padding:0;text-align:center;border-bottom:4px solid #fde047}
+.bar{width:100%;background:linear-gradient(90deg,#a5f3fc,#fde68a,#fbcfe8);color:#0f172a;text-align:center;padding:10px;font-size:10px;font-weight:900}
+.head{max-width:760px;margin:10px auto 0;padding:0 10px}
+.hTitle{background:linear-gradient(90deg,#7c3aed,#e11d48);color:#fff;text-align:center;padding:10px;border-radius:10px;font-size:11px;font-weight:900;box-shadow:0 3px 0 #4c1d95}
+.grid{max-width:760px;margin:0 auto;padding:10px 8px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.card{background:#fff;border-radius:12px;padding:10px 6px;text-align:center;border-bottom:4px solid #eab308;box-shadow:0 2px 6px rgba(0,0,0,.08);cursor:pointer}
+.card:active{transform:scale(.95)}
+.card b{font-size:10px;color:#0f172a;display:block;font-weight:900}
+.card span{font-size:7.5px;color:#64748b;display:block;margin:2px 0 6px;font-weight:600}
+.btn{color:#fff;padding:4px 10px;border-radius:10px;font-size:8px;font-weight:800;display:inline-block}
+.back{max-width:760px;margin:12px auto;background:linear-gradient(90deg,#7c3aed,#e11d48);color:#fff;text-align:center;padding:11px;border-radius:12px;font-weight:800;font-size:11px;display:block;text-decoration:none;box-shadow:0 3px 0 #4c1d95}
 </style>
 </head>
 <body>
-<div class="header">CONSTABLE / SI - TEST SERIES (60)</div>
-<div class="container">
-<div class="title">📝 Test Series - 60 Tests</div>
-<div class="grid" id="grid"></div>
-<a class="back" href="/constable/">← Back to Constable</a>
+<div class="top">
+<div style="padding:14px 12px 6px"><div style="color:#fff;font-size:21px;font-weight:900;text-shadow:0 2px 0 #4c1d95,0 4px 12px rgba(0,0,0,.6)">MCRES Online Exams</div></div>
+<div style="padding:6px 12px"><div style="display:inline-block;color:#7c3aed;font-size:8px;font-weight:900;padding:7px 16px;border-radius:16px;background:linear-gradient(180deg,#fff,#fef9c3);box-shadow:0 3px 0 #facc15;border:2px solid #fff">MALLAIAH CENTER FOR RIVER & EARTH SCIENCES (MCRES)</div></div>
+<div style="padding:6px 12px 14px"><div style="display:inline-block;padding:7px 18px;border-radius:16px;background:linear-gradient(90deg,#f59e0b,#facc15);color:#7c2d12;box-shadow:0 4px 0 #b45309;border:2px solid #fff;font-size:9px;font-weight:900">Founder & Director Dr Ramakrishna Manimadde</div></div>
 </div>
-<div id="view"><div class="header" id="h">TEST</div><div class="inner"><div class="box"><h2 id="t">Test - 1</h2><p style="color:#64748b;font-size:13px;margin:10px 0 18px">50 Questions • 100 Marks • 90 Min</p><button style="background:#eab308;color:#1a2744;padding:10px 20px;border-radius:20px;font-weight:800;border:none">Start →</button><p style="margin-top:14px;font-size:12px;color:#ca8a04">Coming Soon...</p></div><button onclick="document.getElementById('view').style.display='none'" style="background:#1a2744;color:#facc15;padding:11px;border-radius:8px;width:100%;font-weight:800;margin-top:16px;border:none">← Back to 60 Tests</button></div></div>
+<div class="bar">🌈 CONSTABLE / SI - TEST SERIES (60) - 60 UNIQUE COLORS 🌈</div>
+<div class="head"><div class="hTitle">📝 Test Series - 60 Tests - 3x20 Grid</div></div>
+<div class="grid" id="grid"></div>
+<a class="back" href="../">← Back to Constable</a>
 <script>
-const g=document.getElementById('grid');for(let i=1;i<=60;i++){g.innerHTML+=`<div class="card"><b>Test - ${i}</b><span>Topic Wise</span><br><button onclick="openT(${i})">View →</button></div>`;}
-function openT(n){document.getElementById('t').innerText='📝 Test Series - '+n;document.getElementById('h').innerText='TS - '+n+' : CONSTABLE TEST SERIES';document.getElementById('view').style.display='block';window.scrollTo(0,0);}
+const g=document.getElementById('grid');
+for(let i=1;i<=60;i++){
+let hue=(i*6)%360;let color=`hsl(${hue},85%,55%)`;let light=`hsl(${hue},85%,92%)`;
+g.innerHTML+=`<div class="card" style="border-bottom-color:${color};background:linear-gradient(180deg,#fff,${light})" onclick="location.href='./test-${i}/'"><b>Test - ${i}</b><span>Topic Wise</span><div class="btn" style="background:${color}">View →</div></div>`;
+}
 </script>
 </body>
 </html>
