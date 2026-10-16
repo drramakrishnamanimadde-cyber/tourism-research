@@ -7,66 +7,38 @@
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#f1f5f9;font-family:'Outfit',sans-serif}
-/* WHITE HEADER WITH 3D COLOURFUL TITLES */
-.top{background:#ffffff;text-align:center;padding:0 0 14px;border-bottom:4px solid #1e3a8a;box-shadow:0 4px 14px rgba(0,0,0,.08)}
-.bar{width:100%;background:#1e3a8a;color:#facc15;text-align:center;padding:11px;font-size:11px;font-weight:900;letter-spacing:.5px}
-.wrap{max-width:560px;margin:14px auto;padding:0 12px;display:grid;grid-template-columns:1fr;gap:12px}
-.card{width:100%;border-radius:12px;padding:12px 14px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 3px 0 rgba(0,0,0,.15),0 4px 10px rgba(0,0,0,.08);border:1px solid #fff;cursor:pointer}
-.card:active{transform:scale(.97)}
-.card:nth-child(3n+1){background:linear-gradient(90deg,#dbeafe,#93c5fd)}
-.card:nth-child(3n+2){background:linear-gradient(90deg,#dcfce7,#86efac)}
-.card:nth-child(3n+3){background:linear-gradient(90deg,#fef9c3,#fde68a)}
-.left{display:flex;align-items:center;gap:10px}
-.icon{width:34px;height:34px;background:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;box-shadow:0 2px 4px rgba(0,0,0,.15);border:1px solid #fff}
-.txt b{display:block;font-size:12px;color:#0f172a;font-weight:900;line-height:1.1}
-.txt span{display:block;font-size:9px;color:#475569;font-weight:700;margin-top:2px}
-.btn{background:#fff;color:#0f172a;padding:6px 14px;border-radius:20px;font-size:9px;font-weight:900;box-shadow:0 2px 0 #cbd5e1;border:1px solid #e2e8f0}
-.back{max-width:560px;margin:18px auto;background:#1e3a8a;color:#facc15;text-align:center;padding:12px;border-radius:10px;font-weight:800;font-size:11px;display:block;text-decoration:none}
+body{background:#eef2ff;font-family:'Outfit',sans-serif}
+.top{width:100%;background:linear-gradient(180deg,#020617,#0c4a6e 60%,#0284c7);text-align:center;padding:14px 0 14px;border-bottom:4px solid #facc15}
+.bar{background:#0f172a;color:#facc15;text-align:center;padding:9px;font-size:10px;font-weight:900}
+.wrap{max-width:520px;margin:12px auto;padding:0 10px;display:grid;gap:10px}
+.card{border-radius:12px;padding:10px 12px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;border:2px solid #fff}
+.card:active{transform:translateY(3px)}
+.c1{background:linear-gradient(180deg,#60a5fa,#2563eb,#1d4ed8);box-shadow:0 5px 0 #1e3a8a,0 8px 12px rgba(0,0,0,.25)}
+.c2{background:linear-gradient(180deg,#4ade80,#16a34a,#15803d);box-shadow:0 5px 0 #14532d,0 8px 12px rgba(0,0,0,.25)}
+.c3{background:linear-gradient(180deg,#fde68a,#f59e0b,#d97706);box-shadow:0 5px 0 #92400e,0 8px 12px rgba(0,0,0,.25)}
+.left{display:flex;align-items:center;gap:9px}
+.icon{width:30px;height:30px;background:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;box-shadow:0 2px 0 #cbd5e1}
+.txt b{font-size:11.5px;color:#fff;font-weight:900;text-shadow:0 1px 2px rgba(0,0,0,.4)}
+.txt span{font-size:7.5px;color:#fff;font-weight:700;opacity:.95;display:block;margin-top:1px}
+.btn{background:#fff;color:#0f172a;padding:5px 12px;border-radius:16px;font-size:8.5px;font-weight:900;box-shadow:0 2px 0 #94a3b8}
+.back{max-width:520px;margin:14px auto;background:#0c4a6e;color:#facc15;text-align:center;padding:11px;border-radius:10px;font-weight:800;font-size:11px;display:block;text-decoration:none}
 </style>
 </head>
 <body>
-
-<!-- WHITE BACKGROUND + 3D COLOURFUL TITLES -->
 <div class="top">
-<div style="padding:18px 12px 8px">
-<div style="font-size:26px;font-weight:900;letter-spacing:.5px;
-background:linear-gradient(90deg,#1e3a8a,#0284c7,#7c3aed,#e11d48,#ea580c);
--webkit-background-clip:text;-webkit-text-fill-color:transparent;
-filter:drop-shadow(0 2px 0 #facc15) drop-shadow(0 4px 6px rgba(0,0,0,.2));
-line-height:1.1">MCRES Online Exams</div>
+<div style="color:#facc15;font-size:22px;font-weight:900;text-shadow:0 2px 0 #000,0 6px 10px rgba(0,0,0,.5)">MCRES Online Exams</div>
+<div style="margin:7px auto 0;display:inline-block;background:#fff;color:#0c4a6e;font-size:8px;font-weight:900;padding:7px 16px;border-radius:20px;box-shadow:0 3px 0 #7dd3fc;border:1px solid #bae6fd">MALLAIAH CENTER FOR RIVER & EARTH SCIENCES (MCRES)</div>
+<div style="margin:7px auto 0;display:inline-block;background:#facc15;color:#713f12;font-size:9px;font-weight:900;padding:7px 18px;border-radius:20px;box-shadow:0 3px 0 #a16207;border:2px solid #fff">Founder & Director Dr Ramakrishna Manimadde</div>
 </div>
-
-<div style="padding:6px 12px">
-<div style="display:inline-block;font-size:9px;font-weight:900;padding:9px 18px;border-radius:20px;
-background:linear-gradient(180deg,#fff,#dbeafe);color:#1e3a8a;
-box-shadow:0 3px 0 #1e3a8a,0 4px 0 #60a5fa,0 6px 14px rgba(30,58,138,.25);
-border:2px solid #1e3a8a;transform:rotate(-1deg)">MALLAIAH CENTER FOR RIVER & EARTH SCIENCES (MCRES)</div>
-</div>
-
-<div style="padding:8px 12px 4px">
-<div style="display:inline-block;font-size:10px;font-weight:900;padding:9px 22px;border-radius:20px;
-background:linear-gradient(90deg,#7c3aed,#e11d48,#f59e0b);color:#fff;
-box-shadow:0 3px 0 #4c1d95,0 6px 14px rgba(124,58,237,.35);
-border:2px solid #fff;transform:rotate(1deg);
-text-shadow:0 1px 2px rgba(0,0,0,.3)">Founder & Director Dr Ramakrishna Manimadde</div>
-</div>
-</div>
-
 <div class="bar">CONSTABLE / SI - TEST SERIES (60)</div>
-
 <div class="wrap" id="grid"></div>
-
 <a class="back" href="../">← Back</a>
-
 <script>
 const g=document.getElementById('grid');
 for(let i=1;i<=60;i++){
-let icon = i%3==1 ? '📘' : i%3==2 ? '🏆' : '📝';
-g.innerHTML+=`<div class="card" onclick="location.href='./test-${i}/'">
-<div class="left"><div class="icon">${icon}</div><div class="txt"><b>Test - ${i}</b><span>60 Tests • Topic Wise</span></div></div>
-<div class="btn">View →</div>
-</div>`;
+let c=i%3==1?'c1':i%3==2?'c2':'c3';
+let ic=i%3==1?'📘':i%3==2?'🏆':'📝';
+g.innerHTML+=`<div class="card ${c}" onclick="location.href='./test-${i}/'"><div class="left"><div class="icon">${ic}</div><div class="txt"><b>Test - ${i}</b><span>60 Tests • Topic Wise</span></div></div><div class="btn">View →</div></div>`;
 }
 </script>
 </body>
