@@ -3,50 +3,52 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CONSTABLE - PRELIMS</title>
+<title>MCRES Online Exams</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#f0f6fb;font-family:system-ui,sans-serif}
-.header{background:#1a2744;color:#facc15;text-align:center;padding:12px;font-weight:800;font-size:13px;letter-spacing:1px}
+body{background:#eef4ff;font-family:'Poppins',system-ui,sans-serif}
+.top{position:relative;background:linear-gradient(135deg,#0f172a 0%,#1e293b 50%,#1a2744 100%);padding:20px 14px;text-align:center;overflow:hidden}
+.top::before{content:'';position:absolute;top:-50px;right:-30px;width:160px;height:160px;background:radial-gradient(circle,#facc15 0%,transparent 70%);opacity:.18}
+.top h1{position:relative;color:#facc15;font-size:18px;font-weight:800;letter-spacing:.6px;text-shadow:0 2px 12px rgba(250,204,21,.35)}
+.top h2{position:relative;color:#e2e8f0;font-size:11px;font-weight:600;margin-top:6px;line-height:1.5;letter-spacing:.3px}
+.top .line{width:70px;height:3px;background:linear-gradient(90deg,#facc15,#fde047);margin:10px auto 0;border-radius:10px;box-shadow:0 0 10px rgba(250,204,21,.5)}
+.top p{position:relative;color:#fde68a;font-size:11.5px;font-weight:700;margin-top:10px}
+.bar{background:linear-gradient(90deg,#facc15,#fde047);color:#0f172a;text-align:center;padding:8px;font-size:11px;font-weight:800;letter-spacing:1.5px}
 .wrap{max-width:430px;margin:0 auto;padding:16px}
-.sub{background:#1a2744;color:#facc15;padding:8px 12px;border-radius:6px;font-weight:800;font-size:12px;margin-bottom:10px}
-.card{display:flex;align-items:center;justify-content:space-between;padding:14px;border-radius:12px;margin-bottom:10px;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.08)}
-.card .ic{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px}
-.card .txt{flex:1;margin-left:10px}
-.card .txt b{font-size:13px;color:#1a2744;display:block}
-.card .txt span{font-size:11px;color:#64748b}
-.btn{border:none;background:#1a2744;color:#facc15;padding:7px 16px;border-radius:20px;font-weight:700;font-size:12px;cursor:pointer}
-.g{background:linear-gradient(135deg,#f0fdf4,#fff);border-left:4px solid #16a34a}
-.g .ic{background:#dcfce7}
-.y{background:linear-gradient(135deg,#fefce8,#fff);border-left:4px solid #eab308}
-.y .ic{background:#fef9c3}
-.back{background:#1a2744;color:#facc15;text-align:center;padding:12px;border-radius:12px;margin-top:12px;font-weight:700;font-size:12px;cursor:pointer}
+.sub{display:flex;align-items:center;gap:8px;background:linear-gradient(90deg,#1a2744,#23395d);color:#facc15;padding:10px 14px;border-radius:12px;font-weight:800;font-size:12px;margin-bottom:14px;box-shadow:0 6px 16px rgba(26,39,68,.25)}
+.card{display:flex;align-items:center;justify-content:space-between;padding:16px;border-radius:16px;margin-bottom:12px;background:#fff;box-shadow:0 8px 24px rgba(0,0,0,.07);border:1px solid rgba(0,0,0,.04)}
+.card .left{display:flex;align-items:center;gap:12px}
+.card .ic{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:21px}
+.card .txt b{font-size:13.5px;color:#0f172a;display:block}
+.card .txt span{font-size:11px;color:#64748b;margin-top:2px;display:block}
+.btn{border:none;padding:8px 18px;border-radius:24px;font-weight:800;font-size:12px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.15)}
+.s{background:#f8fafc;border:1px solid #e2e8f0}.s .ic{background:#e2e8f0}
+.g{background:linear-gradient(135deg,#f0fdf4,#fff);border:1px solid #bbf7d0}.g .ic{background:linear-gradient(135deg,#dcfce7,#bbf7d0)}.g .btn{background:#16a34a;color:#fff}
+.y{background:linear-gradient(135deg,#fefce8,#fff);border:1px solid #fde68a}.y .ic{background:linear-gradient(135deg,#fef9c3,#fde68a)}.y .btn{background:#1a2744;color:#facc15}
+.back{margin-top:18px;background:linear-gradient(135deg,#1a2744,#2a3f6b);color:#facc15;text-align:center;padding:13px;border-radius:14px;font-weight:800;font-size:12px;cursor:pointer;box-shadow:0 8px 20px rgba(26,39,68,.3)}
+.dot{width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 4px rgba(34,197,94,.2);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(34,197,94,.4)}70%{box-shadow:0 0 0 8px rgba(34,197,94,0)}100%{box-shadow:0 0 0 0 rgba(34,197,94,0)}}
 </style>
 </head>
 <body>
-<div class="header">CONSTABLE / SI - TESTS</div>
+<div class="top">
+<h1>MCRES On-line Exams</h1>
+<h2>MALLAIAH CENTER FOR RIVER & EARTH SCIENCES (MCRES)</h2>
+<div class="line"></div>
+<p>Founder & Director Dr Ramakrishna Manimadde</p>
+</div>
+<div class="bar">CONSTABLE / SI - TESTS</div>
 <div class="wrap">
-<div class="sub">📘 PRELIMS</div>
+<div class="sub"><div class="dot"></div> 📘 PRELIMS - LIVE TESTS</div>
 
-<div class="card">
-<div class="ic">📄</div>
-<div class="txt"><b>Constable Prelims</b><span>Syllabus & Exam Pattern</span></div>
-</div>
+<div class="card s"><div class="left"><div class="ic">📘</div><div class="txt"><b>Constable Prelims</b><span>Syllabus & Exam Pattern</span></div></div></div>
 
-<div class="card g">
-<div class="ic">🏆</div>
-<div class="txt"><b>Constable Grand Tests</b><span>6 Tests</span></div>
-<button class="btn" onclick="location.href='./grand-tests/'">View →</button>
-</div>
+<div class="card g"><div class="left"><div class="ic">🏆</div><div class="txt"><b>Constable Grand Tests</b><span>6 Full Syllabus Tests</span></div></div><button class="btn" onclick="location.href='./grand-tests/'">View →</button></div>
 
-<div class="card y">
-<div class="ic">📝</div>
-<div class="txt"><b>Constable Test Series</b><span>60 Tests</span></div>
-<button class="btn" onclick="location.href='./test-series/'">View →</button>
-</div>
+<div class="card y"><div class="left"><div class="ic">📝</div><div class="txt"><b>Constable Test Series</b><span>60 Chapter Wise Tests</span></div></div><button class="btn" onclick="location.href='./test-series/'">View →</button></div>
 
-<div class="back" onclick="location.href='../'">← Back</div>
-
+<div class="back" onclick="location.href='../'">← Back to Home</div>
 </div>
 </body>
 </html>
