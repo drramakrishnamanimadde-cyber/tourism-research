@@ -3,70 +3,105 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mella Duppalapally Grama Cheruvu - మేళ్ళ దుప్పలపల్లి</title>
+<title>మేళ్ళ దుప్పలపల్లి గ్రామ చెరువు | Mella Duppalapally Grama Cheruvu</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu:wght@400;700;900&family=Poppins:wght@600;800&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu:wght@400;700&family=Inter:wght@600;800&display=swap');
-body{margin:0;font-family:'Noto Sans Telugu','Inter',sans-serif;background:#f9f6ef;color:#2b2b2b}
-header{background:linear-gradient(135deg,#0f2e1f,#1f5a3a);color:#fff;padding:18px 20px;position:sticky;top:0;z-index:10;border-bottom:3px solid #d4a94a}
-.wrap{max-width:1100px;margin:auto;padding:0 18px}
-.hero{display:grid;grid-template-columns:1.1fr 0.9fr;gap:20px;background:linear-gradient(120deg,#eef4e6 0%,#f6f1e3 100%);padding:30px 18px}
-.hero h1{font-size:42px;line-height:1.1;color:#123a24;margin:10px 0}
-.badge{background:#f6d98a;border-radius:20px;padding:6px 14px;font-size:13px;font-weight:700;color:#5a3d00;display:inline-block}
-.btn{display:inline-block;padding:12px 22px;border-radius:10px;font-weight:800;text-decoration:none;margin:8px 8px 0 0}
-.btn-dark{background:#123a24;color:#fff}
-.btn-light{background:#fff;color:#123a24;border:2px solid #d4d0c0}
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:24px 0}
-.card{background:#fff;border-radius:16px;padding:18px;box-shadow:0 8px 20px rgba(0,0,0,.07);border:1px solid #e8e2d0}
-.card.green{background:#e2f1d9}
-.card.cream{background:#fef6e6}
-.card.sage{background:#dfe8c4}
-h2{color:#123a24}
-footer{background:#0f2e1f;color:#dfe9d8;text-align:center;padding:22px;font-size:13px}
-@media(max-width:800px){.hero{grid-template-columns:1fr}.grid3{grid-template-columns:1fr}.hero h1{font-size:30px}}
+:root{--green:#0e3b22;--gold:#f9c642;--light:#fffdf3}
+*{margin:0;box-sizing:border-box}
+body{font-family:'Noto Sans Telugu','Poppins',sans-serif;background:var(--light);color:#1a1a1a}
+header{background:linear-gradient(90deg,#062b16 0%,#14532d 60%,#1a6b38 100%);color:#fff;padding:14px 0;position:sticky;top:0;z-index:99;border-bottom:4px solid var(--gold)}
+.wrap{max-width:1150px;margin:auto;padding:0 16px}
+.top{display:flex;justify-content:space-between;align-items:center}
+.logo{font-weight:900;font-size:18px;color:var(--gold)}
+.hero{background:radial-gradient(120% 120% at 20% 20%,#e8f5d8 0%,#fef9e7 50%,#e0f2fe 100%);padding:28px 0 20px}
+.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;align-items:center}
+.badge{background:linear-gradient(90deg,#fde68a,#fbbf24);color:#422006;padding:7px 16px;border-radius:30px;font-weight:800;font-size:13px;display:inline-block;box-shadow:0 4px 10px rgba(0,0,0,.15)}
+.hero h1{font-size:46px;line-height:.95;color:var(--green);margin:14px 0 8px;font-weight:900}
+.hero h1 span.eng{display:block;font-size:18px;color:#854d0e;font-family:'Poppins';margin-top:6px}
+.hero p{font-size:16px;color:#334155;line-height:1.6;margin:10px 0 18px}
+.btn{padding:13px 22px;border-radius:12px;font-weight:800;text-decoration:none;display:inline-block;margin-right:10px;transition:.2s;cursor:pointer}
+.btn-gold{background:linear-gradient(90deg,#facc15,#f59e0b);color:#422006;box-shadow:0 8px 20px rgba(245,158,11,.35)}
+.btn-white{background:#fff;color:var(--green);border:2px solid #d1d5db}
+.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
+.stat{background:#fff;border-radius:14px;padding:12px 14px;border:1px solid #fde68a;box-shadow:0 6px 18px rgba(0,0,0,.06);font-weight:700}
+.stat b{color:var(--green)}
+.hero-img{border-radius:20px;overflow:hidden;box-shadow:0 20px 40px rgba(0,0,0,.2);border:4px solid #fff;transform:rotate(1deg)}
+.hero-img img{width:100%;height:100%;object-fit:cover;display:block}
+.section-title{text-align:center;font-size:28px;font-weight:900;color:var(--green);margin:30px 0 16px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{border-radius:18px;padding:20px;box-shadow:0 10px 25px rgba(0,0,0,.08);border:1px solid rgba(0,0,0,.05);position:relative;overflow:hidden}
+.card::after{content:'';position:absolute;top:-30px;right:-30px;width:80px;height:80px;background:rgba(255,255,255,.4);border-radius:50%}
+.card.green{background:linear-gradient(135deg,#dcfce7,#bbf7d0);border-left:6px solid #16a34a}
+.card.yellow{background:linear-gradient(135deg,#fef9c3,#fde68a);border-left:6px solid #eab308}
+.card.blue{background:linear-gradient(135deg,#dbeafe,#bfdbfe);border-left:6px solid #2563eb}
+.card h3{font-size:18px;color:var(--green);margin-bottom:6px}
+.big{font-size:32px;font-weight:900;color:var(--green)}
+.about{display:grid;grid-template-columns:1.2fr .8fr;gap:16px;margin:20px 0}
+.about-box{background:#fff;border-radius:18px;padding:22px;border:2px solid #e5e7eb;box-shadow:0 8px 24px rgba(0,0,0,.06)}
+.list{margin-top:10px;line-height:2}
+.list span{color:#16a34a;font-weight:900}
+footer{background:linear-gradient(90deg,#062b16,#14532d);color:#d1fae5;text-align:center;padding:24px 16px;margin-top:30px;border-top:4px solid var(--gold)}
+footer b{color:var(--gold)}
+@media(max-width:800px){.hero-grid,.cards,.about{grid-template-columns:1fr}.hero h1{font-size:32px}.stat-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-<header><div class="wrap" style="display:flex;justify-content:space-between;align-items:center">
-<b style="color:#f6d98a">💧 మేళ్ళ దుప్పలపల్లి గ్రామ చెరువు</b>
-<span style="font-size:12px">Mella Duppalapally</span>
+<header><div class="wrap top">
+<div class="logo">💧 మేళ్ళ దుప్పలపల్లి గ్రామ చెరువు</div>
+<div style="font-size:12px;opacity:.9;font-family:Poppins">Mella Duppalapally</div>
 </div></header>
 
-<div class="hero">
-<div class="wrap">
-<span class="badge">🌿 తెలంగాణ • గ్రామ చెరువు • సహజ పర్యావరణం</span>
-<h1>వెల్ల దుప్పలపల్లి గ్రామ చెరువు<br><span style="font-size:22px;color:#6b4a00">Mella Duppalapally - My Village Tank</span></h1>
-<p>మన గ్రామం, మన చెరువు - నీటి సంరక్షణ, పచ్చదనం మరియు సంస్కృతి కోసం. నా ఊరి చెరువు కథ.</p>
-<a class="btn btn-dark" href="#about">💧 మరిన్ని వివరాలు</a>
-<a class="btn btn-light" href="https://tourism-research.vercel.app">Back to Home</a>
-<div class="grid3" style="margin-top:20px">
-<div class="card">నీటి నిల్వ<br><b>1.2 మిలియన్ క్యూబ్స్</b></div>
-<div class="card">మత్స్య సంపద<br><b>5+ జలజీవ రకాలు</b></div>
-<div class="card">పచ్చదనం<br><b>120+ చెట్లు</b></div>
+<div class="hero"><div class="wrap hero-grid">
+<div>
+<span class="badge">🌿 తెలంగాణ • మేళ్ళ దుప్పలపల్లి • గ్రామ చెరువు</span>
+<h1>మేళ్ళ దుప్పలపల్లి గ్రామ చెరువు <span class="eng">Mella Duppalapally Grama Cheruvu - My Village Tank</span></h1>
+<p>మన గ్రామం - మేళ్ళ దుప్పలపల్లి, మన చెరువు. నీటి సంరక్షణ, పచ్చదనం మరియు మన సంస్కృతి కోసం - నా ఊరి కథ ఇది.</p>
+<a class="btn btn-gold" href="#story">💧 మేళ్ళ దుప్పలపల్లి కథ చూడండి</a>
+<a class="btn btn-white" href="https://tourism-research.vercel.app">← Back to Home</a>
+<div class="stat-grid">
+<div class="stat">💧 నీటి నిల్వ<br><b>1.2 మిలియన్ క్యూబ్స్</b></div>
+<div class="stat">🐟 మత్స్య సంపద<br><b>5+ జలజీవ రకాలు</b></div>
+<div class="stat">🌳 పచ్చదనం<br><b>120+ చెట్లు నాటాం</b></div>
 </div>
 </div>
-<div class="wrap">
-<img src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=800" style="width:100%;border-radius:16px;box-shadow:0 12px 30px rgba(0,0,0,.2)">
-</div>
-</div>
+<div class="hero-img"><img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=900&q=80" alt="Mella Duppalapally Cheruvu"></div>
+</div></div>
 
 <div class="wrap">
-<h2 style="text-align:center;margin-top:30px">చెరువు ముఖ్య వైశిష్ట్యాలు</h2>
-<div class="grid3">
-<div class="card green"><h3>ప్రస్తుత నీటి స్థాయి 75%</h3><p>నాధారణ స్థాయి కంటే మంచి నిల్వ - వర్షాకాలం తర్వాత</p></div>
-<div class="card cream"><h3>సంస్కృతి & జాతర</h3><p>ప్రతి ఏటా బోనాల జాతర & కార్తీక వన భోజనం ఇక్కడే</p></div>
-<div class="card sage"><h3>పర్యావరణ పరిరక్షణ</h3><p>ప్లాస్టిక్ రహిత చెరువు - కమ్యూనిటీ శ్రమదానం ప్రతి నెల</p></div>
+<div class="section-title">మేళ్ళ దుప్పలపల్లి చెరువు - ముఖ్య వైశిష్ట్యాలు</div>
+<div class="cards">
+<div class="card green"><h3>ప్రస్తుత నీటి స్థాయి</h3><div class="big">75% 💧</div><p>మేళ్ళ దుప్పలపల్లి చెరువు - వర్షాకాలం తర్వాత మంచి నిల్వ. గ్రామానికి ఏడాది పొడవునా నీరు.</p><div style="background:#fff;height:10px;border-radius:10px;margin-top:10px;overflow:hidden"><div style="width:75%;height:100%;background:linear-gradient(90deg,#16a34a,#22c55e)"></div></div></div>
+<div class="card yellow"><h3>సంస్కృతి & జాతర</h3><p><b>మేళ్ళ దుప్పలపల్లి</b> లో ప్రతి ఏటా బోనాల జాతర, కార్తీక వన భోజనం ఈ చెరువు వద్దే జరుగుతుంది. మన సంస్కృతి కేంద్రం.</p><br><span class="badge">నవంబర్ - గ్రామ సమావేశం</span></div>
+<div class="card blue"><h3>పర్యావరణ పరిరక్షణ</h3><p><b>Mella Duppalapally</b> గ్రామ ప్రజల శ్రమదానంతో ప్లాస్టిక్ రహిత చెరువుగా మార్చాం. ప్రతి నెల 2వ ఆదివారం శుభ్రత.</p><br><span class="badge">🌿 పచ్చని గ్రామం</span></div>
 </div>
 
-<div class="card" id="about">
-<h2>మేళ్ళ దుప్పలపల్లి - నా ఊరి కథ</h2>
-<p>మేళ్ళ దుప్పలపల్లి గ్రామ చెరువు గ్రామస్థుల జీవనాధారం. వ్యవసాయానికి, తాగునీటికి మరియు పర్యావరణ సమతుల్యతకు కీలకమైన నీటి వనరు. ఈ చెరువును కాకతీయుల కాలం నాటి జలవ్యవస్థకు ఉదాహరణగా చెబుతారు.</p>
-<p>✔ సుమారు 20 ఎకరాల విస్తీర్ణంలో విస్తరించిన చెరువు<br>✔ 4 గ్రామాలకు నాగు నీటి వనరు<br>✔ పక్షులకు మరియు జలజీవాలకు సురక్షిత ఆవాసం</p>
+<div class="about" id="story">
+<div class="about-box">
+<h2 style="color:#0e3b22">మేళ్ళ దుప్పలపల్లి - నా ఊరి కథ</h2><br>
+<p><b>మేళ్ళ దుప్పలపల్లి గ్రామ చెరువు (Mella Duppalapally Grama Cheruvu)</b> గ్రామస్థుల జీవనాధారం. వ్యవసాయానికి, తాగునీటికి మరియు పర్యావరణ సమతుల్యతకు కీలకమైన నీటి వనరు.</p><br>
+<p>ఈ చెరువు కాకతీయుల కాలం నాటి జలవ్యవస్థ శైలిని పోలి ఉంటుంది. మా తాతల కాలం నుండి ఈ చెరువు మా ఊరిని కాపాడుతోంది.</p>
+<div class="list">
+<span>✔</span> సుమారు 20 ఎకరాల విస్తీర్ణంలో విస్తరించిన మేళ్ళ దుప్పలపల్లి చెరువు<br>
+<span>✔</span> 4 గ్రామాలకు సాగు నీటి వనరు - మేళ్ళ దుప్పలపల్లి కేంద్రం<br>
+<span>✔</span> పక్షులకు మరియు జలజీవాలకు సురక్షిత ఆవాసం<br>
+<span>✔</span> మేళ్ళ దుప్పలపల్లి పిల్లలకు ఈత, ఆటల స్థలం
+</div>
+</div>
+<div class="about-box" style="background:linear-gradient(135deg,#fefce8,#fef9c3)">
+<h2>త్వరిత వివరాలు</h2><br>
+<p>📍 <b>ప్రదేశం:</b> మేళ్ళ దుప్పలపల్లి, మండలం: చేవెళ్ల, తెలంగాణ</p><br>
+<p>📍 <b>Location:</b> Mella Duppalapally, Chevella, Telangana</p><br>
+<p>🗓️ <b>నిర్మాణం:</b> 1960లో - పునరుద్ధరణ: 2023</p><br>
+<p>🏛️ <b>నిర్వహణ:</b> మేళ్ళ దుప్పలపల్లి గ్రామ పంచాయతీ</p><br><br>
+<div style="background:#0e3b22;color:#fde68a;padding:12px;border-radius:12px;text-align:center;font-weight:800">మేళ్ళ దుప్పలపల్లి - నా గర్వం 💛</div>
+</div>
 </div>
 </div>
 
 <footer>
-మేళ్ళ దుప్పలపల్లి గ్రామ పంచాయతీ © 2026 | Mella Duppalapally Grama Cheruvu<br>
-నీటిని ఆదా చేద్దాం • పచ్చని గ్రామాన్ని నిర్మిద్దాం
+<b>మేళ్ళ దుప్పలపల్లి గ్రామ పంచాయతీ © 2026 | Mella Duppalapally Grama Cheruvu</b><br>
+నీటిని ఆదా చేద్దాం • పచ్చని మేళ్ళ దుప్పలపల్లి ని నిర్మిద్దాం • Mella Duppalapally - My Pride<br>
+<span style="font-size:11px;opacity:.7">mella-duppalapally-grama-cheruvu.html</span>
 </footer>
 </body>
 </html>
