@@ -12,102 +12,96 @@
 .input:focus{border-color:#2563eb;outline:none}
 .badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:900;color:#fff;margin-left:5px}
 .instr-card{background:#fff;border-radius:18px;padding:22px;max-width:700px;margin:20px auto;border:2px solid #c7d2fe;box-shadow:0 8px 25px #0001;display:none}
-.q-card{background:#fff;border-radius:18px;padding:18px;min-height:450px;position:relative;overflow:hidden;border:2px solid #c7d2fe;box-shadow:0 6px 20px #0001;display:none}
-.q-card:before{content:"Dr Ramakrishna Manimadde (MCRES) • MCRES Hyd";position:absolute;top:30%;left:50%;transform:translate(-50%,-50%) rotate(-28deg);font-size:22px;font-weight:900;color:#1e3a8a26;white-space:nowrap;pointer-events:none;z-index:0;width:250%;text-align:center}
-.q-card:after{content:"MCRES Hyd • MCRES Hyd • MCRES Hyd";position:absolute;top:60%;left:50%;transform:translate(-50%,-50%) rotate(-28deg);font-size:24px;font-weight:900;color:#dc262620;white-space:nowrap;pointer-events:none;z-index:0;width:250%;text-align:center}
-.wm3{position:absolute;top:85%;left:50%;transform:translate(-50%,-50%) rotate(-28deg);font-size:20px;font-weight:900;color:#16a34a1e;white-space:nowrap;pointer-events:none;z-index:0;width:250%;text-align:center}
-.q-top{display:inline-block;padding:6px 16px;border-radius:20px;font-size:12px;font-weight:900;margin-bottom:14px;color:#fff}
-.q-text{font-weight:800;font-size:15px;position:relative;z-index:2;line-height:1.7;white-space:pre-line;padding:14px;border-radius:12px;border-left:7px solid;background:#fff}
-.opt{display:flex;gap:12px;padding:14px;border-radius:14px;margin:12px 0;cursor:pointer;font-weight:700;position:relative;z-index:2;border:2.5px solid}
+.q-card{background:#fff;border-radius:18px;padding:18px;min-height:500px;position:relative;overflow:hidden;border:2px solid #c7d2fe;box-shadow:0 6px 20px #0001;display:none}
+
+/* WATERMARK FIX - NOW VISIBLE ON TOP */
+.q-card:before{content:"Dr Ramakrishna Manimadde (MCRES) • MCRES Hyd • 9494353828";position:absolute;top:25%;left:50%;transform:translate(-50%,-50%) rotate(-28deg);font-size:20px;font-weight:900;color:#1e3a8a55;white-space:nowrap;pointer-events:none;z-index:5;width:300%;text-align:center;letter-spacing:1px}
+.q-card:after{content:"MCRES Hyd • MCRES Hyd • MCRES Hyd • 9494353828";position:absolute;top:55%;left:50%;transform:translate(-50%,-50%) rotate(-28deg);font-size:22px;font-weight:900;color:#dc262655;white-space:nowrap;pointer-events:none;z-index:5;width:300%;text-align:center}
+.wm3{position:absolute;top:85%;left:50%;transform:translate(-50%,-50%) rotate(-28deg);font-size:18px;font-weight:900;color:#16a34a55;white-space:nowrap;pointer-events:none;z-index:5;width:300%;text-align:center}
+
+.q-top{display:inline-block;padding:6px 16px;border-radius:20px;font-size:12px;font-weight:900;margin-bottom:14px;color:#fff;position:relative;z-index:10}
+.q-text{font-weight:800;font-size:15px;position:relative;z-index:10;line-height:1.7;white-space:pre-line;padding:14px;border-radius:12px;border-left:7px solid;background:rgba(255,255,255,0.92);backdrop-filter:blur(1px)}
+/* OPTIONS - NOW SEMI-TRANSPARENT SO WATERMARK VISIBLE */
+.opt{display:flex;gap:12px;padding:14px;border-radius:14px;margin:12px 0;cursor:pointer;font-weight:700;position:relative;z-index:10;border:2.5px solid;background:rgba(255,255,255,0.88)!important}
 .opt b{display:inline-flex;min-width:26px;height:26px;border-radius:50%;align-items:center;justify-content:center;color:#fff;font-size:12px}
-.opt:nth-child(1){border-color:#2563eb;background:#dbeafe;color:#1e3a8a}.opt:nth-child(1) b{background:#2563eb}
-.opt:nth-child(2){border-color:#16a34a;background:#dcfce7;color:#14532d}.opt:nth-child(2) b{background:#16a34a}
-.opt:nth-child(3){border-color:#ea580c;background:#ffedd5;color:#7c2d12}.opt:nth-child(3) b{background:#ea580c}
-.opt:nth-child(4){border-color:#9333ea;background:#f3e8ff;color:#581c87}.opt:nth-child(4) b{background:#9333ea}
-.opt.selected{transform:scale(1.02);box-shadow:0 5px 15px #0002}
-.opt:nth-child(1).selected{background:#2563eb;color:#fff}.opt:nth-child(2).selected{background:#16a34a;color:#fff}.opt:nth-child(3).selected{background:#ea580c;color:#fff}.opt:nth-child(4).selected{background:#9333ea;color:#fff}
+.opt:nth-child(1){border-color:#2563eb;color:#1e3a8a}.opt:nth-child(1) b{background:#2563eb}
+.opt:nth-child(2){border-color:#16a34a;color:#14532d}.opt:nth-child(2) b{background:#16a34a}
+.opt:nth-child(3){border-color:#ea580c;color:#7c2d12}.opt:nth-child(3) b{background:#ea580c}
+.opt:nth-child(4){border-color:#9333ea;color:#581c87}.opt:nth-child(4) b{background:#9333ea}
+.opt.selected{transform:scale(1.02);box-shadow:0 5px 15px #0003;background:#fff!important;border-width:3px}
+.opt:nth-child(1).selected{background:#2563eb!important;color:#fff}.opt:nth-child(2).selected{background:#16a34a!important;color:#fff}.opt:nth-child(3).selected{background:#ea580c!important;color:#fff}.opt:nth-child(4).selected{background:#9333ea!important;color:#fff}
+
 .nav-panel{background:#fff;border-radius:16px;padding:12px;margin-top:14px;border:2px solid #e0e7ff;display:none}
 .nav-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
 .nav-btn{padding:11px 0;border-radius:10px;border:2px solid #cbd5e1;background:#fff;font-weight:800;font-size:13px;cursor:pointer}
 .nav-btn.current{background:linear-gradient(90deg,#0f1a4a,#2563eb);color:#fff}.nav-btn.answered{background:#22c55e;color:#fff;border-color:#16a34a}
 .bottom-bar{position:fixed;bottom:0;left:0;right:0;background:#fff;padding:12px;border-top:2px solid #e0e7ff;z-index:100;display:flex;gap:10px;display:none}
 .btn{flex:1;padding:14px;border-radius:12px;border:0;font-weight:900;font-size:15px;cursor:pointer}
-.btn-prev{background:#e2e8f0;color:#0f1a4a}.btn-next{background:linear-gradient(90deg,#0f1a4a,#2563eb);color:#facc15}
+.btn-prev{background:#e2e8f0;color:#0f1a4a;border:2px solid #cbd5e1}.btn-next{background:linear-gradient(90deg,#0f1a4a,#2563eb);color:#facc15}
 .btn-start{background:linear-gradient(90deg,#0f1a4a,#16a34a);color:#fff;padding:16px 30px;font-size:18px;border-radius:12px;border:0;font-weight:900;cursor:pointer;width:100%;margin-top:15px;box-shadow:0 4px 15px #16a34a55}
 #screenshotBlock{display:none;position:fixed;inset:0;background:#0f1a4a;z-index:99999;color:#facc15;align-items:center;justify-content:center;text-align:center;font-weight:900;font-size:20px}
 .main{max-width:850px;margin:auto;padding:12px 10px 110px}
 </style>
 </head>
 <body>
-<div id="screenshotBlock">🔒 SCREENSHOT BLOCKED<br><span style="font-size:13px">MCRES Protected</span></div>
-<div class="top-bar"><h1>MCRES ONLINE TEST SERIES</h1><p>MALLAIAH CENTER FOR RIVER & EARTH SCIENCES (MCRES)</p><small>Dr Ramakrishna Manimadde | Founder & Director | mcres.in</small></div>
-<div style="background:linear-gradient(90deg,#facc15,#fde047);text-align:center;padding:8px;font-weight:900;font-size:12px;color:#0f1a4a">ENGLISH TEST SERIES – 01 | Time: <span id="timer" style="color:#dc2626">30:00</span> | Valid: 12H | Unlimited | +1 / -0.20</div>
+<div id="screenshotBlock">🔒 SCREENSHOT BLOCKED</div>
+<div class="top-bar"><h1>MCRES ONLINE TEST SERIES</h1><p>MALLAIAH CENTER FOR RIVER & EARTH SCIENCES (MCRES)</p><small>Dr Ramakrishna Manimadde | Founder & Director | mcres.in | 9494353828</small></div>
+<div style="background:linear-gradient(90deg,#facc15,#fde047);text-align:center;padding:8px;font-weight:900;font-size:12px;color:#0f1a4a">ENGLISH TEST SERIES – 01 | Time: <span id="timer" style="color:#dc2626">30:00</span> | Valid: 12H | +1 / -0.20</div>
 
 <div class="main">
 
-<!-- PAGE 1 - LOGIN - Name Mobile -->
 <div id="loginPage" class="card">
 <h2 style="text-align:center;color:#0f1a4a;margin-top:0">🔐 Student Login</h2>
-<p style="text-align:center;font-size:13px;color:#475569">Enter details to start test</p>
-<input id="stuName" class="input" placeholder="Full Name * Ex: Ramesh Kumar">
-<input id="stuMobile" class="input" type="tel" maxlength="10" placeholder="Mobile Number * Ex: 9876543210">
-<input id="stuPlace" class="input" placeholder="Place (Optional)">
-<div style="background:#eff6ff;padding:10px;border-radius:8px;font-size:12px;margin-top:10px">🔒 Your data is protected. Used only for MCRES records to track attempts.</div>
+<input id="stuName" class="input" placeholder="Full Name" value="Dr Ramakrishna Manimadde">
+<input id="stuMobile" class="input" type="tel" maxlength="10" placeholder="Mobile Number" value="9494353828">
+<input id="stuPlace" class="input" placeholder="Place (Optional) - Ex: Hyderabad">
+<div style="background:#eff6ff;padding:10px;border-radius:8px;font-size:12px;margin-top:10px">🔒 Protected by MCRES - Dr Ramakrishna Manimadde - 9494353828</div>
 <div id="loginError" style="color:#dc2626;font-size:12px;font-weight:800;margin-top:10px;display:none"></div>
 <button class="btn-start" onclick="doLogin()">CONTINUE TO INSTRUCTIONS →</button>
 </div>
 
-<!-- PAGE 2 - INSTRUCTIONS -->
 <div id="instrPage" class="instr-card">
 <h2 style="text-align:center;color:#0f1a4a">📋 Test Instructions</h2>
 <ul style="line-height:1.8;font-size:14px;color:#1e293b">
 <li><b>Welcome:</b> <span id="welcomeName" style="color:#2563eb;font-weight:900"></span> !</li>
-<li><b>Total Questions:</b> 25 <span class="badge" style="background:#2563eb">25 Qs</span></li>
-<li><b>Total Marks:</b> 25 Marks</li>
-<li><b>Marking Scheme:</b> Correct = <span style="color:#16a34a;font-weight:900">+1</span> | Wrong = <span style="color:#dc2626;font-weight:900">-0.20 Negative</span> <span class="badge" style="background:#dc2626">-0.20</span></li>
-<li><b>Time:</b> 30 Minutes <span class="badge" style="background:#ea580c">30 Min</span></li>
-<li><b>Attempts:</b> Unlimited</li>
-<li><b>Validity:</b> 12 Hours only</li>
-<li><b>Navigation:</b> Use PREV / NEXT + Question Numbers below</li>
-<li style="background:#fef3c7;padding:8px;border-radius:8px;border-left:4px solid #f59e0b"><b>Note:</b> Answers shown ONLY after SUBMIT. No immediate correct/wrong.</li>
+<li><b>Total:</b> 25 Qs | 25 Marks</li>
+<li><b>Marking:</b> +1 Correct, -0.20 Wrong <span class="badge" style="background:#dc2626">-0.20</span></li>
+<li><b>Time:</b> 30 Minutes</li>
+<li><b>Validity:</b> 12 Hours</li>
+<li><b>Navigation:</b> Use PREV / NEXT buttons</li>
+<li style="background:#fef3c7;padding:8px;border-radius:8px;border-left:4px solid #f59e0b"><b>Note:</b> Answers after SUBMIT only</li>
 </ul>
-<div style="text-align:center;font-size:11px;color:#64748b">Founder: Dr Ramakrishna Manimadde (MCRES) • MCRES Hyd</div>
 <button class="btn-start" onclick="startTest()">✅ I UNDERSTOOD - START TEST →</button>
 </div>
 
-<!-- PAGE 3 - TEST -->
-<div class="q-card" id="qCard"><div class="wm3">Dr Ramakrishna Manimadde (MCRES) • MCRES Hyd</div><div class="q-top" id="qTop">Q 1 / 25</div><div class="q-text" id="qText"></div><div id="opts"></div></div>
-<div class="nav-panel" id="navPanel"><div style="font-size:12px;font-weight:800;margin-bottom:10px">Question Navigation - 🟢 Answered | 🔵 Current</div><div class="nav-grid" id="navGrid"></div></div>
-<div id="result" style="display:none" class="card"><h2>Result - English Test Series 01</h2><div id="userInfo" style="background:#eff6ff;padding:10px;border-radius:8px;font-size:13px;margin-bottom:12px"></div><div id="score" style="font-size:28px;font-weight:900;color:#047857"></div><p id="summary"></p><div id="review"></div></div>
-
+<div class="q-card" id="qCard"><div class="wm3">Dr Ramakrishna Manimadde (MCRES) • MCRES Hyd • 9494353828</div><div class="q-top" id="qTop">Q 1 / 25</div><div class="q-text" id="qText"></div><div id="opts"></div></div>
+<div class="nav-panel" id="navPanel"><div style="font-size:12px;font-weight:800;margin-bottom:10px">Question Navigation</div><div class="nav-grid" id="navGrid"></div></div>
+<div id="result" style="display:none" class="card"><h2>Result</h2><div id="userInfo" style="background:#eff6ff;padding:10px;border-radius:8px;font-size:13px;margin-bottom:12px"></div><div id="score" style="font-size:28px;font-weight:900;color:#047857"></div><p id="summary"></p><div id="review"></div></div>
 </div>
+
 <div class="bottom-bar" id="bottomBar"><button class="btn btn-prev" id="prevBtn">← PREV</button><button class="btn btn-next" id="nextBtn">NEXT →</button></div>
 
 <script>
-const DATA_KEY='mcres_students_v10'; const START_KEY='mcres_v10_final'; const EXPIRE_MS=12*60*60*1000;
+const DATA_KEY='mcres_students_v10'; const START_KEY='mcres_v10_final_safe'; const EXPIRE_MS=12*60*60*1000;
 const urlParams=new URLSearchParams(window.location.search); const isAdmin=urlParams.has('admin');
-function showExpired(){document.body.innerHTML=`<div style="background:#0f1a4a;color:#facc15;text-align:center;padding:12px;font-weight:900">MCRES ONLINE TEST SERIES</div><div style="max-width:600px;margin:80px auto;background:#fff;border-radius:16px;padding:30px;text-align:center"><h2 style="color:#dc2626">⏰ Test Expired - 12H Over</h2><p>Contact MCRES</p></div>`;}
+function showExpired(){document.body.innerHTML=`<div style="background:#0f1a4a;color:#facc15;text-align:center;padding:12px;font-weight:900">MCRES</div><div style="max-width:600px;margin:80px auto;background:#fff;border-radius:16px;padding:30px;text-align:center"><h2 style="color:#dc2626">⏰ Test Expired</h2></div>`;}
 let sT=localStorage.getItem(START_KEY); if(!sT){sT=Date.now();localStorage.setItem(START_KEY,sT);} else sT=parseInt(sT);
 if(!isAdmin && Date.now()-sT>EXPIRE_MS){showExpired(); throw new Error('Expired');}
 
 if(isAdmin){
- document.body.innerHTML=`<div style="background:#0f1a4a;color:#facc15;text-align:center;padding:12px;font-weight:900">MCRES ADMIN - ATTEMPTS</div><div style="max-width:800px;margin:20px auto;background:#fff;padding:20px;border-radius:16px"><h2>Total: <span id="totalCount"></span></h2><div id="adminList" style="font-size:13px"></div><button onclick="localStorage.removeItem('${DATA_KEY}');location.reload()" style="margin-top:15px;background:#dc2626;color:#fff;border:0;padding:10px 20px;border-radius:8px;font-weight:900">Clear Data</button></div>`;
- const data=JSON.parse(localStorage.getItem(DATA_KEY)||'[]');
- document.getElementById('totalCount').textContent=data.length;
- document.getElementById('adminList').innerHTML=data.map((d,i)=>`<div style="padding:8px;border-bottom:1px solid #eee"><b>${i+1}. ${d.name}</b> - ${d.mobile} - ${d.place||''} - ${d.date} - Score: ${d.score||'In Progress'}</div>`).join('')||'No attempts';
- throw new Error('Admin');
+ document.body.innerHTML=`<div style="background:#0f1a4a;color:#facc15;text-align:center;padding:12px;font-weight:900">MCRES ADMIN</div><div style="max-width:800px;margin:20px auto;background:#fff;padding:20px;border-radius:16px"><h2>Total: <span id="totalCount"></span></h2><div id="adminList"></div></div>`;
+ const data=JSON.parse(localStorage.getItem(DATA_KEY)||'[]'); document.getElementById('totalCount').textContent=data.length;
+ document.getElementById('adminList').innerHTML=data.map((d,i)=>`<div style="padding:8px;border-bottom:1px solid #eee"><b>${i+1}. ${d.name}</b> - ${d.mobile} - Score: ${d.score||'In Progress'}</div>`).join(''); throw new Error('Admin');
 }
 
 document.addEventListener('contextmenu',e=>e.preventDefault());
-document.addEventListener('keydown',e=>{if(e.key==='PrintScreen'||e.keyCode===44||(e.ctrlKey&&['s','p','c','u','i','j'].includes(e.key.toLowerCase()))||e.key==='F12'){e.preventDefault();document.getElementById('screenshotBlock').style.display='flex';setTimeout(()=>{document.getElementById('screenshotBlock').style.display='none';},1500);return false;}});
-
 function doLogin(){
  const name=document.getElementById('stuName').value.trim();
  const mobile=document.getElementById('stuMobile').value.trim();
  const place=document.getElementById('stuPlace').value.trim();
  const err=document.getElementById('loginError');
- if(name.length<3){err.textContent='❌ Please enter valid Name (min 3 chars)';err.style.display='block';return;}
- if(!/^[6-9][0-9]{9}$/.test(mobile)){err.textContent='❌ Enter valid 10-digit Mobile Number';err.style.display='block';return;}
+ if(name.length<3){err.textContent='❌ Enter Name';err.style.display='block';return;}
+ if(!/^[6-9][0-9]{9}$/.test(mobile)){err.textContent='❌ Enter valid 10-digit Mobile';err.style.display='block';return;}
  const entry={name,mobile,place,date:new Date().toLocaleString(),score:'In Progress'};
  const list=JSON.parse(localStorage.getItem(DATA_KEY)||'[]'); list.push(entry); localStorage.setItem(DATA_KEY,JSON.stringify(list));
  localStorage.setItem('mcres_current_user',JSON.stringify(entry));
@@ -115,7 +109,6 @@ function doLogin(){
  document.getElementById('instrPage').style.display='block';
  document.getElementById('welcomeName').textContent=name;
 }
-
 const qColors=[{bg:'#0f1a4a',light:'#eff6ff',border:'#2563eb'},{bg:'#14532d',light:'#f0fdf4',border:'#16a34a'},{bg:'#7c2d12',light:'#fff7ed',border:'#ea580c'},{bg:'#581c87',light:'#faf5ff',border:'#9333ea'}];
 const questions=[
 {q:"Choose the correct matching of the words with their descriptions.\n(i) Congestion\n(ii) Collision\n(iii) Bottleneck\n(iv) Breakdown\n(A) An accident in which two vehicles hit each other\n(B) A situation in which roads are full of traffic\n(C) An occasion when a vehicle stops working\n(D) A place on a road where traffic cannot pass easily",o:["(i)-(C), (ii)-(B), (iii)-(A), (iv)-(D)","(i)-(A), (ii)-(D), (iii)-(B), (iv)-(C)","(i)-(D), (ii)-(C), (iii)-(A), (iv)-(B)","(i)-(B), (ii)-(A), (iii)-(D), (iv)-(C)"],a:3},
@@ -149,7 +142,7 @@ const qText=document.getElementById('qText'),opts=document.getElementById('opts'
 function startTest(){document.getElementById('instrPage').style.display='none';document.getElementById('qCard').style.display='block';document.getElementById('navPanel').style.display='block';document.getElementById('bottomBar').style.display='flex';started=true;render();}
 function render(){
  const c=qColors[cur%4]; qTop.textContent=`Q ${cur+1} / 25`; qTop.style.background=c.bg;
- qText.textContent=`${cur+1}. ${questions[cur].q}`; qText.style.borderLeftColor=c.border; qText.style.background=c.light;
+ qText.textContent=`${cur+1}. ${questions[cur].q}`; qText.style.borderLeftColor=c.border; qText.style.background='rgba(255,255,255,0.92)';
  opts.innerHTML=''; questions[cur].o.forEach((o,i)=>{const l=document.createElement('label');l.className='opt'+(ans[cur]===i?' selected':'');l.innerHTML=`<b>${String.fromCharCode(65+i)}</b> <span>${o}</span>`;l.onclick=()=>{ans[cur]=i;renderNav();render();};opts.appendChild(l);});
  renderNav(); document.getElementById('prevBtn').style.visibility=cur===0?'hidden':'visible'; document.getElementById('nextBtn').textContent=cur===24?'SUBMIT →':'NEXT →';
 }
@@ -157,15 +150,15 @@ function renderNav(){navGrid.innerHTML='';questions.forEach((_,i)=>{const b=docu
 document.getElementById('nextBtn').onclick=()=>{if(cur<24){cur++;render();window.scrollTo({top:0,behavior:'smooth'})}else{showResult()}};
 document.getElementById('prevBtn').onclick=()=>{if(cur>0){cur--;render();window.scrollTo({top:0,behavior:'smooth'})}};
 function showResult(){
- let correct=0,wrong=0,un=0,html=''; questions.forEach((q,i)=>{if(ans[i]===null)un++;else if(ans[i]===q.a)correct++;else wrong++;const isCorrect=ans[i]===q.a;const your=ans[i]===null?'Not answered':q.o[ans[i]];html+=`<div style="padding:12px 0;border-bottom:1px solid #eee;font-size:13px;${ans[i]===null?'':(isCorrect?'background:#f0fdf4':'background:#fef2f2')}"><b>${i+1}. ${q.q}</b><br><span style="color:${isCorrect?'#16a34a':'#dc2626'}">Your: ${your} ${isCorrect?'✅':'❌'}</span><br><span style="color:#16a34a">Correct: ${q.o[q.a]} ✅</span></div>`;});
+ let correct=0,wrong=0,un=0,html=''; questions.forEach((q,i)=>{if(ans[i]===null)un++;else if(ans[i]===q.a)correct++;else wrong++;const isCorrect=ans[i]===q.a;const your=ans[i]===null?'Not answered':q.o[ans[i]];html+=`<div style="padding:12px 0;border-bottom:1px solid #eee;font-size:13px"><b>${i+1}. ${q.q}</b><br><span style="color:${isCorrect?'#16a34a':'#dc2626'}">Your: ${your}</span><br><span style="color:#16a34a">Correct: ${q.o[q.a]}</span></div>`;});
  const neg=wrong*0.20,score=(correct-neg).toFixed(2);
  const curUser=JSON.parse(localStorage.getItem('mcres_current_user')||'{}');
- const list=JSON.parse(localStorage.getItem(DATA_KEY)||'[]'); if(list.length>0){list[list.length-1].score=score;list[list.length-1].correct=correct;list[list.length-1].wrong=wrong;list[list.length-1].submitTime=new Date().toLocaleString();localStorage.setItem(DATA_KEY,JSON.stringify(list));}
+ const list=JSON.parse(localStorage.getItem(DATA_KEY)||'[]'); if(list.length>0){list[list.length-1].score=score;localStorage.setItem(DATA_KEY,JSON.stringify(list));}
  document.getElementById('qCard').style.display='none';document.getElementById('navPanel').style.display='none';
  document.getElementById('result').style.display='block';
- document.getElementById('userInfo').innerHTML=`<b>Name:</b> ${curUser.name||''} | <b>Mobile:</b> ${curUser.mobile||''} | <b>Place:</b> ${curUser.place||''}`;
+ document.getElementById('userInfo').innerHTML=`<b>Name:</b> ${curUser.name||''} | <b>Mobile:</b> ${curUser.mobile||''}`;
  document.getElementById('score').textContent=`Score: ${score} / 25`;
- document.getElementById('summary').textContent=`Correct: ${correct} | Wrong: ${wrong} | Unanswered: ${un} | Negative: -${neg.toFixed(2)} (-0.20 per wrong)`;
+ document.getElementById('summary').textContent=`Correct: ${correct} | Wrong: ${wrong} | Unanswered: ${un} | Negative: -${neg.toFixed(2)}`;
  document.getElementById('review').innerHTML=html; document.getElementById('bottomBar').style.display='none';
 }
 setInterval(()=>{if(!started) return; if(!isAdmin && Date.now()-parseInt(localStorage.getItem(START_KEY))>EXPIRE_MS){showExpired();return;}time--;let m=Math.floor(time/60),s=time%60;if(timerEl)timerEl.textContent=`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;if(time<=0)showResult();},1000);
