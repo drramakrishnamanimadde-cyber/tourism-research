@@ -8,10 +8,10 @@
 .top-bar{background:linear-gradient(90deg,#0f1a4a,#1e3a8a);color:#fff;text-align:center;padding:12px;position:sticky;top:0;z-index:100;border-bottom:3px solid #facc15}
 .top-bar h1{margin:0;font-size:14px;color:#facc15}.top-bar p{margin:3px 0 0;font-size:11px;font-weight:800}.top-bar small{font-size:9px;opacity:.9}
 .card{background:#fff;border-radius:18px;padding:22px;max-width:700px;margin:20px auto;border:2px solid #c7d2fe;box-shadow:0 8px 25px #0001}
-.card h2{text-align:center;color:#0f1a4a;margin-top:0}
 .input{width:100%;padding:14px;border-radius:10px;border:2px solid #cbd5e1;margin:10px 0;font-size:15px;font-weight:700}
 .input:focus{border-color:#2563eb;outline:none}
 .badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:900;color:#fff;margin-left:5px}
+.instr-card{background:#fff;border-radius:18px;padding:22px;max-width:700px;margin:20px auto;border:2px solid #c7d2fe;box-shadow:0 8px 25px #0001;display:none}
 .q-card{background:#fff;border-radius:18px;padding:18px;min-height:450px;position:relative;overflow:hidden;border:2px solid #c7d2fe;box-shadow:0 6px 20px #0001;display:none}
 .q-card:before{content:"Dr Ramakrishna Manimadde (MCRES) • MCRES Hyd";position:absolute;top:30%;left:50%;transform:translate(-50%,-50%) rotate(-28deg);font-size:22px;font-weight:900;color:#1e3a8a26;white-space:nowrap;pointer-events:none;z-index:0;width:250%;text-align:center}
 .q-card:after{content:"MCRES Hyd • MCRES Hyd • MCRES Hyd";position:absolute;top:60%;left:50%;transform:translate(-50%,-50%) rotate(-28deg);font-size:24px;font-weight:900;color:#dc262620;white-space:nowrap;pointer-events:none;z-index:0;width:250%;text-align:center}
@@ -39,72 +39,76 @@
 </style>
 </head>
 <body>
-<div id="screenshotBlock">🔒 SCREENSHOT BLOCKED</div>
+<div id="screenshotBlock">🔒 SCREENSHOT BLOCKED<br><span style="font-size:13px">MCRES Protected</span></div>
 <div class="top-bar"><h1>MCRES ONLINE TEST SERIES</h1><p>MALLAIAH CENTER FOR RIVER & EARTH SCIENCES (MCRES)</p><small>Dr Ramakrishna Manimadde | Founder & Director | mcres.in</small></div>
-<div style="background:linear-gradient(90deg,#facc15,#fde047);text-align:center;padding:8px;font-weight:900;font-size:12px;color:#0f1a4a">ENGLISH TEST SERIES – 01 | Time: <span id="timer" style="color:#dc2626">30:00</span> | Valid: 12H | +1 / -0.20</div>
+<div style="background:linear-gradient(90deg,#facc15,#fde047);text-align:center;padding:8px;font-weight:900;font-size:12px;color:#0f1a4a">ENGLISH TEST SERIES – 01 | Time: <span id="timer" style="color:#dc2626">30:00</span> | Valid: 12H | Unlimited | +1 / -0.20</div>
 
 <div class="main">
-<!-- PAGE 1 - LOGIN -->
+
+<!-- PAGE 1 - LOGIN - Name Mobile -->
 <div id="loginPage" class="card">
-<h2>🔐 Student Login</h2>
-<p style="text-align:center;font-size:13px;color:#475569">Enter your details to start the test</p>
+<h2 style="text-align:center;color:#0f1a4a;margin-top:0">🔐 Student Login</h2>
+<p style="text-align:center;font-size:13px;color:#475569">Enter details to start test</p>
 <input id="stuName" class="input" placeholder="Full Name * Ex: Ramesh Kumar">
 <input id="stuMobile" class="input" type="tel" maxlength="10" placeholder="Mobile Number * Ex: 9876543210">
-<input id="stuPlace" class="input" placeholder="Place (Optional) Ex: Hyderabad">
-<div style="background:#eff6ff;padding:10px;border-radius:8px;font-size:12px;margin-top:10px">Your Name & Mobile will be saved for MCRES Records. Test will start after login.</div>
-<button class="btn-start" onclick="doLogin()">CONTINUE TO INSTRUCTIONS →</button>
+<input id="stuPlace" class="input" placeholder="Place (Optional)">
+<div style="background:#eff6ff;padding:10px;border-radius:8px;font-size:12px;margin-top:10px">🔒 Your data is protected. Used only for MCRES records to track attempts.</div>
 <div id="loginError" style="color:#dc2626;font-size:12px;font-weight:800;margin-top:10px;display:none"></div>
-<div style="text-align:center;margin-top:15px;font-size:11px;color:#64748b">🔒 Data Protected by MCRES | Dr Ramakrishna Manimadde</div>
+<button class="btn-start" onclick="doLogin()">CONTINUE TO INSTRUCTIONS →</button>
 </div>
 
 <!-- PAGE 2 - INSTRUCTIONS -->
-<div id="instrPage" class="card" style="display:none">
-<h2>📋 Test Instructions</h2>
+<div id="instrPage" class="instr-card">
+<h2 style="text-align:center;color:#0f1a4a">📋 Test Instructions</h2>
 <ul style="line-height:1.8;font-size:14px;color:#1e293b">
 <li><b>Welcome:</b> <span id="welcomeName" style="color:#2563eb;font-weight:900"></span> !</li>
-<li><b>Total Questions:</b> 25 <span class="badge" style="background:#2563eb">25 Q</span></li>
-<li><b>Marks:</b> +1 Correct | <span style="color:#dc2626;font-weight:900">-0.20 Negative</span></li>
-<li><b>Time:</b> 30 Minutes</li>
-<li><b>Attempts:</b> Unlimited | <b>Validity:</b> 12 Hours</li>
-<li><b>Navigation:</b> PREV / NEXT + Question Numbers</li>
-<li style="background:#fef3c7;padding:8px;border-radius:8px;border-left:4px solid #f59e0b"><b>Note:</b> Answers shown only after SUBMIT</li>
+<li><b>Total Questions:</b> 25 <span class="badge" style="background:#2563eb">25 Qs</span></li>
+<li><b>Total Marks:</b> 25 Marks</li>
+<li><b>Marking Scheme:</b> Correct = <span style="color:#16a34a;font-weight:900">+1</span> | Wrong = <span style="color:#dc2626;font-weight:900">-0.20 Negative</span> <span class="badge" style="background:#dc2626">-0.20</span></li>
+<li><b>Time:</b> 30 Minutes <span class="badge" style="background:#ea580c">30 Min</span></li>
+<li><b>Attempts:</b> Unlimited</li>
+<li><b>Validity:</b> 12 Hours only</li>
+<li><b>Navigation:</b> Use PREV / NEXT + Question Numbers below</li>
+<li style="background:#fef3c7;padding:8px;border-radius:8px;border-left:4px solid #f59e0b"><b>Note:</b> Answers shown ONLY after SUBMIT. No immediate correct/wrong.</li>
 </ul>
+<div style="text-align:center;font-size:11px;color:#64748b">Founder: Dr Ramakrishna Manimadde (MCRES) • MCRES Hyd</div>
 <button class="btn-start" onclick="startTest()">✅ I UNDERSTOOD - START TEST →</button>
 </div>
 
+<!-- PAGE 3 - TEST -->
 <div class="q-card" id="qCard"><div class="wm3">Dr Ramakrishna Manimadde (MCRES) • MCRES Hyd</div><div class="q-top" id="qTop">Q 1 / 25</div><div class="q-text" id="qText"></div><div id="opts"></div></div>
 <div class="nav-panel" id="navPanel"><div style="font-size:12px;font-weight:800;margin-bottom:10px">Question Navigation - 🟢 Answered | 🔵 Current</div><div class="nav-grid" id="navGrid"></div></div>
 <div id="result" style="display:none" class="card"><h2>Result - English Test Series 01</h2><div id="userInfo" style="background:#eff6ff;padding:10px;border-radius:8px;font-size:13px;margin-bottom:12px"></div><div id="score" style="font-size:28px;font-weight:900;color:#047857"></div><p id="summary"></p><div id="review"></div></div>
+
 </div>
 <div class="bottom-bar" id="bottomBar"><button class="btn btn-prev" id="prevBtn">← PREV</button><button class="btn btn-next" id="nextBtn">NEXT →</button></div>
 
 <script>
-const START_KEY='mcres_v10_login'; const EXPIRE_MS=12*60*60*1000; const DATA_KEY='mcres_students_v10';
+const DATA_KEY='mcres_students_v10'; const START_KEY='mcres_v10_final'; const EXPIRE_MS=12*60*60*1000;
 const urlParams=new URLSearchParams(window.location.search); const isAdmin=urlParams.has('admin');
-function showExpired(){document.body.innerHTML=`<div style="background:#0f1a4a;color:#facc15;text-align:center;padding:12px;font-weight:900">MCRES ONLINE TEST SERIES</div><div style="max-width:600px;margin:80px auto;background:#fff;border-radius:16px;padding:30px;text-align:center"><h2 style="color:#dc2626">⏰ Test Expired - 12H Over</h2></div>`;}
+function showExpired(){document.body.innerHTML=`<div style="background:#0f1a4a;color:#facc15;text-align:center;padding:12px;font-weight:900">MCRES ONLINE TEST SERIES</div><div style="max-width:600px;margin:80px auto;background:#fff;border-radius:16px;padding:30px;text-align:center"><h2 style="color:#dc2626">⏰ Test Expired - 12H Over</h2><p>Contact MCRES</p></div>`;}
 let sT=localStorage.getItem(START_KEY); if(!sT){sT=Date.now();localStorage.setItem(START_KEY,sT);} else sT=parseInt(sT);
 if(!isAdmin && Date.now()-sT>EXPIRE_MS){showExpired(); throw new Error('Expired');}
 
-// ADMIN VIEW - Shows attempts
 if(isAdmin){
- document.body.innerHTML=`<div style="background:#0f1a4a;color:#facc15;text-align:center;padding:12px;font-weight:900">MCRES ADMIN - STUDENT ATTEMPTS</div><div style="max-width:800px;margin:20px auto;background:#fff;padding:20px;border-radius:16px"><h2>Total Attempts: <span id="totalCount"></span></h2><div id="adminList" style="font-size:13px"></div><button onclick="localStorage.removeItem('${DATA_KEY}');location.reload()" style="margin-top:15px;background:#dc2626;color:#fff;border:0;padding:10px 20px;border-radius:8px;font-weight:900">Clear Data</button></div>`;
+ document.body.innerHTML=`<div style="background:#0f1a4a;color:#facc15;text-align:center;padding:12px;font-weight:900">MCRES ADMIN - ATTEMPTS</div><div style="max-width:800px;margin:20px auto;background:#fff;padding:20px;border-radius:16px"><h2>Total: <span id="totalCount"></span></h2><div id="adminList" style="font-size:13px"></div><button onclick="localStorage.removeItem('${DATA_KEY}');location.reload()" style="margin-top:15px;background:#dc2626;color:#fff;border:0;padding:10px 20px;border-radius:8px;font-weight:900">Clear Data</button></div>`;
  const data=JSON.parse(localStorage.getItem(DATA_KEY)||'[]');
  document.getElementById('totalCount').textContent=data.length;
- document.getElementById('adminList').innerHTML=data.map((d,i)=>`<div style="padding:8px;border-bottom:1px solid #eee"><b>${i+1}. ${d.name}</b> - ${d.mobile} - ${d.place||''} - ${d.date} - Score: ${d.score||'Not Submitted'} - Time: ${d.time}</div>`).join('')||'No attempts yet';
+ document.getElementById('adminList').innerHTML=data.map((d,i)=>`<div style="padding:8px;border-bottom:1px solid #eee"><b>${i+1}. ${d.name}</b> - ${d.mobile} - ${d.place||''} - ${d.date} - Score: ${d.score||'In Progress'}</div>`).join('')||'No attempts';
  throw new Error('Admin');
 }
 
 document.addEventListener('contextmenu',e=>e.preventDefault());
-document.addEventListener('keydown',e=>{if(e.key==='PrintScreen'||e.keyCode===44||(e.ctrlKey&&['s','p','c','u','i','j'].includes(e.key.toLowerCase()))||e.key==='F12'){e.preventDefault();document.getElementById('screenshotBlock').style.display='flex';setTimeout(()=>{document.getElementById('screenshotBlock').style.display='none';},2000);return false;}});
+document.addEventListener('keydown',e=>{if(e.key==='PrintScreen'||e.keyCode===44||(e.ctrlKey&&['s','p','c','u','i','j'].includes(e.key.toLowerCase()))||e.key==='F12'){e.preventDefault();document.getElementById('screenshotBlock').style.display='flex';setTimeout(()=>{document.getElementById('screenshotBlock').style.display='none';},1500);return false;}});
 
 function doLogin(){
  const name=document.getElementById('stuName').value.trim();
  const mobile=document.getElementById('stuMobile').value.trim();
  const place=document.getElementById('stuPlace').value.trim();
  const err=document.getElementById('loginError');
- if(name.length<3){err.textContent='❌ Please enter valid Full Name (min 3 chars)';err.style.display='block';return;}
+ if(name.length<3){err.textContent='❌ Please enter valid Name (min 3 chars)';err.style.display='block';return;}
  if(!/^[6-9][0-9]{9}$/.test(mobile)){err.textContent='❌ Enter valid 10-digit Mobile Number';err.style.display='block';return;}
- const entry={name,mobile,place,date:new Date().toLocaleString(),time:new Date().toISOString(),score:'In Progress'};
+ const entry={name,mobile,place,date:new Date().toLocaleString(),score:'In Progress'};
  const list=JSON.parse(localStorage.getItem(DATA_KEY)||'[]'); list.push(entry); localStorage.setItem(DATA_KEY,JSON.stringify(list));
  localStorage.setItem('mcres_current_user',JSON.stringify(entry));
  document.getElementById('loginPage').style.display='none';
