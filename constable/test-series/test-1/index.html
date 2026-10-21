@@ -3,616 +3,83 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#0f172a">
-<title>English Test Series 01 | MCRES</title>
-
+<title>TEST SERIES - 01 (English - 25 Q) | MCRES</title>
 <style>
-* { box-sizing: border-box; }
-
-body {
-  margin: 0;
-  background: #f1f5f9;
-  color: #172033;
-  font-family: Arial, Helvetica, sans-serif;
-  line-height: 1.6;
-}
-
-header { text-align: center; }
-
-.top {
-  background: #0f172a;
-  color: #facc15;
-  padding: 18px 8px;
-  font-size: 23px;
-  font-weight: 900;
-}
-
-.org {
-  background: #fff;
-  padding: 12px 8px;
-  font-size: 13px;
-  font-weight: bold;
-}
-
-.tagline {
-  background: #e2e8f0;
-  padding: 8px;
-  font-size: 12px;
-}
-
-.founder {
-  background: #e0f2fe;
-  color: #075985;
-  padding: 10px;
-  font-size: 12px;
-  font-weight: bold;
-}
-
-.bar {
-  background: #facc15;
-  padding: 12px;
-  font-weight: 900;
-}
-
-main {
-  max-width: 850px;
-  margin: auto;
-  padding: 14px;
-}
-
-.panel, .question, #result {
-  background: #fff;
-  border-radius: 12px;
-  padding: 16px;
-  margin: 14px 0;
-  box-shadow: 0 2px 8px #0000000b;
-}
-
-.stats {
-  display: flex;
-  justify-content: space-between;
-  gap: 8px;
-  flex-wrap: wrap;
-  font-weight: bold;
-}
-
-#timer {
-  color: #dc2626;
-  font-size: 22px;
-}
-
-.note {
-  font-size: 13px;
-  color: #475569;
-}
-
-button {
-  border: 0;
-  border-radius: 9px;
-  padding: 13px 16px;
-  font-size: 15px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.primary {
-  background: #0f172a;
-  color: #facc15;
-  width: 100%;
-}
-
-.secondary {
-  background: #e2e8f0;
-  color: #0f172a;
-  width: 100%;
-  margin-top: 12px;
-}
-
-.question-paper {
-  -webkit-user-select: none;
-  user-select: none;
-}
-
-.question {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-  border: 1px solid #e2e8f0;
-}
-
-.question:before {
-  content: "MCRES • mcres.in";
-  position: absolute;
-  z-index: -1;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(-25deg);
-  white-space: nowrap;
-  font-size: clamp(22px, 5vw, 40px);
-  font-weight: 900;
-  color: #0f172a0d;
-  pointer-events: none;
-}
-
-.qtitle {
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.option {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  padding: 10px;
-  margin: 8px 0;
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
-  background: #ffffffed;
-  cursor: pointer;
-}
-
-.option:has(input:checked) {
-  border-color: #0284c7;
-  background: #eff6ff;
-}
-
-.option input {
-  margin-top: 5px;
-  flex-shrink: 0;
-}
-
-#result { display: none; }
-
-.score {
-  font-size: 30px;
-  font-weight: 900;
-  color: #047857;
-}
-
-.review {
-  padding: 13px 0;
-  border-bottom: 1px solid #e2e8f0;
-  font-size: 14px;
-}
-
-footer {
-  text-align: center;
-  padding: 22px;
-  font-size: 12px;
-  color: #64748b;
-}
-
-[hidden] { display: none !important; }
-
-@media print {
-  body { display: none !important; }
-}
+*{box-sizing:border-box}
+body{margin:0;background:#f0f4ff;font-family:Arial,sans-serif}
+.header{background:linear-gradient(90deg,#0f1a4a,#1e3a8a);color:#fff;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:10}
+.header small{color:#facc15;font-weight:700;font-size:11px}
+.header strong{font-size:13px}
+.timer{background:#facc15;color:#0f172a;padding:6px 14px;border-radius:25px;font-weight:900;font-size:14px;box-shadow:0 2px 5px #0003}
+.main{max-width:850px;margin:auto;padding:10px 10px 100px}
+.q-card{background:#fff;border-radius:16px;padding:18px;min-height:340px;position:relative;overflow:hidden;border:2px solid #e0e7ff;box-shadow:0 4px 15px #0001}
+.q-card:before{content:"Dr Ramakrishna Manimadde (MCRES) • MCRES Hyd";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-28deg);font-size:28px;font-weight:900;color:#0f172a07;white-space:nowrap;pointer-events:none;z-index:0}
+.q-top{background:linear-gradient(90deg,#0f1a4a,#3b82f6);color:#fff;display:inline-block;padding:4px 12px;border-radius:20px;font-size:12px;font-weight:900;margin-bottom:12px}
+.q-text{font-weight:800;font-size:15px;position:relative;z-index:1;color:#1e293b;line-height:1.6}
+.opt{position:relative;z-index:1;display:flex;align-items:center;gap:10px;padding:13px;border-radius:12px;margin:10px 0;border:2px solid #e2e8f0;background:#fff;cursor:pointer;font-weight:600;transition:.2s}
+.opt:hover{transform:scale(1.01);border-color:#93c5fd}
+.opt:nth-child(1):has(input:checked){background:#dbeafe;border-color:#2563eb;color:#1e40af}
+.opt:nth-child(2):has(input:checked){background:#dcfce7;border-color:#16a34a;color:#14532d}
+.opt:nth-child(3):has(input:checked){background:#ffedd5;border-color:#ea580c;color:#7c2d12}
+.opt:nth-child(4):has(input:checked){background:#f3e8ff;border-color:#9333ea;color:#581c87}
+.nav-panel{background:#fff;border-radius:16px;padding:12px;margin-top:14px;border:2px solid #e0e7ff;box-shadow:0 2px 10px #0001}
+.nav-title{font-size:12px;font-weight:800;color:#0f1a4a;margin-bottom:10px}
+.nav-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.nav-btn{padding:10px 0;border-radius:10px;border:2px solid #cbd5e1;background:#fff;font-weight:800;font-size:13px;cursor:pointer;transition:.2s}
+.nav-btn.current{background:linear-gradient(90deg,#0f1a4a,#2563eb);color:#fff;border-color:#0f1a4a;transform:scale(1.05)}
+.nav-btn.answered{background:#22c55e;color:#fff;border-color:#16a34a}
+.bottom-bar{position:fixed;bottom:0;left:0;right:0;background:#fff;padding:12px;border-top:2px solid #e0e7ff;z-index:20}
+.next-btn{background:linear-gradient(90deg,#0f1a4a,#2563eb,#3b82f6);color:#facc15;width:100%;border:0;border-radius:12px;padding:15px;font-weight:900;font-size:16px;cursor:pointer;box-shadow:0 4px 12px #2563eb55}
+#result{display:none}
 </style>
 </head>
-
 <body>
-
-<header>
-  <div class="top">MCRES ONLINE TEST SERIES</div>
-  <div class="org">
-    MALLAIAH CENTER FOR RIVER &amp; EARTH SCIENCES (MCRES)
-  </div>
-  <div class="tagline">
-    Exploring Rivers • Decoding Earth • Advancing Science
-  </div>
-  <div class="founder">
-    Dr Ramakrishna Manimadde | Founder &amp; Director, MCRES
-  </div>
-  <div class="bar">ENGLISH TEST SERIES – 01</div>
-</header>
-
-<main>
-
-<section class="panel">
-  <div class="stats">
-    <span>Questions: 25</span>
-    <span>Maximum: 25 marks</span>
-    <span>Time: <span id="timer">30:00</span></span>
-  </div>
-  <p class="note">
-    Correct answer: +1 | Every wrong answer: −0.20 |
-    Unanswered: 0
-  </p>
-  <p id="attemptInfo" class="note"></p>
-</section>
-
-<section id="intro" class="panel">
-  <h2>Instructions</h2>
-  <ol>
-    <li>This test contains 25 multiple-choice questions.</li>
-    <li>Time allowed is 30 minutes.</li>
-    <li>Each correct answer carries 1 mark.</li>
-    <li>Every 5 wrong answers deduct 1 mark.</li>
-    <li>Unanswered questions receive 0 marks.</li>
-    <li>The test is automatically submitted when time expires.</li>
-    <li>A maximum of 5 attempts is allowed in this browser.</li>
-  </ol>
-  <p class="note">
-    Starting a test uses one attempt. Refreshing the page may use
-    another attempt. Keep your browser open during the test.
-  </p>
-  <button id="startBtn" class="primary" type="button">
-    START TEST
-  </button>
-</section>
-
-<section id="locked" class="panel" hidden>
-  <h2>Attempt Limit Reached</h2>
-  <p>You have used all 5 attempts for this test in this browser.</p>
-  <p class="note">
-    This basic limit is browser-specific and is not tamper-proof.
-  </p>
-</section>
-
-<form id="testForm" hidden>
-  <div id="questions" class="question-paper"></div>
-  <button class="primary" id="submitBtn" type="submit">
-    SUBMIT TEST
-  </button>
-</form>
-
-<section id="result" aria-live="polite">
-  <h2>Test Result</h2>
-  <div id="score" class="score"></div>
-  <p id="summary"></p>
-  <p id="negativeMarks"></p>
-  <h3>Answer Review</h3>
-  <div id="review"></div>
-</section>
-
-</main>
-
-<footer>
-  MCRES • Dr Ramakrishna Manimadde • mcres.in
-</footer>
-
+<div class="header">
+<div><small>MCRES - Mallaiah Center for River & Earth Sciences</small><br><strong>TEST SERIES - 01 (English - 25 Q)</strong><br><span style="font-size:10px;opacity:.8">Founder & Director Dr. Ramakrishna Manimadde | mcres.in</span></div>
+<div class="timer" id="timer">30:00</div>
+</div>
+<div class="main">
+<div class="q-card" id="qCard"><div class="q-top" id="qTop">Q 1 / 25</div><div class="q-text" id="qText"></div><div id="opts"></div></div>
+<div class="nav-panel"><div class="nav-title">Question Navigation - 🟢 Green = Answered, 🔵 Blue = Current</div><div class="nav-grid" id="navGrid"></div></div>
+<div id="result" class="q-card" style="margin-top:15px"><h2>Result</h2><div id="score" style="font-size:28px;font-weight:900;color:#047857"></div><p id="summary"></p><div id="review"></div></div>
+</div>
+<div class="bottom-bar"><button class="next-btn" id="nextBtn">NEXT →</button></div>
 <script>
-"use strict";
-
-const MAX_ATTEMPTS = 5;
-const DURATION = 30 * 60;
-const ATTEMPT_KEY = "mcres_english_test_01_attempts_v1";
-
-const questions = [
-{
-q: "Choose the correct matching of the words with their descriptions.",
-extra: "(i) Congestion\n(ii) Collision\n(iii) Bottleneck\n(iv) Breakdown\n\n(A) An accident in which two vehicles hit each other\n(B) A situation in which roads are full of traffic\n(C) An occasion when a vehicle stops working\n(D) A place on a road where traffic cannot pass easily",
-o: [
-"(1) (i)-(C), (ii)-(B), (iii)-(A), (iv)-(D)",
-"(2) (i)-(A), (ii)-(D), (iii)-(B), (iv)-(C)",
-"(3) (i)-(D), (ii)-(C), (iii)-(A), (iv)-(B)",
-"(4) (i)-(B), (ii)-(A), (iii)-(D), (iv)-(C)"
-], a: 3
-},
-{
-q: "Choose the correct option to complete the sentence.",
-extra: "If you had studied hard, you ______ the examination.",
-o: ["(1) Will clear", "(2) Would clear", "(3) Would have cleared", "(4) Cleared"], a: 2
-},
-{
-q: "Identify whether the sentence contains an error.",
-extra: "The children (A) / washed their hands (B) / before they ate (C) / their lunch (D).",
-o: ["(1) Part (A)", "(2) Part (B)", "(3) Part (C)", "(4) No error"], a: 3
-},
-{
-q: "What does the idiom “You cannot have your cake and eat it too” mean?",
-o: ["(1) Enjoy forever", "(2) Enjoy without payment", "(3) Have it both ways", "(4) Forgive yourself of guilt"], a: 2
-},
-{
-q: "Arrange the words in the correct order to form a sentence.",
-extra: "(a) travel\n(b) I\n(c) and\n(d) together\n(e) Satish",
-o: ["(1) b-c-e-d-a", "(2) e-c-b-a-d", "(3) e-c-b-d-a", "(4) b-c-e-a-d"], a: 1
-},
-{
-q: "The idiom “to take a leaf out of someone's book” means:",
-o: ["(1) Steal something", "(2) Damage something", "(3) Cheat someone", "(4) Imitate someone or follow their example"], a: 3
-},
-{
-q: "The idiom “to show someone the ropes” means:",
-o: ["(1) Influence someone", "(2) Show someone how powerful you are", "(3) Hang someone", "(4) Teach someone how to do a job"], a: 3
-},
-{
-q: "Select the pair of synonymous words.",
-o: ["(1) Colloquial — Grammatical", "(2) Excess — Surplus", "(3) Fair — Strong", "(4) Alert — Inactive"], a: 1
-},
-{
-q: "What does the idiom “They left no stone unturned to trace the culprits” mean?",
-o: ["(1) Combed the whole area", "(2) Used all available means", "(3) Ransacked the place", "(4) Searched every corner"], a: 1
-},
-{
-q: "Choose the most appropriate words to complete the sentence.",
-extra: "The festival is a three-day-long celebration that combines ______ feasts with periods of ______ fasting.",
-o: ["(1) Unornamented, resolute", "(2) Paltry, obstinate", "(3) Scanty, parsimonious", "(4) Sumptuous, strict"], a: 3
-},
-{
-q: "Choose the correct sequence of articles.",
-extra: "______ uranium is ______ toxic metal. ______ uranium found in Australia accounts for 31% of ______ world's known uranium ore reserves.",
-o: ["(1) No article, a, the, the", "(2) The, a, the, no article", "(3) No article, a, no article, the", "(4) The, the, no article, the"], a: 0
-},
-{
-q: "Choose the correct word to complete the sentence.",
-extra: "A balanced diet should ______ regular exercise in maintaining good health.",
-o: ["(1) Compliment", "(2) Complementation", "(3) Complement", "(4) Complementary"], a: 2
-},
-{
-q: "What is the antonym of “pious” in the sentence “She is a pious woman”?",
-o: ["(1) Sweet", "(2) Famed", "(3) Ungodly", "(4) Cruel"], a: 2
-},
-{
-q: "Choose the synonym of “amenable”.",
-extra: "Both parties were amenable to a peaceful settlement of the land dispute.",
-o: ["(1) Doubtful", "(2) Unwilling", "(3) Receptive", "(4) Disagreeable"], a: 2
-},
-{
-q: "Choose the synonym of “antidote”.",
-extra: "Jogging is considered an antidote to mental stress.",
-o: ["(1) Poisonous substance", "(2) Remedy", "(3) Equivalent", "(4) Dangerous substance"], a: 1
-},
-{
-q: "What is the antonym of “transparent” in the sentence “The window glass is transparent”?",
-o: ["(1) Opaque", "(2) Translucent", "(3) Susceptible", "(4) Fragile"], a: 0
-},
-{
-q: "What is the antonym of “unanimous” in the sentence “It was a unanimous decision”?",
-o: ["(1) United", "(2) Divided", "(3) Compatible", "(4) Harmonious"], a: 1
-},
-{
-q: "Choose the correct articles.",
-extra: "His mother was ______ American, though his father was ______ European.",
-o: ["(1) A, a", "(2) A, an", "(3) An, a", "(4) An, an"], a: 2
-},
-{
-q: "Choose the correct preposition.",
-extra: "The coordinator was asked to attend ______ the issue and resolve it immediately.",
-o: ["(1) By", "(2) In", "(3) To", "(4) No preposition required"], a: 2
-},
-{
-q: "Choose the correct verb.",
-extra: "Either of the roads ______ to Vasantha Nagar.",
-o: ["(1) Lead", "(2) Leads", "(3) Have led", "(4) Are led"], a: 1
-},
-{
-q: "Choose the correct tense.",
-extra: "Please don't disturb me; I ______ the coins now.",
-o: ["(1) Have been counting", "(2) Count", "(3) Was counting", "(4) Am counting"], a: 3
-},
-{
-q: "Choose the correct verb form.",
-extra: "Rishi ______ his engineering course by the end of 2027.",
-o: ["(1) Will completed", "(2) Complete", "(3) Will have completed", "(4) Was completed"], a: 2
-},
-{
-q: "Choose the correctly spelt word.",
-o: ["(1) Occasional", "(2) Occassional", "(3) Ocassional", "(4) Occational"], a: 0
-},
-{
-q: "What does the expression “put you up” mean in the sentence below?",
-extra: "“We would be glad to put you up for a few days if you would like to stay.”",
-o: ["(1) Tolerate someone", "(2) Build something", "(3) Provide accommodation", "(4) Contribute something"], a: 2
-},
-{
-q: "Choose the correct question tag.",
-extra: "Manoj played cricket for two days, ______?",
-o: ["(1) Did", "(2) Didn't", "(3) Wasn't", "(4) Wouldn't"], a: 1
-}
+const questions=[
+{q:"Choose the correct matching of the words with their descriptions.\n(i) Congestion\n(ii) Collision\n(iii) Bottleneck\n(iv) Breakdown\n(A) An accident in which two vehicles hit each other\n(B) A situation in which roads are full of traffic\n(C) An occasion when a vehicle stops working\n(D) A place on a road where traffic cannot pass easily",o:["(1) (i)-(C), (ii)-(B), (iii)-(A), (iv)-(D)","(2) (i)-(A), (ii)-(D), (iii)-(B), (iv)-(C)","(3) (i)-(D), (ii)-(C), (iii)-(A), (iv)-(B)","(4) (i)-(B), (ii)-(A), (iii)-(D), (iv)-(C)"],a:3},
+{q:"Choose the correct option to complete the sentence.\nIf you had studied hard, you ______ the examination.",o:["(1) Will clear","(2) Would clear","(3) Would have cleared","(4) Cleared"],a:2},
+{q:"Identify whether the sentence contains an error.\nThe children (A) / washed their hands (B) / before they ate (C) / their lunch (D).",o:["(1) Part (A)","(2) Part (B)","(3) Part (C)","(4) No error"],a:3},
+{q:"What does the idiom 'You cannot have your cake and eat it too' mean?",o:["(1) Enjoy forever","(2) Enjoy without payment","(3) Have it both ways","(4) Forgive yourself of guilt"],a:2},
+{q:"Arrange the words in the correct order to form a sentence.\n(a) travel\n(b) I\n(c) and\n(d) together\n(e) Satish",o:["(1) b-c-e-d-a","(2) e-c-b-a-d","(3) e-c-b-d-a","(4) b-c-e-a-d"],a:1},
+{q:"The idiom 'to take a leaf out of someone's book' means:",o:["(1) Steal something","(2) Damage something","(3) Cheat someone","(4) Imitate someone or follow their example"],a:3},
+{q:"The idiom 'to show someone the ropes' means:",o:["(1) Influence someone","(2) Show someone how powerful you are","(3) Hang someone","(4) Teach someone how to do a job"],a:3},
+{q:"Select the pair of synonymous words.",o:["(1) Colloquial — Grammatical","(2) Excess — Surplus","(3) Fair — Strong","(4) Alert — Inactive"],a:1},
+{q:"What does the idiom 'They left no stone unturned to trace the culprits' mean?",o:["(1) Combed the whole area","(2) Used all available means","(3) Ransacked the place","(4) Searched every corner"],a:1},
+{q:"Choose the most appropriate words to complete the sentence.\nThe festival is a three-day-long celebration that combines ______ feasts with periods of ______ fasting.",o:["(1) Unornamented, resolute","(2) Paltry, obstinate","(3) Scanty, parsimonious","(4) Sumptuous, strict"],a:3},
+{q:"Choose the correct sequence of articles.\n______ uranium is ______ toxic metal. ______ uranium found in Australia accounts for 31% of ______ world's known uranium ore reserves.",o:["(1) No article, a, the, the","(2) The, a, the, no article","(3) No article, a, no article, the","(4) The, the, no article, the"],a:0},
+{q:"Choose the correct word to complete the sentence.\nA balanced diet should ______ regular exercise in maintaining good health.",o:["(1) Compliment","(2) Complementation","(3) Complement","(4) Complementary"],a:2},
+{q:"What is the antonym of 'pious' in the sentence 'She is a pious woman'?",o:["(1) Sweet","(2) Famed","(3) Ungodly","(4) Cruel"],a:2},
+{q:"Choose the synonym of 'amenable'.\nBoth parties were amenable to a peaceful settlement of the land dispute.",o:["(1) Doubtful","(2) Unwilling","(3) Receptive","(4) Disagreeable"],a:2},
+{q:"Choose the synonym of 'antidote'.\nJogging is considered an antidote to mental stress.",o:["(1) Poisonous substance","(2) Remedy","(3) Equivalent","(4) Dangerous substance"],a:1},
+{q:"What is the antonym of 'transparent' in the sentence 'The window glass is transparent'?",o:["(1) Opaque","(2) Translucent","(3) Susceptible","(4) Fragile"],a:0},
+{q:"What is the antonym of 'unanimous' in the sentence 'It was a unanimous decision'?",o:["(1) United","(2) Divided","(3) Compatible","(4) Harmonious"],a:1},
+{q:"Choose the correct articles.\nHis mother was ______ American, though his father was ______ European.",o:["(1) A, a","(2) A, an","(3) An, a","(4) An, an"],a:2},
+{q:"Choose the correct preposition.\nThe coordinator was asked to attend ______ the issue and resolve it immediately.",o:["(1) By","(2) In","(3) To","(4) No preposition required"],a:2},
+{q:"Choose the correct verb.\nEither of the roads ______ to Vasantha Nagar.",o:["(1) Lead","(2) Leads","(3) Have led","(4) Are led"],a:1},
+{q:"Choose the correct tense.\nPlease don't disturb me; I ______ the coins now.",o:["(1) Have been counting","(2) Count","(3) Was counting","(4) Am counting"],a:3},
+{q:"Choose the correct verb form.\nRishi ______ his engineering course by the end of 2027.",o:["(1) Will completed","(2) Complete","(3) Will have completed","(4) Was completed"],a:2},
+{q:"Choose the correctly spelt word.",o:["(1) Occasional","(2) Occassional","(3) Ocassional","(4) Occational"],a:0},
+{q:"What does the expression 'put you up' mean in the sentence below?\n'We would be glad to put you up for a few days if you would like to stay.'",o:["(1) Tolerate someone","(2) Build something","(3) Provide accommodation","(4) Contribute something"],a:2},
+{q:"Choose the correct question tag.\nManoj played cricket for two days, ______?",o:["(1) Did","(2) Didn't","(3) Wasn't","(4) Wouldn't"],a:1}
 ];
-
-let remaining = DURATION;
-let timerInterval = null;
-let submitted = false;
-let testStarted = false;
-
-function getAttempts() {
-  return Number(localStorage.getItem(ATTEMPT_KEY) || 0);
-}
-
-function updateAttemptInfo() {
-  const used = getAttempts();
-  const left = Math.max(0, MAX_ATTEMPTS - used);
-  document.getElementById("attemptInfo").textContent =
-    "Attempts used: " + used + " / " + MAX_ATTEMPTS +
-    " | Attempts remaining: " + left;
-  return left;
-}
-
-function renderQuestions() {
-  const container = document.getElementById("questions");
-  container.innerHTML = "";
-
-  questions.forEach((q, i) => {
-    const card = document.createElement("section");
-    card.className = "question";
-    card.id = "question-" + i;
-
-    const title = document.createElement("div");
-    title.className = "qtitle";
-    title.textContent = (i + 1) + ". " + q.q;
-    card.appendChild(title);
-
-    if (q.extra) {
-      const extra = document.createElement("div");
-      extra.className = "qextra";
-      extra.textContent = q.extra;
-      card.appendChild(extra);
-    }
-
-    q.o.forEach((option, j) => {
-      const label = document.createElement("label");
-      label.className = "option";
-
-      const input = document.createElement("input");
-      input.type = "radio";
-      input.name = "q" + i;
-      input.value = j;
-
-      const text = document.createElement("span");
-      text.textContent = option;
-
-      label.appendChild(input);
-      label.appendChild(text);
-      card.appendChild(label);
-    });
-
-    container.appendChild(card);
-  });
-}
-
-function startTest() {
-  if (submitted || testStarted) return;
-
-  if (getAttempts() >= MAX_ATTEMPTS) {
-    showLocked();
-    return;
-  }
-
-  localStorage.setItem(ATTEMPT_KEY, String(getAttempts() + 1));
-  testStarted = true;
-
-  document.getElementById("intro").hidden = true;
-  document.getElementById("testForm").hidden = false;
-  updateAttemptInfo();
-
-  remaining = DURATION;
-  updateTimer();
-
-  timerInterval = setInterval(() => {
-    remaining--;
-    updateTimer();
-
-    if (remaining <= 0) {
-      submitTest(true);
-    }
-  }, 1000);
-}
-
-function updateTimer() {
-  const minutes = Math.floor(Math.max(0, remaining) / 60);
-  const seconds = Math.max(0, remaining) % 60;
-  document.getElementById("timer").textContent =
-    String(minutes).padStart(2, "0") + ":" +
-    String(seconds).padStart(2, "0");
-}
-
-function submitTest(autoSubmitted) {
-  if (submitted || !testStarted) return;
-
-  if (!autoSubmitted) {
-    const confirmed = confirm("Are you sure you want to submit the test?");
-    if (!confirmed) return;
-  }
-
-  submitted = true;
-  clearInterval(timerInterval);
-
-  document.getElementById("submitBtn").disabled = true;
-
-  let correct = 0;
-  let wrong = 0;
-  let unanswered = 0;
-  let reviewHTML = "";
-
-  questions.forEach((q, i) => {
-    const selected = document.querySelector(
-      'input[name="q' + i + '"]:checked'
-    );
-
-    let status = "";
-    let selectedText = "Not answered";
-
-    if (!selected) {
-      unanswered++;
-      status = "unanswered-text";
-    } else if (Number(selected.value) === q.a) {
-      correct++;
-      status = "correct-text";
-      selectedText = q.o[Number(selected.value)];
-    } else {
-      wrong++;
-      status = "wrong-text";
-      selectedText = q.o[Number(selected.value)];
-    }
-
-    const correctText = q.o[q.a];
-
-    reviewHTML +=
-      '<div class="review">' +
-      '<strong>' + (i + 1) + '. ' + escapeHTML(q.q) + '</strong><br>' +
-      '<span class="' + status + '">Your answer: ' +
-      escapeHTML(selectedText) + '</span><br>' +
-      '<span class="correct-text">Correct answer: ' +
-      escapeHTML(correctText) + '</span>' +
-      '</div>';
-  });
-
-  const negative = wrong / 5;
-  const score = Math.round((correct - negative) * 100) / 100;
-
-  document.getElementById("score").textContent =
-    "Score: " + score.toFixed(2) + " / 25";
-
-  document.getElementById("summary").textContent =
-    "Correct: " + correct +
-    " | Wrong: " + wrong +
-    " | Unanswered: " + unanswered;
-
-  document.getElementById("negativeMarks").textContent =
-    "Negative marks: -" + negative.toFixed(2) +
-    (autoSubmitted ? " | Automatically submitted: Time over." : "");
-
-  document.getElementById("review").innerHTML = reviewHTML;
-  document.getElementById("testForm").hidden = true;
-  document.getElementById("result").style.display = "block";
-
-  window.scrollTo({ top: 0, behavior: "smooth" });
-}
-
-function escapeHTML(value) {
-  return String(value).replace(/[&<>"']/g, char => ({
-    "&": "&amp;",
-    "<": "&lt;",
-    ">": "&gt;",
-    '"': "&quot;",
-    "'": "&#39;"
-  })[char]);
-}
-
-function showLocked() {
-  document.getElementById("intro").hidden = true;
-  document.getElementById("testForm").hidden = true;
-  document.getElementById("locked").hidden = false;
-}
-
-document.getElementById("startBtn").addEventListener("click", startTest);
-document.getElementById("testForm").addEventListener("submit", event => {
-  event.preventDefault();
-  submitTest(false);
-});
-
-document.addEventListener("contextmenu", event => {
-  if (event.target.closest(".question-paper")) {
-    event.preventDefault();
-  }
-});
-
-document.addEventListener("copy", event => {
-  if (event.target.closest && event.target.closest(".question-paper")) {
-    event.preventDefault();
-  }
-});
-
-renderQuestions();
-
-if (getAttempts() >= MAX_ATTEMPTS) {
-  showLocked();
-} else {
-  updateAttemptInfo();
-}
+let cur=0,ans=Array(25).fill(null),time=30*60;
+const qText=document.getElementById('qText'),opts=document.getElementById('opts'),qTop=document.getElementById('qTop'),navGrid=document.getElementById('navGrid'),timerEl=document.getElementById('timer');
+function render(){qTop.textContent=`Q ${cur+1} / 25`;qText.textContent=`${cur+1}. ${questions[cur].q}`;opts.innerHTML='';questions[cur].o.forEach((o,i)=>{const l=document.createElement('label');l.className='opt';l.innerHTML=`<input type="radio" name="opt" value="${i}" ${ans[cur]===i?'checked':''} style="accent-color:#2563eb"> ${o}`;l.onclick=()=>{ans[cur]=i;renderNav();render();};opts.appendChild(l);});renderNav();}
+function renderNav(){navGrid.innerHTML='';questions.forEach((_,i)=>{const b=document.createElement('button');b.className='nav-btn';if(i===cur)b.classList.add('current');if(ans[i]!==null&&i!==cur)b.classList.add('answered');b.textContent=i+1;b.onclick=()=>{cur=i;render();window.scrollTo({top:0,behavior:'smooth'})};navGrid.appendChild(b);});}
+document.getElementById('nextBtn').onclick=()=>{if(cur<24){cur++;render();window.scrollTo({top:0,behavior:'smooth'})}else{showResult()}};
+function showResult(){let correct=0,wrong=0,un=0,html='';questions.forEach((q,i)=>{if(ans[i]===null)un++;else if(ans[i]===q.a)correct++;else wrong++;const your=ans[i]===null?'Not answered':q.o[ans[i]];html+=`<div style="padding:10px 0;border-bottom:1px solid #eee;font-size:13px"><b>${i+1}. ${q.q}</b><br>Your: ${your} | Correct: ${q.o[q.a]}</div>`;});const neg=wrong/5,score=(correct-neg).toFixed(2);document.getElementById('qCard').style.display='none';document.querySelector('.nav-panel').style.display='none';document.getElementById('result').style.display='block';document.getElementById('score').textContent=`Score: ${score} / 25`;document.getElementById('summary').textContent=`Correct: ${correct} | Wrong: ${wrong} | Unanswered: ${un} | Negative: -${neg.toFixed(2)}`;document.getElementById('review').innerHTML=html;document.getElementById('nextBtn').textContent='TEST COMPLETED';document.getElementById('nextBtn').disabled=true;}
+setInterval(()=>{time--;let m=Math.floor(time/60),s=time%60;timerEl.textContent=`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;if(time<=0)showResult();},1000);
+render();
 </script>
-
 </body>
 </html>
