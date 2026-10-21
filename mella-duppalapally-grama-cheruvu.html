@@ -4,88 +4,92 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MCRES-VTR-01 | Village : Mella Duppalapally | గ్రామం : మేళ్ళ దుప్పలపల్లి</title>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&family=Noto+Sans+Telugu:wght@700&display=swap" rel="stylesheet">
 <style>
-*{margin:0;box-sizing:border-box}
-body{font-family:'Outfit','Noto Sans Telugu',sans-serif;background:#f0fdf4;color:#0f172a;overflow-x:hidden}
-.bg{position:fixed;inset:0;z-index:-1;background:radial-gradient(800px 400px at 10% 10%,#fef9c3 0%,transparent 60%),radial-gradient(700px 500px at 90% 20%,#dbeafe 0%,transparent 60%),radial-gradient(600px 400px at 50% 100%,#dcfce7 0%,transparent 70%),#f8fffe}
-header{position:relative;background:linear-gradient(105deg,#021a0b 0%,#0a3d1f 40%,#14532d 100%);color:#fff;padding:28px 0 20px;border-bottom:6px solid #facc15;box-shadow:0 20px 50px rgba(0,0,0,.3)}
-.wrap{max-width:1100px;margin:auto;padding:0 18px}
-.top-badge{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(90deg,#fde68a,#fbbf24);color:#422006;padding:8px 18px;border-radius:100px;font-weight:900;font-size:12px;letter-spacing:.5px;box-shadow:0 8px 20px rgba(251,191,36,.4),0 0 0 4px rgba(251,191,36,.15)}
-h1{font-size:38px;font-weight:900;line-height:.95;margin:14px 0 10px;letter-spacing:-1px}
-h1 .gold{background:linear-gradient(90deg,#fde68a,#facc15);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-h1 .te{font-family:'Noto Sans Telugu';font-size:18px;color:#fef08a;display:block;margin-top:6px;font-weight:700}
-.loc3d{margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.loc-card{border-radius:20px;padding:16px 18px;background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.04));border:1px solid rgba(250,204,21,.35);backdrop-filter:blur(16px);box-shadow:0 10px 30px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.3);transform:perspective(800px) rotateX(2deg);transition:.3s}
-.loc-card:hover{transform:perspective(800px) rotateX(0deg) translateY(-3px)}
-.loc-card b{color:#facc15}
-.hero{margin-top:22px;display:grid;grid-template-columns:1.15fr .85fr;gap:18px;align-items:stretch}
-.main-card{background:linear-gradient(160deg,rgba(255,255,255,.96),rgba(255,255,255,.8));backdrop-filter:blur(20px);border-radius:26px;padding:26px;border:1px solid #fff;box-shadow:0 30px 70px rgba(0,0,0,.12),0 1px 0 #fff inset,0 0 0 1px rgba(0,0,0,.04);position:relative;overflow:hidden}
-.main-card::before{content:'';position:absolute;top:-50px;right:-50px;width:180px;height:180px;background:radial-gradient(#facc15,transparent 70%);opacity:.25}
-.main-card h2{color:#14532d;font-size:20px;font-weight:900;border-left:8px solid #facc15;padding-left:12px;margin-bottom:14px}
-.main-card p{font-size:14.5px;line-height:1.8;color:#334155;margin-bottom:10px}
-.highlight{background:linear-gradient(90deg,#fef9c3,#fde68a);border:2px solid #facc15;border-radius:14px;padding:10px 14px;font-weight:800;font-size:13px;color:#422006;display:inline-block;margin-top:6px;box-shadow:0 6px 15px rgba(250,204,21,.3)}
-.side-stack{display:grid;gap:16px}
-.glass{border-radius:22px;padding:18px;background:linear-gradient(145deg,rgba(255,255,255,.9),rgba(255,255,255,.65));backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.9);box-shadow:0 20px 50px rgba(0,0,0,.1),0 1px 0 #fff inset;transform:perspective(1000px) rotateY(-3deg);transition:.4s}
-.glass:hover{transform:perspective(1000px) rotateY(0deg) translateY(-4px)}
-.grid-obj{margin-top:20px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.obj{border-radius:20px;padding:18px;font-weight:700;font-size:13px;line-height:1.5;position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.8);box-shadow:0 15px 35px rgba(0,0,0,.08),inset 0 1px 0 #fff;transition:.3s;transform:perspective(800px) translateZ(0)}
-.obj:hover{transform:perspective(800px) translateZ(20px) translateY(-4px);box-shadow:0 25px 50px rgba(0,0,0,.15)}
-.obj b{font-size:28px;display:block;color:#14532d}
-.obj::after{content:'';position:absolute;top:-20px;right:-20px;width:70px;height:70px;background:rgba(255,255,255,.5);border-radius:50%}
-.status-big{background:linear-gradient(105deg,#082e16,#14532d 70%,#166534);color:#fefce8;border-radius:24px;padding:22px;text-align:center;border:3px solid #facc15;box-shadow:0 20px 50px rgba(0,0,0,.25),0 0 0 8px rgba(250,204,21,.12);transform:perspective(800px) rotateX(2deg)}
-.lead-card{background:linear-gradient(145deg,#fff,#fffbeb);border-radius:24px;padding:22px;border:2px solid #facc15;box-shadow:0 20px 50px rgba(250,204,21,.25);position:relative}
-footer{background:linear-gradient(90deg,#021208,#0a3d1f);color:#a7f3d0;text-align:center;padding:26px;font-size:11px;border-top:6px solid #facc15;margin-top:30px}
-@media(max-width:900px){.hero,.loc3d,.grid-obj{grid-template-columns:1fr}h1{font-size:26px}.glass{transform:none}}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Sans+Telugu:wght@400;700&display=swap');
+*{box-sizing:border-box}
+body{margin:0;font-family:'Inter','Noto Sans Telugu',sans-serif;background:radial-gradient(1000px 500px at 10% 0%,#fef9c3 0%,transparent 60%),radial-gradient(800px 500px at 90% 10%,#dbeafe 0%,transparent 60%),#f0fdf4;color:#1e293b;line-height:1.8;perspective:1200px}
+header{background:linear-gradient(105deg,#061e0f 0%,#0b2e1a 30%,#14532d 100%);color:#fff;padding:26px 0 22px;border-bottom:6px solid #facc15;box-shadow:0 20px 50px rgba(0,0,0,.35);position:relative;overflow:hidden}
+header::before{content:'';position:absolute;top:-80px;right:-80px;width:250px;height:250px;background:radial-gradient(circle,#facc15 0%,transparent 70%);opacity:.25}
+.wrap{max-width:1000px;margin:auto;padding:0 18px;position:relative;z-index:1}
+.badge{background:linear-gradient(90deg,#fde68a,#facc15);color:#422006;padding:8px 18px;border-radius:100px;font-weight:900;font-size:12px;box-shadow:0 8px 20px rgba(250,204,21,.4),0 0 0 5px rgba(250,204,21,.12);display:inline-block;transform:translateZ(20px)}
+h1{font-size:32px;margin:14px 0 8px;font-weight:900;line-height:1.1;text-shadow:0 4px 15px rgba(0,0,0,.4);transform:translateZ(10px)}
+h1 .te{color:#fde68a;font-size:18px;display:block;font-family:'Noto Sans Telugu';text-shadow:0 2px 10px rgba(0,0,0,.5)}
+.loc-box{background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.06));border:1px solid rgba(250,204,21,.45);border-radius:18px;padding:14px 16px;margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:10px;backdrop-filter:blur(16px);box-shadow:0 15px 35px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.3);transform:perspective(800px) rotateX(3deg) translateZ(10px);transition:.4s}
+.loc-box:hover{transform:perspective(800px) rotateX(0deg) translateZ(20px)}
+.loc-box b{color:#facc15}
+
+/* 3D Cards */
+.card{background:linear-gradient(160deg,rgba(255,255,255,.96),rgba(255,255,255,.82));backdrop-filter:blur(18px);border-radius:22px;padding:24px;margin:20px 0;box-shadow:0 25px 60px rgba(0,0,0,.12),0 1px 0 #fff inset,0 0 0 1px rgba(0,0,0,.04);border:1px solid rgba(255,255,255,.9);transform-style:preserve-3d;transform:perspective(1000px) rotateX(1deg) translateZ(0);transition:.45s}
+.card:hover{transform:perspective(1000px) rotateX(0deg) translateY(-6px) translateZ(20px);box-shadow:0 35px 80px rgba(0,0,0,.18),0 1px 0 #fff inset}
+.card h2{color:#14532d;border-left:6px solid #facc15;padding-left:12px;font-size:19px;font-weight:900;text-shadow:0 1px 0 #fff}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.obj{border-radius:16px;padding:14px;border-left:5px solid #16a34a;font-size:14px;font-weight:600;background:linear-gradient(135deg,#ffffff,#f8fafc);box-shadow:0 10px 25px rgba(0,0,0,.06),inset 0 1px 0 #fff;transform:translateZ(10px);transition:.35s}
+.obj:hover{transform:translateZ(25px) translateY(-3px);box-shadow:0 18px 35px rgba(0,0,0,.12)}
+
+/* Highlight Dr Ramakrishna Manimadde - 3D */
+.dr-highlight{position:relative;font-size:22px!important;font-weight:900!important;color:#052e16!important;background:linear-gradient(90deg,#fde68a,#facc15,#fbbf24);padding:8px 18px;border-radius:14px;display:inline-block;margin:6px 0 8px 0;box-shadow:0 10px 25px rgba(250,204,21,.45),0 0 0 4px rgba(250,204,21,.2),inset 0 1px 0 #fff;transform:perspective(600px) translateZ(30px) rotateX(2deg);border:2px solid #fff;text-shadow:0 1px 0 rgba(255,255,255,.8);letter-spacing:.3px}
+.dr-highlight::after{content:'✦ RESEARCH LEAD';position:absolute;top:-10px;right:-12px;background:#14532d;color:#fde68a;font-size:8px;padding:3px 8px;border-radius:100px;font-weight:900;letter-spacing:.5px;box-shadow:0 4px 10px rgba(0,0,0,.2)}
+.lead-box{border:3px solid #facc15!important;background:linear-gradient(145deg,#ffffff,#fffbeb)!important;box-shadow:0 25px 60px rgba(250,204,21,.28),0 0 0 1px #fff inset!important;transform:perspective(1000px) rotateY(-1deg) translateZ(10px)!important}
+.lead-box:hover{transform:perspective(1000px) rotateY(0deg) translateY(-5px) translateZ(25px)!important}
+
+footer{background:linear-gradient(90deg,#021208,#0b2e1a);color:#a7f3d0;text-align:center;padding:24px;font-size:12px;border-top:5px solid #facc15;margin-top:30px;box-shadow:0 -10px 30px rgba(0,0,0,.2)}
+@media(max-width:800px){.grid2,.loc-box{grid-template-columns:1fr}h1{font-size:24px}.card{transform:none}.dr-highlight{font-size:18px!important}}
 </style>
 </head>
 <body>
-<div class="bg"></div>
 <header><div class="wrap">
-<div class="top-badge">🔬 MCRES-VTR-01 • Mella Duppalapally Village Tank Research</div>
-<h1>Village : <span class="gold">Mella Duppalapally</span> <span class="te">గ్రామం : మేళ్ళ దుప్పలపల్లి</span></h1>
-<div class="loc3d">
-<div class="loc-card">🌍 <b>ENGLISH</b><br>Village : Mella Duppalapally<br>Mandal & District : Nalgonda<br>Telangana</div>
-<div class="loc-card">🌿 <b>తెలుగు</b><br>గ్రామం : మేళ్ళ దుప్పలపల్లి<br>మండలం & జిల్లా : నల్లగొండ<br>తెలంగాణ</div>
+<span class="badge">MCRES-VTR-01 | Mella Duppalapally Village Tank Research</span>
+<h1>Village : Mella Duppalapally <span class="te">గ్రామం : మేళ్ళ దుప్పలపల్లి</span></h1>
+<div class="loc-box">
+<div>📍 <b>English:</b><br>Village : Mella Duppalapally<br>Mandal & District : Nalgonda<br>Telangana</div>
+<div>📍 <b>తెలుగు:</b><br>గ్రామం : మేళ్ళ దుప్పలపల్లి<br>మండలం & జిల్లా : నల్లగొండ<br>తెలంగాణ</div>
 </div>
 </div></header>
 
 <div class="wrap">
-<div class="hero">
-<div class="main-card">
+
+<div class="card">
 <h2>Project Overview</h2>
-<p><b>MCRES-VTR-01</b> is a village-level research initiative focused on the tank system of <b>Village : Mella Duppalapally / గ్రామం : మేళ్ళ దుప్పలపల్లి</b>, Mandal & District : <b>Nalgonda / నల్లగొండ</b>, Telangana.</p>
+<p><b>MCRES-VTR-01</b> is a village-level research initiative focused on the tank system of <b>Village : Mella Duppalapally</b> / <b>గ్రామం : మేళ్ళ దుప్పలపల్లి</b>, Mandal & District : <b>Nalgonda</b> / మండలం & జిల్లా : <b>నల్లగొండ</b>, Telangana / తెలంగాణ.</p>
 <p>The project aims to develop a systematic understanding of the tank through geographical assessment, water-resource research, environmental observation, historical evidence collection, and field-based investigation.</p>
-<div class="highlight">No unverified figures or historical claims are treated as established facts - Pure Research Only.</div>
+<p>At the initial stage, the project focuses on identifying reliable sources of information and establishing a baseline for further research. No unverified figures or historical claims are treated as established facts.</p>
 </div>
-<div class="side-stack">
-<div class="glass"><h2 style="font-size:16px;color:#14532d;border-left:6px solid #facc15;padding-left:10px">Research Methodology</h2><p style="font-size:13px;line-height:1.7;margin-top:8px">The study will use available documentary records, maps, satellite imagery, field observations, and local information, subject to availability and verification. Measurements and estimates will be clearly distinguished.</p></div>
-<div class="status-big"><div style="font-size:32px">🧬</div><b>Current Research Status</b><br><span style="background:#facc15;color:#422006;padding:8px 16px;border-radius:100px;font-size:12px;font-weight:900;margin:10px 0;display:inline-block">Initial Documentation Stage</span><br><span style="font-size:11px;opacity:.9">Village : Mella Duppalapally / గ్రామం : మేళ్ళ దుప్పలపల్లి<br>Mandal & District : Nalgonda / నల్లగొండ</span><br><span style="font-size:11px">Detailed findings will be published after verification.</span></div>
+
+<div class="card">
+<h2>Research Objectives</h2>
+<div class="grid2">
+<div class="obj" style="background:#f0fdf4">1. To identify the geographical location and physical characteristics of the village tank - Village : Mella Duppalapally / గ్రామం : మేళ్ళ దుప్పలపల్లి</div>
+<div class="obj" style="background:#fefce8;border-left-color:#eab308">2. To investigate the tank's water inflow and outflow features - Mandal & District : Nalgonda / మండలం & జిల్లా : నల్లగొండ</div>
+<div class="obj" style="background:#eff6ff;border-left-color:#2563eb">3. To collect and examine available historical records, maps, and other documentary evidence.</div>
+<div class="obj" style="background:#fdf2f8;border-left-color:#db2777">4. To document observable environmental conditions and changes over time.</div>
+<div class="obj" style="background:#f5f3ff;border-left-color:#7c3aed">5. To establish a research database that distinguishes verified information, field observations, and estimates.</div>
+<div class="obj" style="background:#ecfdf5;border-left-color:#059669">6. To prepare a scientific report based on documented evidence and transparent research methods.</div>
 </div>
 </div>
 
-<h2 style="margin:22px 0 0 6px;color:#14532d;font-weight:900;font-size:20px">Research Objectives - 3D Cards</h2>
-<div class="grid-obj">
-<div class="obj" style="background:linear-gradient(135deg,#dcfce7,#bbf7d0)"><b style="color:#166534">01</b>To identify the geographical location and physical characteristics of the village tank.</div>
-<div class="obj" style="background:linear-gradient(135deg,#fef9c3,#fde68a)"><b style="color:#854d0e">02</b>To investigate the tank's water inflow and outflow features and surrounding landscape.</div>
-<div class="obj" style="background:linear-gradient(135deg,#dbeafe,#bfdbfe)"><b style="color:#1e40af">03</b>To collect and examine available historical records, maps, and documentary evidence.</div>
-<div class="obj" style="background:linear-gradient(135deg,#fce7f3,#fbcfe8)"><b style="color:#9d174d">04</b>To document observable environmental conditions and changes over time, wherever reliable evidence is available.</div>
-<div class="obj" style="background:linear-gradient(135deg,#e9d5ff,#ddd6fe)"><b style="color:#6b21a8">05</b>To establish a research database that distinguishes verified information, field observations, and estimates.</div>
-<div class="obj" style="background:linear-gradient(135deg,#a7f3d0,#6ee7b7)"><b style="color:#065f46">06</b>To prepare a scientific report based on documented evidence and transparent research methods.</div>
+<div class="card" style="background:linear-gradient(105deg,#0e3d21,#14532d);color:#e2e8f0;text-align:center;font-weight:700;box-shadow:0 20px 50px rgba(0,0,0,.25),0 0 0 6px rgba(250,204,21,.15)">
+🔬 Current Research Status: Initial documentation and evidence-collection stage<br>
+<span style="font-size:13px;font-weight:400">Village : Mella Duppalapally | గ్రామం : మేళ్ళ దుప్పలపల్లి<br>Mandal & District : Nalgonda | మండలం & జిల్లా : నల్లగొండ<br>Telangana | తెలంగాణ</span>
 </div>
 
-<div class="lead-card" style="margin-top:18px">
-<b style="color:#14532d">Research Lead</b><br><span style="font-size:20px;font-weight:900;color:#052e16">Dr Ramakrishna Manimadde</span><br><span style="font-size:13px">Earth Scientist & River Systems Researcher, Director, MCRES</span><br><br>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;font-size:13px;background:#f8fafc;padding:12px;border-radius:14px;border:1px dashed #facc15">
-<div>📍 <b>English:</b><br>Village : Mella Duppalapally<br>Mandal & District : Nalgonda<br>Telangana</div>
-<div>📍 <b>తెలుగు:</b><br>గ్రామం : మేళ్ళ దుప్పలపల్లి<br>మండలం & జిల్లా : నల్లగొండ<br>తెలంగాణ</div>
-</div>
-<div style="margin-top:12px">Website: <a href="https://mcres.in" style="color:#14532d;font-weight:900">https://mcres.in</a> • <a href="https://tourism-research.vercel.app">← Back to Home</a></div>
-</div>
-
-<div style="background:#fffbeb;border:1px solid #fde68a;border-radius:14px;padding:12px;font-size:10px;text-align:center;margin:16px 0">MCRES is an independent, non-governmental research initiative. This project page does not imply government affiliation or official verification of research findings.</div>
+<div class="card lead-box">
+<b>Research Lead</b><br>
+<span class="dr-highlight">Dr Ramakrishna Manimadde</span><br>
+Earth Scientist & River Systems Researcher, Director, MCRES<br><br>
+<b>Location - English:</b> Village : Mella Duppalapally, Mandal & District : Nalgonda, Telangana<br>
+<b>లొకేషన్ - తెలుగు:</b> గ్రామం : మేళ్ళ దుప్పలపల్లి, మండలం & జిల్లా : నల్లగొండ, తెలంగాణ<br><br>
+Website: <a href="https://mcres.in">https://mcres.in</a><br><br>
+<a href="https://tourism-research.vercel.app">← Back to Home</a>
 </div>
 
-<footer>MCRES © 2026 | Village : Mella Duppalapally | గ్రామం : మేళ్ళ దుప్పలపల్లి<br>Mandal & District : Nalgonda | మండలం & జిల్లా : నల్లగొండ | Telangana | తెలంగాణ<br><span style="opacity:.6">MCRES-VTR-01 • Exploring Rivers • Decoding Earth • Advancing Science</span></footer>
+<div class="card" style="background:#fffbeb;font-size:11px">MCRES is an independent, non-governmental research initiative. This project page does not imply government affiliation or official verification of research findings.</div>
+
+</div>
+
+<footer>
+MALLAIAH CENTER FOR RIVER & EARTH SCIENCES (MCRES) © 2026 | MCRES-VTR-01<br>
+Village : Mella Duppalapally | గ్రామం : మేళ్ళ దుప్పలపల్లి<br>
+Mandal & District : Nalgonda | మండలం & జిల్లా : నల్లగొండ | Telangana | తెలంగాణ
+</footer>
 </body>
 </html>
