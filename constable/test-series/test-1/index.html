@@ -10,9 +10,9 @@
 .card{background:#fff;border-radius:18px;padding:22px;max-width:700px;margin:20px auto;border:2px solid #c7d2fe;box-shadow:0 8px 25px #0001}
 .input{width:100%;padding:14px;border-radius:10px;border:2px solid #cbd5e1;margin:10px 0;font-size:15px;font-weight:700}
 .instr-card{background:#fff;border-radius:18px;padding:22px;max-width:700px;margin:20px auto;border:2px solid #c7d2fe;box-shadow:0 8px 25px #0001;display:none}
-.q-card{background:#fff;border-radius:18px;padding:18px;min-height:500px;position:relative;overflow:hidden;border:2px solid #c7d2fe;box-shadow:0 6px 20px #0001;display:none;transition:filter .2s}
+.q-card{background:#fff;border-radius:18px;padding:18px;min-height:500px;position:relative;overflow:hidden;border:2px solid #c7d2fe;box-shadow:0 6px 20px #0001;display:none;transition:filter .3s}
 .screenshot-watermark{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:20}
-.screenshot-watermark span{position:absolute;font-size:14px;font-weight:900;color:#b91c1c;opacity:0.30;transform:rotate(-28deg);white-space:nowrap;letter-spacing:.5px}
+.screenshot-watermark span{position:absolute;font-size:13px;font-weight:900;color:#b91c1c;opacity:0.32;transform:rotate(-28deg);white-space:nowrap;letter-spacing:.5px}
 .q-top{display:inline-block;padding:6px 16px;border-radius:20px;font-size:12px;font-weight:900;margin-bottom:14px;color:#fff;position:relative;z-index:10}
 .q-text{font-weight:800;font-size:15px;position:relative;z-index:10;line-height:1.7;white-space:pre-line;padding:14px;border-radius:12px;border-left:7px solid;background:rgba(255,255,255,0.85)}
 .opt{display:flex;gap:12px;padding:14px;border-radius:14px;margin:12px 0;cursor:pointer;font-weight:700;position:relative;z-index:10;border:2.5px solid;background:rgba(255,255,255,0.82)!important}
@@ -48,7 +48,7 @@
 </div>
 <div id="instrPage" class="instr-card">
 <h2 style="text-align:center">📋 Test Instructions</h2>
-<ul style="line-height:1.8;font-size:14px"><li><b>Welcome:</b> <span id="welcomeName" style="color:#2563eb;font-weight:900"></span></li><li><b>Total:</b> 25 Qs | 25 Marks | +1 / -0.20</li><li><b>Time:</b> 30 Min (Exam Timer) | <b>Validity:</b> 12H From First Open</li><li><b>Navigation:</b> PREV / NEXT buttons</li><li style="background:#fef3c7;padding:8px;border-radius:8px;border-left:4px solid #f59e0b">Answers after SUBMIT only</li></ul>
+<ul style="line-height:1.8;font-size:14px"><li><b>Welcome:</b> <span id="welcomeName" style="color:#2563eb;font-weight:900"></span></li><li><b>Total:</b> 25 Qs | 25 Marks | +1 / -0.20</li><li><b>Time:</b> 30 Min | <b>Validity:</b> 12H From First Open</li><li style="background:#fef3c7;padding:8px;border-radius:8px;border-left:4px solid #f59e0b">Screenshot తీస్తే మీ పేరుతో Watermark వస్తుంది</li></ul>
 <button class="btn-start" onclick="startTest()">✅ START TEST →</button>
 </div>
 <div class="q-card" id="qCard">
@@ -66,17 +66,18 @@ const urlParams=new URLSearchParams(window.location.search); const isAdmin=urlPa
 let sT=localStorage.getItem(START_KEY); 
 if(!sT){sT=Date.now();localStorage.setItem(START_KEY,sT);} else sT=parseInt(sT);
 if(!isAdmin && Date.now()-sT>EXPIRE_MS){
-  document.body.innerHTML=`<div style="text-align:center;margin-top:100px;padding:20px"><h2 style="color:#dc2626">⏰ 12 Hours Expired</h2><p>Link validity over from first open.<br>Contact: <b>9494353828</b></p><button onclick="localStorage.removeItem('${START_KEY}');location.reload()" style="padding:12px 24px;background:#1e3a8a;color:#fff;border:0;border-radius:8px;margin-top:15px;font-weight:700">RESET</button></div>`;
+  document.body.innerHTML=`<div style="text-align:center;margin-top:100px;padding:20px"><h2 style="color:#dc2626">⏰ 12 Hours Expired</h2><p>Link validity over.<br>Contact: <b>9494353828</b></p><button onclick="localStorage.removeItem('${START_KEY}');location.reload()" style="padding:12px 24px;background:#1e3a8a;color:#fff;border:0;border-radius:8px;margin-top:15px;font-weight:700">RESET</button></div>`;
   throw new Error('Expired');
 }
 if(isAdmin){document.body.innerHTML=`<div style="max-width:800px;margin:20px auto;background:#fff;padding:20px;border-radius:16px"><h2>Total: <span id="totalCount"></span></h2><div id="adminList"></div></div>`;const data=JSON.parse(localStorage.getItem(DATA_KEY)||'[]');document.getElementById('totalCount').textContent=data.length;document.getElementById('adminList').innerHTML=data.map((d,i)=>`<div style="padding:8px;border-bottom:1px solid #eee"><b>${i+1}. ${d.name}</b> - ${d.mobile} - Score: ${d.score||'In Progress'}</div>`).join('');throw new Error('Admin');}
+
 function createWatermark(name,mobile){
   var wm=document.getElementById('dynamicWatermark');
   if(!wm) return;
   var wmText=(name||'')+' '+(mobile||'')+' | MCRES';
   var html='';
-  for(var i=-120;i<900;i+=160){
-    for(var j=-80;j<1400;j+=180){
+  for(var i=-140;i<1000;i+=170){
+    for(var j=-100;j<1600;j+=190){
       html+='<span style="top:'+j+'px;left:'+i+'px">'+wmText+'</span>';
     }
   }
@@ -145,13 +146,20 @@ function showResult(){
  document.getElementById('userInfo').innerHTML=`<b>Name:</b> ${curUser.name||''} | <b>Mobile:</b> ${curUser.mobile||''}`; document.getElementById('score').textContent=`Score: ${score} / 25`; document.getElementById('summary').textContent=`Correct: ${correct} | Wrong: ${wrong} | Unanswered: ${un} | Negative: -${neg.toFixed(2)}`; document.getElementById('review').innerHTML=html; document.getElementById('bottomBar').style.display='none';
 }
 setInterval(()=>{if(!started) return; time--;let m=Math.floor(time/60),s=time%60;if(timerEl)timerEl.textContent=`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;if(time<=0)showResult();},1000);
-document.addEventListener('visibilitychange', function(){
-  var card=document.getElementById('qCard');
-  if(document.hidden){ if(card) card.style.filter='blur(30px)'; }
-  else { if(card) card.style.filter='none'; try{var u=JSON.parse(localStorage.getItem('mcres_current_user')||'null'); if(u&&u.name) createWatermark(u.name,u.mobile);}catch(e){} }
+
+// ===== IMPROVED BLUR LOGIC =====
+function applyBlur(){ var card=document.getElementById('qCard'); if(card) card.style.filter='blur(35px) brightness(0.6)'; }
+function removeBlur(){ var card=document.getElementById('qCard'); if(card) card.style.filter='none'; try{var u=JSON.parse(localStorage.getItem('mcres_current_user')||'null'); if(u&&u.name) createWatermark(u.name,u.mobile);}catch(e){} }
+document.addEventListener('visibilitychange', function(){ if(document.hidden) applyBlur(); else removeBlur(); });
+window.addEventListener('blur', applyBlur);
+window.addEventListener('pagehide', applyBlur);
+window.addEventListener('focus', removeBlur);
+window.addEventListener('pageshow', removeBlur);
+document.addEventListener('keydown', function(e){
+  if(e.key==='PrintScreen' || (e.ctrlKey && (e.key==='p' || e.key==='s' || e.key==='P' || e.key==='S'))){
+    e.preventDefault(); applyBlur(); setTimeout(removeBlur, 1500);
+  }
 });
-window.addEventListener('blur', function(){ var card=document.getElementById('qCard'); if(card) card.style.filter='blur(30px)'; });
-window.addEventListener('focus', function(){ var card=document.getElementById('qCard'); if(card) card.style.filter='none'; });
 </script>
 </body>
 </html>
