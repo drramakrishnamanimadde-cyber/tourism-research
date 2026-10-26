@@ -11,10 +11,7 @@
 .input{width:100%;padding:14px;border-radius:10px;border:2px solid #cbd5e1;margin:10px 0;font-size:15px;font-weight:700}
 .instr-card{background:#fff;border-radius:18px;padding:22px;max-width:700px;margin:20px auto;border:2px solid #c7d2fe;box-shadow:0 8px 25px #0001;display:none}
 .q-card{background:#fff;border-radius:18px;padding:18px;min-height:500px;position:relative;overflow:hidden;border:2px solid #c7d2fe;box-shadow:0 6px 20px #0001;display:none}
-
-/* SINGLE WATERMARK - STRONG & CENTER - VISIBLE ON Q & OPTIONS */
 .q-card:before{content:"Dr Ramakrishna Manimadde (MCRES) • 9494353828 • MCRES Hyd";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-28deg);font-size:22px;font-weight:900;color:#1e3a8a33;white-space:nowrap;pointer-events:none;z-index:20;width:200%;text-align:center;letter-spacing:1px}
-
 .q-top{display:inline-block;padding:6px 16px;border-radius:20px;font-size:12px;font-weight:900;margin-bottom:14px;color:#fff;position:relative;z-index:10}
 .q-text{font-weight:800;font-size:15px;position:relative;z-index:10;line-height:1.7;white-space:pre-line;padding:14px;border-radius:12px;border-left:7px solid;background:rgba(255,255,255,0.85)}
 .opt{display:flex;gap:12px;padding:14px;border-radius:14px;margin:12px 0;cursor:pointer;font-weight:700;position:relative;z-index:10;border:2.5px solid;background:rgba(255,255,255,0.82)!important}
@@ -25,7 +22,6 @@
 .opt:nth-child(4){border-color:#9333ea;color:#581c87}.opt:nth-child(4) b{background:#9333ea}
 .opt.selected{transform:scale(1.02);box-shadow:0 5px 15px #0003;background:#fff!important;border-width:3px}
 .opt:nth-child(1).selected{background:#2563eb!important;color:#fff}.opt:nth-child(2).selected{background:#16a34a!important;color:#fff}.opt:nth-child(3).selected{background:#ea580c!important;color:#fff}.opt:nth-child(4).selected{background:#9333ea!important;color:#fff}
-
 .nav-panel{background:#fff;border-radius:16px;padding:12px;margin-top:14px;border:2px solid #e0e7ff;display:none}
 .nav-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
 .nav-btn{padding:11px 0;border-radius:10px;border:2px solid #cbd5e1;background:#fff;font-weight:800;font-size:13px;cursor:pointer}
@@ -44,9 +40,9 @@
 <div class="main">
 <div id="loginPage" class="card">
 <h2 style="text-align:center;color:#0f1a4a;margin-top:0">🔐 Student Login</h2>
-<input id="stuName" class="input" placeholder="Full Name" value="Dr Ramakrishna Manimadde">
-<input id="stuMobile" class="input" type="tel" maxlength="10" placeholder="Mobile Number" value="9494353828">
-<input id="stuPlace" class="input" placeholder="Place (Optional)">
+<input id="stuName" class="input" placeholder="Enter Your Full Name" autocomplete="off">
+<input id="stuMobile" class="input" type="tel" maxlength="10" placeholder="Enter Your Mobile Number" autocomplete="off">
+<input id="stuPlace" class="input" placeholder="Enter Your Place (Optional)" autocomplete="off">
 <div id="loginError" style="color:#dc2626;font-size:12px;font-weight:800;margin-top:10px;display:none"></div>
 <button class="btn-start" onclick="doLogin()">CONTINUE →</button>
 </div>
@@ -72,8 +68,8 @@ if(!isAdmin && Date.now()-sT>EXPIRE_MS){document.body.innerHTML=`<h2 style="text
 if(isAdmin){document.body.innerHTML=`<div style="max-width:800px;margin:20px auto;background:#fff;padding:20px;border-radius:16px"><h2>Total: <span id="totalCount"></span></h2><div id="adminList"></div></div>`;const data=JSON.parse(localStorage.getItem(DATA_KEY)||'[]');document.getElementById('totalCount').textContent=data.length;document.getElementById('adminList').innerHTML=data.map((d,i)=>`<div style="padding:8px;border-bottom:1px solid #eee"><b>${i+1}. ${d.name}</b> - ${d.mobile} - Score: ${d.score||'In Progress'}</div>`).join('');throw new Error('Admin');}
 function doLogin(){
  const name=document.getElementById('stuName').value.trim(); const mobile=document.getElementById('stuMobile').value.trim(); const place=document.getElementById('stuPlace').value.trim(); const err=document.getElementById('loginError');
- if(name.length<3){err.textContent='❌ Enter Name';err.style.display='block';return;}
- if(!/^[6-9][0-9]{9}$/.test(mobile)){err.textContent='❌ Enter valid Mobile';err.style.display='block';return;}
+ if(name.length<3){err.textContent='❌ Enter Your Name (Min 3 letters)';err.style.display='block';return;}
+ if(!/^[6-9][0-9]{9}$/.test(mobile)){err.textContent='❌ Enter valid 10-digit Mobile Number';err.style.display='block';return;}
  const entry={name,mobile,place,date:new Date().toLocaleString(),score:'In Progress'}; const list=JSON.parse(localStorage.getItem(DATA_KEY)||'[]'); list.push(entry); localStorage.setItem(DATA_KEY,JSON.stringify(list)); localStorage.setItem('mcres_current_user',JSON.stringify(entry));
  document.getElementById('loginPage').style.display='none'; document.getElementById('instrPage').style.display='block'; document.getElementById('welcomeName').textContent=name;
 }
