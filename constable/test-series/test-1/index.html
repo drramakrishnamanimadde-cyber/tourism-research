@@ -31,7 +31,7 @@
 </head>
 <body>
 <div class="top-bar"><h1>MCRES ONLINE TEST SERIES</h1><p>MALLAIAH CENTER FOR RIVER & EARTH SCIENCES (MCRES)</p><small>Dr Ramakrishna Manimadde | 9494353828 | mcres.in</small></div>
-<div style="background:linear-gradient(90deg,#facc15,#fde047);text-align:center;padding:8px;font-weight:900;font-size:12px;color:#0f1a4a">ENGLISH TEST SERIES – 01 | Time: <span id="timer" style="color:#dc2626">30:00</span> | Valid: 12H | +1 / -0.20</div>
+<div style="background:linear-gradient(90deg,#facc15,#fde047);text-align:center;padding:8px;font-weight:900;font-size:12px;color:#0f1a4a">ENGLISH TEST SERIES – 01 | Time: <span id="timer" style="color:#dc2626">30:00</span> | Valid: 12H from Login | +1 / -0.20</div>
 <div class="main">
 <div id="loginPage" class="card">
 <h2 style="text-align:center;color:#0f1a4a;margin-top:0">🔐 Student Login</h2>
@@ -43,7 +43,7 @@
 </div>
 <div id="instrPage" class="instr-card">
 <h2 style="text-align:center">📋 Test Instructions</h2>
-<ul style="line-height:1.8;font-size:14px"><li><b>Welcome:</b> <span id="welcomeName" style="color:#2563eb;font-weight:900"></span></li><li><b>Total:</b> 25 Qs | 25 Marks | +1 / -0.20</li><li><b>Time:</b> 30 Min | <b>Validity:</b> 12H</li><li><b>Navigation:</b> PREV / NEXT buttons</li><li style="background:#fef3c7;padding:8px;border-radius:8px;border-left:4px solid #f59e0b">Answers after SUBMIT only</li></ul>
+<ul style="line-height:1.8;font-size:14px"><li><b>Welcome:</b> <span id="welcomeName" style="color:#2563eb;font-weight:900"></span></li><li><b>Total:</b> 25 Qs | 25 Marks | +1 / -0.20</li><li><b>Time:</b> 30 Min | <b>Validity:</b> 12H from Login</li><li><b>Navigation:</b> PREV / NEXT buttons</li><li style="background:#fef3c7;padding:8px;border-radius:8px;border-left:4px solid #f59e0b">Answers after SUBMIT only</li></ul>
 <button class="btn-start" onclick="startTest()">✅ START TEST →</button>
 </div>
 <div class="q-card" id="qCard"><div class="q-top" id="qTop">Q 1 / 25</div><div class="q-text" id="qText"></div><div id="opts"></div></div>
@@ -52,65 +52,22 @@
 </div>
 <div class="bottom-bar" id="bottomBar"><button class="btn btn-prev" id="prevBtn">← PREV</button><button class="btn btn-next" id="nextBtn">NEXT →</button></div>
 <script>
-const DATA_KEY='mcres_students_v10'; const START_KEY='mcres_final_single_wm'; const EXPIRE_MS=12*60*60*1000;
-const urlParams=new URLSearchParams(window.location.search); const isAdmin=urlParams.has('admin');
-let sT=localStorage.getItem(START_KEY); if(!sT){sT=Date.now();localStorage.setItem(START_KEY,sT);} else sT=parseInt(sT);
-if(!isAdmin && Date.now()-sT>EXPIRE_MS){document.body.innerHTML=`<h2 style="text-align:center;margin-top:100px;color:#dc2626">⏰ Expired</h2>`; throw new Error('Expired');}
-if(isAdmin){document.body.innerHTML=`<div style="max-width:800px;margin:20px auto;background:#fff;padding:20px;border-radius:16px"><h2>Total: <span id="totalCount"></span></h2><div id="adminList"></div></div>`;const data=JSON.parse(localStorage.getItem(DATA_KEY)||'[]');document.getElementById('totalCount').textContent=data.length;document.getElementById('adminList').innerHTML=data.map((d,i)=>`<div style="padding:8px;border-bottom:1px solid #eee"><b>${i+1}. ${d.name}</b> - ${d.mobile} - Score: ${d.score||'In Progress'}</div>`).join('');throw new Error('Admin');}
-function doLogin(){
- const name=document.getElementById('stuName').value.trim(); const mobile=document.getElementById('stuMobile').value.trim(); const place=document.getElementById('stuPlace').value.trim(); const err=document.getElementById('loginError');
- if(name.length<3){err.textContent='❌ Enter Your Name (Min 3 letters)';err.style.display='block';return;}
- if(!/^[6-9][0-9]{9}$/.test(mobile)){err.textContent='❌ Enter valid 10-digit Mobile Number';err.style.display='block';return;}
- const entry={name,mobile,place,date:new Date().toLocaleString(),score:'In Progress'}; const list=JSON.parse(localStorage.getItem(DATA_KEY)||'[]'); list.push(entry); localStorage.setItem(DATA_KEY,JSON.stringify(list)); localStorage.setItem('mcres_current_user',JSON.stringify(entry));
- document.getElementById('loginPage').style.display='none'; document.getElementById('instrPage').style.display='block'; document.getElementById('welcomeName').textContent=name;
+const DATA_KEY='mcres_students_v10'; 
+const EXPIRE_MS=12*60*60*1000;
+const urlParams=new URLSearchParams(window.location.search); 
+const isAdmin=urlParams.has('admin');
+
+// CHECK EXPIRY FROM LOGIN TIME - NOT SITE OPEN TIME
+const curUserCheck = JSON.parse(localStorage.getItem('mcres_current_user')||'null');
+if(!isAdmin && curUserCheck && curUserCheck.loginTime){
+  if(Date.now() - curUserCheck.loginTime > EXPIRE_MS){
+    document.body.innerHTML=`<div style="text-align:center;margin-top:80px;background:#fff;padding:30px;border-radius:16px;max-width:400px;margin-left:auto;margin-right:auto"><h2 style="color:#dc2626">⏰ Test Expired</h2><p style="font-weight:700">Your 12 Hours validity is completed from login time.</p><p style="font-size:13px">Login: ${curUserCheck.date}</p><button onclick="localStorage.removeItem('mcres_current_user');location.reload()" style="padding:12px 24px;background:#0f1a4a;color:#facc15;border:0;border-radius:10px;font-weight:900;cursor:pointer;margin-top:10px">Login Again</button></div>`;
+    throw new Error('Expired');
+  }
 }
-const qColors=[{bg:'#0f1a4a',light:'#eff6ff',border:'#2563eb'},{bg:'#14532d',light:'#f0fdf4',border:'#16a34a'},{bg:'#7c2d12',light:'#fff7ed',border:'#ea580c'},{bg:'#581c87',light:'#faf5ff',border:'#9333ea'}];
-const questions=[
-{q:"Choose the correct matching of the words with their descriptions.\n(i) Congestion\n(ii) Collision\n(iii) Bottleneck\n(iv) Breakdown\n(A) An accident in which two vehicles hit each other\n(B) A situation in which roads are full of traffic\n(C) An occasion when a vehicle stops working\n(D) A place on a road where traffic cannot pass easily",o:["(i)-(C), (ii)-(B), (iii)-(A), (iv)-(D)","(i)-(A), (ii)-(D), (iii)-(B), (iv)-(C)","(i)-(D), (ii)-(C), (iii)-(A), (iv)-(B)","(i)-(B), (ii)-(A), (iii)-(D), (iv)-(C)"],a:3},
-{q:"If you had studied hard, you ______ the examination.",o:["Will clear","Would clear","Would have cleared","Cleared"],a:2},
-{q:"The children (A) / washed their hands (B) / before they ate (C) / their lunch (D). Find error.",o:["Part (A)","Part (B)","Part (C)","No error"],a:3},
-{q:"What does the idiom 'You cannot have your cake and eat it too' mean?",o:["Enjoy forever","Enjoy without payment","Have it both ways","Forgive yourself of guilt"],a:2},
-{q:"Arrange: (a) travel (b) I (c) and (d) together (e) Satish",o:["b-c-e-d-a","e-c-b-a-d","e-c-b-d-a","b-c-e-a-d"],a:1},
-{q:"The idiom 'to take a leaf out of someone's book' means:",o:["Steal something","Damage something","Cheat someone","Imitate someone or follow their example"],a:3},
-{q:"The idiom 'to show someone the ropes' means:",o:["Influence someone","Show someone how powerful you are","Hang someone","Teach someone how to do a job"],a:3},
-{q:"Select the pair of synonymous words.",o:["Colloquial — Grammatical","Excess — Surplus","Fair — Strong","Alert — Inactive"],a:1},
-{q:"What does the idiom 'They left no stone unturned to trace the culprits' mean?",o:["Combed the whole area","Used all available means","Ransacked the place","Searched every corner"],a:1},
-{q:"The festival is a three-day-long celebration that combines ______ feasts with periods of ______ fasting.",o:["Unornamented, resolute","Paltry, obstinate","Scanty, parsimonious","Sumptuous, strict"],a:3},
-{q:"______ uranium is ______ toxic metal. ______ uranium found in Australia accounts for 31% of ______ world's known uranium ore reserves.",o:["No article, a, the, the","The, a, the, no article","No article, a, no article, the","The, the, no article, the"],a:0},
-{q:"A balanced diet should ______ regular exercise in maintaining good health.",o:["Compliment","Complementation","Complement","Complementary"],a:2},
-{q:"What is the antonym of 'pious' in 'She is a pious woman'?",o:["Sweet","Famed","Ungodly","Cruel"],a:2},
-{q:"Both parties were amenable to a peaceful settlement. Synonym of amenable.",o:["Doubtful","Unwilling","Receptive","Disagreeable"],a:2},
-{q:"Jogging is considered an antidote to mental stress. Synonym of antidote.",o:["Poisonous substance","Remedy","Equivalent","Dangerous substance"],a:1},
-{q:"What is the antonym of 'transparent' in 'The window glass is transparent'?",o:["Opaque","Translucent","Susceptible","Fragile"],a:0},
-{q:"What is the antonym of 'unanimous' in 'It was a unanimous decision'?",o:["United","Divided","Compatible","Harmonious"],a:1},
-{q:"His mother was ______ American, though his father was ______ European.",o:["A, a","A, an","An, a","An, an"],a:2},
-{q:"The coordinator was asked to attend ______ the issue and resolve it immediately.",o:["By","In","To","No preposition required"],a:2},
-{q:"Either of the roads ______ to Vasantha Nagar.",o:["Lead","Leads","Have led","Are led"],a:1},
-{q:"Please don't disturb me; I ______ the coins now.",o:["Have been counting","Count","Was counting","Am counting"],a:3},
-{q:"Rishi ______ his engineering course by the end of 2027.",o:["Will completed","Complete","Will have completed","Was completed"],a:2},
-{q:"Choose the correctly spelt word.",o:["Occasional","Occassional","Ocassional","Occational"],a:0},
-{q:"We would be glad to put you up for a few days if you would like to stay. Meaning of 'put you up'",o:["Tolerate someone","Build something","Provide accommodation","Contribute something"],a:2},
-{q:"Manoj played cricket for two days, ______?",o:["Did","Didn't","Wasn't","Wouldn't"],a:1}
-];
-let cur=0,ans=Array(25).fill(null),time=30*60,started=false;
-const qText=document.getElementById('qText'),opts=document.getElementById('opts'),qTop=document.getElementById('qTop'),navGrid=document.getElementById('navGrid'),timerEl=document.getElementById('timer');
-function startTest(){document.getElementById('instrPage').style.display='none';document.getElementById('qCard').style.display='block';document.getElementById('navPanel').style.display='block';document.getElementById('bottomBar').style.display='flex';started=true;render();}
-function render(){
- const c=qColors[cur%4]; qTop.textContent=`Q ${cur+1} / 25`; qTop.style.background=c.bg;
- qText.textContent=`${cur+1}. ${questions[cur].q}`; qText.style.borderLeftColor=c.border;
- opts.innerHTML=''; questions[cur].o.forEach((o,i)=>{const l=document.createElement('label');l.className='opt'+(ans[cur]===i?' selected':'');l.innerHTML=`<b>${String.fromCharCode(65+i)}</b> <span>${o}</span>`;l.onclick=()=>{ans[cur]=i;renderNav();render();};opts.appendChild(l);});
- renderNav(); document.getElementById('prevBtn').style.visibility=cur===0?'hidden':'visible'; document.getElementById('nextBtn').textContent=cur===24?'SUBMIT →':'NEXT →';
-}
-function renderNav(){navGrid.innerHTML='';questions.forEach((_,i)=>{const b=document.createElement('button');b.className='nav-btn';if(i===cur)b.classList.add('current');if(ans[i]!==null&&i!==cur)b.classList.add('answered');b.textContent=i+1;b.onclick=()=>{cur=i;render();window.scrollTo({top:0,behavior:'smooth'})};navGrid.appendChild(b);});}
-document.getElementById('nextBtn').onclick=()=>{if(cur<24){cur++;render();window.scrollTo({top:0,behavior:'smooth'})}else{showResult()}};
-document.getElementById('prevBtn').onclick=()=>{if(cur>0){cur--;render();window.scrollTo({top:0,behavior:'smooth'})}};
-function showResult(){
- let correct=0,wrong=0,un=0,html=''; questions.forEach((q,i)=>{if(ans[i]===null)un++;else if(ans[i]===q.a)correct++;else wrong++;const isCorrect=ans[i]===q.a;const your=ans[i]===null?'Not answered':q.o[ans[i]];html+=`<div style="padding:12px 0;border-bottom:1px solid #eee"><b>${i+1}. ${q.q}</b><br><span style="color:${isCorrect?'#16a34a':'#dc2626'}">Your: ${your}</span><br><span style="color:#16a34a">Correct: ${q.o[q.a]}</span></div>`;});
- const neg=wrong*0.20,score=(correct-neg).toFixed(2); const curUser=JSON.parse(localStorage.getItem('mcres_current_user')||'{}'); const list=JSON.parse(localStorage.getItem(DATA_KEY)||'[]'); if(list.length>0){list[list.length-1].score=score;localStorage.setItem(DATA_KEY,JSON.stringify(list));}
- document.getElementById('qCard').style.display='none';document.getElementById('navPanel').style.display='none';document.getElementById('result').style.display='block';
- document.getElementById('userInfo').innerHTML=`<b>Name:</b> ${curUser.name||''} | <b>Mobile:</b> ${curUser.mobile||''}`; document.getElementById('score').textContent=`Score: ${score} / 25`; document.getElementById('summary').textContent=`Correct: ${correct} | Wrong: ${wrong} | Unanswered: ${un} | Negative: -${neg.toFixed(2)}`; document.getElementById('review').innerHTML=html; document.getElementById('bottomBar').style.display='none';
-}
-setInterval(()=>{if(!started) return; time--;let m=Math.floor(time/60),s=time%60;if(timerEl)timerEl.textContent=`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;if(time<=0)showResult();},1000);
-</script>
-</body>
-</html>
+
+if(isAdmin){
+  document.body.innerHTML=`<div style="max-width:800px;margin:20px auto;background:#fff;padding:20px;border-radius:16px"><h2>Total Students: <span id="totalCount"></span></h2><div id="adminList"></div><button onclick="if(confirm('Clear all data?')){localStorage.clear();location.reload()}" style="margin-top:15px;padding:8px 15px;background:#dc2626;color:#fff;border:0;border-radius:6px">Clear Data</button></div>`;
+  const data=JSON.parse(localStorage.getItem(DATA_KEY)||'[]');
+  document.getElementById('totalCount').textContent=data.length;
+  document.getElement
