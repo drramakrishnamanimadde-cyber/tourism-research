@@ -21,8 +21,9 @@
 .opt:nth-child(2){border-color:#16a34a;color:#14532d}.opt:nth-child(2) b{background:#16a34a}
 .opt:nth-child(3){border-color:#ea580c;color:#7c2d12}.opt:nth-child(3) b{background:#ea580c}
 .opt:nth-child(4){border-color:#9333ea;color:#581c87}.opt:nth-child(4) b{background:#9333ea}
-.opt.selected{transform:scale(1.02);box-shadow:0 5px 15px #0003;background:#fff!important;border-width:3px}
-.opt:nth-child(1).selected{background:#2563eb!important;color:#fff}.opt:nth-child(2).selected{background:#16a34a!important;color:#fff}.opt:nth-child(3).selected{background:#ea580c!important;color:#fff}.opt:nth-child(4).selected{background:#9333ea!important;color:#fff}
+/* FIXED: No Red Color on Answer */
+.opt.selected{transform:scale(1.02);box-shadow:0 5px 15px #0003;background:linear-gradient(90deg,#0f1a4a,#2563eb)!important;color:#facc15!important;border-color:#0f1a4a!important}
+.opt.selected b{background:#facc15!important;color:#0f1a4a!important}
 .nav-panel{background:#fff;border-radius:16px;padding:12px;margin-top:14px;border:2px solid #e0e7ff;display:none}
 .nav-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
 .nav-btn{padding:11px 0;border-radius:10px;border:2px solid #cbd5e1;background:#fff;font-weight:800;font-size:13px;cursor:pointer}
@@ -70,7 +71,6 @@ if(!isAdmin && Date.now()-sT>EXPIRE_MS){
   throw new Error('Expired');
 }
 if(isAdmin){document.body.innerHTML=`<div style="max-width:800px;margin:20px auto;background:#fff;padding:20px;border-radius:16px"><h2>Total: <span id="totalCount"></span></h2><div id="adminList"></div></div>`;const data=JSON.parse(localStorage.getItem(DATA_KEY)||'[]');document.getElementById('totalCount').textContent=data.length;document.getElementById('adminList').innerHTML=data.map((d,i)=>`<div style="padding:8px;border-bottom:1px solid #eee"><b>${i+1}. ${d.name}</b> - ${d.mobile} - Score: ${d.score||'In Progress'}</div>`).join('');throw new Error('Admin');}
-
 function createWatermark(name,mobile){
   var wm=document.getElementById('dynamicWatermark');
   if(!wm) return;
@@ -146,8 +146,6 @@ function showResult(){
  document.getElementById('userInfo').innerHTML=`<b>Name:</b> ${curUser.name||''} | <b>Mobile:</b> ${curUser.mobile||''}`; document.getElementById('score').textContent=`Score: ${score} / 25`; document.getElementById('summary').textContent=`Correct: ${correct} | Wrong: ${wrong} | Unanswered: ${un} | Negative: -${neg.toFixed(2)}`; document.getElementById('review').innerHTML=html; document.getElementById('bottomBar').style.display='none';
 }
 setInterval(()=>{if(!started) return; time--;let m=Math.floor(time/60),s=time%60;if(timerEl)timerEl.textContent=`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;if(time<=0)showResult();},1000);
-
-// ===== IMPROVED BLUR LOGIC =====
 function applyBlur(){ var card=document.getElementById('qCard'); if(card) card.style.filter='blur(35px) brightness(0.6)'; }
 function removeBlur(){ var card=document.getElementById('qCard'); if(card) card.style.filter='none'; try{var u=JSON.parse(localStorage.getItem('mcres_current_user')||'null'); if(u&&u.name) createWatermark(u.name,u.mobile);}catch(e){} }
 document.addEventListener('visibilitychange', function(){ if(document.hidden) applyBlur(); else removeBlur(); });
