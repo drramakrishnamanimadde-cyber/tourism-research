@@ -11,11 +11,8 @@
 .input{width:100%;padding:14px;border-radius:10px;border:2px solid #cbd5e1;margin:10px 0;font-size:15px;font-weight:700}
 .instr-card{background:#fff;border-radius:18px;padding:22px;max-width:700px;margin:20px auto;border:2px solid #c7d2fe;box-shadow:0 8px 25px #0001;display:none}
 .q-card{background:#fff;border-radius:18px;padding:18px;min-height:500px;position:relative;overflow:hidden;border:2px solid #c7d2fe;box-shadow:0 6px 20px #0001;display:none;transition:filter .2s}
-
-/* DYNAMIC WATERMARK - STUDENT NAME + MOBILE */
 .screenshot-watermark{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:20}
 .screenshot-watermark span{position:absolute;font-size:14px;font-weight:900;color:#b91c1c;opacity:0.30;transform:rotate(-28deg);white-space:nowrap;letter-spacing:.5px}
-
 .q-top{display:inline-block;padding:6px 16px;border-radius:20px;font-size:12px;font-weight:900;margin-bottom:14px;color:#fff;position:relative;z-index:10}
 .q-text{font-weight:800;font-size:15px;position:relative;z-index:10;line-height:1.7;white-space:pre-line;padding:14px;border-radius:12px;border-left:7px solid;background:rgba(255,255,255,0.85)}
 .opt{display:flex;gap:12px;padding:14px;border-radius:14px;margin:12px 0;cursor:pointer;font-weight:700;position:relative;z-index:10;border:2.5px solid;background:rgba(255,255,255,0.82)!important}
@@ -43,8 +40,8 @@
 <div class="main">
 <div id="loginPage" class="card">
 <h2 style="text-align:center;color:#0f1a4a;margin-top:0">🔐 Student Login</h2>
-<input id="stuName" class="input" placeholder="Full Name" value="Dr Ramakrishna Manimadde">
-<input id="stuMobile" class="input" type="tel" maxlength="10" placeholder="Mobile Number" value="9494353828">
+<input id="stuName" class="input" placeholder="Full Name">
+<input id="stuMobile" class="input" type="tel" maxlength="10" placeholder="Mobile Number">
 <input id="stuPlace" class="input" placeholder="Place (Optional)">
 <div id="loginError" style="color:#dc2626;font-size:12px;font-weight:800;margin-top:10px;display:none"></div>
 <button class="btn-start" onclick="doLogin()">CONTINUE →</button>
@@ -73,7 +70,6 @@ if(!isAdmin && Date.now()-sT>EXPIRE_MS){
   throw new Error('Expired');
 }
 if(isAdmin){document.body.innerHTML=`<div style="max-width:800px;margin:20px auto;background:#fff;padding:20px;border-radius:16px"><h2>Total: <span id="totalCount"></span></h2><div id="adminList"></div></div>`;const data=JSON.parse(localStorage.getItem(DATA_KEY)||'[]');document.getElementById('totalCount').textContent=data.length;document.getElementById('adminList').innerHTML=data.map((d,i)=>`<div style="padding:8px;border-bottom:1px solid #eee"><b>${i+1}. ${d.name}</b> - ${d.mobile} - Score: ${d.score||'In Progress'}</div>`).join('');throw new Error('Admin');}
-
 function createWatermark(name,mobile){
   var wm=document.getElementById('dynamicWatermark');
   if(!wm) return;
@@ -86,7 +82,6 @@ function createWatermark(name,mobile){
   }
   wm.innerHTML=html;
 }
-
 function doLogin(){
  const name=document.getElementById('stuName').value.trim(); const mobile=document.getElementById('stuMobile').value.trim(); const place=document.getElementById('stuPlace').value.trim(); const err=document.getElementById('loginError');
  if(name.length<3){err.textContent='❌ Enter Name';err.style.display='block';return;}
@@ -120,4 +115,43 @@ const questions=[
 {q:"Please don't disturb me; I ______ the coins now.",o:["Have been counting","Count","Was counting","Am counting"],a:3},
 {q:"Rishi ______ his engineering course by the end of 2027.",o:["Will completed","Complete","Will have completed","Was completed"],a:2},
 {q:"Choose the correctly spelt word.",o:["Occasional","Occassional","Ocassional","Occational"],a:0},
-{q:"We would be glad to put you up for a few days if you would like to stay. Meaning of 'put you up'",o:["Tolerate someone","Build something","Provide accommodation
+{q:"We would be glad to put you up for a few days if you would like to stay. Meaning of 'put you up'",o:["Tolerate someone","Build something","Provide accommodation","Contribute something"],a:2},
+{q:"Manoj played cricket for two days, ______?",o:["Did","Didn't","Wasn't","Wouldn't"],a:1}
+];
+let cur=0,ans=Array(25).fill(null),time=30*60,started=false;
+const qText=document.getElementById('qText'),opts=document.getElementById('opts'),qTop=document.getElementById('qTop'),navGrid=document.getElementById('navGrid'),timerEl=document.getElementById('timer');
+function startTest(){
+  document.getElementById('instrPage').style.display='none';
+  document.getElementById('qCard').style.display='block';
+  document.getElementById('navPanel').style.display='block';
+  document.getElementById('bottomBar').style.display='flex';
+  started=true;
+  try{var u=JSON.parse(localStorage.getItem('mcres_current_user')||'null'); if(u&&u.name) createWatermark(u.name,u.mobile);}catch(e){}
+  render();
+}
+function render(){
+ const c=qColors[cur%4]; qTop.textContent=`Q ${cur+1} / 25`; qTop.style.background=c.bg;
+ qText.textContent=`${cur+1}. ${questions[cur].q}`; qText.style.borderLeftColor=c.border;
+ opts.innerHTML=''; questions[cur].o.forEach((o,i)=>{const l=document.createElement('label');l.className='opt'+(ans[cur]===i?' selected':'');l.innerHTML=`<b>${String.fromCharCode(65+i)}</b> <span>${o}</span>`;l.onclick=()=>{ans[cur]=i;renderNav();render();};opts.appendChild(l);});
+ renderNav(); document.getElementById('prevBtn').style.visibility=cur===0?'hidden':'visible'; document.getElementById('nextBtn').textContent=cur===24?'SUBMIT →':'NEXT →';
+}
+function renderNav(){navGrid.innerHTML='';questions.forEach((_,i)=>{const b=document.createElement('button');b.className='nav-btn';if(i===cur)b.classList.add('current');if(ans[i]!==null&&i!==cur)b.classList.add('answered');b.textContent=i+1;b.onclick=()=>{cur=i;render();window.scrollTo({top:0,behavior:'smooth'})};navGrid.appendChild(b);});}
+document.getElementById('nextBtn').onclick=()=>{if(cur<24){cur++;render();window.scrollTo({top:0,behavior:'smooth'})}else{showResult()}};
+document.getElementById('prevBtn').onclick=()=>{if(cur>0){cur--;render();window.scrollTo({top:0,behavior:'smooth'})}};
+function showResult(){
+ let correct=0,wrong=0,un=0,html=''; questions.forEach((q,i)=>{if(ans[i]===null)un++;else if(ans[i]===q.a)correct++;else wrong++;const isCorrect=ans[i]===q.a;const your=ans[i]===null?'Not answered':q.o[ans[i]];html+=`<div style="padding:12px 0;border-bottom:1px solid #eee"><b>${i+1}. ${q.q}</b><br><span style="color:${isCorrect?'#16a34a':'#dc2626'}">Your: ${your}</span><br><span style="color:#16a34a">Correct: ${q.o[q.a]}</span></div>`;});
+ const neg=wrong*0.20,score=(correct-neg).toFixed(2); const curUser=JSON.parse(localStorage.getItem('mcres_current_user')||'{}'); const list=JSON.parse(localStorage.getItem(DATA_KEY)||'[]'); if(list.length>0){list[list.length-1].score=score;localStorage.setItem(DATA_KEY,JSON.stringify(list));}
+ document.getElementById('qCard').style.display='none';document.getElementById('navPanel').style.display='none';document.getElementById('result').style.display='block';
+ document.getElementById('userInfo').innerHTML=`<b>Name:</b> ${curUser.name||''} | <b>Mobile:</b> ${curUser.mobile||''}`; document.getElementById('score').textContent=`Score: ${score} / 25`; document.getElementById('summary').textContent=`Correct: ${correct} | Wrong: ${wrong} | Unanswered: ${un} | Negative: -${neg.toFixed(2)}`; document.getElementById('review').innerHTML=html; document.getElementById('bottomBar').style.display='none';
+}
+setInterval(()=>{if(!started) return; time--;let m=Math.floor(time/60),s=time%60;if(timerEl)timerEl.textContent=`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;if(time<=0)showResult();},1000);
+document.addEventListener('visibilitychange', function(){
+  var card=document.getElementById('qCard');
+  if(document.hidden){ if(card) card.style.filter='blur(30px)'; }
+  else { if(card) card.style.filter='none'; try{var u=JSON.parse(localStorage.getItem('mcres_current_user')||'null'); if(u&&u.name) createWatermark(u.name,u.mobile);}catch(e){} }
+});
+window.addEventListener('blur', function(){ var card=document.getElementById('qCard'); if(card) card.style.filter='blur(30px)'; });
+window.addEventListener('focus', function(){ var card=document.getElementById('qCard'); if(card) card.style.filter='none'; });
+</script>
+</body>
+</html>
