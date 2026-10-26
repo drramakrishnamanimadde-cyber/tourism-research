@@ -15,15 +15,12 @@
 .screenshot-watermark span{position:absolute;font-size:13px;font-weight:900;color:#b91c1c;opacity:0.32;transform:rotate(-28deg);white-space:nowrap;letter-spacing:.5px}
 .q-top{display:inline-block;padding:6px 16px;border-radius:20px;font-size:12px;font-weight:900;margin-bottom:14px;color:#fff;position:relative;z-index:10}
 .q-text{font-weight:800;font-size:15px;position:relative;z-index:10;line-height:1.7;white-space:pre-line;padding:14px;border-radius:12px;border-left:7px solid;background:rgba(255,255,255,0.85)}
-.opt{display:flex;gap:12px;padding:14px;border-radius:14px;margin:12px 0;cursor:pointer;font-weight:700;position:relative;z-index:10;border:2.5px solid;background:rgba(255,255,255,0.82)!important}
-.opt b{display:inline-flex;min-width:26px;height:26px;border-radius:50%;align-items:center;justify-content:center;color:#fff;font-size:12px}
-.opt:nth-child(1){border-color:#2563eb;color:#1e3a8a}.opt:nth-child(1) b{background:#2563eb}
-.opt:nth-child(2){border-color:#16a34a;color:#14532d}.opt:nth-child(2) b{background:#16a34a}
-.opt:nth-child(3){border-color:#ea580c;color:#7c2d12}.opt:nth-child(3) b{background:#ea580c}
-.opt:nth-child(4){border-color:#9333ea;color:#581c87}.opt:nth-child(4) b{background:#9333ea}
-/* FIXED: No Red Color on Answer */
-.opt.selected{transform:scale(1.02);box-shadow:0 5px 15px #0003;background:linear-gradient(90deg,#0f1a4a,#2563eb)!important;color:#facc15!important;border-color:#0f1a4a!important}
-.opt.selected b{background:#facc15!important;color:#0f1a4a!important}
+/* YELLOW OPTIONS - SAME COLOR */
+.opt{display:flex;gap:12px;padding:14px;border-radius:14px;margin:12px 0;cursor:pointer;font-weight:700;position:relative;z-index:10;border:2.5px solid #facc15;background:#fffef0!important;color:#0f1a4a}
+.opt b{display:inline-flex;min-width:26px;height:26px;border-radius:50%;align-items:center;justify-content:center;background:#facc15;color:#0f1a4a;font-size:12px;font-weight:900}
+/* BLUE ON SELECT */
+.opt.selected{transform:scale(1.02);box-shadow:0 5px 15px #0003;background:linear-gradient(90deg,#0f1a4a,#2563eb)!important;color:#fff!important;border-color:#0f1a4a!important}
+.opt.selected b{background:#fff!important;color:#0f1a4a!important}
 .nav-panel{background:#fff;border-radius:16px;padding:12px;margin-top:14px;border:2px solid #e0e7ff;display:none}
 .nav-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
 .nav-btn{padding:11px 0;border-radius:10px;border:2px solid #cbd5e1;background:#fff;font-weight:800;font-size:13px;cursor:pointer}
