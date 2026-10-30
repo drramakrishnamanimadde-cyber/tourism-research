@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MCRES - ENGLISH TEST SERIES 01</title>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.43.4/dist/umd/supabase.min.js"></script>
 <style>
 *{box-sizing:border-box}
 body{margin:0;background:#eef2ff;font-family:Arial,sans-serif;color:#172554}
@@ -27,8 +26,8 @@ h2{text-align:center;color:#0f1a4a}
 .question-content{position:relative;z-index:2}
 .question-number{display:inline-block;background:#0f1a4a;color:white;padding:7px 14px;border-radius:20px;font-weight:bold;margin-bottom:12px}
 .question-text{font-size:16px;font-weight:bold;line-height:1.7;white-space:pre-line;margin:8px 0 18px}
-.option{display:flex;gap:12px;align-items:flex-start;justify-content:flex-start;padding:13px;margin:10px 0;border:2px solid #e2e8f0;border-radius:10px;background:#fff;line-height:1.5;font-weight:600;cursor:pointer;text-align:left}
-.option span{flex:1;text-align:left}
+.option{display:flex;gap:12px;align-items:flex-start;padding:13px;margin:10px 0;border:2px solid #e2e8f0;border-radius:10px;background:#fff;line-height:1.5;font-weight:600;cursor:pointer;text-align:left}
+.option span{flex:1}
 .option.selected{background:#dbeafe;border-color:#2563eb}
 .option input{margin-top:4px;flex-shrink:0;width:18px;height:18px}
 .nav-panel{background:white;padding:14px;border-radius:12px;margin-top:14px}
@@ -40,74 +39,62 @@ h2{text-align:center;color:#0f1a4a}
 .bottom-bar button{flex:1;padding:14px;border:0;border-radius:9px;font-weight:bold;font-size:15px}
 #prevBtn{background:#e2e8f0;color:#172554}
 #nextBtn{background:#0f1a4a;color:white}
-#resultScore{font-size:28px;color:#047857}
+#resultScore{font-size:32px;color:#047857;text-align:center}
 .result-line{padding:10px 0;border-bottom:1px solid #e5e7eb;line-height:1.6}
-.error{color:#dc2626;font-weight:bold;font-size:13px}
-button:disabled{opacity:.5;cursor:not-allowed}
+.answer-review{margin-top:15px;padding:12px;border-radius:10px;line-height:1.6}
+.correct{border:1px solid #86efac;background:#f0fdf4}
+.wrong{border:1px solid #fca5a5;background:#fef2f2}
 </style>
 </head>
 <body>
 <div class="top-bar"><h1>MCRES ONLINE TEST SERIES</h1><p>MALLAIAH CENTER FOR RIVER & EARTH SCIENCES (MCRES)</p><small>Dr Ramakrishna Manimadde | mcres.in</small></div>
 <div class="info-bar">ENGLISH TEST SERIES – 01 | TIME: <span id="timer">30:00</span> | +1 / −0.20</div>
 <div class="main">
-<div id="login" class="card"><h2>🔐 Student Login</h2><input id="studentName" class="input" placeholder="Enter Full Name" maxlength="100"><input id="studentMobile" class="input" placeholder="10-digit Mobile Number" maxlength="10" inputmode="numeric"><div id="loginError" class="error"></div><button class="start-btn" id="loginBtn" onclick="loginStudent()">CONTINUE →</button></div>
-<div id="instructions" class="card"><h2>📋 TEST INSTRUCTIONS</h2><p>Welcome, <b id="welcomeName"></b></p><ul style="line-height:1.9"><li>Total Questions: 25</li><li>Total Marks: 25</li><li>Time: 30 Minutes</li><li>Correct Answer: +1 Mark</li><li>Wrong Answer: −0.20 Mark</li><li>Maximum Attempts: 5</li><li>Test Validity: Shared 12-hour window</li></ul><div class="notice">మీ సమాధానాలు ఈ బ్రౌజర్‌లో తాత్కాలికంగా సేవ్ అవుతాయి. అదే పరికరం, అదే బ్రౌజర్‌లో పరీక్ష కొనసాగించండి.</div><button class="start-btn" onclick="beginTest()">START / RESUME TEST →</button></div>
+<div id="login" class="card"><h2>🔐 Student Entry</h2><input id="studentName" class="input" placeholder="Enter Full Name"><div id="loginError" style="color:#dc2626;font-weight:bold;font-size:13px"></div><button class="start-btn" onclick="loginStudent()">START TEST →</button><div class="notice">ఈరోజు డైరెక్ట్ ఎగ్జామ్ - సర్వర్ లింక్ లేదు, వెంటనే రిజల్ట్ వస్తుంది.</div></div>
+<div id="instructions" class="card"><h2>📋 TEST INSTRUCTIONS</h2><p>Welcome, <b id="welcomeName"></b></p><ul style="line-height:1.9"><li>Total Questions: 25</li><li>Total Marks: 25</li><li>Time: 30 Minutes</li><li>Correct: +1</li><li>Wrong: −0.20</li></ul><button class="start-btn" onclick="beginTest()">START TEST →</button></div>
 <div id="testArea"><div class="question-card"><div class="watermark" id="watermark"></div><div class="question-content"><div class="question-number" id="questionNumber">QUESTION 1 / 25</div><div class="question-text" id="questionText"></div><div id="options"></div></div></div><div class="nav-panel"><b>QUESTION NAVIGATION</b><div class="nav-grid" id="navigation" style="margin-top:12px"></div></div></div>
-<div id="result" class="card"><h2>MCRES TEST RESULT</h2><div id="resultStudent" class="notice"></div><h2 id="resultScore"></h2><div id="resultSummary"></div><p class="notice">మీ పరీక్ష ఫలితం MCRES సర్వర్‌లో నమోదు చేయబడింది.</p></div>
+<div id="result" class="card"><h2>MCRES TEST RESULT</h2><div id="resultStudent" class="notice"></div><h2 id="resultScore"></h2><div id="resultSummary"></div><div id="review"></div><button class="start-btn" onclick="location.reload()">RESTART TEST</button></div>
 </div>
 <div class="bottom-bar" id="bottomBar"><button id="prevBtn" onclick="previousQuestion()">← PREVIOUS</button><button id="nextBtn" onclick="nextQuestion()">NEXT →</button></div>
 <script>
-"use strict";
-const SUPABASE_URL = "https://eliwhaqxilcuifsgjjnu.supabase.co";
-const SUPABASE_ANON_KEY = "sb_publishable_0887bMu7tm9HOkxLzp0gDw_mmvTCF4P";
-const db = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
-const questions = [
-{q:"Choose the correct matching of the words with their descriptions.\n\n(i) Congestion\n(ii) Collision\n(iii) Bottleneck\n(iv) Breakdown\n\n(A) An accident in which two vehicles hit each other\n(B) A situation in which roads are full of traffic\n(C) An occasion when a vehicle stops working\n(D) A place on a road where traffic cannot pass easily",o:["(1) (i)-(C), (ii)-(B), (iii)-(A), (iv)-(D)","(2) (i)-(A), (ii)-(D), (iii)-(B), (iv)-(C)","(3) (i)-(D), (ii)-(C), (iii)-(A), (iv)-(B)","(4) (i)-(B), (ii)-(A), (iii)-(D), (iv)-(C)"]},
-{q:"Choose the correct option to complete the sentence.\n\nIf you had studied hard, you ______ the examination.",o:["(1) Will clear","(2) Would clear","(3) Would have cleared","(4) Cleared"]},
-{q:"Identify whether the sentence contains an error.\n\nThe children (A) / washed their hands (B) / before they ate (C) / their lunch (D).",o:["(1) Part (A)","(2) Part (B)","(3) Part (C)","(4) No error"]},
-{q:"What does the idiom “You cannot have your cake and eat it too” mean?",o:["(1) Enjoy something forever","(2) Enjoy something without paying for it","(3) You cannot enjoy two incompatible things at the same time","(4) Forgive yourself for feeling guilty"]},
-{q:"Arrange the words in the correct order to form a sentence.\n\n(a) travel\n(b) I\n(c) and\n(d) together\n(e) Satish",o:["(1) b-c-e-d-a","(2) e-c-b-a-d","(3) e-c-b-d-a","(4) b-c-e-a-d"]},
-{q:"The idiom “to take a leaf out of someone's book” means:",o:["(1) Steal something","(2) Damage something","(3) Cheat someone","(4) Imitate someone or follow their example"]},
-{q:"The idiom “to show someone the ropes” means:",o:["(1) Influence someone","(2) Show someone how powerful you are","(3) Hang someone","(4) Teach someone how to do a job"]},
-{q:"Select the pair of synonymous words.",o:["(1) Colloquial — Grammatical","(2) Excess — Surplus","(3) Fair — Strong","(4) Alert — Inactive"]},
-{q:"What does the idiom “They left no stone unturned to trace the culprits” mean?",o:["(1) Combed the whole area","(2) Made every possible effort","(3) Ransacked the place","(4) Gave up the search without making further efforts"]},
-{q:"Choose the most appropriate words to complete the sentence.\n\nThe festival is a three-day-long celebration that combines ______ feasts with periods of ______ fasting.",o:["(1) Unornamented, resolute","(2) Paltry, obstinate","(3) Scanty, parsimonious","(4) Sumptuous, strict"]},
-{q:"Choose the correct sequence of articles.\n\n______ uranium is ______ toxic metal. ______ uranium used in this experiment was stored in ______ laboratory.",o:["(1) No article, a, the, the","(2) The, a, the, no article","(3) No article, a, no article, the","(4) The, the, no article, the"]},
-{q:"Choose the correct word to complete the sentence.\n\nTea may be used to ______ coffee.",o:["(1) Compliment","(2) Complementation","(3) Complement","(4) Complementary"]},
-{q:"What is the antonym of “pious” in the sentence “She is a pious woman”?",o:["(1) Sweet","(2) Famed","(3) Ungodly","(4) Cruel"]},
-{q:"Choose the synonym of “amenable” in the sentence “Both parties were amenable to a peaceful settlement of the land dispute.”",o:["(1) Doubtful","(2) Unwilling","(3) Receptive","(4) Disagreeable"]},
-{q:"Choose the synonym of “antidote” in the sentence “Jogging is considered an antidote to mental stress.”",o:["(1) Poisonous substance","(2) Remedy","(3) Equivalent","(4) Dangerous substance"]},
-{q:"What is the antonym of “transparent” in the sentence “The window glass is transparent”?",o:["(1) Opaque","(2) Translucent","(3) Susceptible","(4) Fragile"]},
-{q:"What is the antonym of “unanimous” in the sentence “It was a unanimous decision”?",o:["(1) United","(2) Divided","(3) Compatible","(4) Harmonious"]},
-{q:"Choose the correct articles.\n\nHis mother was ______ American, though his father was ______ European.",o:["(1) A, a","(2) A, an","(3) An, a","(4) An, an"]},
-{q:"Choose the correct preposition.\n\nThe coordinator was asked to attend ______ the issue and resolve it immediately.",o:["(1) By","(2) In","(3) To","(4) No preposition required"]},
-{q:"Choose the correct verb.\n\nEither of the roads ______ to Vasantha Nagar.",o:["(1) Lead","(2) Leads","(3) Have led","(4) Are led"]},
-{q:"Choose the correct tense.\n\nPlease don't disturb me; I ______ the coins now.",o:["(1) Have been counting","(2) Count","(3) Was counting","(4) Am counting"]},
-{q:"Choose the correct verb form.\n\nRishi ______ his engineering course by the end of 2027.",o:["(1) Will completed","(2) Complete","(3) Will have completed","(4) Was completed"]},
-{q:"Choose the correctly spelt word.",o:["(1) Occasional","(2) Occassional","(3) Ocassional","(4) Occational"]},
-{q:"What does the expression “put you up” mean in the sentence below?\n\n“We would be glad to put you up for a few days if you would like to stay.”",o:["(1) Tolerate someone","(2) Build something","(3) Provide accommodation","(4) Contribute something"]},
-{q:"Choose the correct question tag.\n\nManoj played cricket for two days, ______?",o:["(1) Did he?","(2) Didn't he?","(3) Wasn't he?","(4) Wouldn't he?"]}
+const questions=[
+{q:"Choose the correct matching of the words with their descriptions.\n\n(i) Congestion\n(ii) Collision\n(iii) Bottleneck\n(iv) Breakdown\n\n(A) An accident in which two vehicles hit each other\n(B) A situation in which roads are full of traffic\n(C) An occasion when a vehicle stops working\n(D) A place on a road where traffic cannot pass easily",o:["(1) (i)-(C), (ii)-(B), (iii)-(A), (iv)-(D)","(2) (i)-(A), (ii)-(D), (iii)-(B), (iv)-(C)","(3) (i)-(D), (ii)-(C), (iii)-(A), (iv)-(B)","(4) (i)-(B), (ii)-(A), (iii)-(D), (iv)-(C)"],a:3},
+{q:"Choose the correct option to complete the sentence.\n\nIf you had studied hard, you ______ the examination.",o:["(1) Will clear","(2) Would clear","(3) Would have cleared","(4) Cleared"],a:2},
+{q:"Identify whether the sentence contains an error.\n\nThe children (A) / washed their hands (B) / before they ate (C) / their lunch (D).",o:["(1) Part (A)","(2) Part (B)","(3) Part (C)","(4) No error"],a:3},
+{q:"What does the idiom “You cannot have your cake and eat it too” mean?",o:["(1) Enjoy something forever","(2) Enjoy something without paying for it","(3) You cannot enjoy two incompatible things at the same time","(4) Forgive yourself for feeling guilty"],a:2},
+{q:"Arrange the words in the correct order to form a sentence.\n\n(a) travel\n(b) I\n(c) and\n(d) together\n(e) Satish",o:["(1) b-c-e-d-a","(2) e-c-b-a-d","(3) e-c-b-d-a","(4) b-c-e-a-d"],a:1},
+{q:"The idiom “to take a leaf out of someone's book” means:",o:["(1) Steal something","(2) Damage something","(3) Cheat someone","(4) Imitate someone or follow their example"],a:3},
+{q:"The idiom “to show someone the ropes” means:",o:["(1) Influence someone","(2) Show someone how powerful you are","(3) Hang someone","(4) Teach someone how to do a job"],a:3},
+{q:"Select the pair of synonymous words.",o:["(1) Colloquial — Grammatical","(2) Excess — Surplus","(3) Fair — Strong","(4) Alert — Inactive"],a:1},
+{q:"What does the idiom “They left no stone unturned to trace the culprits” mean?",o:["(1) Combed the whole area","(2) Made every possible effort","(3) Ransacked the place","(4) Gave up the search without making further efforts"],a:1},
+{q:"Choose the most appropriate words to complete the sentence.\n\nThe festival is a three-day-long celebration that combines ______ feasts with periods of ______ fasting.",o:["(1) Unornamented, resolute","(2) Paltry, obstinate","(3) Scanty, parsimonious","(4) Sumptuous, strict"],a:3},
+{q:"Choose the correct sequence of articles.\n\n______ uranium is ______ toxic metal. ______ uranium used in this experiment was stored in ______ laboratory.",o:["(1) No article, a, the, the","(2) The, a, the, no article","(3) No article, a, no article, the","(4) The, the, no article, the"],a:0},
+{q:"Choose the correct word to complete the sentence.\n\nTea may be used to ______ coffee.",o:["(1) Compliment","(2) Complementation","(3) Complement","(4) Complementary"],a:2},
+{q:"What is the antonym of “pious” in the sentence “She is a pious woman”?",o:["(1) Sweet","(2) Famed","(3) Ungodly","(4) Cruel"],a:2},
+{q:"Choose the synonym of “amenable” in the sentence “Both parties were amenable to a peaceful settlement of the land dispute.”",o:["(1) Doubtful","(2) Unwilling","(3) Receptive","(4) Disagreeable"],a:2},
+{q:"Choose the synonym of “antidote” in the sentence “Jogging is considered an antidote to mental stress.”",o:["(1) Poisonous substance","(2) Remedy","(3) Equivalent","(4) Dangerous substance"],a:1},
+{q:"What is the antonym of “transparent” in the sentence “The window glass is transparent”?",o:["(1) Opaque","(2) Translucent","(3) Susceptible","(4) Fragile"],a:0},
+{q:"What is the antonym of “unanimous” in the sentence “It was a unanimous decision”?",o:["(1) United","(2) Divided","(3) Compatible","(4) Harmonious"],a:1},
+{q:"Choose the correct articles.\n\nHis mother was ______ American, though his father was ______ European.",o:["(1) A, a","(2) A, an","(3) An, a","(4) An, an"],a:2},
+{q:"Choose the correct preposition.\n\nThe coordinator was asked to attend ______ the issue and resolve it immediately.",o:["(1) By","(2) In","(3) To","(4) No preposition required"],a:3},
+{q:"Choose the correct verb.\n\nEither of the roads ______ to Vasantha Nagar.",o:["(1) Lead","(2) Leads","(3) Have led","(4) Are led"],a:1},
+{q:"Choose the correct tense.\n\nPlease don't disturb me; I ______ the coins now.",o:["(1) Have been counting","(2) Count","(3) Was counting","(4) Am counting"],a:3},
+{q:"Choose the correct verb form.\n\nRishi ______ his engineering course by the end of 2027.",o:["(1) Will completed","(2) Complete","(3) Will have completed","(4) Was completed"],a:2},
+{q:"Choose the correctly spelt word.",o:["(1) Occasional","(2) Occassional","(3) Ocassional","(4) Occational"],a:0},
+{q:"What does the expression “put you up” mean in the sentence below?\n\n“We would be glad to put you up for a few days if you would like to stay.”",o:["(1) Tolerate someone","(2) Build something","(3) Provide accommodation","(4) Contribute something"],a:2},
+{q:"Choose the correct question tag.\n\nManoj played cricket for two days, ______?",o:["(1) Did he?","(2) Didn't he?","(3) Wasn't he?","(4) Wouldn't he?"],a:1}
 ];
-let current=0;let answers=Array(25).fill(null);let attemptId=null;let attemptToken=null;let student=null;let endTime=null;let timerHandle=null;let submitting=false;const $=id=>document.getElementById(id);
-function storageKey(){return "mcres_eng01_attempt";}
-function saveAttempt(){if(!attemptId)return;try{localStorage.setItem(storageKey(),JSON.stringify({attemptId,attemptToken,student,endTime,answers}));}catch(e){}}
-function restoreAttempt(){try{const s=JSON.parse(localStorage.getItem(storageKey())||"null");if(!s||!s.attemptId||!s.attemptToken||!s.student||!s.endTime)return false;attemptId=s.attemptId;attemptToken=s.attemptToken;student=s.student;endTime=Number(s.endTime);answers=Array.isArray(s.answers)&&s.answers.length===25?s.answers.map(v=>Number.isInteger(v)&&v>=0&&v<=3?v:null):Array(25).fill(null);return Number.isFinite(endTime);}catch(e){return false;}}
-function showLoginError(m){$("loginError").textContent=m;}
-function readableError(e){const m=String(e?.message||e||"");if(m.includes("Maximum 5 attempts"))return "You have used all 5 attempts.";if(m.includes("access period has ended"))return "The 12-hour test validity has expired.";if(m.includes("currently closed"))return "This test is currently unavailable.";return m||"Something went wrong.";}
-function createWatermark(){const b=$("watermark");b.innerHTML="";if(!student)return;for(let y=10;y<1000;y+=160){for(let x=-40;x<950;x+=220){const sp=document.createElement("span");sp.textContent=student.name+" | "+student.mobile+" | MCRES";sp.style.top=y+"px";sp.style.left=x+"px";b.appendChild(sp);}}}
-async function loginStudent(){if(!db){showLoginError("Supabase library failed to load.");return;}const n=$("studentName").value.trim();const m=$("studentMobile").value.trim();if(n.length<2){showLoginError("Please enter your full name.");return;}if(!/^[6-9][0-9]{9}$/.test(m)){showLoginError("Enter a valid 10-digit mobile number.");return;}$("loginBtn").disabled=true;$("loginBtn").textContent="PLEASE WAIT...";showLoginError("");try{const {data,error}=await db.rpc("mcres_start_test",{p_name:n,p_mobile:m});if(error)throw error;const row=Array.isArray(data)?data[0]:data;if(!row)throw new Error("No attempt details returned.");attemptId=row.attempt_id;attemptToken=row.attempt_token;student={name:n,mobile:m};const dur=Number(row.duration_seconds||1800);const exp=new Date(row.test_expires_at).getTime();if(!attemptId||!attemptToken||!Number.isFinite(exp)||!Number.isFinite(dur))throw new Error("Invalid server response.");endTime=Math.min(Date.now()+dur*1000,exp);answers=Array(25).fill(null);current=0;saveAttempt();$("login").style.display="none";$("instructions").style.display="block";$("welcomeName").textContent=n+" | Attempt "+row.attempt_no+" of 5";createWatermark();}catch(e){showLoginError(readableError(e));}finally{$("loginBtn").disabled=false;$("loginBtn").textContent="CONTINUE →";}}
-function beginTest(){if(!attemptId||!attemptToken||!student){alert("Please login first.");return;}if(Date.now()>=endTime){alert("Your test time or validity has expired.");submitTest();return;}$("instructions").style.display="none";$("testArea").style.display="block";$("bottomBar").style.display="flex";createWatermark();renderQuestion();startTimer();}
-function startTimer(){if(timerHandle)clearInterval(timerHandle);function tick(){const r=Math.max(0,Math.ceil((endTime-Date.now())/1000));const mi=Math.floor(r/60);const se=r%60;$("timer").textContent=String(mi).padStart(2,"0")+":"+String(se).padStart(2,"0");if(r<=0){clearInterval(timerHandle);timerHandle=null;submitTest();}}tick();timerHandle=setInterval(tick,1000);}
-function renderQuestion(){const q=questions[current];$("questionNumber").textContent="QUESTION "+(current+1)+" / 25";$("questionText").textContent=(current+1)+". "+q.q;$("options").innerHTML="";q.o.forEach((opt,i)=>{const l=document.createElement("label");l.className="option"+(answers[current]===i?" selected":"");const r=document.createElement("input");r.type="radio";r.name="answer";r.checked=answers[current]===i;const t=document.createElement("span");t.textContent=opt;l.append(r,t);l.addEventListener("click",()=>{if(submitting)return;answers[current]=i;saveAttempt();renderQuestion();});$("options").appendChild(l);});renderNavigation();$("prevBtn").style.visibility=current===0?"hidden":"visible";$("nextBtn").textContent=current===24?"SUBMIT TEST →":"NEXT →";}
-function renderNavigation(){$("navigation").innerHTML="";questions.forEach((_,i)=>{const b=document.createElement("button");b.className="nav-btn";if(i===current)b.classList.add("current");if(answers[i]!==null)b.classList.add("answered");b.textContent=i+1;b.onclick=()=>{if(submitting)return;current=i;renderQuestion();window.scrollTo({top:0,behavior:"smooth"});};$("navigation").appendChild(b);});}
-function previousQuestion(){if(current>0&&!submitting){current--;renderQuestion();window.scrollTo({top:0,behavior:"smooth"});}}
-function nextQuestion(){if(submitting)return;if(Date.now()>=endTime){submitTest();return;}if(current<24){current++;renderQuestion();window.scrollTo({top:0,behavior:"smooth"});return;}const un=answers.filter(a=>a===null).length;const msg=un?"You have "+un+" unanswered question(s). Submit the test?":"Are you sure you want to submit the test?";if(confirm(msg))submitTest();}
-async function submitTest(){if(submitting||!attemptId||!attemptToken||!db)return;submitting=true;if(timerHandle){clearInterval(timerHandle);timerHandle=null;}$("nextBtn").disabled=true;$("prevBtn").disabled=true;$("nextBtn").textContent="SUBMITTING...";try{const {data,error}=await db.rpc("mcres_submit_test",{p_attempt_id:attemptId,p_attempt_token:attemptToken,p_answers:answers});if(error)throw error;const row=Array.isArray(data)?data[0]:data;if(!row)throw new Error("No result returned.");showResult(row);localStorage.removeItem(storageKey());}catch(e){submitting=false;$("nextBtn").disabled=false;$("prevBtn").disabled=false;$("nextBtn").textContent="RETRY SUBMISSION";$("nextBtn").onclick=submitTest;alert("Submission failed.\n\n"+readableError(e));}}
-function showResult(row){$("testArea").style.display="none";$("bottomBar").style.display="none";$("result").style.display="block";const sc=Number(row.score??0);const co=Number(row.correct??0);const wr=Number(row.wrong??0);const un=Number(row.unanswered??0);const ne=Number(row.negative??0);$("resultStudent").textContent="Name: "+student.name+" | Mobile: "+student.mobile;$("resultScore").textContent="Score: "+sc.toFixed(2)+" / 25";$("resultSummary").innerHTML="";["Correct Answers: "+co,"Wrong Answers: "+wr,"Unanswered: "+un,"Negative Marks: -"+ne.toFixed(2),"Status: "+(row.result_status||"submitted")].forEach(item=>{const d=document.createElement("div");d.className="result-line";d.textContent=item;$("resultSummary").appendChild(d);});window.scrollTo({top:0,behavior:"smooth"});}
-window.addEventListener("load",()=>{if(restoreAttempt()){$("login").style.display="none";$("instructions").style.display="block";$("welcomeName").textContent=student.name+" | Existing Attempt";createWatermark();if(Date.now()>=endTime){$("instructions").style.display="none";$("testArea").style.display="block";$("bottomBar").style.display="flex";renderQuestion();submitTest();}}});
-document.addEventListener("contextmenu",e=>e.preventDefault());
-document.addEventListener("copy",e=>{if($("testArea").style.display==="block")e.preventDefault();});
-document.addEventListener("keydown",e=>{if(e.key==="PrintScreen"||(e.ctrlKey&&["p","s","c"].includes(e.key.toLowerCase()))){if($("testArea").style.display==="block")e.preventDefault();}});
+let current=0,answers=Array(25).fill(null),studentName="",endTime=null,timerHandle=null;
+const $=id=>document.getElementById(id);
+function createWatermark(){const b=$("watermark");b.innerHTML="";for(let y=10;y<1000;y+=160){for(let x=-40;x<950;x+=220){const sp=document.createElement("span");sp.textContent=studentName+" | MCRES";sp.style.top=y+"px";sp.style.left=x+"px";b.appendChild(sp);}}}
+function loginStudent(){const n=$("studentName").value.trim();if(n.length<2){$("loginError").textContent="Please enter your full name.";return;}studentName=n;$("login").style.display="none";$("instructions").style.display="block";$("welcomeName").textContent=n;}
+function beginTest(){endTime=Date.now()+30*60*1000;$("instructions").style.display="none";$("testArea").style.display="block";$("bottomBar").style.display="flex";createWatermark();renderQuestion();startTimer();}
+function startTimer(){function tick(){const r=Math.max(0,Math.ceil((endTime-Date.now())/1000));const m=Math.floor(r/60),s=r%60;$("timer").textContent=String(m).padStart(2,"0")+":"+String(s).padStart(2,"0");if(r<=0){clearInterval(timerHandle);submitTest();}}tick();timerHandle=setInterval(tick,1000);}
+function renderQuestion(){const q=questions[current];$("questionNumber").textContent="QUESTION "+(current+1)+" / 25";$("questionText").textContent=(current+1)+". "+q.q;$("options").innerHTML="";q.o.forEach((opt,i)=>{const l=document.createElement("label");l.className="option"+(answers[current]===i?" selected":"");const r=document.createElement("input");r.type="radio";r.name="answer";r.checked=answers[current]===i;const t=document.createElement("span");t.textContent=opt;l.append(r,t);l.addEventListener("click",()=>{answers[current]=i;renderQuestion();});$("options").appendChild(l);});renderNavigation();$("prevBtn").style.visibility=current===0?"hidden":"visible";$("nextBtn").textContent=current===24?"SUBMIT TEST →":"NEXT →";}
+function renderNavigation(){$("navigation").innerHTML="";questions.forEach((_,i)=>{const b=document.createElement("button");b.className="nav-btn";if(i===current)b.classList.add("current");if(answers[i]!==null)b.classList.add("answered");b.textContent=i+1;b.onclick=()=>{current=i;renderQuestion();window.scrollTo({top:0,behavior:"smooth"});};$("navigation").appendChild(b);});}
+function previousQuestion(){if(current>0){current--;renderQuestion();window.scrollTo({top:0,behavior:"smooth"});}}
+function nextQuestion(){if(Date.now()>=endTime){submitTest();return;}if(current<24){current++;renderQuestion();window.scrollTo({top:0,behavior:"smooth"});return;}const un=answers.filter(a=>a===null).length;const msg=un?"You have "+un+" unanswered. Submit?":"Submit test?";if(confirm(msg))submitTest();}
+function submitTest(){if(timerHandle){clearInterval(timerHandle);timerHandle=null;}let correct=0,wrong=0,un=0;answers.forEach((ans,i)=>{if(ans===null)un++;else if(ans===questions[i].a)correct++;else wrong++;});const score=correct - wrong*0.2;$("testArea").style.display="none";$("bottomBar").style.display="none";$("result").style.display="block";$("resultStudent").textContent="Name: "+studentName;$("resultScore").textContent="Score: "+score.toFixed(2)+" / 25";$("resultSummary").innerHTML=["Correct: "+correct,"Wrong: "+wrong,"Unanswered: "+un,"Negative: -"+(wrong*0.2).toFixed(2)].map(t=>`<div class="result-line">${t}</div>`).join("");const rev=$("review");rev.innerHTML="<h3>Answer Review</h3>";questions.forEach((q,i)=>{const div=document.createElement("div");const ans=answers[i];let cls="answer-review ";let txt="";if(ans===null){cls+="wrong";txt=`Q${i+1}: Unanswered | Correct: ${q.o[q.a]}`;}else if(ans===q.a){cls+="correct";txt=`Q${i+1}: Correct! ${q.o[ans]}`;}else{cls+="wrong";txt=`Q${i+1}: Wrong! Your: ${q.o[ans]} | Correct: ${q.o[q.a]}`;}div.className=cls;div.textContent=txt;rev.appendChild(div);});window.scrollTo({top:0,behavior:"smooth"});}
 </script>
 </body>
 </html>
