@@ -2,108 +2,112 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MCRES TEST SERIES 01</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MCRES - ENGLISH TEST SERIES 01</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.43.4/dist/umd/supabase.min.js"></script>
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#eef2ff;font-family:Arial,sans-serif;color:#27254a}
-.top-bar{background:#1e1b4b;color:white;text-align:center;padding:12px 8px;border-bottom:4px solid #facc15}
-.top-bar h1{margin:0;font-size:15px}
-.top-bar h2{margin:4px 0 0 0;font-size:11px;opacity:0.9;font-weight:normal}
-.info-bar{background:#facc15;text-align:center;padding:8px;font-weight:bold;font-size:13px}
-.main{max-width:850px;margin:auto;padding:12px 10px}
-.card{padding:20px;background:white;border-radius:10px;margin:16px auto;border:1px solid #c7d2fe;box-shadow:0 4px 12px rgba(0,0,0,0.08)}
-input{width:100%;padding:10px 8px;border:1px solid #cbd5e1;border-radius:6px;font-size:16px;margin-top:8px}
-.start-btn{width:100%;padding:11px;background:#4f46e5;color:white;border:0;border-radius:7px;font-size:17px;font-weight:bold;margin-top:12px}
-#testArea{display:none}
-#result{display:none}
-.question-number{display:inline-block;background:#4f46e5;color:white;padding:4px 12px;border-radius:20px;font-weight:bold;font-size:13px}
-.question-text{font-size:15px;font-weight:bold;line-height:1.7;margin:12px 0 10px 0}
-.option{display:flex;gap:12px;align-items:center;justify-content:flex-start;padding:12px 12px;margin:8px 0;border:1px solid #e2e8f0;border-radius:8px;cursor:pointer;text-align:left;background:white}
-.option span{flex:1;text-align:left;font-size:14px}
-.option input{width:18px;height:18px;margin:0;flex-shrink:0}
-.option.selected{background:#e0e7ff;border-color:#6366f1}
-.nav-panel{background:white;padding:10px;border:1px solid #e2e8f0;border-radius:10px;margin-top:14px}
+body{margin:0;background:#eef2ff;font-family:Arial,sans-serif;color:#172554}
+.top-bar{background:#0f1a4a;color:white;text-align:center;padding:14px 8px;border-bottom:4px solid #facc15}
+.top-bar h1{margin:0;color:#facc15;font-size:19px}
+.top-bar p{margin:6px 0 3px;font-size:13px;font-weight:bold}
+.top-bar small{font-size:11px}
+.info-bar{background:#facc15;text-align:center;padding:10px;font-weight:bold;font-size:13px}
+.main{max-width:850px;margin:auto;padding:12px 10px 100px}
+.card,.question-card{background:white;border-radius:16px;padding:20px;margin:18px auto;border:1px solid #c7d2fe;box-shadow:0 5px 18px #0001}
+.card{max-width:650px}
+h2{text-align:center;color:#0f1a4a}
+.input{width:100%;padding:14px;margin:8px 0;border:1px solid #cbd5e1;border-radius:9px;font-size:16px}
+.start-btn{width:100%;padding:15px;background:#0f1a4a;color:white;border:0;border-radius:10px;font-size:17px;font-weight:bold;margin-top:12px}
+.notice{background:#eff6ff;padding:12px;border-radius:9px;font-size:13px;line-height:1.6;margin:12px 0}
+#instructions,#testArea,#result{display:none}
+.question-card{position:relative;overflow:hidden;min-height:350px}
+.watermark{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1}
+.watermark span{position:absolute;color:#b91c1c;opacity:.13;font-size:13px;font-weight:bold;white-space:nowrap;transform:rotate(-25deg)}
+.question-content{position:relative;z-index:2}
+.question-number{display:inline-block;background:#0f1a4a;color:white;padding:7px 14px;border-radius:20px;font-weight:bold;margin-bottom:12px}
+.question-text{font-size:16px;font-weight:bold;line-height:1.7;white-space:pre-line;margin:8px 0 18px}
+.option{display:flex;gap:12px;align-items:flex-start;justify-content:flex-start;padding:13px;margin:10px 0;border:2px solid #e2e8f0;border-radius:10px;background:#fff;line-height:1.5;font-weight:600;cursor:pointer;text-align:left}
+.option span{flex:1;text-align:left}
+.option.selected{background:#dbeafe;border-color:#2563eb}
+.option input{margin-top:4px;flex-shrink:0;width:18px;height:18px}
+.nav-panel{background:white;padding:14px;border-radius:12px;margin-top:14px}
 .nav-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
-.nav-btn{padding:8px 0;border:1px solid #cbd5e1;background:white;border-radius:5px;font-weight:bold}
-.nav-btn.answered{background:#4f46e5;color:white;border-color:#4f46e5}
-.nav-btn.current{border:2px solid #f59e0b}
-.bottom-bar{position:fixed;bottom:0;left:0;right:0;background:white;border-top:1px solid #cbd5e1;padding:10px;display:flex;gap:10px}
-.bottom-bar button{flex:1;padding:12px;border-radius:9px;font-weight:bold;font-size:15px;border:0}
-#prevBtn{background:#e2e8f0}
-#nextBtn{background:#4f46e5;color:white}
-#submitBtn{background:#dc2626;color:white}
+.nav-btn{padding:11px 0;border:1px solid #cbd5e1;background:white;border-radius:8px;font-weight:bold}
+.nav-btn.current{background:#1d4ed8;color:white}
+.nav-btn.answered{background:#16a34a;color:white}
+.bottom-bar{position:fixed;bottom:0;left:0;right:0;background:white;border-top:1px solid #cbd5e1;padding:10px;display:none;gap:10px;z-index:10}
+.bottom-bar button{flex:1;padding:14px;border:0;border-radius:9px;font-weight:bold;font-size:15px}
+#prevBtn{background:#e2e8f0;color:#172554}
+#nextBtn{background:#0f1a4a;color:white}
+#resultScore{font-size:28px;color:#047857}
+.result-line{padding:10px 0;border-bottom:1px solid #e5e7eb;line-height:1.6}
+.error{color:#dc2626;font-weight:bold;font-size:13px}
+button:disabled{opacity:.5;cursor:not-allowed}
 </style>
 </head>
 <body>
-<div class="top-bar"><h1>MCRES ONLINE TEST SERIES</h1><h2>MALLAIAH CENTER FOR RIVER & EARTH SCIENCES (MCRES)</h2><p>Dr Ramakrishna Manimadde | mcres.in</p></div>
-<div class="info-bar" id="infoBar">ENGLISH TEST SERIES - 01 | TIME: 30:00 | +1 / -0.20</div>
+<div class="top-bar"><h1>MCRES ONLINE TEST SERIES</h1><p>MALLAIAH CENTER FOR RIVER & EARTH SCIENCES (MCRES)</p><small>Dr Ramakrishna Manimadde | mcres.in</small></div>
+<div class="info-bar">ENGLISH TEST SERIES – 01 | TIME: <span id="timer">30:00</span> | +1 / −0.20</div>
 <div class="main">
-<div id="login" class="card">
-<h3 style="text-align:center">🔐 Student Login</h3>
-<input id="studentName" placeholder="Enter Full Name">
-<input id="studentMobile" placeholder="10-digit Mobile">
-<div id="loginError" style="color:#dc2626;font-weight:bold;font-size:13px;margin-top:8px"></div>
-<button class="start-btn" onclick="loginStudent()">CONTINUE →</button>
+<div id="login" class="card"><h2>🔐 Student Login</h2><input id="studentName" class="input" placeholder="Enter Full Name" maxlength="100"><input id="studentMobile" class="input" placeholder="10-digit Mobile Number" maxlength="10" inputmode="numeric"><div id="loginError" class="error"></div><button class="start-btn" id="loginBtn" onclick="loginStudent()">CONTINUE →</button></div>
+<div id="instructions" class="card"><h2>📋 TEST INSTRUCTIONS</h2><p>Welcome, <b id="welcomeName"></b></p><ul style="line-height:1.9"><li>Total Questions: 25</li><li>Total Marks: 25</li><li>Time: 30 Minutes</li><li>Correct Answer: +1 Mark</li><li>Wrong Answer: −0.20 Mark</li><li>Maximum Attempts: 5</li><li>Test Validity: Shared 12-hour window</li></ul><div class="notice">మీ సమాధానాలు ఈ బ్రౌజర్‌లో తాత్కాలికంగా సేవ్ అవుతాయి. అదే పరికరం, అదే బ్రౌజర్‌లో పరీక్ష కొనసాగించండి.</div><button class="start-btn" onclick="beginTest()">START / RESUME TEST →</button></div>
+<div id="testArea"><div class="question-card"><div class="watermark" id="watermark"></div><div class="question-content"><div class="question-number" id="questionNumber">QUESTION 1 / 25</div><div class="question-text" id="questionText"></div><div id="options"></div></div></div><div class="nav-panel"><b>QUESTION NAVIGATION</b><div class="nav-grid" id="navigation" style="margin-top:12px"></div></div></div>
+<div id="result" class="card"><h2>MCRES TEST RESULT</h2><div id="resultStudent" class="notice"></div><h2 id="resultScore"></h2><div id="resultSummary"></div><p class="notice">మీ పరీక్ష ఫలితం MCRES సర్వర్‌లో నమోదు చేయబడింది.</p></div>
 </div>
-<div id="testArea">
-<div class="card"><div style="display:flex;justify-content:space-between"><span class="question-number" id="qNumber">Q 1</span><span id="timer" style="font-weight:bold;color:#dc2626">30:00</span></div><div class="question-text" id="qText"></div><div id="options"></div></div>
-<div class="nav-panel"><div style="font-weight:bold;margin-bottom:8px">Question Navigation</div><div class="nav-grid" id="navGrid"></div></div><div style="height:70px"></div>
-<div class="bottom-bar"><button id="prevBtn" onclick="previousQuestion()">← PREV</button><button id="nextBtn" onclick="nextQuestion()">NEXT →</button><button id="submitBtn" onclick="submitTest()">SUBMIT</button></div>
-</div>
-<div id="result" class="card"><h3>MCRES TEST RESULT</h3><div id="resultScore" style="background:#fff7ed;padding:12px;border-radius:6px;margin:12px 0"></div><div id="resultDetails"></div><button class="start-btn" onclick="location.reload()">RESTART</button></div>
-</div>
+<div class="bottom-bar" id="bottomBar"><button id="prevBtn" onclick="previousQuestion()">← PREVIOUS</button><button id="nextBtn" onclick="nextQuestion()">NEXT →</button></div>
 <script>
+"use strict";
 const SUPABASE_URL = "https://eliwhaqxilcuifsgjjnu.supabase.co";
-const SUPABASE_ANON_KEY = "sb_publishable_YOUR_KEY_HERE";
+const SUPABASE_ANON_KEY = "sb_publishable_0887bMu7tm9HOkxLzp0gDw_mmvTCF4P";
+const db = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
 const questions = [
-{q:"Choose synonym of 'Abundant'",opts:["Scarce","Plentiful","Rare","Meager"],ans:1},
-{q:"Antonym of 'Honest' is",opts:["Truthful","Sincere","Dishonest","Faithful"],ans:2},
-{q:"Fill: She ___ to school daily.",opts:["go","goes","going","gone"],ans:1},
-{q:"Correct spelling",opts:["Accomodation","Accommodation","Acomodation","Accomadation"],ans:1},
-{q:"Passive: 'He writes a letter'",opts:["A letter is written by him","A letter was written","He is written","Letter writes"],ans:0},
-{q:"Article: ___ honest man",opts:["A","An","The","No article"],ans:1},
-{q:"One who knows many languages",opts:["Linguist","Polyglot","Bilingual","Translator"],ans:1},
-{q:"Break the ice means",opts:["Break glass","Start conversation","Make cold","Fight"],ans:1},
-{q:"He said, 'I am tired' ->",opts:["He said he is tired","He said he was tired","He says he was tired","He said tired"],ans:1},
-{q:"He is good ___ English",opts:["at","in","on","for"],ans:0},
-{q:"Synonym of 'Brave'",opts:["Coward","Courageous","Fearful","Timid"],ans:1},
-{q:"Plural of 'Child'",opts:["Childs","Children","Childes","Childrens"],ans:1},
-{q:"I have finished - Tense",opts:["Present Perfect","Past","Future","Present Continuous"],ans:0},
-{q:"Antonym of 'Ancient'",opts:["Old","Modern","Historic","Olden"],ans:1},
-{q:"Neither of them ___ coming",opts:["are","is","were","have"],ans:1},
-{q:"Open the door (Passive)",opts:["Let the door be opened","Door is opened","Open door","Door opened"],ans:0},
-{q:"Meaning of 'Diligent'",opts:["Lazy","Hardworking","Careless","Slow"],ans:1},
-{q:"___ you help me?",opts:["Can","Is","Are","Does"],ans:0},
-{q:"Opposite of 'Victory'",opts:["Win","Defeat","Success","Triumph"],ans:1},
-{q:"She ___ since morning",opts:["has been studying","studies","studied","study"],ans:0}
+{q:"Choose the correct matching of the words with their descriptions.\n\n(i) Congestion\n(ii) Collision\n(iii) Bottleneck\n(iv) Breakdown\n\n(A) An accident in which two vehicles hit each other\n(B) A situation in which roads are full of traffic\n(C) An occasion when a vehicle stops working\n(D) A place on a road where traffic cannot pass easily",o:["(1) (i)-(C), (ii)-(B), (iii)-(A), (iv)-(D)","(2) (i)-(A), (ii)-(D), (iii)-(B), (iv)-(C)","(3) (i)-(D), (ii)-(C), (iii)-(A), (iv)-(B)","(4) (i)-(B), (ii)-(A), (iii)-(D), (iv)-(C)"]},
+{q:"Choose the correct option to complete the sentence.\n\nIf you had studied hard, you ______ the examination.",o:["(1) Will clear","(2) Would clear","(3) Would have cleared","(4) Cleared"]},
+{q:"Identify whether the sentence contains an error.\n\nThe children (A) / washed their hands (B) / before they ate (C) / their lunch (D).",o:["(1) Part (A)","(2) Part (B)","(3) Part (C)","(4) No error"]},
+{q:"What does the idiom “You cannot have your cake and eat it too” mean?",o:["(1) Enjoy something forever","(2) Enjoy something without paying for it","(3) You cannot enjoy two incompatible things at the same time","(4) Forgive yourself for feeling guilty"]},
+{q:"Arrange the words in the correct order to form a sentence.\n\n(a) travel\n(b) I\n(c) and\n(d) together\n(e) Satish",o:["(1) b-c-e-d-a","(2) e-c-b-a-d","(3) e-c-b-d-a","(4) b-c-e-a-d"]},
+{q:"The idiom “to take a leaf out of someone's book” means:",o:["(1) Steal something","(2) Damage something","(3) Cheat someone","(4) Imitate someone or follow their example"]},
+{q:"The idiom “to show someone the ropes” means:",o:["(1) Influence someone","(2) Show someone how powerful you are","(3) Hang someone","(4) Teach someone how to do a job"]},
+{q:"Select the pair of synonymous words.",o:["(1) Colloquial — Grammatical","(2) Excess — Surplus","(3) Fair — Strong","(4) Alert — Inactive"]},
+{q:"What does the idiom “They left no stone unturned to trace the culprits” mean?",o:["(1) Combed the whole area","(2) Made every possible effort","(3) Ransacked the place","(4) Gave up the search without making further efforts"]},
+{q:"Choose the most appropriate words to complete the sentence.\n\nThe festival is a three-day-long celebration that combines ______ feasts with periods of ______ fasting.",o:["(1) Unornamented, resolute","(2) Paltry, obstinate","(3) Scanty, parsimonious","(4) Sumptuous, strict"]},
+{q:"Choose the correct sequence of articles.\n\n______ uranium is ______ toxic metal. ______ uranium used in this experiment was stored in ______ laboratory.",o:["(1) No article, a, the, the","(2) The, a, the, no article","(3) No article, a, no article, the","(4) The, the, no article, the"]},
+{q:"Choose the correct word to complete the sentence.\n\nTea may be used to ______ coffee.",o:["(1) Compliment","(2) Complementation","(3) Complement","(4) Complementary"]},
+{q:"What is the antonym of “pious” in the sentence “She is a pious woman”?",o:["(1) Sweet","(2) Famed","(3) Ungodly","(4) Cruel"]},
+{q:"Choose the synonym of “amenable” in the sentence “Both parties were amenable to a peaceful settlement of the land dispute.”",o:["(1) Doubtful","(2) Unwilling","(3) Receptive","(4) Disagreeable"]},
+{q:"Choose the synonym of “antidote” in the sentence “Jogging is considered an antidote to mental stress.”",o:["(1) Poisonous substance","(2) Remedy","(3) Equivalent","(4) Dangerous substance"]},
+{q:"What is the antonym of “transparent” in the sentence “The window glass is transparent”?",o:["(1) Opaque","(2) Translucent","(3) Susceptible","(4) Fragile"]},
+{q:"What is the antonym of “unanimous” in the sentence “It was a unanimous decision”?",o:["(1) United","(2) Divided","(3) Compatible","(4) Harmonious"]},
+{q:"Choose the correct articles.\n\nHis mother was ______ American, though his father was ______ European.",o:["(1) A, a","(2) A, an","(3) An, a","(4) An, an"]},
+{q:"Choose the correct preposition.\n\nThe coordinator was asked to attend ______ the issue and resolve it immediately.",o:["(1) By","(2) In","(3) To","(4) No preposition required"]},
+{q:"Choose the correct verb.\n\nEither of the roads ______ to Vasantha Nagar.",o:["(1) Lead","(2) Leads","(3) Have led","(4) Are led"]},
+{q:"Choose the correct tense.\n\nPlease don't disturb me; I ______ the coins now.",o:["(1) Have been counting","(2) Count","(3) Was counting","(4) Am counting"]},
+{q:"Choose the correct verb form.\n\nRishi ______ his engineering course by the end of 2027.",o:["(1) Will completed","(2) Complete","(3) Will have completed","(4) Was completed"]},
+{q:"Choose the correctly spelt word.",o:["(1) Occasional","(2) Occassional","(3) Ocassional","(4) Occational"]},
+{q:"What does the expression “put you up” mean in the sentence below?\n\n“We would be glad to put you up for a few days if you would like to stay.”",o:["(1) Tolerate someone","(2) Build something","(3) Provide accommodation","(4) Contribute something"]},
+{q:"Choose the correct question tag.\n\nManoj played cricket for two days, ______?",o:["(1) Did he?","(2) Didn't he?","(3) Wasn't he?","(4) Wouldn't he?"]}
 ];
-let current=0,answers=new Array(questions.length).fill(null),timeLeft=30*60,timerInterval;
-function loginStudent(){
- const name=document.getElementById('studentName').value.trim();
- const mobile=document.getElementById('studentMobile').value.trim();
- if(!name||name.length<3){document.getElementById('loginError').innerText="Enter valid name";return;}
- if(!mobile||mobile.length<10){document.getElementById('loginError').innerText="Enter valid mobile";return;}
- document.getElementById('loginError').innerText="";
- try{
-  if(typeof supabase!=='undefined' && SUPABASE_ANON_KEY.includes('sb_publishable_')){
-   const { createClient } = supabase;
-   const db = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-   db.from('mcres_attempts').insert([{name,mobile}]).then(()=>{}).catch(()=>{});
-  }
- }catch(e){}
- startTest();
-}
-function startTest(){document.getElementById('login').style.display='none';document.getElementById('testArea').style.display='block';buildNav();showQuestion(0);startTimer();}
-function buildNav(){const grid=document.getElementById('navGrid');grid.innerHTML='';questions.forEach((_,i)=>{const b=document.createElement('button');b.className='nav-btn';b.innerText=i+1;b.onclick=()=>showQuestion(i);b.id='nav-'+i;grid.appendChild(b);});}
-function showQuestion(i){current=i;document.getElementById('qNumber').innerText='Q '+(i+1)+' / '+questions.length;document.getElementById('qText').innerText=questions[i].q;const optDiv=document.getElementById('options');optDiv.innerHTML='';questions[i].opts.forEach((opt,idx)=>{const div=document.createElement('div');div.className='option '+(answers[i]===idx?'selected':'');div.onclick=()=>selectOption(idx);div.innerHTML=`<input type='radio' ${answers[i]===idx?'checked':''}><span>${opt}</span>`;optDiv.appendChild(div);});updateNav();}
-function selectOption(idx){answers[current]=idx;showQuestion(current);}
-function updateNav(){questions.forEach((_,i)=>{const btn=document.getElementById('nav-'+i);if(!btn)return;btn.className='nav-btn';if(answers[i]!==null)btn.className+=' answered';if(i===current)btn.className+=' current';});}
-function previousQuestion(){if(current>0)showQuestion(current-1);}
-function nextQuestion(){if(current<questions.length-1)showQuestion(current+1);}
-function startTimer(){timerInterval=setInterval(()=>{timeLeft--;const m=Math.floor(timeLeft/60).toString().padStart(2,'0');const s=(timeLeft%60).toString().padStart(2,'0');document.getElementById('timer').innerText=m+':'+s;document.getElementById('infoBar').innerText='ENGLISH TEST SERIES - 01 | TIME: '+m+':'+s+' | +1 / -0.20';if(timeLeft<=0){clearInterval(timerInterval);submitTest();}},1000);}
-function submitTest(){if(!confirm('Submit test?'))return;clearInterval(timerInterval);let correct=0,wrong=0,attempted=0;answers.forEach((a,i)=>{if(a!==null){attempted++;if(a===questions[i].ans)correct++;else wrong++;}});const score=correct*1-wrong*0.2;document.getElementById('testArea').style.display='none';document.getElementById('result').style.display='block';document.getElementById('resultScore').innerHTML=`<b>Score:</b> ${score.toFixed(2)} / ${questions.length}<br><b>Correct:</b> ${correct} | <b>Wrong:</b> ${wrong} | <b>Attempted:</b> ${attempted}`;let details='';questions.forEach((q,i)=>{const yourAns=answers[i]!==null?q.opts[answers[i]]:'Not Attempted';const correctAns=q.opts[q.ans];details+=`<div style='border-bottom:1px solid #e2e8f0;padding:8px 0'><b>Q${i+1}:</b> ${q.q}<br>Your: <span style='color:${answers[i]===q.ans?'green':'red'}'>${yourAns}</span> | Correct: <span style='color:green'>${correctAns}</span></div>`;});document.getElementById('resultDetails').innerHTML=details;window.scrollTo(0,0);}
+let current=0;let answers=Array(25).fill(null);let attemptId=null;let attemptToken=null;let student=null;let endTime=null;let timerHandle=null;let submitting=false;const $=id=>document.getElementById(id);
+function storageKey(){return "mcres_eng01_attempt";}
+function saveAttempt(){if(!attemptId)return;try{localStorage.setItem(storageKey(),JSON.stringify({attemptId,attemptToken,student,endTime,answers}));}catch(e){}}
+function restoreAttempt(){try{const s=JSON.parse(localStorage.getItem(storageKey())||"null");if(!s||!s.attemptId||!s.attemptToken||!s.student||!s.endTime)return false;attemptId=s.attemptId;attemptToken=s.attemptToken;student=s.student;endTime=Number(s.endTime);answers=Array.isArray(s.answers)&&s.answers.length===25?s.answers.map(v=>Number.isInteger(v)&&v>=0&&v<=3?v:null):Array(25).fill(null);return Number.isFinite(endTime);}catch(e){return false;}}
+function showLoginError(m){$("loginError").textContent=m;}
+function readableError(e){const m=String(e?.message||e||"");if(m.includes("Maximum 5 attempts"))return "You have used all 5 attempts.";if(m.includes("access period has ended"))return "The 12-hour test validity has expired.";if(m.includes("currently closed"))return "This test is currently unavailable.";return m||"Something went wrong.";}
+function createWatermark(){const b=$("watermark");b.innerHTML="";if(!student)return;for(let y=10;y<1000;y+=160){for(let x=-40;x<950;x+=220){const sp=document.createElement("span");sp.textContent=student.name+" | "+student.mobile+" | MCRES";sp.style.top=y+"px";sp.style.left=x+"px";b.appendChild(sp);}}}
+async function loginStudent(){if(!db){showLoginError("Supabase library failed to load.");return;}const n=$("studentName").value.trim();const m=$("studentMobile").value.trim();if(n.length<2){showLoginError("Please enter your full name.");return;}if(!/^[6-9][0-9]{9}$/.test(m)){showLoginError("Enter a valid 10-digit mobile number.");return;}$("loginBtn").disabled=true;$("loginBtn").textContent="PLEASE WAIT...";showLoginError("");try{const {data,error}=await db.rpc("mcres_start_test",{p_name:n,p_mobile:m});if(error)throw error;const row=Array.isArray(data)?data[0]:data;if(!row)throw new Error("No attempt details returned.");attemptId=row.attempt_id;attemptToken=row.attempt_token;student={name:n,mobile:m};const dur=Number(row.duration_seconds||1800);const exp=new Date(row.test_expires_at).getTime();if(!attemptId||!attemptToken||!Number.isFinite(exp)||!Number.isFinite(dur))throw new Error("Invalid server response.");endTime=Math.min(Date.now()+dur*1000,exp);answers=Array(25).fill(null);current=0;saveAttempt();$("login").style.display="none";$("instructions").style.display="block";$("welcomeName").textContent=n+" | Attempt "+row.attempt_no+" of 5";createWatermark();}catch(e){showLoginError(readableError(e));}finally{$("loginBtn").disabled=false;$("loginBtn").textContent="CONTINUE →";}}
+function beginTest(){if(!attemptId||!attemptToken||!student){alert("Please login first.");return;}if(Date.now()>=endTime){alert("Your test time or validity has expired.");submitTest();return;}$("instructions").style.display="none";$("testArea").style.display="block";$("bottomBar").style.display="flex";createWatermark();renderQuestion();startTimer();}
+function startTimer(){if(timerHandle)clearInterval(timerHandle);function tick(){const r=Math.max(0,Math.ceil((endTime-Date.now())/1000));const mi=Math.floor(r/60);const se=r%60;$("timer").textContent=String(mi).padStart(2,"0")+":"+String(se).padStart(2,"0");if(r<=0){clearInterval(timerHandle);timerHandle=null;submitTest();}}tick();timerHandle=setInterval(tick,1000);}
+function renderQuestion(){const q=questions[current];$("questionNumber").textContent="QUESTION "+(current+1)+" / 25";$("questionText").textContent=(current+1)+". "+q.q;$("options").innerHTML="";q.o.forEach((opt,i)=>{const l=document.createElement("label");l.className="option"+(answers[current]===i?" selected":"");const r=document.createElement("input");r.type="radio";r.name="answer";r.checked=answers[current]===i;const t=document.createElement("span");t.textContent=opt;l.append(r,t);l.addEventListener("click",()=>{if(submitting)return;answers[current]=i;saveAttempt();renderQuestion();});$("options").appendChild(l);});renderNavigation();$("prevBtn").style.visibility=current===0?"hidden":"visible";$("nextBtn").textContent=current===24?"SUBMIT TEST →":"NEXT →";}
+function renderNavigation(){$("navigation").innerHTML="";questions.forEach((_,i)=>{const b=document.createElement("button");b.className="nav-btn";if(i===current)b.classList.add("current");if(answers[i]!==null)b.classList.add("answered");b.textContent=i+1;b.onclick=()=>{if(submitting)return;current=i;renderQuestion();window.scrollTo({top:0,behavior:"smooth"});};$("navigation").appendChild(b);});}
+function previousQuestion(){if(current>0&&!submitting){current--;renderQuestion();window.scrollTo({top:0,behavior:"smooth"});}}
+function nextQuestion(){if(submitting)return;if(Date.now()>=endTime){submitTest();return;}if(current<24){current++;renderQuestion();window.scrollTo({top:0,behavior:"smooth"});return;}const un=answers.filter(a=>a===null).length;const msg=un?"You have "+un+" unanswered question(s). Submit the test?":"Are you sure you want to submit the test?";if(confirm(msg))submitTest();}
+async function submitTest(){if(submitting||!attemptId||!attemptToken||!db)return;submitting=true;if(timerHandle){clearInterval(timerHandle);timerHandle=null;}$("nextBtn").disabled=true;$("prevBtn").disabled=true;$("nextBtn").textContent="SUBMITTING...";try{const {data,error}=await db.rpc("mcres_submit_test",{p_attempt_id:attemptId,p_attempt_token:attemptToken,p_answers:answers});if(error)throw error;const row=Array.isArray(data)?data[0]:data;if(!row)throw new Error("No result returned.");showResult(row);localStorage.removeItem(storageKey());}catch(e){submitting=false;$("nextBtn").disabled=false;$("prevBtn").disabled=false;$("nextBtn").textContent="RETRY SUBMISSION";$("nextBtn").onclick=submitTest;alert("Submission failed.\n\n"+readableError(e));}}
+function showResult(row){$("testArea").style.display="none";$("bottomBar").style.display="none";$("result").style.display="block";const sc=Number(row.score??0);const co=Number(row.correct??0);const wr=Number(row.wrong??0);const un=Number(row.unanswered??0);const ne=Number(row.negative??0);$("resultStudent").textContent="Name: "+student.name+" | Mobile: "+student.mobile;$("resultScore").textContent="Score: "+sc.toFixed(2)+" / 25";$("resultSummary").innerHTML="";["Correct Answers: "+co,"Wrong Answers: "+wr,"Unanswered: "+un,"Negative Marks: -"+ne.toFixed(2),"Status: "+(row.result_status||"submitted")].forEach(item=>{const d=document.createElement("div");d.className="result-line";d.textContent=item;$("resultSummary").appendChild(d);});window.scrollTo({top:0,behavior:"smooth"});}
+window.addEventListener("load",()=>{if(restoreAttempt()){$("login").style.display="none";$("instructions").style.display="block";$("welcomeName").textContent=student.name+" | Existing Attempt";createWatermark();if(Date.now()>=endTime){$("instructions").style.display="none";$("testArea").style.display="block";$("bottomBar").style.display="flex";renderQuestion();submitTest();}}});
+document.addEventListener("contextmenu",e=>e.preventDefault());
+document.addEventListener("copy",e=>{if($("testArea").style.display==="block")e.preventDefault();});
+document.addEventListener("keydown",e=>{if(e.key==="PrintScreen"||(e.ctrlKey&&["p","s","c"].includes(e.key.toLowerCase()))){if($("testArea").style.display==="block")e.preventDefault();}});
 </script>
 </body>
 </html>
