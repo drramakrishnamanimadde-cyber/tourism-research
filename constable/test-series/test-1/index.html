@@ -1,13 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MCRES - ENGLISH TEST SERIES 01</title>
-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 <style>
 *{box-sizing:border-box}
 body{margin:0;background:#eef2ff;font-family:Arial,sans-serif;color:#172554}
@@ -48,45 +45,26 @@ h2{text-align:center;color:#0f1a4a}
 button:disabled{opacity:.5;cursor:not-allowed}
 </style>
 </head>
-
 <body>
-
 <div class="top-bar">
 <h1>MCRES ONLINE TEST SERIES</h1>
-<p>MALLAIAH CENTER FOR RIVER &amp; EARTH SCIENCES (MCRES)</p>
+<p>MALLAIAH CENTER FOR RIVER & EARTH SCIENCES (MCRES)</p>
 <small>Dr Ramakrishna Manimadde | mcres.in</small>
 </div>
-
 <div class="info-bar">
 ENGLISH TEST SERIES – 01 | TIME: <span id="timer">30:00</span> | +1 / −0.20
 </div>
-
 <div class="main">
-
-<!-- STUDENT LOGIN -->
 <div id="login" class="card">
 <h2>🔐 Student Login</h2>
-
-<input id="studentName" class="input"
-placeholder="Enter Full Name" maxlength="100">
-
-<input id="studentMobile" class="input"
-placeholder="10-digit Mobile Number"
-maxlength="10" inputmode="numeric">
-
+<input id="studentName" class="input" placeholder="Enter Full Name" maxlength="100">
+<input id="studentMobile" class="input" placeholder="10-digit Mobile Number" maxlength="10" inputmode="numeric">
 <div id="loginError" class="error"></div>
-
-<button class="start-btn" id="loginBtn" onclick="loginStudent()">
-CONTINUE →
-</button>
+<button class="start-btn" id="loginBtn" onclick="loginStudent()">CONTINUE →</button>
 </div>
-
-<!-- INSTRUCTIONS -->
 <div id="instructions" class="card">
 <h2>📋 TEST INSTRUCTIONS</h2>
-
 <p>Welcome, <b id="welcomeName"></b></p>
-
 <ul style="line-height:1.9">
 <li>Total Questions: 25</li>
 <li>Total Marks: 25</li>
@@ -96,1103 +74,207 @@ CONTINUE →
 <li>Maximum Attempts: 5</li>
 <li>Test Validity: Shared 12-hour window</li>
 </ul>
-
-<div class="notice">
-మీ సమాధానాలు ఈ బ్రౌజర్‌లో తాత్కాలికంగా సేవ్ అవుతాయి.
-అదే పరికరం, అదే బ్రౌజర్‌లో పరీక్ష కొనసాగించండి.
+<div class="notice">మీ సమాధానాలు ఈ బ్రౌజర్‌లో తాత్కాలికంగా సేవ్ అవుతాయి. అదే పరికరం, అదే బ్రౌజర్‌లో పరీక్ష కొనసాగించండి.</div>
+<button class="start-btn" onclick="beginTest()">START / RESUME TEST →</button>
 </div>
-
-<button class="start-btn" onclick="beginTest()">
-START / RESUME TEST →
-</button>
-</div>
-
-<!-- TEST AREA -->
 <div id="testArea">
-
 <div class="question-card">
-
 <div class="watermark" id="watermark"></div>
-
 <div class="question-content">
-
-<div class="question-number" id="questionNumber">
-QUESTION 1 / 25
-</div>
-
+<div class="question-number" id="questionNumber">QUESTION 1 / 25</div>
 <div class="question-text" id="questionText"></div>
-
 <div id="options"></div>
-
 </div>
 </div>
-
 <div class="nav-panel">
 <b>QUESTION NAVIGATION</b>
 <div class="nav-grid" id="navigation" style="margin-top:12px"></div>
 </div>
-
 </div>
-
-<!-- RESULT -->
 <div id="result" class="card">
 <h2>MCRES TEST RESULT</h2>
 <div id="resultStudent" class="notice"></div>
 <h2 id="resultScore"></h2>
 <div id="resultSummary"></div>
-
-<p class="notice">
-మీ పరీక్ష ఫలితం MCRES సర్వర్‌లో నమోదు చేయబడింది.
-</p>
+<p class="notice">మీ పరీక్ష ఫలితం MCRES సర్వర్‌లో నమోదు చేయబడింది.</p>
 </div>
-
 </div>
-
-<!-- BOTTOM NAVIGATION -->
 <div class="bottom-bar" id="bottomBar">
 <button id="prevBtn" onclick="previousQuestion()">← PREVIOUS</button>
 <button id="nextBtn" onclick="nextQuestion()">NEXT →</button>
 </div>
-
 <script>
 "use strict";
-
-/* =========================================
-   SUPABASE CONFIGURATION
-========================================= */
-
-const SUPABASE_URL =
-"https://eliwhaqxilcufsgjnu.supabase.co";
-
-const SUPABASE_ANON_KEY =
-"sb_publishable_0887bMu7tm9HOkxLzp0gDw_mmvTCF4P";
-
-const db = window.supabase
-? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
-: null;
-
-
-/* =========================================
-   QUESTION PAPER – 25 QUESTIONS
-========================================= */
-
+const SUPABASE_URL = "https://eliwhaqxilcuifsggjnu.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_0887bMu7tm9HOkxLzp0gDw_mmvTCF4P";
+const db = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
 const questions = [
-
-{
-q:"Choose the correct matching of the words with their descriptions.\n\n(i) Congestion\n(ii) Collision\n(iii) Bottleneck\n(iv) Breakdown\n\n(A) An accident in which two vehicles hit each other\n(B) A situation in which roads are full of traffic\n(C) An occasion when a vehicle stops working\n(D) A place on a road where traffic cannot pass easily",
-o:[
-"(1) (i)-(C), (ii)-(B), (iii)-(A), (iv)-(D)",
-"(2) (i)-(A), (ii)-(D), (iii)-(B), (iv)-(C)",
-"(3) (i)-(D), (ii)-(C), (iii)-(A), (iv)-(B)",
-"(4) (i)-(B), (ii)-(A), (iii)-(D), (iv)-(C)"
-]
-},
-
-{
-q:"Choose the correct option to complete the sentence.\n\nIf you had studied hard, you ______ the examination.",
-o:[
-"(1) Will clear",
-"(2) Would clear",
-"(3) Would have cleared",
-"(4) Cleared"
-]
-},
-
-{
-q:"Identify whether the sentence contains an error.\n\nThe children (A) / washed their hands (B) / before they ate (C) / their lunch (D).",
-o:[
-"(1) Part (A)",
-"(2) Part (B)",
-"(3) Part (C)",
-"(4) No error"
-]
-},
-
-{
-q:"What does the idiom “You cannot have your cake and eat it too” mean?",
-o:[
-"(1) Enjoy something forever",
-"(2) Enjoy something without paying for it",
-"(3) You cannot enjoy two incompatible things at the same time",
-"(4) Forgive yourself for feeling guilty"
-]
-},
-
-{
-q:"Arrange the words in the correct order to form a sentence.\n\n(a) travel\n(b) I\n(c) and\n(d) together\n(e) Satish",
-o:[
-"(1) b-c-e-d-a",
-"(2) e-c-b-a-d",
-"(3) e-c-b-d-a",
-"(4) b-c-e-a-d"
-]
-},
-
-{
-q:"The idiom “to take a leaf out of someone's book” means:",
-o:[
-"(1) Steal something",
-"(2) Damage something",
-"(3) Cheat someone",
-"(4) Imitate someone or follow their example"
-]
-},
-
-{
-q:"The idiom “to show someone the ropes” means:",
-o:[
-"(1) Influence someone",
-"(2) Show someone how powerful you are",
-"(3) Hang someone",
-"(4) Teach someone how to do a job"
-]
-},
-
-{
-q:"Select the pair of synonymous words.",
-o:[
-"(1) Colloquial — Grammatical",
-"(2) Excess — Surplus",
-"(3) Fair — Strong",
-"(4) Alert — Inactive"
-]
-},
-
-{
-q:"What does the idiom “They left no stone unturned to trace the culprits” mean?",
-o:[
-"(1) Combed the whole area",
-"(2) Made every possible effort",
-"(3) Ransacked the place",
-"(4) Gave up the search without making further efforts"
-]
-},
-
-{
-q:"Choose the most appropriate words to complete the sentence.\n\nThe festival is a three-day-long celebration that combines ______ feasts with periods of ______ fasting.",
-o:[
-"(1) Unornamented, resolute",
-"(2) Paltry, obstinate",
-"(3) Scanty, parsimonious",
-"(4) Sumptuous, strict"
-]
-},
-
-{
-q:"Choose the correct sequence of articles.\n\n______ uranium is ______ toxic metal. ______ uranium used in this experiment was stored in ______ laboratory.",
-o:[
-"(1) No article, a, the, the",
-"(2) The, a, the, no article",
-"(3) No article, a, no article, the",
-"(4) The, the, no article, the"
-]
-},
-
-{
-q:"Choose the correct word to complete the sentence.\n\nTea may be used to ______ coffee.",
-o:[
-"(1) Compliment",
-"(2) Complementation",
-"(3) Complement",
-"(4) Complementary"
-]
-},
-
-{
-q:"What is the antonym of “pious” in the sentence “She is a pious woman”?",
-o:[
-"(1) Sweet",
-"(2) Famed",
-"(3) Ungodly",
-"(4) Cruel"
-]
-},
-
-{
-q:"Choose the synonym of “amenable” in the sentence “Both parties were amenable to a peaceful settlement of the land dispute.”",
-o:[
-"(1) Doubtful",
-"(2) Unwilling",
-"(3) Receptive",
-"(4) Disagreeable"
-]
-},
-
-{
-q:"Choose the synonym of “antidote” in the sentence “Jogging is considered an antidote to mental stress.”",
-o:[
-"(1) Poisonous substance",
-"(2) Remedy",
-"(3) Equivalent",
-"(4) Dangerous substance"
-]
-},
-
-{
-q:"What is the antonym of “transparent” in the sentence “The window glass is transparent”?",
-o:[
-"(1) Opaque",
-"(2) Translucent",
-"(3) Susceptible",
-"(4) Fragile"
-]
-},
-
-{
-q:"What is the antonym of “unanimous” in the sentence “It was a unanimous decision”?",
-o:[
-"(1) United",
-"(2) Divided",
-"(3) Compatible",
-"(4) Harmonious"
-]
-},
-
-{
-q:"Choose the correct articles.\n\nHis mother was ______ American, though his father was ______ European.",
-o:[
-"(1) A, a",
-"(2) A, an",
-"(3) An, a",
-"(4) An, an"
-]
-},
-
-{
-q:"Choose the correct preposition.\n\nThe coordinator was asked to attend ______ the issue and resolve it immediately.",
-o:[
-"(1) By",
-"(2) In",
-"(3) To",
-"(4) No preposition required"
-]
-},
-
-{
-q:"Choose the correct verb.\n\nEither of the roads ______ to Vasantha Nagar.",
-o:[
-"(1) Lead",
-"(2) Leads",
-"(3) Have led",
-"(4) Are led"
-]
-},
-
-{
-q:"Choose the correct tense.\n\nPlease don't disturb me; I ______ the coins now.",
-o:[
-"(1) Have been counting",
-"(2) Count",
-"(3) Was counting",
-"(4) Am counting"
-]
-},
-
-{
-q:"Choose the correct verb form.\n\nRishi ______ his engineering course by the end of 2027.",
-o:[
-"(1) Will completed",
-"(2) Complete",
-"(3) Will have completed",
-"(4) Was completed"
-]
-},
-
-{
-q:"Choose the correctly spelt word.",
-o:[
-"(1) Occasional",
-"(2) Occassional",
-"(3) Ocassional",
-"(4) Occational"
-]
-},
-
-{
-q:"What does the expression “put you up” mean in the sentence below?\n\n“We would be glad to put you up for a few days if you would like to stay.”",
-o:[
-"(1) Tolerate someone",
-"(2) Build something",
-"(3) Provide accommodation",
-"(4) Contribute something"
-]
-},
-
-{
-q:"Choose the correct question tag.\n\nManoj played cricket for two days, ______?",
-o:[
-"(1) Did he?",
-"(2) Didn't he?",
-"(3) Wasn't he?",
-"(4) Wouldn't he?"
-]
-}
-
+{q:"Choose the correct matching of the words with their descriptions.\n\n(i) Congestion\n(ii) Collision\n(iii) Bottleneck\n(iv) Breakdown\n\n(A) An accident in which two vehicles hit each other\n(B) A situation in which roads are full of traffic\n(C) An occasion when a vehicle stops working\n(D) A place on a road where traffic cannot pass easily",o:["(1) (i)-(C), (ii)-(B), (iii)-(A), (iv)-(D)","(2) (i)-(A), (ii)-(D), (iii)-(B), (iv)-(C)","(3) (i)-(D), (ii)-(C), (iii)-(A), (iv)-(B)","(4) (i)-(B), (ii)-(A), (iii)-(D), (iv)-(C)"]},
+{q:"Choose the correct option to complete the sentence.\n\nIf you had studied hard, you ______ the examination.",o:["(1) Will clear","(2) Would clear","(3) Would have cleared","(4) Cleared"]},
+{q:"Identify whether the sentence contains an error.\n\nThe children (A) / washed their hands (B) / before they ate (C) / their lunch (D).",o:["(1) Part (A)","(2) Part (B)","(3) Part (C)","(4) No error"]},
+{q:"What does the idiom “You cannot have your cake and eat it too” mean?",o:["(1) Enjoy something forever","(2) Enjoy something without paying for it","(3) You cannot enjoy two incompatible things at the same time","(4) Forgive yourself for feeling guilty"]},
+{q:"Arrange the words in the correct order to form a sentence.\n\n(a) travel\n(b) I\n(c) and\n(d) together\n(e) Satish",o:["(1) b-c-e-d-a","(2) e-c-b-a-d","(3) e-c-b-d-a","(4) b-c-e-a-d"]},
+{q:"The idiom “to take a leaf out of someone's book” means:",o:["(1) Steal something","(2) Damage something","(3) Cheat someone","(4) Imitate someone or follow their example"]},
+{q:"The idiom “to show someone the ropes” means:",o:["(1) Influence someone","(2) Show someone how powerful you are","(3) Hang someone","(4) Teach someone how to do a job"]},
+{q:"Select the pair of synonymous words.",o:["(1) Colloquial — Grammatical","(2) Excess — Surplus","(3) Fair — Strong","(4) Alert — Inactive"]},
+{q:"What does the idiom “They left no stone unturned to trace the culprits” mean?",o:["(1) Combed the whole area","(2) Made every possible effort","(3) Ransacked the place","(4) Gave up the search without making further efforts"]},
+{q:"Choose the most appropriate words to complete the sentence.\n\nThe festival is a three-day-long celebration that combines ______ feasts with periods of ______ fasting.",o:["(1) Unornamented, resolute","(2) Paltry, obstinate","(3) Scanty, parsimonious","(4) Sumptuous, strict"]},
+{q:"Choose the correct sequence of articles.\n\n______ uranium is ______ toxic metal. ______ uranium used in this experiment was stored in ______ laboratory.",o:["(1) No article, a, the, the","(2) The, a, the, no article","(3) No article, a, no article, the","(4) The, the, no article, the"]},
+{q:"Choose the correct word to complete the sentence.\n\nTea may be used to ______ coffee.",o:["(1) Compliment","(2) Complementation","(3) Complement","(4) Complementary"]},
+{q:"What is the antonym of “pious” in the sentence “She is a pious woman”?",o:["(1) Sweet","(2) Famed","(3) Ungodly","(4) Cruel"]},
+{q:"Choose the synonym of “amenable” in the sentence “Both parties were amenable to a peaceful settlement of the land dispute.”",o:["(1) Doubtful","(2) Unwilling","(3) Receptive","(4) Disagreeable"]},
+{q:"Choose the synonym of “antidote” in the sentence “Jogging is considered an antidote to mental stress.”",o:["(1) Poisonous substance","(2) Remedy","(3) Equivalent","(4) Dangerous substance"]},
+{q:"What is the antonym of “transparent” in the sentence “The window glass is transparent”?",o:["(1) Opaque","(2) Translucent","(3) Susceptible","(4) Fragile"]},
+{q:"What is the antonym of “unanimous” in the sentence “It was a unanimous decision”?",o:["(1) United","(2) Divided","(3) Compatible","(4) Harmonious"]},
+{q:"Choose the correct articles.\n\nHis mother was ______ American, though his father was ______ European.",o:["(1) A, a","(2) A, an","(3) An, a","(4) An, an"]},
+{q:"Choose the correct preposition.\n\nThe coordinator was asked to attend ______ the issue and resolve it immediately.",o:["(1) By","(2) In","(3) To","(4) No preposition required"]},
+{q:"Choose the correct verb.\n\nEither of the roads ______ to Vasantha Nagar.",o:["(1) Lead","(2) Leads","(3) Have led","(4) Are led"]},
+{q:"Choose the correct tense.\n\nPlease don't disturb me; I ______ the coins now.",o:["(1) Have been counting","(2) Count","(3) Was counting","(4) Am counting"]},
+{q:"Choose the correct verb form.\n\nRishi ______ his engineering course by the end of 2027.",o:["(1) Will completed","(2) Complete","(3) Will have completed","(4) Was completed"]},
+{q:"Choose the correctly spelt word.",o:["(1) Occasional","(2) Occassional","(3) Ocassional","(4) Occational"]},
+{q:"What does the expression “put you up” mean in the sentence below?\n\n“We would be glad to put you up for a few days if you would like to stay.”",o:["(1) Tolerate someone","(2) Build something","(3) Provide accommodation","(4) Contribute something"]},
+{q:"Choose the correct question tag.\n\nManoj played cricket for two days, ______?",o:["(1) Did he?","(2) Didn't he?","(3) Wasn't he?","(4) Wouldn't he?"]}
 ];
-
-
-/* =========================================
-   GLOBAL VARIABLES
-========================================= */
-
 let current = 0;
 let answers = Array(25).fill(null);
-
 let attemptId = null;
 let attemptToken = null;
 let student = null;
-
 let endTime = null;
 let timerHandle = null;
 let submitting = false;
-
 const $ = id => document.getElementById(id);
-
-
-/* =========================================
-   LOCAL STORAGE
-========================================= */
-
-function storageKey(){
-  return "mcres_eng01_attempt";
-}
-
+function storageKey(){return "mcres_eng01_attempt";}
 function saveAttempt(){
-
   if(!attemptId) return;
-
-  try{
-
-    localStorage.setItem(
-      storageKey(),
-      JSON.stringify({
-        attemptId:attemptId,
-        attemptToken:attemptToken,
-        student:student,
-        endTime:endTime,
-        answers:answers
-      })
-    );
-
-  }catch(error){
-
-    console.error("Local storage error:",error);
-
-  }
+  try{localStorage.setItem(storageKey(),JSON.stringify({attemptId:attemptId,attemptToken:attemptToken,student:student,endTime:endTime,answers:answers}));}catch(error){console.error("Local storage error:",error);}
 }
-
 function restoreAttempt(){
-
   try{
-
-    const saved = JSON.parse(
-      localStorage.getItem(storageKey()) || "null"
-    );
-
-    if(
-      !saved ||
-      !saved.attemptId ||
-      !saved.attemptToken ||
-      !saved.student ||
-      !saved.endTime
-    ){
-      return false;
-    }
-
-    attemptId = saved.attemptId;
-    attemptToken = saved.attemptToken;
-    student = saved.student;
-    endTime = Number(saved.endTime);
-
-    answers =
-      Array.isArray(saved.answers) &&
-      saved.answers.length === 25
-      ? saved.answers.map(value =>
-          Number.isInteger(value) &&
-          value >= 0 &&
-          value <= 3
-          ? value
-          : null
-        )
-      : Array(25).fill(null);
-
+    const saved = JSON.parse(localStorage.getItem(storageKey()) || "null");
+    if(!saved || !saved.attemptId || !saved.attemptToken || !saved.student || !saved.endTime){return false;}
+    attemptId = saved.attemptId;attemptToken = saved.attemptToken;student = saved.student;endTime = Number(saved.endTime);
+    answers = Array.isArray(saved.answers) && saved.answers.length === 25 ? saved.answers.map(value => Number.isInteger(value) && value >= 0 && value <= 3 ? value : null) : Array(25).fill(null);
     return Number.isFinite(endTime);
-
-  }catch(error){
-
-    console.error("Restore error:",error);
-    return false;
-
-  }
+  }catch(error){console.error("Restore error:",error);return false;}
 }
-
-
-/* =========================================
-   ERROR HANDLING
-========================================= */
-
-function showLoginError(message){
-  $("loginError").textContent = message;
-}
-
+function showLoginError(message){$("loginError").textContent = message;}
 function readableError(error){
-
   const message = String(error?.message || error || "");
-
-  if(message.includes("Maximum 5 attempts")){
-    return "You have used all 5 attempts.";
-  }
-
-  if(message.includes("access period has ended")){
-    return "The 12-hour test validity has expired.";
-  }
-
-  if(message.includes("currently closed")){
-    return "This test is currently unavailable.";
-  }
-
-  if(message.includes("valid 10-digit")){
-    return "Enter a valid 10-digit mobile number.";
-  }
-
-  if(message.includes("valid student name")){
-    return "Please enter your full name.";
-  }
-
-  if(message.includes("Test settings not found")){
-    return "Test settings are not configured. Please contact MCRES.";
-  }
-
+  if(message.includes("Maximum 5 attempts")){return "You have used all 5 attempts.";}
+  if(message.includes("access period has ended")){return "The 12-hour test validity has expired.";}
+  if(message.includes("currently closed")){return "This test is currently unavailable.";}
+  if(message.includes("valid 10-digit")){return "Enter a valid 10-digit mobile number.";}
+  if(message.includes("valid student name")){return "Please enter your full name.";}
+  if(message.includes("Test settings not found")){return "Test settings are not configured. Please contact MCRES.";}
   return message || "Something went wrong. Please try again.";
 }
-
-
-/* =========================================
-   WATERMARK
-========================================= */
-
 function createWatermark(){
-
-  const box = $("watermark");
-
-  box.innerHTML = "";
-
-  if(!student) return;
-
-  for(let y=10;y<1000;y+=160){
-
-    for(let x=-40;x<950;x+=220){
-
-      const span = document.createElement("span");
-
-      span.textContent =
-        student.name + " | " +
-        student.mobile + " | MCRES";
-
-      span.style.top = y + "px";
-      span.style.left = x + "px";
-
-      box.appendChild(span);
-
-    }
-
-  }
-
+  const box = $("watermark");box.innerHTML = "";if(!student) return;
+  for(let y=10;y<1000;y+=160){for(let x=-40;x<950;x+=220){const span = document.createElement("span");span.textContent = student.name + " | " + student.mobile + " | MCRES";span.style.top = y + "px";span.style.left = x + "px";box.appendChild(span);}}
 }
-
-
-/* =========================================
-   STUDENT LOGIN AND START TEST
-========================================= */
-
 async function loginStudent(){
-
-  if(!db){
-
-    showLoginError("Supabase library failed to load. Please refresh.");
-    return;
-
-  }
-
-  const name = $("studentName").value.trim();
-  const mobile = $("studentMobile").value.trim();
-
-  if(name.length < 2){
-
-    showLoginError("Please enter your full name.");
-    return;
-
-  }
-
-  if(!/^[6-9][0-9]{9}$/.test(mobile)){
-
-    showLoginError("Enter a valid 10-digit mobile number.");
-    return;
-
-  }
-
-  $("loginBtn").disabled = true;
-  $("loginBtn").textContent = "PLEASE WAIT...";
-
-  showLoginError("");
-
+  if(!db){showLoginError("Supabase library failed to load. Please refresh.");return;}
+  const name = $("studentName").value.trim();const mobile = $("studentMobile").value.trim();
+  if(name.length < 2){showLoginError("Please enter your full name.");return;}
+  if(!/^[6-9][0-9]{9}$/.test(mobile)){showLoginError("Enter a valid 10-digit mobile number.");return;}
+  $("loginBtn").disabled = true;$("loginBtn").textContent = "PLEASE WAIT...";showLoginError("");
   try{
-
-    const {data,error} = await db.rpc(
-      "mcres_start_test",
-      {
-        p_name:name,
-        p_mobile:mobile
-      }
-    );
-
+    const {data,error} = await db.rpc("mcres_start_test",{p_name:name,p_mobile:mobile});
     if(error) throw error;
-
     const row = Array.isArray(data) ? data[0] : data;
-
-    if(!row){
-
-      throw new Error("No attempt details returned by server.");
-
-    }
-
-    attemptId = row.attempt_id;
-    attemptToken = row.attempt_token;
-
-    student = {
-      name:name,
-      mobile:mobile
-    };
-
-    /*
-      IMPORTANT:
-      SQL returns test_expires_at,
-      not expires_at.
-    */
-
+    if(!row){throw new Error("No attempt details returned by server.");}
+    attemptId = row.attempt_id;attemptToken = row.attempt_token;
+    student = {name:name,mobile:mobile};
     const duration = Number(row.duration_seconds || 1800);
-
-    const expiry = new Date(
-      row.test_expires_at
-    ).getTime();
-
-    if(
-      !attemptId ||
-      !attemptToken ||
-      !Number.isFinite(expiry) ||
-      !Number.isFinite(duration)
-    ){
-
-      throw new Error(
-        "Invalid server response. Check SQL return fields."
-      );
-
-    }
-
-    endTime = Math.min(
-      Date.now() + duration * 1000,
-      expiry
-    );
-
-    answers = Array(25).fill(null);
-    current = 0;
-
-    saveAttempt();
-
-    $("login").style.display = "none";
-    $("instructions").style.display = "block";
-
-    $("welcomeName").textContent =
-      name + " | Attempt " + row.attempt_no + " of 5";
-
-    createWatermark();
-
-  }catch(error){
-
-    showLoginError(readableError(error));
-
-    console.error("Start test error:",error);
-
-  }finally{
-
-    $("loginBtn").disabled = false;
-    $("loginBtn").textContent = "CONTINUE →";
-
-  }
-
+    const expiry = new Date(row.test_expires_at).getTime();
+    if(!attemptId || !attemptToken || !Number.isFinite(expiry) || !Number.isFinite(duration)){throw new Error("Invalid server response. Check SQL return fields.");}
+    endTime = Math.min(Date.now() + duration * 1000,expiry);
+    answers = Array(25).fill(null);current = 0;saveAttempt();
+    $("login").style.display = "none";$("instructions").style.display = "block";
+    $("welcomeName").textContent = name + " | Attempt " + row.attempt_no + " of 5";createWatermark();
+  }catch(error){showLoginError(readableError(error));console.error("Start test error:",error);
+  }finally{$("loginBtn").disabled = false;$("loginBtn").textContent = "CONTINUE →";}
 }
-
-
-/* =========================================
-   BEGIN OR RESUME TEST
-========================================= */
-
 function beginTest(){
-
-  if(!attemptId || !attemptToken || !student){
-
-    alert("Please login first.");
-    return;
-
-  }
-
-  if(Date.now() >= endTime){
-
-    alert("Your test time or validity has expired.");
-    submitTest();
-    return;
-
-  }
-
-  $("instructions").style.display = "none";
-  $("testArea").style.display = "block";
-  $("bottomBar").style.display = "flex";
-
-  createWatermark();
-  renderQuestion();
-  startTimer();
-
+  if(!attemptId || !attemptToken || !student){alert("Please login first.");return;}
+  if(Date.now() >= endTime){alert("Your test time or validity has expired.");submitTest();return;}
+  $("instructions").style.display = "none";$("testArea").style.display = "block";$("bottomBar").style.display = "flex";
+  createWatermark();renderQuestion();startTimer();
 }
-
-
-/* =========================================
-   TIMER
-========================================= */
-
 function startTimer(){
-
-  if(timerHandle){
-    clearInterval(timerHandle);
-  }
-
+  if(timerHandle){clearInterval(timerHandle);}
   function tick(){
-
-    const remaining = Math.max(
-      0,
-      Math.ceil((endTime - Date.now()) / 1000)
-    );
-
-    const mins = Math.floor(remaining / 60);
-    const secs = remaining % 60;
-
-    $("timer").textContent =
-      String(mins).padStart(2,"0") +
-      ":" +
-      String(secs).padStart(2,"0");
-
-    if(remaining <= 0){
-
-      clearInterval(timerHandle);
-      timerHandle = null;
-
-      submitTest();
-
-    }
-
+    const remaining = Math.max(0,Math.ceil((endTime - Date.now()) / 1000));
+    const mins = Math.floor(remaining / 60);const secs = remaining % 60;
+    $("timer").textContent = String(mins).padStart(2,"0") + ":" + String(secs).padStart(2,"0");
+    if(remaining <= 0){clearInterval(timerHandle);timerHandle = null;submitTest();}
   }
-
-  tick();
-
-  timerHandle = setInterval(tick,1000);
-
+  tick();timerHandle = setInterval(tick,1000);
 }
-
-
-/* =========================================
-   DISPLAY QUESTION
-========================================= */
-
 function renderQuestion(){
-
-  const q = questions[current];
-
-  $("questionNumber").textContent =
-    "QUESTION " + (current + 1) + " / 25";
-
-  $("questionText").textContent =
-    (current + 1) + ". " + q.q;
-
-  $("options").innerHTML = "";
-
+  const q = questions[current];$("questionNumber").textContent = "QUESTION " + (current + 1) + " / 25";$("questionText").textContent = (current + 1) + ". " + q.q;$("options").innerHTML = "";
   q.o.forEach((option,index)=>{
-
-    const label = document.createElement("label");
-
-    label.className =
-      "option" +
-      (answers[current] === index ? " selected" : "");
-
-    const radio = document.createElement("input");
-
-    radio.type = "radio";
-    radio.name = "answer";
-    radio.checked = answers[current] === index;
-
-    const text = document.createElement("span");
-
-    text.textContent = option;
-
-    label.append(radio,text);
-
-    label.addEventListener("click",()=>{
-
-      if(submitting) return;
-
-      answers[current] = index;
-
-      saveAttempt();
-
-      renderQuestion();
-
-    });
-
+    const label = document.createElement("label");label.className = "option" + (answers[current] === index ? " selected" : "");
+    const radio = document.createElement("input");radio.type = "radio";radio.name = "answer";radio.checked = answers[current] === index;
+    const text = document.createElement("span");text.textContent = option;label.append(radio,text);
+    label.addEventListener("click",()=>{if(submitting) return;answers[current] = index;saveAttempt();renderQuestion();});
     $("options").appendChild(label);
-
   });
-
-  renderNavigation();
-
-  $("prevBtn").style.visibility =
-    current === 0 ? "hidden" : "visible";
-
-  $("nextBtn").textContent =
-    current === 24 ? "SUBMIT TEST →" : "NEXT →";
-
+  renderNavigation();$("prevBtn").style.visibility = current === 0 ? "hidden" : "visible";$("nextBtn").textContent = current === 24 ? "SUBMIT TEST →" : "NEXT →";
 }
-
-
-/* =========================================
-   QUESTION NAVIGATION GRID
-========================================= */
-
 function renderNavigation(){
-
   $("navigation").innerHTML = "";
-
   questions.forEach((q,index)=>{
-
-    const btn = document.createElement("button");
-
-    btn.className = "nav-btn";
-
-    if(index === current){
-      btn.classList.add("current");
-    }
-
-    if(answers[index] !== null){
-      btn.classList.add("answered");
-    }
-
+    const btn = document.createElement("button");btn.className = "nav-btn";
+    if(index === current){btn.classList.add("current");}
+    if(answers[index] !== null){btn.classList.add("answered");}
     btn.textContent = index + 1;
-
-    btn.onclick = ()=>{
-
-      if(submitting) return;
-
-      current = index;
-
-      renderQuestion();
-
-      window.scrollTo({
-        top:0,
-        behavior:"smooth"
-      });
-
-    };
-
+    btn.onclick = ()=>{if(submitting) return;current = index;renderQuestion();window.scrollTo({top:0,behavior:"smooth"});};
     $("navigation").appendChild(btn);
-
   });
-
 }
-
-
-/* =========================================
-   PREVIOUS QUESTION
-========================================= */
-
-function previousQuestion(){
-
-  if(current > 0 && !submitting){
-
-    current--;
-
-    renderQuestion();
-
-    window.scrollTo({
-      top:0,
-      behavior:"smooth"
-    });
-
-  }
-
-}
-
-
-/* =========================================
-   NEXT QUESTION / SUBMIT
-========================================= */
-
+function previousQuestion(){if(current > 0 && !submitting){current--;renderQuestion();window.scrollTo({top:0,behavior:"smooth"});}}
 function nextQuestion(){
-
-  if(submitting) return;
-
-  if(Date.now() >= endTime){
-
-    submitTest();
-    return;
-
-  }
-
-  if(current < 24){
-
-    current++;
-
-    renderQuestion();
-
-    window.scrollTo({
-      top:0,
-      behavior:"smooth"
-    });
-
-    return;
-
-  }
-
-  const unanswered = answers.filter(
-    answer => answer === null
-  ).length;
-
-  const message = unanswered
-    ? "You have " + unanswered +
-      " unanswered question(s). Submit the test?"
-    : "Are you sure you want to submit the test?";
-
-  if(confirm(message)){
-
-    submitTest();
-
-  }
-
+  if(submitting) return;if(Date.now() >= endTime){submitTest();return;}
+  if(current < 24){current++;renderQuestion();window.scrollTo({top:0,behavior:"smooth"});return;}
+  const unanswered = answers.filter(answer => answer === null).length;
+  const message = unanswered ? "You have " + unanswered + " unanswered question(s). Submit the test?" : "Are you sure you want to submit the test?";
+  if(confirm(message)){submitTest();}
 }
-
-
-/* =========================================
-   SUBMIT TEST
-   SERVER-SIDE EVALUATION
-========================================= */
-
 async function submitTest(){
-
-  if(
-    submitting ||
-    !attemptId ||
-    !attemptToken ||
-    !db
-  ){
-    return;
-  }
-
-  submitting = true;
-
-  if(timerHandle){
-
-    clearInterval(timerHandle);
-    timerHandle = null;
-
-  }
-
-  $("nextBtn").disabled = true;
-  $("prevBtn").disabled = true;
-
-  $("nextBtn").textContent = "SUBMITTING...";
-
+  if(submitting || !attemptId || !attemptToken || !db){return;}
+  submitting = true;if(timerHandle){clearInterval(timerHandle);timerHandle = null;}
+  $("nextBtn").disabled = true;$("prevBtn").disabled = true;$("nextBtn").textContent = "SUBMITTING...";
   try{
-
-    const {data,error} = await db.rpc(
-      "mcres_submit_test",
-      {
-        p_attempt_id:attemptId,
-        p_attempt_token:attemptToken,
-        p_answers:answers
-      }
-    );
-
+    const {data,error} = await db.rpc("mcres_submit_test",{p_attempt_id:attemptId,p_attempt_token:attemptToken,p_answers:answers});
     if(error) throw error;
-
-    const row = Array.isArray(data) ? data[0] : data;
-
-    if(!row){
-
-      throw new Error("No result returned from server.");
-
-    }
-
-    showResult(row);
-
-    localStorage.removeItem(storageKey());
-
+    const row = Array.isArray(data) ? data[0] : data;if(!row){throw new Error("No result returned from server.");}
+    showResult(row);localStorage.removeItem(storageKey());
   }catch(error){
-
-    submitting = false;
-
-    $("nextBtn").disabled = false;
-    $("prevBtn").disabled = false;
-
-    $("nextBtn").textContent = "RETRY SUBMISSION";
-
-    $("nextBtn").onclick = submitTest;
-
-    alert(
-      "Submission failed. Please check your internet connection and try again.\n\n" +
-      readableError(error)
-    );
-
-    console.error("Submission error:",error);
-
+    submitting = false;$("nextBtn").disabled = false;$("prevBtn").disabled = false;$("nextBtn").textContent = "RETRY SUBMISSION";$("nextBtn").onclick = submitTest;
+    alert("Submission failed. Please check your internet connection and try again.\n\n" + readableError(error));console.error("Submission error:",error);
   }
-
 }
-
-
-/* =========================================
-   DISPLAY RESULT
-   SQL RETURN FIELD NAMES:
-   score, correct, wrong, unanswered,
-   negative, result_status
-========================================= */
-
 function showResult(row){
-
-  $("testArea").style.display = "none";
-  $("bottomBar").style.display = "none";
-  $("result").style.display = "block";
-
-  const score = Number(row.score ?? 0);
-  const correct = Number(row.correct ?? 0);
-  const wrong = Number(row.wrong ?? 0);
-  const unanswered = Number(row.unanswered ?? 0);
-  const negative = Number(row.negative ?? 0);
-
-  $("resultStudent").textContent =
-    "Name: " + student.name +
-    " | Mobile: " + student.mobile;
-
-  $("resultScore").textContent =
-    "Score: " + score.toFixed(2) + " / 25";
-
-  $("resultSummary").innerHTML = "";
-
-  const details = [
-
-    "Correct Answers: " + correct,
-
-    "Wrong Answers: " + wrong,
-
-    "Unanswered: " + unanswered,
-
-    "Negative Marks: -" + negative.toFixed(2),
-
-    "Status: " + (row.result_status || "submitted")
-
-  ];
-
-  details.forEach(item=>{
-
-    const div = document.createElement("div");
-
-    div.className = "result-line";
-
-    div.textContent = item;
-
-    $("resultSummary").appendChild(div);
-
-  });
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-
+  $("testArea").style.display = "none";$("bottomBar").style.display = "none";$("result").style.display = "block";
+  const score = Number(row.score ?? 0);const correct = Number(row.correct ?? 0);const wrong = Number(row.wrong ?? 0);const unanswered = Number(row.unanswered ?? 0);const negative = Number(row.negative ?? 0);
+  $("resultStudent").textContent = "Name: " + student.name + " | Mobile: " + student.mobile;
+  $("resultScore").textContent = "Score: " + score.toFixed(2) + " / 25";$("resultSummary").innerHTML = "";
+  const details = ["Correct Answers: " + correct,"Wrong Answers: " + wrong,"Unanswered: " + unanswered,"Negative Marks: -" + negative.toFixed(2),"Status: " + (row.result_status || "submitted")];
+  details.forEach(item=>{const div = document.createElement("div");div.className = "result-line";div.textContent = item;$("resultSummary").appendChild(div);});
+  window.scrollTo({top:0,behavior:"smooth"});
 }
-
-
-/* =========================================
-   PAGE LOAD – RESTORE EXISTING ATTEMPT
-========================================= */
-
 window.addEventListener("load",()=>{
-
   if(restoreAttempt()){
-
-    $("login").style.display = "none";
-
-    $("instructions").style.display = "block";
-
-    $("welcomeName").textContent =
-      student.name + " | Existing Attempt";
-
-    createWatermark();
-
-    if(Date.now() >= endTime){
-
-      $("instructions").style.display = "none";
-
-      $("testArea").style.display = "block";
-
-      $("bottomBar").style.display = "flex";
-
-      renderQuestion();
-
-      submitTest();
-
-    }
-
+    $("login").style.display = "none";$("instructions").style.display = "block";
+    $("welcomeName").textContent = student.name + " | Existing Attempt";createWatermark();
+    if(Date.now() >= endTime){$("instructions").style.display = "none";$("testArea").style.display = "block";$("bottomBar").style.display = "flex";renderQuestion();submitTest();}
   }
-
 });
-
-
-/* =========================================
-   BASIC COPY / PRINT RESTRICTIONS
-========================================= */
-
-document.addEventListener(
-  "contextmenu",
-  event => event.preventDefault()
-);
-
-document.addEventListener("copy",event=>{
-
-  if($("testArea").style.display === "block"){
-
-    event.preventDefault();
-
-  }
-
-});
-
-document.addEventListener("keydown",event=>{
-
-  if(
-    event.key === "PrintScreen" ||
-    (
-      event.ctrlKey &&
-      ["p","s","c"].includes(event.key.toLowerCase())
-    )
-  ){
-
-    if($("testArea").style.display === "block"){
-
-      event.preventDefault();
-
-    }
-
-  }
-
-});
-
+document.addEventListener("contextmenu",event => event.preventDefault());
+document.addEventListener("copy",event=>{if($("testArea").style.display === "block"){event.preventDefault();}});
+document.addEventListener("keydown",event=>{if(event.key === "PrintScreen" || (event.ctrlKey && ["p","s","c"].includes(event.key.toLowerCase()))){if($("testArea").style.display === "block"){event.preventDefault();}}});
 </script>
-
 </body>
 </html>
