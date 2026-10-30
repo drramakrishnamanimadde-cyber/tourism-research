@@ -1,119 +1,1198 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ENGLISH TEST SERIES - 01 | MCRES</title>
+<title>MCRES - ENGLISH TEST SERIES 01</title>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <style>
-*{box-sizing:border-box}body{margin:0;background:#eef2ff;font-family:Arial,sans-serif;user-select:none}
-.top-bar{background:linear-gradient(90deg,#0f1a4a,#1e3a8a);color:#fff;text-align:center;padding:12px;position:sticky;top:0;z-index:100;border-bottom:3px solid #facc15}
-.top-bar h1{margin:0;font-size:14px;color:#facc15}.top-bar p{margin:3px 0 0;font-size:11px;font-weight:800}.top-bar small{font-size:9px;opacity:.9}
-.info-bar{background:linear-gradient(90deg,#facc15,#fde047);text-align:center;padding:8px;font-weight:900;font-size:12px;color:#0f1a4a}
-.main{max-width:850px;margin:auto;padding:12px 10px 110px}
-.card,.instr-card{background:#fff;border-radius:18px;padding:22px;max-width:700px;margin:20px auto;border:2px solid #c7d2fe;box-shadow:0 8px 25px #0001}
-.instr-card,.q-card,.nav-panel{display:none}
-.input{width:100%;padding:14px;border-radius:10px;border:2px solid #cbd5e1;margin:10px 0;font-size:15px;font-weight:700}
-.btn-start{background:linear-gradient(90deg,#0f1a4a,#16a34a);color:#fff;padding:16px 30px;font-size:18px;border-radius:12px;border:0;font-weight:900;cursor:pointer;width:100%;margin-top:15px}
-.q-card{background:#fff;border-radius:18px;padding:18px;min-height:480px;position:relative;overflow:hidden;border:2px solid #c7d2fe}
-.screenshot-watermark{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:20}
-.screenshot-watermark span{position:absolute;font-size:13px;font-weight:900;color:#b91c1c;opacity:.28;transform:rotate(-28deg);white-space:nowrap}
-.q-top{display:inline-block;padding:6px 16px;border-radius:20px;font-size:12px;font-weight:900;margin-bottom:14px;color:#fff;position:relative;z-index:10}
-.q-text{font-weight:800;font-size:15px;position:relative;z-index:10;line-height:1.7;white-space:pre-line;padding:14px;border-radius:12px;border-left:7px solid;background:rgba(255,255,255,.9)}
-.opt{display:flex;gap:12px;padding:14px;border-radius:14px;margin:12px 0;cursor:pointer;font-weight:700;position:relative;z-index:10;border:2.5px solid #facc15;background:#fffef0;color:#0f1a4a}
-.opt b{display:inline-flex;min-width:26px;height:26px;border-radius:50%;align-items:center;justify-content:center;background:#facc15;color:#0f1a4a;font-size:12px}
-.opt.selected{transform:scale(1.01);box-shadow:0 5px 15px #0003;background:linear-gradient(90deg,#0f1a4a,#2563eb);color:#fff;border-color:#0f1a4a}
-.opt.selected b{background:#fff;color:#0f1a4a}
-.nav-panel{background:#fff;border-radius:16px;padding:12px;margin-top:14px;border:2px solid #e0e7ff}
+*{box-sizing:border-box}
+body{margin:0;background:#eef2ff;font-family:Arial,sans-serif;color:#172554}
+.top-bar{background:#0f1a4a;color:white;text-align:center;padding:14px 8px;border-bottom:4px solid #facc15}
+.top-bar h1{margin:0;color:#facc15;font-size:19px}
+.top-bar p{margin:6px 0 3px;font-size:13px;font-weight:bold}
+.top-bar small{font-size:11px}
+.info-bar{background:#facc15;text-align:center;padding:10px;font-weight:bold;font-size:13px}
+.main{max-width:850px;margin:auto;padding:12px 10px 100px}
+.card,.question-card{background:white;border-radius:16px;padding:20px;margin:18px auto;border:1px solid #c7d2fe;box-shadow:0 5px 18px #0001}
+.card{max-width:650px}
+h2{text-align:center;color:#0f1a4a}
+.input{width:100%;padding:14px;margin:8px 0;border:1px solid #cbd5e1;border-radius:9px;font-size:16px}
+.start-btn{width:100%;padding:15px;background:#0f1a4a;color:white;border:0;border-radius:10px;font-size:17px;font-weight:bold;margin-top:12px}
+.notice{background:#eff6ff;padding:12px;border-radius:9px;font-size:13px;line-height:1.6;margin:12px 0}
+#instructions,#testArea,#result{display:none}
+.question-card{position:relative;overflow:hidden;min-height:350px}
+.watermark{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1}
+.watermark span{position:absolute;color:#b91c1c;opacity:.13;font-size:13px;font-weight:bold;white-space:nowrap;transform:rotate(-25deg)}
+.question-content{position:relative;z-index:2}
+.question-number{display:inline-block;background:#0f1a4a;color:white;padding:7px 14px;border-radius:20px;font-weight:bold;margin-bottom:12px}
+.question-text{font-size:16px;font-weight:bold;line-height:1.7;white-space:pre-line;margin:8px 0 18px}
+.option{display:flex;gap:10px;align-items:flex-start;padding:13px;margin:10px 0;border:2px solid #e2e8f0;border-radius:10px;background:#fff;line-height:1.5;font-weight:600;cursor:pointer}
+.option.selected{background:#dbeafe;border-color:#2563eb}
+.option input{margin-top:4px;flex-shrink:0}
+.nav-panel{background:white;padding:14px;border-radius:12px;margin-top:14px}
 .nav-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
-.nav-btn{padding:11px 0;border-radius:10px;border:2px solid #cbd5e1;background:#fff;font-weight:800;font-size:13px;cursor:pointer}
-.nav-btn.current{background:linear-gradient(90deg,#0f1a4a,#2563eb);color:#fff}.nav-btn.answered{background:#22c55e;color:#fff;border-color:#16a34a}
-.bottom-bar{position:fixed;bottom:0;left:0;right:0;background:#fff;padding:12px;border-top:2px solid #e0e7ff;z-index:100;display:none;gap:10px}
-.btn{flex:1;padding:14px;border-radius:12px;border:0;font-weight:900;font-size:15px;cursor:pointer}
-.btn-prev{background:#e2e8f0;color:#0f1a4a;border:2px solid #cbd5e1}.btn-next{background:linear-gradient(90deg,#0f1a4a,#2563eb);color:#facc15}
-#result{display:none}.result-row{padding:12px 0;border-bottom:1px solid #eee;line-height:1.6;font-size:14px}
-.notice{padding:12px;border-radius:10px;background:#eff6ff;color:#0f1a4a;font-size:13px;margin:12px 0}
+.nav-btn{padding:11px 0;border:1px solid #cbd5e1;background:white;border-radius:8px;font-weight:bold}
+.nav-btn.current{background:#1d4ed8;color:white}
+.nav-btn.answered{background:#16a34a;color:white}
+.bottom-bar{position:fixed;bottom:0;left:0;right:0;background:white;border-top:1px solid #cbd5e1;padding:10px;display:none;gap:10px;z-index:10}
+.bottom-bar button{flex:1;padding:14px;border:0;border-radius:9px;font-weight:bold;font-size:15px}
+#prevBtn{background:#e2e8f0;color:#172554}
+#nextBtn{background:#0f1a4a;color:white}
+#resultScore{font-size:28px;color:#047857}
+.result-line{padding:10px 0;border-bottom:1px solid #e5e7eb;line-height:1.6}
+.error{color:#dc2626;font-weight:bold;font-size:13px}
+button:disabled{opacity:.5;cursor:not-allowed}
 </style>
 </head>
-<body oncontextmenu="return false">
-<div class="top-bar"><h1>MCRES ONLINE TEST SERIES</h1><p>MALLAIAH CENTER FOR RIVER & EARTH SCIENCES (MCRES)</p><small>Dr Ramakrishna Manimadde | 9494353828 | mcres.in</small></div>
-<div class="info-bar">ENGLISH TEST SERIES – 01 | Time: <span id="timer" style="color:#dc2626">30:00</span> | +1 / -0.20</div>
+
+<body>
+
+<div class="top-bar">
+<h1>MCRES ONLINE TEST SERIES</h1>
+<p>MALLAIAH CENTER FOR RIVER &amp; EARTH SCIENCES (MCRES)</p>
+<small>Dr Ramakrishna Manimadde | mcres.in</small>
+</div>
+
+<div class="info-bar">
+ENGLISH TEST SERIES – 01 | TIME: <span id="timer">30:00</span> | +1 / −0.20
+</div>
+
 <div class="main">
-<div id="loginPage" class="card">
-<h2 style="text-align:center;color:#0f1a4a">🔐 Student Login</h2>
-<input id="stuName" class="input" placeholder="Full Name" maxlength="80">
-<input id="stuMobile" class="input" type="tel" maxlength="10" placeholder="Mobile Number">
-<input id="stuPlace" class="input" placeholder="Place (Optional)" maxlength="80">
-<div id="loginError" style="color:#dc2626;font-size:13px;font-weight:800"></div>
-<button class="btn-start" id="continueBtn" onclick="doLogin()">CONTINUE →</button>
+
+<!-- STUDENT LOGIN -->
+<div id="login" class="card">
+<h2>🔐 Student Login</h2>
+
+<input id="studentName" class="input"
+placeholder="Enter Full Name" maxlength="100">
+
+<input id="studentMobile" class="input"
+placeholder="10-digit Mobile Number"
+maxlength="10" inputmode="numeric">
+
+<div id="loginError" class="error"></div>
+
+<button class="start-btn" id="loginBtn" onclick="loginStudent()">
+CONTINUE →
+</button>
 </div>
-<div id="instrPage" class="instr-card">
-<h2 style="text-align:center">📋 Test Instructions</h2>
-<ul style="line-height:1.8;font-size:14px">
-<li><b>Welcome:</b> <span id="welcomeName" style="color:#2563eb;font-weight:900"></span></li>
-<li><b>Total:</b> 25 Questions | 25 Marks</li><li><b>Marking:</b> +1 / -0.20</li><li><b>Time:</b> 30 Minutes</li>
-<li style="background:#fef3c7;padding:8px;border-radius:8px">Screenshot తీస్తే మీ పేరుతో Watermark కనిపిస్తుంది.</li>
+
+<!-- INSTRUCTIONS -->
+<div id="instructions" class="card">
+<h2>📋 TEST INSTRUCTIONS</h2>
+
+<p>Welcome, <b id="welcomeName"></b></p>
+
+<ul style="line-height:1.9">
+<li>Total Questions: 25</li>
+<li>Total Marks: 25</li>
+<li>Time: 30 Minutes</li>
+<li>Correct Answer: +1 Mark</li>
+<li>Wrong Answer: −0.20 Mark</li>
+<li>Maximum Attempts: 5</li>
+<li>Test Validity: Shared 12-hour window</li>
 </ul>
-<button class="btn-start" onclick="startTest()">✅ START TEST →</button>
+
+<div class="notice">
+మీ సమాధానాలు ఈ బ్రౌజర్‌లో తాత్కాలికంగా సేవ్ అవుతాయి.
+అదే పరికరం, అదే బ్రౌజర్‌లో పరీక్ష కొనసాగించండి.
 </div>
-<div class="q-card" id="qCard"><div id="dynamicWatermark" class="screenshot-watermark"></div><div class="q-top" id="qTop">Q 1 / 25</div><div class="q-text" id="qText"></div><div id="opts"></div></div>
-<div class="nav-panel" id="navPanel"><div class="nav-grid" id="navGrid"></div></div>
-<div id="result" class="card"><h2>MCRES TEST RESULT</h2><div id="userInfo" class="notice"></div><div id="score" style="font-size:28px;font-weight:900;color:#047857"></div><p id="summary"></p><div id="review"></div></div>
+
+<button class="start-btn" onclick="beginTest()">
+START / RESUME TEST →
+</button>
 </div>
-<div class="bottom-bar" id="bottomBar"><button class="btn btn-prev" id="prevBtn">← PREV</button><button class="btn btn-next" id="nextBtn">NEXT →</button></div>
+
+<!-- TEST AREA -->
+<div id="testArea">
+
+<div class="question-card">
+
+<div class="watermark" id="watermark"></div>
+
+<div class="question-content">
+
+<div class="question-number" id="questionNumber">
+QUESTION 1 / 25
+</div>
+
+<div class="question-text" id="questionText"></div>
+
+<div id="options"></div>
+
+</div>
+</div>
+
+<div class="nav-panel">
+<b>QUESTION NAVIGATION</b>
+<div class="nav-grid" id="navigation" style="margin-top:12px"></div>
+</div>
+
+</div>
+
+<!-- RESULT -->
+<div id="result" class="card">
+<h2>MCRES TEST RESULT</h2>
+<div id="resultStudent" class="notice"></div>
+<h2 id="resultScore"></h2>
+<div id="resultSummary"></div>
+
+<p class="notice">
+మీ పరీక్ష ఫలితం MCRES సర్వర్‌లో నమోదు చేయబడింది.
+</p>
+</div>
+
+</div>
+
+<!-- BOTTOM NAVIGATION -->
+<div class="bottom-bar" id="bottomBar">
+<button id="prevBtn" onclick="previousQuestion()">← PREVIOUS</button>
+<button id="nextBtn" onclick="nextQuestion()">NEXT →</button>
+</div>
+
 <script>
+"use strict";
+
+/* =========================================
+   SUPABASE CONFIGURATION
+========================================= */
+
+const SUPABASE_URL =
+"https://eliwhaqxilcufsgjnu.supabase.co";
+
+const SUPABASE_ANON_KEY =
+"sb_publishable_0887bMu7tm9HOkxLzp0gDw_mmvTCF4P";
+
+const db = window.supabase
+? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+: null;
+
+
+/* =========================================
+   QUESTION PAPER – 25 QUESTIONS
+========================================= */
+
 const questions = [
-{q:"Choose the correct matching of the words with their descriptions.\n(i) Congestion\n(ii) Collision\n(iii) Bottleneck\n(iv) Breakdown\n(A) An accident in which two vehicles hit each other\n(B) A situation in which roads are full of traffic\n(C) An occasion when a vehicle stops working\n(D) A place on a road where traffic cannot pass easily",o:["(i)-(C), (ii)-(B), (iii)-(A), (iv)-(D)","(i)-(A), (ii)-(D), (iii)-(B), (iv)-(C)","(i)-(D), (ii)-(C), (iii)-(A), (iv)-(B)","(i)-(B), (ii)-(A), (iii)-(D), (iv)-(C)"]},
-{q:"If you had studied hard, you ______ the examination.",o:["Will clear","Would clear","Would have cleared","Cleared"]},
-{q:"The children (A) / washed their hands (B) / before they ate (C) / their lunch (D). Find error.",o:["Part (A)","Part (B)","Part (C)","No error"]},
-{q:"What does the idiom 'You cannot have your cake and eat it too' mean?",o:["Enjoy forever","Enjoy without payment","Have it both ways","Forgive yourself of guilt"]},
-{q:"Arrange: (a) travel (b) I (c) and (d) together (e) Satish",o:["b-c-e-d-a","e-c-b-a-d","e-c-b-d-a","b-c-e-a-d"]},
-{q:"The idiom 'to take a leaf out of someone's book' means:",o:["Steal something","Damage something","Cheat someone","Imitate someone or follow their example"]},
-{q:"The idiom 'to show someone the ropes' means:",o:["Influence someone","Show someone how powerful you are","Hang someone","Teach someone how to do a job"]},
-{q:"Select the pair of synonymous words.",o:["Colloquial — Grammatical","Excess — Surplus","Fair — Strong","Alert — Inactive"]},
-{q:"What does the idiom 'They left no stone unturned to trace the culprits' mean?",o:["Combed the whole area","Used all available means","Ransacked the place","Searched every corner"]},
-{q:"The festival is a three-day-long celebration that combines ______ feasts with periods of ______ fasting.",o:["Unornamented, resolute","Paltry, obstinate","Scanty, parsimonious","Sumptuous, strict"]},
-{q:"______ uranium is ______ toxic metal. ______ uranium found in Australia accounts for 31% of ______ world's known uranium ore reserves.",o:["No article, a, the, the","The, a, the, no article","No article, a, no article, the","The, the, no article, the"]},
-{q:"A balanced diet should ______ regular exercise in maintaining good health.",o:["Compliment","Complementation","Complement","Complementary"]},
-{q:"What is the antonym of 'pious' in 'She is a pious woman'?",o:["Sweet","Famed","Ungodly","Cruel"]},
-{q:"Both parties were amenable to a peaceful settlement. Synonym of amenable.",o:["Doubtful","Unwilling","Receptive","Disagreeable"]},
-{q:"Jogging is considered an antidote to mental stress. Synonym of antidote.",o:["Poisonous substance","Remedy","Equivalent","Dangerous substance"]},
-{q:"What is the antonym of 'transparent' in 'The window glass is transparent'?",o:["Opaque","Translucent","Susceptible","Fragile"]},
-{q:"What is the antonym of 'unanimous' in 'It was a unanimous decision'?",o:["United","Divided","Compatible","Harmonious"]},
-{q:"His mother was ______ American, though his father was ______ European.",o:["A, a","A, an","An, a","An, an"]},
-{q:"The coordinator was asked to attend ______ the issue and resolve it immediately.",o:["By","In","To","No preposition required"]},
-{q:"Either of the roads ______ to Vasantha Nagar.",o:["Lead","Leads","Have led","Are led"]},
-{q:"Please don't disturb me; I ______ the coins now.",o:["Have been counting","Count","Was counting","Am counting"]},
-{q:"Rishi ______ his engineering course by the end of 2027.",o:["Will completed","Complete","Will have completed","Was completed"]},
-{q:"Choose the correctly spelt word.",o:["Occasional","Occassional","Ocassional","Occational"]},
-{q:"We would be glad to put you up for a few days if you would like to stay. Meaning of 'put you up'",o:["Tolerate someone","Build something","Provide accommodation","Contribute something"]},
-{q:"Manoj played cricket for two days, ______?",o:["Did","Didn't","Wasn't","Wouldn't"]}
-];
-// Answer key encoded to avoid direct view - Do not change order
-const _k = [3,2,3,2,0,3,3,1,1,3,0,2,2,2,1,0,1,2,3,1,3,2,0,2,1];
-let currentQuestion=0,answers=Array(25).fill(null),student=null,timerInterval=null,remaining=1800,isSubmitting=false;
-const colors=[{bg:'#0f1a4a',border:'#2563eb'},{bg:'#14532d',border:'#16a34a'},{bg:'#7c2d12',border:'#ea580c'},{bg:'#581c87',border:'#9333ea'}];
-const $=id=>document.getElementById(id);
-function showError(m){$('loginError').textContent=m}
-function doLogin(){
-  const name=$('stuName').value.trim(),mobile=$('stuMobile').value.trim(),place=$('stuPlace').value.trim();
-  if(name.length<3){showError('Enter your full name.');return}
-  if(!/^[6-9][0-9]{9}$/.test(mobile)){showError('Enter a valid 10-digit mobile number.');return}
-  student={name,mobile,place};
-  $('loginPage').style.display='none';$('instrPage').style.display='block';$('welcomeName').textContent=name;
-  createWatermark(name,mobile);
+
+{
+q:"Choose the correct matching of the words with their descriptions.\n\n(i) Congestion\n(ii) Collision\n(iii) Bottleneck\n(iv) Breakdown\n\n(A) An accident in which two vehicles hit each other\n(B) A situation in which roads are full of traffic\n(C) An occasion when a vehicle stops working\n(D) A place on a road where traffic cannot pass easily",
+o:[
+"(1) (i)-(C), (ii)-(B), (iii)-(A), (iv)-(D)",
+"(2) (i)-(A), (ii)-(D), (iii)-(B), (iv)-(C)",
+"(3) (i)-(D), (ii)-(C), (iii)-(A), (iv)-(B)",
+"(4) (i)-(B), (ii)-(A), (iii)-(D), (iv)-(C)"
+]
+},
+
+{
+q:"Choose the correct option to complete the sentence.\n\nIf you had studied hard, you ______ the examination.",
+o:[
+"(1) Will clear",
+"(2) Would clear",
+"(3) Would have cleared",
+"(4) Cleared"
+]
+},
+
+{
+q:"Identify whether the sentence contains an error.\n\nThe children (A) / washed their hands (B) / before they ate (C) / their lunch (D).",
+o:[
+"(1) Part (A)",
+"(2) Part (B)",
+"(3) Part (C)",
+"(4) No error"
+]
+},
+
+{
+q:"What does the idiom “You cannot have your cake and eat it too” mean?",
+o:[
+"(1) Enjoy something forever",
+"(2) Enjoy something without paying for it",
+"(3) You cannot enjoy two incompatible things at the same time",
+"(4) Forgive yourself for feeling guilty"
+]
+},
+
+{
+q:"Arrange the words in the correct order to form a sentence.\n\n(a) travel\n(b) I\n(c) and\n(d) together\n(e) Satish",
+o:[
+"(1) b-c-e-d-a",
+"(2) e-c-b-a-d",
+"(3) e-c-b-d-a",
+"(4) b-c-e-a-d"
+]
+},
+
+{
+q:"The idiom “to take a leaf out of someone's book” means:",
+o:[
+"(1) Steal something",
+"(2) Damage something",
+"(3) Cheat someone",
+"(4) Imitate someone or follow their example"
+]
+},
+
+{
+q:"The idiom “to show someone the ropes” means:",
+o:[
+"(1) Influence someone",
+"(2) Show someone how powerful you are",
+"(3) Hang someone",
+"(4) Teach someone how to do a job"
+]
+},
+
+{
+q:"Select the pair of synonymous words.",
+o:[
+"(1) Colloquial — Grammatical",
+"(2) Excess — Surplus",
+"(3) Fair — Strong",
+"(4) Alert — Inactive"
+]
+},
+
+{
+q:"What does the idiom “They left no stone unturned to trace the culprits” mean?",
+o:[
+"(1) Combed the whole area",
+"(2) Made every possible effort",
+"(3) Ransacked the place",
+"(4) Gave up the search without making further efforts"
+]
+},
+
+{
+q:"Choose the most appropriate words to complete the sentence.\n\nThe festival is a three-day-long celebration that combines ______ feasts with periods of ______ fasting.",
+o:[
+"(1) Unornamented, resolute",
+"(2) Paltry, obstinate",
+"(3) Scanty, parsimonious",
+"(4) Sumptuous, strict"
+]
+},
+
+{
+q:"Choose the correct sequence of articles.\n\n______ uranium is ______ toxic metal. ______ uranium used in this experiment was stored in ______ laboratory.",
+o:[
+"(1) No article, a, the, the",
+"(2) The, a, the, no article",
+"(3) No article, a, no article, the",
+"(4) The, the, no article, the"
+]
+},
+
+{
+q:"Choose the correct word to complete the sentence.\n\nTea may be used to ______ coffee.",
+o:[
+"(1) Compliment",
+"(2) Complementation",
+"(3) Complement",
+"(4) Complementary"
+]
+},
+
+{
+q:"What is the antonym of “pious” in the sentence “She is a pious woman”?",
+o:[
+"(1) Sweet",
+"(2) Famed",
+"(3) Ungodly",
+"(4) Cruel"
+]
+},
+
+{
+q:"Choose the synonym of “amenable” in the sentence “Both parties were amenable to a peaceful settlement of the land dispute.”",
+o:[
+"(1) Doubtful",
+"(2) Unwilling",
+"(3) Receptive",
+"(4) Disagreeable"
+]
+},
+
+{
+q:"Choose the synonym of “antidote” in the sentence “Jogging is considered an antidote to mental stress.”",
+o:[
+"(1) Poisonous substance",
+"(2) Remedy",
+"(3) Equivalent",
+"(4) Dangerous substance"
+]
+},
+
+{
+q:"What is the antonym of “transparent” in the sentence “The window glass is transparent”?",
+o:[
+"(1) Opaque",
+"(2) Translucent",
+"(3) Susceptible",
+"(4) Fragile"
+]
+},
+
+{
+q:"What is the antonym of “unanimous” in the sentence “It was a unanimous decision”?",
+o:[
+"(1) United",
+"(2) Divided",
+"(3) Compatible",
+"(4) Harmonious"
+]
+},
+
+{
+q:"Choose the correct articles.\n\nHis mother was ______ American, though his father was ______ European.",
+o:[
+"(1) A, a",
+"(2) A, an",
+"(3) An, a",
+"(4) An, an"
+]
+},
+
+{
+q:"Choose the correct preposition.\n\nThe coordinator was asked to attend ______ the issue and resolve it immediately.",
+o:[
+"(1) By",
+"(2) In",
+"(3) To",
+"(4) No preposition required"
+]
+},
+
+{
+q:"Choose the correct verb.\n\nEither of the roads ______ to Vasantha Nagar.",
+o:[
+"(1) Lead",
+"(2) Leads",
+"(3) Have led",
+"(4) Are led"
+]
+},
+
+{
+q:"Choose the correct tense.\n\nPlease don't disturb me; I ______ the coins now.",
+o:[
+"(1) Have been counting",
+"(2) Count",
+"(3) Was counting",
+"(4) Am counting"
+]
+},
+
+{
+q:"Choose the correct verb form.\n\nRishi ______ his engineering course by the end of 2027.",
+o:[
+"(1) Will completed",
+"(2) Complete",
+"(3) Will have completed",
+"(4) Was completed"
+]
+},
+
+{
+q:"Choose the correctly spelt word.",
+o:[
+"(1) Occasional",
+"(2) Occassional",
+"(3) Ocassional",
+"(4) Occational"
+]
+},
+
+{
+q:"What does the expression “put you up” mean in the sentence below?\n\n“We would be glad to put you up for a few days if you would like to stay.”",
+o:[
+"(1) Tolerate someone",
+"(2) Build something",
+"(3) Provide accommodation",
+"(4) Contribute something"
+]
+},
+
+{
+q:"Choose the correct question tag.\n\nManoj played cricket for two days, ______?",
+o:[
+"(1) Did he?",
+"(2) Didn't he?",
+"(3) Wasn't he?",
+"(4) Wouldn't he?"
+]
 }
-function createWatermark(name,mobile){const wm=$('dynamicWatermark');const t=document.createElement('span');t.textContent=name+' | '+mobile+' | MCRES';wm.innerHTML='';for(let y=-100;y<1200;y+=180){for(let x=-100;x<900;x+=190){const it=t.cloneNode(true);it.style.top=y+'px';it.style.left=x+'px';wm.appendChild(it)}}}
-function startTest(){$('instrPage').style.display='none';$('qCard').style.display='block';$('navPanel').style.display='block';$('bottomBar').style.display='flex';createWatermark(student.name,student.mobile);render();startTimer()}
-function startTimer(){if(timerInterval)clearInterval(timerInterval);function tick(){const m=Math.floor(remaining/60),s=remaining%60;$('timer').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');if(remaining<=0){clearInterval(timerInterval);submitTest()}remaining--; }tick();timerInterval=setInterval(tick,1000)}
-function render(){const q=questions[currentQuestion],c=colors[currentQuestion%4];$('qTop').textContent='Q '+(currentQuestion+1)+' / 25';$('qTop').style.background=c.bg;$('qText').textContent=(currentQuestion+1)+'. '+q.q;$('qText').style.borderLeftColor=c.border;$('opts').innerHTML='';q.o.forEach((o,i)=>{const l=document.createElement('label');l.className='opt'+(answers[currentQuestion]===i?' selected':'');const b=document.createElement('b');b.textContent=String.fromCharCode(65+i);const s=document.createElement('span');s.textContent=o;l.append(b,s);l.onclick=()=>{answers[currentQuestion]=i;render();};$('opts').appendChild(l);});renderNav();$('prevBtn').style.visibility=currentQuestion===0?'hidden':'visible';$('nextBtn').textContent=currentQuestion===24?'SUBMIT TEST →':'NEXT →'}
-function renderNav(){$('navGrid').innerHTML='';questions.forEach((_,i)=>{const b=document.createElement('button');b.className='nav-btn';if(i===currentQuestion)b.classList.add('current');if(answers[i]!==null)b.classList.add('answered');b.textContent=i+1;b.onclick=()=>{currentQuestion=i;render();window.scrollTo({top:0,behavior:'smooth'})};$('navGrid').appendChild(b);})}
-$('prevBtn').onclick=()=>{if(currentQuestion>0){currentQuestion--;render();window.scrollTo({top:0,behavior:'smooth'})}};
-$('nextBtn').onclick=()=>{if(currentQuestion<24){currentQuestion++;render();window.scrollTo({top:0,behavior:'smooth'})}else{if(confirm('Are you sure you want to submit?'))submitTest()}};
-function submitTest(){if(isSubmitting)return;isSubmitting=true;clearInterval(timerInterval);let correct=0,wrong=0,unanswered=0;answers.forEach((a,i)=>{if(a===null)unanswered++;else if(a===_k[i])correct++;else wrong++});const score=correct*1 - wrong*0.2;$('qCard').style.display='none';$('navPanel').style.display='none';$('bottomBar').style.display='none';$('result').style.display='block';$('userInfo').textContent='Name: '+student.name+' | Mobile: '+student.mobile;$('score').textContent='Score: '+score.toFixed(2)+' / 25';$('summary').textContent='Correct: '+correct+' | Wrong: '+wrong+' | Unanswered: '+unanswered+' | Negative: -'+(wrong*0.2).toFixed(2);$('review').innerHTML='';questions.forEach((q,i)=>{const row=document.createElement('div');row.className='result-row';const h=document.createElement('b');h.textContent=(i+1)+'. '+q.q;const y=document.createElement('div');const sel=answers[i];const isC=sel===_k[i];y.innerHTML='Your answer: '+(sel===null?'<i>Not answered</i>':q.o[sel])+'<br>Correct answer: <b style="color:#15803d">'+q.o[_k[i]]+'</b>';y.style.color=isC?'#15803d':'#dc2626';row.append(h,y);$('review').appendChild(row);});window.scrollTo({top:0,behavior:'smooth'});}
-function blurQ(){if($('qCard').style.display==='block')$('qCard').style.filter='blur(30px) brightness(.6)'}
-function unblurQ(){$('qCard').style.filter='none'}
-document.addEventListener('visibilitychange',()=>{if(document.hidden)blurQ();else unblurQ()});
-window.addEventListener('blur',blurQ);window.addEventListener('focus',unblurQ);
+
+];
+
+
+/* =========================================
+   GLOBAL VARIABLES
+========================================= */
+
+let current = 0;
+let answers = Array(25).fill(null);
+
+let attemptId = null;
+let attemptToken = null;
+let student = null;
+
+let endTime = null;
+let timerHandle = null;
+let submitting = false;
+
+const $ = id => document.getElementById(id);
+
+
+/* =========================================
+   LOCAL STORAGE
+========================================= */
+
+function storageKey(){
+  return "mcres_eng01_attempt";
+}
+
+function saveAttempt(){
+
+  if(!attemptId) return;
+
+  try{
+
+    localStorage.setItem(
+      storageKey(),
+      JSON.stringify({
+        attemptId:attemptId,
+        attemptToken:attemptToken,
+        student:student,
+        endTime:endTime,
+        answers:answers
+      })
+    );
+
+  }catch(error){
+
+    console.error("Local storage error:",error);
+
+  }
+}
+
+function restoreAttempt(){
+
+  try{
+
+    const saved = JSON.parse(
+      localStorage.getItem(storageKey()) || "null"
+    );
+
+    if(
+      !saved ||
+      !saved.attemptId ||
+      !saved.attemptToken ||
+      !saved.student ||
+      !saved.endTime
+    ){
+      return false;
+    }
+
+    attemptId = saved.attemptId;
+    attemptToken = saved.attemptToken;
+    student = saved.student;
+    endTime = Number(saved.endTime);
+
+    answers =
+      Array.isArray(saved.answers) &&
+      saved.answers.length === 25
+      ? saved.answers.map(value =>
+          Number.isInteger(value) &&
+          value >= 0 &&
+          value <= 3
+          ? value
+          : null
+        )
+      : Array(25).fill(null);
+
+    return Number.isFinite(endTime);
+
+  }catch(error){
+
+    console.error("Restore error:",error);
+    return false;
+
+  }
+}
+
+
+/* =========================================
+   ERROR HANDLING
+========================================= */
+
+function showLoginError(message){
+  $("loginError").textContent = message;
+}
+
+function readableError(error){
+
+  const message = String(error?.message || error || "");
+
+  if(message.includes("Maximum 5 attempts")){
+    return "You have used all 5 attempts.";
+  }
+
+  if(message.includes("access period has ended")){
+    return "The 12-hour test validity has expired.";
+  }
+
+  if(message.includes("currently closed")){
+    return "This test is currently unavailable.";
+  }
+
+  if(message.includes("valid 10-digit")){
+    return "Enter a valid 10-digit mobile number.";
+  }
+
+  if(message.includes("valid student name")){
+    return "Please enter your full name.";
+  }
+
+  if(message.includes("Test settings not found")){
+    return "Test settings are not configured. Please contact MCRES.";
+  }
+
+  return message || "Something went wrong. Please try again.";
+}
+
+
+/* =========================================
+   WATERMARK
+========================================= */
+
+function createWatermark(){
+
+  const box = $("watermark");
+
+  box.innerHTML = "";
+
+  if(!student) return;
+
+  for(let y=10;y<1000;y+=160){
+
+    for(let x=-40;x<950;x+=220){
+
+      const span = document.createElement("span");
+
+      span.textContent =
+        student.name + " | " +
+        student.mobile + " | MCRES";
+
+      span.style.top = y + "px";
+      span.style.left = x + "px";
+
+      box.appendChild(span);
+
+    }
+
+  }
+
+}
+
+
+/* =========================================
+   STUDENT LOGIN AND START TEST
+========================================= */
+
+async function loginStudent(){
+
+  if(!db){
+
+    showLoginError("Supabase library failed to load. Please refresh.");
+    return;
+
+  }
+
+  const name = $("studentName").value.trim();
+  const mobile = $("studentMobile").value.trim();
+
+  if(name.length < 2){
+
+    showLoginError("Please enter your full name.");
+    return;
+
+  }
+
+  if(!/^[6-9][0-9]{9}$/.test(mobile)){
+
+    showLoginError("Enter a valid 10-digit mobile number.");
+    return;
+
+  }
+
+  $("loginBtn").disabled = true;
+  $("loginBtn").textContent = "PLEASE WAIT...";
+
+  showLoginError("");
+
+  try{
+
+    const {data,error} = await db.rpc(
+      "mcres_start_test",
+      {
+        p_name:name,
+        p_mobile:mobile
+      }
+    );
+
+    if(error) throw error;
+
+    const row = Array.isArray(data) ? data[0] : data;
+
+    if(!row){
+
+      throw new Error("No attempt details returned by server.");
+
+    }
+
+    attemptId = row.attempt_id;
+    attemptToken = row.attempt_token;
+
+    student = {
+      name:name,
+      mobile:mobile
+    };
+
+    /*
+      IMPORTANT:
+      SQL returns test_expires_at,
+      not expires_at.
+    */
+
+    const duration = Number(row.duration_seconds || 1800);
+
+    const expiry = new Date(
+      row.test_expires_at
+    ).getTime();
+
+    if(
+      !attemptId ||
+      !attemptToken ||
+      !Number.isFinite(expiry) ||
+      !Number.isFinite(duration)
+    ){
+
+      throw new Error(
+        "Invalid server response. Check SQL return fields."
+      );
+
+    }
+
+    endTime = Math.min(
+      Date.now() + duration * 1000,
+      expiry
+    );
+
+    answers = Array(25).fill(null);
+    current = 0;
+
+    saveAttempt();
+
+    $("login").style.display = "none";
+    $("instructions").style.display = "block";
+
+    $("welcomeName").textContent =
+      name + " | Attempt " + row.attempt_no + " of 5";
+
+    createWatermark();
+
+  }catch(error){
+
+    showLoginError(readableError(error));
+
+    console.error("Start test error:",error);
+
+  }finally{
+
+    $("loginBtn").disabled = false;
+    $("loginBtn").textContent = "CONTINUE →";
+
+  }
+
+}
+
+
+/* =========================================
+   BEGIN OR RESUME TEST
+========================================= */
+
+function beginTest(){
+
+  if(!attemptId || !attemptToken || !student){
+
+    alert("Please login first.");
+    return;
+
+  }
+
+  if(Date.now() >= endTime){
+
+    alert("Your test time or validity has expired.");
+    submitTest();
+    return;
+
+  }
+
+  $("instructions").style.display = "none";
+  $("testArea").style.display = "block";
+  $("bottomBar").style.display = "flex";
+
+  createWatermark();
+  renderQuestion();
+  startTimer();
+
+}
+
+
+/* =========================================
+   TIMER
+========================================= */
+
+function startTimer(){
+
+  if(timerHandle){
+    clearInterval(timerHandle);
+  }
+
+  function tick(){
+
+    const remaining = Math.max(
+      0,
+      Math.ceil((endTime - Date.now()) / 1000)
+    );
+
+    const mins = Math.floor(remaining / 60);
+    const secs = remaining % 60;
+
+    $("timer").textContent =
+      String(mins).padStart(2,"0") +
+      ":" +
+      String(secs).padStart(2,"0");
+
+    if(remaining <= 0){
+
+      clearInterval(timerHandle);
+      timerHandle = null;
+
+      submitTest();
+
+    }
+
+  }
+
+  tick();
+
+  timerHandle = setInterval(tick,1000);
+
+}
+
+
+/* =========================================
+   DISPLAY QUESTION
+========================================= */
+
+function renderQuestion(){
+
+  const q = questions[current];
+
+  $("questionNumber").textContent =
+    "QUESTION " + (current + 1) + " / 25";
+
+  $("questionText").textContent =
+    (current + 1) + ". " + q.q;
+
+  $("options").innerHTML = "";
+
+  q.o.forEach((option,index)=>{
+
+    const label = document.createElement("label");
+
+    label.className =
+      "option" +
+      (answers[current] === index ? " selected" : "");
+
+    const radio = document.createElement("input");
+
+    radio.type = "radio";
+    radio.name = "answer";
+    radio.checked = answers[current] === index;
+
+    const text = document.createElement("span");
+
+    text.textContent = option;
+
+    label.append(radio,text);
+
+    label.addEventListener("click",()=>{
+
+      if(submitting) return;
+
+      answers[current] = index;
+
+      saveAttempt();
+
+      renderQuestion();
+
+    });
+
+    $("options").appendChild(label);
+
+  });
+
+  renderNavigation();
+
+  $("prevBtn").style.visibility =
+    current === 0 ? "hidden" : "visible";
+
+  $("nextBtn").textContent =
+    current === 24 ? "SUBMIT TEST →" : "NEXT →";
+
+}
+
+
+/* =========================================
+   QUESTION NAVIGATION GRID
+========================================= */
+
+function renderNavigation(){
+
+  $("navigation").innerHTML = "";
+
+  questions.forEach((q,index)=>{
+
+    const btn = document.createElement("button");
+
+    btn.className = "nav-btn";
+
+    if(index === current){
+      btn.classList.add("current");
+    }
+
+    if(answers[index] !== null){
+      btn.classList.add("answered");
+    }
+
+    btn.textContent = index + 1;
+
+    btn.onclick = ()=>{
+
+      if(submitting) return;
+
+      current = index;
+
+      renderQuestion();
+
+      window.scrollTo({
+        top:0,
+        behavior:"smooth"
+      });
+
+    };
+
+    $("navigation").appendChild(btn);
+
+  });
+
+}
+
+
+/* =========================================
+   PREVIOUS QUESTION
+========================================= */
+
+function previousQuestion(){
+
+  if(current > 0 && !submitting){
+
+    current--;
+
+    renderQuestion();
+
+    window.scrollTo({
+      top:0,
+      behavior:"smooth"
+    });
+
+  }
+
+}
+
+
+/* =========================================
+   NEXT QUESTION / SUBMIT
+========================================= */
+
+function nextQuestion(){
+
+  if(submitting) return;
+
+  if(Date.now() >= endTime){
+
+    submitTest();
+    return;
+
+  }
+
+  if(current < 24){
+
+    current++;
+
+    renderQuestion();
+
+    window.scrollTo({
+      top:0,
+      behavior:"smooth"
+    });
+
+    return;
+
+  }
+
+  const unanswered = answers.filter(
+    answer => answer === null
+  ).length;
+
+  const message = unanswered
+    ? "You have " + unanswered +
+      " unanswered question(s). Submit the test?"
+    : "Are you sure you want to submit the test?";
+
+  if(confirm(message)){
+
+    submitTest();
+
+  }
+
+}
+
+
+/* =========================================
+   SUBMIT TEST
+   SERVER-SIDE EVALUATION
+========================================= */
+
+async function submitTest(){
+
+  if(
+    submitting ||
+    !attemptId ||
+    !attemptToken ||
+    !db
+  ){
+    return;
+  }
+
+  submitting = true;
+
+  if(timerHandle){
+
+    clearInterval(timerHandle);
+    timerHandle = null;
+
+  }
+
+  $("nextBtn").disabled = true;
+  $("prevBtn").disabled = true;
+
+  $("nextBtn").textContent = "SUBMITTING...";
+
+  try{
+
+    const {data,error} = await db.rpc(
+      "mcres_submit_test",
+      {
+        p_attempt_id:attemptId,
+        p_attempt_token:attemptToken,
+        p_answers:answers
+      }
+    );
+
+    if(error) throw error;
+
+    const row = Array.isArray(data) ? data[0] : data;
+
+    if(!row){
+
+      throw new Error("No result returned from server.");
+
+    }
+
+    showResult(row);
+
+    localStorage.removeItem(storageKey());
+
+  }catch(error){
+
+    submitting = false;
+
+    $("nextBtn").disabled = false;
+    $("prevBtn").disabled = false;
+
+    $("nextBtn").textContent = "RETRY SUBMISSION";
+
+    $("nextBtn").onclick = submitTest;
+
+    alert(
+      "Submission failed. Please check your internet connection and try again.\n\n" +
+      readableError(error)
+    );
+
+    console.error("Submission error:",error);
+
+  }
+
+}
+
+
+/* =========================================
+   DISPLAY RESULT
+   SQL RETURN FIELD NAMES:
+   score, correct, wrong, unanswered,
+   negative, result_status
+========================================= */
+
+function showResult(row){
+
+  $("testArea").style.display = "none";
+  $("bottomBar").style.display = "none";
+  $("result").style.display = "block";
+
+  const score = Number(row.score ?? 0);
+  const correct = Number(row.correct ?? 0);
+  const wrong = Number(row.wrong ?? 0);
+  const unanswered = Number(row.unanswered ?? 0);
+  const negative = Number(row.negative ?? 0);
+
+  $("resultStudent").textContent =
+    "Name: " + student.name +
+    " | Mobile: " + student.mobile;
+
+  $("resultScore").textContent =
+    "Score: " + score.toFixed(2) + " / 25";
+
+  $("resultSummary").innerHTML = "";
+
+  const details = [
+
+    "Correct Answers: " + correct,
+
+    "Wrong Answers: " + wrong,
+
+    "Unanswered: " + unanswered,
+
+    "Negative Marks: -" + negative.toFixed(2),
+
+    "Status: " + (row.result_status || "submitted")
+
+  ];
+
+  details.forEach(item=>{
+
+    const div = document.createElement("div");
+
+    div.className = "result-line";
+
+    div.textContent = item;
+
+    $("resultSummary").appendChild(div);
+
+  });
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+}
+
+
+/* =========================================
+   PAGE LOAD – RESTORE EXISTING ATTEMPT
+========================================= */
+
+window.addEventListener("load",()=>{
+
+  if(restoreAttempt()){
+
+    $("login").style.display = "none";
+
+    $("instructions").style.display = "block";
+
+    $("welcomeName").textContent =
+      student.name + " | Existing Attempt";
+
+    createWatermark();
+
+    if(Date.now() >= endTime){
+
+      $("instructions").style.display = "none";
+
+      $("testArea").style.display = "block";
+
+      $("bottomBar").style.display = "flex";
+
+      renderQuestion();
+
+      submitTest();
+
+    }
+
+  }
+
+});
+
+
+/* =========================================
+   BASIC COPY / PRINT RESTRICTIONS
+========================================= */
+
+document.addEventListener(
+  "contextmenu",
+  event => event.preventDefault()
+);
+
+document.addEventListener("copy",event=>{
+
+  if($("testArea").style.display === "block"){
+
+    event.preventDefault();
+
+  }
+
+});
+
+document.addEventListener("keydown",event=>{
+
+  if(
+    event.key === "PrintScreen" ||
+    (
+      event.ctrlKey &&
+      ["p","s","c"].includes(event.key.toLowerCase())
+    )
+  ){
+
+    if($("testArea").style.display === "block"){
+
+      event.preventDefault();
+
+    }
+
+  }
+
+});
+
 </script>
+
 </body>
 </html>
