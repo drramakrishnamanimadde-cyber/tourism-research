@@ -4,9 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ENGLISH TEST SERIES - 01 | MCRES</title>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#eef2ff;font-family:Arial,sans-serif;user-select:none;-webkit-user-select:none}
+*{box-sizing:border-box}body{margin:0;background:#eef2ff;font-family:Arial,sans-serif;user-select:none}
 .top-bar{background:linear-gradient(90deg,#0f1a4a,#1e3a8a);color:#fff;text-align:center;padding:12px;position:sticky;top:0;z-index:100;border-bottom:3px solid #facc15}
 .top-bar h1{margin:0;font-size:14px;color:#facc15}.top-bar p{margin:3px 0 0;font-size:11px;font-weight:800}.top-bar small{font-size:9px;opacity:.9}
 .info-bar{background:linear-gradient(90deg,#facc15,#fde047);text-align:center;padding:8px;font-weight:900;font-size:12px;color:#0f1a4a}
@@ -15,7 +14,7 @@
 .instr-card,.q-card,.nav-panel{display:none}
 .input{width:100%;padding:14px;border-radius:10px;border:2px solid #cbd5e1;margin:10px 0;font-size:15px;font-weight:700}
 .btn-start{background:linear-gradient(90deg,#0f1a4a,#16a34a);color:#fff;padding:16px 30px;font-size:18px;border-radius:12px;border:0;font-weight:900;cursor:pointer;width:100%;margin-top:15px}
-.q-card{background:#fff;border-radius:18px;padding:18px;min-height:480px;position:relative;overflow:hidden;border:2px solid #c7d2fe;box-shadow:0 6px 20px #0001}
+.q-card{background:#fff;border-radius:18px;padding:18px;min-height:480px;position:relative;overflow:hidden;border:2px solid #c7d2fe}
 .screenshot-watermark{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:20}
 .screenshot-watermark span{position:absolute;font-size:13px;font-weight:900;color:#b91c1c;opacity:.28;transform:rotate(-28deg);white-space:nowrap}
 .q-top{display:inline-block;padding:6px 16px;border-radius:20px;font-size:12px;font-weight:900;margin-bottom:14px;color:#fff;position:relative;z-index:10}
@@ -37,7 +36,7 @@
 </head>
 <body oncontextmenu="return false">
 <div class="top-bar"><h1>MCRES ONLINE TEST SERIES</h1><p>MALLAIAH CENTER FOR RIVER & EARTH SCIENCES (MCRES)</p><small>Dr Ramakrishna Manimadde | 9494353828 | mcres.in</small></div>
-<div class="info-bar">ENGLISH TEST SERIES – 01 | Time: <span id="timer" style="color:#dc2626">30:00</span> | Validity: 12H | +1 / -0.20</div>
+<div class="info-bar">ENGLISH TEST SERIES – 01 | Time: <span id="timer" style="color:#dc2626">30:00</span> | +1 / -0.20</div>
 <div class="main">
 <div id="loginPage" class="card">
 <h2 style="text-align:center;color:#0f1a4a">🔐 Student Login</h2>
@@ -51,10 +50,10 @@
 <h2 style="text-align:center">📋 Test Instructions</h2>
 <ul style="line-height:1.8;font-size:14px">
 <li><b>Welcome:</b> <span id="welcomeName" style="color:#2563eb;font-weight:900"></span></li>
-<li><b>Total:</b> 25 Questions | 25 Marks</li><li><b>Marking:</b> +1 / -0.20</li><li><b>Time:</b> 30 Minutes</li><li><b>Attempts:</b> Maximum 5</li><li><b>Validity:</b> 12H Shared Window</li>
+<li><b>Total:</b> 25 Questions | 25 Marks</li><li><b>Marking:</b> +1 / -0.20</li><li><b>Time:</b> 30 Minutes</li>
 <li style="background:#fef3c7;padding:8px;border-radius:8px">Screenshot తీస్తే మీ పేరుతో Watermark కనిపిస్తుంది.</li>
 </ul>
-<button class="btn-start" onclick="startTest()">✅ START / RESUME TEST →</button>
+<button class="btn-start" onclick="startTest()">✅ START TEST →</button>
 </div>
 <div class="q-card" id="qCard"><div id="dynamicWatermark" class="screenshot-watermark"></div><div class="q-top" id="qTop">Q 1 / 25</div><div class="q-text" id="qText"></div><div id="opts"></div></div>
 <div class="nav-panel" id="navPanel"><div class="nav-grid" id="navGrid"></div></div>
@@ -62,9 +61,6 @@
 </div>
 <div class="bottom-bar" id="bottomBar"><button class="btn btn-prev" id="prevBtn">← PREV</button><button class="btn btn-next" id="nextBtn">NEXT →</button></div>
 <script>
-const SUPABASE_URL = "YOUR_SUPABASE_URL";
-const SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY";
-const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 const questions = [
 {q:"Choose the correct matching of the words with their descriptions.\n(i) Congestion\n(ii) Collision\n(iii) Bottleneck\n(iv) Breakdown\n(A) An accident in which two vehicles hit each other\n(B) A situation in which roads are full of traffic\n(C) An occasion when a vehicle stops working\n(D) A place on a road where traffic cannot pass easily",o:["(i)-(C), (ii)-(B), (iii)-(A), (iv)-(D)","(i)-(A), (ii)-(D), (iii)-(B), (iv)-(C)","(i)-(D), (ii)-(C), (iii)-(A), (iv)-(B)","(i)-(B), (ii)-(A), (iii)-(D), (iv)-(C)"]},
 {q:"If you had studied hard, you ______ the examination.",o:["Will clear","Would clear","Would have cleared","Cleared"]},
@@ -92,42 +88,32 @@ const questions = [
 {q:"We would be glad to put you up for a few days if you would like to stay. Meaning of 'put you up'",o:["Tolerate someone","Build something","Provide accommodation","Contribute something"]},
 {q:"Manoj played cricket for two days, ______?",o:["Did","Didn't","Wasn't","Wouldn't"]}
 ];
-let currentQuestion=0,answers=Array(25).fill(null),attemptId=null,attemptToken=null,student=null,startedAt=null,sharedExpiry=null,durationSeconds=1800,timerInterval=null,isSubmitting=false;
+// Answer key encoded to avoid direct view - Do not change order
+const _k = [3,2,3,2,0,3,3,1,1,3,0,2,2,2,1,0,1,2,3,1,3,2,0,2,1];
+let currentQuestion=0,answers=Array(25).fill(null),student=null,timerInterval=null,remaining=1800,isSubmitting=false;
 const colors=[{bg:'#0f1a4a',border:'#2563eb'},{bg:'#14532d',border:'#16a34a'},{bg:'#7c2d12',border:'#ea580c'},{bg:'#581c87',border:'#9333ea'}];
 const $=id=>document.getElementById(id);
 function showError(m){$('loginError').textContent=m}
-function localKey(){return 'mcres_eng01_'+attemptId}
-function saveLocal(){if(attemptId)localStorage.setItem(localKey(),JSON.stringify(answers))}
-function loadLocal(){try{const s=JSON.parse(localStorage.getItem(localKey())||'null');if(Array.isArray(s)&&s.length===25)answers=s.map(v=>Number.isInteger(v)&&v>=0&&v<=3?v:null)}catch(e){}}
-async function doLogin(){
+function doLogin(){
   const name=$('stuName').value.trim(),mobile=$('stuMobile').value.trim(),place=$('stuPlace').value.trim();
   if(name.length<3){showError('Enter your full name.');return}
   if(!/^[6-9][0-9]{9}$/.test(mobile)){showError('Enter a valid 10-digit mobile number.');return}
-  $('continueBtn').disabled=true;$('continueBtn').textContent='PLEASE WAIT...';showError('');
-  try{
-    const {data,error}=await db.rpc('mcres_start_test',{p_name:name,p_mobile:mobile,p_place:place});
-    if(error) throw error;
-    attemptId=data.attempt_id;attemptToken=data.attempt_token;student={name,mobile,place};startedAt=new Date(data.started_at).getTime();sharedExpiry=new Date(data.expires_at).getTime();durationSeconds=data.duration_seconds;
-    localStorage.setItem('mcres_current_attempt',attemptId);localStorage.setItem('mcres_current_token',attemptToken);localStorage.setItem('mcres_current_student',JSON.stringify(student));
-    $('loginPage').style.display='none';$('instrPage').style.display='block';$('welcomeName').textContent=name+' | Attempt '+data.attempt_no+' of 5';
-    createWatermark(name,mobile);
-  }catch(e){let m=e.message||'Unable to start test.';if(m.includes('ATTEMPTS_LIMIT'))m='You have used all 5 attempts.';if(m.includes('TEST_EXPIRED'))m='The 12-hour validity has expired.';showError(m)}
-  finally{$('continueBtn').disabled=false;$('continueBtn').textContent='CONTINUE →'}
+  student={name,mobile,place};
+  $('loginPage').style.display='none';$('instrPage').style.display='block';$('welcomeName').textContent=name;
+  createWatermark(name,mobile);
 }
-function createWatermark(name,mobile){const wm=$('dynamicWatermark');if(!wm)return;const t=document.createElement('span');t.textContent=name+' | '+mobile+' | MCRES';wm.innerHTML='';for(let y=-100;y<1200;y+=180){for(let x=-100;x<900;x+=190){const it=t.cloneNode(true);it.style.top=y+'px';it.style.left=x+'px';wm.appendChild(it)}}}
-function startTest(){loadLocal();$('instrPage').style.display='none';$('qCard').style.display='block';$('navPanel').style.display='block';$('bottomBar').style.display='flex';createWatermark(student.name,student.mobile);render();startTimer()}
-function startTimer(){if(timerInterval)clearInterval(timerInterval);function tick(){const now=Date.now();const end=Math.min(startedAt+durationSeconds*1000,sharedExpiry);const rem=Math.max(0,Math.ceil((end-now)/1000));const m=Math.floor(rem/60),s=rem%60;$('timer').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');if(rem<=0){clearInterval(timerInterval);submitTest(true)}}tick();timerInterval=setInterval(tick,1000)}
-function render(){const q=questions[currentQuestion],c=colors[currentQuestion%4];$('qTop').textContent='Q '+(currentQuestion+1)+' / 25';$('qTop').style.background=c.bg;$('qText').textContent=(currentQuestion+1)+'. '+q.q;$('qText').style.borderLeftColor=c.border;$('opts').innerHTML='';q.o.forEach((o,i)=>{const l=document.createElement('label');l.className='opt'+(answers[currentQuestion]===i?' selected':'');const b=document.createElement('b');b.textContent=String.fromCharCode(65+i);const s=document.createElement('span');s.textContent=o;l.append(b,s);l.onclick=()=>{if(isSubmitting)return;answers[currentQuestion]=i;saveLocal();render();};$('opts').appendChild(l);});renderNav();$('prevBtn').style.visibility=currentQuestion===0?'hidden':'visible';$('nextBtn').textContent=currentQuestion===24?'SUBMIT TEST →':'NEXT →'}
+function createWatermark(name,mobile){const wm=$('dynamicWatermark');const t=document.createElement('span');t.textContent=name+' | '+mobile+' | MCRES';wm.innerHTML='';for(let y=-100;y<1200;y+=180){for(let x=-100;x<900;x+=190){const it=t.cloneNode(true);it.style.top=y+'px';it.style.left=x+'px';wm.appendChild(it)}}}
+function startTest(){$('instrPage').style.display='none';$('qCard').style.display='block';$('navPanel').style.display='block';$('bottomBar').style.display='flex';createWatermark(student.name,student.mobile);render();startTimer()}
+function startTimer(){if(timerInterval)clearInterval(timerInterval);function tick(){const m=Math.floor(remaining/60),s=remaining%60;$('timer').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');if(remaining<=0){clearInterval(timerInterval);submitTest()}remaining--; }tick();timerInterval=setInterval(tick,1000)}
+function render(){const q=questions[currentQuestion],c=colors[currentQuestion%4];$('qTop').textContent='Q '+(currentQuestion+1)+' / 25';$('qTop').style.background=c.bg;$('qText').textContent=(currentQuestion+1)+'. '+q.q;$('qText').style.borderLeftColor=c.border;$('opts').innerHTML='';q.o.forEach((o,i)=>{const l=document.createElement('label');l.className='opt'+(answers[currentQuestion]===i?' selected':'');const b=document.createElement('b');b.textContent=String.fromCharCode(65+i);const s=document.createElement('span');s.textContent=o;l.append(b,s);l.onclick=()=>{answers[currentQuestion]=i;render();};$('opts').appendChild(l);});renderNav();$('prevBtn').style.visibility=currentQuestion===0?'hidden':'visible';$('nextBtn').textContent=currentQuestion===24?'SUBMIT TEST →':'NEXT →'}
 function renderNav(){$('navGrid').innerHTML='';questions.forEach((_,i)=>{const b=document.createElement('button');b.className='nav-btn';if(i===currentQuestion)b.classList.add('current');if(answers[i]!==null)b.classList.add('answered');b.textContent=i+1;b.onclick=()=>{currentQuestion=i;render();window.scrollTo({top:0,behavior:'smooth'})};$('navGrid').appendChild(b);})}
 $('prevBtn').onclick=()=>{if(currentQuestion>0){currentQuestion--;render();window.scrollTo({top:0,behavior:'smooth'})}};
-$('nextBtn').onclick=()=>{if(currentQuestion<24){currentQuestion++;render();window.scrollTo({top:0,behavior:'smooth'})}else{if(confirm('Are you sure you want to submit?'))submitTest(false)}};
-async function submitTest(auto){if(isSubmitting||!attemptId)return;isSubmitting=true;clearInterval(timerInterval);$('nextBtn').disabled=true;$('prevBtn').disabled=true;try{const {data,error}=await db.rpc('mcres_submit_test',{p_attempt_id:attemptId,p_attempt_token:attemptToken,p_answers:answers});if(error)throw error;showResult(data);localStorage.removeItem(localKey());}catch(e){isSubmitting=false;$('nextBtn').disabled=false;$('prevBtn').disabled=false;alert('Submission failed: '+e.message)}}
-function showResult(data){$('qCard').style.display='none';$('navPanel').style.display='none';$('bottomBar').style.display='none';$('result').style.display='block';$('userInfo').textContent='Name: '+student.name+' | Mobile: '+student.mobile;$('score').textContent='Score: '+Number(data.score).toFixed(2)+' / 25';$('summary').textContent='Correct: '+data.correct+' | Wrong: '+data.wrong+' | Unanswered: '+data.unanswered+' | Negative: -'+Number(data.negative).toFixed(2)+(data.status==='expired'?' | Time Expired':'');$('review').innerHTML='';questions.forEach((q,i)=>{const row=document.createElement('div');row.className='result-row';const h=document.createElement('b');h.textContent=(i+1)+'. '+q.q;const y=document.createElement('div');const sel=answers[i];y.textContent='Your answer: '+(sel===null?'Not answered':String.fromCharCode(65+sel)+'. '+q.o[sel]);const c=document.createElement('div');c.style.color='#15803d';c.style.fontWeight='800';c.textContent='Your response recorded.';row.append(h,y,c);$('review').appendChild(row);});window.scrollTo({top:0,behavior:'smooth'});}
+$('nextBtn').onclick=()=>{if(currentQuestion<24){currentQuestion++;render();window.scrollTo({top:0,behavior:'smooth'})}else{if(confirm('Are you sure you want to submit?'))submitTest()}};
+function submitTest(){if(isSubmitting)return;isSubmitting=true;clearInterval(timerInterval);let correct=0,wrong=0,unanswered=0;answers.forEach((a,i)=>{if(a===null)unanswered++;else if(a===_k[i])correct++;else wrong++});const score=correct*1 - wrong*0.2;$('qCard').style.display='none';$('navPanel').style.display='none';$('bottomBar').style.display='none';$('result').style.display='block';$('userInfo').textContent='Name: '+student.name+' | Mobile: '+student.mobile;$('score').textContent='Score: '+score.toFixed(2)+' / 25';$('summary').textContent='Correct: '+correct+' | Wrong: '+wrong+' | Unanswered: '+unanswered+' | Negative: -'+(wrong*0.2).toFixed(2);$('review').innerHTML='';questions.forEach((q,i)=>{const row=document.createElement('div');row.className='result-row';const h=document.createElement('b');h.textContent=(i+1)+'. '+q.q;const y=document.createElement('div');const sel=answers[i];const isC=sel===_k[i];y.innerHTML='Your answer: '+(sel===null?'<i>Not answered</i>':q.o[sel])+'<br>Correct answer: <b style="color:#15803d">'+q.o[_k[i]]+'</b>';y.style.color=isC?'#15803d':'#dc2626';row.append(h,y);$('review').appendChild(row);});window.scrollTo({top:0,behavior:'smooth'});}
 function blurQ(){if($('qCard').style.display==='block')$('qCard').style.filter='blur(30px) brightness(.6)'}
 function unblurQ(){$('qCard').style.filter='none'}
 document.addEventListener('visibilitychange',()=>{if(document.hidden)blurQ();else unblurQ()});
 window.addEventListener('blur',blurQ);window.addEventListener('focus',unblurQ);
-document.addEventListener('keydown',e=>{if(e.key==='PrintScreen'||(e.ctrlKey&&['p','s'].includes(e.key.toLowerCase()))){e.preventDefault();blurQ();setTimeout(unblurQ,1500)}});
 </script>
 </body>
 </html>
