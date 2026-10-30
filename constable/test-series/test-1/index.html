@@ -1,160 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ENGLISH TEST SERIES - 01 | MCRES</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#eef2ff;font-family:Arial,sans-serif;user-select:none!important;-webkit-user-select:none}
+*{box-sizing:border-box}body{margin:0;background:#eef2ff;font-family:Arial,sans-serif;user-select:none;-webkit-user-select:none}
 .top-bar{background:linear-gradient(90deg,#0f1a4a,#1e3a8a);color:#fff;text-align:center;padding:12px;position:sticky;top:0;z-index:100;border-bottom:3px solid #facc15}
 .top-bar h1{margin:0;font-size:14px;color:#facc15}.top-bar p{margin:3px 0 0;font-size:11px;font-weight:800}.top-bar small{font-size:9px;opacity:.9}
-.card{background:#fff;border-radius:18px;padding:22px;max-width:700px;margin:20px auto;border:2px solid #c7d2fe;box-shadow:0 8px 25px #0001}
+.info-bar{background:linear-gradient(90deg,#facc15,#fde047);text-align:center;padding:8px;font-weight:900;font-size:12px;color:#0f1a4a}
+.main{max-width:850px;margin:auto;padding:12px 10px 110px}
+.card,.instr-card{background:#fff;border-radius:18px;padding:22px;max-width:700px;margin:20px auto;border:2px solid #c7d2fe;box-shadow:0 8px 25px #0001}
+.instr-card,.q-card,.nav-panel{display:none}
 .input{width:100%;padding:14px;border-radius:10px;border:2px solid #cbd5e1;margin:10px 0;font-size:15px;font-weight:700}
-.instr-card{background:#fff;border-radius:18px;padding:22px;max-width:700px;margin:20px auto;border:2px solid #c7d2fe;box-shadow:0 8px 25px #0001;display:none}
-.q-card{background:#fff;border-radius:18px;padding:18px;min-height:500px;position:relative;overflow:hidden;border:2px solid #c7d2fe;box-shadow:0 6px 20px #0001;display:none;transition:filter .3s}
+.btn-start{background:linear-gradient(90deg,#0f1a4a,#16a34a);color:#fff;padding:16px 30px;font-size:18px;border-radius:12px;border:0;font-weight:900;cursor:pointer;width:100%;margin-top:15px}
+.q-card{background:#fff;border-radius:18px;padding:18px;min-height:480px;position:relative;overflow:hidden;border:2px solid #c7d2fe;box-shadow:0 6px 20px #0001}
 .screenshot-watermark{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:20}
-.screenshot-watermark span{position:absolute;font-size:13px;font-weight:900;color:#b91c1c;opacity:0.32;transform:rotate(-28deg);white-space:nowrap;letter-spacing:.5px}
+.screenshot-watermark span{position:absolute;font-size:13px;font-weight:900;color:#b91c1c;opacity:.28;transform:rotate(-28deg);white-space:nowrap}
 .q-top{display:inline-block;padding:6px 16px;border-radius:20px;font-size:12px;font-weight:900;margin-bottom:14px;color:#fff;position:relative;z-index:10}
-.q-text{font-weight:800;font-size:15px;position:relative;z-index:10;line-height:1.7;white-space:pre-line;padding:14px;border-radius:12px;border-left:7px solid;background:rgba(255,255,255,0.85)}
-/* YELLOW OPTIONS - SAME COLOR */
-.opt{display:flex;gap:12px;padding:14px;border-radius:14px;margin:12px 0;cursor:pointer;font-weight:700;position:relative;z-index:10;border:2.5px solid #facc15;background:#fffef0!important;color:#0f1a4a}
-.opt b{display:inline-flex;min-width:26px;height:26px;border-radius:50%;align-items:center;justify-content:center;background:#facc15;color:#0f1a4a;font-size:12px;font-weight:900}
-/* BLUE ON SELECT */
-.opt.selected{transform:scale(1.02);box-shadow:0 5px 15px #0003;background:linear-gradient(90deg,#0f1a4a,#2563eb)!important;color:#fff!important;border-color:#0f1a4a!important}
-.opt.selected b{background:#fff!important;color:#0f1a4a!important}
-.nav-panel{background:#fff;border-radius:16px;padding:12px;margin-top:14px;border:2px solid #e0e7ff;display:none}
+.q-text{font-weight:800;font-size:15px;position:relative;z-index:10;line-height:1.7;white-space:pre-line;padding:14px;border-radius:12px;border-left:7px solid;background:rgba(255,255,255,.9)}
+.opt{display:flex;gap:12px;padding:14px;border-radius:14px;margin:12px 0;cursor:pointer;font-weight:700;position:relative;z-index:10;border:2.5px solid #facc15;background:#fffef0;color:#0f1a4a}
+.opt b{display:inline-flex;min-width:26px;height:26px;border-radius:50%;align-items:center;justify-content:center;background:#facc15;color:#0f1a4a;font-size:12px}
+.opt.selected{transform:scale(1.01);box-shadow:0 5px 15px #0003;background:linear-gradient(90deg,#0f1a4a,#2563eb);color:#fff;border-color:#0f1a4a}
+.opt.selected b{background:#fff;color:#0f1a4a}
+.nav-panel{background:#fff;border-radius:16px;padding:12px;margin-top:14px;border:2px solid #e0e7ff}
 .nav-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
 .nav-btn{padding:11px 0;border-radius:10px;border:2px solid #cbd5e1;background:#fff;font-weight:800;font-size:13px;cursor:pointer}
 .nav-btn.current{background:linear-gradient(90deg,#0f1a4a,#2563eb);color:#fff}.nav-btn.answered{background:#22c55e;color:#fff;border-color:#16a34a}
-.bottom-bar{position:fixed;bottom:0;left:0;right:0;background:#fff;padding:12px;border-top:2px solid #e0e7ff;z-index:100;display:flex;gap:10px;display:none}
+.bottom-bar{position:fixed;bottom:0;left:0;right:0;background:#fff;padding:12px;border-top:2px solid #e0e7ff;z-index:100;display:none;gap:10px}
 .btn{flex:1;padding:14px;border-radius:12px;border:0;font-weight:900;font-size:15px;cursor:pointer}
 .btn-prev{background:#e2e8f0;color:#0f1a4a;border:2px solid #cbd5e1}.btn-next{background:linear-gradient(90deg,#0f1a4a,#2563eb);color:#facc15}
-.btn-start{background:linear-gradient(90deg,#0f1a4a,#16a34a);color:#fff;padding:16px 30px;font-size:18px;border-radius:12px;border:0;font-weight:900;cursor:pointer;width:100%;margin-top:15px}
-.main{max-width:850px;margin:auto;padding:12px 10px 110px}
+#result{display:none}.result-row{padding:12px 0;border-bottom:1px solid #eee;line-height:1.6;font-size:14px}
+.notice{padding:12px;border-radius:10px;background:#eff6ff;color:#0f1a4a;font-size:13px;margin:12px 0}
 </style>
 </head>
 <body oncontextmenu="return false">
 <div class="top-bar"><h1>MCRES ONLINE TEST SERIES</h1><p>MALLAIAH CENTER FOR RIVER & EARTH SCIENCES (MCRES)</p><small>Dr Ramakrishna Manimadde | 9494353828 | mcres.in</small></div>
-<div style="background:linear-gradient(90deg,#facc15,#fde047);text-align:center;padding:8px;font-weight:900;font-size:12px;color:#0f1a4a">ENGLISH TEST SERIES – 01 | Time: <span id="timer" style="color:#dc2626">30:00</span> | Valid: 12H | +1 / -0.20</div>
+<div class="info-bar">ENGLISH TEST SERIES – 01 | Time: <span id="timer" style="color:#dc2626">30:00</span> | Validity: 12H | +1 / -0.20</div>
 <div class="main">
 <div id="loginPage" class="card">
-<h2 style="text-align:center;color:#0f1a4a;margin-top:0">🔐 Student Login</h2>
-<input id="stuName" class="input" placeholder="Full Name">
+<h2 style="text-align:center;color:#0f1a4a">🔐 Student Login</h2>
+<input id="stuName" class="input" placeholder="Full Name" maxlength="80">
 <input id="stuMobile" class="input" type="tel" maxlength="10" placeholder="Mobile Number">
-<input id="stuPlace" class="input" placeholder="Place (Optional)">
-<div id="loginError" style="color:#dc2626;font-size:12px;font-weight:800;margin-top:10px;display:none"></div>
-<button class="btn-start" onclick="doLogin()">CONTINUE →</button>
+<input id="stuPlace" class="input" placeholder="Place (Optional)" maxlength="80">
+<div id="loginError" style="color:#dc2626;font-size:13px;font-weight:800"></div>
+<button class="btn-start" id="continueBtn" onclick="doLogin()">CONTINUE →</button>
 </div>
 <div id="instrPage" class="instr-card">
 <h2 style="text-align:center">📋 Test Instructions</h2>
-<ul style="line-height:1.8;font-size:14px"><li><b>Welcome:</b> <span id="welcomeName" style="color:#2563eb;font-weight:900"></span></li><li><b>Total:</b> 25 Qs | 25 Marks | +1 / -0.20</li><li><b>Time:</b> 30 Min | <b>Validity:</b> 12H From First Open</li><li style="background:#fef3c7;padding:8px;border-radius:8px;border-left:4px solid #f59e0b">Screenshot తీస్తే మీ పేరుతో Watermark వస్తుంది</li></ul>
-<button class="btn-start" onclick="startTest()">✅ START TEST →</button>
+<ul style="line-height:1.8;font-size:14px">
+<li><b>Welcome:</b> <span id="welcomeName" style="color:#2563eb;font-weight:900"></span></li>
+<li><b>Total:</b> 25 Questions | 25 Marks</li><li><b>Marking:</b> +1 / -0.20</li><li><b>Time:</b> 30 Minutes</li><li><b>Attempts:</b> Maximum 5</li><li><b>Validity:</b> Shared 12-hour window</li>
+<li style="background:#fef3c7;padding:8px;border-radius:8px">Screenshot తీస్తే మీ పేరుతో Watermark కనిపిస్తుంది.</li>
+</ul>
+<div class="notice">మీ సమాధానాలు ఈ బ్రౌజర్‌లో తాత్కాలికంగా సేవ్ అవుతాయి.</div>
+<button class="btn-start" onclick="startTest()">✅ START / RESUME TEST →</button>
 </div>
-<div class="q-card" id="qCard">
-<div id="dynamicWatermark" class="screenshot-watermark"></div>
-<div class="q-top" id="qTop">Q 1 / 25</div><div class="q-text" id="qText"></div><div id="opts"></div></div>
+<div class="q-card" id="qCard"><div id="dynamicWatermark" class="screenshot-watermark"></div><div class="q-top" id="qTop">Q 1 / 25</div><div class="q-text" id="qText"></div><div id="opts"></div></div>
 <div class="nav-panel" id="navPanel"><div class="nav-grid" id="navGrid"></div></div>
-<div id="result" style="display:none" class="card"><h2>Result</h2><div id="userInfo" style="background:#eff6ff;padding:10px;border-radius:8px;font-size:13px;margin-bottom:12px"></div><div id="score" style="font-size:28px;font-weight:900;color:#047857"></div><p id="summary"></p><div id="review"></div></div>
+<div id="result" class="card"><h2>MCRES TEST RESULT</h2><div id="userInfo" class="notice"></div><div id="score" style="font-size:28px;font-weight:900;color:#047857"></div><p id="summary"></p><div id="review"></div></div>
 </div>
 <div class="bottom-bar" id="bottomBar"><button class="btn btn-prev" id="prevBtn">← PREV</button><button class="btn btn-next" id="nextBtn">NEXT →</button></div>
 <script>
-const DATA_KEY='mcres_students_v10'; 
-const START_KEY='mcres_12h_from_open_v2'; 
-const EXPIRE_MS=12*60*60*1000;
-const urlParams=new URLSearchParams(window.location.search); const isAdmin=urlParams.has('admin');
-let sT=localStorage.getItem(START_KEY); 
-if(!sT){sT=Date.now();localStorage.setItem(START_KEY,sT);} else sT=parseInt(sT);
-if(!isAdmin && Date.now()-sT>EXPIRE_MS){
-  document.body.innerHTML=`<div style="text-align:center;margin-top:100px;padding:20px"><h2 style="color:#dc2626">⏰ 12 Hours Expired</h2><p>Link validity over.<br>Contact: <b>9494353828</b></p><button onclick="localStorage.removeItem('${START_KEY}');location.reload()" style="padding:12px 24px;background:#1e3a8a;color:#fff;border:0;border-radius:8px;margin-top:15px;font-weight:700">RESET</button></div>`;
-  throw new Error('Expired');
-}
-if(isAdmin){document.body.innerHTML=`<div style="max-width:800px;margin:20px auto;background:#fff;padding:20px;border-radius:16px"><h2>Total: <span id="totalCount"></span></h2><div id="adminList"></div></div>`;const data=JSON.parse(localStorage.getItem(DATA_KEY)||'[]');document.getElementById('totalCount').textContent=data.length;document.getElementById('adminList').innerHTML=data.map((d,i)=>`<div style="padding:8px;border-bottom:1px solid #eee"><b>${i+1}. ${d.name}</b> - ${d.mobile} - Score: ${d.score||'In Progress'}</div>`).join('');throw new Error('Admin');}
-function createWatermark(name,mobile){
-  var wm=document.getElementById('dynamicWatermark');
-  if(!wm) return;
-  var wmText=(name||'')+' '+(mobile||'')+' | MCRES';
-  var html='';
-  for(var i=-140;i<1000;i+=170){
-    for(var j=-100;j<1600;j+=190){
-      html+='<span style="top:'+j+'px;left:'+i+'px">'+wmText+'</span>';
-    }
-  }
-  wm.innerHTML=html;
-}
-function doLogin(){
- const name=document.getElementById('stuName').value.trim(); const mobile=document.getElementById('stuMobile').value.trim(); const place=document.getElementById('stuPlace').value.trim(); const err=document.getElementById('loginError');
- if(name.length<3){err.textContent='❌ Enter Name';err.style.display='block';return;}
- if(!/^[6-9][0-9]{9}$/.test(mobile)){err.textContent='❌ Enter valid Mobile';err.style.display='block';return;}
- const entry={name,mobile,place,date:new Date().toLocaleString(),score:'In Progress'}; const list=JSON.parse(localStorage.getItem(DATA_KEY)||'[]'); list.push(entry); localStorage.setItem(DATA_KEY,JSON.stringify(list)); localStorage.setItem('mcres_current_user',JSON.stringify(entry));
- createWatermark(name,mobile);
- document.getElementById('loginPage').style.display='none'; document.getElementById('instrPage').style.display='block'; document.getElementById('welcomeName').textContent=name;
-}
-const qColors=[{bg:'#0f1a4a',light:'#eff6ff',border:'#2563eb'},{bg:'#14532d',light:'#f0fdf4',border:'#16a34a'},{bg:'#7c2d12',light:'#fff7ed',border:'#ea580c'},{bg:'#581c87',light:'#faf5ff',border:'#9333ea'}];
-const questions=[
-{q:"Choose the correct matching of the words with their descriptions.\n(i) Congestion\n(ii) Collision\n(iii) Bottleneck\n(iv) Breakdown\n(A) An accident in which two vehicles hit each other\n(B) A situation in which roads are full of traffic\n(C) An occasion when a vehicle stops working\n(D) A place on a road where traffic cannot pass easily",o:["(i)-(C), (ii)-(B), (iii)-(A), (iv)-(D)","(i)-(A), (ii)-(D), (iii)-(B), (iv)-(C)","(i)-(D), (ii)-(C), (iii)-(A), (iv)-(B)","(i)-(B), (ii)-(A), (iii)-(D), (iv)-(C)"],a:3},
-{q:"If you had studied hard, you ______ the examination.",o:["Will clear","Would clear","Would have cleared","Cleared"],a:2},
-{q:"The children (A) / washed their hands (B) / before they ate (C) / their lunch (D). Find error.",o:["Part (A)","Part (B)","Part (C)","No error"],a:3},
-{q:"What does the idiom 'You cannot have your cake and eat it too' mean?",o:["Enjoy forever","Enjoy without payment","Have it both ways","Forgive yourself of guilt"],a:2},
-{q:"Arrange: (a) travel (b) I (c) and (d) together (e) Satish",o:["b-c-e-d-a","e-c-b-a-d","e-c-b-d-a","b-c-e-a-d"],a:1},
-{q:"The idiom 'to take a leaf out of someone's book' means:",o:["Steal something","Damage something","Cheat someone","Imitate someone or follow their example"],a:3},
-{q:"The idiom 'to show someone the ropes' means:",o:["Influence someone","Show someone how powerful you are","Hang someone","Teach someone how to do a job"],a:3},
-{q:"Select the pair of synonymous words.",o:["Colloquial — Grammatical","Excess — Surplus","Fair — Strong","Alert — Inactive"],a:1},
-{q:"What does the idiom 'They left no stone unturned to trace the culprits' mean?",o:["Combed the whole area","Used all available means","Ransacked the place","Searched every corner"],a:1},
-{q:"The festival is a three-day-long celebration that combines ______ feasts with periods of ______ fasting.",o:["Unornamented, resolute","Paltry, obstinate","Scanty, parsimonious","Sumptuous, strict"],a:3},
-{q:"______ uranium is ______ toxic metal. ______ uranium found in Australia accounts for 31% of ______ world's known uranium ore reserves.",o:["No article, a, the, the","The, a, the, no article","No article, a, no article, the","The, the, no article, the"],a:0},
-{q:"A balanced diet should ______ regular exercise in maintaining good health.",o:["Compliment","Complementation","Complement","Complementary"],a:2},
-{q:"What is the antonym of 'pious' in 'She is a pious woman'?",o:["Sweet","Famed","Ungodly","Cruel"],a:2},
-{q:"Both parties were amenable to a peaceful settlement. Synonym of amenable.",o:["Doubtful","Unwilling","Receptive","Disagreeable"],a:2},
-{q:"Jogging is considered an antidote to mental stress. Synonym of antidote.",o:["Poisonous substance","Remedy","Equivalent","Dangerous substance"],a:1},
-{q:"What is the antonym of 'transparent' in 'The window glass is transparent'?",o:["Opaque","Translucent","Susceptible","Fragile"],a:0},
-{q:"What is the antonym of 'unanimous' in 'It was a unanimous decision'?",o:["United","Divided","Compatible","Harmonious"],a:1},
-{q:"His mother was ______ American, though his father was ______ European.",o:["A, a","A, an","An, a","An, an"],a:2},
-{q:"The coordinator was asked to attend ______ the issue and resolve it immediately.",o:["By","In","To","No preposition required"],a:2},
-{q:"Either of the roads ______ to Vasantha Nagar.",o:["Lead","Leads","Have led","Are led"],a:1},
-{q:"Please don't disturb me; I ______ the coins now.",o:["Have been counting","Count","Was counting","Am counting"],a:3},
-{q:"Rishi ______ his engineering course by the end of 2027.",o:["Will completed","Complete","Will have completed","Was completed"],a:2},
-{q:"Choose the correctly spelt word.",o:["Occasional","Occassional","Ocassional","Occational"],a:0},
-{q:"We would be glad to put you up for a few days if you would like to stay. Meaning of 'put you up'",o:["Tolerate someone","Build something","Provide accommodation","Contribute something"],a:2},
-{q:"Manoj played cricket for two days, ______?",o:["Did","Didn't","Wasn't","Wouldn't"],a:1}
+const SUPABASE_URL = "YOUR_SUPABASE_URL";
+const SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY";
+const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const questions = [
+{q:"Choose the correct matching of the words with their descriptions.\n(i) Congestion\n(ii) Collision\n(iii) Bottleneck\n(iv) Breakdown\n(A) An accident in which two vehicles hit each other\n(B) A situation in which roads are full of traffic\n(C) An occasion when a vehicle stops working\n(D) A place on a road where traffic cannot pass easily",o:["(i)-(C), (ii)-(B), (iii)-(A), (iv)-(D)","(i)-(A), (ii)-(D), (iii)-(B), (iv)-(C)","(i)-(D), (ii)-(C), (iii)-(A), (iv)-(B)","(i)-(B), (ii)-(A), (iii)-(D), (iv)-(C)"]},
+{q:"If you had studied hard, you ______ the examination.",o:["Will clear","Would clear","Would have cleared","Cleared"]},
+{q:"The children (A) / washed their hands (B) / before they ate (C) / their lunch (D). Find error.",o:["Part (A)","Part (B)","Part (C)","No error"]},
+{q:"What does the idiom 'You cannot have your cake and eat it too' mean?",o:["Enjoy forever","Enjoy without payment","Have it both ways","Forgive yourself of guilt"]},
+{q:"Arrange: (a) travel (b) I (c) and (d) together (e) Satish",o:["b-c-e-d-a","e-c-b-a-d","e-c-b-d-a","b-c-e-a-d"]},
+{q:"The idiom 'to take a leaf out of someone's book' means:",o:["Steal something","Damage something","Cheat someone","Imitate someone or follow their example"]},
+{q:"The idiom 'to show someone the ropes' means:",o:["Influence someone","Show someone how powerful you are","Hang someone","Teach someone how to do a job"]},
+{q:"Select the pair of synonymous words.",o:["Colloquial — Grammatical","Excess — Surplus","Fair — Strong","Alert — Inactive"]},
+{q:"What does the idiom 'They left no stone unturned to trace the culprits' mean?",o:["Combed the whole area","Used all available means","Ransacked the place","Searched every corner"]},
+{q:"The festival is a three-day-long celebration that combines ______ feasts with periods of ______ fasting.",o:["Unornamented, resolute","Paltry, obstinate","Scanty, parsimonious","Sumptuous, strict"]},
+{q:"______ uranium is ______ toxic metal. ______ uranium found in Australia accounts for 31% of ______ world's known uranium ore reserves.",o:["No article, a, the, the","The, a, the, no article","No article, a, no article, the","The, the, no article, the"]},
+{q:"A balanced diet should ______ regular exercise in maintaining good health.",o:["Compliment","Complementation","Complement","Complementary"]},
+{q:"What is the antonym of 'pious' in 'She is a pious woman'?",o:["Sweet","Famed","Ungodly","Cruel"]},
+{q:"Both parties were amenable to a peaceful settlement. Synonym of amenable.",o:["Doubtful","Unwilling","Receptive","Disagreeable"]},
+{q:"Jogging is considered an antidote to mental stress. Synonym of antidote.",o:["Poisonous substance","Remedy","Equivalent","Dangerous substance"]},
+{q:"What is the antonym of 'transparent' in 'The window glass is transparent'?",o:["Opaque","Translucent","Susceptible","Fragile"]},
+{q:"What is the antonym of 'unanimous' in 'It was a unanimous decision'?",o:["United","Divided","Compatible","Harmonious"]},
+{q:"His mother was ______ American, though his father was ______ European.",o:["A, a","A, an","An, a","An, an"]},
+{q:"The coordinator was asked to attend ______ the issue and resolve it immediately.",o:["By","In","To","No preposition required"]},
+{q:"Either of the roads ______ to Vasantha Nagar.",o:["Lead","Leads","Have led","Are led"]},
+{q:"Please don't disturb me; I ______ the coins now.",o:["Have been counting","Count","Was counting","Am counting"]},
+{q:"Rishi ______ his engineering course by the end of 2027.",o:["Will completed","Complete","Will have completed","Was completed"]},
+{q:"Choose the correctly spelt word.",o:["Occasional","Occassional","Ocassional","Occational"]},
+{q:"We would be glad to put you up for a few days if you would like to stay. Meaning of 'put you up'",o:["Tolerate someone","Build something","Provide accommodation","Contribute something"]},
+{q:"Manoj played cricket for two days, ______?",o:["Did","Didn't","Wasn't","Wouldn't"]}
 ];
-let cur=0,ans=Array(25).fill(null),time=30*60,started=false;
-const qText=document.getElementById('qText'),opts=document.getElementById('opts'),qTop=document.getElementById('qTop'),navGrid=document.getElementById('navGrid'),timerEl=document.getElementById('timer');
-function startTest(){
-  document.getElementById('instrPage').style.display='none';
-  document.getElementById('qCard').style.display='block';
-  document.getElementById('navPanel').style.display='block';
-  document.getElementById('bottomBar').style.display='flex';
-  started=true;
-  try{var u=JSON.parse(localStorage.getItem('mcres_current_user')||'null'); if(u&&u.name) createWatermark(u.name,u.mobile);}catch(e){}
-  render();
+let currentQuestion=0,answers=Array(25).fill(null),attemptId=null,student=null,startedAt=null,sharedExpiry=null,durationSeconds=1800,timerInterval=null,isSubmitting=false;
+const colors=[{bg:'#0f1a4a',border:'#2563eb'},{bg:'#14532d',border:'#16a34a'},{bg:'#7c2d12',border:'#ea580c'},{bg:'#581c87',border:'#9333ea'}];
+const $=id=>document.getElementById(id);
+function showError(m){$('loginError').textContent=m}
+function localAnswerKey(){return 'mcres_eng01_answers_'+attemptId}
+function saveLocalAnswers(){if(attemptId){localStorage.setItem(localAnswerKey(),JSON.stringify(answers))}}
+function loadLocalAnswers(){try{const s=JSON.parse(localStorage.getItem(localAnswerKey())||'null');if(Array.isArray(s)&&s.length===25){answers=s.map(v=>Number.isInteger(v)&&v>=0&&v<=3?v:null)}}catch(e){}}
+async function doLogin(){
+  const name=$('stuName').value.trim(),mobile=$('stuMobile').value.trim(),place=$('stuPlace').value.trim();
+  if(name.length<3){showError('Enter your full name.');return}
+  if(!/^[6-9][0-9]{9}$/.test(mobile)){showError('Enter a valid 10-digit mobile number.');return}
+  $('continueBtn').disabled=true;$('continueBtn').textContent='PLEASE WAIT...';showError('');
+  try{
+    const {data,error}=await db.rpc('mcres_start_test',{p_name:name,p_mobile:mobile,p_place:place});
+    if(error) throw error;
+    attemptId=data.attempt_id;student={name,mobile,place};startedAt=new Date(data.started_at).getTime();sharedExpiry=new Date(data.expires_at).getTime();durationSeconds=data.duration_seconds;
+    localStorage.setItem('mcres_current_attempt',attemptId);localStorage.setItem('mcres_current_student',JSON.stringify(student));
+    $('loginPage').style.display='none';$('instrPage').style.display='block';$('welcomeName').textContent=name+' | Attempt '+data.attempt_no+' of 5';
+    createWatermark(name,mobile);
+  }catch(error){let m=error.message||'Unable to start test.';if(m.includes('ATTEMPTS_LIMIT'))m='You have used all 5 attempts.';if(m.includes('TEST_EXPIRED'))m='The 12-hour test validity has expired.';showError(m)}
+  finally{$('continueBtn').disabled=false;$('continueBtn').textContent='CONTINUE →'}
+}
+function createWatermark(name,mobile){
+  const wm=$('dynamicWatermark');if(!wm)return;const text=document.createElement('span');text.textContent=name+' | '+mobile+' | MCRES';wm.innerHTML='';
+  for(let y=-100;y<1200;y+=180){for(let x=-100;x<900;x+=190){const item=text.cloneNode(true);item.style.top=y+'px';item.style.left=x+'px';wm.appendChild(item)}}
+}
+function startTest(){loadLocalAnswers();$('instrPage').style.display='none';$('qCard').style.display='block';$('navPanel').style.display='block';$('bottomBar').style.display='flex';createWatermark(student.name,student.mobile);render();startTimer()}
+function startTimer(){
+  if(timerInterval)clearInterval(timerInterval);
+  function tick(){
+    const now=Date.now();const attemptEnd=startedAt+durationSeconds*1000;const endAt=Math.min(attemptEnd,sharedExpiry);const remaining=Math.max(0,Math.ceil((endAt-now)/1000));
+    const m=Math.floor(remaining/60),s=remaining%60;$('timer').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
+    if(remaining<=0){clearInterval(timerInterval);submitTest(true)}
+  }
+  tick();timerInterval=setInterval(tick,1000);
 }
 function render(){
- const c=qColors[cur%4]; qTop.textContent=`Q ${cur+1} / 25`; qTop.style.background=c.bg;
- qText.textContent=`${cur+1}. ${questions[cur].q}`; qText.style.borderLeftColor=c.border;
- opts.innerHTML=''; questions[cur].o.forEach((o,i)=>{const l=document.createElement('label');l.className='opt'+(ans[cur]===i?' selected':'');l.innerHTML=`<b>${String.fromCharCode(65+i)}</b> <span>${o}</span>`;l.onclick=()=>{ans[cur]=i;renderNav();render();};opts.appendChild(l);});
- renderNav(); document.getElementById('prevBtn').style.visibility=cur===0?'hidden':'visible'; document.getElementById('nextBtn').textContent=cur===24?'SUBMIT →':'NEXT →';
+  const q=questions[currentQuestion],c=colors[currentQuestion%4];
+  $('qTop').textContent='Q '+(currentQuestion+1)+' / 25';$('qTop').style.background=c.bg;$('qText').textContent=(currentQuestion+1)+'. '+q.q;$('qText').style.borderLeftColor=c.border;$('opts').innerHTML='';
+  q.o.forEach((option,index)=>{const label=document.createElement('label');label.className='opt'+(answers[currentQuestion]===index?' selected':'');const letter=document.createElement('b');letter.textContent=String.fromCharCode(65+index);const span=document.createElement('span');span.textContent=option;label.append(letter,span);label.onclick=()=>{if(isSubmitting)return;answers[currentQuestion]=index;saveLocalAnswers();render();};$('opts').appendChild(label);});
+  renderNavigation();$('prevBtn').style.visibility=currentQuestion===0?'hidden':'visible';$('nextBtn').textContent=currentQuestion===24?'SUBMIT TEST →':'NEXT →';
 }
-function renderNav(){navGrid.innerHTML='';questions.forEach((_,i)=>{const b=document.createElement('button');b.className='nav-btn';if(i===cur)b.classList.add('current');if(ans[i]!==null&&i!==cur)b.classList.add('answered');b.textContent=i+1;b.onclick=()=>{cur=i;render();window.scrollTo({top:0,behavior:'smooth'})};navGrid.appendChild(b);});}
-document.getElementById('nextBtn').onclick=()=>{if(cur<24){cur++;render();window.scrollTo({top:0,behavior:'smooth'})}else{showResult()}};
-document.getElementById('prevBtn').onclick=()=>{if(cur>0){cur--;render();window.scrollTo({top:0,behavior:'smooth'})}};
-function showResult(){
- let correct=0,wrong=0,un=0,html=''; questions.forEach((q,i)=>{if(ans[i]===null)un++;else if(ans[i]===q.a)correct++;else wrong++;const isCorrect=ans[i]===q.a;const your=ans[i]===null?'Not answered':q.o[ans[i]];html+=`<div style="padding:12px 0;border-bottom:1px solid #eee"><b>${i+1}. ${q.q}</b><br><span style="color:${isCorrect?'#16a34a':'#dc2626'}">Your: ${your}</span><br><span style="color:#16a34a">Correct: ${q.o[q.a]}</span></div>`;});
- const neg=wrong*0.20,score=(correct-neg).toFixed(2); const curUser=JSON.parse(localStorage.getItem('mcres_current_user')||'{}'); const list=JSON.parse(localStorage.getItem(DATA_KEY)||'[]'); if(list.length>0){list[list.length-1].score=score;localStorage.setItem(DATA_KEY,JSON.stringify(list));}
- document.getElementById('qCard').style.display='none';document.getElementById('navPanel').style.display='none';document.getElementById('result').style.display='block';
- document.getElementById('userInfo').innerHTML=`<b>Name:</b> ${curUser.name||''} | <b>Mobile:</b> ${curUser.mobile||''}`; document.getElementById('score').textContent=`Score: ${score} / 25`; document.getElementById('summary').textContent=`Correct: ${correct} | Wrong: ${wrong} | Unanswered: ${un} | Negative: -${neg.toFixed(2)}`; document.getElementById('review').innerHTML=html; document.getElementById('bottomBar').style.display='none';
+function renderNavigation(){
+  $('navGrid').innerHTML='';questions.forEach((q,index)=>{const btn=document.createElement('button');btn.className='nav-btn';if(index===currentQuestion)btn.classList.add('current');if(answers[index]!==null)btn.classList.add('answered');btn.textContent=index+1;btn.onclick=()=>{currentQuestion=index;render();window.scrollTo({top:0,behavior:'smooth'})};$('navGrid').appendChild(btn);});
 }
-setInterval(()=>{if(!started) return; time--;let m=Math.floor(time/60),s=time%60;if(timerEl)timerEl.textContent=`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;if(time<=0)showResult();},1000);
-function applyBlur(){ var card=document.getElementById('qCard'); if(card) card.style.filter='blur(35px) brightness(0.6)'; }
-function removeBlur(){ var card=document.getElementById('qCard'); if(card) card.style.filter='none'; try{var u=JSON.parse(localStorage.getItem('mcres_current_user')||'null'); if(u&&u.name) createWatermark(u.name,u.mobile);}catch(e){} }
-document.addEventListener('visibilitychange', function(){ if(document.hidden) applyBlur(); else removeBlur(); });
-window.addEventListener('blur', applyBlur);
-window.addEventListener('pagehide', applyBlur);
-window.addEventListener('focus', removeBlur);
-window.addEventListener('pageshow', removeBlur);
-document.addEventListener('keydown', function(e){
-  if(e.key==='PrintScreen' || (e.ctrlKey && (e.key==='p' || e.key==='s' || e.key==='P' || e.key==='S'))){
-    e.preventDefault(); applyBlur(); setTimeout(removeBlur, 1500);
-  }
-});
+$('prevBtn').onclick=()=>{if(currentQuestion>0){currentQuestion--;render();window.scrollTo({top:0,behavior:'smooth'})}};
+$('nextBtn').onclick=()=>{if(currentQuestion<24){currentQuestion++;render();window.scrollTo({top:0,behavior:'smooth'})}else{if(confirm('Are you sure you want to submit the test?')){submitTest(false)}}};
+async function submitTest(autoSubmit){
+  if(isSubmitting||!attemptId)return;isSubmitting=true;clearInterval(timerInterval);$('nextBtn').disabled=true;$('prevBtn').disabled=true;
+  try{
+    const {data,error}=await db.rpc('mcres_submit_test',{p_attempt_id:attemptId,p_answers:answers});
+    if(error) throw error;showResult(data);localStorage.removeItem(localAnswerKey());
+  }catch(error){isSubmitting=false;$('nextBtn').disabled=false;$('prevBtn').disabled=false;alert('Submission failed. Please check your internet connection and try again.\n'+error.message)}
+}
+function showResult(data){
+  $('qCard').style.display='none';$('navPanel').style.display='none';$('bottomBar').style.display='none';$('result').style.display='block';
+  $('userInfo').textContent='Name: '+student.name+' | Mobile: '+student.mobile;
+  $('score').textContent='Score: '+Number(data.score).toFixed(2)+' / 25';
+  $('summary').textContent='Correct: '+data.correct+' | Wrong: '+data.wrong+' | Unanswered: '+data.unanswered+' | Negative: -'+Number(data.negative).toFixed(2)+(data.status==='expired'?' | Submission: Time Expired':'');
+  $('review').innerHTML='';questions.forEach((q,i)=>{const row=document.createElement('div');row.className='result-row';const heading=document.createElement('b');heading.textContent=(i+1)+'. '+q.q;const your=document.createElement('div');const selected=answers[i];your.textContent='Your answer: '+(selected===null?'Not answered':String.fromCharCode(65+selected)+'. '+q.o[selected]);const correct=document.createElement('div');correct.style.color='#15803d';correct.style.fontWeight='800';correct.textContent='Your response recorded.';row.append(heading,your,correct);$('review').appendChild(row);});window.scrollTo({top:0,behavior:'smooth'});
+}
+function blurQuestion(){if($('qCard').style.display==='block'){$('qCard').style.filter='blur(30px) brightness(.6)'}}
+function unblurQuestion(){$('qCard').style.filter='none'}
+document.addEventListener('visibilitychange',()=>{if(document.hidden)blurQuestion();else unblurQuestion()});
+window.addEventListener('blur',blurQuestion);window.addEventListener('focus',unblurQuestion);
+document.addEventListener('keydown',e=>{if(e.key==='PrintScreen'||(e.ctrlKey&&['p','s'].includes(e.key.toLowerCase()))){e.preventDefault();blurQuestion();setTimeout(unblurQuestion,1500)}});
 </script>
 </body>
 </html>
