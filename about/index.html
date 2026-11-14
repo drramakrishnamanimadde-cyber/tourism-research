@@ -8,43 +8,54 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Plus Jakarta Sans',sans-serif;background:#f8fafc;color:#1e293b}
-.hero{background:linear-gradient(180deg,#020617 0%,#0f172a 100%);color:white;padding:60px 20px 90px;text-align:center}
-.logo-wrap{width:165px;height:165px;margin:0 auto 20px;background:transparent;border-radius:50%;padding:0;box-shadow:0 0 0 4px rgba(125,211,252,0.3),0 20px 40px rgba(0,0,0,0.4);animation:float 3s ease-in-out infinite;overflow:hidden}
+.hero{background:linear-gradient(180deg,#254f80,#1e3a5f 60%,#123a6b);color:white;padding:60px 20px 90px;text-align:center;box-shadow:inset 0 -10px 25px rgba(0,0,0,0.25)}
+.logo-wrap{width:165px;height:165px;margin:0 auto 20px;background:transparent;border-radius:50%;padding:0;box-shadow:0 20px 40px rgba(0,0,0,0.45);animation:float 3s ease-in-out infinite;overflow:hidden}
 .logo-wrap img{width:100%;height:100%;border-radius:50%;object-fit:cover;clip-path:circle(46% at 50% 50%);transform:scale(1.06)}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-.hero h1{font-size:32px;font-weight:800;line-height:1.15}
-.hero h1 span{color:#7dd3fc}
-.tagline{margin-top:16px;display:inline-block;background:rgba(125,211,252,0.12);border:1px solid rgba(125,211,252,0.3);padding:8px 18px;border-radius:100px;color:#7dd3fc;font-weight:700;font-size:12.5px;letter-spacing:1.5px}
-.est{margin-top:10px;font-size:12px;letter-spacing:2px;color:#94a3b8;font-weight:700}
-.sub{max-width:700px;margin:18px auto 0;font-size:15.5px;line-height:1.7;opacity:0.88}
+.hero h1{font-size:32px;font-weight:900;line-height:1.25;text-shadow:0 2px 8px rgba(0,0,0,0.5)}
+.hero h1 .c1{color:#ffd700;text-shadow:0 1px 0 #7a5a00,0 2px 0 #5a4200,0 3px 0 #3d2d00,0 5px 8px rgba(0,0,0,0.6)}
+.hero h1 .c2{color:#7ee8ff;text-shadow:0 1px 0 #0a5a7a,0 2px 0 #07415a,0 3px 0 #032a3a,0 5px 8px rgba(0,0,0,0.6)}
+.hero h1 .c3{color:#ff9ec6;text-shadow:0 1px 0 #7a1e4a,0 2px 0 #5a1234,0 3px 0 #3d0a22,0 5px 8px rgba(0,0,0,0.6)}
+.hero h1 .c4{color:#b5ff9e;text-shadow:0 1px 0 #2a6a1a,0 2px 0 #1e4d12,0 3px 0 #12300a,0 5px 8px rgba(0,0,0,0.6)}
+.hero h1 .c5{color:#fff;text-shadow:0 1px 0 #5a6a80,0 2px 0 #3a4a60,0 3px 0 #1e2a3a,0 5px 8px rgba(0,0,0,0.6)}
+.tagline{margin-top:16px;display:inline-block;background:rgba(255,255,255,0.15);border:1.5px solid #ffe9ae;padding:8px 18px;border-radius:100px;color:#ffe9ae;font-weight:800;font-size:12.5px;letter-spacing:1.5px;box-shadow:0 4px 0 #7a5a00,0 10px 18px rgba(0,0,0,0.3)}
+.est{margin-top:10px;font-size:12px;letter-spacing:2px;color:#cbd5e1;font-weight:700}
+.sub{max-width:700px;margin:18px auto 0;font-size:15.5px;line-height:1.7;opacity:0.92}
 .wrap{max-width:1050px;margin:-55px auto 0;padding:0 16px 50px;position:relative;z-index:2}
 .card{background:white;border-radius:22px;box-shadow:0 25px 50px -12px rgba(0,0,0,0.18);overflow:hidden;border:1px solid #e2e8f0}
-.profile{text-align:center;padding:32px 20px;background:linear-gradient(135deg,#f8fafc,#eff6ff);border-bottom:1px solid #e2e8f0}
-.badge{background:#0f172a;color:#7dd3fc;padding:7px 16px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:1px}
-.profile h2{font-size:24px;margin:12px 0 4px;color:#0f172a}
-.profile p{font-size:13.5px;color:#64748b}
+.profile{text-align:center;padding:32px 20px;background:linear-gradient(135deg,#fffbeb,#eff6ff);border-bottom:1px solid #e2e8f0}
+/* FOUNDER BADGE - CHOCOLATE BROWN 3D - NO BLACK */
+.badge{display:inline-block;background:linear-gradient(180deg,#8b4513,#6b2d0a 55%,#4a1e05);border:2px solid #ffcc70;padding:10px 18px;border-radius:99px;font-size:11.5px;font-weight:900;letter-spacing:0.2px;white-space:nowrap;max-width:96%;box-shadow:0 5px 0 #2d1203,0 12px 22px rgba(107,45,10,0.45),inset 0 1.5px 0 rgba(255,255,255,0.35),inset 0 -3px 0 rgba(0,0,0,0.25)}
+.badge .f1{color:#ffe9ae;text-shadow:0 1px 0 #2d1203,0 2px 0 #1e0c02,0 3px 5px rgba(0,0,0,0.5)}
+.badge .f2{color:#7ee8ff;text-shadow:0 1px 0 #0a3a4a,0 2px 0 #072a35,0 3px 5px rgba(0,0,0,0.5)}
+.badge .f3{color:#ff9ec6;text-shadow:0 1px 0 #5a1234,0 2px 0 #3d0a22,0 3px 5px rgba(0,0,0,0.5)}
+.badge .f4{color:#ffcc70;text-shadow:0 1px 0 #7a4a00,0 2px 0 #5a3500,0 3px 5px rgba(0,0,0,0.5)}
+.profile p{font-size:13.5px;color:#64748b;margin-top:12px}
 .content{padding:30px 28px}
-.intro{background:#0f172a;color:white;border-radius:16px;padding:24px;margin-bottom:32px}
-.intro h3{color:#7dd3fc;margin-bottom:10px}
-.intro p{font-size:14.8px;line-height:1.8;opacity:0.92;text-align:justify}
+.intro{background:linear-gradient(135deg,#eff6ff,#f0fdfa);color:#1e293b;border:1px solid #bfdbfe;border-radius:16px;padding:24px;margin-bottom:32px;box-shadow:0 6px 0 #93c5fd,0 12px 22px rgba(0,0,0,0.08)}
+.intro h3{color:#0369a1;margin-bottom:10px}
+.intro p{font-size:14.8px;line-height:1.8;color:#334155;text-align:justify}
 .sec{margin-bottom:32px}
 .sec-head{display:flex;gap:10px;align-items:center;margin-bottom:14px}
-.n{width:34px;height:34px;background:#0ea5e9;color:white;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:800}
+.n{width:34px;height:34px;background:linear-gradient(180deg,#38bdf8,#0ea5e9);color:white;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:800;box-shadow:0 4px 0 #075985,0 8px 14px rgba(14,165,233,0.3)}
 .sec-head h3{font-size:20px}
 .vision{background:linear-gradient(135deg,#eff6ff,#f0fdfa);border-left:5px solid #0ea5e9;border-radius:14px;padding:20px;border-top:1px solid #bfdbfe;border-right:1px solid #bfdbfe;border-bottom:1px solid #bfdbfe}
 .vision p{font-size:15px;line-height:1.8;text-align:justify}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-@media(max-width:700px){.grid{grid-template-columns:1fr}.hero h1{font-size:26px}}
+@media(max-width:700px){.grid{grid-template-columns:1fr}.hero h1{font-size:26px}.badge{font-size:10.5px;padding:8px 12px}}
 .item{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:14px;display:flex;gap:10px}
 .ic{width:32px;height:32px;background:white;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .item p{font-size:14px;line-height:1.6;margin:0}
-.foot{background:#020617;color:#94a3b8;text-align:center;padding:22px;font-size:12.5px}
+.foot{background:#1e3a5f;color:#cbd5e1;text-align:center;padding:22px;font-size:12.5px}
+.top-nav{text-align:center;padding:12px 0 0;background:#f8fafc}
+.top-nav a{color:#1e3a5f;font-size:13px;font-weight:700;text-decoration:none;margin:0 8px}
 </style>
 </head>
 <body>
+<div class="top-nav"><a href="/">🏠 Home</a> | <a href="/about/">About</a> | <a href="/research/">Research</a> | <a href="/info-desk/">🔵 Info Desk</a> | <a href="/test-series.html">🟠 Test Series</a></div>
 <div class="hero">
 <div class="logo-wrap"><img src="../IMG-20261114-WA4304.jpg" alt="MCRES Logo"></div>
-<h1>MALLAIAH CENTER FOR<br><span>RIVER & EARTH SCIENCES (MCRES)</span></h1>
+<h1><span class="c1">MALLAIAH</span> <span class="c2">CENTER</span> <span class="c3">FOR</span><br><span class="c4">RIVER & EARTH</span> <span class="c5">SCIENCES (MCRES)</span></h1>
 <div class="tagline">EXPLORING RIVERS • DECODING EARTH • ADVANCING SCIENCE</div>
 <div class="est">EST 2025</div>
 <p class="sub">A multidisciplinary research institution dedicated to understanding river systems, Earth processes, and their interactions with human society for sustainable futures.</p>
@@ -53,8 +64,7 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:#f8fafc;color:#1e293b
 <div class="wrap">
 <div class="card">
 <div class="profile">
-<div class="badge">FOUNDER & DIRECTOR</div>
-<h2>Dr Ramakrishna Manimadde</h2>
+<div class="badge"><span class="f1">Founder & Director :</span> <span class="f2">Dr</span> <span class="f3">Ramakrishna</span> <span class="f4">Manimadde</span></div>
 <p>Mallaiah Center for River & Earth Sciences (MCRES) • Hyderabad, Telangana • www.mcres.in</p>
 </div>
 <div class="content">
