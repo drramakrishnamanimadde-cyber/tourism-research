@@ -6,33 +6,33 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&family=Merriweather:wght@800&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
-body{background:#e8ecf2}
-.wrap{max-width:1380px;margin:0 auto;background:#fff;box-shadow:0 0 60px rgba(0,0,0,0.15)}
-.top{background:linear-gradient(180deg,#ffffff,#f2f5f9);display:flex;justify-content:space-between;align-items:center;padding:14px 28px;border-bottom:1px solid #eef2f7;position:sticky;top:0;z-index:99;box-shadow:0 6px 20px rgba(16,42,92,0.12)}
+body{background:#dfe5ee}
+.wrap{max-width:1380px;margin:0 auto;background:#fff;box-shadow:0 0 60px rgba(0,0,0,0.18)}
+.top{background:linear-gradient(180deg,#ffffff,#eef2f8);display:flex;justify-content:space-between;align-items:center;padding:14px 28px;border-bottom:1px solid #eef2f7;position:sticky;top:0;z-index:99;box-shadow:0 8px 22px rgba(16,42,92,0.15)}
 .logo{display:flex;gap:14px;align-items:center}
-.logo img{width:64px;height:64px;border-radius:50%;object-fit:cover;clip-path:circle(46% at 50% 50%);transform:scale(1.06);box-shadow:0 0 0 3px #e7c17b,0 0 0 6px #102a5c,0 10px 22px rgba(0,0,0,0.35)}
-.logo b{font-family:'Merriweather',serif;font-size:42px;color:#102a5c;line-height:1;text-shadow:0 2px 0 #dbe2ec}.logo b span{font-size:11px;color:#4a5e7a;display:block;text-shadow:none}
+.logo img{width:64px;height:64px;border-radius:50%;object-fit:cover;clip-path:circle(46% at 50% 50%);transform:scale(1.06);box-shadow:0 0 0 3px #e7c17b,0 0 0 6px #102a5c,0 12px 24px rgba(0,0,0,0.4)}
+.logo b{font-family:'Merriweather',serif;font-size:42px;color:#102a5c;line-height:1;text-shadow:0 2px 0 #dbe2ec,0 4px 8px rgba(0,0,0,0.15)}.logo b span{font-size:11px;color:#4a5e7a;display:block;text-shadow:none}
 .nav{display:flex;gap:24px;align-items:center}.nav a{color:#1e3358;text-decoration:none;font-size:14px;font-weight:600}.nav a.active{border-bottom:2.5px solid #102a5c;padding-bottom:3px}
-.btn-gold{background:linear-gradient(180deg,#f3d89b,#d1a85d 55%,#a87e33);color:#1a1a1a;padding:9px 18px;border-radius:8px;text-decoration:none;font-weight:800;font-size:13px;box-shadow:0 5px 0 #8a6a26,0 10px 18px rgba(0,0,0,0.25);transition:0.2s}.btn-gold:active{transform:translateY(4px);box-shadow:0 1px 0 #8a6a26}
-.hero-small{background:radial-gradient(circle at 20% 20%,#1a3a6e,#0a1e42 70%);padding:55px 36px;color:#fff;box-shadow:inset 0 -8px 20px rgba(0,0,0,0.3)}
-.hero-small h1{font-family:'Merriweather',serif;font-size:38px;text-shadow:0 4px 0 rgba(0,0,0,0.3)}
+.btn-gold{background:linear-gradient(180deg,#ffe9ae,#e7c17b 40%,#c69a4a);color:#1a1a1a;padding:10px 18px;border-radius:10px;text-decoration:none;font-weight:800;font-size:13px;box-shadow:0 5px 0 #8a6a26,0 12px 20px rgba(0,0,0,0.28),inset 0 1px 0 #fff;transition:0.2s}.btn-gold:active{transform:translateY(4px);box-shadow:0 1px 0 #8a6a26}
+.hero-small{background:radial-gradient(circle at 25% 20%,#1d3f75,#0a1e42 70%);padding:58px 36px;color:#fff;box-shadow:inset 0 -10px 25px rgba(0,0,0,0.35)}
+.hero-small h1{font-family:'Merriweather',serif;font-size:38px;text-shadow:0 4px 0 rgba(0,0,0,0.35),0 8px 16px rgba(0,0,0,0.3)}
 .hero-small p{color:#a9bdd6;font-size:13px;margin-top:8px;max-width:600px;line-height:1.6}
 .contact-section{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.2fr .8fr;gap:30px;padding:40px 28px}
-.form-card{background:linear-gradient(180deg,#ffffff,#f5f7fa);border:1px solid #eef2f7;border-radius:16px;padding:26px;box-shadow:0 1px 0 #fff inset,0 15px 30px rgba(16,42,92,0.18),0 5px 10px rgba(16,42,92,0.12);transform:perspective(900px) rotateX(1deg);transition:0.3s}
-.form-card:hover{transform:perspective(900px) rotateX(0deg) translateY(-5px);box-shadow:0 25px 40px rgba(16,42,92,0.22)}
+.form-card{background:linear-gradient(180deg,#ffffff,#f2f5fa);border:1px solid #eef2f7;border-radius:18px;padding:26px;box-shadow:0 1px 0 #fff inset,0 18px 32px rgba(16,42,92,0.20),0 6px 12px rgba(16,42,92,0.12);transform:perspective(1000px) rotateX(1.5deg);transition:0.3s}
+.form-card:hover{transform:perspective(1000px) rotateX(0deg) translateY(-6px);box-shadow:0 28px 42px rgba(16,42,92,0.24)}
 .form-card h3{font-family:'Merriweather';color:#102a5c;font-size:18px;margin-bottom:16px}
-.form-card input,.form-card textarea{width:100%;padding:12px 14px;border:1px solid #dce3ec;border-radius:8px;margin-bottom:12px;font-size:13px;outline:none;background:#fff;box-shadow:inset 0 2px 5px rgba(0,0,0,0.06)}
-.form-card input:focus,.form-card textarea:focus{border-color:#102a5c;box-shadow:inset 0 2px 5px rgba(0,0,0,0.06),0 0 0 3px rgba(16,42,92,0.12)}
-.btn-send{background:linear-gradient(180deg,#1e4a8a,#102a5c 60%,#0a1e42);color:#fff;padding:13px 22px;border-radius:10px;border:none;font-weight:800;font-size:13px;cursor:pointer;width:100%;box-shadow:0 5px 0 #06112a,0 12px 20px rgba(16,42,92,0.35);transition:0.2s}.btn-send:active{transform:translateY(4px);box-shadow:0 1px 0 #06112a}
-.info-card{background:linear-gradient(160deg,#132f5e,#0a1e42 70%);border-radius:16px;padding:26px;color:#fff;box-shadow:0 15px 30px rgba(10,30,66,0.35),0 5px 10px rgba(0,0,0,0.2);border:1px solid rgba(255,255,255,0.15);transform:perspective(900px) rotateX(1deg);transition:0.3s}
-.info-card:hover{transform:perspective(900px) rotateX(0deg) translateY(-5px)}
+.form-card input,.form-card textarea{width:100%;padding:12px 14px;border:1px solid #dce3ec;border-radius:10px;margin-bottom:12px;font-size:13px;outline:none;background:#fff;box-shadow:inset 0 3px 6px rgba(0,0,0,0.07)}
+.form-card input:focus,.form-card textarea:focus{border-color:#102a5c;box-shadow:inset 0 2px 5px rgba(0,0,0,0.06),0 0 0 3px rgba(16,42,92,0.15)}
+.btn-send{background:linear-gradient(180deg,#2a5aa8,#102a5c 60%,#081a38);color:#fff;padding:14px 22px;border-radius:11px;border:none;font-weight:800;font-size:13px;cursor:pointer;width:100%;box-shadow:0 5px 0 #040a1a,0 14px 22px rgba(16,42,92,0.38),inset 0 1px 0 rgba(255,255,255,0.25);transition:0.2s}.btn-send:active{transform:translateY(4px);box-shadow:0 1px 0 #040a1a}
+.info-card{background:linear-gradient(165deg,#173663,#0a1e42 75%);border-radius:18px;padding:26px;color:#fff;box-shadow:0 18px 32px rgba(10,30,66,0.38),0 6px 12px rgba(0,0,0,0.2),inset 0 1px 0 rgba(255,255,255,0.18);border:1px solid rgba(255,255,255,0.15);transform:perspective(1000px) rotateX(1.5deg);transition:0.3s}
+.info-card:hover{transform:perspective(1000px) rotateX(0deg) translateY(-6px)}
 .info-card h3{font-family:'Merriweather';font-size:18px;margin-bottom:16px;color:#e7c17b;text-shadow:0 2px 0 rgba(0,0,0,0.4)}
-.info-item{display:flex;gap:12px;margin-bottom:18px;background:rgba(255,255,255,0.06);padding:10px 12px;border-radius:10px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.12)}.info-item i{font-size:18px;color:#e7c17b;font-style:normal}
+.info-item{display:flex;gap:12px;margin-bottom:14px;background:linear-gradient(180deg,rgba(255,255,255,0.10),rgba(255,255,255,0.04));padding:11px 12px;border-radius:12px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.15),0 4px 8px rgba(0,0,0,0.15)}.info-item i{font-size:18px;color:#e7c17b;font-style:normal}
 .info-item p{font-size:12.5px;line-height:1.6;color:#a9bdd6}.info-item b{color:#fff;display:block;font-size:13px;margin-bottom:2px}
-.map{max-width:1200px;margin:0 auto;padding:0 28px 40px}.map iframe{width:100%;height:300px;border:0;border-radius:16px;box-shadow:0 15px 30px rgba(0,0,0,0.20);border:3px solid #fff}
-.footer{background:linear-gradient(180deg,#0a1e42,#06112a);padding:28px 36px;display:grid;grid-template-columns:1.6fr 1fr 1fr 1.2fr;gap:20px;color:#8aa0bd;box-shadow:inset 0 5px 15px rgba(0,0,0,0.3)}
-.footer h4{color:#fff;font-size:13px;margin-bottom:10px}.footer a{color:#8aa0bd;text-decoration:none;font-size:11.5px;display:block;margin:5px 0}.copy{background:#040a1a;color:#5e758e;text-align:center;padding:10px 36px;font-size:9.5px;display:flex;justify-content:space-between}
-.footer-logo{width:56px;height:56px;border-radius:50%;object-fit:cover;clip-path:circle(46% at 50% 50%);transform:scale(1.06);box-shadow:0 0 0 2px #e7c17b,0 8px 16px rgba(0,0,0,0.4)}
+.map{max-width:1200px;margin:0 auto;padding:0 28px 40px}.map iframe{width:100%;height:300px;border:0;border-radius:18px;box-shadow:0 18px 32px rgba(0,0,0,0.22);border:4px solid #fff}
+.footer{background:linear-gradient(180deg,#0a1e42,#050d1f);padding:30px 36px;display:grid;grid-template-columns:1.6fr 1fr 1fr 1.2fr;gap:20px;color:#8aa0bd;box-shadow:inset 0 6px 18px rgba(0,0,0,0.35)}
+.footer h4{color:#fff;font-size:13px;margin-bottom:10px;text-shadow:0 2px 0 rgba(0,0,0,0.4)}.footer a{color:#8aa0bd;text-decoration:none;font-size:11.5px;display:block;margin:5px 0}.copy{background:#030711;color:#5e758e;text-align:center;padding:10px 36px;font-size:9.5px;display:flex;justify-content:space-between}
+.footer-logo{width:56px;height:56px;border-radius:50%;object-fit:cover;clip-path:circle(46% at 50% 50%);transform:scale(1.06);box-shadow:0 0 0 2px #e7c17b,0 10px 18px rgba(0,0,0,0.45)}
 @media(max-width:900px){.contact-section{grid-template-columns:1fr}.top{flex-direction:column;gap:10px}.nav{flex-wrap:wrap;justify-content:center;gap:12px}.footer{grid-template-columns:1fr 1fr}}
 </style>
 </head>
@@ -60,7 +60,7 @@ body{background:#e8ecf2}
 <div class="info-item"><i>📍</i><p><b>Location</b>Hyderabad, Telangana, India<br>Mallaiah Center for River & Earth Sciences</p></div>
 <div class="info-item"><i>🌊</i><p><b>Research Focus</b>River Hydrology, Earth Systems,<br>Policy & Field Data</p></div>
 <div class="info-item"><i>🕘</i><p><b>Office Hours</b>Mon - Fri: 09:00 - 17:00 (IST)<br>Sat - Sun: By Prior Appointment</p></div>
-<div style="margin-top:20px;background:rgba(255,255,255,0.08);border-radius:10px;padding:12px;font-size:11.5px;line-height:1.6;color:#a9bdd6;box-shadow:inset 0 1px 0 rgba(255,255,255,0.15)">
+<div style="margin-top:20px;background:rgba(255,255,255,0.08);border-radius:12px;padding:12px;font-size:11.5px;line-height:1.6;color:#a9bdd6;box-shadow:inset 0 1px 0 rgba(255,255,255,0.15)">
 <b style="color:#e7c17b">For Students & Researchers:</b><br>
 Send your CV and research interest to info@mcres.in & director@mcres.in - we welcome interns and collaborators for field initiatives across India.
 </div>
