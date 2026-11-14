@@ -35,7 +35,9 @@ body{font-family:"Plus Jakarta Sans",sans-serif;background:#fffaf5}
 .h-left h1 .gold{background:linear-gradient(90deg,#fde68a,#fb923c,#f472b6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .sub{color:#fed7aa;font-size:14px;font-weight:600;margin:12px 0}
 .desc{color:#d1c7d0;font-size:13px;line-height:1.7;max-width:480px;margin-bottom:22px}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
 .be{background:linear-gradient(90deg,#fbbf24,#f97316);color:#fff;padding:12px 20px;border-radius:99px;text-decoration:none;font-weight:800;font-size:13px;box-shadow:0 8px 24px rgba(249,115,22,0.35)}
+.be2{background:transparent;color:#fff;padding:12px 20px;border-radius:99px;text-decoration:none;font-weight:800;font-size:13px;border:1.5px solid rgba(255,255,255,0.7)}
 .h-right{position:relative}
 .h-right img{width:100%;height:100%;object-fit:cover;filter:saturate(1.15) contrast(1.05)}
 .h-right::before{content:"";position:absolute;left:-1px;top:0;width:50%;height:100%;background:linear-gradient(90deg,#1e0f2e 5%,rgba(30,15,46,0.7) 35%,transparent 100%);z-index:2}
@@ -51,12 +53,12 @@ body{font-family:"Plus Jakarta Sans",sans-serif;background:#fffaf5}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:1100px;margin:0 auto}
 .card{border-radius:18px;padding:22px;background:#fff;box-shadow:0 10px 30px rgba(251,113,133,0.12);border:1px solid #ffe4e6;position:relative;overflow:hidden}
 .card::before{content:"";position:absolute;top:0;left:0;width:100%;height:5px}
-.card.river::before{background:linear-gradient(90deg,#f97316,#ec4899)}.card.earth::before{background:linear-gradient(90deg,#8b5cf6,#06b6d4)}
+.card.river::before{background:linear-gradient(90deg,#f97316,#ec4899)}.card.earth::before{background:linear-gradient(90deg,#8b5cf6,#06b6d4)}.card.env::before{background:linear-gradient(90deg,#059669,#10b981)}.card.water::before{background:linear-gradient(90deg,#0ea5e9,#06b6d4)}
 .ico{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;color:#fff;font-size:20px;margin-bottom:12px}
-.card.river .ico{background:linear-gradient(135deg,#f97316,#ec4899)}.card.earth .ico{background:linear-gradient(135deg,#8b5cf6,#06b6d4)}
+.card.river .ico{background:linear-gradient(135deg,#f97316,#ec4899)}.card.earth .ico{background:linear-gradient(135deg,#8b5cf6,#06b6d4)}.card.env .ico{background:linear-gradient(135deg,#059669,#10b981)}.card.water .ico{background:linear-gradient(135deg,#0ea5e9,#06b6d4)}
 .card h3{font-size:16px;color:#7c2d12;margin-bottom:8px}.card p{font-size:13px;color:#57534e;line-height:1.6}
 @media(max-width:1050px){.nav{gap:5px}.nav a{font-size:11px;padding:6px 9px}}
-@media(max-width:860px){.header{padding:10px 12px;background:linear-gradient(90deg,#fffbeb,#ffedd5,#fecaca,#fbcfe8)}.nav{display:none}.hamburger{display:block}.hero{grid-template-columns:1fr}.h-right{height:380px;order:-1}.h-right::before{width:100%;height:50%;top:auto;bottom:-1px;background:linear-gradient(0deg,#1e0f2e 15%,transparent 100%)}.h-left{padding:28px 18px}.h-left h1{font-size:30px}.grid{grid-template-columns:1fr}}
+@media(max-width:860px){.header{padding:10px 12px;background:linear-gradient(90deg,#fffbeb,#ffedd5,#fecaca,#fbcfe8)}.nav{display:none}.hamburger{display:block}.hero{grid-template-columns:1fr}.h-right{height:380px;order:-1}.h-right::before{width:100%;height:50%;top:auto;bottom:-1px;background:linear-gradient(0deg,#1e0f2e 15%,transparent 100%)}.h-left{padding:28px 18px}.h-left h1{font-size:30px}.grid{grid-template-columns:1fr}.btns{flex-direction:column}.be,.be2{text-align:center}}
 </style>
 </head>
 <body>
@@ -79,12 +81,12 @@ body{font-family:"Plus Jakarta Sans",sans-serif;background:#fffaf5}
 <div class="hero">
 <div class="h-left">
 <div class="badge">🌅 EXPLORING RIVERS • DECODING EARTH • ADVANCING SCIENCE</div>
-<h1>MCRES <span class="gold">Mallaiah Center</span> for River & Earth Sciences</h1>
-<div class="sub">Interdisciplinary research for water, earth & environmental resilience across India</div>
-<div class="desc">Advancing science through field studies, data-driven analysis, and collaboration with communities to understand and protect India's rivers, watersheds, and earth systems for a sustainable future.</div>
-<div class="btns"><a class="be" href="/research/">Explore Research →</a></div>
+<h1>Knowledge for a <span class="gold">Sustainable Tomorrow</span></h1>
+<div class="sub">Research • Education • Public Awareness</div>
+<div class="desc">MCRES - Mallaiah Center for River & Earth Sciences. Advancing science through field studies, data-driven analysis, and collaboration with communities to understand and protect India's rivers, watersheds, and earth systems for a sustainable future.</div>
+<div class="btns"><a class="be" href="/research/">Explore Scientific Studies →</a><a class="be2" href="/test-series.html">Explore Test Series →</a></div>
 </div>
-<div class="h-right"><img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070&auto=format&fit=crop" alt="Sunrise Mountains"></div>
+<div class="h-right"><img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070&auto=format&fit=crop" alt="River flowing through mountains and valley"></div>
 </div>
 <div class="stats">
 <div class="st"><b>12+</b><span>Research Projects</span></div>
@@ -95,8 +97,10 @@ body{font-family:"Plus Jakarta Sans",sans-serif;background:#fffaf5}
 <h2>Our Research Focus</h2>
 <div class="sh">Integrated interdisciplinary approaches to river and earth science research</div>
 <div class="grid">
-<div class="card river"><div class="ico">🌊</div><h3>River Hydrology & Management</h3><p>Studying river systems, flood resilience, sediment dynamics, watershed management, and sustainable water resource solutions across Indian river basins.</p></div>
+<div class="card river"><div class="ico">🌊</div><h3>River Systems & Hydrology</h3><p>Studying river systems, flood resilience, sediment dynamics, watershed management, and sustainable water resource solutions across Indian river basins.</p></div>
 <div class="card earth"><div class="ico">⛰️</div><h3>Earth Systems & Geosciences</h3><p>Examining geological processes, climate-earth interactions, soil stability, and landscape evolution to support environmental resilience and policy.</p></div>
+<div class="card env"><div class="ico">🌿</div><h3>Environmental Studies</h3><p>Assessing ecological health, pollution impacts, biodiversity, and climate change effects to guide conservation and sustainable environment management.</p></div>
+<div class="card water"><div class="ico">💧</div><h3>Water Resources & Management</h3><p>Developing integrated water resource management, groundwater analysis, and community-driven solutions for equitable and resilient water access.</p></div>
 </div>
 </div>
 </body>
