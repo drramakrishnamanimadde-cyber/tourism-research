@@ -9,13 +9,27 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:"Plus Jakarta Sans",sans-serif;background:#fffaf5;color:#292524}
 a{text-decoration:none}
-.header{position:sticky;top:0;z-index:99;background:linear-gradient(90deg,#fffbeb 0%,#ffedd5 20%,#fed7aa 40%,#fecaca 60%,#fbcfe8 80%,#ddd6fe 100%);border-bottom:3px solid transparent;border-image:linear-gradient(90deg,#f97316,#ec4899,#8b5cf6,#06b6d4) 1;display:flex;justify-content:space-between;align-items:center;padding:8px 14px;box-shadow:0 6px 24px rgba(251,113,133,0.18)}
-.logo{display:flex;align-items:center;gap:10px;min-width:0}
-.logo-img{width:62px;height:62px;min-width:62px;border-radius:50%;object-fit:cover;border:none;box-shadow:0 3px 12px rgba(0,0,0,0.22);background:transparent;clip-path:circle(46% at 50% 50%);transform:scale(1.06)}
-.logo-text{font-family:"Fraunces";font-weight:800;line-height:1}
-.logo-text b{font-size:19px;color:#7c2d12}
-.logo-text span{font-size:8.5px;font-family:"Plus Jakarta Sans";color:#9a3412;font-weight:700;white-space:nowrap;display:block;margin-top:3px}
-.nav{display:flex;gap:7px;align-items:center}
+/* ===== HEADER - WOW 3D ===== */
+.header{position:sticky;top:0;z-index:99;background:linear-gradient(90deg,#fff7ed 0%,#ffedd5 15%,#fed7aa 30%,#fbcfe8 55%,#ddd6fe 80%,#bfdbfe 100%);border-bottom:3px solid transparent;border-image:linear-gradient(90deg,#f97316,#ec4899,#8b5cf6,#06b6d4,#f97316) 1;display:flex;justify-content:space-between;align-items:center;padding:8px 14px;box-shadow:0 8px 25px rgba(236,72,153,0.22);overflow:hidden}
+.header::after{content:"";position:absolute;top:0;left:-80%;width:50%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.6),transparent);animation:shine 3.5s infinite}
+@keyframes shine{0%{left:-80%}60%,100%{left:130%}}
+.logo{display:flex;align-items:center;gap:10px;min-width:0;position:relative;z-index:2}
+.logo-img{width:66px;height:66px;min-width:66px;border-radius:50%;object-fit:cover;border:none;box-shadow:0 0 0 3px #ffd700,0 0 18px rgba(249,115,22,0.6),0 6px 14px rgba(0,0,0,0.25);background:transparent;clip-path:circle(46% at 50% 50%);transform:scale(1.06);animation:logoGlow 2.5s ease-in-out infinite}
+@keyframes logoGlow{0%,100%{box-shadow:0 0 0 3px #ffd700,0 0 12px rgba(249,115,22,0.5)}50%{box-shadow:0 0 0 3px #ff9ec6,0 0 22px rgba(236,72,153,0.7)}}
+.logo-text{font-family:"Fraunces";font-weight:900;line-height:1}
+.logo-text .hm1{font-size:24px;letter-spacing:1px}
+.logo-text .hm1 .h1{color:#ea580c;text-shadow:0 1px 0 #fff,0 2px 0 #fed7aa,0 3px 0 #fdba74,0 4px 8px rgba(234,88,12,0.4)}
+.logo-text .hm1 .h2{color:#db2777;text-shadow:0 1px 0 #fff,0 2px 0 #fbcfe8,0 3px 0 #f9a8d4,0 4px 8px rgba(219,39,119,0.4)}
+.logo-text .hm1 .h3{color:#7c3aed;text-shadow:0 1px 0 #fff,0 2px 0 #ddd6fe,0 3px 0 #c4b5fd,0 4px 8px rgba(124,58,237,0.4)}
+.logo-text .hm1 .h4{color:#059669;text-shadow:0 1px 0 #fff,0 2px 0 #a7f3d0,0 3px 0 #6ee7b7,0 4px 8px rgba(5,150,105,0.4)}
+.logo-text .hm1 .h5{color:#0284c7;text-shadow:0 1px 0 #fff,0 2px 0 #bae6fd,0 3px 0 #7dd3fc,0 4px 8px rgba(2,132,199,0.4)}
+.logo-text .hsub{font-size:8.5px;font-family:"Plus Jakarta Sans";font-weight:900;white-space:nowrap;display:block;margin-top:4px;letter-spacing:0.2px}
+.logo-text .hsub .s1{color:#ea580c}
+.logo-text .hsub .s2{color:#db2777}
+.logo-text .hsub .s3{color:#7c3aed}
+.logo-text .hsub .s4{color:#059669}
+.logo-text .hsub .s5{color:#0284c7}
+.nav{display:flex;gap:7px;align-items:center;position:relative;z-index:2}
 .nav a{font-size:12.5px;font-weight:800;padding:7px 12px;border-radius:99px;white-space:nowrap;box-shadow:0 3px 0 rgba(0,0,0,0.15),0 6px 12px rgba(0,0,0,0.12);color:#fff;transition:0.2s}
 .nav a:active{transform:translateY(3px);box-shadow:0 0 0 rgba(0,0,0,0.15)}
 .nav a.home{background:linear-gradient(180deg,#fb923c,#f97316)}
@@ -24,16 +38,15 @@ a{text-decoration:none}
 .nav a.infodesk{background:linear-gradient(180deg,#3b82f6,#1d4ed8) !important;border:1px solid #bfdbfe}
 .nav a.testseries{background:linear-gradient(180deg,#f97316,#ea580c) !important;border:1px solid #fed7aa}
 .nav a.contact{background:linear-gradient(180deg,#38bdf8,#0ea5e9)}
-.hamburger{display:none;font-size:30px;cursor:pointer;background:none;border:none;color:#7c2d12;padding:4px 8px}
+.hamburger{display:none;font-size:32px;cursor:pointer;background:linear-gradient(180deg,#fff,#ffedd5);border:2px solid #f97316;border-radius:12px;color:#ea580c;padding:2px 10px;box-shadow:0 4px 0 #ea580c;position:relative;z-index:2}
 .mob-menu{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:linear-gradient(180deg,#fff7ed,#fce7f3,#ddd6fe);z-index:200;padding:30px}
 .mob-menu a{display:block;color:#7c2d12;padding:16px 0;border-bottom:1px solid rgba(124,45,18,0.1);font-size:18px;font-weight:700}
 .mob-menu .close{position:absolute;top:20px;right:20px;font-size:28px;color:#7c2d12;background:none;border:none}
 .hero{position:relative;background:linear-gradient(105deg,#2a1445 0%,#3b1f5a 25%,#7c2d5f 50%,#c2416a 75%,#1e293b 100%);display:grid;grid-template-columns:48% 52%;min-height:82vh;overflow:hidden}
 .h-left{padding:56px 36px;z-index:3;display:flex;flex-direction:column;justify-content:center}
 .badge{display:inline-block;border:1px solid rgba(253,224,71,0.35);color:#fde68a;font-size:10px;letter-spacing:1px;padding:8px 14px;border-radius:99px;margin-bottom:18px;background:rgba(251,146,60,0.15);max-width:fit-content}
-/* MCRES - GOLD 3D - CLEAR */
-.org-name{font-family:"Fraunces";font-size:58px;line-height:0.95;font-weight:800;color:#ffd700;text-shadow:0 2px 0 #7a5a00,0 4px 0 #5a4200,0 6px 0 #3d2d00,0 10px 18px rgba(0,0,0,0.6)}
-/* MALLAIAH CENTER... - WORD-WISE MULTI COLOUR - ABOUT STYLE */
+/* HERO MCRES - EXTRA 3D + SHINE */
+.org-name{font-family:"Fraunces";font-size:62px;line-height:0.95;font-weight:900;color:#ffd700;text-shadow:0 2px 0 #7a5a00,0 4px 0 #5a4200,0 6px 0 #3d2d00,0 8px 0 #241a00,0 12px 20px rgba(0,0,0,0.65);position:relative}
 .org-full{font-size:19px;font-weight:900;line-height:1.4;margin:12px 0 6px}
 .org-full .o1{color:#ffd700;text-shadow:0 1px 0 #7a5a00,0 2px 0 #5a4200,0 3px 0 #3d2d00,0 5px 8px rgba(0,0,0,0.6)}
 .org-full .o2{color:#7ee8ff;text-shadow:0 1px 0 #0a5a7a,0 2px 0 #07415a,0 3px 0 #032a3a,0 5px 8px rgba(0,0,0,0.6)}
@@ -127,13 +140,13 @@ footer{background:#14082a;color:#d6d3d1;padding:40px 20px 20px;margin-top:40px}
 .hamburger{display:block !important}
 .header{padding:8px 10px}
 .logo-img{width:56px;height:56px;min-width:56px}
-.logo-text b{font-size:17px}
-.logo-text span{font-size:7.5px}
+.logo-text .hm1{font-size:21px !important}
+.logo-text .hsub{font-size:7.5px !important}
 .hero{grid-template-columns:1fr !important;min-height:auto !important}
 .h-right{order:-1 !important;height:280px !important;min-height:280px !important;width:100%}
 .h-right::before{width:100% !important;height:60% !important;top:auto !important;bottom:-1px !important;left:0 !important;background:linear-gradient(0deg,#2a1445 10%,transparent 100%) !important}
 .h-left{padding:28px 18px 34px !important}
-.org-name{font-size:46px !important}
+.org-name{font-size:48px !important}
 .org-full{font-size:16px !important}
 .strip{flex-direction:column !important;gap:14px;padding:16px}
 .grid4{grid-template-columns:1fr !important}
@@ -150,7 +163,7 @@ footer{background:#14082a;color:#d6d3d1;padding:40px 20px 20px;margin-top:40px}
 </head>
 <body>
 <div class="header">
-<div class="logo"><img src="IMG-20261114-WA4304.jpg" alt="MCRES Logo" class="logo-img"><div class="logo-text"><b>MCRES</b><span>MALLAIAH CENTER FOR RIVER & EARTH SCIENCES</span></div></div>
+<div class="logo"><img src="IMG-20261114-WA4304.jpg" alt="MCRES Logo" class="logo-img"><div class="logo-text"><div class="hm1"><span class="h1">M</span><span class="h2">C</span><span class="h3">R</span><span class="h4">E</span><span class="h5">S</span></div><span class="hsub"><span class="s1">MALLAIAH</span> <span class="s2">CENTER</span> <span class="s3">FOR</span> <span class="s4">RIVER & EARTH</span> <span class="s5">SCIENCES</span></span></div></div>
 <div class="nav">
 <a class="home" href="/">Home</a>
 <a class="about" href="/about/">About</a>
