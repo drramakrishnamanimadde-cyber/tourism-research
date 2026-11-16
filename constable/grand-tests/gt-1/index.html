@@ -15,6 +15,7 @@
 .opt.correct{background:#dcfce7;border-color:#16a34a}
 .opt.wrong{background:#fee2e2;border-color:#dc2626}
 .top{display:flex;justify-content:space-between;font-weight:800;margin-bottom:10px}
+input{width:100%;padding:12px;border:1px solid #ddd;border-radius:10px;margin:8px 0;font-size:15px;font-family:inherit}
 </style>
 </head>
 <body>
@@ -22,34 +23,52 @@
 <div class="container" id="app">
 <h2 style="text-align:center">🏆 Grand Test - 1</h2>
 <p style="text-align:center">Full Syllabus • 200 Questions • 200 Marks • Time: 180 Minutes</p>
+<input id="sname" placeholder="మీ పేరు - Your Name">
+<input id="sphone" placeholder="Phone Number">
 <button class="btn" onclick="startTest()">Start Test →</button>
 <p style="text-align:center;color:#666" id="status">Loading Questions from Supabase...</p>
 </div>
 
 <script>
-const SUPABASE_URL = "PASTE_YOUR_SUPABASE_URL_HERE";
-const SUPABASE_KEY = "PASTE_YOUR_ANON_KEY_HERE";
+const SUPABASE_URL = "https://eilhwxqlcufsgjnu.supabase.co";
+const SUPABASE_KEY = "sb_publishable_0887bMu7tm9HOkxLzp0gDw_mmvTCF4P";
 const TEST_ID = "CONST-SI-GT-1";
 let qs=[], cur=0, ans={}, timer=180*60, timerInt=null;
+let studentName="", studentPhone="";
 
 async function loadQs(){
   try{
     const res = await fetch(`${SUPABASE_URL}/rest/v1/mcres_questions?test_id=eq.${TEST_ID}&order=q_no.asc&limit=500`, {headers:{apikey:SUPABASE_KEY, Authorization:`Bearer ${SUPABASE_KEY}`}});
     qs = await res.json();
-    document.getElementById('status').innerText = qs.length + " Questions Loaded ✅ - Start Test నొక్కండి";
+    if(!Array.isArray(qs) || qs.length===0){
+      document.getElementById('status').innerText = "Questions ఇంకా Add అవ్వలేదు - Supabase లో mcres_questions Check చేయండి";
+      return;
+    }
+    document.getElementById('status').innerText = qs.length + " Questions Loaded ✅ - పేరు రాసి Start Test నొక్కండి";
   }catch(e){ document.getElementById('status').innerText = "Error: Supabase Keys Check చేయండి"; }
 }
 loadQs();
 
 function startTest(){
   if(!qs.length){ alert("Questions ఇంకా Load అవ్వలేదు, 5 సెకన్లు ఆగండి"); return; }
-  timerInt=setInterval(()=>{ timer--; let m=Math.floor(timer/60), s=timer%60; document.getElementById('timer').innerText = m+":"+String(s).padStart(2,'0'); if(timer<=0) submitTest(); },1000);
+  studentName = document.getElementById('sname').value.trim();
+  studentPhone = document.getElementById('sphone').value.trim();
+  if(!studentName){ alert("దయచేసి మీ పేరు రాయండి"); return; }
+  if(timerInt) clearInterval(timerInt);
+  timerInt=setInterval(()=>{
+    timer--;
+    let m=Math.floor(timer/60), s=timer%60;
+    let t=document.getElementById('timer');
+    if(t) t.innerText = m+":"+String(s).padStart(2,'0');
+    if(timer<=0) submitTest();
+  },1000);
   showQ();
 }
 function showQ(){
   let q=qs[cur];
+  let total = qs.length;
   document.getElementById('app').innerHTML = `
-  <div class="top"><span>Q ${q.q_no} / 200</span><span id="timer">180:00</span></div>
+  <div class="top"><span>Q ${q.q_no} / ${total}</span><span id="timer">180:00</span></div>
   <h3>${q.question_text}</h3>
   <div class="opt ${ans[cur]=='A'?'sel':''}" onclick="pick('A',this)">A. ${q.option_a}</div>
   <div class="opt ${ans[cur]=='B'?'sel':''}" onclick="pick('B',this)">B. ${q.option_b}</div>
@@ -60,15 +79,32 @@ function showQ(){
   <button class="btn" onclick="nextQ()">Next →</button>
   </div>
   <button class="btn" style="background:#dc2626;margin-top:10px" onclick="submitTest()">Submit Test</button>`;
+  // Timer display restore
+  let m=Math.floor(timer/60), s=timer%60;
+  let t=document.getElementById('timer');
+  if(t) t.innerText = m+":"+String(s).padStart(2,'0');
 }
 function pick(v,el){ ans[cur]=v; document.querySelectorAll('.opt').forEach(o=>o.classList.remove('sel')); el.classList.add('sel'); }
-function nextQ(){ if(cur<199){cur++; showQ();} }
+function nextQ(){ if(cur<qs.length-1){cur++; showQ();} }
 function prevQ(){ if(cur>0){cur--; showQ();} }
-function submitTest(){
+
+async function saveResult(score){
+  try{
+    await fetch(`${SUPABASE_URL}/rest/v1/test_results`, {
+      method:'POST',
+      headers:{apikey:SUPABASE_KEY, Authorization:`Bearer ${SUPABASE_KEY}`, 'Content-Type':'application/json', Prefer:'return=minimal'},
+      body: JSON.stringify({ student_name: studentName, student_phone: studentPhone, test_name: TEST_ID, marks: score, total: qs.length })
+    });
+  }catch(e){ console.log("Save failed", e); }
+}
+
+async function submitTest(){
   clearInterval(timerInt);
-  let score=0; let html=`<h2>Result - GT-1</h2>`;
+  let score=0;
   qs.forEach((q,i)=>{ if(ans[i]==q.correct_option) score++; });
-  html+=`<h3>Score: ${score} / 200</h3><p>Correct: ${score} | Wrong: ${200-score}</p>`;
+  await saveResult(score);
+  let html=`<h2>Result - GT-1</h2>`;
+  html+=`<h3>Score: ${score} / ${qs.length}</h3><p>${studentName} గారు, మీ Result Save అయింది ✅<br>Correct: ${score} | Wrong: ${qs.length-score}</p>`;
   qs.forEach((q,i)=>{
     let u=ans[i]||"Not Answered";
     let cls = u==q.correct_option ? "correct" : "wrong";
