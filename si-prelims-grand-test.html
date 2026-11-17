@@ -4,35 +4,76 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SI Prelims Grand Test | MCRES</title>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Noto+Sans+Telugu:wght@600;700&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:"Plus Jakarta Sans",sans-serif;background:#f0f2ff}
-.header{padding:12px;text-align:center;background:#0f2a5a;color:#fff;font-weight:800}
-.header span{font-size:12px;font-weight:400}
-.container{max-width:800px;margin:14px auto;padding:14px;background:#fff;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,.1)}
-.btn{background:#16a34a;color:#fff;padding:12px 18px;border:none;border-radius:20px;font-weight:800;cursor:pointer;width:100%;font-size:16px}
-.opt{border:1px solid #ddd;padding:12px;border-radius:10px;margin:8px 0;cursor:pointer;background:#f9fafb}
+*{box-sizing:border-box}body{margin:0;font-family:"Plus Jakarta Sans","Noto Sans Telugu",sans-serif;background:#f0f2ff;-webkit-user-select:none;user-select:none}
+.header{background:linear-gradient(135deg,#0f2a5a,#1e3a8a);color:#fff;text-align:center;padding:16px 12px;border-bottom:4px solid #facc15}
+.header .logo{font-size:26px;font-weight:800;letter-spacing:2px;color:#facc15}
+.header h1{margin:6px 0 4px;font-size:20px}
+.header p{margin:3px 0;font-size:12.5px;opacity:.95}
+.header .gold{color:#facc15;font-weight:700}
+.container{max-width:800px;margin:14px auto;padding:16px;background:#fff;border-radius:14px;box-shadow:0 4px 20px rgba(0,0,0,.1)}
+.btn{background:#16a34a;color:#fff;padding:13px 18px;border:none;border-radius:22px;font-weight:800;cursor:pointer;width:100%;font-size:16px}
+.btn-blue{background:#2563eb}.btn-red{background:#dc2626}.btn-grey{background:#64748b}
+.opt{border:1.5px solid #ddd;padding:13px;border-radius:10px;margin:9px 0;cursor:pointer;background:#f9fafb;font-size:15px;line-height:1.5}
 .opt.sel{background:#dbeafe;border-color:#2563eb}
-.top{display:flex;justify-content:space-between;font-weight:800;margin-bottom:10px}
-input{width:100%;padding:12px;border:1px solid #ddd;border-radius:10px;margin:8px 0;font-size:15px;font-family:inherit}
+.top{display:flex;justify-content:space-between;font-weight:800;margin-bottom:8px}
+.progress{height:8px;background:#e5e7eb;border-radius:10px;overflow:hidden;margin:8px 0}
+.progress div{height:100%;background:#16a34a;width:0%}
+input{width:100%;padding:13px;border:1.5px solid #ddd;border-radius:10px;margin:8px 0;font-size:15px;font-family:inherit}
+.watermark{position:fixed;bottom:8px;right:10px;font-size:11px;color:#94a3b8;z-index:999;background:rgba(255,255,255,.85);padding:4px 8px;border-radius:8px}
+.footer{text-align:center;padding:14px;font-size:12px;color:#475569;line-height:1.7}
+.timer-box{background:#fef3c7;border:1.5px solid #facc15;padding:8px 12px;border-radius:10px;text-align:center;font-weight:800;color:#92400e}
 </style>
 </head>
-<body>
-<div class="header">SI PRELIMS GRAND TEST - 1<br><span>MCRES | Founder & Director - Dr Ramakrishna Manimadde</span></div>
-<div class="container" id="app">
-<h2 style="text-align:center">🏆 SI Prelims Grand Test - 1</h2>
-<p style="text-align:center">Full Syllabus • 200 Questions • 200 Marks • Time: 180 Minutes</p>
-<input id="sname" placeholder="మీ పేరు - Your Name">
-<input id="sphone" placeholder="Phone Number">
-<button class="btn" onclick="startTest()">Start Test →</button>
-<p style="text-align:center;color:#666" id="status">Loading Questions from Supabase...</p>
+<body oncontextmenu="return false" oncopy="return false" oncut="return false" onpaste="return false">
+<div class="header">
+<div class="logo">⭐ MCRES ⭐</div>
+<h1>SI PRELIMS GRAND TEST</h1>
+<p>Founder & Director - <span class="gold">Dr Ramakrishna Manimadde</span></p>
+<p>ప్రశ్న పత్రం రూపకల్పన : <span class="gold">Dr Ramakrishna Manimadde</span></p>
 </div>
+
+<div class="container" id="app">
+<h2 style="text-align:center;margin:4px 0">🏆 SI Prelims Grand Test</h2>
+<p style="text-align:center;color:#475569;font-size:13px;line-height:1.6">Full Syllabus • 200 Questions • 200 Marks • Time: 180 Minutes<br><span style="color:#dc2626;font-weight:700">Negative Marking: Wrong Answer కి -0.25 • ఒక Mobile కి 1 Attempt మాత్రమే</span></p>
+<input id="sname" placeholder="మీ పేరు - Your Name">
+<input id="sphone" placeholder="Phone Number - 10 Digits" inputmode="numeric">
+<button class="btn" onclick="startTest()">Start Test →</button>
+<p style="text-align:center;color:#666;font-size:13px" id="status">Loading Questions from Supabase...</p>
+<div style="background:#f0f2ff;padding:12px;border-radius:10px;font-size:12.5px;line-height:1.8;color:#334155;margin-top:12px">
+<b>📋 నియమాలు:</b><br>• Copy / Right Click చేయలేరు<br>• Tab మార్చితే Warning - 3 సార్లు మార్చితే Auto Submit<br>• Submit చేస్తే Score మాత్రమే వస్తుంది - Questions రావు
+</div>
+</div>
+
+<div class="footer">© MCRES | Founder & Director - Dr Ramakrishna Manimadde<br>ప్రశ్న పత్రం రూపకల్పన : Dr Ramakrishna Manimadde</div>
+<div class="watermark" id="watermark">MCRES • Grand Test</div>
+
 <script>
 const SUPABASE_URL = "https://eliwhaqxilcuifsgjjnu.supabase.co";
 const SUPABASE_KEY = "sb_publishable_0887bMu7tm9HOkxLzp0gDw_mmvTCF4P";
 const TEST_ID = "si-prelims-grand-test";
-let qs=[], cur=0, ans={}, timer=180*60, timerInt=null;
+let qs=[], cur=0, ans={}, timer=180*60, timerInt=null, tabWarnings=0;
 let studentName="", studentPhone="";
+
+// 1. Copy / Right Click Block
+document.addEventListener('contextmenu', e=>e.preventDefault());
+document.addEventListener('copy', e=>e.preventDefault());
+document.addEventListener('cut', e=>e.preventDefault());
+document.addEventListener('keydown', e=>{ if((e.ctrlKey||e.metaKey) && ['c','x','v','u','s','p'].includes(e.key.toLowerCase())) e.preventDefault(); if(e.key==='F12') e.preventDefault(); });
+
+// 2. Tab Change Warning - 3 times = Auto Submit
+document.addEventListener('visibilitychange', ()=>{
+  if(document.hidden && qs.length>0 && studentName){
+    tabWarnings++;
+    if(tabWarnings>=3){ alert("3 సార్లు Tab మార్చారు! Test Auto Submit అవుతుంది!"); submitTest(true); }
+    else alert("⚠️ Warning "+tabWarnings+"/3: Tab మార్చకండి! మళ్ళీ మార్చితే Test Submit అయిపోతుంది!");
+  }
+});
+// 3. Back Button Block
+history.pushState(null,null,location.href);
+window.addEventListener('popstate', ()=>{ history.pushState(null,null,location.href); alert("Test మధ్యలో Back వెళ్ళలేరు!"); });
+
 async function loadQs(){
   const el = document.getElementById('status');
   try{
@@ -46,25 +87,53 @@ async function loadQs(){
   }catch(e){ el.innerText = "Fetch Fail: " + e.message + " | URL Check చేయండి"; }
 }
 loadQs();
-function startTest(){
+
+// One Attempt Check
+async function checkAlreadyAttempted(phone){
+  try{
+    const url = `${SUPABASE_URL}/rest/v1/mcres_attempts?test_id=eq.${TEST_ID}&student_phone=eq.${encodeURIComponent(phone)}&select=score`;
+    const res = await fetch(url, {headers:{apikey:SUPABASE_KEY, Authorization:`Bearer ${SUPABASE_KEY}`}});
+    const data = await res.json(); return data && data.length>0 ? data[0] : null;
+  }catch(e){ return null; }
+}
+
+async function startTest(){
   if(!qs.length){ alert("Questions ఇంకా Load అవ్వలేదు"); return; }
   studentName = document.getElementById('sname').value.trim();
-  studentPhone = document.getElementById('sphone').value.trim();
+  studentPhone = document.getElementById('sphone').value.trim().replace(/\s+/g,'');
   if(!studentName){ alert("దయచేసి మీ పేరు రాయండి"); return; }
+  if(!studentPhone || studentPhone.length<10 || !/^[6-9]\d{9}$/.test(studentPhone)){ alert("దయచేసి Correct 10 Digits Phone Number రాయండి"); return; }
+  document.getElementById('status').innerText = "Checking - మీరు ఇంతకు ముందు Test రాసారో లేదో చూస్తున్నాం...";
+  const prev = await checkAlreadyAttempted(studentPhone);
+  if(prev){
+    alert("మీరు ఇప్పటికే ఈ Test రాసారు! మీ Score: "+prev.score+" / "+qs.length+". ఒక Mobile కి ఒక Attempt మాత్రమే!");
+    document.getElementById('status').innerText = "మీరు ఇప్పటికే Test రాసారు! Score: "+prev.score+" / "+qs.length+" - మళ్ళీ రాయలేరు ❌";
+    return;
+  }
+  document.getElementById('watermark').innerText = "MCRES • "+studentName+" • "+studentPhone;
   if(timerInt) clearInterval(timerInt);
-  timerInt=setInterval(()=>{ timer--; let m=Math.floor(timer/60), s=timer%60; let t=document.getElementById('timer'); if(t) t.innerText = m+":"+String(s).padStart(2,'0'); if(timer<=0) submitTest(); },1000);
+  timerInt=setInterval(()=>{ timer--; let m=Math.floor(timer/60), s=timer%60; let t=document.getElementById('timer'); if(t) t.innerText = m+":"+String(s).padStart(2,'0'); if(timer<=0) submitTest(true); },1000);
   showQ();
 }
 function showQ(){
-  let q=qs[cur]; let total = qs.length;
-  document.getElementById('app').innerHTML = `<div class="top"><span>Q ${q.q_no} / ${total}</span><span id="timer">180:00</span></div><h3>${q.question_text}</h3><div class="opt ${ans[cur]=='A'?'sel':''}" onclick="pick('A',this)">A. ${q.option_a}</div><div class="opt ${ans[cur]=='B'?'sel':''}" onclick="pick('B',this)">B. ${q.option_b}</div><div class="opt ${ans[cur]=='C'?'sel':''}" onclick="pick('C',this)">C. ${q.option_c}</div><div class="opt ${ans[cur]=='D'?'sel':''}" onclick="pick('D',this)">D. ${q.option_d}</div><div style="display:flex;gap:10px;margin-top:14px"><button class="btn" style="background:#64748b" onclick="prevQ()">← Prev</button><button class="btn" onclick="nextQ()">Next →</button></div><button class="btn" style="background:#dc2626;margin-top:10px" onclick="submitTest()">Submit Test</button>`;
+  let q=qs[cur]; let total = qs.length; let done=Object.keys(ans).length; let pct=Math.round((done/total)*100);
+  document.getElementById('app').innerHTML = `<div class="timer-box">⏰ Time Left: <span id="timer">180:00</span> &nbsp;|&nbsp; Q ${q.q_no} / ${total}</div><div class="progress"><div style="width:${pct}%"></div></div><p style="font-size:12px;color:#64748b;text-align:center">${done} / ${total} Answered • ${pct}% Completed</p><h3 style="line-height:1.6">${q.question_text}</h3><div class="opt ${ans[cur]=='A'?'sel':''}" onclick="pick('A',this)">A. ${q.option_a}</div><div class="opt ${ans[cur]=='B'?'sel':''}" onclick="pick('B',this)">B. ${q.option_b}</div><div class="opt ${ans[cur]=='C'?'sel':''}" onclick="pick('C',this)">C. ${q.option_c}</div><div class="opt ${ans[cur]=='D'?'sel':''}" onclick="pick('D',this)">D. ${q.option_d}</div><div style="display:flex;gap:10px;margin-top:14px"><button class="btn btn-grey" onclick="prevQ()">← Prev</button><button class="btn btn-blue" onclick="nextQ()">Next →</button></div><button class="btn btn-red" style="margin-top:10px" onclick="submitTest()">Submit Test</button><p style="text-align:center;color:#dc2626;font-size:13px">Wrong Answer కి -0.25 Negative Marking ఉంటుంది!</p><p style="text-align:center;color:#475569;font-size:11px">ప్రశ్న పత్రం రూపకల్పన : Dr Ramakrishna Manimadde | MCRES</p>`;
   let m=Math.floor(timer/60), s=timer%60; let t=document.getElementById('timer'); if(t) t.innerText = m+":"+String(s).padStart(2,'0');
 }
 function pick(v,el){ ans[cur]=v; document.querySelectorAll('.opt').forEach(o=>o.classList.remove('sel')); el.classList.add('sel'); }
 function nextQ(){ if(cur<qs.length-1){cur++; showQ();} }
 function prevQ(){ if(cur>0){cur--; showQ();} }
 async function saveResult(score){ try{ await fetch(`${SUPABASE_URL}/rest/v1/mcres_attempts`, {method:'POST', headers:{apikey:SUPABASE_KEY, Authorization:`Bearer ${SUPABASE_KEY}`, 'Content-Type':'application/json', Prefer:'return=minimal'}, body: JSON.stringify({ student_name: studentName, student_phone: studentPhone, test_id: TEST_ID, score: score, total_questions: qs.length })}); }catch(e){} }
-async function submitTest(){ clearInterval(timerInt); let score=0; qs.forEach((q,i)=>{ if(ans[i]==q.correct_option) score++; }); await saveResult(score); let html=`<h2>Result - SI Prelims GT-1</h2><h3>Score: ${score} / ${qs.length}</h3><p>${studentName} గారు, మీ Result Save అయింది ✅</p>`; qs.forEach((q,i)=>{ let u=ans[i]||"Not Answered"; html+=`<div style="border:1px solid #ddd;padding:10px;border-radius:10px;margin:8px 0"><b>Q${q.q_no}.</b> ${q.question_text}<br>Your Answer: ${u} | Correct: <b>${q.correct_option}</b><br>A. ${q.option_a}<br>B. ${q.option_b}<br>C. ${q.option_c}<br>D. ${q.option_d}</div>`; }); html+=`<a href="/" style="display:block;text-align:center;margin-top:14px">← Back to Home</a>`; document.getElementById('app').innerHTML=html; window.scrollTo(0,0); }
+async function submitTest(auto=false){
+  if(!auto && !confirm("Test Submit చేయాలా? మళ్ళీ రాయలేరు!")) return;
+  clearInterval(timerInt);
+  let correct=0, wrong=0, skipped=0;
+  qs.forEach((q,i)=>{ if(!ans[i]) skipped++; else if(ans[i]==q.correct_option) correct++; else wrong++; });
+  let score=Math.round((correct*1 - wrong*0.25)*100)/100;
+  await saveResult(score);
+  let html=`<div style="text-align:center;padding:10px"><h2>🎉 Test Completed!</h2><h3>${studentName} గారు</h3><div style="background:#0f2a5a;color:#fff;padding:20px;border-radius:12px;margin:16px 0"><div style="font-size:14px">YOUR SCORE</div><div style="font-size:48px;font-weight:800">${score} / ${qs.length}</div></div><div style="background:#f0f2ff;padding:14px;border-radius:10px;text-align:left;line-height:2"><b>✅ Correct:</b> ${correct} (+${correct})<br><b>❌ Wrong:</b> ${wrong} (${(wrong*0.25).toFixed(2)} తగ్గింది)<br><b>⏭️ Not Answered:</b> ${skipped}<br><b>📱 Phone:</b> ${studentPhone}<br><b>✅ Result Save అయింది!</b></div><p style="color:#666;font-size:13px;margin-top:14px">Questions & Answers ఇక్కడ చూపించము - Paper Leak అవ్వకుండా!<br>Rank & Topper List త్వరలో MCRES లో ప్రకటిస్తారు.</p><p style="font-size:12px;color:#475569">Founder & Director - Dr Ramakrishna Manimadde<br>ప్రశ్న పత్రం రూపకల్పన : Dr Ramakrishna Manimadde</p></div>`;
+  document.getElementById('app').innerHTML=html; window.scrollTo(0,0); qs=[]; ans={};
+}
 </script>
 </body>
 </html>
