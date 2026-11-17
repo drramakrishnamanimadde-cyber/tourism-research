@@ -6,60 +6,56 @@
 <title>SI Prelims Grand Test | MCRES</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Noto+Sans+Telugu:wght@600;700&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:"Plus Jakarta Sans","Noto Sans Telugu",sans-serif;background:linear-gradient(180deg,#fbcfe8,#dbeafe,#fef9c3,#dcfce7);background-size:100% 600px;background-repeat:no-repeat;background-color:#eef2ff;-webkit-user-select:none;user-select:none;padding-bottom:60px}
+*{box-sizing:border-box}body{margin:0;font-family:"Plus Jakarta Sans","Noto Sans Telugu",sans-serif;background:linear-gradient(180deg,#fbcfe8,#dbeafe,#fef9c3,#dcfce7);background-size:100% 600px;background-repeat:no-repeat;background-color:#eef2ff;-webkit-user-select:none;user-select:none;padding-bottom:80px}
 @keyframes shine{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-/* ===== SUPER COLOURFUL HEADER ===== */
 .header{background:linear-gradient(135deg,#0f2a5a,#1e3a8a,#7c3aed,#db2777,#f59e0b,#0f2a5a);background-size:300% 300%;animation:shine 8s ease infinite;color:#fff;text-align:center;padding:20px 8px 16px;border-bottom:5px solid #facc15;box-shadow:0 12px 30px rgba(124,58,237,.5);position:relative;overflow:hidden}
 .header:before{content:"✨ ⭐ 🌟 ✨ ⭐";position:absolute;top:6px;left:0;right:0;font-size:14px;opacity:.6;letter-spacing:8px}
-.header .logo{font-size:38px;font-weight:800;letter-spacing:3px;background:linear-gradient(90deg,#fef08a,#facc15,#fb7185,#a78bfa,#fef08a);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 3px 0 #92400e) drop-shadow(0 6px 0 #78350f) drop-shadow(0 10px 14px rgba(0,0,0,.6));position:relative;z-index:1;margin-top:10px}
-.header .star{color:#facc15;-webkit-text-fill-color:#facc15;filter:drop-shadow(0 2px 0 #92400e)}
-.header h1{margin:8px 0 10px;font-size:24px;font-weight:800;letter-spacing:1px;color:#fff;text-shadow:0 2px 0 #7c3aed,0 4px 0 #0f2a5a,0 6px 14px rgba(0,0,0,.6);position:relative;z-index:1}
-/* ===== NAME - ONE LINE - NO WRAP ===== */
-.badge{display:block;max-width:96%;margin:4px auto;padding:7px 10px;border-radius:20px;font-size:12.5px;font-weight:700;position:relative;z-index:1;box-shadow:0 4px 0 rgba(0,0,0,.25),0 8px 14px rgba(0,0,0,.3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.badge-founder{background:linear-gradient(90deg,#fde68a,#f59e0b,#fbbf24,#fde68a);background-size:200% auto;color:#451a03;border:2px solid #fff7cc;text-shadow:0 1px 0 #fff}
-.badge-paper{background:linear-gradient(90deg,#fbcfe8,#ec4899,#f472b6,#fbcfe8);background-size:200% auto;color:#fff;border:2px solid #fff;text-shadow:0 1px 0 rgba(0,0,0,.3)}
-.badge b{white-space:nowrap}
-.nowrap{white-space:nowrap}
+.header .logo{font-size:36px;font-weight:800;letter-spacing:3px;background:linear-gradient(90deg,#fef08a,#facc15,#fb7185,#a78bfa,#fef08a);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 3px 0 #92400e) drop-shadow(0 6px 0 #78350f) drop-shadow(0 10px 14px rgba(0,0,0,.6));position:relative;z-index:1;margin-top:10px}
+.header .star{color:#facc15;-webkit-text-fill-color:#facc15}
+.header h1{margin:8px 0 12px;font-size:23px;font-weight:800;color:#fff;text-shadow:0 2px 0 #7c3aed,0 4px 0 #0f2a5a,0 6px 14px rgba(0,0,0,.6);position:relative;z-index:1}
+/* ===== NEW - LABEL పైన - NAME కింద ===== */
+.badge{display:block;width:98%;margin:5px auto;padding:8px 10px;border-radius:16px;text-align:center;box-shadow:0 4px 0 rgba(0,0,0,.25);position:relative;z-index:1}
+.badge-founder{background:linear-gradient(90deg,#fde68a,#f59e0b,#fbbf24);color:#451a03;border:2px solid #fff7cc}
+.badge-paper{background:linear-gradient(90deg,#fbcfe8,#ec4899,#f472b6);color:#fff;border:2px solid #fff;text-shadow:0 1px 0 rgba(0,0,0,.3)}
+.badge .lbl{display:block;font-size:12px;font-weight:700;line-height:1.4}
+.badge .nm{display:block;font-size:16px;font-weight:800;line-height:1.4;margin-top:1px}
 .container{max-width:800px;margin:16px auto;padding:18px;background:#fff;border-radius:18px;box-shadow:0 12px 0 #cbd5e1,0 20px 40px rgba(0,0,0,.18);min-height:420px}
 .btn{background:linear-gradient(180deg,#22c55e,#16a34a);color:#fff;padding:14px 18px;border:none;border-radius:24px;font-weight:800;cursor:pointer;width:100%;font-size:17px;box-shadow:0 6px 0 #14532d}
 .btn:active{transform:translateY(4px);box-shadow:0 2px 0 #14532d}
-.btn-blue{background:linear-gradient(180deg,#60a5fa,#2563eb,#1d4ed8);box-shadow:0 6px 0 #1e3a8a}
-.btn-blue:active{box-shadow:0 2px 0 #1e3a8a}
-.btn-red{background:linear-gradient(180deg,#f87171,#dc2626,#991b1b);box-shadow:0 6px 0 #7f1d1d}
-.btn-red:active{box-shadow:0 2px 0 #7f1d1d}
-.btn-prev{background:linear-gradient(180deg,#fca5a5,#ef4444,#dc2626);box-shadow:0 6px 0 #991b1b}
-.btn-prev:active{box-shadow:0 2px 0 #991b1b}
-.btn-yellow{background:linear-gradient(180deg,#fde047,#facc15,#eab308);color:#422006;box-shadow:0 6px 0 #a16207}
-.btn-yellow:active{box-shadow:0 2px 0 #a16207}
-.btn-purple{background:linear-gradient(180deg,#c084fc,#a855f7,#7c3aed);box-shadow:0 6px 0 #4c1d95}
+.btn-blue{background:linear-gradient(180deg,#60a5fa,#2563eb);box-shadow:0 6px 0 #1e3a8a}
+.btn-red{background:linear-gradient(180deg,#f87171,#dc2626);box-shadow:0 6px 0 #7f1d1d}
+.btn-prev{background:linear-gradient(180deg,#fca5a5,#ef4444);box-shadow:0 6px 0 #991b1b}
+.btn-yellow{background:linear-gradient(180deg,#fde047,#facc15);color:#422006;box-shadow:0 6px 0 #a16207}
+.btn-purple{background:linear-gradient(180deg,#c084fc,#a855f7);box-shadow:0 6px 0 #4c1d95}
 .opt{border:2px solid #e9d5ff;padding:16px;border-radius:14px;margin:12px 0;cursor:pointer;background:linear-gradient(180deg,#fff,#fdf4ff);font-size:16px;line-height:1.6;box-shadow:0 4px 0 #e9d5ff}
 .opt.sel{background:linear-gradient(180deg,#dbeafe,#bfdbfe);border-color:#2563eb;box-shadow:0 4px 0 #1e40af}
 .progress{height:12px;background:#fce7f3;border-radius:10px;overflow:hidden;margin:8px 0;border:1px solid #fbcfe8}
-.progress div{height:100%;background:linear-gradient(90deg,#22c55e,#facc15,#ec4899,#7c3aed);width:0%}
+.progress div{height:100%;background:linear-gradient(90deg,#22c55e,#facc15,#ec4899);width:0%}
 input{width:100%;padding:14px;border:2px solid #ddd;border-radius:12px;margin:8px 0;font-size:15px;font-family:inherit}
 input:focus{outline:none;border-color:#7c3aed}
-textarea{width:100%;padding:14px;border:2px solid #ddd;border-radius:12px;margin:8px 0;font-size:15px;font-family:inherit;min-height:100px;resize:vertical}
+textarea{width:100%;padding:14px;border:2px solid #ddd;border-radius:12px;margin:8px 0;font-size:15px;font-family:inherit;min-height:100px}
 textarea:focus{outline:none;border-color:#7c3aed}
-.watermark{position:fixed;bottom:52px;right:8px;font-size:10px;color:#dc2626;z-index:999;background:rgba(255,255,255,.95);padding:4px 7px;border-radius:8px;border:1px solid #fecaca;white-space:nowrap}
+.watermark{position:fixed;bottom:8px;right:8px;font-size:10px;color:#dc2626;z-index:999;background:rgba(255,255,255,.95);padding:4px 7px;border-radius:8px;border:1px solid #fecaca;white-space:nowrap}
 .footer{text-align:center;padding:14px;font-size:12px;color:#475569;line-height:1.8}
-.footer .f-line{white-space:nowrap;display:block;overflow:hidden;text-overflow:ellipsis}
-.timer-box{background:linear-gradient(90deg,#fef9c3,#fde68a,#fbcfe8);background-size:200% auto;border:2px solid #facc15;padding:10px 12px;border-radius:12px;text-align:center;font-weight:800;color:#92400e;box-shadow:0 4px 0 #eab308}
+.footer .f-lbl{display:block;font-weight:700;font-size:11px}
+.footer .f-nm{display:block;font-weight:800;font-size:14px}
+.timer-box{background:linear-gradient(90deg,#fef9c3,#fde68a,#fbcfe8);border:2px solid #facc15;padding:10px 12px;border-radius:12px;text-align:center;font-weight:800;color:#92400e;box-shadow:0 4px 0 #eab308}
 .qbtn{width:36px;height:36px;border-radius:10px;border:1.5px solid #fecaca;background:#fee2e2;color:#dc2626;font-weight:800;font-size:13px;cursor:pointer;box-shadow:0 3px 0 #fca5a5}
-.qbtn.ans{background:linear-gradient(180deg,#4ade80,#22c55e);color:#fff;border-color:#16a34a;box-shadow:0 3px 0 #14532d}
-.qbtn.doubt{background:linear-gradient(180deg,#fde047,#facc15);color:#422006;border-color:#eab308;box-shadow:0 3px 0 #a16207}
+.qbtn.ans{background:linear-gradient(180deg,#4ade80,#22c55e);color:#fff;border-color:#16a34a}
+.qbtn.doubt{background:linear-gradient(180deg,#fde047,#facc15);color:#422006;border-color:#eab308}
 .qbtn.cur{outline:3px solid #7c3aed;outline-offset:1px}
 .palette{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px;background:linear-gradient(180deg,#fff1f2,#fdf4ff);padding:12px;border-radius:12px;border:1.5px solid #fecaca;max-height:180px;overflow-y:auto}
-.starbtn{font-size:32px;cursor:pointer;background:none;border:none;padding:2px 4px;filter:grayscale(1);transition:.2s}
+.starbtn{font-size:32px;cursor:pointer;background:none;border:none;padding:2px 4px;filter:grayscale(1)}
 .starbtn.active{filter:grayscale(0);transform:scale(1.15)}
-.avail-box{background:linear-gradient(90deg,#fef3c7,#fde68a,#fbcfe8);background-size:200% auto;border:2px solid #f59e0b;padding:10px;border-radius:12px;text-align:center;font-weight:800;color:#92400e;margin:10px 0;box-shadow:0 4px 0 #d97706}
+.avail-box{background:linear-gradient(90deg,#fef3c7,#fde68a,#fbcfe8);border:2px solid #f59e0b;padding:10px;border-radius:12px;text-align:center;font-weight:800;color:#92400e;margin:10px 0;box-shadow:0 4px 0 #d97706}
 </style>
 </head>
 <body oncontextmenu="return false" oncopy="return false" oncut="return false" onpaste="return false">
 <div class="header">
 <div class="logo"><span class="star">★</span> MCRES <span class="star">★</span></div>
 <h1>SI PRELIMS GRAND TEST</h1>
-<div><span class="badge badge-founder">👑 Founder &amp; Director - <b class="nowrap">Dr Ramakrishna Manimadde</b></span></div>
-<div><span class="badge badge-paper">✍️ ప్రశ్న పత్రం రూపకల్పన : <b class="nowrap">Dr Ramakrishna Manimadde</b></span></div>
+<div><span class="badge badge-founder"><span class="lbl">👑 Founder &amp; Director :</span><span class="nm">Dr Ramakrishna Manimadde</span></span></div>
+<div><span class="badge badge-paper"><span class="lbl">✍️ ప్రశ్న పత్రం రూపకల్పన :</span><span class="nm">డాక్టర్ రామకృష్ణ మనిమద్దె</span></span></div>
 </div>
 
 <div class="container" id="app">
@@ -75,7 +71,7 @@ textarea:focus{outline:none;border-color:#7c3aed}
 </div>
 </div>
 
-<div class="footer"><span class="f-line">© MCRES | <b style="color:#b45309">Founder &amp; Director - Dr Ramakrishna Manimadde</b></span><span class="f-line" style="color:#be185d;font-weight:700">ప్రశ్న పత్రం రూపకల్పన : Dr Ramakrishna Manimadde</span></div>
+<div class="footer"><span class="f-lbl">© MCRES | Founder &amp; Director :</span><span class="f-nm" style="color:#b45309">Dr Ramakrishna Manimadde</span><span class="f-lbl" style="color:#be185d">ప్రశ్న పత్రం రూపకల్పన :</span><span class="f-nm" style="color:#be185d">డాక్టర్ రామకృష్ణ మనిమద్దె</span></div>
 <div class="watermark" id="watermark">MCRES • Grand Test</div>
 
 <script>
@@ -90,7 +86,7 @@ let feedbackRating=0, feedbackSent=false, lastScore=0;
 function isTestExpired(){ return new Date() > TEST_END; }
 function checkAvailability(){
   if(isTestExpired()){
-    document.getElementById('app').innerHTML = `<div style="text-align:center;padding:20px"><h2>🔒 Test Closed!</h2><p style="font-size:15px;line-height:1.8">ఈ Test <b>December 29, 2026</b> తో ముగిసింది!<br>ఇక Test రాయలేరు.<br><br>కొత్త Test కోసం MCRES ని Follow అవ్వండి!</p><p style="font-size:12px;color:#475569;white-space:nowrap">Founder &amp; Director - Dr Ramakrishna Manimadde</p></div>`;
+    document.getElementById('app').innerHTML = `<div style="text-align:center;padding:20px"><h2>🔒 Test Closed!</h2><p style="font-size:15px;line-height:1.8">ఈ Test <b>December 29, 2026</b> తో ముగిసింది!<br>ఇక Test రాయలేరు.</p><p style="font-size:12px;color:#475569">Founder & Director :<br><b>Dr Ramakrishna Manimadde</b></p></div>`;
     return true;
   }
   return false;
@@ -216,7 +212,7 @@ async function sendFeedback(){
     await fetch(`${SUPABASE_URL}/rest/v1/mcres_feedback`, {method:'POST', headers:{apikey:SUPABASE_KEY, Authorization:`Bearer ${SUPABASE_KEY}`, 'Content-Type':'application/json', Prefer:'return=minimal'}, body: JSON.stringify({ student_name: studentName, student_phone: studentPhone, test_id: TEST_ID, score: lastScore, rating: feedbackRating, feedback: msg })});
   }catch(e){}
   feedbackSent=true;
-  document.getElementById('feedbackBox').innerHTML = `<div style="background:#dcfce7;padding:16px;border-radius:12px;text-align:center"><h3 style="margin:4px">🙏 ధన్యవాదాలు ${studentName} గారు!</h3><p style="margin:4px;color:#166534">మీ Opinion Save అయింది! MCRES Team చూస్తుంది!</p><p>⭐ Rating: ${feedbackRating>0?feedbackRating+" / 5":"-"}<br>💬 ${msg||"-"}</p></div>`;
+  document.getElementById('feedbackBox').innerHTML = `<div style="background:#dcfce7;padding:16px;border-radius:12px;text-align:center"><h3 style="margin:4px">🙏 ధన్యవాదాలు ${studentName} గారు!</h3><p style="margin:4px;color:#166534">మీ Opinion Save అయింది!</p><p>⭐ Rating: ${feedbackRating>0?feedbackRating+" / 5":"-"}<br>💬 ${msg||"-"}</p></div>`;
 }
 function skipFeedback(){
   document.getElementById('feedbackBox').innerHTML = `<p style="text-align:center;color:#64748b">Opinion Skip చేసారు - ధన్యవాదాలు!</p>`;
@@ -243,15 +239,15 @@ async function submitTest(auto=false){
   }
   html+=`<div id="feedbackBox" style="background:linear-gradient(180deg,#fdf4ff,#faf5ff);border:2px solid #e9d5ff;padding:18px;border-radius:16px;margin-top:20px;text-align:left;box-shadow:0 6px 0 #d8b4fe">
   <h3 style="text-align:center;margin:4px 0">📝 Exam Question Paper గురించి మీ Opinion చెప్పండి</h3>
-  <p style="text-align:center;color:#64748b;font-size:13px;margin:6px 0">Paper ఎలా ఉంది? Easy / Tough / బాగుంది? మీ అభిప్రాయం మాకు చాలా విలువైనది!</p>
+  <p style="text-align:center;color:#64748b;font-size:13px;margin:6px 0">Paper ఎలా ఉంది? Easy / Tough / బాగుంది?</p>
   <p style="text-align:center;margin:10px 0"><span style="font-size:13px;font-weight:700">⭐ Paper కి Rating ఇవ్వండి:</span><br>
   <button class="starbtn" onclick="setRating(1)">⭐</button><button class="starbtn" onclick="setRating(2)">⭐</button><button class="starbtn" onclick="setRating(3)">⭐</button><button class="starbtn" onclick="setRating(4)">⭐</button><button class="starbtn" onclick="setRating(5)">⭐</button></p>
   <label style="font-weight:700;font-size:13px">💬 మీ Opinion ఇక్కడ రాయండి:</label>
-  <textarea id="feedbackText" placeholder="ఉదా: Paper చాలా బాగుంది... Questions SI Level లో ఉన్నాయి..."></textarea>
+  <textarea id="feedbackText" placeholder="ఉదా: Paper చాలా బాగుంది..."></textarea>
   <button id="feedbackBtn" class="btn btn-purple" onclick="sendFeedback()">Opinion పంపండి →</button>
   <p style="text-align:center;margin:8px 0 0"><a href="javascript:void(0)" onclick="skipFeedback()" style="color:#64748b;font-size:12px">Skip చేయండి</a></p>
   </div>`;
-  html+=`<p style="font-size:12px;color:#475569;margin-top:14px;white-space:nowrap">Founder &amp; Director - Dr Ramakrishna Manimadde<br>ప్రశ్న పత్రం రూపకల్పన : Dr Ramakrishna Manimadde</p></div>`;
+  html+=`<p style="font-size:12px;color:#475569;margin-top:14px">Founder & Director :<br><b>Dr Ramakrishna Manimadde</b><br>ప్రశ్న పత్రం రూపకల్పన :<br><b>డాక్టర్ రామకృష్ణ మనిమద్దె</b></p></div>`;
   document.getElementById('app').innerHTML=html; window.scrollTo(0,0);
   if(!isAdmin){ qs=[]; ans={}; doubt={}; }
 }
