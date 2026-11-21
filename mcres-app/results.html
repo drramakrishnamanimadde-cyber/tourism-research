@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Results - MCRES ACADEMY</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,Arial,sans-serif}
+body{background:#f9f5fb;color:#111}
+.top{background:#fff;text-align:center;padding:12px}
+.top a{color:#670f9e;text-decoration:none;font-weight:700;font-size:14px}
+.top h1{color:#670f9e;font-size:20px;margin-top:6px}
+.wrap{padding:16px}
+.card{background:#fff;padding:16px;border-radius:14px;box-shadow:0 4px 14px rgba(0,0,0,.06);margin-bottom:12px}
+.card h3{font-size:16px}
+.card p{font-size:13px;color:#555;margin:6px 0}
+.score{font-size:28px;font-weight:800;color:#670f9e}
+.badge{display:inline-block;background:#e8f5e9;color:#2e7d32;padding:4px 10px;border-radius:10px;font-size:12px;font-weight:700}
+.badge2{display:inline-block;background:#fff3e0;color:#e65100;padding:4px 10px;border-radius:10px;font-size:12px;font-weight:700}
+.btn{display:inline-block;background:#ff8703;color:#fff;padding:10px 16px;border-radius:10px;text-decoration:none;font-weight:700;font-size:14px;margin-top:8px}
+footer{text-align:center;color:#666;font-size:13px;padding:10px 0 20px}
+</style>
+</head>
+<body>
+<div class="top">
+<a href="index.html">← Back to Home</a>
+<h1>My Results</h1>
+</div>
+<div class="wrap">
+<div class="card" style="text-align:center">
+<p>Hello, <b id="uname">Student</b> 👋</p>
+<h3>Overall Performance</h3>
+<div class="score">78% Average</div>
+<p>12 Tests Completed • 5 Top Ranks</p>
+</div>
+<div class="card">
+<span class="badge">PASSED ✅</span>
+<h3>Grand Test - 2026 : 150 Marks</h3>
+<p>Completed on 21 Nov 2026 • 150 Questions</p>
+<p><b>Score: 118 / 150</b> • Rank: 3</p>
+<a class="btn" href="tests.html">Retake Test →</a>
+</div>
+<div class="card">
+<span class="badge2">IMPROVE 📈</span>
+<h3>Daily Test - 01 : Polity + CA</h3>
+<p>Completed on 20 Nov 2026 • 50 Questions</p>
+<p><b>Score: 32 / 50</b> • Rank: 12</p>
+<a class="btn" href="tests.html">Retake Test →</a>
+</div>
+<div class="card">
+<span class="badge">PASSED ✅</span>
+<h3>Group-2 Prelims - History</h3>
+<p>Completed on 19 Nov 2026 • 100 Questions</p>
+<p><b>Score: 76 / 100</b> • Rank: 5</p>
+<a class="btn" href="tests.html">Retake Test →</a>
+</div>
+</div>
+<footer>MCRES ACADEMY © 2026 • Aspire - Achieve</footer>
+<script>
+let n=localStorage.getItem("mcres_name");
+if(n) document.getElementById("uname").innerText=n;
+</script>
+</body>
+</html>
