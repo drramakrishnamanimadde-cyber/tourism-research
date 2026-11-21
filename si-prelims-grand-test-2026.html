@@ -18,7 +18,7 @@
 .badge-paper{background:linear-gradient(90deg,#fbcfe8,#ec4899,#f472b6);color:#fff;border:2px solid #fff;text-shadow:0 1px 0 rgba(0,0,0,.3)}
 .badge .lbl{display:block;font-size:12px;font-weight:700;line-height:1.4}
 .badge .nm{display:block;font-size:16px;font-weight:800;line-height:1.4;margin-top:1px}
-.container{max-width:800px;margin:16px auto;padding:18px;background:#fff;border-radius:18px;box-shadow:0 12px 0 #cbd5e1,0 20px 40px rgba(0,0,0,.18);min-height:340px;position:relative;z-index:2}
+.container{max-width:800px;margin:16px auto;padding:18px;padding-bottom:110px;background:#fff;border-radius:18px;box-shadow:0 12px 0 #cbd5e1,0 20px 40px rgba(0,0,0,.18);min-height:340px;position:relative;z-index:2}
 .btn{background:linear-gradient(180deg,#22c55e,#16a34a);color:#fff;padding:14px 18px;border:none;border-radius:24px;font-weight:800;cursor:pointer;width:100%;font-size:17px;box-shadow:0 6px 0 #14532d}
 .btn:active{transform:translateY(4px);box-shadow:0 2px 0 #14532d}
 .btn-blue{background:linear-gradient(180deg,#60a5fa,#2563eb);box-shadow:0 6px 0 #1e3a8a}
@@ -34,7 +34,7 @@ input{width:100%;padding:14px;border:2px solid #ddd;border-radius:12px;margin:8p
 input:focus{outline:none;border-color:#7c3aed}
 textarea{width:100%;padding:16px;border:2px solid #ddd;border-radius:12px;margin:8px 0;font-size:15px;font-family:inherit;min-height:140px;resize:vertical;-webkit-user-select:text;user-select:text}
 textarea:focus{outline:none;border-color:#7c3aed}
-.watermark-fixed{position:fixed;bottom:8px;left:50%;transform:translateX(-50%);font-size:11px;font-weight:800;color:#fff;z-index:9999;background:linear-gradient(90deg,#dc2626,#7c3aed);padding:6px 14px;border-radius:20px;box-shadow:0 4px 12px rgba(0,0,0,.4);white-space:nowrap;border:2px solid #fff}
+.watermark-fixed{position:fixed;bottom:12px;left:50%;transform:translateX(-50%);font-size:11px;font-weight:800;color:#fff;z-index:9999;background:linear-gradient(90deg,#dc2626,#7c3aed);padding:6px 14px;border-radius:20px;box-shadow:0 4px 12px rgba(0,0,0,.4);white-space:nowrap;border:2px solid #fff}
 .watermark-bg{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1;overflow:hidden;opacity:.08}
 .watermark-bg span{position:absolute;font-size:16px;font-weight:800;color:#dc2626;transform:rotate(-30deg);white-space:nowrap}
 .footer{text-align:center;padding:14px;font-size:12px;color:#475569;line-height:1.8;position:relative;z-index:2}
@@ -50,19 +50,21 @@ textarea:focus{outline:none;border-color:#7c3aed}
 .starbtn.active{filter:grayscale(0);transform:scale(1.15)}
 .avail-box{background:linear-gradient(90deg,#dcfce7,#bbf7d0,#fef9c3);border:2px solid #22c55e;padding:10px;border-radius:12px;text-align:center;font-weight:800;color:#166534;margin:10px 0;box-shadow:0 4px 0 #16a34a}
 .attempt-box{background:linear-gradient(90deg,#e0e7ff,#ddd6fe);border:2px solid #7c3aed;padding:10px;border-radius:12px;text-align:center;font-weight:800;color:#4c1d95;margin:10px 0}
+.q-text{line-height:2.0 !important}
+.q-text .stmt{display:block;margin:6px 0 6px 10px}
+.q-text .q-head{display:block;margin-bottom:12px}
+.q-text .q-ask{display:block;margin-top:14px;font-weight:800}
 @media print{body{display:none !important}}
 </style>
 </head>
 <body oncontextmenu="return false" oncopy="return false" oncut="return false" onpaste="return false" onselectstart="return false" ondragstart="return false">
 <div class="watermark-bg" id="wmBg"></div>
-
 <div class="header">
 <div class="logo"><span class="star">★</span> MCRES <span class="star">★</span></div>
 <h1>SI PRELIMS GRAND TEST - 2026</h1>
 <div><span class="badge badge-founder"><span class="lbl">👑 Founder &amp; Director :</span><span class="nm">Dr Ramakrishna Manimadde</span></span></div>
 <div><span class="badge badge-paper"><span class="lbl">✍️ ప్రశ్న పత్రం రూపకల్పన :</span><span class="nm">డాక్టర్ రామకృష్ణ సార్</span></span></div>
 </div>
-
 <div class="container" id="app">
 <h2 style="text-align:center;margin:4px 0;background:linear-gradient(90deg,#7c3aed,#db2777,#f59e0b);-webkit-background-clip:text;background-clip:text;color:transparent">🏆 SI Prelims Grand Test - 2026</h2>
 <div class="avail-box">🎉 UNLIMITED ATTEMPTS - ఎన్నిసార్లైనా రాయవచ్చు!<br><span style="font-size:12px">📅 December 25, 2026 వరకు Live! | తెలంగాణ కానిస్టేబుల్ Exam వరకు Practice చేయండి!</span></div>
@@ -73,10 +75,8 @@ textarea:focus{outline:none;border-color:#7c3aed}
 <p style="text-align:center;color:#666;font-size:13px" id="status">Loading Questions from Supabase...</p>
 <div id="attemptInfo" style="text-align:center;font-size:13px;color:#4c1d95;font-weight:700;margin-top:8px"></div>
 </div>
-
 <div class="footer"><span class="f-lbl">© MCRES | Founder &amp; Director :</span><span class="f-nm" style="color:#b45309">Dr Ramakrishna Manimadde</span><span class="f-lbl" style="color:#be185d">ప్రశ్న పత్రం రూపకల్పన :</span><span class="f-nm" style="color:#be185d">డాక్టర్ రామకృష్ణ సార్</span></div>
 <div class="watermark-fixed" id="watermark">MCRES • 9494353828 • Grand Test 2026</div>
-
 <script>
 const SUPABASE_URL = "https://eliwhaqxilcuifsgjjnu.supabase.co";
 const SUPABASE_KEY = "sb_publishable_0887bMu7tm9HOkxLzp0gDw_mmvTCF4P";
@@ -92,11 +92,7 @@ function buildWatermark(){
   let bg = document.getElementById('wmBg');
   let txt = studentName ? `MCRES • ${MCRES_NUMBER} • ${studentName} • ${studentPhone}` : `MCRES • ${MCRES_NUMBER}`;
   let html = "";
-  for(let y=0; y<1200; y+=140){
-    for(let x=-40; x<500; x+=260){
-      html += `<span style="top:${y}px;left:${x}px">${txt}</span>`;
-    }
-  }
+  for(let y=0; y<1200; y+=140){ for(let x=-40; x<500; x+=260){ html += `<span style="top:${y}px;left:${x}px">${txt}</span>`; } }
   bg.innerHTML = html;
 }
 buildWatermark();
@@ -134,12 +130,33 @@ document.addEventListener('visibilitychange', ()=>{
       if(tabWarnings >= 3){ alert("3 సార్లు Tab మార్చారు! Test Auto Submit అవుతుంది!"); submitTest(true); }
       else if(tabWarnings > 0){ setTimeout(()=>{ if(document.hidden) return; alert(`⚠️ Warning ${tabWarnings}/3\nTab మార్చకండి! 3rd Time Auto Submit అవుతుంది!`); }, 400); }
     }
-  }
-  else { setTimeout(()=>{ document.body.style.filter = "none"; }, 300); }
+  } else { setTimeout(()=>{ document.body.style.filter = "none"; }, 300); }
 });
 window.addEventListener('blur', ()=>{ document.body.style.filter = "blur(15px)"; });
 window.addEventListener('focus', ()=>{ document.body.style.filter = "none"; });
 window.addEventListener('beforeprint', (e)=>{ e.preventDefault(); alert("Print చేయలేరు! MCRES © 9494353828"); return false; });
+// ===== QUESTION FORMAT - PAPER లాగా Line by Line =====
+function formatQuestion(t){
+  if(!t) return "";
+  let txt = " " + t.trim();
+  // సరైన...? భాగాన్ని విడదీయి
+  let ask = "";
+  let m = txt.match(/(సరైన[^?]*\?|సరైన ప్రకటనలు[^?]*\?)/);
+  if(m){ ask = m[1]; txt = txt.replace(m[1], ""); }
+  // 1. 2. 3. 4. లను విడదీయి - " 1. " లాగా space తో ఉన్నవి మాత్రమే
+  txt = txt.replace(/\s+1\.\s+/g, '<span class="stmt">1. ');
+  txt = txt.replace(/\s+2\.\s+/g, '</span><span class="stmt">2. ');
+  txt = txt.replace(/\s+3\.\s+/g, '</span><span class="stmt">3. ');
+  txt = txt.replace(/\s+4\.\s+/g, '</span><span class="stmt">4. ');
+  // మొదటి భాగం Head
+  txt = txt.replace(/^(\s*<span class="stmt">1\.)/, '</span><span class="q-head">HEAD</span>$1');
+  // Head ను సరిచేయి
+  let parts = txt.split('<span class="q-head">HEAD</span>');
+  let head = parts[0].replace(/<\/?span[^>]*>/g,'').trim();
+  let stmts = parts[1] ? parts[1] : "";
+  if(!stmts){ return `<span class="q-head">${head}</span>` + (ask ? `<span class="q-ask">${ask}</span>` : ""); }
+  return `<span class="q-head">${head}</span>${stmts}</span>` + (ask ? `<span class="q-ask">${ask}</span>` : "");
+}
 async function loadQs(){
   const el = document.getElementById('status');
   try{
@@ -158,11 +175,7 @@ async function getAttemptCount(phone){
     const url = `${SUPABASE_URL}/rest/v1/mcres_attempts?test_id=eq.${TEST_ID}&student_phone=eq.${encodeURIComponent(phone)}&select=score`;
     const res = await fetch(url, {headers:{apikey:SUPABASE_KEY, Authorization:`Bearer ${SUPABASE_KEY}`}});
     const data = await res.json();
-    if(Array.isArray(data) && data.length>0){
-      prevAttempts = data.length;
-      bestScore = Math.max(...data.map(d=>Number(d.score)||0));
-      return data.length;
-    }
+    if(Array.isArray(data) && data.length>0){ prevAttempts = data.length; bestScore = Math.max(...data.map(d=>Number(d.score)||0)); return data.length; }
     prevAttempts=0; bestScore=0; return 0;
   }catch(e){ prevAttempts=0; bestScore=0; return 0; }
 }
@@ -185,19 +198,11 @@ async function startTest(){
   if(!studentName){ alert("దయచేసి మీ పేరు రాయండి"); return; }
   if(!/^[6-9]\d{9}$/.test(studentPhone)){ alert("దయచేసి Correct 10 Digits Phone Number రాయండి"); return; }
   isAdmin = ADMIN_PHONES.includes(studentPhone);
-  if(!isAdmin && isTestExpired()){
-    alert("🔒 Test Closed! December 25, 2026 తో Test ముగిసింది!");
-    checkAvailability();
-    return;
-  }
+  if(!isAdmin && isTestExpired()){ alert("🔒 Test Closed! December 25, 2026 తో Test ముగిసింది!"); checkAvailability(); return; }
   await getAttemptCount(studentPhone);
   document.getElementById('watermark').innerText = `MCRES • ${MCRES_NUMBER} • ${studentName} • ${studentPhone}`;
   buildWatermark();
-  if(isAdmin){
-    alert("👑 Welcome Admin!");
-  } else {
-    if(prevAttempts>0) alert(`Welcome Back ${studentName} గారు!\nమీరు ఇప్పటివరకు ${prevAttempts} సార్లు రాశారు\nBest Score: ${bestScore}\nఇది ${prevAttempts+1}వ Attempt - All The Best!`);
-  }
+  if(isAdmin){ alert("👑 Welcome Admin!"); } else { if(prevAttempts>0) alert(`Welcome Back ${studentName} గారు!\nమీరు ఇప్పటివరకు ${prevAttempts} సార్లు రాశారు\nBest Score: ${bestScore}\nఇది ${prevAttempts+1}వ Attempt - All The Best!`); }
   cur=0; ans={}; doubt={}; timer=180*60; testStarted=true; tabWarnings=0;
   if(timerInt) clearInterval(timerInt);
   timerInt=setInterval(()=>{ timer--; let m=Math.floor(timer/60), s=timer%60; let t=document.getElementById('timer'); if(t) t.innerText = m+":"+String(s).padStart(2,'0'); if(timer<=0) submitTest(true); },1000);
@@ -205,15 +210,8 @@ async function startTest(){
 }
 function paletteHTML(){
   let h = `<div style="display:flex;gap:10px;font-size:11px;flex-wrap:wrap;margin-top:14px"><span>🟢 Answered</span><span>🟡 Doubt</span><span>🔴 Not Answered</span><span>🔵 Current</span></div><div class="palette">`;
-  qs.forEach((q,i)=>{
-    let cls = "qbtn";
-    if(doubt[i]) cls += " doubt";
-    else if(ans[i]) cls += " ans";
-    if(i===cur) cls += " cur";
-    h += `<button class="${cls}" onclick="goTo(${i})">${q.q_no}</button>`;
-  });
-  h += `</div>`;
-  return h;
+  qs.forEach((q,i)=>{ let cls = "qbtn"; if(doubt[i]) cls += " doubt"; else if(ans[i]) cls += " ans"; if(i===cur) cls += " cur"; h += `<button class="${cls}" onclick="goTo(${i})">${q.q_no}</button>`; });
+  h += `</div>`; return h;
 }
 function showQ(){
   let q=qs[cur]; let total = qs.length; let done=Object.keys(ans).length; let doubtCount=Object.keys(doubt).length; let pct=Math.round((done/total)*100);
@@ -224,7 +222,7 @@ function showQ(){
   <div class="timer-box">⏰ <span id="timer">180:00</span> &nbsp;|&nbsp; Question ${q.q_no} / ${total}</div>
   <div class="progress"><div style="width:${pct}%"></div></div>
   <p style="font-size:12px;color:#dc2626;text-align:center;margin:6px 0;font-weight:700">${done} / ${total} Answered • 🟡 ${doubtCount} Doubt • 🔴 ${total-done} Pending</p>
-  <h3 style="line-height:1.7;font-size:17px;margin:14px 0 18px">Q${q.q_no}. ${q.question_text}</h3>
+  <h3 class="q-text" style="line-height:2.0;font-size:17px;margin:14px 0 18px">Q${q.q_no}. ${formatQuestion(q.question_text)}</h3>
   <div class="opt ${ans[cur]=='A'?'sel':''}" onclick="pick('A',this)">A. ${q.option_a}</div>
   <div class="opt ${ans[cur]=='B'?'sel':''}" onclick="pick('B',this)">B. ${q.option_b}</div>
   <div class="opt ${ans[cur]=='C'?'sel':''}" onclick="pick('C',this)">C. ${q.option_c}</div>
@@ -235,66 +233,36 @@ function showQ(){
   ${paletteHTML()}`;
   let m=Math.floor(timer/60), s=timer%60; let t=document.getElementById('timer'); if(t) t.innerText = m+":"+String(s).padStart(2,'0');
 }
-function toggleDoubt(){
-  if(doubt[cur]) delete doubt[cur]; else doubt[cur]=true;
-  showQ();
-}
+function toggleDoubt(){ if(doubt[cur]) delete doubt[cur]; else doubt[cur]=true; showQ(); }
 function pick(v,el){ ans[cur]=v; document.querySelectorAll('.opt').forEach(o=>o.classList.remove('sel')); el.classList.add('sel'); }
 function goTo(i){ cur=i; showQ(); window.scrollTo(0,0); }
 function nextQ(){ if(cur<qs.length-1){cur++; showQ();} else { alert("ఇదే Last Question!"); } }
 function prevQ(){ if(cur>0){cur--; showQ();} }
 async function saveResult(score){ if(isAdmin) return; try{ await fetch(`${SUPABASE_URL}/rest/v1/mcres_attempts`, {method:'POST', headers:{apikey:SUPABASE_KEY, Authorization:`Bearer ${SUPABASE_KEY}`, 'Content-Type':'application/json', Prefer:'return=minimal'}, body: JSON.stringify({ student_name: studentName, student_phone: studentPhone, test_id: TEST_ID, score: score, total_questions: qs.length })}); }catch(e){} }
-function setRating(n){
-  feedbackRating=n;
-  document.querySelectorAll('.starbtn').forEach((b,i)=>{ b.classList.toggle('active', i<n); });
-}
+function setRating(n){ feedbackRating=n; document.querySelectorAll('.starbtn').forEach((b,i)=>{ b.classList.toggle('active', i<n); }); }
 async function sendFeedback(){
   if(feedbackSent){ alert("Opinion ఇప్పటికే పంపారు! ధన్యవాదాలు!"); return; }
   let msg = document.getElementById('feedbackText').value.trim();
   if(!feedbackRating && !msg){ alert("దయచేసి Star Rating లేదా Opinion ఏదైనా ఒకటి ఇవ్వండి"); return; }
   let btn = document.getElementById('feedbackBtn'); if(btn) btn.innerText="Sending...";
-  try{
-    await fetch(`${SUPABASE_URL}/rest/v1/mcres_feedback`, {method:'POST', headers:{apikey:SUPABASE_KEY, Authorization:`Bearer ${SUPABASE_KEY}`, 'Content-Type':'application/json', Prefer:'return=minimal'}, body: JSON.stringify({ student_name: studentName, student_phone: studentPhone, test_id: TEST_ID, score: lastScore, rating: feedbackRating, feedback: msg })});
-  }catch(e){}
+  try{ await fetch(`${SUPABASE_URL}/rest/v1/mcres_feedback`, {method:'POST', headers:{apikey:SUPABASE_KEY, Authorization:`Bearer ${SUPABASE_KEY}`, 'Content-Type':'application/json', Prefer:'return=minimal'}, body: JSON.stringify({ student_name: studentName, student_phone: studentPhone, test_id: TEST_ID, score: lastScore, rating: feedbackRating, feedback: msg })}); }catch(e){}
   feedbackSent=true;
   document.getElementById('feedbackBox').innerHTML = `<div style="background:#dcfce7;padding:20px;border-radius:12px;text-align:center"><h3 style="margin:4px">🙏 ధన్యవాదాలు ${studentName} గారు!</h3><p style="margin:4px;color:#166534">మీ Opinion Save అయింది! MCRES Team చూస్తుంది!</p><p>⭐ Rating: ${feedbackRating>0?feedbackRating+" / 5":"-"}<br>💬 ${msg||"-"}</p></div>`;
 }
-function skipFeedback(){
-  document.getElementById('feedbackBox').innerHTML = `<p style="text-align:center;color:#64748b">Opinion Skip చేసారు - ధన్యవాదాలు!</p>`;
-}
+function skipFeedback(){ document.getElementById('feedbackBox').innerHTML = `<p style="text-align:center;color:#64748b">Opinion Skip చేసారు - ధన్యవాదాలు!</p>`; }
 async function submitTest(auto=false){
-  if(!auto){
-    let dc = Object.keys(doubt).length;
-    let msg = dc>0 ? dc+" Doubt Questions ఉన్నాయి! అయినా Submit చేయాలా?" : "Test Submit చేయాలా?";
-    if(!confirm(msg)) return;
-  }
+  if(!auto){ let dc = Object.keys(doubt).length; let msg = dc>0 ? dc+" Doubt Questions ఉన్నాయి! అయినా Submit చేయాలా?" : "Test Submit చేయాలా?"; if(!confirm(msg)) return; }
   clearInterval(timerInt); testStarted=false;
-  let correct=0, wrong=0, skipped=0;
-  let totalQ = qs.length;
+  let correct=0, wrong=0, skipped=0; let totalQ = qs.length;
   qs.forEach((q,i)=>{ if(!ans[i]) skipped++; else if(ans[i]==q.correct_option) correct++; else wrong++; });
   let score=Math.round((correct*1 - wrong*0.25)*100)/100;
   lastScore=score; feedbackRating=0; feedbackSent=false;
   await saveResult(score);
-  let attemptNo = prevAttempts+1;
-  let best = Math.max(bestScore, score);
+  let attemptNo = prevAttempts+1; let best = Math.max(bestScore, score);
   let html=`<div style="text-align:center;padding:10px"><h2>🎉 Test Completed!</h2><h3>${studentName} గారు ${isAdmin?'(ADMIN)':''}</h3><div style="background:linear-gradient(90deg,#e0e7ff,#ddd6fe);border:2px solid #7c3aed;padding:10px;border-radius:12px;font-weight:800;color:#4c1d95;margin:10px 0">📊 ఇది మీ ${attemptNo}వ Attempt<br>${prevAttempts>0?`గత Best Score: ${bestScore} • ఈ సారి: ${score} • Best: ${best}`:`మొదటి Attempt - Best Score: ${score}`}</div><div style="background:linear-gradient(135deg,#1e3a8a,#7c3aed,#db2777);color:#fff;padding:22px;border-radius:16px;margin:16px 0;box-shadow:0 10px 0 #0f2a5a"><div style="font-size:14px">YOUR SCORE - Attempt ${attemptNo}</div><div style="font-size:52px;font-weight:800">${score} / ${totalQ}</div></div><div style="background:#f0f2ff;padding:14px;border-radius:12px;text-align:left;line-height:2"><b>✅ Correct:</b> ${correct}<br><b>❌ Wrong:</b> ${wrong} (${(wrong*0.25).toFixed(2)} తగ్గింది)<br><b>🔴 Not Answered:</b> ${skipped}<br><b>📱 Phone:</b> ${studentPhone}<br>${isAdmin?'<b>👑 Admin Result - Save అవ్వలేదు (Test Only)</b>':'<b>✅ Result Save అయింది! మీ Total Attempts: '+attemptNo+'</b>'}</div>`;
-  if(isAdmin){
-    html+=`<h3 style="margin-top:20px">👑 ADMIN - All Questions & Answers</h3>`;
-    qs.forEach((q,i)=>{ let u=ans[i]||"Not Answered"; let col = (u==q.correct_option)?"#dcfce7":"#fee2e2"; html+=`<div style="border:1.5px solid #ddd;padding:12px;border-radius:12px;margin:8px 0;text-align:left;background:${col}"><b>Q${q.q_no}.</b> ${q.question_text}<br>Your: <b>${u}</b> | Correct: <b>${q.correct_option}</b><br>A. ${q.option_a}<br>B. ${q.option_b}<br>C. ${q.option_c}<br>D. ${q.option_d}</div>`; });
-  } else {
-    html+=`<p style="color:#666;font-size:13px;margin-top:14px">Questions & Answers ఇక్కడ చూపించము - Paper Leak అవ్వకుండా!</p>`;
-    html+=`<button class="btn" style="margin-top:10px" onclick="location.reload()">🔄 మళ్ళీ Test రాయండి - Retry Test</button><p style="font-size:12px;color:#16a34a;font-weight:700">Unlimited Attempts - మళ్ళీ మళ్ళీ Practice చేయండి!</p>`;
-  }
-  html+=`<div id="feedbackBox" style="background:linear-gradient(180deg,#fdf4ff,#faf5ff);border:2px solid #e9d5ff;padding:20px;border-radius:16px;margin-top:20px;text-align:left;box-shadow:0 6px 0 #d8b4fe">
-  <h3 style="text-align:center;margin:4px 0">📝 Exam Paper గురించి మీ Opinion చెప్పండి</h3>
-  <p style="text-align:center;color:#64748b;font-size:13px;margin:6px 0">Paper ఎలా ఉంది? Easy / Tough / బాగుంది? ఏ Questions కష్టంగా అనిపించాయి?<br>మీ అభిప్రాయం మాకు చాలా విలువైనది!</p>
-  <p style="text-align:center;margin:12px 0"><span style="font-size:14px;font-weight:800">⭐ Paper కి Rating ఇవ్వండి:</span><br>
-  <button class="starbtn" onclick="setRating(1)">⭐</button><button class="starbtn" onclick="setRating(2)">⭐</button><button class="starbtn" onclick="setRating(3)">⭐</button><button class="starbtn" onclick="setRating(4)">⭐</button><button class="starbtn" onclick="setRating(5)">⭐</button><br><span style="font-size:11px;color:#64748b">1 = చాలా కష్టం • 5 = చాలా బాగుంది</span></p>
-  <label style="font-weight:800;font-size:14px">💬 మీ Opinion ఇక్కడ రాయండి - ఖాళీ Place:</label>
-  <textarea id="feedbackText" placeholder="ఇక్కడ రాయండి...&#10;&#10;ఉదా:&#10;• Paper చాలా బాగుంది...&#10;• Questions SI Level లో ఉన్నాయి...&#10;• Time సరిపోలేదు...&#10;• ఇంకా ఇలాంటి Tests పెట్టండి..."></textarea>
-  <button id="feedbackBtn" class="btn btn-purple" onclick="sendFeedback()">Opinion పంపండి →</button>
-  <p style="text-align:center;margin:8px 0 0"><a href="javascript:void(0)" onclick="skipFeedback()" style="color:#64748b;font-size:12px">Skip చేయండి</a></p>
-  </div>`;
+  if(isAdmin){ html+=`<h3 style="margin-top:20px">👑 ADMIN - All Questions & Answers</h3>`; qs.forEach((q,i)=>{ let u=ans[i]||"Not Answered"; let col = (u==q.correct_option)?"#dcfce7":"#fee2e2"; html+=`<div style="border:1.5px solid #ddd;padding:12px;border-radius:12px;margin:8px 0;text-align:left;background:${col}"><b>Q${q.q_no}.</b> ${formatQuestion(q.question_text)}<br>Your: <b>${u}</b> | Correct: <b>${q.correct_option}</b><br>A. ${q.option_a}<br>B. ${q.option_b}<br>C. ${q.option_c}<br>D. ${q.option_d}</div>`; }); }
+  else { html+=`<p style="color:#666;font-size:13px;margin-top:14px">Questions & Answers ఇక్కడ చూపించము - Paper Leak అవ్వకుండా!</p>`; html+=`<button class="btn" style="margin-top:10px" onclick="location.reload()">🔄 మళ్ళీ Test రాయండి - Retry Test</button><p style="font-size:12px;color:#16a34a;font-weight:700">Unlimited Attempts - మళ్ళీ మళ్ళీ Practice చేయండి!</p>`; }
+  html+=`<div id="feedbackBox" style="background:linear-gradient(180deg,#fdf4ff,#faf5ff);border:2px solid #e9d5ff;padding:20px;border-radius:16px;margin-top:20px;text-align:left;box-shadow:0 6px 0 #d8b4fe"><h3 style="text-align:center;margin:4px 0">📝 Exam Paper గురించి మీ Opinion చెప్పండి</h3><p style="text-align:center;color:#64748b;font-size:13px;margin:6px 0">Paper ఎలా ఉంది? Easy / Tough / బాగుంది? ఏ Questions కష్టంగా అనిపించాయి?<br>మీ అభిప్రాయం మాకు చాలా విలువైనది!</p><p style="text-align:center;margin:12px 0"><span style="font-size:14px;font-weight:800">⭐ Paper కి Rating ఇవ్వండి:</span><br><button class="starbtn" onclick="setRating(1)">⭐</button><button class="starbtn" onclick="setRating(2)">⭐</button><button class="starbtn" onclick="setRating(3)">⭐</button><button class="starbtn" onclick="setRating(4)">⭐</button><button class="starbtn" onclick="setRating(5)">⭐</button><br><span style="font-size:11px;color:#64748b">1 = చాలా కష్టం • 5 = చాలా బాగుంది</span></p><label style="font-weight:800;font-size:14px">💬 మీ Opinion ఇక్కడ రాయండి - ఖాళీ Place:</label><textarea id="feedbackText" placeholder="ఇక్కడ రాయండి..."></textarea><button id="feedbackBtn" class="btn btn-purple" onclick="sendFeedback()">Opinion పంపండి →</button><p style="text-align:center;margin:8px 0 0"><a href="javascript:void(0)" onclick="skipFeedback()" style="color:#64748b;font-size:12px">Skip చేయండి</a></p></div>`;
   html+=`<p style="font-size:12px;color:#475569;margin-top:14px">Founder & Director :<br><b>Dr Ramakrishna Manimadde</b><br>ప్రశ్న పత్రం రూపకల్పన :<br><b>డాక్టర్ రామకృష్ణ సార్</b><br>MCRES • 9494353828</p></div>`;
   document.getElementById('app').innerHTML=html; window.scrollTo(0,0);
 }
