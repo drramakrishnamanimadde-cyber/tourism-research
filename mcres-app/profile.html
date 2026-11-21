@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profile - MCRES ACADEMY</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,Arial,sans-serif}
+body{background:#f9f5fb;color:#111}
+.top{background:#fff;text-align:center;padding:12px}
+.top a{color:#670f9e;text-decoration:none;font-weight:700;font-size:14px}
+.top h1{color:#670f9e;font-size:20px;margin-top:6px}
+.wrap{padding:16px}
+.card{background:#fff;padding:18px;border-radius:14px;box-shadow:0 4px 14px rgba(0,0,0,.06);text-align:center;margin-bottom:12px}
+.avatar{width:80px;height:80px;background:#670f9e;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:800;margin:0 auto 10px}
+.btn{display:inline-block;background:#ff8703;color:#fff;padding:12px 20px;border-radius:10px;text-decoration:none;font-weight:700;margin-top:10px}
+.btn2{display:inline-block;background:#f1f1f1;color:#111;padding:12px 20px;border-radius:10px;text-decoration:none;font-weight:700;margin-top:10px;margin-left:6px}
+</style>
+</head>
+<body>
+<div class="top"><a href="index.html">← Back to Home</a><h1>My Profile</h1></div>
+<div class="wrap">
+<div class="card">
+<div class="avatar" id="avatar">M</div>
+<h2 id="uname">Student</h2>
+<p id="uphone" style="color:#555;margin:6px 0">Mobile: -</p>
+<p>MCRES ACADEMY • Aspire - Achieve</p>
+<a class="btn" href="tests.html">My Tests →</a>
+<a class="btn2" href="results.html">Results</a>
+</div>
+<div class="card" style="text-align:left">
+<p>✅ Tests Completed: <b>12</b></p><br>
+<p>🏆 Best Rank: <b>3</b></p><br>
+<p>📚 Total Marks: <b>850 / 1200</b></p>
+</div>
+</div>
+<script>
+let n=localStorage.getItem("mcres_name")||"Student";
+let p=localStorage.getItem("mcres_phone")||"-";
+document.getElementById("uname").innerText=n;
+document.getElementById("uphone").innerText="Mobile: "+p;
+document.getElementById("avatar").innerText=n.charAt(0).toUpperCase();
+</script>
+</body>
+</html>
