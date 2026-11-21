@@ -51,9 +51,6 @@ textarea:focus{outline:none;border-color:#7c3aed}
 .avail-box{background:linear-gradient(90deg,#dcfce7,#bbf7d0,#fef9c3);border:2px solid #22c55e;padding:10px;border-radius:12px;text-align:center;font-weight:800;color:#166534;margin:10px 0;box-shadow:0 4px 0 #16a34a}
 .attempt-box{background:linear-gradient(90deg,#e0e7ff,#ddd6fe);border:2px solid #7c3aed;padding:10px;border-radius:12px;text-align:center;font-weight:800;color:#4c1d95;margin:10px 0}
 .q-text{line-height:2.0 !important}
-.q-text .stmt{display:block;margin:6px 0 6px 10px}
-.q-text .q-head{display:block;margin-bottom:12px}
-.q-text .q-ask{display:block;margin-top:14px;font-weight:800}
 @media print{body{display:none !important}}
 </style>
 </head>
@@ -135,27 +132,29 @@ document.addEventListener('visibilitychange', ()=>{
 window.addEventListener('blur', ()=>{ document.body.style.filter = "blur(15px)"; });
 window.addEventListener('focus', ()=>{ document.body.style.filter = "none"; });
 window.addEventListener('beforeprint', (e)=>{ e.preventDefault(); alert("Print చేయలేరు! MCRES © 9494353828"); return false; });
-// ===== QUESTION FORMAT - PAPER లాగా Line by Line =====
+// ===== QUESTION FORMAT - PAPER లాగా Line by Line - FINAL V3 =====
 function formatQuestion(t){
   if(!t) return "";
   let txt = " " + t.trim();
-  // సరైన...? భాగాన్ని విడదీయి
-  let ask = "";
-  let m = txt.match(/(సరైన[^?]*\?|సరైన ప్రకటనలు[^?]*\?)/);
-  if(m){ ask = m[1]; txt = txt.replace(m[1], ""); }
-  // 1. 2. 3. 4. లను విడదీయి - " 1. " లాగా space తో ఉన్నవి మాత్రమే
-  txt = txt.replace(/\s+1\.\s+/g, '<span class="stmt">1. ');
-  txt = txt.replace(/\s+2\.\s+/g, '</span><span class="stmt">2. ');
-  txt = txt.replace(/\s+3\.\s+/g, '</span><span class="stmt">3. ');
-  txt = txt.replace(/\s+4\.\s+/g, '</span><span class="stmt">4. ');
-  // మొదటి భాగం Head
-  txt = txt.replace(/^(\s*<span class="stmt">1\.)/, '</span><span class="q-head">HEAD</span>$1');
-  // Head ను సరిచేయి
-  let parts = txt.split('<span class="q-head">HEAD</span>');
-  let head = parts[0].replace(/<\/?span[^>]*>/g,'').trim();
-  let stmts = parts[1] ? parts[1] : "";
-  if(!stmts){ return `<span class="q-head">${head}</span>` + (ask ? `<span class="q-ask">${ask}</span>` : ""); }
-  return `<span class="q-head">${head}</span>${stmts}</span>` + (ask ? `<span class="q-ask">${ask}</span>` : "");
+  // Case 1: .1. .2. .3. .4. .5. .6. - Dot తర్వాత వచ్చినా (నీ Screenshot లో ఇలానే ఉంది)
+  txt = txt.split(".1.").join(".<br><br>1. ");
+  txt = txt.split(".2.").join(".<br>2. ");
+  txt = txt.split(".3.").join(".<br>3. ");
+  txt = txt.split(".4.").join(".<br>4. ");
+  txt = txt.split(".5.").join(".<br>5. ");
+  txt = txt.split(".6.").join(".<br>6. ");
+  // Case 2: Space తో ఉన్నవి - " 1. "
+  txt = txt.split(" 1. ").join("<br><br>1. ");
+  txt = txt.split(" 2. ").join("<br>2. ");
+  txt = txt.split(" 3. ").join("<br>3. ");
+  txt = txt.split(" 4. ").join("<br>4. ");
+  txt = txt.split(" 5. ").join("<br>5. ");
+  txt = txt.split(" 6. ").join("<br>6. ");
+  // Ask - Separate Line
+  txt = txt.split(" సరైన").join("<br><br>సరైన");
+  txt = txt.split(" పై ప్రకటనలలో").join("<br><br>పై ప్రకటనలలో");
+  txt = txt.split(" ఎడమవైపు").join("<br><br>ఎడమవైపు");
+  return txt;
 }
 async function loadQs(){
   const el = document.getElementById('status');
