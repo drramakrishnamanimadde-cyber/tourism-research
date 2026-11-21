@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exam - MCRES ACADEMY</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,Arial,sans-serif}
+body{background:#f9f5fb;color:#111}
+.top{background:#fff;padding:12px;text-align:center;position:sticky;top:0;z-index:10;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.top a{color:#670f9e;text-decoration:none;font-weight:700;font-size:14px;float:left}
+.top h1{color:#670f9e;font-size:18px}
+.timer{background:#ff8703;color:#fff;display:inline-block;padding:6px 14px;border-radius:20px;font-weight:700;margin-top:6px}
+.wrap{padding:16px}
+.progress{background:#eee;height:8px;border-radius:10px;overflow:hidden;margin-bottom:14px}
+.progress div{background:#670f9e;height:100%;width:20%;transition:.3s}
+.card{background:#fff;padding:16px;border-radius:14px;box-shadow:0 4px 14px rgba(0,0,0,.06)}
+.card h3{font-size:15px;color:#670f9e}
+.card h2{font-size:17px;margin:8px 0 14px;line-height:1.4}
+.opt{display:block;width:100%;text-align:left;background:#f8f8f8;border:2px solid #eee;padding:12px;border-radius:12px;margin-bottom:10px;font-size:15px;cursor:pointer}
+.opt.active{background:#e9d5ff;border-color:#670f9e}
+.btns{display:flex;gap:10px;margin-top:14px}
+.btn{flex:1;background:#670f9e;color:#fff;padding:13px;border:none;border-radius:12px;font-weight:700;font-size:15px}
+.btn2{flex:1;background:#f1f1f1;color:#111;padding:13px;border:none;border-radius:12px;font-weight:700;font-size:15px}
+.submit{width:100%;background:#ff8703;color:#fff;padding:14px;border:none;border-radius:12px;font-weight:700;font-size:16px;margin-top:14px}
+#result{display:none;text-align:center}
+#result h2{font-size:22px;color:#670f9e}
+#result p{margin:10px 0}
+footer{text-align:center;color:#666;font-size:13px;padding:10px 0 20px}
+</style>
+</head>
+<body>
+
+<div class="top">
+<a href="tests.html">← Back</a>
+<h1>Daily Test - 01</h1>
+<div class="timer">⏰ Time Left: <span id="time">45:00</span></div>
+</div>
+
+<div class="wrap">
+<div class="progress"><div id="bar"></div></div>
+
+<div class="card" id="quizBox">
+<h3 id="qno">Question 1 of 5</h3>
+<h2 id="qtext">Loading...</h2>
+<div id="options"></div>
+<div class="btns">
+<button class="btn2" onclick="prevQ()">← Previous</button>
+<button class="btn" onclick="nextQ()">Next →</button>
+</div>
+<button class="submit" onclick="submitTest()">Submit Test ✅</button>
+</div>
+
+<div class="card" id="result">
+<h2>🎉 Test Completed!</h2>
+<p id="scoreText" style="font-size:18px;font-weight:700"></p>
+<p>Great Job! Keep Practicing with MCRES ACADEMY</p>
+<a href="tests.html" style="display:inline-block;background:#670f9e;color:#fff;padding:12px 20px;border-radius:10px;text-decoration:none;font-weight:700;margin-top:10px">Back to Tests</a>
+</div>
+
+</div>
+
+<footer>MCRES ACADEMY © 2026 • Aspire - Achieve</footer>
+
+<script>
+let questions=[
+{q:"భారత రాజ్యాంగం ఎప్పుడు అమలులోకి వచ్చింది?",o:["26 Jan 1950","15 Aug 1947","26 Nov 1949","2 Oct 1950"],a:0},
+{q:"తెలంగాణ రాష్ట్రం ఎప్పుడు ఏర్పడింది?",o:["2 June 2014","1 Nov 1956","10 Dec 2013","2 June 2013"],a:0},
+{q:"భారతదేశ మొదటి రాష్ట్రపతి ఎవరు?",o:["Dr. Rajendra Prasad","Dr. APJ Abdul Kalam","Dr. S. Radhakrishnan","Jawaharlal Nehru"],a:0},
+{q:"హైదరాబాద్ ఏ నది ఒడ్డున ఉంది?",o:["మూసీ నది","కృష్ణా నది","గోదావరి నది","మంజీరా నది"],a:0},
+{q:"Article 370 దేనికి సంబంధించింది?",o:["Jammu & Kashmir","Telangana","Punjab","Assam"],a:0}
+];
+let cur=0, ans=new Array(questions.length).fill(-1);
+let timeLeft=45*60;
+function showQ(){
+let q=questions[cur];
+document.getElementById("qno").innerText="Question "+(cur+1)+" of "+questions.length;
+document.getElementById("qtext").innerText=q.q;
+document.getElementById("bar").style.width=((cur+1)/questions.length*100)+"%";
+let html="";
+q.o.forEach((opt,i)=>{
+html+='<button class="opt '+(ans[cur]==i?'active':'')+'" onclick="selectOpt('+i+')">'+['A','B','C','D'][i]+'. '+opt+'</button>';
+});
+document.getElementById("options").innerHTML=html;
+}
+function selectOpt(i){ans[cur]=i;showQ();}
+function nextQ(){if(cur<questions.length-1){cur++;showQ();}}
+function prevQ(){if(cur>0){cur--;showQ();}}
+function submitTest(){
+let score=0;
+ans.forEach((v,i)=>{if(v==questions[i].a) score++;});
+document.getElementById("quizBox").style.display="none";
+document.getElementById("result").style.display="block";
+document.getElementById("scoreText").innerText="Your Score: "+score+" / "+questions.length+"  •  "+(score*20)+" Marks";
+window.scrollTo(0,0);
+}
+setInterval(()=>{
+timeLeft--;
+let m=Math.floor(timeLeft/60), s=timeLeft%60;
+document.getElementById("time").innerText=(m<10?'0'+m:m)+":"+(s<10?'0'+s:s);
+if(timeLeft<=0) submitTest();
+},1000);
+showQ();
+</script>
+
+</body>
+</html>
