@@ -1,4 +1,4 @@
-.<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="te">
 <head>
 <meta charset="UTF-8">
@@ -7,7 +7,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="supabase.js"></script>
 <style>
-*{box-sizing:border-box;font-family:system-ui}
+*{box-sizing:border-box;font-family:system-ui;-webkit-user-select:none!important;user-select:none!important}
 body{margin:0;background:#f1f5f9;padding:12px}
 .top{background:#0f172a;color:#fff;padding:14px;border-radius:12px;display:flex;justify-content:space-between;align-items:center}
 .card{background:#fff;padding:16px;border-radius:12px;margin-top:12px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
@@ -17,10 +17,12 @@ body{margin:0;background:#f1f5f9;padding:12px}
 .btn{background:#2563eb;color:#fff;border:0;padding:12px 18px;border-radius:10px;font-weight:700;cursor:pointer;width:100%;margin-top:12px}
 .grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:12px}
 .grid button{padding:10px;border-radius:8px;border:1px solid #cbd5e1;background:#fff;cursor:pointer}
+#warnBar{display:none;background:#fef3c7;color:#92400e;text-align:center;padding:10px;border-radius:10px;margin-top:12px;font-weight:800;font-size:13px;border:2px solid #f59e0b}
 </style>
 </head>
-<body>
+<body oncontextmenu="return false" oncopy="return false" oncut="return false" onpaste="return false">
 <div class="top"><div><b>MCRES - SI Prelims Grand Test 2026</b><br><small id="progress">Loading...</small></div><div id="timer">180:00</div></div>
+<div id="warnBar">⚠️ Warning: Tab మార్చకండి! 3 సార్లు మార్చితే Test Auto Submit అవుతుంది!</div>
 <div class="card" id="quizBox">
 <div class="q" id="qText">Loading Questions...</div>
 <div id="opts"></div>
@@ -31,8 +33,41 @@ body{margin:0;background:#f1f5f9;padding:12px}
 <div class="card" id="resultBox" style="display:none"></div>
 <script>
 const TEST_ID='si-prelims-grand-test-2026';
+const TEST_END_DATE = new Date("2026-12-25T23:59:59");
 let questions=[],cur=0,answers={},timeLeft=180*60;
+let tabWarnings = 0, started = true;
+
+// ===== 1. COPY / RIGHT CLICK / SHORTCUT BLOCK =====
+document.addEventListener('contextmenu', e => e.preventDefault());
+document.addEventListener('copy', e => e.preventDefault());
+document.addEventListener('cut', e => e.preventDefault());
+document.addEventListener('paste', e => e.preventDefault());
+document.addEventListener('keydown', e => {
+  if((e.ctrlKey || e.metaKey) && ['c','x','v','a','p','s','u'].includes(e.key.toLowerCase())) e.preventDefault();
+  if(e.key === 'F12') e.preventDefault();
+  if(e.key === 'PrintScreen'){ navigator.clipboard.writeText('MCRES - Copy Blocked'); alert('Screenshot Blocked!'); }
+});
+
+// ===== 2. TAB SWITCH BLOCK - 3 TIMES = AUTO SUBMIT =====
+document.addEventListener('visibilitychange', () => {
+  if(!started) return;
+  if(document.hidden){
+    tabWarnings++;
+    document.getElementById('warnBar').style.display = 'block';
+    document.getElementById('warnBar').innerHTML = `⚠️ Warning ${tabWarnings}/3 : Tab మార్చారు! ఇంకో ${3-tabWarnings} సార్లు మార్చితే Auto Submit!`;
+    if(tabWarnings >= 3){ alert('3 సార్లు Tab మార్చారు! Test Auto Submit అవుతుంది!'); submitTest(); }
+    else alert(`⚠️ Warning ${tabWarnings}/3\nTab మార్చకండి! 3rd Time Auto Submit అవుతుంది!`);
+  }
+});
+
 async function loadQuestions(){
+// ===== DEC 25 EXPIRY CHECK =====
+if(new Date() > TEST_END_DATE){
+  document.getElementById('quizBox').innerHTML = '<h2 style="text-align:center">⛔ Test Closed</h2><p style="text-align:center;color:#64748b">SI Prelims Grand Test 2026 - Dec 25 తో ముగిసింది.</p>';
+  document.getElementById('progress').innerText = 'Test Closed';
+  started = false;
+  return;
+}
 const {data,error}=await window.supabaseClient.from('mcres_questions').select('*').eq('test_id',TEST_ID).order('q_no',{ascending:true});
 if(error){document.getElementById('qText').innerText='Error: '+error.message;return;}
 questions=data;renderPalette();showQ(0);
@@ -42,7 +77,7 @@ function showQ(i){cur=i;let q=questions[i];document.getElementById('progress').i
 function selectOpt(l){answers[questions[cur].q_no]=l;showQ(cur);renderPalette();}
 function nextQ(){if(cur<questions.length-1)showQ(cur+1);}
 function renderPalette(){document.getElementById('palette').innerHTML=questions.map((q,i)=>{let done=answers[q.q_no]?'background:#16a34a;color:#fff':'';return `<button style="${done}" onclick="showQ(${i})">${q.q_no}</button>`;}).join('');}
-function submitTest(){let score=0;questions.forEach(q=>{if(answers[q.q_no]==q.correct_option)score++;});document.getElementById('quizBox').style.display='none';let b=document.getElementById('resultBox');b.style.display='block';b.innerHTML=`<h2>🎉 Result</h2><h1>${score} / ${questions.length}</h1><p>Correct: ${score}</p><button onclick="location.reload()">Retake</button>`;}
+function submitTest(){if(!started && questions.length===0) return; started=false; let score=0;questions.forEach(q=>{if(answers[q.q_no]==q.correct_option)score++;});document.getElementById('quizBox').style.display='none';let b=document.getElementById('resultBox');b.style.display='block';b.innerHTML=`<h2>🎉 Result</h2><h1>${score} / ${questions.length}</h1><p>Correct: ${score}</p><p style="font-size:13px;color:#16a34a;font-weight:700">Unlimited Attempts - మళ్ళీ రాయొచ్చు!</p><button class="btn" onclick="location.reload()">🔄 Retake - Unlimited</button>`;}
 loadQuestions();
 </script>
 </body>
