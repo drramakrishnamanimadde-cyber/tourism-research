@@ -1,0 +1,49 @@
+.<!DOCTYPE html>
+<html lang="te">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SI Prelims Grand Test - 2026 | MCRES</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase.js"></script>
+<style>
+*{box-sizing:border-box;font-family:system-ui}
+body{margin:0;background:#f1f5f9;padding:12px}
+.top{background:#0f172a;color:#fff;padding:14px;border-radius:12px;display:flex;justify-content:space-between;align-items:center}
+.card{background:#fff;padding:16px;border-radius:12px;margin-top:12px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.q{font-size:18px;font-weight:700;line-height:1.5}
+.opt{border:1px solid #cbd5e1;padding:12px;border-radius:10px;margin-top:10px;cursor:pointer}
+.opt.sel{background:#2563eb;color:#fff;border-color:#2563eb}
+.btn{background:#2563eb;color:#fff;border:0;padding:12px 18px;border-radius:10px;font-weight:700;cursor:pointer;width:100%;margin-top:12px}
+.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:12px}
+.grid button{padding:10px;border-radius:8px;border:1px solid #cbd5e1;background:#fff;cursor:pointer}
+</style>
+</head>
+<body>
+<div class="top"><div><b>MCRES - SI Prelims Grand Test 2026</b><br><small id="progress">Loading...</small></div><div id="timer">180:00</div></div>
+<div class="card" id="quizBox">
+<div class="q" id="qText">Loading Questions...</div>
+<div id="opts"></div>
+<button class="btn" onclick="nextQ()">Next ➡️</button>
+<button class="btn" style="background:#16a34a" onclick="submitTest()">Submit Test</button>
+<div class="grid" id="palette"></div>
+</div>
+<div class="card" id="resultBox" style="display:none"></div>
+<script>
+const TEST_ID='si-prelims-grand-test-2026';
+let questions=[],cur=0,answers={},timeLeft=180*60;
+async function loadQuestions(){
+const {data,error}=await window.supabaseClient.from('mcres_questions').select('*').eq('test_id',TEST_ID).order('q_no',{ascending:true});
+if(error){document.getElementById('qText').innerText='Error: '+error.message;return;}
+questions=data;renderPalette();showQ(0);
+setInterval(()=>{timeLeft--;let m=Math.floor(timeLeft/60),s=timeLeft%60;document.getElementById('timer').innerText=m+':'+String(s).padStart(2,'0');if(timeLeft<=0)submitTest();},1000);
+}
+function showQ(i){cur=i;let q=questions[i];document.getElementById('progress').innerText='Q '+q.q_no+' / '+questions.length;document.getElementById('qText').innerText=q.q_no+'. '+q.question_text;let h='';['A','B','C','D'].forEach(l=>{let t=q['option_'+l.toLowerCase()];let sel=answers[q.q_no]==l?'sel':'';h+=`<div class="opt ${sel}" onclick="selectOpt('${l}')"><b>${l})</b> ${t}</div>`;});document.getElementById('opts').innerHTML=h;}
+function selectOpt(l){answers[questions[cur].q_no]=l;showQ(cur);renderPalette();}
+function nextQ(){if(cur<questions.length-1)showQ(cur+1);}
+function renderPalette(){document.getElementById('palette').innerHTML=questions.map((q,i)=>{let done=answers[q.q_no]?'background:#16a34a;color:#fff':'';return `<button style="${done}" onclick="showQ(${i})">${q.q_no}</button>`;}).join('');}
+function submitTest(){let score=0;questions.forEach(q=>{if(answers[q.q_no]==q.correct_option)score++;});document.getElementById('quizBox').style.display='none';let b=document.getElementById('resultBox');b.style.display='block';b.innerHTML=`<h2>🎉 Result</h2><h1>${score} / ${questions.length}</h1><p>Correct: ${score}</p><button onclick="location.reload()">Retake</button>`;}
+loadQuestions();
+</script>
+</body>
+</html>
