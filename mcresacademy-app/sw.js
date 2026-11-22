@@ -1,4 +1,4 @@
-const CACHE = "mcres-academy-v5";
+const CACHE = "mcres-academy-v6";
 const CACHE_PREFIX = "mcres-academy-";
 const SCOPE = self.registration.scope;
 const FILES = [
@@ -12,6 +12,12 @@ const FILES = [
   "./manifest.json",
   "./logo.png"
 ];
+
+// Cache లో Put చేసే పని పూర్తయ్యే వరకు SW ని Alive ఉంచే Helper
+function putInCache(req, res) {
+  const copy = res.clone();
+  return caches.open(CACHE).then((c) => c.put(req, copy));
+}
 
 self.addEventListener("install", (e) => {
   e.waitUntil(
@@ -34,7 +40,6 @@ self.addEventListener("activate", (e) => {
       .then((keys) =>
         Promise.all(
           keys.map((k) => {
-            // FIX 1: కేవలం MCRES Academy Cache లు మాత్రమే Delete
             if (k.startsWith(CACHE_PREFIX) && k !== CACHE) {
               return caches.delete(k);
             }
@@ -51,43 +56,48 @@ self.addEventListener("fetch", (e) => {
   if (req.method !== "GET") return;
   if (!req.url.startsWith(SCOPE)) return;
 
+  // HTML - Network First
   if (req.mode === "navigate" || req.headers.get("accept")?.includes("text/html")) {
     e.respondWith(
       fetch(req)
         .then((res) => {
+          // FIX 1: Put పూర్తయ్యే వరకు SW Alive
           if (res && res.ok) {
-            const copy = res.clone();
-            caches.open(CACHE).then((c) => c.put(req, copy));
+            e.waitUntil(putInCache(req, res));
           }
           return res;
         })
         .catch(() =>
-          caches.match(req).then((r) => r || caches.match(new URL("./index.html", SCOPE)))
+          // FIX 2: కేవలం మన CACHE లోనే వెతకడం
+          caches.open(CACHE).then((c) =>
+            c.match(req).then((r) => r || c.match(new URL("./index.html", SCOPE)))
+          )
         )
     );
     return;
   }
 
+  // Images / CSS / JS - Cache First
   e.respondWith(
-    caches.match(req).then((cached) => {
-      if (cached) return cached;
-      return fetch(req)
-        .then((res) => {
-          if (res && res.ok) {
-            const copy = res.clone();
-            caches.open(CACHE).then((c) => c.put(req, copy));
-          }
-          return res;
-        })
-        // FIX 2: Cache లో లేకపోతే undefined కాదు, స్పష్టమైన Offline Response
-        .catch(
-          () =>
-            new Response("Offline - MCRES Academy", {
-              status: 503,
-              statusText: "Service Unavailable",
-              headers: { "Content-Type": "text/plain" },
-            })
-        );
-    })
+    caches.open(CACHE).then((c) =>
+      c.match(req).then((cached) => {
+        if (cached) return cached;
+        return fetch(req)
+          .then((res) => {
+            if (res && res.ok) {
+              e.waitUntil(putInCache(req, res));
+            }
+            return res;
+          })
+          .catch(
+            () =>
+              new Response("Offline - MCRES Academy", {
+                status: 503,
+                statusText: "Service Unavailable",
+                headers: { "Content-Type": "text/plain" },
+              })
+          );
+      })
+    )
   );
 });
