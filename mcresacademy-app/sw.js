@@ -1,4 +1,5 @@
-const CACHE = "mcres-v4";
+const CACHE = "mcres-academy-v5";
+const CACHE_PREFIX = "mcres-academy-";
 const SCOPE = self.registration.scope;
 const FILES = [
   "./",
@@ -22,7 +23,6 @@ self.addEventListener("install", (e) => {
           console.log("Cache skip:", file);
         }
       }
-      // Cache అయ్యాకే కొత్త SW Active అవుతుంది
       await self.skipWaiting();
     })
   );
@@ -34,7 +34,8 @@ self.addEventListener("activate", (e) => {
       .then((keys) =>
         Promise.all(
           keys.map((k) => {
-            if (k.startsWith("mcres-") && k !== CACHE) {
+            // FIX 1: కేవలం MCRES Academy Cache లు మాత్రమే Delete
+            if (k.startsWith(CACHE_PREFIX) && k !== CACHE) {
               return caches.delete(k);
             }
             return null;
@@ -48,16 +49,12 @@ self.addEventListener("activate", (e) => {
 self.addEventListener("fetch", (e) => {
   const req = e.request;
   if (req.method !== "GET") return;
-
-  // FIX: కేవలం మన mcresacademy-app/ Folder మాత్రమే
-  // వేరే Folder / వేరే Website Requests ని వదిలేస్తుంది
   if (!req.url.startsWith(SCOPE)) return;
 
   if (req.mode === "navigate" || req.headers.get("accept")?.includes("text/html")) {
     e.respondWith(
       fetch(req)
         .then((res) => {
-          // Error Response ని Cache చేయొద్దు
           if (res && res.ok) {
             const copy = res.clone();
             caches.open(CACHE).then((c) => c.put(req, copy));
@@ -76,14 +73,21 @@ self.addEventListener("fetch", (e) => {
       if (cached) return cached;
       return fetch(req)
         .then((res) => {
-          // 200 OK మాత్రమే Cache చేయాలి
           if (res && res.ok) {
             const copy = res.clone();
             caches.open(CACHE).then((c) => c.put(req, copy));
           }
           return res;
         })
-        .catch(() => cached);
+        // FIX 2: Cache లో లేకపోతే undefined కాదు, స్పష్టమైన Offline Response
+        .catch(
+          () =>
+            new Response("Offline - MCRES Academy", {
+              status: 503,
+              statusText: "Service Unavailable",
+              headers: { "Content-Type": "text/plain" },
+            })
+        );
     })
   );
 });
