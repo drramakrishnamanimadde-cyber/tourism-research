@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Results - MCRES ACADEMY</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,Arial,sans-serif}
+body{background:#f5f0ff;padding:16px}
+.box{max-width:480px;margin:0 auto;text-align:center}
+h1{color:#670f9e;font-size:22px}
+.card{background:#fff;border-radius:18px;padding:22px;margin-top:16px}
+.big{font-size:48px;font-weight:800;color:#ff8703}
+.card p{color:#555;font-size:14px;margin-top:6px}
+.btn{display:block;background:#670f9e;color:#fff;padding:13px;border-radius:12px;font-weight:700;text-decoration:none;margin-top:14px}
+.btn2{display:block;background:#ff8703;color:#fff;padding:13px;border-radius:12px;font-weight:700;text-decoration:none;margin-top:10px}
+</style>
+</head>
+<body>
+<div class="box">
+<h1>📊 My Results</h1>
+<div class="card">
+<p id="testName">Last Test</p>
+<div class="big" id="score">-</div>
+<p id="msg">Complete a test to see your score here</p>
+<a class="btn2" href="tests.html">Take Another Test →</a>
+<a class="btn" href="index.html">Back to Home</a>
+</div>
+</div>
+<script>
+let s=localStorage.getItem("mcres_last_score");
+let t=localStorage.getItem("mcres_last_test");
+if(s){document.getElementById("score").innerText=s;document.getElementById("testName").innerText=t||"Last Test";let n=parseInt(s.split("/")[0]);document.getElementById("msg").innerText=n>=4?"Excellent! Keep it up! 🎉":n>=2?"Good! Practice More 💪":"Don't Give Up! Try Again 📚";}
+</script>
+</body>
+</html>
