@@ -1,4 +1,4 @@
-const CACHE = "mcres-v1";
+const CACHE = "mcres-v2";
 const FILES = [
   "./",
   "./index.html",
@@ -17,12 +17,46 @@ self.addEventListener("install", (e) => {
 });
 
 self.addEventListener("activate", (e) => {
-  e.waitUntil(caches.keys().then((keys) => Promise.all(keys.map((k) => k !== CACHE ? caches.delete(k) : null))));
+  e.waitUntil(
+    caches.keys().then((keys) =>
+      Promise.all(
+        keys.map((k) => {
+          if (k.startsWith("mcres-") && k !== CACHE) {
+            return caches.delete(k);
+          }
+          return null;
+        })
+      )
+    )
+  );
   self.clients.claim();
 });
 
 self.addEventListener("fetch", (e) => {
+  const req = e.request;
+  if (req.method !== "GET") return;
+
+  if (req.mode === "navigate" || req.headers.get("accept")?.includes("text/html")) {
+    e.respondWith(
+      fetch(req)
+        .then((res) => {
+          const copy = res.clone();
+          caches.open(CACHE).then((c) => c.put(req, copy));
+          return res;
+        })
+        .catch(() => caches.match(req).then((r) => r || caches.match("./index.html")))
+    );
+    return;
+  }
+
   e.respondWith(
-    caches.match(e.request).then((res) => res || fetch(e.request).catch(() => caches.match("./index.html")))
+    caches.match(req).then((cached) => {
+      if (cached) return cached;
+      return fetch(req).then((res) => {
+        const copy = res.clone();
+        caches.open(CACHE).then((c) => c.put(req, copy));
+        return res;
+      });
+    })
   );
 });
