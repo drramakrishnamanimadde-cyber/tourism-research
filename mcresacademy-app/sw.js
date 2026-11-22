@@ -1,4 +1,4 @@
-const CACHE = "mcres-academy-v6";
+const CACHE = "mcres-academy-v7";
 const CACHE_PREFIX = "mcres-academy-";
 const SCOPE = self.registration.scope;
 const FILES = [
@@ -13,10 +13,17 @@ const FILES = [
   "./logo.png"
 ];
 
-// Cache లో Put చేసే పని పూర్తయ్యే వరకు SW ని Alive ఉంచే Helper
 function putInCache(req, res) {
   const copy = res.clone();
   return caches.open(CACHE).then((c) => c.put(req, copy));
+}
+
+function offlineResponse() {
+  return new Response("Offline - MCRES Academy", {
+    status: 503,
+    statusText: "Service Unavailable",
+    headers: { "Content-Type": "text/plain" },
+  });
 }
 
 self.addEventListener("install", (e) => {
@@ -61,16 +68,21 @@ self.addEventListener("fetch", (e) => {
     e.respondWith(
       fetch(req)
         .then((res) => {
-          // FIX 1: Put పూర్తయ్యే వరకు SW Alive
+          // FIX: Put పూర్తయ్యాకే Response - e.waitUntil లేదు, InvalidStateError రాదు
           if (res && res.ok) {
-            e.waitUntil(putInCache(req, res));
+            return putInCache(req, res)
+              .catch(() => {})
+              .then(() => res);
           }
           return res;
         })
         .catch(() =>
-          // FIX 2: కేవలం మన CACHE లోనే వెతకడం
           caches.open(CACHE).then((c) =>
-            c.match(req).then((r) => r || c.match(new URL("./index.html", SCOPE)))
+            c.match(req).then(
+              (r) =>
+                r ||
+                c.match(new URL("./index.html", SCOPE)).then((fallback) => fallback || offlineResponse())
+            )
           )
         )
     );
@@ -85,18 +97,13 @@ self.addEventListener("fetch", (e) => {
         return fetch(req)
           .then((res) => {
             if (res && res.ok) {
-              e.waitUntil(putInCache(req, res));
+              return putInCache(req, res)
+                .catch(() => {})
+                .then(() => res);
             }
             return res;
           })
-          .catch(
-            () =>
-              new Response("Offline - MCRES Academy", {
-                status: 503,
-                statusText: "Service Unavailable",
-                headers: { "Content-Type": "text/plain" },
-              })
-          );
+          .catch(() => offlineResponse());
       })
     )
   );
