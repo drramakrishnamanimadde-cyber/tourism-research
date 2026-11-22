@@ -1,4 +1,4 @@
-const CACHE = "mcres-academy-v7";
+const CACHE = "mcres-academy-v8";
 const CACHE_PREFIX = "mcres-academy-";
 const SCOPE = self.registration.scope;
 const FILES = [
@@ -10,7 +10,10 @@ const FILES = [
   "./results.html",
   "./profile.html",
   "./manifest.json",
-  "./logo.png"
+  "./logo.png",
+  "./logo-192.png",
+  "./logo-512.png",
+  "./logo-maskable-512.png"
 ];
 
 function putInCache(req, res) {
@@ -68,7 +71,6 @@ self.addEventListener("fetch", (e) => {
     e.respondWith(
       fetch(req)
         .then((res) => {
-          // FIX: Put పూర్తయ్యాకే Response - e.waitUntil లేదు, InvalidStateError రాదు
           if (res && res.ok) {
             return putInCache(req, res)
               .catch(() => {})
