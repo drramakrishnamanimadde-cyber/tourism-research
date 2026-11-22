@@ -1,4 +1,5 @@
-const CACHE = "mcres-v3";
+const CACHE = "mcres-v4";
+const SCOPE = self.registration.scope;
 const FILES = [
   "./",
   "./index.html",
@@ -14,7 +15,6 @@ const FILES = [
 self.addEventListener("install", (e) => {
   e.waitUntil(
     caches.open(CACHE).then(async (c) => {
-      // ఒక్క ఫైల్ Fail అయినా మిగిలినవి Cache అవుతాయి
       for (const file of FILES) {
         try {
           await c.add(file);
@@ -22,43 +22,51 @@ self.addEventListener("install", (e) => {
           console.log("Cache skip:", file);
         }
       }
+      // Cache అయ్యాకే కొత్త SW Active అవుతుంది
+      await self.skipWaiting();
     })
   );
-  self.skipWaiting();
 });
 
 self.addEventListener("activate", (e) => {
   e.waitUntil(
-    caches.keys().then((keys) =>
-      Promise.all(
-        keys.map((k) => {
-          if (k.startsWith("mcres-") && k !== CACHE) {
-            return caches.delete(k);
-          }
-          return null;
-        })
+    caches.keys()
+      .then((keys) =>
+        Promise.all(
+          keys.map((k) => {
+            if (k.startsWith("mcres-") && k !== CACHE) {
+              return caches.delete(k);
+            }
+            return null;
+          })
+        )
       )
-    )
+      .then(() => self.clients.claim())
   );
-  self.clients.claim();
 });
 
 self.addEventListener("fetch", (e) => {
   const req = e.request;
   if (req.method !== "GET") return;
 
-  // కేవలం మన MCRES App Files మాత్రమే - వేరే Websites కాదు
-  if (!req.url.startsWith(self.location.origin)) return;
+  // FIX: కేవలం మన mcresacademy-app/ Folder మాత్రమే
+  // వేరే Folder / వేరే Website Requests ని వదిలేస్తుంది
+  if (!req.url.startsWith(SCOPE)) return;
 
   if (req.mode === "navigate" || req.headers.get("accept")?.includes("text/html")) {
     e.respondWith(
       fetch(req)
         .then((res) => {
-          const copy = res.clone();
-          caches.open(CACHE).then((c) => c.put(req, copy));
+          // Error Response ని Cache చేయొద్దు
+          if (res && res.ok) {
+            const copy = res.clone();
+            caches.open(CACHE).then((c) => c.put(req, copy));
+          }
           return res;
         })
-        .catch(() => caches.match(req).then((r) => r || caches.match("./index.html")))
+        .catch(() =>
+          caches.match(req).then((r) => r || caches.match(new URL("./index.html", SCOPE)))
+        )
     );
     return;
   }
@@ -66,11 +74,16 @@ self.addEventListener("fetch", (e) => {
   e.respondWith(
     caches.match(req).then((cached) => {
       if (cached) return cached;
-      return fetch(req).then((res) => {
-        const copy = res.clone();
-        caches.open(CACHE).then((c) => c.put(req, copy));
-        return res;
-      }).catch(() => cached);
+      return fetch(req)
+        .then((res) => {
+          // 200 OK మాత్రమే Cache చేయాలి
+          if (res && res.ok) {
+            const copy = res.clone();
+            caches.open(CACHE).then((c) => c.put(req, copy));
+          }
+          return res;
+        })
+        .catch(() => cached);
     })
   );
 });
