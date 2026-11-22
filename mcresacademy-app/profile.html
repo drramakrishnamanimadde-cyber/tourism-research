@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profile - MCRES ACADEMY</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,Arial,sans-serif}
+body{background:#f5f0ff;padding:16px}
+.box{max-width:480px;margin:0 auto;text-align:center}
+h1{color:#670f9e;font-size:22px}
+.card{background:#fff;border-radius:18px;padding:22px;margin-top:16px;text-align:left}
+.card p{font-size:15px;margin-bottom:12px}
+.card b{color:#670f9e}
+.btn{display:block;background:#ff8703;color:#fff;padding:13px;border-radius:12px;font-weight:700;text-decoration:none;margin-top:14px;text-align:center}
+.btn2{display:block;background:#eee;color:#111;padding:13px;border-radius:12px;font-weight:700;text-decoration:none;margin-top:10px;text-align:center}
+</style>
+</head>
+<body>
+<div class="box">
+<h1>👤 My Profile</h1>
+<div class="card">
+<p><b>Name:</b> <span id="name">Guest User</span></p>
+<p><b>Mobile:</b> <span id="phone">Not Logged In</span></p>
+<p><b>Last Test:</b> <span id="test">No Test Yet</span></p>
+<p><b>Last Score:</b> <span id="score">-</span></p>
+<a class="btn" href="tests.html">Start New Test →</a>
+<a class="btn2" href="index.html">Back to Home</a>
+<a class="btn2" href="#" onclick="logout()">Logout</a>
+</div>
+</div>
+<script>
+let n=localStorage.getItem("mcres_name");
+let p=localStorage.getItem("mcres_phone");
+if(n){document.getElementById("name").innerText=n;}
+if(p){document.getElementById("phone").innerText="+91 "+p;}
+document.getElementById("test").innerText=localStorage.getItem("mcres_last_test")||"No Test Yet";
+document.getElementById("score").innerText=localStorage.getItem("mcres_last_score")||"-";
+function logout(){localStorage.clear();alert("Logged Out!");location.href="login.html";}
+</script>
+</body>
+</html>
