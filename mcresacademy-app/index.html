@@ -35,5 +35,32 @@ body{background:linear-gradient(135deg,#a02ab0,#4737ed);min-height:100vh;padding
 <a class="btn2" href="profile.html">👤 My Profile</a>
 <p class="small">Guest గా కూడా Test రాయవచ్చు</p>
 </div>
+
+<script>
+// MCRES Academy - Service Worker Registration
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker
+      .register("./sw.js", { scope: "./" })
+      .then((reg) => {
+        console.log("MCRES SW Registered:", reg.scope);
+        // కొత్త Version వస్తే Check చేయి
+        reg.addEventListener("updatefound", () => {
+          const newWorker = reg.installing;
+          if (newWorker) {
+            newWorker.addEventListener("statechange", () => {
+              if (newWorker.state === "installed" && navigator.serviceWorker.controller) {
+                console.log("New MCRES version available - reload to update");
+              }
+            });
+          }
+        });
+      })
+      .catch((err) => {
+        console.log("MCRES SW Register Failed:", err);
+      });
+  });
+}
+</script>
 </body>
 </html>
