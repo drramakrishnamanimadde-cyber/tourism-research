@@ -82,7 +82,6 @@ const store={
   set(k,v){ try{localStorage.setItem(k,v); return true;}catch(e){ showError("Storage Full / Blocked","Browser Storage నిండిపోయింది లేదా Block అయ్యింది. Answers Save అవ్వట్లేదు.",false); } },
   remove(k){ try{localStorage.removeItem(k);}catch(e){} }
 };
-// V11 FIX 1: NO trim() - spaces in numbers are rejected. Decimal only.
 function parseIntParam(name,def,min,max){
   const raw=p.get(name);
   if(raw===null) return def;
@@ -106,10 +105,10 @@ const totalMarks=parseIntParam("marks",10,1,1000);
 const timeMin=parseIntParam("time",10,1,600);
 const neg=parseFloatParam("neg",-0.25,-2,0);
 const per=p.get("per")===null?null:parseFloatParam("per",null,0.25,10);
-// V11 FIX 3: No rounding - compare raw per*totalQ directly
+// V12 FIX: Tolerance 0.01 -> 1e-9. Only floating-point epsilon allowed, not 0.008 error.
 if(per!==null){
   const maxPossible=per*totalQ;
-  if(Math.abs(maxPossible-totalMarks)>0.01){
+  if(Math.abs(maxPossible-totalMarks)>0.000000001){
     showError("Invalid Marks Configuration",`Config తప్పు: ${totalQ} × ${per} = ${maxPossible}, కానీ Total Marks ${totalMarks}. రెండూ సమానంగా ఉండాలి.`,false);
   }
 }
@@ -324,7 +323,6 @@ else{
   document.getElementById("cancelSubmit").addEventListener("click",()=>{document.getElementById("modal").style.display="none";});
   document.getElementById("confirmSubmit").addEventListener("click",()=>{document.getElementById("modal").style.display="none";doSubmit();});
 }
-// V11 FIX 2: Always close modal on submit (covers timer-expiry while modal open)
 function doSubmit(){
 if(submitted) return;
 submitted=true;
