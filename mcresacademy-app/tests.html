@@ -107,7 +107,7 @@ const testsData={
 "sub-101":[{id:"test-101",name:"Current Affairs - Nov 2026",desc:"25 Questions • 25 Marks • No Negative",status:"paid",examId:"TG-CA-2026-11-001",q:25,marks:25,time:30,neg:0,per:1}],
 "sub-501":[{id:"test-501",name:"TET Test - 1",desc:"25 Questions • 25 Marks • No Negative",status:"paid",examId:"TG-TET-001",q:25,marks:25,time:30,neg:0,per:1}],
 };
-let view="cats",curCat=null,curSub=null,curSubName="",searchText="",selectedTest=null;
+let view="cats",curCat=null,curSub=null,searchText="",selectedTest=null;
 const searchInput=document.getElementById("searchInput");
 const clearBtn=document.getElementById("clearBtn");
 const searchWrap=document.getElementById("searchWrap");
@@ -146,7 +146,7 @@ f.forEach((c)=>{h+=cardHTML(getColor(c.id),categories.indexOf(c)+1,c.name,c.desc
 back.style.display="block";back.textContent="← Back to Categories";
 let arr=(subs[curCat]||[]).filter(matches);
 if(arr.length==0) h=`<div class="empty">No results found<br><button onclick="clearSearch()">Clear Search ✕</button></div>`;
-arr.forEach((s)=>{h+=cardHTML(getColor(s.id),"📚",s.name,s.desc,"View →","","openSub('"+s.id+"','"+esc(s.name)+"')","");});
+arr.forEach((s)=>{h+=cardHTML(getColor(s.id),"📚",s.name,s.desc,"View →","","openSub('"+s.id+"')","");});
 }else{
 back.style.display="block";back.textContent="← Back";
 let all=(testsData[curSub]||[]);
@@ -164,7 +164,7 @@ else{arr.forEach((t)=>{
 list.innerHTML=h;
 }
 function openCat(id){resetSearch();curCat=id;view="subs";render();}
-function openSub(id,name){resetSearch();curSub=id;curSubName=name;view="tests";render();}
+function openSub(id){resetSearch();curSub=id;view="tests";render();}
 function openPay(id){let all=Object.values(testsData).flat();selectedTest=all.find(t=>t.id===id);if(!selectedTest)return;view="pay";window.scrollTo(0,0);render();}
 function startFree(){if(selectedTest) goToInstructions(selectedTest);}
 document.getElementById("backBtn").addEventListener("click",()=>{
