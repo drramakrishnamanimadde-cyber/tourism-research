@@ -82,7 +82,6 @@ const store={
   set(k,v){ try{localStorage.setItem(k,v); return true;}catch(e){ showError("Storage Full / Blocked","Browser Storage నిండిపోయింది లేదా Block అయ్యింది. Answers Save అవ్వట్లేదు.",false); } },
   remove(k){ try{localStorage.removeItem(k);}catch(e){} }
 };
-// V8 FIX 4: Empty param => Invalid, not Number("")=0
 function parseIntParam(name,def,min,max){
   const raw=p.get(name);
   if(raw===null) return def;
@@ -116,14 +115,14 @@ if(!testId || !/^[A-Za-z0-9][A-Za-z0-9\-_]{0,79}$/.test(testId)){
 const testKey=testId;
 const lastKey="mcres_last_"+testKey;
 function makeAttemptId(){ return "MCRES-"+Date.now().toString(36).toUpperCase()+"-"+Math.floor(1000+Math.random()*9000); }
-// V8 FIX 1+2+3: NO new=1. Three distinct sources: url / last / fresh
-// allowCreate = ONLY when we just generated a brand-new ID (fresh)
+// V9 FIX 1: Distinguish attempt param ABSENT vs PRESENT-but-EMPTY
 let attemptId="";
 let attemptSource=""; // "url" | "last" | "fresh"
-const urlAttempt=(p.get("attempt")||"").trim();
-if(urlAttempt){
+const rawAttempt=p.get("attempt");
+if(rawAttempt!==null){
+  const urlAttempt=rawAttempt.trim();
   if(!/^[A-Za-z0-9_-]{1,64}$/.test(urlAttempt)){
-    showError("Invalid Attempt ID",`URL లో Attempt ID తప్పు: ${urlAttempt}. Tests List నుండి మళ్ళీ Open చేయండి.`,false);
+    showError("Invalid Attempt ID","URL లో Attempt ID ఖాళీగా ఉంది లేదా తప్పుగా ఉంది. Tests List నుండి మళ్ళీ Open చేయండి.",false);
   }
   attemptId=urlAttempt;
   attemptSource="url";
@@ -134,20 +133,19 @@ if(urlAttempt){
     try{
       const L=JSON.parse(lastRaw);
       if(L && L.attemptId && !L.submitted && /^[A-Za-z0-9_-]{1,64}$/.test(L.attemptId)) lastId=L.attemptId;
-      else if(L && L.submitted){ /* last submitted, do not resume */ }
+      else if(L && L.submitted){ }
       else { store.remove(lastKey); }
     }catch(e){ store.remove(lastKey); }
   }
   if(lastId){
     attemptId=lastId;
-    attemptSource="last"; // RESUME - NOT fresh. If data missing => BLOCK below
+    attemptSource="last";
   } else {
     attemptId=makeAttemptId();
-    attemptSource="fresh"; // ONLY case where creation is allowed
+    attemptSource="fresh";
   }
   const u=new URL(location.href); u.searchParams.set("attempt",attemptId); u.searchParams.set("id",testId); history.replaceState(null,"",u.toString());
 }
-// Any stale new=1 in old bookmarks is ignored - it grants nothing
 const storeKey="mcres_attempt_"+testKey+"_"+attemptId;
 document.getElementById("examTitle").textContent=tName+" • "+totalQ+" Q • "+testId;
 const demo=[
@@ -174,12 +172,13 @@ if(rawStored!==null && rawStored!==undefined){
   }
 }
 function validateState(s){
-  if(!s || typeof s!=="object") return {ok:false,reason:"empty"};
+  if(!s || typeof s!=="object" || Array.isArray(s)) return {ok:false,reason:"not object"};
   if(s.attemptId!==attemptId) return {ok:false,reason:"attemptId mismatch"};
   if(s.testId!==testId) return {ok:false,reason:"testId mismatch"};
   if(typeof s.submitted!=="boolean") return {ok:false,reason:"submitted not boolean"};
-  if(!(s.score===null || (typeof s.score==="number" && Number.isFinite(s.score)))) return {ok:false,reason:"score invalid"};
-  if(!(s.submittedAt===null || (typeof s.submittedAt==="number" && Number.isFinite(s.submittedAt)))) return {ok:false,reason:"submittedAt invalid"};
+  // V9 FIX 3: Score must be in [0, totalMarks], submittedAt must be >0
+  if(!(s.score===null || (typeof s.score==="number" && Number.isFinite(s.score) && s.score>=0 && s.score<=totalMarks))) return {ok:false,reason:"score invalid"};
+  if(!(s.submittedAt===null || (typeof s.submittedAt==="number" && Number.isFinite(s.submittedAt) && s.submittedAt>0))) return {ok:false,reason:"submittedAt invalid"};
   if(s.submitted===false && (s.score!==null || s.submittedAt!==null)) return {ok:false,reason:"not submitted but score/submittedAt present"};
   if(s.submitted===true && (s.score===null || s.submittedAt===null)) return {ok:false,reason:"submitted but score/submittedAt missing"};
   if(!Number.isInteger(s.cur)||s.cur<0||s.cur>totalQ-1) return {ok:false,reason:"cur out of range"};
@@ -194,6 +193,10 @@ function validateState(s){
 }
 let isNewState=false;
 if(hasStored){
+  // V9 FIX 2: Null / non-object JSON => Controlled Corrupted Error, not JS crash
+  if(!loaded || typeof loaded!=="object" || Array.isArray(loaded)){
+    showError("Corrupted Attempt Data","ఈ Attempt డేటా సరైన Object రూపంలో లేదు. కొత్త Attempt ప్రారంభించండి.",true);
+  }
   const cfgMatch = loaded.test===tName && loaded.testId===testId && loaded.totalQ===totalQ && loaded.totalMarks===totalMarks && loaded.timeMin===timeMin && loaded.neg===neg && loaded.per===per;
   if(!cfgMatch){
     showError("Configuration Mismatch","ఈ Attempt ప్రారంభమైన తర్వాత Test సెట్టింగులు మారాయి. ఈ Attempt నిలిపివేయబడింది. కొత్త Attempt ప్రారంభించండి.",true);
@@ -203,7 +206,6 @@ if(hasStored){
     showError("Corrupted Attempt Data","ఈ Attempt డేటా పాడైంది ("+v.reason+"). ఈ Attempt నిలిపివేయబడింది. కొత్త Attempt ప్రారంభించండి.",true);
   }
 } else {
-  // V8: allowCreate ONLY for fresh. url/last with no data => BLOCK, no new timer
   const allowCreate = (attemptSource==="fresh");
   if(!allowCreate){
     showError("Attempt Data Missing","ఈ Attempt డేటా కనిపించడం లేదు. Browser Storage Clear అయ్యి ఉండవచ్చు. భద్రత కోసం అదే Attempt ID తో కొత్త Timer ఇవ్వబడదు. కొత్త Attempt ప్రారంభించండి.",true);
@@ -282,7 +284,6 @@ function showResult(){
 <button class="submitBtn" style="background:#670f9e;margin-top:8px" onclick="location.href='tests.html'">← Back to Tests</button></div>`;
   window.scrollTo(0,0);
 }
-// V8: Pre-create new attempt BEFORE redirect - NO new=1 needed
 function startNewAttempt(){
   const newId=makeAttemptId();
   const newKey="mcres_attempt_"+testKey+"_"+newId;
