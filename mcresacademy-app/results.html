@@ -78,10 +78,7 @@ const n=Number(raw);
 if(!Number.isFinite(n)||n<min||n>max) return def;
 return n;
 }
-// V2.1 FIX A: Safe Storage Read - blocked / private mode => "" , Script will NOT stop
-function safeGet(key){
-try{ return localStorage.getItem(key); }catch(e){ return null; }
-}
+function safeGet(key){ try{ return localStorage.getItem(key); }catch(e){ return null; } }
 const p=new URLSearchParams(location.search);
 let data=null;
 try{
@@ -101,7 +98,6 @@ const wrong=validInt(p.get("wrong")??data.wrong,0,0,1000);
 const neg=validFloat(p.get("neg")??data.neg,-0.25,-2,0);
 const perRaw=p.get("per")??data.per;
 const per=perRaw===undefined||perRaw===null||perRaw===""?null:validFloat(perRaw,null,0.25,10);
-// Validate counts: correct+wrong must not exceed q (if q known)
 const countsValid=q===0 || (correct+wrong<=q);
 let scoreRaw=p.get("score")??data.score;
 let score=null;
@@ -115,12 +111,15 @@ score=validFloat(scoreRaw,null,-10000,10000);
 if(score===null && (correct>0||wrong>0) && countsValid){
 const perCalc=per!==null?per:(q>0&&marks>0?marks/q:1);
 score=correct*perCalc + wrong*neg;
-// V2.1 FIX B: Clamp to 0 - same as Exam Engine V16
 score=Math.max(0,score);
 score=Math.round(score*100)/100;
 }
-// If URL score itself is negative (tampered), clamp too
-if(score!==null) score=Math.max(0,score);
+// V2.2 FIX: Score Clamp 0 to Marks - URL tampering protection (Display-level only)
+if(score!==null){
+score=Math.max(0,score);
+if(marks>0) score=Math.min(score,marks);
+score=Math.round(score*100)/100;
+}
 const attempted=correct+wrong;
 const skipped=(q>0 && countsValid)?Math.max(0,q-attempted):0;
 const accuracy=(attempted>0 && countsValid)?Math.round((correct/attempted)*100):0;
@@ -140,7 +139,7 @@ document.getElementById("vSkipped").textContent=skipped;
 document.getElementById("vAccuracy").textContent=accuracy+"%";
 document.getElementById("detail").style.display="block";
 const perText=per!==null?`+${per}`:(q>0&&marks>0?`+${(Math.round((marks/q)*100)/100)}`:"As per Question Paper");
-document.getElementById("detail").innerHTML=`Total Questions: <b>${esc(String(q))}</b> &nbsp;|&nbsp; Attempted: <b>${esc(String(attempted))}</b><br>Correct: <b>${esc(perText)}</b> each &nbsp;|&nbsp; Wrong: <b>${esc(String(neg))}</b> each<br>Score = Correct × ${esc(perText)} + Wrong × ${esc(String(neg))} (Min 0)`;
+document.getElementById("detail").innerHTML=`Total Questions: <b>${esc(String(q))}</b> &nbsp;|&nbsp; Attempted: <b>${esc(String(attempted))}</b><br>Correct: <b>${esc(perText)}</b> each &nbsp;|&nbsp; Wrong: <b>${esc(String(neg))}</b> each<br>Score = Correct × ${esc(perText)} + Wrong × ${esc(String(neg))} (Min 0, Max ${esc(String(marks))})`;
 const pct=marks>0?(score/marks)*100:0;
 let m="";
 if(pct>=80) m="Excellent! Keep it up! 🎉";
@@ -153,7 +152,6 @@ if(examId && /^[A-Za-z0-9][A-Za-z0-9\-_]{0,79}$/.test(examId)){
 let u=`test-instructions.html?id=${encodeURIComponent(examId)}&test=${encodeURIComponent(testName)}`;
 if(q>0) u+=`&q=${encodeURIComponent(q)}`;
 if(marks>0) u+=`&marks=${encodeURIComponent(marks)}`;
-// V2.1 FIX C: Retake must carry time - else 120 min test becomes 180
 u+=`&time=${encodeURIComponent(time)}`;
 u+=`&neg=${encodeURIComponent(neg)}`;
 if(per!==null) u+=`&per=${encodeURIComponent(per)}`;
