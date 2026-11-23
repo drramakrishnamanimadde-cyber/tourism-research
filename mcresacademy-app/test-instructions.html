@@ -3,174 +3,130 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Online Exam - MCRES ACADEMY | Aspire - Achieve</title>
+<title>Test Instructions - MCRES ACADEMY | Aspire - Achieve</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,-apple-system,Arial,sans-serif}
-body{background:#f5f0ff;padding:12px;padding-bottom:20px;color:#222}
-.header{max-width:720px;margin:0 auto;background:#fff;border-radius:14px;padding:12px 14px;display:flex;align-items:center;gap:10px;box-shadow:0 4px 12px rgba(0,0,0,.06);position:sticky;top:12px;z-index:10}
-.header b{font-size:14px;color:#0d7a6b;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.timer{background:#ff1744;color:#fff;font-weight:800;font-size:15px;padding:8px 12px;border-radius:20px;white-space:nowrap}
-.timer.warn{background:#ff8703}
-.wrap{max-width:720px;margin:12px auto;display:flex;flex-direction:column;gap:12px}
-.qcard{background:#fff;border-radius:16px;padding:18px;box-shadow:0 4px 12px rgba(0,0,0,.06)}
-.qcard .qno{font-size:12px;font-weight:800;color:#670f9e}
-.qcard h2{font-size:16px;line-height:1.5;margin:8px 0 14px}
-.opt{display:flex;gap:10px;align-items:flex-start;width:100%;text-align:left;background:#f8f5ff;border:2px solid #eee;border-radius:12px;padding:12px;margin:8px 0;cursor:pointer;font-size:14.5px;line-height:1.5;font-family:inherit}
-.opt.sel{background:#e8f5e9;border-color:#4caf50}
-.opt span{font-weight:800;color:#670f9e}
-.opt.sel span{color:#2e7d32}
-.btnRow{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
-.btn{flex:1;border:0;padding:12px;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;min-width:110px}
-.bPrev{background:#eee;color:#333}.bNext{background:#670f9e;color:#fff}.bMark{background:#2196f3;color:#fff}.bClear{background:#fff;border:1px solid #ddd;color:#333}
-.palette{background:#fff;border-radius:16px;padding:16px;box-shadow:0 4px 12px rgba(0,0,0,.06)}
-.palette h3{font-size:15px;margin-bottom:12px}
-.grid{display:grid;grid-template-columns:repeat(8,1fr);gap:8px}
-.pbtn{aspect-ratio:1;border-radius:50%;border:2px solid #ddd;background:#f5f5f5;font-weight:800;font-size:13px;cursor:pointer}
-.pbtn.cur{outline:3px solid #670f9e;outline-offset:1px}
-.pAnswered{background:#e8f5e9;border-color:#4caf50;color:#2e7d32}
-.pNotAns{background:#fff3e0;border-color:#ff9800;color:#e65100}
-.pMarked{background:#e3f2fd;border-color:#2196f3;color:#1565c0}
-.pAnsMarked{background:#f3e5f5;border-color:#9c27b0;color:#6a1b9a}
-.legend{font-size:12.5px;color:#666;line-height:1.7;margin-top:12px}
-.submitBtn{display:block;width:100%;background:#ff8703;color:#fff;border:0;padding:15px;border-radius:12px;font-weight:800;font-size:16px;cursor:pointer;margin-top:4px}
-.result{background:#fff;border-radius:16px;padding:22px;text-align:center;box-shadow:0 4px 12px rgba(0,0,0,.06)}
-.result h2{color:#0d7a6b;font-size:22px}
-.result .score{font-size:42px;font-weight:900;color:#670f9e;margin:10px 0}
-.result p{font-size:14px;line-height:1.7;color:#555}
-.review{text-align:left;margin-top:16px}
-.review div{border-top:1px solid #eee;padding:12px 0;font-size:13.5px;line-height:1.6}
-.review b{color:#111}
-.correct{color:#2e7d32;font-weight:700}.wrong{color:#c62828;font-weight:700}
-.modalBg{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;align-items:center;justify-content:center;padding:16px;z-index:99}
-.modal{background:#fff;border-radius:16px;padding:22px;max-width:400px;width:100%;text-align:center}
-.modal h3{font-size:18px;margin-bottom:10px}.modal p{font-size:14px;line-height:1.6;color:#555}
-.modal button{margin-top:12px;padding:12px 18px;border-radius:10px;border:0;font-weight:700;cursor:pointer}
-.mYes{background:#ff1744;color:#fff}.mNo{background:#eee;color:#333;margin-left:8px}
-.footer{max-width:720px;margin:18px auto 0;text-align:center;font-size:12px;color:#777;line-height:1.6}
+body{background:#f5f0ff;padding:16px;padding-bottom:40px;color:#222}
+.top{max-width:480px;margin:0 auto;text-align:center;padding:14px 10px 8px}
+.top img{width:96px;height:96px;object-fit:contain;margin-bottom:4px}
+.top h1{color:#0d7a6b;font-size:25px;font-weight:900;line-height:1.2}
+.top .tagline{color:#e91e63;font-size:18px;font-weight:800;margin-top:2px}
+.top .sub{font-size:13px;color:#333;margin-top:6px;font-weight:700}
+.card{max-width:480px;margin:14px auto;background:#fff;border-radius:16px;padding:18px;box-shadow:0 4px 12px rgba(0,0,0,.06)}
+.card h2{font-size:18px;color:#670f9e;margin-bottom:6px}
+.card .testName{font-size:16px;font-weight:700;color:#111}
+.card .testMeta{font-size:13px;color:#666;margin-top:4px;line-height:1.6}
+.info{max-width:480px;margin:12px auto;background:#fff3e0;border:1px solid #ffcc80;border-radius:14px;padding:14px;font-size:13.5px;line-height:1.7;color:#5d4037}
+.info b{color:#e65100}
+.rules{max-width:480px;margin:12px auto;background:#fff;border-radius:16px;padding:18px;box-shadow:0 4px 12px rgba(0,0,0,.06)}
+.rules h3{font-size:16px;color:#111;margin-bottom:10px}
+.rules ol{padding-left:20px;font-size:14px;line-height:1.85;color:#333}
+.rules ol li b{color:#111}
+.rules ul{padding-left:20px;font-size:14px;line-height:1.85;color:#333;list-style:disc}
+.legend{max-width:480px;margin:12px auto;background:#fff;border-radius:16px;padding:16px;box-shadow:0 4px 12px rgba(0,0,0,.06)}
+.legend h3{font-size:15px;margin-bottom:12px}
+.dotRow{display:flex;align-items:center;gap:10px;font-size:13.5px;margin:8px 0;color:#333}
+.dot{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;flex-shrink:0}
+.d1{background:#e8f5e9;border:2px solid #4caf50;color:#2e7d32}
+.d2{background:#fff3e0;border:2px solid #ff9800;color:#e65100}
+.d3{background:#f5f5f5;border:2px solid #9e9e9e;color:#616161}
+.d4{background:#e3f2fd;border:2px solid #2196f3;color:#1565c0}
+.d5{background:#f3e5f5;border:2px solid #9c27b0;color:#6a1b9a}
+.agreeBox{max-width:480px;margin:12px auto;background:#fff;border-radius:16px;padding:16px;display:flex;gap:10px;align-items:flex-start;box-shadow:0 4px 12px rgba(0,0,0,.06)}
+.agreeBox input{width:20px;height:20px;margin-top:2px;accent-color:#670f9e;flex-shrink:0}
+.agreeBox label{font-size:14px;line-height:1.6;color:#333;cursor:pointer}
+.agreeBox label b{color:#670f9e}
+.startBtn{display:block;max-width:480px;width:100%;margin:14px auto 0;background:#ff8703;color:#fff;border:0;padding:15px;border-radius:12px;font-weight:800;font-size:16px;cursor:pointer}
+.startBtn:disabled{background:#ccc;cursor:not-allowed}
+.backBtn{display:block;max-width:480px;width:100%;margin:10px auto 0;background:#fff;color:#670f9e;border:1px solid #e5d5f5;padding:13px;border-radius:12px;font-weight:700;font-size:15px;cursor:pointer;font-family:inherit}
+.note{max-width:480px;margin:12px auto;background:#f3e5f5;border-radius:12px;padding:12px;font-size:12.5px;line-height:1.6;color:#6a1b9a;text-align:center}
+.footer{max-width:480px;margin:24px auto 0;text-align:center;font-size:12px;color:#777;line-height:1.6}
+.footer b{color:#333}
 </style>
 </head>
 <body>
-<div class="header"><b id="examTitle">MCRES ACADEMY - Exam</b><span class="timer" id="timer">--:--:--</span></div>
-<div class="wrap" id="wrap">
-<div class="qcard" id="qcard"></div>
-<div class="palette">
-<h3>Question Palette</h3>
-<div class="grid" id="palette"></div>
-<div class="legend">🟢 Answered &nbsp; 🟠 Not Answered &nbsp; ⚪ Not Visited &nbsp; 🔵 Marked &nbsp; 🟣 Answered & Marked<br><span style="color:#888">Note: Demo - Frontend only. Real marks / timer will be verified by Backend.</span></div>
+<div class="top">
+<img src="logo-192.png" alt="MCRES ACADEMY Logo">
+<h1>MCRES ACADEMY</h1>
+<div class="tagline">Aspire - Achieve</div>
+<div class="sub">Online Test Series & Assessment Platform</div>
 </div>
-<button class="submitBtn" id="submitBtn">Submit Test →</button>
+<div class="card">
+<h2>📋 Test Instructions</h2>
+<div class="testName" id="testName">Constable Grand Test - 1</div>
+<div class="testMeta" id="testMeta">200 Questions • 200 Marks • Duration: 180 Minutes<br>Negative Marking: -0.25 for each wrong answer</div>
 </div>
-<div class="modalBg" id="modal"><div class="modal"><h3>Submit Test?</h3><p id="modalText"></p><button class="mYes" id="confirmSubmit">Yes, Submit</button><button class="mNo" id="cancelSubmit">Cancel</button></div></div>
-<div class="footer"><b>MCRES ACADEMY - Aspire - Achieve</b><br>An educational programme by MCRES</div>
+<div class="info">
+<b>⚠️ ముఖ్య గమనిక:</b> Start Test నొక్కిన తర్వాత Timer Start అవుతుంది. Time ముగిసిన తర్వాత Test Submit చేయాల్సి ఉంటుంది. Refresh / Page Close చేస్తే Timer ప్రవర్తన ప్రస్తుత Attempt నియమాలపై ఆధారపడి ఉంటుంది.
+</div>
+<div class="rules">
+<h3>General Instructions</h3>
+<ol>
+<li><b>ఒక్కో ప్రశ్నకు 4 Options</b> ఉంటాయి. సరైనది ఒక్కటే.</li>
+<li><b>Answer మార్చుకోవచ్చు</b> - Submit చేసే వరకు ఎన్నిసార్లైనా మార్చుకోవచ్చు.</li>
+<li><b>Skip చేయవచ్చు</b> - తర్వాత Question Palette నుండి మళ్ళీ రావచ్చు.</li>
+<li><b>Negative Marking</b> - తప్పు సమాధానానికి క్రింద చెప్పిన Marks తగ్గుతాయి. తెలియని ప్రశ్నలకు Guess చేయకండి.</li>
+<li><b>Internet అంతరాయం</b> - Internet అంతరాయం ఏర్పడినప్పుడు సమాధానాల భద్రత, తిరిగి కొనసాగించే సదుపాయం అమలులో ఉన్న విధానంపై ఆధారపడి ఉంటుంది.</li>
+<li><b>నియమాలు</b> - పరీక్ష సమయంలో ఇతర Tabs కు మారడం, Copy చేయడం వంటి చర్యలు పరీక్ష నియమాలకు విరుద్ధం.</li>
+</ol>
+<h3 style="margin-top:16px">Marking Scheme</h3>
+<ul id="markingList">
+<li>Correct Answer: <b>As per Question Paper</b></li>
+<li>Wrong Answer: <b>-0.25 Mark</b></li>
+<li>Not Attempted: <b>0 Mark</b></li>
+</ul>
+</div>
+<div class="legend">
+<h3>Question Palette - రంగుల అర్థం</h3>
+<div class="dotRow"><span class="dot d1">✓</span> Answered - సమాధానం ఇచ్చారు</div>
+<div class="dotRow"><span class="dot d2">!</span> Not Answered - చూశారు, సమాధానం ఇవ్వలేదు</div>
+<div class="dotRow"><span class="dot d3">•</span> Not Visited - ఇంకా చూడలేదు</div>
+<div class="dotRow"><span class="dot d4">★</span> Marked for Review - తర్వాత చూడాలని Mark చేశారు</div>
+<div class="dotRow"><span class="dot d5">✓★</span> Answered & Marked - సమాధానం ఇచ్చి Review కి Mark చేశారు</div>
+</div>
+<div class="agreeBox">
+<input type="checkbox" id="agreeCheck">
+<label for="agreeCheck">నేను పైన ఉన్న <b>అన్ని Instructions చదివాను</b>, అర్థం చేసుకున్నాను. Test Rules కి అంగీకరిస్తున్నాను.</label>
+</div>
+<button class="startBtn" id="startBtn" disabled>Start Test →</button>
+<button class="backBtn" onclick="history.back()">← Back to Tests</button>
+<div class="note">ℹ️ ఈ పేజీలో చూపించే మార్కులు / సమయం ప్రదర్శన కోసం మాత్రమే. నిజమైన పరీక్షా నియమాలు Backend లో నిర్ధారించబడతాయి. Palette రంగులు exam.html లో కూడా ఇదే విధంగా ఉంటాయి.</div>
+<div class="footer"><b>MCRES ACADEMY - Aspire - Achieve</b><br>An educational programme by Mallaiah Center for River & Earth Sciences (MCRES)<br>Founder & Director: Dr Ramakrishna Manimadde</div>
 <script>
 function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");}
-function validInt(raw,def,min,max){const n=Number(raw);if(!Number.isFinite(n)||!Number.isInteger(n)||n<min||n>max) return def;return n;}
-function validFloat(raw,def,min,max){const n=Number(raw);if(!Number.isFinite(n)||n<min||n>max) return def;return n;}
+// Strict validation: invalid / out-of-range -> safe default
+function validInt(raw,def,min,max){
+const n=Number(raw);
+if(!Number.isFinite(n)||!Number.isInteger(n)||n<min||n>max) return def;
+return n;
+}
+function validFloat(raw,def,min,max){
+const n=Number(raw);
+if(!Number.isFinite(n)||n<min||n>max) return def;
+return n;
+}
 const p=new URLSearchParams(location.search);
-const tName=(p.get("test")||"Demo Test").slice(0,100);
-const totalQ=validInt(p.get("q"),10,1,1000);
-const totalMarks=validInt(p.get("marks"),10,1,1000);
-const timeMin=validInt(p.get("time"),10,1,600);
-const neg=validFloat(p.get("neg"),-0.25,-2,0);
+const tName=(p.get("test")||"Constable Grand Test - 1").slice(0,100);
+const q=validInt(p.get("q"),200,1,1000);
+const marks=validInt(p.get("marks"),200,1,1000);
+const time=validInt(p.get("time"),180,1,600);
+// per-question marks: only if explicitly given via ?per= , otherwise do NOT assume equal marks
 const perRaw=p.get("per");
 const per=perRaw===null?null:validFloat(perRaw,null,0.25,10);
-// Demo questions - real questions will come from Backend / Admin
-const demo=[
-{q:"భారతదేశ రాజధాని ఏది?",o:["ముంబై","న్యూఢిల్లీ","కోల్‌కతా","చెన్నై"],a:1},
-{q:"తెలంగాణ రాష్ట్రం ఎప్పుడు ఏర్పడింది?",o:["2013","2014","2015","2016"],a:1},
-{q:"గోదావరి నది ఎక్కడ పుడుతుంది?",o:["త్రయంబకేశ్వర్","నాసిక్","అమరకంటక్","మహాబలేశ్వర్"],a:0},
-{q:"భారత జాతీయ జంతువు ఏది?",o:["ఏనుగు","సింహం","బెంగాల్ పులి","జింక"],a:2},
-{q:"Which is the largest planet?",o:["Mars","Venus","Jupiter","Saturn"],a:2},
-{q:"Water formula?",o:["CO2","H2O","O2","NaCl"],a:1},
-{q:"తెలంగాణలో ప్రసిద్ధ చార్మినార్ ఎక్కడ ఉంది?",o:["వరంగల్","హైదరాబాద్","కరీంనగర్","నిజామాబాద్"],a:1},
-{q:"2 + 2 × 3 = ?",o:["12","8","10","6"],a:1},
-{q:"Indian Constitution came into force on?",o:["15 Aug 1947","26 Jan 1950","26 Nov 1949","2 Oct 1950"],a:1},
-{q:"Which river is called Dakshina Ganga?",o:["Krishna","Kaveri","Godavari","Tungabhadra"],a:2},
-];
-const questions=[];
-for(let i=0;i<totalQ;i++){const d=demo[i%demo.length];questions.push({q:d.q+` (Q${i+1})`,o:d.o,a:d.a});}
-document.getElementById("examTitle").textContent=tName+" • "+totalQ+" Q";
-// Timer - End Time persisted, Refresh does NOT restart
-const key="mcres_end_"+tName.replace(/\W/g,"_");
-let endTime=Number(localStorage.getItem(key));
-if(!endTime||endTime<Date.now()){endTime=Date.now()+timeMin*60*1000;localStorage.setItem(key,String(endTime));}
-let cur=0;
-let answers=new Array(totalQ).fill(null); // null = not answered
-let visited=new Array(totalQ).fill(false);
-let marked=new Array(totalQ).fill(false);
-let submitted=false;
-visited[0]=true;
-function status(i){
-if(marked[i]&&answers[i]!==null) return "pAnsMarked";
-if(marked[i]) return "pMarked";
-if(answers[i]!==null) return "pAnswered";
-if(visited[i]) return "pNotAns";
-return "";
-}
-function renderQ(){
-const q=questions[cur];
-document.getElementById("qcard").innerHTML=`
-<div class="qno">Question ${cur+1} of ${totalQ}</div>
-<h2>${esc(q.q)}</h2>
-${q.o.map((opt,i)=>`<button class="opt ${answers[cur]===i?"sel":""}" onclick="selectOpt(${i})"><span>${"ABCD"[i]}.</span> ${esc(opt)}</button>`).join("")}
-<div class="btnRow">
-<button class="btn bPrev" onclick="goPrev()">← Previous</button>
-<button class="btn bMark" onclick="toggleMark()">${marked[cur]?"Unmark":"Mark for Review"} ★</button>
-<button class="btn bClear" onclick="clearAns()">Clear</button>
-<button class="btn bNext" onclick="goNext()">Next →</button>
-</div>`;
-renderPalette();
-}
-function renderPalette(){
-document.getElementById("palette").innerHTML=questions.map((_,i)=>`<button class="pbtn ${status(i)} ${i===cur?"cur":""}" onclick="jump(${i})">${i+1}</button>`).join("");
-}
-function selectOpt(i){answers[cur]=i;renderQ();}
-function clearAns(){answers[cur]=null;renderQ();}
-function toggleMark(){marked[cur]=!marked[cur];renderQ();}
-function goPrev(){if(cur>0){cur--;visited[cur]=true;renderQ();}}
-function goNext(){if(cur<totalQ-1){cur++;visited[cur]=true;renderQ();}}
-function jump(i){cur=i;visited[i]=true;renderQ();}
-function counts(){
-let a=0,na=0,nv=0,m=0,am=0;
-for(let i=0;i<totalQ;i++){
-const s=status(i);
-if(s==="pAnsMarked")am++; else if(s==="pMarked")m++; else if(s==="pAnswered")a++; else if(s==="pNotAns")na++; else nv++;
-}
-return {a,na,nv,m,am};
-}
-function tick(){
-if(submitted) return;
-const left=endTime-Date.now();
-if(left<=0){doSubmit();return;}
-const h=Math.floor(left/3600000),m=Math.floor(left%3600000/60000),s=Math.floor(left%60000/1000);
-const t=document.getElementById("timer");
-t.textContent=`${String(h).padStart(2,"0")}:${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;
-t.classList.toggle("warn",left<5*60*1000);
-}
-setInterval(tick,1000);tick();renderQ();
-document.getElementById("submitBtn").addEventListener("click",()=>{
-const c=counts();
-document.getElementById("modalText").textContent=`Answered: ${c.a+c.am} • Not Answered: ${c.na} • Not Visited: ${c.nv} • Marked: ${c.m+c.am}. Are you sure?`;
-document.getElementById("modal").style.display="flex";
+const neg=validFloat(p.get("neg"),-0.25,-2,0);
+const perText=per===null?"As per Question Paper":"+"+per+" Mark";
+document.getElementById("testName").textContent=tName;
+document.getElementById("testMeta").innerHTML=`${esc(String(q))} Questions • ${esc(String(marks))} Marks • Duration: ${esc(String(time))} Minutes<br>Negative Marking: ${esc(String(neg))} for each wrong answer`;
+document.getElementById("markingList").innerHTML=`<li>Correct Answer: <b>${esc(perText)}</b></li><li>Wrong Answer: <b>${esc(String(neg))} Mark</b></li><li>Not Attempted: <b>0 Mark</b></li>`;
+const agree=document.getElementById("agreeCheck");
+const startBtn=document.getElementById("startBtn");
+agree.addEventListener("change",()=>{ startBtn.disabled=!agree.checked; });
+startBtn.addEventListener("click",()=>{
+if(!agree.checked) return;
+let url=`exam.html?test=${encodeURIComponent(tName)}&q=${encodeURIComponent(q)}&marks=${encodeURIComponent(marks)}&time=${encodeURIComponent(time)}&neg=${encodeURIComponent(neg)}`;
+if(per!==null) url+=`&per=${encodeURIComponent(per)}`;
+location.href=url;
 });
-document.getElementById("cancelSubmit").addEventListener("click",()=>{document.getElementById("modal").style.display="none";});
-document.getElementById("confirmSubmit").addEventListener("click",()=>{document.getElementById("modal").style.display="none";doSubmit();});
-function doSubmit(){
-if(submitted) return; submitted=true;
-localStorage.removeItem(key);
-let correct=0,wrong=0,attempted=0;
-let perMark=per!==null?per:(totalMarks/totalQ);
-questions.forEach((q,i)=>{if(answers[i]!==null){attempted++;if(answers[i]===q.a)correct++;else wrong++;}});
-let score=correct*perMark + wrong*neg;
-score=Math.max(0,Math.round(score*100)/100);
-const c=counts();
-document.getElementById("wrap").innerHTML=`
-<div class="result"><h2>✅ Test Submitted!</h2><div class="score">${score} / ${totalMarks}</div>
-<p><b>${esc(tName)}</b><br>Correct: ${correct} • Wrong: ${wrong} • Attempted: ${attempted} / ${totalQ}<br>Correct: ${per!==null?"+ "+per+" Mark":"As per Question Paper"} • Wrong: ${neg} Mark<br><span style="color:#888;font-size:12px">Demo Evaluation - Frontend only. Final result will be verified by Backend.</span></p>
-<div class="review">${questions.slice(0,Math.min(totalQ,10)).map((q,i)=>{let st=answers[i]===null?"Not Attempted":(answers[i]===q.a?'<span class="correct">Correct ✓</span>':'<span class="wrong">Wrong ✗</span>');return `<div><b>Q${i+1}.</b> ${esc(q.q)}<br>Your Answer: ${answers[i]===null?"-":esc(q.o[answers[i]])} • Correct: ${esc(q.o[q.a])} • ${st}</div>`}).join("")}</div>
-<button class="submitBtn" onclick="location.href='tests.html'">← Back to Tests</button></div>`;
-window.scrollTo(0,0);
-}
 </script>
 </body>
 </html>
