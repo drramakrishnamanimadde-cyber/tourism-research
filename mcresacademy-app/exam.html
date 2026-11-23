@@ -302,6 +302,8 @@ function startNewAttempt(){
   store.set(lastKey,JSON.stringify({attemptId:newId,submitted:false,testId}));
   const u=new URL(location.href); u.searchParams.set("attempt",newId); u.searchParams.set("id",testId); location.href=u.toString();
 }
+// V16: Timer interval handle - cleared on submit
+let timerInterval=null;
 function tick(){
 if(submitted) return;
 const left=endTime-Date.now();
@@ -313,13 +315,12 @@ t.classList.toggle("warn",left<5*60*1000);
 }
 if(submitted){showResult();}
 else{
-  // V15: Clean expired handling - no interval if already expired
   if(endTime<=Date.now()){
     doSubmit();
   } else {
     renderQ();
     tick();
-    setInterval(tick,1000);
+    timerInterval=setInterval(tick,1000);
     document.getElementById("submitBtn").addEventListener("click",()=>{
       const c=counts();
       document.getElementById("modalText").textContent=`Answered: ${c.a+c.am} • Not Answered: ${c.na} • Not Visited: ${c.nv} • Marked: ${c.m+c.am}. Are you sure?`;
@@ -332,6 +333,7 @@ else{
 function doSubmit(){
 if(submitted) return;
 submitted=true;
+if(timerInterval!==null){ clearInterval(timerInterval); timerInterval=null; }
 try{document.getElementById("modal").style.display="none";}catch(e){}
 const r=calcScore();
 state.submitted=true;
