@@ -66,40 +66,64 @@ body{background:#f5f0ff;padding:12px;padding-bottom:20px;color:#222}
 <div class="footer"><b>MCRES ACADEMY - Aspire - Achieve</b><br>An educational programme by MCRES</div>
 <script>
 function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");}
-function validInt(raw,def,min,max){const n=Number(raw);if(!Number.isFinite(n)||!Number.isInteger(n)||n<min||n>max) return def;return n;}
-function validFloat(raw,def,min,max){const n=Number(raw);if(!Number.isFinite(n)||n<min||n>max) return def;return n;}
 const p=new URLSearchParams(location.search);
-const tName=(p.get("test")||"Demo Test").slice(0,100);
-const totalQ=validInt(p.get("q"),10,1,1000);
-const totalMarks=validInt(p.get("marks"),10,1,1000);
-const timeMin=validInt(p.get("time"),10,1,600);
-const neg=validFloat(p.get("neg"),-0.25,-2,0);
-const perRaw=p.get("per");
-const per=perRaw===null?null:validFloat(perRaw,null,0.25,10);
-const testId=(p.get("id")||"").trim().slice(0,80).replace(/[^A-Za-z0-9\-_]/g,"_");
+const tNameRaw=p.get("test");
+const tName=tNameRaw===null?"Demo Test":tNameRaw.slice(0,100);
+const testIdRaw=p.get("id");
+const testId=testIdRaw===null?"":testIdRaw.trim().slice(0,80).replace(/[^A-Za-z0-9\-_]/g,"_");
 function showError(title,msg,showNewBtn){
-  document.getElementById("timer").textContent="BLOCKED";
-  document.getElementById("wrap").innerHTML=`<div class="errBox"><h2>⚠️ ${esc(title)}</h2><p>${esc(msg)}<br><br>Test ID: <b>${esc(testId||"-")}</b> • Test: <b>${esc(tName)}</b></p>
+  try{document.getElementById("timer").textContent="BLOCKED";}catch(e){}
+  try{document.getElementById("wrap").innerHTML=`<div class="errBox"><h2>⚠️ ${esc(title)}</h2><p>${esc(msg)}<br><br>Test ID: <b>${esc(testId||"-")}</b> • Test: <b>${esc(tName)}</b></p>
   ${showNewBtn?`<button class="submitBtn" onclick="startNewAttempt()">↻ Start New Attempt</button>`:""}
-  <button class="submitBtn" style="background:#670f9e;margin-top:8px" onclick="location.href='tests.html'">← Back to Tests</button></div>`;
+  <button class="submitBtn" style="background:#670f9e;margin-top:8px" onclick="location.href='tests.html'">← Back to Tests</button></div>`;}catch(e){}
   throw new Error(title);
 }
-// V5 FIX 1: STRICT Marks Validation - per given => per*totalQ MUST EQUAL totalMarks (within 0.01)
-// per NOT given => per = totalMarks/totalQ, no check needed
+// V6 FIX E: Safe Storage wrapper - no JS crash if localStorage blocked / full
+const store={
+  get(k){ try{return localStorage.getItem(k);}catch(e){ showError("Storage Unavailable","Browser Storage అందుబాటులో లేదు. Private Mode / Storage Blocked ఉంటే Exam Save అవ్వదు. Normal Browser లో Open చేయండి.",false); } },
+  set(k,v){ try{localStorage.setItem(k,v); return true;}catch(e){ showError("Storage Full / Blocked","Browser Storage నిండిపోయింది లేదా Block అయ్యింది. Answers Save అవ్వట్లేదు. Storage ఖాళీ చేసి మళ్ళీ ప్రయత్నించండి.",false); } },
+  remove(k){ try{localStorage.removeItem(k);}catch(e){} }
+};
+// V6 FIX C: Strict Param Parsing - present but invalid => BLOCK, absent => default
+function parseIntParam(name,def,min,max){
+  const raw=p.get(name);
+  if(raw===null) return def;
+  const n=Number(raw);
+  if(!Number.isFinite(n)||!Number.isInteger(n)||n<min||n>max) showError("Invalid Parameter",`URL Parameter తప్పు: ${name}=${raw}. సరైన విలువ ఇచ్చి Tests List నుండి మళ్ళీ Open చేయండి.`,false);
+  return n;
+}
+function parseFloatParam(name,def,min,max,isPer){
+  const raw=p.get(name);
+  if(raw===null) return def;
+  const n=Number(raw);
+  if(!Number.isFinite(n)||n<min||n>max) showError("Invalid Parameter",`URL Parameter తప్పు: ${name}=${raw}. సరైన విలువ ఇచ్చి Tests List నుండి మళ్ళీ Open చేయండి.`,false);
+  return n;
+}
+const totalQ=parseIntParam("q",10,1,1000);
+const totalMarks=parseIntParam("marks",10,1,1000);
+const timeMin=parseIntParam("time",10,1,600);
+const neg=parseFloatParam("neg",-0.25,-2,0,false);
+const per=p.get("per")===null?null:parseFloatParam("per",null,0.25,10,true);
 if(per!==null){
   const maxPossible=Math.round(per*totalQ*100)/100;
   if(Math.abs(maxPossible-totalMarks)>0.01){
-    showError("Invalid Marks Configuration",`ఈ Test Config తప్పు: ${totalQ} Questions × ${per} Mark = ${maxPossible} Marks, కానీ Total Marks ${totalMarks} అని ఇచ్చారు. రెండూ సమానంగా ఉండాలి. Admin ఈ Config ని సరిచేయాలి.`,false);
+    showError("Invalid Marks Configuration",`ఈ Test Config తప్పు: ${totalQ} Questions × ${per} Mark = ${maxPossible} Marks, కానీ Total Marks ${totalMarks} అని ఇచ్చారు. రెండూ సమానంగా ఉండాలి.`,false);
   }
 }
 if(!testId){ showError("Test ID Missing","ఈ Test కి Test ID లేదు. Tests List నుండి మళ్ళీ Open చేయండి. Ex: TG-GS-TEST-001",false); }
 const testKey=testId;
 const lastKey="mcres_last_"+testKey;
 function makeAttemptId(){ return "MCRES-"+Date.now().toString(36).toUpperCase()+"-"+Math.floor(1000+Math.random()*9000); }
+// V6 FIX B: Attempt ID Validation
 let attemptId=p.get("attempt")||"";
+if(attemptId){
+  if(!/^[A-Za-z0-9_-]{1,64}$/.test(attemptId)){
+    showError("Invalid Attempt ID",`URL లో Attempt ID తప్పు: ${attemptId}. Tests List నుండి మళ్ళీ Open చేయండి.`,false);
+  }
+}
 if(!attemptId){
-  const lastRaw=localStorage.getItem(lastKey);
-  if(lastRaw){try{const L=JSON.parse(lastRaw); if(L && L.attemptId && !L.submitted) attemptId=L.attemptId;}catch(e){}}
+  const lastRaw=store.get(lastKey);
+  if(lastRaw){try{const L=JSON.parse(lastRaw); if(L && L.attemptId && !L.submitted && /^[A-Za-z0-9_-]{1,64}$/.test(L.attemptId)) attemptId=L.attemptId;}catch(e){}}
   if(!attemptId){ attemptId=makeAttemptId(); }
   const u=new URL(location.href); u.searchParams.set("attempt",attemptId); u.searchParams.set("id",testId); history.replaceState(null,"",u.toString());
 }
@@ -119,17 +143,26 @@ const demo=[
 ];
 const questions=[];
 for(let i=0;i<totalQ;i++){const d=demo[i%demo.length];questions.push({q:d.q+` (Q${i+1})`,o:d.o,a:d.a});}
+// V6 FIX A: Corrupted JSON => BLOCK, not new attempt
 let loaded=null;
-try{loaded=JSON.parse(localStorage.getItem(storeKey)||"null");}catch(e){loaded=null;}
+let hasStored=false;
+let rawStored=store.get(storeKey);
+if(rawStored!==null && rawStored!==undefined){
+  hasStored=true;
+  try{ loaded=JSON.parse(rawStored); }catch(e){
+    showError("Corrupted Attempt Data","ఈ Attempt డేటా పాడైంది (JSON Parse Failed). భద్రత కోసం ఈ Attempt నిలిపివేయబడింది. కొత్త Attempt ప్రారంభించండి.",true);
+  }
+}
 function validateState(s){
   if(!s || typeof s!=="object") return {ok:false,reason:"empty"};
   if(s.attemptId!==attemptId) return {ok:false,reason:"attemptId mismatch"};
   if(s.testId!==testId) return {ok:false,reason:"testId mismatch"};
   if(typeof s.submitted!=="boolean") return {ok:false,reason:"submitted not boolean"};
-  // V5: score / submittedAt type check
   if(!(s.score===null || (typeof s.score==="number" && Number.isFinite(s.score)))) return {ok:false,reason:"score invalid"};
   if(!(s.submittedAt===null || (typeof s.submittedAt==="number" && Number.isFinite(s.submittedAt)))) return {ok:false,reason:"submittedAt invalid"};
-  if(s.submitted && s.submittedAt===null) return {ok:false,reason:"submitted but no submittedAt"};
+  // V6 FIX D: Submitted Consistency - both must match
+  if(s.submitted===false && (s.score!==null || s.submittedAt!==null)) return {ok:false,reason:"not submitted but score/submittedAt present"};
+  if(s.submitted===true && (s.score===null || s.submittedAt===null)) return {ok:false,reason:"submitted but score/submittedAt missing"};
   if(!Number.isInteger(s.cur)||s.cur<0||s.cur>totalQ-1) return {ok:false,reason:"cur out of range"};
   if(!Array.isArray(s.answers)||s.answers.length!==totalQ) return {ok:false,reason:"answers length"};
   for(const a of s.answers){ if(a!==null && !(Number.isInteger(a)&&a>=0&&a<=3)) return {ok:false,reason:"answers value invalid"}; }
@@ -141,10 +174,10 @@ function validateState(s){
   return {ok:true};
 }
 let isNewState=false;
-if(loaded){
+if(hasStored){
   const cfgMatch = loaded.test===tName && loaded.testId===testId && loaded.totalQ===totalQ && loaded.totalMarks===totalMarks && loaded.timeMin===timeMin && loaded.neg===neg && loaded.per===per;
   if(!cfgMatch){
-    showError("Configuration Mismatch","ఈ Attempt ప్రారంభమైన తర్వాత Test సెట్టింగులు (Time / Marks / Negative) మారాయి. భద్రత కోసం ఈ Attempt నిలిపివేయబడింది. కొత్త Attempt ప్రారంభించండి.",true);
+    showError("Configuration Mismatch","ఈ Attempt ప్రారంభమైన తర్వాత Test సెట్టింగులు మారాయి. భద్రత కోసం ఈ Attempt నిలిపివేయబడింది. కొత్త Attempt ప్రారంభించండి.",true);
   }
   const v=validateState(loaded);
   if(!v.ok){
@@ -159,8 +192,8 @@ let cur=loaded.cur, answers=loaded.answers, visited=loaded.visited, marked=loade
 let state=loaded;
 function saveState(){
   state.cur=cur; state.answers=answers; state.visited=visited; state.marked=marked; state.endTime=endTime; state.submitted=submitted;
-  localStorage.setItem(storeKey,JSON.stringify(state));
-  localStorage.setItem(lastKey,JSON.stringify({attemptId,submitted,testId}));
+  store.set(storeKey,JSON.stringify(state));
+  store.set(lastKey,JSON.stringify({attemptId,submitted,testId}));
   const tag=document.getElementById("savedTag"); if(tag) tag.textContent="✓ Auto Saved • "+new Date().toLocaleTimeString("en-IN");
 }
 if(isNewState){ saveState(); }
@@ -211,23 +244,20 @@ function showResult(){
 const r=calcScore();
 document.getElementById("wrap").innerHTML=`
 <div class="result"><h2>✅ Test Submitted!</h2><div class="score">${r.score} / ${totalMarks}</div>
-<p><b>${esc(tName)}</b><br>Test ID: ${esc(testId)} • Attempt: ${esc(attemptId)}<br>Correct: ${r.correct} • Wrong: ${r.wrong} • Attempted: ${r.attempted} / ${totalQ}<br>Correct: ${per!==null?"+ "+per+" Mark":"As per Question Paper ("+r.perMark+" / Q)"} • Wrong: ${neg} Mark • Floor: 0<br><span style="color:#888;font-size:12px">Demo Evaluation - Frontend only. Final result will be verified by Backend.</span></p>
+<p><b>${esc(tName)}</b><br>Test ID: ${esc(testId)} • Attempt: ${esc(attemptId)}<br>Correct: ${r.correct} • Wrong: ${r.wrong} • Attempted: ${r.attempted} / ${totalQ}<br>Correct: ${per!==null?"+ "+per+" Mark":"As per Question Paper ("+r.perMark+" / Q)"} • Wrong: ${neg} Mark • Floor: 0<br><span style="color:#888;font-size:12px">Demo Evaluation - Frontend only. Final result will be verified by Backend. Demo Questions - Real Question Bank Backend నుండి వస్తుంది.</span></p>
 <div class="review">${questions.slice(0,Math.min(totalQ,10)).map((q,i)=>{let st=answers[i]===null?"Not Attempted":(answers[i]===q.a?'<span class="correct">Correct ✓</span>':'<span class="wrong">Wrong ✗</span>');return `<div><b>Q${i+1}.</b> ${esc(q.q)}<br>Your Answer: ${answers[i]===null?"-":esc(q.o[answers[i]])} • Correct: ${esc(q.o[q.a])} • ${st}</div>`}).join("")}</div>
 <button class="submitBtn" onclick="startNewAttempt()">↻ Start New Attempt</button>
 <button class="submitBtn" style="background:#670f9e;margin-top:8px" onclick="location.href='tests.html'">← Back to Tests</button></div>`;
 window.scrollTo(0,0);
 }
-// V5 FIX 2: Explicit New Attempt - old attempt KEPT as archive, new ID in URL
 function startNewAttempt(){
   const newId=makeAttemptId();
-  // Do NOT delete old storeKey - keep for audit. Only clear "last" pointer, new attempt will overwrite it on save.
-  localStorage.removeItem(lastKey);
+  store.remove(lastKey);
   const u=new URL(location.href); u.searchParams.set("attempt",newId); u.searchParams.set("id",testId); location.href=u.toString();
 }
 function tick(){
 if(submitted) return;
 const left=endTime-Date.now();
-// V5: Expired => Auto Submit, never recreate state
 if(left<=0){doSubmit();return;}
 const h=Math.floor(left/3600000),m=Math.floor(left%3600000/60000),s=Math.floor(left%60000/1000);
 const t=document.getElementById("timer");
