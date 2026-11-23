@@ -82,10 +82,11 @@ const store={
   set(k,v){ try{localStorage.setItem(k,v); return true;}catch(e){ showError("Storage Full / Blocked","Browser Storage నిండిపోయింది లేదా Block అయ్యింది. Answers Save అవ్వట్లేదు.",false); } },
   remove(k){ try{localStorage.removeItem(k);}catch(e){} }
 };
+// V10 FIX 2: Decimal-only numeric validation - reject hex (0x10), exponent (1e3), spaces
 function parseIntParam(name,def,min,max){
   const raw=p.get(name);
   if(raw===null) return def;
-  if(raw.trim()==="") showError("Invalid Parameter",`URL Parameter ఖాళీగా ఉంది: ${name}= (empty). Tests List నుండి మళ్ళీ Open చేయండి.`,false);
+  if(!/^[0-9]+$/.test(raw.trim())) showError("Invalid Parameter",`URL Parameter తప్పు (Decimal మాత్రమే): ${name}=${raw}. Tests List నుండి మళ్ళీ Open చేయండి.`,false);
   const n=Number(raw);
   if(!Number.isFinite(n)||!Number.isInteger(n)||n<min||n>max) showError("Invalid Parameter",`URL Parameter తప్పు: ${name}=${raw}. Tests List నుండి మళ్ళీ Open చేయండి.`,false);
   return n;
@@ -93,7 +94,7 @@ function parseIntParam(name,def,min,max){
 function parseFloatParam(name,def,min,max){
   const raw=p.get(name);
   if(raw===null) return def;
-  if(raw.trim()==="") showError("Invalid Parameter",`URL Parameter ఖాళీగా ఉంది: ${name}= (empty). Tests List నుండి మళ్ళీ Open చేయండి.`,false);
+  if(!/^-?[0-9]+(\.[0-9]+)?$/.test(raw.trim())) showError("Invalid Parameter",`URL Parameter తప్పు (Decimal మాత్రమే): ${name}=${raw}. Tests List నుండి మళ్ళీ Open చేయండి.`,false);
   const n=Number(raw);
   if(!Number.isFinite(n)||n<min||n>max) showError("Invalid Parameter",`URL Parameter తప్పు: ${name}=${raw}. Tests List నుండి మళ్ళీ Open చేయండి.`,false);
   return n;
@@ -115,9 +116,8 @@ if(!testId || !/^[A-Za-z0-9][A-Za-z0-9\-_]{0,79}$/.test(testId)){
 const testKey=testId;
 const lastKey="mcres_last_"+testKey;
 function makeAttemptId(){ return "MCRES-"+Date.now().toString(36).toUpperCase()+"-"+Math.floor(1000+Math.random()*9000); }
-// V9 FIX 1: Distinguish attempt param ABSENT vs PRESENT-but-EMPTY
 let attemptId="";
-let attemptSource=""; // "url" | "last" | "fresh"
+let attemptSource="";
 const rawAttempt=p.get("attempt");
 if(rawAttempt!==null){
   const urlAttempt=rawAttempt.trim();
@@ -132,9 +132,21 @@ if(rawAttempt!==null){
   if(lastRaw){
     try{
       const L=JSON.parse(lastRaw);
-      if(L && L.attemptId && !L.submitted && /^[A-Za-z0-9_-]{1,64}$/.test(L.attemptId)) lastId=L.attemptId;
-      else if(L && L.submitted){ }
-      else { store.remove(lastKey); }
+      // V10 FIX 1: Strict Last Pointer Validation
+      if(
+        L &&
+        typeof L==="object" &&
+        !Array.isArray(L) &&
+        L.testId===testId &&
+        L.submitted===false &&
+        typeof L.attemptId==="string" &&
+        /^[A-Za-z0-9_-]{1,64}$/.test(L.attemptId)
+      ){
+        lastId=L.attemptId;
+      } else {
+        // Submitted pointer, wrong testId, or malformed => clear, do NOT resume
+        store.remove(lastKey);
+      }
     }catch(e){ store.remove(lastKey); }
   }
   if(lastId){
@@ -176,7 +188,6 @@ function validateState(s){
   if(s.attemptId!==attemptId) return {ok:false,reason:"attemptId mismatch"};
   if(s.testId!==testId) return {ok:false,reason:"testId mismatch"};
   if(typeof s.submitted!=="boolean") return {ok:false,reason:"submitted not boolean"};
-  // V9 FIX 3: Score must be in [0, totalMarks], submittedAt must be >0
   if(!(s.score===null || (typeof s.score==="number" && Number.isFinite(s.score) && s.score>=0 && s.score<=totalMarks))) return {ok:false,reason:"score invalid"};
   if(!(s.submittedAt===null || (typeof s.submittedAt==="number" && Number.isFinite(s.submittedAt) && s.submittedAt>0))) return {ok:false,reason:"submittedAt invalid"};
   if(s.submitted===false && (s.score!==null || s.submittedAt!==null)) return {ok:false,reason:"not submitted but score/submittedAt present"};
@@ -193,7 +204,6 @@ function validateState(s){
 }
 let isNewState=false;
 if(hasStored){
-  // V9 FIX 2: Null / non-object JSON => Controlled Corrupted Error, not JS crash
   if(!loaded || typeof loaded!=="object" || Array.isArray(loaded)){
     showError("Corrupted Attempt Data","ఈ Attempt డేటా సరైన Object రూపంలో లేదు. కొత్త Attempt ప్రారంభించండి.",true);
   }
