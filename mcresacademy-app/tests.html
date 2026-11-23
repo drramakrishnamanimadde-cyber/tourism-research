@@ -157,7 +157,7 @@ let arr=all.filter(matches);
 if(arr.length==0){h=`<div class="empty">No Results Found for "${esc(searchText)}"<br><button onclick="clearSearch()">Clear Search ✕</button></div>`;}
 else{arr.forEach((t)=>{
   const isFree=t.status==="free";
-  h+=cardHTML(getColor(t.id),all.indexOf(t)+1,t.name,t.desc,isFree?"Start →":"Pay →",isFree?"free":"paid","openPay('"+t.id+"')",isFree?'<span class="badge free">✅ FREE DEMO</span>':'<span class="badge">🔒 PAID TEST</span>');
+  h+=cardHTML(getColor(t.id),all.indexOf(t)+1,t.name,t.desc,isFree?"Start →":"Details →",isFree?"free":"paid","openPay('"+t.id+"')",isFree?'<span class="badge free">✅ FREE DEMO</span>':'<span class="badge">🔒 PAID TEST</span>');
 });}
 }
 }
