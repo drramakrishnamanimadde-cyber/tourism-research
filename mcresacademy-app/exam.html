@@ -46,6 +46,8 @@ body{background:#f5f0ff;padding:12px;padding-bottom:20px;color:#222}
 .mYes{background:#ff1744;color:#fff}.mNo{background:#eee;color:#333;margin-left:8px}
 .footer{max-width:720px;margin:18px auto 0;text-align:center;font-size:12px;color:#777;line-height:1.6}
 .saved{font-size:11px;color:#4caf50;font-weight:700;text-align:right}
+.errBox{background:#fff;border:2px solid #ff1744;border-radius:16px;padding:22px;text-align:center;box-shadow:0 4px 12px rgba(0,0,0,.06)}
+.errBox h2{color:#c62828;font-size:19px}.errBox p{font-size:14px;line-height:1.7;color:#555;margin-top:10px}
 </style>
 </head>
 <body>
@@ -56,7 +58,7 @@ body{background:#f5f0ff;padding:12px;padding-bottom:20px;color:#222}
 <div class="palette">
 <h3>Question Palette</h3>
 <div class="grid" id="palette"></div>
-<div class="legend">🟢 Answered &nbsp; 🟠 Not Answered &nbsp; ⚪ Not Visited &nbsp; 🔵 Marked &nbsp; 🟣 Answered & Marked<br><span style="color:#888">MCRES Rule: Total Score 0 కంటే తక్కువ వెళ్ళదు. Demo - Answers ఈ Browser లో మాత్రమే Save అవుతాయి.</span></div>
+<div class="legend">🟢 Answered &nbsp; 🟠 Not Answered &nbsp; ⚪ Not Visited &nbsp; 🔵 Marked &nbsp; 🟣 Answered & Marked<br><span style="color:#888">MCRES Rule: Total Score 0 కంటే తక్కువ వెళ్ళదు. Demo - Answers ఈ Browser లో మాత్రమే Save అవుతాయి. Real Exam లో Backend Validation ఉంటుంది.</span></div>
 </div>
 <button class="submitBtn" id="submitBtn">Submit Test →</button>
 </div>
@@ -66,8 +68,6 @@ body{background:#f5f0ff;padding:12px;padding-bottom:20px;color:#222}
 function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");}
 function validInt(raw,def,min,max){const n=Number(raw);if(!Number.isFinite(n)||!Number.isInteger(n)||n<min||n>max) return def;return n;}
 function validFloat(raw,def,min,max){const n=Number(raw);if(!Number.isFinite(n)||n<min||n>max) return def;return n;}
-// Telugu-safe hash - \w problem fix: uses charCodeAt, works for Telugu + English
-function stableHash(str){let h=5381;for(let i=0;i<str.length;i++){h=((h*33)^str.charCodeAt(i))>>>0;}return h.toString(36).toUpperCase();}
 const p=new URLSearchParams(location.search);
 const tName=(p.get("test")||"Demo Test").slice(0,100);
 const totalQ=validInt(p.get("q"),10,1,1000);
@@ -76,21 +76,33 @@ const timeMin=validInt(p.get("time"),10,1,600);
 const neg=validFloat(p.get("neg"),-0.25,-2,0);
 const perRaw=p.get("per");
 const per=perRaw===null?null:validFloat(perRaw,null,0.25,10);
-// FIX 2: Stable Test ID - NOT from name replace. Use ?id= if given, else hash (Telugu safe)
-const testIdRaw=(p.get("id")||"").trim().slice(0,80);
-const testId=testIdRaw ? testIdRaw.replace(/[^A-Za-z0-9\-_]/g,"_") : "TEST-"+stableHash(tName+"|"+totalQ+"|"+totalMarks);
+// --- V4: Test ID is REQUIRED, no hash fallback for real tests ---
+const testId=(p.get("id")||"").trim().slice(0,80).replace(/[^A-Za-z0-9\-_]/g,"_");
+function showError(title,msg,showNewBtn){
+  document.getElementById("timer").textContent="BLOCKED";
+  document.getElementById("wrap").innerHTML=`<div class="errBox"><h2>⚠️ ${esc(title)}</h2><p>${esc(msg)}<br><br>Test ID: <b>${esc(testId||"-")}</b> • Test: <b>${esc(tName)}</b></p>
+  ${showNewBtn?`<button class="submitBtn" onclick="startNewAttempt()">↻ Start New Attempt</button>`:""}
+  <button class="submitBtn" style="background:#670f9e;margin-top:8px" onclick="location.href='tests.html'">← Back to Tests</button></div>`;
+  throw new Error(title);
+}
+// V4 FIX 3: Marks Config Validation - per * totalQ must not exceed totalMarks
+if(per!==null){
+  const maxPossible=Math.round(per*totalQ*100)/100;
+  if(Math.abs(maxPossible-totalMarks)>0.01 && maxPossible>totalMarks){
+    showError("Invalid Marks Configuration",`ఈ Test Config తప్పు: ${totalQ} Questions × ${per} Mark = ${maxPossible} Marks, కానీ Total Marks ${totalMarks} అని ఇచ్చారు. Admin ఈ Config ని సరిచేయాలి.`,false);
+  }
+}
+if(!testId){
+  showError("Test ID Missing","ఈ Test కి Test ID లేదు. దయచేసి Tests List నుండి మళ్ళీ Open చేయండి. Ex: TG-GS-TEST-001",false);
+}
 const testKey=testId;
 const lastKey="mcres_last_"+testKey;
 let attemptId=p.get("attempt")||"";
 if(!attemptId){
   const lastRaw=localStorage.getItem(lastKey);
-  if(lastRaw){
-    try{const L=JSON.parse(lastRaw); if(L && L.attemptId && !L.submitted) attemptId=L.attemptId;}catch(e){}
-  }
-  if(!attemptId){
-    attemptId="MCRES-"+Date.now().toString(36).toUpperCase()+"-"+Math.floor(1000+Math.random()*9000);
-  }
-  const u=new URL(location.href); u.searchParams.set("attempt",attemptId); if(testIdRaw) u.searchParams.set("id",testId); history.replaceState(null,"",u.toString());
+  if(lastRaw){try{const L=JSON.parse(lastRaw); if(L && L.attemptId && !L.submitted) attemptId=L.attemptId;}catch(e){}}
+  if(!attemptId){ attemptId="MCRES-"+Date.now().toString(36).toUpperCase()+"-"+Math.floor(1000+Math.random()*9000); }
+  const u=new URL(location.href); u.searchParams.set("attempt",attemptId); u.searchParams.set("id",testId); history.replaceState(null,"",u.toString());
 }
 const storeKey="mcres_attempt_"+testKey+"_"+attemptId;
 document.getElementById("examTitle").textContent=tName+" • "+totalQ+" Q • "+testId;
@@ -108,32 +120,41 @@ const demo=[
 ];
 const questions=[];
 for(let i=0;i<totalQ;i++){const d=demo[i%demo.length];questions.push({q:d.q+` (Q${i+1})`,o:d.o,a:d.a});}
-// --- LOAD STATE ---
 let loaded=null;
 try{loaded=JSON.parse(localStorage.getItem(storeKey)||"null");}catch(e){loaded=null;}
-// FIX 3: Full validation - if ANY config changed, discard old state
-function isValidState(s){
-  if(!s || typeof s!=="object") return false;
-  if(s.testId!==testId) return false;
-  if(s.test!==tName) return false;
-  if(s.totalQ!==totalQ) return false;
-  if(s.totalMarks!==totalMarks) return false;
-  if(s.timeMin!==timeMin) return false;
-  if(s.neg!==neg) return false;
-  if(s.per!==per) return false;
-  if(!Array.isArray(s.answers)||s.answers.length!==totalQ) return false;
-  if(!Array.isArray(s.visited)||s.visited.length!==totalQ) return false;
-  if(!Array.isArray(s.marked)||s.marked.length!==totalQ) return false;
-  if(!Number.isFinite(s.endTime)) return false;
-  return true;
+// V4 FIX 2: FULL State Validation
+function validateState(s){
+  if(!s || typeof s!=="object") return {ok:false,reason:"empty"};
+  if(s.attemptId!==attemptId) return {ok:false,reason:"attemptId mismatch"};
+  if(s.testId!==testId) return {ok:false,reason:"testId mismatch"};
+  if(typeof s.submitted!=="boolean") return {ok:false,reason:"submitted not boolean"};
+  if(!Number.isInteger(s.cur)||s.cur<0||s.cur>totalQ-1) return {ok:false,reason:"cur out of range"};
+  if(!Array.isArray(s.answers)||s.answers.length!==totalQ) return {ok:false,reason:"answers length"};
+  for(const a of s.answers){ if(a!==null && !(Number.isInteger(a)&&a>=0&&a<=3)) return {ok:false,reason:"answers value invalid"}; }
+  if(!Array.isArray(s.visited)||s.visited.length!==totalQ) return {ok:false,reason:"visited length"};
+  if(!Array.isArray(s.marked)||s.marked.length!==totalQ) return {ok:false,reason:"marked length"};
+  for(const v of s.visited){ if(typeof v!=="boolean") return {ok:false,reason:"visited not boolean"}; }
+  for(const m of s.marked){ if(typeof m!=="boolean") return {ok:false,reason:"marked not boolean"}; }
+  if(!Number.isFinite(s.endTime)) return {ok:false,reason:"endTime invalid"};
+  return {ok:true};
 }
+// V4 FIX 1: Config Mismatch => BLOCK, do NOT create new state silently
 let isNewState=false;
-if(!isValidState(loaded)){
+if(loaded){
+  // Check config separately from state shape
+  const cfgMatch = loaded.test===tName && loaded.testId===testId && loaded.totalQ===totalQ && loaded.totalMarks===totalMarks && loaded.timeMin===timeMin && loaded.neg===neg && loaded.per===per;
+  if(!cfgMatch){
+    showError("Configuration Mismatch","ఈ Attempt ప్రారంభమైన తర్వాత Test సెట్టింగులు (Time / Marks / Negative) మారాయి. భద్రత కోసం ఈ Attempt నిలిపివేయబడింది. కొత్త Attempt ప్రారంభించండి.",true);
+  }
+  const v=validateState(loaded);
+  if(!v.ok){
+    showError("Corrupted Attempt Data","ఈ Attempt డేటా పాడైంది ("+v.reason+"). భద్రత కోసం ఈ Attempt నిలిపివేయబడింది. కొత్త Attempt ప్రారంభించండి.",true);
+  }
+} else {
   loaded={attemptId,testId,test:tName,totalQ,totalMarks,timeMin,neg,per,answers:new Array(totalQ).fill(null),visited:new Array(totalQ).fill(false),marked:new Array(totalQ).fill(false),cur:0,endTime:Date.now()+timeMin*60*1000,submitted:false,score:null,submittedAt:null};
   loaded.visited[0]=true;
   isNewState=true;
 }
-// FIX 1: Declare let variables FIRST, then define saveState, then save if new
 let cur=loaded.cur, answers=loaded.answers, visited=loaded.visited, marked=loaded.marked, endTime=loaded.endTime, submitted=loaded.submitted;
 let state=loaded;
 function saveState(){
@@ -178,21 +199,19 @@ let a=0,na=0,nv=0,m=0,am=0;
 for(let i=0;i<totalQ;i++){const s=status(i);if(s==="pAnsMarked")am++; else if(s==="pMarked")m++; else if(s==="pAnswered")a++; else if(s==="pNotAns")na++; else nv++;}
 return {a,na,nv,m,am};
 }
-// FIX 4: Marks Rule - MCRES Rule Locked: per-question = per OR totalMarks/totalQ. Total floored at 0.
-// Per-question different marks will come from Backend question bank later (q.marks field)
 function calcScore(){
 let correct=0,wrong=0,attempted=0;
 let perMark=per!==null?per:(totalMarks/totalQ);
 questions.forEach((q,i)=>{if(answers[i]!==null){attempted++;if(answers[i]===q.a)correct++;else wrong++;}});
 let raw=correct*perMark + wrong*neg;
-let score=Math.max(0,Math.round(raw*100)/100); // MCRES RULE: Negative Total NOT allowed, floor 0
+let score=Math.max(0,Math.round(raw*100)/100);
 return {correct,wrong,attempted,score,perMark};
 }
 function showResult(){
 const r=calcScore();
 document.getElementById("wrap").innerHTML=`
 <div class="result"><h2>✅ Test Submitted!</h2><div class="score">${r.score} / ${totalMarks}</div>
-<p><b>${esc(tName)}</b><br>Test ID: ${esc(testId)} • Attempt: ${esc(attemptId)}<br>Correct: ${r.correct} • Wrong: ${r.wrong} • Attempted: ${r.attempted} / ${totalQ}<br>Correct: ${per!==null?"+ "+per+" Mark":"As per Question Paper ("+r.perMark+" / Q)"} • Wrong: ${neg} Mark • Floor: 0<br><span style="color:#888;font-size:12px">Demo Evaluation - Frontend only. Final result will be verified by Backend.</span></p>
+<p><b>${esc(tName)}</b><br>Test ID: ${esc(testId)} • Attempt: ${esc(attemptId)}<br>Correct: ${r.correct} • Wrong: ${r.wrong} • Attempted: ${r.attempted} / ${totalQ}<br>Correct: ${per!==null?"+ "+per+" Mark":"As per Question Paper ("+r.perMark+" / Q)"} • Wrong: ${neg} Mark • Floor: 0<br><span style="color:#888;font-size:12px">Demo Evaluation - Frontend only. Final result will be verified by Backend. Correct Answers Browser లో ఉండటం Demo కి మాత్రమే.</span></p>
 <div class="review">${questions.slice(0,Math.min(totalQ,10)).map((q,i)=>{let st=answers[i]===null?"Not Attempted":(answers[i]===q.a?'<span class="correct">Correct ✓</span>':'<span class="wrong">Wrong ✗</span>');return `<div><b>Q${i+1}.</b> ${esc(q.q)}<br>Your Answer: ${answers[i]===null?"-":esc(q.o[answers[i]])} • Correct: ${esc(q.o[q.a])} • ${st}</div>`}).join("")}</div>
 <button class="submitBtn" onclick="startNewAttempt()">↻ Start New Attempt</button>
 <button class="submitBtn" style="background:#670f9e;margin-top:8px" onclick="location.href='tests.html'">← Back to Tests</button></div>`;
