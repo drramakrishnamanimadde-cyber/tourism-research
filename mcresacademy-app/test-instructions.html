@@ -51,17 +51,14 @@ body{background:#f5f0ff;padding:16px;padding-bottom:40px;color:#222}
 <div class="tagline">Aspire - Achieve</div>
 <div class="sub">Online Test Series & Assessment Platform</div>
 </div>
-
 <div class="card">
 <h2>📋 Test Instructions</h2>
 <div class="testName" id="testName">Constable Grand Test - 1</div>
 <div class="testMeta" id="testMeta">200 Questions • 200 Marks • Duration: 180 Minutes<br>Negative Marking: -0.25 for each wrong answer</div>
 </div>
-
 <div class="info">
 <b>⚠️ ముఖ్య గమనిక:</b> Start Test నొక్కిన తర్వాత Timer Start అవుతుంది. Time ముగిసిన తర్వాత Test Submit చేయాల్సి ఉంటుంది. Refresh / Page Close చేస్తే Timer ప్రవర్తన ప్రస్తుత Attempt నియమాలపై ఆధారపడి ఉంటుంది.
 </div>
-
 <div class="rules">
 <h3>General Instructions</h3>
 <ol>
@@ -74,12 +71,11 @@ body{background:#f5f0ff;padding:16px;padding-bottom:40px;color:#222}
 </ol>
 <h3 style="margin-top:16px">Marking Scheme</h3>
 <ul id="markingList">
-<li>Correct Answer: <b>+1 Mark</b></li>
+<li>Correct Answer: <b>As per Question Paper</b></li>
 <li>Wrong Answer: <b>-0.25 Mark</b></li>
 <li>Not Attempted: <b>0 Mark</b></li>
 </ul>
 </div>
-
 <div class="legend">
 <h3>Question Palette - రంగుల అర్థం</h3>
 <div class="dotRow"><span class="dot d1">✓</span> Answered - సమాధానం ఇచ్చారు</div>
@@ -88,40 +84,47 @@ body{background:#f5f0ff;padding:16px;padding-bottom:40px;color:#222}
 <div class="dotRow"><span class="dot d4">★</span> Marked for Review - తర్వాత చూడాలని Mark చేశారు</div>
 <div class="dotRow"><span class="dot d5">✓★</span> Answered & Marked - సమాధానం ఇచ్చి Review కి Mark చేశారు</div>
 </div>
-
 <div class="agreeBox">
 <input type="checkbox" id="agreeCheck">
 <label for="agreeCheck">నేను పైన ఉన్న <b>అన్ని Instructions చదివాను</b>, అర్థం చేసుకున్నాను. Test Rules కి అంగీకరిస్తున్నాను.</label>
 </div>
-
 <button class="startBtn" id="startBtn" disabled>Start Test →</button>
 <button class="backBtn" onclick="history.back()">← Back to Tests</button>
-
-<div class="note">ℹ️ ఈ పేజీలో చూపించే మార్కులు / సమయం ప్రదర్శన కోసం మాత్రమే. నిజమైన పరీక్షా నియమాలు Backend లో నిర్ధారించబడతాయి.</div>
-
+<div class="note">ℹ️ ఈ పేజీలో చూపించే మార్కులు / సమయం ప్రదర్శన కోసం మాత్రమే. నిజమైన పరీక్షా నియమాలు Backend లో నిర్ధారించబడతాయి. Palette రంగులు exam.html లో కూడా ఇదే విధంగా ఉంటాయి.</div>
 <div class="footer"><b>MCRES ACADEMY - Aspire - Achieve</b><br>An educational programme by Mallaiah Center for River & Earth Sciences (MCRES)<br>Founder & Director: Dr Ramakrishna Manimadde</div>
-
 <script>
 function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");}
+// Strict validation: invalid / out-of-range -> safe default
+function validInt(raw,def,min,max){
+const n=Number(raw);
+if(!Number.isFinite(n)||!Number.isInteger(n)||n<min||n>max) return def;
+return n;
+}
+function validFloat(raw,def,min,max){
+const n=Number(raw);
+if(!Number.isFinite(n)||n<min||n>max) return def;
+return n;
+}
 const p=new URLSearchParams(location.search);
-const tName=p.get("test")||"Constable Grand Test - 1";
-const q=parseFloat(p.get("q"))||200;
-const marks=parseFloat(p.get("marks"))||200;
-const time=p.get("time")||"180";
-const negRaw=p.get("neg")||"-0.25";
-const neg=parseFloat(negRaw);
-const perQ=(marks/q);
-const perQText=Number.isInteger(perQ)?perQ:perQ.toFixed(2);
-const negText=isNaN(neg)?esc(negRaw):neg.toString();
+const tName=(p.get("test")||"Constable Grand Test - 1").slice(0,100);
+const q=validInt(p.get("q"),200,1,1000);
+const marks=validInt(p.get("marks"),200,1,1000);
+const time=validInt(p.get("time"),180,1,600);
+// per-question marks: only if explicitly given via ?per= , otherwise do NOT assume equal marks
+const perRaw=p.get("per");
+const per=perRaw===null?null:validFloat(perRaw,null,0.25,10);
+const neg=validFloat(p.get("neg"),-0.25,-2,0);
+const perText=per===null?"As per Question Paper":"+"+per+" Mark";
 document.getElementById("testName").textContent=tName;
-document.getElementById("testMeta").innerHTML=`${esc(String(q))} Questions • ${esc(String(marks))} Marks • Duration: ${esc(time)} Minutes<br>Negative Marking: ${esc(negText)} for each wrong answer`;
-document.getElementById("markingList").innerHTML=`<li>Correct Answer: <b>+${esc(perQText)} Mark</b></li><li>Wrong Answer: <b>${esc(negText)} Mark</b></li><li>Not Attempted: <b>0 Mark</b></li>`;
+document.getElementById("testMeta").innerHTML=`${esc(String(q))} Questions • ${esc(String(marks))} Marks • Duration: ${esc(String(time))} Minutes<br>Negative Marking: ${esc(String(neg))} for each wrong answer`;
+document.getElementById("markingList").innerHTML=`<li>Correct Answer: <b>${esc(perText)}</b></li><li>Wrong Answer: <b>${esc(String(neg))} Mark</b></li><li>Not Attempted: <b>0 Mark</b></li>`;
 const agree=document.getElementById("agreeCheck");
 const startBtn=document.getElementById("startBtn");
 agree.addEventListener("change",()=>{ startBtn.disabled=!agree.checked; });
 startBtn.addEventListener("click",()=>{
 if(!agree.checked) return;
-const url=`exam.html?test=${encodeURIComponent(tName)}&q=${encodeURIComponent(q)}&marks=${encodeURIComponent(marks)}&time=${encodeURIComponent(time)}&neg=${encodeURIComponent(negRaw)}`;
+let url=`exam.html?test=${encodeURIComponent(tName)}&q=${encodeURIComponent(q)}&marks=${encodeURIComponent(marks)}&time=${encodeURIComponent(time)}&neg=${encodeURIComponent(neg)}`;
+if(per!==null) url+=`&per=${encodeURIComponent(per)}`;
 location.href=url;
 });
 </script>
