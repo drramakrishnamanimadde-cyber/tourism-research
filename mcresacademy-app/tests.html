@@ -18,16 +18,16 @@ body{background:#f5f0ff;padding:16px;padding-bottom:40px;color:#222}
 .search input{width:100%;padding:13px 40px 13px 16px;border:1px solid #e5d5f5;border-radius:14px;font-size:15px;background:#fff;outline:none}
 .search input:focus{border-color:#670f9e}
 .clearBtn{position:absolute;right:10px;top:50%;transform:translateY(-50%);border:0;background:#eee;width:26px;height:26px;border-radius:50%;cursor:pointer;font-size:14px;display:none}
-.card{max-width:480px;margin:12px auto;background:#fff;border:1px solid transparent;border-radius:16px;padding:16px;box-shadow:0 4px 12px rgba(0,0,0,.06);display:flex;align-items:flex-start;gap:12px;cursor:pointer;width:100%;text-align:left;font-family:inherit}
+.card{max-width:480px;margin:12px auto;background:#fff;border-radius:16px;padding:16px;box-shadow:0 4px 12px rgba(0,0,0,.06);display:flex;align-items:flex-start;gap:12px;cursor:pointer;width:100%;text-align:left}
 .card:focus{outline:2px solid #670f9e;outline-offset:2px}
 .card:active{transform:scale(.98)}
-.card.disabled{opacity:.65;cursor:not-allowed}
 .num{width:38px;height:38px;min-width:38px;border-radius:11px;background:#670f9e;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px}
-.card h2{font-size:15.5px;line-height:1.35;color:#1a1a1a;font-weight:700;word-break:break-word}
-.card p{font-size:12.5px;color:#666;margin-top:4px;line-height:1.4}
+.cardText{display:block;flex:1;min-width:0}
+.cardTitle{display:block;font-size:15.5px;line-height:1.35;color:#1a1a1a;font-weight:700;word-break:break-word}
+.cardDesc{display:block;font-size:12.5px;color:#666;margin-top:4px;line-height:1.4}
 .view{margin-left:auto;background:#ff8703;color:#fff;font-size:12px;font-weight:700;padding:7px 12px;border-radius:20px;white-space:nowrap;flex-shrink:0}
-.view.soon{background:#999}.view.paid{background:#670f9e}
-.back{display:block;text-align:center;margin:16px auto;max-width:480px;color:#670f9e;font-weight:700;background:#fff;padding:13px;border-radius:12px;cursor:pointer;border:1px solid #e5d5f5}
+.view.paid{background:#670f9e}
+.back{display:block;text-align:center;margin:16px auto;max-width:480px;color:#670f9e;font-weight:700;background:#fff;padding:13px;border-radius:12px;cursor:pointer;border:1px solid #e5d5f5;width:100%;font-size:15px;font-family:inherit}
 .c1{background:#38bdf8}.c2{background:#34d399}.c3{background:#fbbf24}.c4{background:#a78bfa}.c5{background:#f472b6}.c6{background:#fb923c}.c7{background:#4ade80}.c8{background:#facc15}.c9{background:#60a5fa}.c10{background:#f87171}.c11{background:#a78bfa}
 .badge{display:inline-block;background:#fff3e0;color:#e65100;font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;margin-top:6px}
 .empty{max-width:480px;margin:20px auto;text-align:center;color:#888;font-size:14px;background:#fff;padding:20px;border-radius:14px;line-height:1.6}
@@ -35,8 +35,8 @@ body{background:#f5f0ff;padding:16px;padding-bottom:40px;color:#222}
 .payBox{max-width:480px;margin:10px auto;background:#fff;border-radius:18px;padding:22px;text-align:center;box-shadow:0 4px 16px rgba(0,0,0,.08)}
 .payBox h2{font-size:19px;color:#670f9e}.payBox p{font-size:14px;color:#555;margin:10px 0;line-height:1.6}
 .payBox ul{text-align:left;font-size:13.5px;color:#333;line-height:1.8;margin:12px 0;padding-left:18px}
-.payBox .price{font-size:22px;font-weight:800;color:#111;margin:8px 0}
-.payBtn{display:block;width:100%;background:#ff8703;color:#fff;border:0;padding:14px;border-radius:12px;font-weight:800;font-size:15px;cursor:pointer;margin-top:10px}
+.payBox .price{font-size:20px;font-weight:800;color:#111;margin:8px 0}
+.payBtn{display:block;width:100%;background:#ccc;color:#fff;border:0;padding:14px;border-radius:12px;font-weight:800;font-size:15px;cursor:not-allowed;margin-top:10px}
 .footer{max-width:480px;margin:24px auto 0;text-align:center;font-size:12px;color:#777;line-height:1.6}
 .footer b{color:#333}
 </style>
@@ -50,14 +50,10 @@ body{background:#f5f0ff;padding:16px;padding-bottom:40px;color:#222}
 <div class="tag">A coaching and examination-preparation initiative of<br><b>Mallaiah Center for River & Earth Sciences (MCRES)</b></div>
 <div class="founder">Founder & Director: Dr Ramakrishna Manimadde</div>
 </div>
-
-<div class="search"><input id="searchInput" placeholder="🔍 Search - Ex: Police, Group-I, TET..." aria-label="Search tests"><button class="clearBtn" id="clearBtn" aria-label="Clear search">✕</button></div>
-
+<div class="search"><input id="searchInput" placeholder="🔍 Search - Ex: Police, Group-I, 200, TET..." aria-label="Search tests"><button class="clearBtn" id="clearBtn" aria-label="Clear search">✕</button></div>
 <div id="list"></div>
 <button class="back" id="backBtn" style="display:none">← Back</button>
-
-<div class="footer"><b>MCRES ACADEMY - Aspire - Achieve</b><br>A coaching and examination-preparation initiative of Mallaiah Center for River & Earth Sciences (MCRES)<br>Founder & Director: Dr Ramakrishna Manimadde</div>
-
+<div class="footer"><b>MCRES ACADEMY - Aspire - Achieve</b><br>An educational programme by Mallaiah Center for River & Earth Sciences (MCRES)<br>Founder & Director: Dr Ramakrishna Manimadde</div>
 <script>
 const colors=["c1","c2","c3","c4","c5","c6","c7","c8","c9","c10","c11"];
 const categories=[
@@ -108,42 +104,50 @@ const testsData={
 let view="cats",curCat=null,curSub=null,curSubName="",searchText="",selectedTest=null;
 const searchInput=document.getElementById("searchInput");
 const clearBtn=document.getElementById("clearBtn");
+function matches(item){return (item.name+" "+item.desc).toLowerCase().includes(searchText);}
 searchInput.addEventListener("input",e=>{searchText=e.target.value.toLowerCase().trim();clearBtn.style.display=searchText?"block":"none";if(view!=="pay")render();});
-clearBtn.addEventListener("click",()=>{searchText="";searchInput.value="";clearBtn.style.display="none";render();});
+clearBtn.addEventListener("click",clearSearch);
 function clearSearch(){searchText="";searchInput.value="";clearBtn.style.display="none";render();}
+function resetSearch(){searchText="";searchInput.value="";clearBtn.style.display="none";}
 function getColor(id){let n=0;for(let ch of id)n+=ch.charCodeAt(0);return colors[n%colors.length];}
 function cardHTML(numClass,icon,title,desc,btnText,btnClass,onclick,extra){
-return `<button class="card" onclick="${onclick}" aria-label="${title}"><div class="num ${numClass}">${icon}</div><div><h2>${title}</h2><p>${desc}</p>${extra||""}</div><span class="view ${btnClass}">${btnText}</span></button>`;
+return `<div class="card" role="button" tabindex="0" onclick="${onclick}" onkeydown="if(event.key==='Enter'){${onclick}}" aria-label="${title}"><span class="num ${numClass}">${icon}</span><span class="cardText"><span class="cardTitle">${title}</span><span class="cardDesc">${desc}</span>${extra||""}</span><span class="view ${btnClass}">${btnText}</span></div>`;
 }
 function render(){
 let list=document.getElementById("list");let back=document.getElementById("backBtn");let h="";
 if(view=="pay" && selectedTest){
 back.style.display="block";back.textContent="← Back to Tests";
-h=`<div class="payBox"><h2>🔒 ${selectedTest.name}</h2><p>${selectedTest.desc}</p><div class="price">Price will be announced soon</div><ul><li>✅ Real Exam Pattern & Timer</li><li>✅ Instant Result + Rank</li><li>✅ Detailed Solutions in Telugu & English</li><li>✅ Attempt Anytime - Mobile Friendly</li></ul><p>Payment Gateway is being connected.<br>For early access, contact MCRES ACADEMY.</p><button class="payBtn" onclick="alert('Payment will open after Razorpay setup')">Proceed to Pay →</button></div>`;
+h=`<div class="payBox"><h2>🔒 ${selectedTest.name}</h2><p>${selectedTest.desc}</p><div class="price">Price: To be announced</div><p style="font-size:13px;color:#888">Planned Features (under development):</p><ul><li>Real Exam Pattern & Timer</li><li>Automatic Evaluation</li><li>Result & Rank View</li><li>Solutions in Telugu & English</li></ul><p>Payment will be enabled after Razorpay setup.<br>For early access, contact MCRES ACADEMY.</p><button class="payBtn" disabled>Payment Coming Soon</button></div>`;
 list.innerHTML=h;return;
 }
 if(view=="cats"){
 back.style.display="none";
-let f=categories.filter(c=>c.name.toLowerCase().includes(searchText));
-if(f.length==0){h=`<div class="empty">No results for "${searchText}"<br><button onclick="clearSearch()">Clear Search ✕</button></div>`;}
+let f=categories.filter(matches);
+if(f.length==0){h=`<div class="empty">No results found for "${searchText}"<br><button onclick="clearSearch()">Clear Search ✕</button></div>`;}
 f.forEach((c)=>{h+=cardHTML(getColor(c.id),categories.indexOf(c)+1,c.name,c.desc,"View →","","openCat('"+c.id+"')","");});
 }else if(view=="subs"){
 back.style.display="block";back.textContent="← Back to Categories";
-let arr=(subs[curCat]||[]).filter(s=>s.name.toLowerCase().includes(searchText));
+let arr=(subs[curCat]||[]).filter(matches);
 if(arr.length==0) h=`<div class="empty">No results found<br><button onclick="clearSearch()">Clear Search ✕</button></div>`;
 arr.forEach((s)=>{h+=cardHTML(getColor(s.id),"📚",s.name,s.desc,"View →","","openSub('"+s.id+"','"+s.name+"')","");});
 }else{
 back.style.display="block";back.textContent="← Back";
-let arr=(testsData[curSub]||[]).filter(t=>t.name.toLowerCase().includes(searchText));
-if(arr.length==0){h+=`<div class="empty">⏳ Coming Soon<br><span style="font-size:13px">Tests will be added soon by Admin</span><br><button onclick="clearSearch()">Clear Search ✕</button></div>`;}
-else{arr.forEach((t)=>{h+=cardHTML(getColor(t.id),testsData[curSub].indexOf(t)+1,t.name,t.desc,"Pay →","paid","openPay('"+t.id+"')",'<span class="badge">🔒 PAID TEST</span>');});}
+let all=(testsData[curSub]||[]);
+if(all.length==0){
+h=`<div class="empty">⏳ Coming Soon<br><span style="font-size:13px">Tests will be added soon by Admin</span></div>`;
+}else{
+let arr=all.filter(matches);
+if(arr.length==0){h=`<div class="empty">No Results Found for "${searchText}"<br><button onclick="clearSearch()">Clear Search ✕</button></div>`;}
+else{arr.forEach((t)=>{h+=cardHTML(getColor(t.id),all.indexOf(t)+1,t.name,t.desc,"Pay →","paid","openPay('"+t.id+"')",'<span class="badge">🔒 PAID TEST</span>');});}
+}
 }
 list.innerHTML=h;
 }
-function openCat(id){curCat=id;view="subs";render();}
-function openSub(id,name){curSub=id;curSubName=name;view="tests";render();}
-function openPay(id){let all=Object.values(testsData).flat();selectedTest=all.find(t=>t.id==id);view="pay";render();}
+function openCat(id){resetSearch();curCat=id;view="subs";render();}
+function openSub(id,name){resetSearch();curSub=id;curSubName=name;view="tests";render();}
+function openPay(id){let all=Object.values(testsData).flat();selectedTest=all.find(t=>t.id==id);view="pay";window.scrollTo(0,0);render();}
 document.getElementById("backBtn").addEventListener("click",()=>{
+resetSearch();
 if(view=="pay"){view="tests";render();}
 else if(view=="tests"){view="subs";render();}
 else if(view=="subs"){view="cats";render();}
