@@ -3,86 +3,113 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Exam - MCRES ACADEMY</title>
+<title>Test Series - MCRES ACADEMY</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,Arial,sans-serif}
-body{background:#f5f0ff;padding:16px}
-.box{max-width:520px;margin:0 auto;background:#fff;border-radius:16px;padding:18px}
-h1{color:#670f9e;font-size:19px;text-align:center}
-.timer{text-align:center;background:#fff3e0;color:#e65100;padding:8px;border-radius:10px;font-weight:700;margin:12px 0}
-.q{margin:16px 0;padding:14px;background:#faf5ff;border-radius:12px}
-.q b{font-size:15px}
-.opt{display:block;background:#fff;border:2px solid #eee;padding:10px;border-radius:10px;margin-top:8px;cursor:pointer;font-size:14px}
-.opt input{margin-right:8px}
-.btn{width:100%;background:#ff8703;color:#fff;padding:14px;border:none;border-radius:12px;font-weight:700;font-size:16px;margin-top:16px}
+body{background:#f5f0ff;padding:16px;padding-bottom:40px}
+.top{max-width:480px;margin:0 auto;text-align:center;padding:10px}
+.top h1{color:#670f9e;font-size:22px}
+.top p{font-size:14px;color:#555}
+.card{max-width:480px;margin:12px auto;background:#fff;border-radius:16px;padding:16px;box-shadow:0 4px 12px rgba(0,0,0,.06);display:flex;align-items:center;gap:12px;cursor:pointer}
+.card:active{transform:scale(.98)}
+.num{width:36px;height:36px;min-width:36px;border-radius:10px;background:#670f9e;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800}
+.card h2{font-size:15px;color:#222}
+.card p{font-size:12px;color:#666;margin-top:2px}
+.view{margin-left:auto;background:#ff8703;color:#fff;font-size:12px;font-weight:700;padding:6px 12px;border-radius:20px}
+.back{display:block;text-align:center;margin:16px auto;max-width:480px;color:#670f9e;font-weight:700;text-decoration:none;background:#fff;padding:12px;border-radius:12px}
+.c1{background:#38bdf8}.c2{background:#34d399}.c3{background:#fbbf24}.c4{background:#a78bfa}.c5{background:#f472b6}.c6{background:#fb923c}.c7{background:#4ade80}.c8{background:#facc15}.c9{background:#60a5fa}.c10{background:#f87171}.c11{background:#a78bfa}
 </style>
 </head>
 <body>
-<div class="box">
-<h1 id="title">📝 MCRES Test Series</h1>
-<div class="timer" id="timer">Time Left: 10:00</div>
-<div id="quiz"></div>
-<button class="btn" onclick="submitTest()">Submit Test ✅</button>
-</div>
+<div class="top"><h1>📝 MCRES Test Series</h1><p id="subtitle">Choose Your Category</p></div>
+<div id="list"></div>
+<a class="back" id="backBtn" href="index.html" style="display:none">← Back</a>
+
 <script>
-const tests={
-1:[
-{q:"భారతదేశ రాజధాని ఏది?",o:["Mumbai","New Delhi","Kolkata","Chennai"],a:1},
-{q:"తెలంగాణ ఎప్పుడు ఏర్పడింది?",o:["2012","2013","2014","2015"],a:2},
-{q:"2 + 2 x 2 = ?",o:["6","8","4","10"],a:0},
-{q:"Largest Planet?",o:["Mars","Earth","Jupiter","Venus"],a:2},
-{q:"తెలుగులో 'Water' అంటే?",o:["నీరు","నిప్పు","గాలి","భూమి"],a:0},
-{q:"భారతదేశ జాతీయ పక్షి ఏది?",o:["Peacock","Parrot","Sparrow","Eagle"],a:0},
-{q:"తెలంగాణలో ప్రవహించే ప్రధాన నది?",o:["Krishna","Godavari","Cauvery","Yamuna"],a:1},
-{q:"10 x 10 = ?",o:["100","1000","10","10000"],a:0},
-{q:"గాంధీ జయంతి ఎప్పుడు?",o:["15 Aug","2 Oct","26 Jan","14 Nov"],a:1},
-{q:"తెలంగాణ రాష్ట్ర పండుగ?",o:["Bathukamma","Diwali","Sankranti","Holi"],a:0}
-],
-2:[
-{q:"భారత జాతీయ జంతువు?",o:["Lion","Tiger","Elephant","Peacock"],a:1},
-{q:"5 x 5 = ?",o:["20","25","30","15"],a:1},
-{q:"Red Fort ఎక్కడ ఉంది?",o:["Agra","Delhi","Jaipur","Mumbai"],a:1},
-{q:"తెలంగాణ రాజధాని?",o:["Warangal","Karimnagar","Hyderabad","Nizamabad"],a:2},
-{q:"Sun rises in?",o:["West","North","East","South"],a:2},
-{q:"భారతదేశ జాతీయ గీతం?",o:["Vande Mataram","Jana Gana Mana","Sare Jahan Se Achha","Maa Tujhe Salaam"],a:1},
-{q:"తెలంగాణలో ఎన్ని జిల్లాలు ఉన్నాయి?",o:["31","32","33","34"],a:2},
-{q:"100 - 45 = ?",o:["65","55","45","60"],a:1},
-{q:"తాజ్ మహల్ ఎక్కడ ఉంది?",o:["Delhi","Agra","Jaipur","Lucknow"],a:1},
-{q:"ఒక సంవత్సరంలో ఎన్ని నెలలు?",o:["10","11","12","13"],a:2}
-],
-3:[
-{q:"India PM ఎవరు?",o:["Rahul Gandhi","Narendra Modi","Amit Shah","Yogi"],a:1},
-{q:"Telangana CM ఎవరు?",o:["KCR","Revanth Reddy","Bhatti","KTR"],a:1},
-{q:"T20 World Cup 2026 ఎక్కడ?",o:["India","Australia","England","Pakistan"],a:0},
-{q:"Hyderabad Metro ఎప్పుడు Start?",o:["2017","2018","2019","2020"],a:0},
-{q:"ISRO HQ ఎక్కడ?",o:["Delhi","Chennai","Bengaluru","Hyderabad"],a:2},
-{q:"తెలంగాణ ప్రభుత్వం ప్రతిష్టాత్మకంగా నిర్వహించే Bathukamma ఏ నెలలో వస్తుంది?",o:["September / October","January","March","June"],a:0},
-{q:"India యొక్క ప్రస్తుత రాష్ట్రపతి ఎవరు?",o:["Ram Nath Kovind","Droupadi Murmu","Pratibha Patil","Venkaiah Naidu"],a:1},
-{q:"2026 లో తెలంగాణలో ప్రధానంగా చర్చలో ఉన్న నదీ జలాల ప్రాజెక్ట్?",o:["Kaleshwaram","Polavaram","Bhakra","Sardar Sarovar"],a:0},
-{q:"Hyderabad ఏ నది ఒడ్డున ఉంది?",o:["Krishna","Godavari","Musi","Manjira"],a:2},
-{q:"Telangana Formation Day ఎప్పుడు?",o:["2 June","1 Nov","15 Aug","26 Jan"],a:0}
-]
+const colors=["c1","c2","c3","c4","c5","c6","c7","c8","c9","c10","c11"];
+const categories=[
+{id:1,name:"TG Current Affairs - Daily",desc:"Daily • 10 Questions"},
+{id:2,name:"TGPSC General Studies - Test Series",desc:"GS • Grand + Chapter Wise"},
+{id:3,name:"TGPSC Group I, II, III & IV - Test Series",desc:"Group Exams • Full Syllabus"},
+{id:4,name:"TG Police Recruitment - Test Series",desc:"Constable / SI • Prelims + Grand Tests"},
+{id:5,name:"TG TET / DSC / Gurukul - Test Series",desc:"Teaching Exams"},
+{id:6,name:"JL / DL - Test Series",desc:"Junior & Degree Lecturer"},
+{id:7,name:"RRB / SSC - Test Series",desc:"Central Govt Exams"},
+{id:8,name:"UGC NET - Geography Test Series",desc:"Geography • Paper 1 + 2"},
+{id:9,name:"CSIR NET - Earth Science Test Series",desc:"Earth Sciences"},
+{id:10,name:"SET - Subject wise Test Series",desc:"State Eligibility Test"},
+{id:11,name:"TGPSC Group-I - Mains Descriptive Notes",desc:"Mains Notes"},
+];
+
+const subs={
+1:[{name:"Daily Current Affairs",desc:"Daily Tests"}],
+2:[{name:"General Studies Grand Tests",desc:"Full Syllabus"},{name:"General Studies Chapter Wise",desc:"Chapter Wise"}],
+3:[{name:"Group-I Prelims",desc:"Prelims Tests"},{name:"Group-II Tests",desc:"Full Syllabus"},{name:"Group-III Tests",desc:"Full Syllabus"},{name:"Group-IV Tests",desc:"Full Syllabus"}],
+4:[{name:"Constable Prelims",desc:"Syllabus & Pattern"},{name:"Constable Grand Tests",desc:"6 Full Syllabus Tests"},{name:"Constable Chapter Wise Tests",desc:"60 Chapter Wise Tests"},{name:"SI Tests",desc:"Sub-Inspector"}],
+5:[{name:"TET Tests",desc:"Paper 1 & 2"},{name:"DSC Tests",desc:"Full Syllabus"},{name:"Gurukul Tests",desc:"Gurukul"}],
+6:[{name:"JL Tests",desc:"Junior Lecturer"},{name:"DL Tests",desc:"Degree Lecturer"}],
+7:[{name:"RRB Tests",desc:"Railway"},{name:"SSC Tests",desc:"SSC Exams"}],
+8:[{name:"UGC NET Geography",desc:"Paper 1 + 2"}],
+9:[{name:"CSIR NET Earth Science",desc:"Earth Science"}],
+10:[{name:"SET Subject Wise",desc:"Subject Wise"}],
+11:[{name:"Mains Descriptive Notes",desc:"Notes"}],
 };
-let params=new URLSearchParams(location.search);
-let t=params.get("test")||1;
-let qs=tests[t]||tests[1];
-document.getElementById("title").innerText="📝 Test Series - Test "+t;
+
+const testsData={
+"4-Constable Grand Tests":[
+{name:"Grand Test - 1",desc:"200 Marks • Full Syllabus"},
+{name:"Grand Test - 2",desc:"200 Marks • Full Syllabus"},
+{name:"Grand Test - 3",desc:"200 Marks • Full Syllabus"},
+{name:"Grand Test - 4",desc:"200 Marks • Full Syllabus"},
+{name:"Grand Test - 5",desc:"200 Marks • Full Syllabus"},
+{name:"Grand Test - 6",desc:"200 Marks • Full Syllabus"},
+],
+"1-Daily Current Affairs":[
+{name:"Current Affairs - Nov 2026",desc:"10 Questions • 10 Marks • 10 Mins"},
+],
+"2-General Studies Grand Tests":[
+{name:"General Knowledge - Test 1",desc:"10 Questions • 10 Marks • 10 Mins"},
+{name:"General Knowledge - Test 2",desc:"10 Questions • 10 Marks • 10 Mins"},
+],
+};
+
+let view="cats", curCat=null, curSub=null;
+function render(){
+let list=document.getElementById("list");
+let sub=document.getElementById("subtitle");
+let back=document.getElementById("backBtn");
 let h="";
-qs.forEach((item,i)=>{
-h+=`<div class="q"><b>Q${i+1}. ${item.q}</b>`;
-item.o.forEach((op,j)=>{h+=`<label class="opt"><input type="radio" name="q${i}" value="${j}"> ${op}</label>`});
-h+="</div>";
+if(view=="cats"){
+sub.innerText="Choose Your Category";
+back.style.display="none";
+categories.forEach((c,i)=>{
+h+=`<div class="card" onclick="openCat(${c.id})"><div class="num ${colors[i]}">${i+1}</div><div><h2>${c.name}</h2><p>${c.desc}</p></div><span class="view">View →</span></div>`;
 });
-document.getElementById("quiz").innerHTML=h;
-let sec=600;
-setInterval(()=>{sec--;let m=Math.floor(sec/60),s=sec%60;document.getElementById("timer").innerText=`Time Left: ${m}:${s<10?"0"+s:s}`;if(sec<=0) submitTest();},1000);
-function submitTest(){
-let score=0;qs.forEach((item,i)=>{let sel=document.querySelector(`input[name="q${i}"]:checked`);if(sel && parseInt(sel.value)==item.a) score++;});
-localStorage.setItem("mcres_last_score",score+"/"+qs.length);
-localStorage.setItem("mcres_last_test","Test "+t);
-alert(`Test Completed! Your Score: ${score}/${qs.length} 🎉`);
-location.href="results.html";
+}else if(view=="subs"){
+let c=categories.find(x=>x.id==curCat);
+sub.innerText=c.name;
+back.style.display="block"; back.innerText="← Back to Categories"; back.href="javascript:goCats()";
+(subs[curCat]||[]).forEach((s,i)=>{
+h+=`<div class="card" onclick="openSub('${s.name}')"><div class="num ${colors[i]}">📚</div><div><h2>${s.name}</h2><p>${s.desc}</p></div><span class="view">View →</span></div>`;
+});
+}else{
+sub.innerText=curSub;
+back.style.display="block"; back.innerText="← Back"; back.href="javascript:goSubs()";
+let key=curCat+"-"+curSub;
+let arr=testsData[key]||[{name:"Test 1 - Coming Soon",desc:"10 Questions • 10 Marks • 10 Mins"},{name:"Test 2 - Coming Soon",desc:"10 Questions • 10 Marks • 10 Mins"}];
+arr.forEach((t,i)=>{
+// Old exam.html links: test=1,2,3 - for now map to 1,2,3
+let testNo = (i%3)+1;
+h+=`<a href="exam.html?test=${testNo}" style="text-decoration:none"><div class="card"><div class="num ${colors[i]}">${i+1}</div><div><h2>${t.name}</h2><p>${t.desc}</p></div><span class="view">Start →</span></div></a>`;
+});
 }
+list.innerHTML=h;
+}
+function openCat(id){curCat=id;view="subs";render();}
+function openSub(name){curSub=name;view="tests";render();}
+function goCats(){view="cats";render();}
+function goSubs(){view="subs";render();}
+render();
 </script>
 </body>
 </html>
