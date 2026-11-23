@@ -96,12 +96,13 @@ const time=validInt(p.get("time")??data.time,180,1,600);
 const correct=validInt(p.get("correct")??data.correct,0,0,1000);
 const wrong=validInt(p.get("wrong")??data.wrong,0,0,1000);
 const neg=validFloat(p.get("neg")??data.neg,-0.25,-2,0);
-// V2.3 FIX: per Validation - same as Instructions V3.2
 const perRaw=p.get("per")??data.per;
 const per=perRaw===undefined||perRaw===null||perRaw===""?null:validFloat(perRaw,null,0.25,10);
 const invalidPer=perRaw!==undefined && perRaw!==null && perRaw!=="" && per===null;
-const invalidMarking=per!==null && q>0 && marks>0 && Math.abs(per*q-marks)>1e-9;
-const countsValid=q===0 || (correct+wrong<=q);
+// V2.4 FIX: per ఉంటే q, marks తప్పనిసరి + per*q == marks
+const invalidMarking=per!==null && (q<=0 || marks<=0 || Math.abs(per*q-marks)>1e-9);
+// V2.4 FIX: q=0 అయితే Invalid - q తప్పనిసరి
+const countsValid=q>0 && (correct+wrong<=q);
 let scoreRaw=p.get("score")??data.score;
 let score=null;
 if(scoreRaw!==undefined&&scoreRaw!==null&&scoreRaw!==""){
