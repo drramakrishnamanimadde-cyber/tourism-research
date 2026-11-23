@@ -69,7 +69,6 @@ function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").repl
 const p=new URLSearchParams(location.search);
 const tNameRaw=p.get("test");
 const tName=tNameRaw===null?"Demo Test":tNameRaw.slice(0,100);
-// V14 FIX 2: Test ID also strict - NO trim(). Spaces => Invalid Test ID
 const testId=p.get("id")||"";
 function showError(title,msg,showNewBtn){
   try{document.getElementById("timer").textContent="BLOCKED";}catch(e){}
@@ -314,11 +313,13 @@ t.classList.toggle("warn",left<5*60*1000);
 }
 if(submitted){showResult();}
 else{
-  // V14 FIX 1: If tick() auto-submitted (expired), do NOT renderQ / attach listeners
-  setInterval(tick,1000);
-  tick();
-  if(!submitted){
+  // V15: Clean expired handling - no interval if already expired
+  if(endTime<=Date.now()){
+    doSubmit();
+  } else {
     renderQ();
+    tick();
+    setInterval(tick,1000);
     document.getElementById("submitBtn").addEventListener("click",()=>{
       const c=counts();
       document.getElementById("modalText").textContent=`Answered: ${c.a+c.am} • Not Answered: ${c.na} • Not Visited: ${c.nv} • Marked: ${c.m+c.am}. Are you sure?`;
