@@ -78,6 +78,12 @@ const n=Number(raw);
 if(!Number.isFinite(n)||n<min||n>max) return def;
 return n;
 }
+// V2.5: Strict check - "abc" present but invalid => Invalid, not silently 0
+function isBadInt(raw,min,max){
+if(raw===undefined||raw===null||raw==="") return false; // missing = use default, handled by countsValid
+const n=Number(raw);
+return !Number.isFinite(n)||!Number.isInteger(n)||n<min||n>max;
+}
 function safeGet(key){ try{ return localStorage.getItem(key); }catch(e){ return null; } }
 const p=new URLSearchParams(location.search);
 let data=null;
@@ -85,7 +91,8 @@ try{
 const raw=safeGet("mcres_last_result");
 if(raw) data=JSON.parse(raw);
 }catch(e){ data=null; }
-if(!data || typeof data!=="object") data={};
+// V2.5 FIX: Array is also object in JS - reject it
+if(!data || typeof data!=="object" || Array.isArray(data)) data={};
 let legacyTestName="";
 try{ legacyTestName=safeGet("mcres_last_test")||""; }catch(e){ legacyTestName=""; }
 const examId=String(p.get("id")||data.id||"").slice(0,80);
@@ -93,16 +100,19 @@ const testName=String(p.get("test")||data.test||data.testName||legacyTestName||"
 const q=validInt(p.get("q")??data.q,0,0,1000);
 const marks=validInt(p.get("marks")??data.marks,0,0,10000);
 const time=validInt(p.get("time")??data.time,180,1,600);
-const correct=validInt(p.get("correct")??data.correct,0,0,1000);
-const wrong=validInt(p.get("wrong")??data.wrong,0,0,1000);
+const correctRaw=p.get("correct")??data.correct;
+const wrongRaw=p.get("wrong")??data.wrong;
+const correct=validInt(correctRaw,0,0,1000);
+const wrong=validInt(wrongRaw,0,0,1000);
+// V2.5 FIX: correct=abc / wrong=xyz => Invalid, not 0
+const invalidCounts=isBadInt(correctRaw,0,1000)||isBadInt(wrongRaw,0,1000);
 const neg=validFloat(p.get("neg")??data.neg,-0.25,-2,0);
 const perRaw=p.get("per")??data.per;
 const per=perRaw===undefined||perRaw===null||perRaw===""?null:validFloat(perRaw,null,0.25,10);
 const invalidPer=perRaw!==undefined && perRaw!==null && perRaw!=="" && per===null;
-// V2.4 FIX: per ఉంటే q, marks తప్పనిసరి + per*q == marks
 const invalidMarking=per!==null && (q<=0 || marks<=0 || Math.abs(per*q-marks)>1e-9);
-// V2.4 FIX: q=0 అయితే Invalid - q తప్పనిసరి
-const countsValid=q>0 && (correct+wrong<=q);
+// V2.5 FIX: marks=0 also Invalid - marks-less test does not exist
+const countsValid=q>0 && marks>0 && !invalidCounts && (correct+wrong<=q);
 let scoreRaw=p.get("score")??data.score;
 let score=null;
 if(scoreRaw!==undefined&&scoreRaw!==null&&scoreRaw!==""){
