@@ -26,9 +26,42 @@ h1{color:#670f9e;font-size:19px;text-align:center}
 </div>
 <script>
 const tests={
-1:[{q:"భారతదేశ రాజధాని ఏది?",o:["Mumbai","New Delhi","Kolkata","Chennai"],a:1},{q:"తెలంగాణ ఎప్పుడు ఏర్పడింది?",o:["2012","2013","2014","2015"],a:2},{q:"2 + 2 x 2 = ?",o:["6","8","4","10"],a:0},{q:"Largest Planet?",o:["Mars","Earth","Jupiter","Venus"],a:2},{q:"తెలుగులో 'Water' అంటే?",o:["నీరు","నిప్పు","గాలి","భూమి"],a:0}],
-2:[{q:"భారత జాతీయ జంతువు?",o:["Lion","Tiger","Elephant","Peacock"],a:1},{q:"5 x 5 = ?",o:["20","25","30","15"],a:1},{q:"Red Fort ఎక్కడ ఉంది?",o:["Agra","Delhi","Jaipur","Mumbai"],a:1},{q:"తెలంగాణ రాజధాని?",o:["Warangal","Karimnagar","Hyderabad","Nizamabad"],a:2},{q:"Sun rises in?",o:["West","North","East","South"],a:2}],
-3:[{q:"India PM ఎవరు?",o:["Rahul Gandhi","Narendra Modi","Amit Shah","Yogi"],a:1},{q:"Telangana CM ఎవరు?",o:["KCR","Revanth Reddy","Bhatti","KTR"],a:1},{q:"T20 World Cup 2026 ఎక్కడ?",o:["India","Australia","England","Pakistan"],a:0},{q:"Hyderabad Metro ఎప్పుడు Start?",o:["2017","2018","2019","2020"],a:0},{q:"ISRO HQ ఎక్కడ?",o:["Delhi","Chennai","Bengaluru","Hyderabad"],a:2}]
+1:[
+{q:"భారతదేశ రాజధాని ఏది?",o:["Mumbai","New Delhi","Kolkata","Chennai"],a:1},
+{q:"తెలంగాణ ఎప్పుడు ఏర్పడింది?",o:["2012","2013","2014","2015"],a:2},
+{q:"2 + 2 x 2 = ?",o:["6","8","4","10"],a:0},
+{q:"Largest Planet?",o:["Mars","Earth","Jupiter","Venus"],a:2},
+{q:"తెలుగులో 'Water' అంటే?",o:["నీరు","నిప్పు","గాలి","భూమి"],a:0},
+{q:"భారతదేశ జాతీయ పక్షి ఏది?",o:["Peacock","Parrot","Sparrow","Eagle"],a:0},
+{q:"తెలంగాణలో ప్రవహించే ప్రధాన నది?",o:["Krishna","Godavari","Cauvery","Yamuna"],a:1},
+{q:"10 x 10 = ?",o:["100","1000","10","10000"],a:0},
+{q:"గాంధీ జయంతి ఎప్పుడు?",o:["15 Aug","2 Oct","26 Jan","14 Nov"],a:1},
+{q:"తెలంగాణ రాష్ట్ర పండుగ?",o:["Bathukamma","Diwali","Sankranti","Holi"],a:0}
+],
+2:[
+{q:"భారత జాతీయ జంతువు?",o:["Lion","Tiger","Elephant","Peacock"],a:1},
+{q:"5 x 5 = ?",o:["20","25","30","15"],a:1},
+{q:"Red Fort ఎక్కడ ఉంది?",o:["Agra","Delhi","Jaipur","Mumbai"],a:1},
+{q:"తెలంగాణ రాజధాని?",o:["Warangal","Karimnagar","Hyderabad","Nizamabad"],a:2},
+{q:"Sun rises in?",o:["West","North","East","South"],a:2},
+{q:"భారతదేశ జాతీయ గీతం?",o:["Vande Mataram","Jana Gana Mana","Sare Jahan Se Achha","Maa Tujhe Salaam"],a:1},
+{q:"తెలంగాణలో ఎన్ని జిల్లాలు ఉన్నాయి?",o:["31","32","33","34"],a:2},
+{q:"100 - 45 = ?",o:["65","55","45","60"],a:1},
+{q:"తాజ్ మహల్ ఎక్కడ ఉంది?",o:["Delhi","Agra","Jaipur","Lucknow"],a:1},
+{q:"ఒక సంవత్సరంలో ఎన్ని నెలలు?",o:["10","11","12","13"],a:2}
+],
+3:[
+{q:"India PM ఎవరు?",o:["Rahul Gandhi","Narendra Modi","Amit Shah","Yogi"],a:1},
+{q:"Telangana CM ఎవరు?",o:["KCR","Revanth Reddy","Bhatti","KTR"],a:1},
+{q:"T20 World Cup 2026 ఎక్కడ?",o:["India","Australia","England","Pakistan"],a:0},
+{q:"Hyderabad Metro ఎప్పుడు Start?",o:["2017","2018","2019","2020"],a:0},
+{q:"ISRO HQ ఎక్కడ?",o:["Delhi","Chennai","Bengaluru","Hyderabad"],a:2},
+{q:"తెలంగాణ ప్రభుత్వం ప్రతిష్టాత్మకంగా నిర్వహించే Bathukamma ఏ నెలలో వస్తుంది?",o:["September / October","January","March","June"],a:0},
+{q:"India యొక్క ప్రస్తుత రాష్ట్రపతి ఎవరు?",o:["Ram Nath Kovind","Droupadi Murmu","Pratibha Patil","Venkaiah Naidu"],a:1},
+{q:"2026 లో తెలంగాణలో ప్రధానంగా చర్చలో ఉన్న నదీ జలాల ప్రాజెక్ట్?",o:["Kaleshwaram","Polavaram","Bhakra","Sardar Sarovar"],a:0},
+{q:"Hyderabad ఏ నది ఒడ్డున ఉంది?",o:["Krishna","Godavari","Musi","Manjira"],a:2},
+{q:"Telangana Formation Day ఎప్పుడు?",o:["2 June","1 Nov","15 Aug","26 Jan"],a:0}
+]
 };
 let params=new URLSearchParams(location.search);
 let t=params.get("test")||1;
