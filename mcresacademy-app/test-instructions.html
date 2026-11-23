@@ -67,7 +67,7 @@ body{background:#f5f0ff;padding:16px;padding-bottom:40px;color:#222}
 <li><b>Skip చేయవచ్చు</b> - తర్వాత Question Palette నుండి మళ్ళీ రావచ్చు.</li>
 <li><b>Negative Marking</b> - తప్పు సమాధానానికి క్రింద చెప్పిన Marks తగ్గుతాయి. తెలియని ప్రశ్నలకు Guess చేయకండి.</li>
 <li><b>Internet అంతరాయం</b> - Internet అంతరాయం ఏర్పడినప్పుడు సమాధానాల భద్రత, తిరిగి కొనసాగించే సదుపాయం అమలులో ఉన్న విధానంపై ఆధారపడి ఉంటుంది.</li>
-<li><b>నియమాలు</b> - పరీక్ష సమయంలో ఇతర Tabs కు మారడం, Copy చేయడం వంటి చర్యలు పరీక్ష నియమాలకు విరుద్ధం.</li>
+<li><b>పరీక్షా నియమాలు</b> - పరీక్ష సమయంలో ఇతర Tabs కు మారడం, Copy చేయడం వంటి చర్యలకు దూరంగా ఉండాలి. ఇవి పరీక్షా నియమాలకు విరుద్ధం.</li>
 </ol>
 <h3 style="margin-top:16px">Marking Scheme</h3>
 <ul id="markingList">
@@ -95,32 +95,33 @@ body{background:#f5f0ff;padding:16px;padding-bottom:40px;color:#222}
 <script>
 function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");}
 function validInt(raw,def,min,max){
+if(raw===null || raw==="") return def;
 const n=Number(raw);
 if(!Number.isFinite(n)||!Number.isInteger(n)||n<min||n>max) return def;
 return n;
 }
+// V3.2 FIX: Number(null) = 0 bug fixed. null / "" => return def (-0.25)
 function validFloat(raw,def,min,max){
+if(raw===null || raw==="") return def;
 const n=Number(raw);
 if(!Number.isFinite(n)||n<min||n>max) return def;
 return n;
 }
 const p=new URLSearchParams(location.search);
-// V3 FIX 1: Strict Exam ID validation - no auto-fallback to Demo. Invalid => "" => Block Start
 const rawId=p.get("id")||"";
 const examId=/^[A-Za-z0-9][A-Za-z0-9\-_]{0,79}$/.test(rawId) ? rawId : "";
 const tName=(p.get("test")||"Constable Grand Test - 1").slice(0,100);
 const q=validInt(p.get("q"),200,1,1000);
 const marks=validInt(p.get("marks"),200,1,1000);
 const time=validInt(p.get("time"),180,1,600);
+const neg=validFloat(p.get("neg"),-0.25,-2,0);
 const perRaw=p.get("per");
 const per=perRaw===null?null:validFloat(perRaw,null,0.25,10);
-// V3 FIX 2: Invalid per / Mismatch per*q != marks => Block Start
 const invalidPer=perRaw!==null && per===null;
 const invalidMarking=per!==null && Math.abs(per*q-marks)>1e-9;
 const perText=per===null?"As per Question Paper":"+"+per+" Mark";
 document.getElementById("testName").textContent=tName;
-document.getElementById("testMeta").innerHTML=`${esc(String(q))} Questions • ${esc(String(marks))} Marks • Duration: ${esc(String(time))} Minutes<br>Negative Marking: ${esc(String(validFloat(p.get("neg"),-0.25,-2,0))} for each wrong answer`;
-const neg=validFloat(p.get("neg"),-0.25,-2,0);
+document.getElementById("testMeta").innerHTML=`${esc(String(q))} Questions • ${esc(String(marks))} Marks • Duration: ${esc(String(time))} Minutes<br>Negative Marking: ${esc(String(neg))} for each wrong answer`;
 document.getElementById("markingList").innerHTML=`<li>Correct Answer: <b>${esc(perText)}</b></li><li>Wrong Answer: <b>${esc(String(neg))} Mark</b></li><li>Not Attempted: <b>0 Mark</b></li>`;
 const agree=document.getElementById("agreeCheck");
 const startBtn=document.getElementById("startBtn");
