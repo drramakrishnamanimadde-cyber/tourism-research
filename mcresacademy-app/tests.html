@@ -27,9 +27,11 @@ body{background:#f5f0ff;padding:16px;padding-bottom:40px;color:#222}
 .cardDesc{display:block;font-size:12.5px;color:#666;margin-top:4px;line-height:1.4}
 .view{margin-left:auto;background:#ff8703;color:#fff;font-size:12px;font-weight:700;padding:7px 12px;border-radius:20px;white-space:nowrap;flex-shrink:0}
 .view.paid{background:#670f9e}
+.view.free{background:#0d7a6b}
 .back{display:block;text-align:center;margin:16px auto;max-width:480px;color:#670f9e;font-weight:700;background:#fff;padding:13px;border-radius:12px;cursor:pointer;border:1px solid #e5d5f5;width:100%;font-size:15px;font-family:inherit}
 .c1{background:#38bdf8}.c2{background:#34d399}.c3{background:#fbbf24}.c4{background:#a78bfa}.c5{background:#f472b6}.c6{background:#fb923c}.c7{background:#4ade80}.c8{background:#facc15}.c9{background:#60a5fa}.c10{background:#f87171}.c11{background:#a78bfa}
 .badge{display:inline-block;background:#fff3e0;color:#e65100;font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;margin-top:6px}
+.badge.free{background:#e0f2f1;color:#00796b}
 .empty{max-width:480px;margin:20px auto;text-align:center;color:#888;font-size:14px;background:#fff;padding:20px;border-radius:14px;line-height:1.6}
 .empty button{margin-top:12px;background:#670f9e;color:#fff;border:0;padding:9px 18px;border-radius:20px;cursor:pointer;font-weight:700}
 .payBox{max-width:480px;margin:10px auto;background:#fff;border-radius:18px;padding:22px;text-align:center;box-shadow:0 4px 16px rgba(0,0,0,.08)}
@@ -37,6 +39,7 @@ body{background:#f5f0ff;padding:16px;padding-bottom:40px;color:#222}
 .payBox ul{text-align:left;font-size:13.5px;color:#333;line-height:1.8;margin:12px 0;padding-left:18px}
 .payBox .price{font-size:20px;font-weight:800;color:#111;margin:8px 0}
 .payBtn{display:block;width:100%;background:#ccc;color:#fff;border:0;padding:14px;border-radius:12px;font-weight:800;font-size:15px;cursor:not-allowed;margin-top:10px}
+.startBtn{display:block;width:100%;background:#0d7a6b;color:#fff;border:0;padding:14px;border-radius:12px;font-weight:800;font-size:15px;cursor:pointer;margin-top:10px}
 .footer{max-width:480px;margin:24px auto 0;text-align:center;font-size:12px;color:#777;line-height:1.6}
 .footer b{color:#333}
 </style>
@@ -82,24 +85,27 @@ const subs={
 "cat-10":[{id:"sub-1001",name:"SET Subject Wise",desc:"25 Questions • 25 Marks"}],
 "cat-11":[{id:"sub-1101",name:"Mains Descriptive Notes",desc:"Notes"}],
 };
+// V16 COMPATIBLE: examId + q + marks + time(min) + neg + per must match exam.html validation
+// per = marks per question. marks must equal q * per. Ex: 200Q * 1 = 200 marks
 const testsData={
 "sub-402":[
-{id:"test-401",name:"Grand Test - 1",desc:"200 Questions • 200 Marks • Negative -0.25",status:"paid"},
-{id:"test-402",name:"Grand Test - 2",desc:"200 Questions • 200 Marks • Negative -0.25",status:"paid"},
-{id:"test-403",name:"Grand Test - 3",desc:"200 Questions • 200 Marks • Negative -0.25",status:"paid"},
-{id:"test-404",name:"Grand Test - 4",desc:"200 Questions • 200 Marks • Negative -0.25",status:"paid"},
-{id:"test-405",name:"Grand Test - 5",desc:"200 Questions • 200 Marks • Negative -0.25",status:"paid"},
-{id:"test-406",name:"Grand Test - 6",desc:"200 Questions • 200 Marks • Negative -0.25",status:"paid"},
+{id:"test-demo",name:"FREE Demo Test - Try Now",desc:"25 Questions • 25 Marks • No Negative • Free",status:"free",examId:"TG-DEMO-001",q:25,marks:25,time:30,neg:0,per:1},
+{id:"test-401",name:"Grand Test - 1",desc:"200 Questions • 200 Marks • Negative -0.25",status:"paid",examId:"TG-CONST-GT-001",q:200,marks:200,time:180,neg:-0.25,per:1},
+{id:"test-402",name:"Grand Test - 2",desc:"200 Questions • 200 Marks • Negative -0.25",status:"paid",examId:"TG-CONST-GT-002",q:200,marks:200,time:180,neg:-0.25,per:1},
+{id:"test-403",name:"Grand Test - 3",desc:"200 Questions • 200 Marks • Negative -0.25",status:"paid",examId:"TG-CONST-GT-003",q:200,marks:200,time:180,neg:-0.25,per:1},
+{id:"test-404",name:"Grand Test - 4",desc:"200 Questions • 200 Marks • Negative -0.25",status:"paid",examId:"TG-CONST-GT-004",q:200,marks:200,time:180,neg:-0.25,per:1},
+{id:"test-405",name:"Grand Test - 5",desc:"200 Questions • 200 Marks • Negative -0.25",status:"paid",examId:"TG-CONST-GT-005",q:200,marks:200,time:180,neg:-0.25,per:1},
+{id:"test-406",name:"Grand Test - 6",desc:"200 Questions • 200 Marks • Negative -0.25",status:"paid",examId:"TG-CONST-GT-006",q:200,marks:200,time:180,neg:-0.25,per:1},
 ],
 "sub-404":[
-{id:"test-411",name:"SI Grand Test - 1",desc:"200 Questions • 200 Marks • Negative -0.25",status:"paid"},
-{id:"test-412",name:"SI Grand Test - 2",desc:"200 Questions • 200 Marks • Negative -0.25",status:"paid"},
+{id:"test-411",name:"SI Grand Test - 1",desc:"200 Questions • 200 Marks • Negative -0.25",status:"paid",examId:"TG-SI-GT-001",q:200,marks:200,time:180,neg:-0.25,per:1},
+{id:"test-412",name:"SI Grand Test - 2",desc:"200 Questions • 200 Marks • Negative -0.25",status:"paid",examId:"TG-SI-GT-002",q:200,marks:200,time:180,neg:-0.25,per:1},
 ],
-"sub-401":[{id:"test-410",name:"Constable Prelims Test - 1",desc:"200 Questions • 200 Marks • Negative -0.25",status:"paid"}],
-"sub-301":[{id:"test-301",name:"Group-I Prelims Test - 1",desc:"150 Questions • 150 Marks • No Negative",status:"paid"}],
-"sub-302":[{id:"test-302",name:"Group-II Test - 1",desc:"150 Questions • 150 Marks • No Negative",status:"paid"}],
-"sub-101":[{id:"test-101",name:"Current Affairs - Nov 2026",desc:"25 Questions • 25 Marks • No Negative",status:"paid"}],
-"sub-501":[{id:"test-501",name:"TET Test - 1",desc:"25 Questions • 25 Marks • No Negative",status:"paid"}],
+"sub-401":[{id:"test-410",name:"Constable Prelims Test - 1",desc:"200 Questions • 200 Marks • Negative -0.25",status:"paid",examId:"TG-CONST-PRE-001",q:200,marks:200,time:180,neg:-0.25,per:1}],
+"sub-301":[{id:"test-301",name:"Group-I Prelims Test - 1",desc:"150 Questions • 150 Marks • No Negative",status:"paid",examId:"TG-G1-PRE-001",q:150,marks:150,time:150,neg:0,per:1}],
+"sub-302":[{id:"test-302",name:"Group-II Test - 1",desc:"150 Questions • 150 Marks • No Negative",status:"paid",examId:"TG-G2-001",q:150,marks:150,time:150,neg:0,per:1}],
+"sub-101":[{id:"test-101",name:"Current Affairs - Nov 2026",desc:"25 Questions • 25 Marks • No Negative",status:"paid",examId:"TG-CA-2026-11-001",q:25,marks:25,time:30,neg:0,per:1}],
+"sub-501":[{id:"test-501",name:"TET Test - 1",desc:"25 Questions • 25 Marks • No Negative",status:"paid",examId:"TG-TET-001",q:25,marks:25,time:30,neg:0,per:1}],
 };
 let view="cats",curCat=null,curSub=null,curSubName="",searchText="",selectedTest=null;
 const searchInput=document.getElementById("searchInput");
@@ -115,12 +121,20 @@ function getColor(id){let n=0;for(let ch of id)n+=ch.charCodeAt(0);return colors
 function cardHTML(numClass,icon,title,desc,btnText,btnClass,onclick,extra){
 return `<div class="card" role="button" tabindex="0" onclick="${onclick}" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();${onclick}}" aria-label="${esc(title)}"><span class="num ${numClass}">${esc(icon)}</span><span class="cardText"><span class="cardTitle">${esc(title)}</span><span class="cardDesc">${esc(desc)}</span>${extra||""}</span><span class="view ${btnClass}">${esc(btnText)}</span></div>`;
 }
+function goToInstructions(t){
+  const u=new URLSearchParams({id:t.examId,test:t.name,q:t.q,marks:t.marks,time:t.time,neg:t.neg,per:t.per});
+  window.location.href="test-instructions.html?"+u.toString();
+}
 function render(){
 let list=document.getElementById("list");let back=document.getElementById("backBtn");let h="";
 searchWrap.style.display=(view==="pay")?"none":"block";
 if(view=="pay" && selectedTest){
 back.style.display="block";back.textContent="← Back to Tests";
+if(selectedTest.status==="free"){
+h=`<div class="payBox"><h2>✅ ${esc(selectedTest.name)}</h2><p>${esc(selectedTest.desc)}</p><div class="price">Price: FREE</div><p>Demo Test - No Payment Needed.<br>Click Start to open Instructions.</p><button class="startBtn" onclick="startFree()">Start Demo Test →</button></div>`;
+}else{
 h=`<div class="payBox"><h2>🔒 ${esc(selectedTest.name)}</h2><p>${esc(selectedTest.desc)}</p><div class="price">Price: To be announced</div><p style="font-size:13px;color:#888">Planned Features (under development):</p><ul><li>Real Exam Pattern & Timer</li><li>Automatic Evaluation</li><li>Result & Rank View</li><li>Solutions in Telugu & English</li></ul><p>Payment will be enabled after Razorpay setup.<br>For early access, contact MCRES ACADEMY.</p><button class="payBtn" disabled>Payment Coming Soon</button></div>`;
+}
 list.innerHTML=h;return;
 }
 if(view=="cats"){
@@ -132,7 +146,7 @@ f.forEach((c)=>{h+=cardHTML(getColor(c.id),categories.indexOf(c)+1,c.name,c.desc
 back.style.display="block";back.textContent="← Back to Categories";
 let arr=(subs[curCat]||[]).filter(matches);
 if(arr.length==0) h=`<div class="empty">No results found<br><button onclick="clearSearch()">Clear Search ✕</button></div>`;
-arr.forEach((s)=>{h+=cardHTML(getColor(s.id),"📚",s.name,s.desc,"View →","","openSub('"+s.id+"','"+s.name+"')","");});
+arr.forEach((s)=>{h+=cardHTML(getColor(s.id),"📚",s.name,s.desc,"View →","","openSub('"+s.id+"','"+esc(s.name)+"')","");});
 }else{
 back.style.display="block";back.textContent="← Back";
 let all=(testsData[curSub]||[]);
@@ -141,7 +155,10 @@ h=`<div class="empty">⏳ Coming Soon<br><span style="font-size:13px">Tests will
 }else{
 let arr=all.filter(matches);
 if(arr.length==0){h=`<div class="empty">No Results Found for "${esc(searchText)}"<br><button onclick="clearSearch()">Clear Search ✕</button></div>`;}
-else{arr.forEach((t)=>{h+=cardHTML(getColor(t.id),all.indexOf(t)+1,t.name,t.desc,"Pay →","paid","openPay('"+t.id+"')",'<span class="badge">🔒 PAID TEST</span>');});}
+else{arr.forEach((t)=>{
+  const isFree=t.status==="free";
+  h+=cardHTML(getColor(t.id),all.indexOf(t)+1,t.name,t.desc,isFree?"Start →":"Pay →",isFree?"free":"paid","openPay('"+t.id+"')",isFree?'<span class="badge free">✅ FREE DEMO</span>':'<span class="badge">🔒 PAID TEST</span>');
+});}
 }
 }
 list.innerHTML=h;
@@ -149,6 +166,7 @@ list.innerHTML=h;
 function openCat(id){resetSearch();curCat=id;view="subs";render();}
 function openSub(id,name){resetSearch();curSub=id;curSubName=name;view="tests";render();}
 function openPay(id){let all=Object.values(testsData).flat();selectedTest=all.find(t=>t.id===id);if(!selectedTest)return;view="pay";window.scrollTo(0,0);render();}
+function startFree(){if(selectedTest) goToInstructions(selectedTest);}
 document.getElementById("backBtn").addEventListener("click",()=>{
 resetSearch();
 if(view=="pay"){view="tests";render();}
