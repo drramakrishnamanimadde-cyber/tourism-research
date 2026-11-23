@@ -106,6 +106,8 @@ if(!Number.isFinite(n)||n<min||n>max) return def;
 return n;
 }
 const p=new URLSearchParams(location.search);
+// FIX: Read examId from URL - tests.html sends id=TG-DEMO-001 etc. Must forward to exam.html
+const examId=(p.get("id")||"TG-DEMO-001").slice(0,50);
 const tName=(p.get("test")||"Constable Grand Test - 1").slice(0,100);
 const q=validInt(p.get("q"),200,1,1000);
 const marks=validInt(p.get("marks"),200,1,1000);
@@ -123,7 +125,8 @@ const startBtn=document.getElementById("startBtn");
 agree.addEventListener("change",()=>{ startBtn.disabled=!agree.checked; });
 startBtn.addEventListener("click",()=>{
 if(!agree.checked) return;
-let url=`exam.html?test=${encodeURIComponent(tName)}&q=${encodeURIComponent(q)}&marks=${encodeURIComponent(marks)}&time=${encodeURIComponent(time)}&neg=${encodeURIComponent(neg)}`;
+// FIX: Forward id to exam.html - V16 validation needs it
+let url=`exam.html?id=${encodeURIComponent(examId)}&test=${encodeURIComponent(tName)}&q=${encodeURIComponent(q)}&marks=${encodeURIComponent(marks)}&time=${encodeURIComponent(time)}&neg=${encodeURIComponent(neg)}`;
 if(per!==null) url+=`&per=${encodeURIComponent(per)}`;
 location.href=url;
 });
