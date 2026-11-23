@@ -78,9 +78,8 @@ const n=Number(raw);
 if(!Number.isFinite(n)||n<min||n>max) return def;
 return n;
 }
-// V2.5: Strict check - "abc" present but invalid => Invalid, not silently 0
 function isBadInt(raw,min,max){
-if(raw===undefined||raw===null||raw==="") return false; // missing = use default, handled by countsValid
+if(raw===undefined||raw===null||raw==="") return false;
 const n=Number(raw);
 return !Number.isFinite(n)||!Number.isInteger(n)||n<min||n>max;
 }
@@ -91,7 +90,6 @@ try{
 const raw=safeGet("mcres_last_result");
 if(raw) data=JSON.parse(raw);
 }catch(e){ data=null; }
-// V2.5 FIX: Array is also object in JS - reject it
 if(!data || typeof data!=="object" || Array.isArray(data)) data={};
 let legacyTestName="";
 try{ legacyTestName=safeGet("mcres_last_test")||""; }catch(e){ legacyTestName=""; }
@@ -104,25 +102,26 @@ const correctRaw=p.get("correct")??data.correct;
 const wrongRaw=p.get("wrong")??data.wrong;
 const correct=validInt(correctRaw,0,0,1000);
 const wrong=validInt(wrongRaw,0,0,1000);
-// V2.5 FIX: correct=abc / wrong=xyz => Invalid, not 0
 const invalidCounts=isBadInt(correctRaw,0,1000)||isBadInt(wrongRaw,0,1000);
 const neg=validFloat(p.get("neg")??data.neg,-0.25,-2,0);
 const perRaw=p.get("per")??data.per;
 const per=perRaw===undefined||perRaw===null||perRaw===""?null:validFloat(perRaw,null,0.25,10);
 const invalidPer=perRaw!==undefined && perRaw!==null && perRaw!=="" && per===null;
 const invalidMarking=per!==null && (q<=0 || marks<=0 || Math.abs(per*q-marks)>1e-9);
-// V2.5 FIX: marks=0 also Invalid - marks-less test does not exist
 const countsValid=q>0 && marks>0 && !invalidCounts && (correct+wrong<=q);
+// V2.6 FIX: score=abc => Invalid, not silent re-calc
 let scoreRaw=p.get("score")??data.score;
 let score=null;
-if(scoreRaw!==undefined&&scoreRaw!==null&&scoreRaw!==""){
-if(typeof scoreRaw==="string"&&scoreRaw.includes("/")){
+let invalidScore=false;
+if(scoreRaw!==undefined && scoreRaw!==null && scoreRaw!==""){
+if(typeof scoreRaw==="string" && scoreRaw.includes("/")){
 score=validFloat(scoreRaw.split("/")[0],null,-10000,10000);
 }else{
 score=validFloat(scoreRaw,null,-10000,10000);
 }
+if(score===null) invalidScore=true;
 }
-if(score===null && (correct>0||wrong>0) && countsValid && !invalidPer && !invalidMarking){
+if(score===null && !invalidScore && (correct>0||wrong>0) && countsValid && !invalidPer && !invalidMarking){
 const perCalc=per!==null?per:(q>0&&marks>0?marks/q:1);
 score=correct*perCalc + wrong*neg;
 score=Math.max(0,score);
@@ -137,11 +136,12 @@ const attempted=correct+wrong;
 const skipped=(q>0 && countsValid)?Math.max(0,q-attempted):0;
 const accuracy=(attempted>0 && countsValid)?Math.round((correct/attempted)*100):0;
 document.getElementById("testName").textContent=testName;
-if(score===null || !countsValid || invalidPer || invalidMarking){
+if(score===null || !countsValid || invalidCounts || invalidPer || invalidMarking || invalidScore){
 document.getElementById("score").textContent="-";
 document.getElementById("scoreLabel").textContent="Complete a test to see your score here";
-if(!countsValid) document.getElementById("scoreLabel").textContent="Invalid result data. Please retake the test.";
+if(!countsValid || invalidCounts) document.getElementById("scoreLabel").textContent="Invalid result data. Please retake the test.";
 if(invalidPer || invalidMarking) document.getElementById("scoreLabel").textContent="Invalid Marking Scheme. Please retake the test.";
+if(invalidScore) document.getElementById("scoreLabel").textContent="Invalid Score. Please retake the test.";
 }else{
 const totalLabel=marks>0?` / ${marks}`:"";
 document.getElementById("score").textContent=score+totalLabel;
