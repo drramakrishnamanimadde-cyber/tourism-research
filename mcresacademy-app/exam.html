@@ -275,23 +275,33 @@ let raw=correct*perMark + wrong*neg;
 let score=Math.max(0,Math.round(raw*100)/100);
 return {correct,wrong,attempted,score,perMark};
 }
+// V16.1 FIX: showResult ఇక Same Page లో Result చూపించదు - results.html కి Redirect చేస్తుంది
 function showResult(){
   const r=calcScore();
-  let displayScore = r.score;
   if(submitted){
     if(typeof state.score==="number" && Math.abs(state.score - r.score)>0.000000001){
       showError("Score Mismatch","Stored Score ("+state.score+") మరియు Recalculated Score ("+r.score+") సరిపోవట్లేదు. ఈ Attempt డేటా పాడై ఉండవచ్చు.",true);
       return;
     }
-    displayScore = state.score;
   }
-  document.getElementById("wrap").innerHTML=`
-<div class="result"><h2>✅ Test Submitted!</h2><div class="score">${displayScore} / ${totalMarks}</div>
-<p><b>${esc(tName)}</b><br>Test ID: ${esc(testId)} • Attempt: ${esc(attemptId)}<br>Correct: ${r.correct} • Wrong: ${r.wrong} • Attempted: ${r.attempted} / ${totalQ}<br>Correct: ${per!==null?"+ "+per+" Mark":"As per Question Paper ("+r.perMark+" / Q)"} • Wrong: ${neg} Mark • Floor: 0<br><span style="color:#888;font-size:12px">Stored Score చూపించబడుతోంది. Demo - Final result Backend లో Verify అవుతుంది.</span></p>
-<div class="review">${questions.slice(0,Math.min(totalQ,10)).map((q,i)=>{let st=answers[i]===null?"Not Attempted":(answers[i]===q.a?'<span class="correct">Correct ✓</span>':'<span class="wrong">Wrong ✗</span>');return `<div><b>Q${i+1}.</b> ${esc(q.q)}<br>Your Answer: ${answers[i]===null?"-":esc(q.o[answers[i]])} • Correct: ${esc(q.o[q.a])} • ${st}</div>`}).join("")}</div>
-<button class="submitBtn" onclick="startNewAttempt()">↻ Start New Attempt</button>
-<button class="submitBtn" style="background:#670f9e;margin-top:8px" onclick="location.href='tests.html'">← Back to Tests</button></div>`;
-  window.scrollTo(0,0);
+  const finalScore=submitted ? state.score : r.score;
+  // Results Page - URL Params + LocalStorage రెండూ - ఒకటి Fail అయినా రెండోది Works
+  try{
+    localStorage.setItem("mcres_last_result", JSON.stringify({
+      id: testId,
+      test: tName,
+      q: totalQ,
+      marks: totalMarks,
+      time: timeMin,
+      correct: r.correct,
+      wrong: r.wrong,
+      score: finalScore,
+      neg: neg,
+      per: per
+    }));
+  }catch(e){}
+  const u=`results.html?id=${encodeURIComponent(testId)}&test=${encodeURIComponent(tName)}&q=${totalQ}&marks=${totalMarks}&time=${timeMin}&correct=${r.correct}&wrong=${r.wrong}&score=${encodeURIComponent(finalScore)}&neg=${encodeURIComponent(neg)}` + (per!==null ? `&per=${encodeURIComponent(per)}` : ``);
+  location.href=u;
 }
 function startNewAttempt(){
   const newId=makeAttemptId();
@@ -302,7 +312,6 @@ function startNewAttempt(){
   store.set(lastKey,JSON.stringify({attemptId:newId,submitted:false,testId}));
   const u=new URL(location.href); u.searchParams.set("attempt",newId); u.searchParams.set("id",testId); location.href=u.toString();
 }
-// V16: Timer interval handle - cleared on submit
 let timerInterval=null;
 function tick(){
 if(submitted) return;
@@ -340,6 +349,21 @@ state.submitted=true;
 state.score=r.score;
 state.submittedAt=Date.now();
 saveState();
+// V16.1 FIX: Results Page చదివే Key
+try{
+  localStorage.setItem("mcres_last_result", JSON.stringify({
+    id: testId,
+    test: tName,
+    q: totalQ,
+    marks: totalMarks,
+    time: timeMin,
+    correct: r.correct,
+    wrong: r.wrong,
+    score: r.score,
+    neg: neg,
+    per: per
+  }));
+}catch(e){}
 showResult();
 }
 window.addEventListener("beforeunload",()=>{if(!submitted) saveState();});
