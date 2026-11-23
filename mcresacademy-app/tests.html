@@ -50,7 +50,7 @@ body{background:#f5f0ff;padding:16px;padding-bottom:40px;color:#222}
 <div class="tag">A coaching and examination-preparation initiative of<br><b>Mallaiah Center for River & Earth Sciences (MCRES)</b></div>
 <div class="founder">Founder & Director: Dr Ramakrishna Manimadde</div>
 </div>
-<div class="search"><input id="searchInput" placeholder="🔍 Search - Ex: Police, Group-I, 200, TET..." aria-label="Search tests"><button class="clearBtn" id="clearBtn" aria-label="Clear search">✕</button></div>
+<div class="search" id="searchWrap"><input id="searchInput" placeholder="🔍 Search - Ex: Police, Group-I, 200, TET..." aria-label="Search tests"><button class="clearBtn" id="clearBtn" aria-label="Clear search">✕</button></div>
 <div id="list"></div>
 <button class="back" id="backBtn" style="display:none">← Back</button>
 <div class="footer"><b>MCRES ACADEMY - Aspire - Achieve</b><br>An educational programme by Mallaiah Center for River & Earth Sciences (MCRES)<br>Founder & Director: Dr Ramakrishna Manimadde</div>
@@ -104,6 +104,7 @@ const testsData={
 let view="cats",curCat=null,curSub=null,curSubName="",searchText="",selectedTest=null;
 const searchInput=document.getElementById("searchInput");
 const clearBtn=document.getElementById("clearBtn");
+const searchWrap=document.getElementById("searchWrap");
 function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");}
 function matches(item){return (item.name+" "+item.desc).toLowerCase().includes(searchText);}
 searchInput.addEventListener("input",e=>{searchText=e.target.value.toLowerCase().trim();clearBtn.style.display=searchText?"block":"none";if(view!=="pay")render();});
@@ -112,13 +113,14 @@ function clearSearch(){searchText="";searchInput.value="";clearBtn.style.display
 function resetSearch(){searchText="";searchInput.value="";clearBtn.style.display="none";}
 function getColor(id){let n=0;for(let ch of id)n+=ch.charCodeAt(0);return colors[n%colors.length];}
 function cardHTML(numClass,icon,title,desc,btnText,btnClass,onclick,extra){
-return `<div class="card" role="button" tabindex="0" onclick="${onclick}" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();${onclick}}" aria-label="${title}"><span class="num ${numClass}">${icon}</span><span class="cardText"><span class="cardTitle">${title}</span><span class="cardDesc">${desc}</span>${extra||""}</span><span class="view ${btnClass}">${btnText}</span></div>`;
+return `<div class="card" role="button" tabindex="0" onclick="${onclick}" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();${onclick}}" aria-label="${esc(title)}"><span class="num ${numClass}">${esc(icon)}</span><span class="cardText"><span class="cardTitle">${esc(title)}</span><span class="cardDesc">${esc(desc)}</span>${extra||""}</span><span class="view ${btnClass}">${esc(btnText)}</span></div>`;
 }
 function render(){
 let list=document.getElementById("list");let back=document.getElementById("backBtn");let h="";
+searchWrap.style.display=(view==="pay")?"none":"block";
 if(view=="pay" && selectedTest){
 back.style.display="block";back.textContent="← Back to Tests";
-h=`<div class="payBox"><h2>🔒 ${selectedTest.name}</h2><p>${selectedTest.desc}</p><div class="price">Price: To be announced</div><p style="font-size:13px;color:#888">Planned Features (under development):</p><ul><li>Real Exam Pattern & Timer</li><li>Automatic Evaluation</li><li>Result & Rank View</li><li>Solutions in Telugu & English</li></ul><p>Payment will be enabled after Razorpay setup.<br>For early access, contact MCRES ACADEMY.</p><button class="payBtn" disabled>Payment Coming Soon</button></div>`;
+h=`<div class="payBox"><h2>🔒 ${esc(selectedTest.name)}</h2><p>${esc(selectedTest.desc)}</p><div class="price">Price: To be announced</div><p style="font-size:13px;color:#888">Planned Features (under development):</p><ul><li>Real Exam Pattern & Timer</li><li>Automatic Evaluation</li><li>Result & Rank View</li><li>Solutions in Telugu & English</li></ul><p>Payment will be enabled after Razorpay setup.<br>For early access, contact MCRES ACADEMY.</p><button class="payBtn" disabled>Payment Coming Soon</button></div>`;
 list.innerHTML=h;return;
 }
 if(view=="cats"){
