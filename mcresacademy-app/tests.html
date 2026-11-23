@@ -104,6 +104,7 @@ const testsData={
 let view="cats",curCat=null,curSub=null,curSubName="",searchText="",selectedTest=null;
 const searchInput=document.getElementById("searchInput");
 const clearBtn=document.getElementById("clearBtn");
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");}
 function matches(item){return (item.name+" "+item.desc).toLowerCase().includes(searchText);}
 searchInput.addEventListener("input",e=>{searchText=e.target.value.toLowerCase().trim();clearBtn.style.display=searchText?"block":"none";if(view!=="pay")render();});
 clearBtn.addEventListener("click",clearSearch);
@@ -111,7 +112,7 @@ function clearSearch(){searchText="";searchInput.value="";clearBtn.style.display
 function resetSearch(){searchText="";searchInput.value="";clearBtn.style.display="none";}
 function getColor(id){let n=0;for(let ch of id)n+=ch.charCodeAt(0);return colors[n%colors.length];}
 function cardHTML(numClass,icon,title,desc,btnText,btnClass,onclick,extra){
-return `<div class="card" role="button" tabindex="0" onclick="${onclick}" onkeydown="if(event.key==='Enter'){${onclick}}" aria-label="${title}"><span class="num ${numClass}">${icon}</span><span class="cardText"><span class="cardTitle">${title}</span><span class="cardDesc">${desc}</span>${extra||""}</span><span class="view ${btnClass}">${btnText}</span></div>`;
+return `<div class="card" role="button" tabindex="0" onclick="${onclick}" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();${onclick}}" aria-label="${title}"><span class="num ${numClass}">${icon}</span><span class="cardText"><span class="cardTitle">${title}</span><span class="cardDesc">${desc}</span>${extra||""}</span><span class="view ${btnClass}">${btnText}</span></div>`;
 }
 function render(){
 let list=document.getElementById("list");let back=document.getElementById("backBtn");let h="";
@@ -123,7 +124,7 @@ list.innerHTML=h;return;
 if(view=="cats"){
 back.style.display="none";
 let f=categories.filter(matches);
-if(f.length==0){h=`<div class="empty">No results found for "${searchText}"<br><button onclick="clearSearch()">Clear Search ✕</button></div>`;}
+if(f.length==0){h=`<div class="empty">No results found for "${esc(searchText)}"<br><button onclick="clearSearch()">Clear Search ✕</button></div>`;}
 f.forEach((c)=>{h+=cardHTML(getColor(c.id),categories.indexOf(c)+1,c.name,c.desc,"View →","","openCat('"+c.id+"')","");});
 }else if(view=="subs"){
 back.style.display="block";back.textContent="← Back to Categories";
@@ -137,7 +138,7 @@ if(all.length==0){
 h=`<div class="empty">⏳ Coming Soon<br><span style="font-size:13px">Tests will be added soon by Admin</span></div>`;
 }else{
 let arr=all.filter(matches);
-if(arr.length==0){h=`<div class="empty">No Results Found for "${searchText}"<br><button onclick="clearSearch()">Clear Search ✕</button></div>`;}
+if(arr.length==0){h=`<div class="empty">No Results Found for "${esc(searchText)}"<br><button onclick="clearSearch()">Clear Search ✕</button></div>`;}
 else{arr.forEach((t)=>{h+=cardHTML(getColor(t.id),all.indexOf(t)+1,t.name,t.desc,"Pay →","paid","openPay('"+t.id+"')",'<span class="badge">🔒 PAID TEST</span>');});}
 }
 }
@@ -145,7 +146,7 @@ list.innerHTML=h;
 }
 function openCat(id){resetSearch();curCat=id;view="subs";render();}
 function openSub(id,name){resetSearch();curSub=id;curSubName=name;view="tests";render();}
-function openPay(id){let all=Object.values(testsData).flat();selectedTest=all.find(t=>t.id==id);view="pay";window.scrollTo(0,0);render();}
+function openPay(id){let all=Object.values(testsData).flat();selectedTest=all.find(t=>t.id===id);if(!selectedTest)return;view="pay";window.scrollTo(0,0);render();}
 document.getElementById("backBtn").addEventListener("click",()=>{
 resetSearch();
 if(view=="pay"){view="tests";render();}
