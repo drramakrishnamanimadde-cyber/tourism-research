@@ -56,7 +56,7 @@ body{background:#f5f0ff;padding:12px;padding-bottom:20px;color:#222}
 <div class="palette">
 <h3>Question Palette</h3>
 <div class="grid" id="palette"></div>
-<div class="legend">🟢 Answered &nbsp; 🟠 Not Answered &nbsp; ⚪ Not Visited &nbsp; 🔵 Marked &nbsp; 🟣 Answered & Marked<br><span style="color:#888">Note: Demo - Answers saved in this browser only. Backend వచ్చాక Server లో Save అవుతాయి.</span></div>
+<div class="legend">🟢 Answered &nbsp; 🟠 Not Answered &nbsp; ⚪ Not Visited &nbsp; 🔵 Marked &nbsp; 🟣 Answered & Marked<br><span style="color:#888">MCRES Rule: Total Score 0 కంటే తక్కువ వెళ్ళదు. Demo - Answers ఈ Browser లో మాత్రమే Save అవుతాయి.</span></div>
 </div>
 <button class="submitBtn" id="submitBtn">Submit Test →</button>
 </div>
@@ -66,6 +66,8 @@ body{background:#f5f0ff;padding:12px;padding-bottom:20px;color:#222}
 function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");}
 function validInt(raw,def,min,max){const n=Number(raw);if(!Number.isFinite(n)||!Number.isInteger(n)||n<min||n>max) return def;return n;}
 function validFloat(raw,def,min,max){const n=Number(raw);if(!Number.isFinite(n)||n<min||n>max) return def;return n;}
+// Telugu-safe hash - \w problem fix: uses charCodeAt, works for Telugu + English
+function stableHash(str){let h=5381;for(let i=0;i<str.length;i++){h=((h*33)^str.charCodeAt(i))>>>0;}return h.toString(36).toUpperCase();}
 const p=new URLSearchParams(location.search);
 const tName=(p.get("test")||"Demo Test").slice(0,100);
 const totalQ=validInt(p.get("q"),10,1,1000);
@@ -74,25 +76,24 @@ const timeMin=validInt(p.get("time"),10,1,600);
 const neg=validFloat(p.get("neg"),-0.25,-2,0);
 const perRaw=p.get("per");
 const per=perRaw===null?null:validFloat(perRaw,null,0.25,10);
-// --- ATTEMPT ID ---
-const testKey=tName.replace(/\W/g,"_");
+// FIX 2: Stable Test ID - NOT from name replace. Use ?id= if given, else hash (Telugu safe)
+const testIdRaw=(p.get("id")||"").trim().slice(0,80);
+const testId=testIdRaw ? testIdRaw.replace(/[^A-Za-z0-9\-_]/g,"_") : "TEST-"+stableHash(tName+"|"+totalQ+"|"+totalMarks);
+const testKey=testId;
 const lastKey="mcres_last_"+testKey;
 let attemptId=p.get("attempt")||"";
 if(!attemptId){
-  // Resume unfinished attempt if exists, else create new
-  const last=localStorage.getItem(lastKey);
-  if(last){
-    try{const L=JSON.parse(last); if(L && L.attemptId && !L.submitted) attemptId=L.attemptId;}catch(e){}
+  const lastRaw=localStorage.getItem(lastKey);
+  if(lastRaw){
+    try{const L=JSON.parse(lastRaw); if(L && L.attemptId && !L.submitted) attemptId=L.attemptId;}catch(e){}
   }
   if(!attemptId){
     attemptId="MCRES-"+Date.now().toString(36).toUpperCase()+"-"+Math.floor(1000+Math.random()*9000);
   }
-  // Put attemptId in URL without reload, so Refresh keeps same attempt
-  const u=new URL(location.href); u.searchParams.set("attempt",attemptId); history.replaceState(null,"",u.toString());
+  const u=new URL(location.href); u.searchParams.set("attempt",attemptId); if(testIdRaw) u.searchParams.set("id",testId); history.replaceState(null,"",u.toString());
 }
 const storeKey="mcres_attempt_"+testKey+"_"+attemptId;
-document.getElementById("examTitle").textContent=tName+" • "+totalQ+" Q • "+attemptId;
-// --- DEMO QUESTIONS (Real questions will come from Backend) ---
+document.getElementById("examTitle").textContent=tName+" • "+totalQ+" Q • "+testId;
 const demo=[
 {q:"భారతదేశ రాజధాని ఏది?",o:["ముంబై","న్యూఢిల్లీ","కోల్‌కతా","చెన్నై"],a:1},
 {q:"తెలంగాణ రాష్ట్రం ఎప్పుడు ఏర్పడింది?",o:["2013","2014","2015","2016"],a:1},
@@ -107,21 +108,41 @@ const demo=[
 ];
 const questions=[];
 for(let i=0;i<totalQ;i++){const d=demo[i%demo.length];questions.push({q:d.q+` (Q${i+1})`,o:d.o,a:d.a});}
-// --- LOAD / CREATE STATE ---
-let state=null;
-try{state=JSON.parse(localStorage.getItem(storeKey)||"null");}catch(e){state=null;}
-if(!state || state.totalQ!==totalQ || state.test!==tName){
-  state={attemptId,test:tName,totalQ,totalMarks,timeMin,neg,per,answers:new Array(totalQ).fill(null),visited:new Array(totalQ).fill(false),marked:new Array(totalQ).fill(false),cur:0,endTime:Date.now()+timeMin*60*1000,submitted:false,score:null,submittedAt:null};
-  state.visited[0]=true;
-  saveState();
+// --- LOAD STATE ---
+let loaded=null;
+try{loaded=JSON.parse(localStorage.getItem(storeKey)||"null");}catch(e){loaded=null;}
+// FIX 3: Full validation - if ANY config changed, discard old state
+function isValidState(s){
+  if(!s || typeof s!=="object") return false;
+  if(s.testId!==testId) return false;
+  if(s.test!==tName) return false;
+  if(s.totalQ!==totalQ) return false;
+  if(s.totalMarks!==totalMarks) return false;
+  if(s.timeMin!==timeMin) return false;
+  if(s.neg!==neg) return false;
+  if(s.per!==per) return false;
+  if(!Array.isArray(s.answers)||s.answers.length!==totalQ) return false;
+  if(!Array.isArray(s.visited)||s.visited.length!==totalQ) return false;
+  if(!Array.isArray(s.marked)||s.marked.length!==totalQ) return false;
+  if(!Number.isFinite(s.endTime)) return false;
+  return true;
 }
-let cur=state.cur, answers=state.answers, visited=state.visited, marked=state.marked, endTime=state.endTime, submitted=state.submitted;
+let isNewState=false;
+if(!isValidState(loaded)){
+  loaded={attemptId,testId,test:tName,totalQ,totalMarks,timeMin,neg,per,answers:new Array(totalQ).fill(null),visited:new Array(totalQ).fill(false),marked:new Array(totalQ).fill(false),cur:0,endTime:Date.now()+timeMin*60*1000,submitted:false,score:null,submittedAt:null};
+  loaded.visited[0]=true;
+  isNewState=true;
+}
+// FIX 1: Declare let variables FIRST, then define saveState, then save if new
+let cur=loaded.cur, answers=loaded.answers, visited=loaded.visited, marked=loaded.marked, endTime=loaded.endTime, submitted=loaded.submitted;
+let state=loaded;
 function saveState(){
   state.cur=cur; state.answers=answers; state.visited=visited; state.marked=marked; state.endTime=endTime; state.submitted=submitted;
   localStorage.setItem(storeKey,JSON.stringify(state));
-  localStorage.setItem(lastKey,JSON.stringify({attemptId,submitted}));
+  localStorage.setItem(lastKey,JSON.stringify({attemptId,submitted,testId}));
   const tag=document.getElementById("savedTag"); if(tag) tag.textContent="✓ Auto Saved • "+new Date().toLocaleTimeString("en-IN");
 }
+if(isNewState){ saveState(); }
 function status(i){
 if(marked[i]&&answers[i]!==null) return "pAnsMarked";
 if(marked[i]) return "pMarked";
@@ -132,7 +153,7 @@ return "";
 function renderQ(){
 const q=questions[cur];
 document.getElementById("qcard").innerHTML=`
-<div class="qno">Question ${cur+1} of ${totalQ} • Attempt: ${esc(attemptId)}</div>
+<div class="qno">Question ${cur+1} of ${totalQ} • ${esc(testId)} • Attempt: ${esc(attemptId)}</div>
 <h2>${esc(q.q)}</h2>
 ${q.o.map((opt,i)=>`<button class="opt ${answers[cur]===i?"sel":""}" onclick="selectOpt(${i})"><span>${"ABCD"[i]}.</span> ${esc(opt)}</button>`).join("")}
 <div class="btnRow">
@@ -157,18 +178,21 @@ let a=0,na=0,nv=0,m=0,am=0;
 for(let i=0;i<totalQ;i++){const s=status(i);if(s==="pAnsMarked")am++; else if(s==="pMarked")m++; else if(s==="pAnswered")a++; else if(s==="pNotAns")na++; else nv++;}
 return {a,na,nv,m,am};
 }
+// FIX 4: Marks Rule - MCRES Rule Locked: per-question = per OR totalMarks/totalQ. Total floored at 0.
+// Per-question different marks will come from Backend question bank later (q.marks field)
 function calcScore(){
 let correct=0,wrong=0,attempted=0;
 let perMark=per!==null?per:(totalMarks/totalQ);
 questions.forEach((q,i)=>{if(answers[i]!==null){attempted++;if(answers[i]===q.a)correct++;else wrong++;}});
-let score=Math.max(0,Math.round((correct*perMark+wrong*neg)*100)/100);
+let raw=correct*perMark + wrong*neg;
+let score=Math.max(0,Math.round(raw*100)/100); // MCRES RULE: Negative Total NOT allowed, floor 0
 return {correct,wrong,attempted,score,perMark};
 }
 function showResult(){
 const r=calcScore();
 document.getElementById("wrap").innerHTML=`
 <div class="result"><h2>✅ Test Submitted!</h2><div class="score">${r.score} / ${totalMarks}</div>
-<p><b>${esc(tName)}</b><br>Attempt: ${esc(attemptId)}<br>Correct: ${r.correct} • Wrong: ${r.wrong} • Attempted: ${r.attempted} / ${totalQ}<br>Correct: ${per!==null?"+ "+per+" Mark":"As per Question Paper"} • Wrong: ${neg} Mark<br><span style="color:#888;font-size:12px">Demo Evaluation - Frontend only. Final result will be verified by Backend.</span></p>
+<p><b>${esc(tName)}</b><br>Test ID: ${esc(testId)} • Attempt: ${esc(attemptId)}<br>Correct: ${r.correct} • Wrong: ${r.wrong} • Attempted: ${r.attempted} / ${totalQ}<br>Correct: ${per!==null?"+ "+per+" Mark":"As per Question Paper ("+r.perMark+" / Q)"} • Wrong: ${neg} Mark • Floor: 0<br><span style="color:#888;font-size:12px">Demo Evaluation - Frontend only. Final result will be verified by Backend.</span></p>
 <div class="review">${questions.slice(0,Math.min(totalQ,10)).map((q,i)=>{let st=answers[i]===null?"Not Attempted":(answers[i]===q.a?'<span class="correct">Correct ✓</span>':'<span class="wrong">Wrong ✗</span>');return `<div><b>Q${i+1}.</b> ${esc(q.q)}<br>Your Answer: ${answers[i]===null?"-":esc(q.o[answers[i]])} • Correct: ${esc(q.o[q.a])} • ${st}</div>`}).join("")}</div>
 <button class="submitBtn" onclick="startNewAttempt()">↻ Start New Attempt</button>
 <button class="submitBtn" style="background:#670f9e;margin-top:8px" onclick="location.href='tests.html'">← Back to Tests</button></div>`;
@@ -187,7 +211,6 @@ const t=document.getElementById("timer");
 t.textContent=`${String(h).padStart(2,"0")}:${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;
 t.classList.toggle("warn",left<5*60*1000);
 }
-// If already submitted, show result and block exam
 if(submitted){showResult();}
 else{
   setInterval(tick,1000);tick();renderQ();
@@ -205,7 +228,6 @@ const r=calcScore();
 state.submitted=true; state.score=r.score; state.submittedAt=Date.now();
 saveState(); showResult();
 }
-// Save on page hide / close also
 window.addEventListener("beforeunload",()=>{if(!submitted) saveState();});
 </script>
 </body>
