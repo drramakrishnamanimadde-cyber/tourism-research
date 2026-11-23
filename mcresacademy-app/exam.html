@@ -45,16 +45,18 @@ body{background:#f5f0ff;padding:12px;padding-bottom:20px;color:#222}
 .modal button{margin-top:12px;padding:12px 18px;border-radius:10px;border:0;font-weight:700;cursor:pointer}
 .mYes{background:#ff1744;color:#fff}.mNo{background:#eee;color:#333;margin-left:8px}
 .footer{max-width:720px;margin:18px auto 0;text-align:center;font-size:12px;color:#777;line-height:1.6}
+.saved{font-size:11px;color:#4caf50;font-weight:700;text-align:right}
 </style>
 </head>
 <body>
 <div class="header"><b id="examTitle">MCRES ACADEMY - Exam</b><span class="timer" id="timer">--:--:--</span></div>
 <div class="wrap" id="wrap">
+<div class="saved" id="savedTag">✓ Auto Saved</div>
 <div class="qcard" id="qcard"></div>
 <div class="palette">
 <h3>Question Palette</h3>
 <div class="grid" id="palette"></div>
-<div class="legend">🟢 Answered &nbsp; 🟠 Not Answered &nbsp; ⚪ Not Visited &nbsp; 🔵 Marked &nbsp; 🟣 Answered & Marked<br><span style="color:#888">Note: Demo - Frontend only. Real marks / timer will be verified by Backend.</span></div>
+<div class="legend">🟢 Answered &nbsp; 🟠 Not Answered &nbsp; ⚪ Not Visited &nbsp; 🔵 Marked &nbsp; 🟣 Answered & Marked<br><span style="color:#888">Note: Demo - Answers saved in this browser only. Backend వచ్చాక Server లో Save అవుతాయి.</span></div>
 </div>
 <button class="submitBtn" id="submitBtn">Submit Test →</button>
 </div>
@@ -72,6 +74,25 @@ const timeMin=validInt(p.get("time"),10,1,600);
 const neg=validFloat(p.get("neg"),-0.25,-2,0);
 const perRaw=p.get("per");
 const per=perRaw===null?null:validFloat(perRaw,null,0.25,10);
+// --- ATTEMPT ID ---
+const testKey=tName.replace(/\W/g,"_");
+const lastKey="mcres_last_"+testKey;
+let attemptId=p.get("attempt")||"";
+if(!attemptId){
+  // Resume unfinished attempt if exists, else create new
+  const last=localStorage.getItem(lastKey);
+  if(last){
+    try{const L=JSON.parse(last); if(L && L.attemptId && !L.submitted) attemptId=L.attemptId;}catch(e){}
+  }
+  if(!attemptId){
+    attemptId="MCRES-"+Date.now().toString(36).toUpperCase()+"-"+Math.floor(1000+Math.random()*9000);
+  }
+  // Put attemptId in URL without reload, so Refresh keeps same attempt
+  const u=new URL(location.href); u.searchParams.set("attempt",attemptId); history.replaceState(null,"",u.toString());
+}
+const storeKey="mcres_attempt_"+testKey+"_"+attemptId;
+document.getElementById("examTitle").textContent=tName+" • "+totalQ+" Q • "+attemptId;
+// --- DEMO QUESTIONS (Real questions will come from Backend) ---
 const demo=[
 {q:"భారతదేశ రాజధాని ఏది?",o:["ముంబై","న్యూఢిల్లీ","కోల్‌కతా","చెన్నై"],a:1},
 {q:"తెలంగాణ రాష్ట్రం ఎప్పుడు ఏర్పడింది?",o:["2013","2014","2015","2016"],a:1},
@@ -86,16 +107,21 @@ const demo=[
 ];
 const questions=[];
 for(let i=0;i<totalQ;i++){const d=demo[i%demo.length];questions.push({q:d.q+` (Q${i+1})`,o:d.o,a:d.a});}
-document.getElementById("examTitle").textContent=tName+" • "+totalQ+" Q";
-const key="mcres_end_"+tName.replace(/\W/g,"_");
-let endTime=Number(localStorage.getItem(key));
-if(!endTime||endTime<Date.now()){endTime=Date.now()+timeMin*60*1000;localStorage.setItem(key,String(endTime));}
-let cur=0;
-let answers=new Array(totalQ).fill(null);
-let visited=new Array(totalQ).fill(false);
-let marked=new Array(totalQ).fill(false);
-let submitted=false;
-visited[0]=true;
+// --- LOAD / CREATE STATE ---
+let state=null;
+try{state=JSON.parse(localStorage.getItem(storeKey)||"null");}catch(e){state=null;}
+if(!state || state.totalQ!==totalQ || state.test!==tName){
+  state={attemptId,test:tName,totalQ,totalMarks,timeMin,neg,per,answers:new Array(totalQ).fill(null),visited:new Array(totalQ).fill(false),marked:new Array(totalQ).fill(false),cur:0,endTime:Date.now()+timeMin*60*1000,submitted:false,score:null,submittedAt:null};
+  state.visited[0]=true;
+  saveState();
+}
+let cur=state.cur, answers=state.answers, visited=state.visited, marked=state.marked, endTime=state.endTime, submitted=state.submitted;
+function saveState(){
+  state.cur=cur; state.answers=answers; state.visited=visited; state.marked=marked; state.endTime=endTime; state.submitted=submitted;
+  localStorage.setItem(storeKey,JSON.stringify(state));
+  localStorage.setItem(lastKey,JSON.stringify({attemptId,submitted}));
+  const tag=document.getElementById("savedTag"); if(tag) tag.textContent="✓ Auto Saved • "+new Date().toLocaleTimeString("en-IN");
+}
 function status(i){
 if(marked[i]&&answers[i]!==null) return "pAnsMarked";
 if(marked[i]) return "pMarked";
@@ -106,7 +132,7 @@ return "";
 function renderQ(){
 const q=questions[cur];
 document.getElementById("qcard").innerHTML=`
-<div class="qno">Question ${cur+1} of ${totalQ}</div>
+<div class="qno">Question ${cur+1} of ${totalQ} • Attempt: ${esc(attemptId)}</div>
 <h2>${esc(q.q)}</h2>
 ${q.o.map((opt,i)=>`<button class="opt ${answers[cur]===i?"sel":""}" onclick="selectOpt(${i})"><span>${"ABCD"[i]}.</span> ${esc(opt)}</button>`).join("")}
 <div class="btnRow">
@@ -120,19 +146,37 @@ renderPalette();
 function renderPalette(){
 document.getElementById("palette").innerHTML=questions.map((_,i)=>`<button class="pbtn ${status(i)} ${i===cur?"cur":""}" onclick="jump(${i})">${i+1}</button>`).join("");
 }
-function selectOpt(i){answers[cur]=i;renderQ();}
-function clearAns(){answers[cur]=null;renderQ();}
-function toggleMark(){marked[cur]=!marked[cur];renderQ();}
-function goPrev(){if(cur>0){cur--;visited[cur]=true;renderQ();}}
-function goNext(){if(cur<totalQ-1){cur++;visited[cur]=true;renderQ();}}
-function jump(i){cur=i;visited[i]=true;renderQ();}
+function selectOpt(i){answers[cur]=i;saveState();renderQ();}
+function clearAns(){answers[cur]=null;saveState();renderQ();}
+function toggleMark(){marked[cur]=!marked[cur];saveState();renderQ();}
+function goPrev(){if(cur>0){cur--;visited[cur]=true;saveState();renderQ();}}
+function goNext(){if(cur<totalQ-1){cur++;visited[cur]=true;saveState();renderQ();}}
+function jump(i){cur=i;visited[i]=true;saveState();renderQ();}
 function counts(){
 let a=0,na=0,nv=0,m=0,am=0;
-for(let i=0;i<totalQ;i++){
-const s=status(i);
-if(s==="pAnsMarked")am++; else if(s==="pMarked")m++; else if(s==="pAnswered")a++; else if(s==="pNotAns")na++; else nv++;
-}
+for(let i=0;i<totalQ;i++){const s=status(i);if(s==="pAnsMarked")am++; else if(s==="pMarked")m++; else if(s==="pAnswered")a++; else if(s==="pNotAns")na++; else nv++;}
 return {a,na,nv,m,am};
+}
+function calcScore(){
+let correct=0,wrong=0,attempted=0;
+let perMark=per!==null?per:(totalMarks/totalQ);
+questions.forEach((q,i)=>{if(answers[i]!==null){attempted++;if(answers[i]===q.a)correct++;else wrong++;}});
+let score=Math.max(0,Math.round((correct*perMark+wrong*neg)*100)/100);
+return {correct,wrong,attempted,score,perMark};
+}
+function showResult(){
+const r=calcScore();
+document.getElementById("wrap").innerHTML=`
+<div class="result"><h2>✅ Test Submitted!</h2><div class="score">${r.score} / ${totalMarks}</div>
+<p><b>${esc(tName)}</b><br>Attempt: ${esc(attemptId)}<br>Correct: ${r.correct} • Wrong: ${r.wrong} • Attempted: ${r.attempted} / ${totalQ}<br>Correct: ${per!==null?"+ "+per+" Mark":"As per Question Paper"} • Wrong: ${neg} Mark<br><span style="color:#888;font-size:12px">Demo Evaluation - Frontend only. Final result will be verified by Backend.</span></p>
+<div class="review">${questions.slice(0,Math.min(totalQ,10)).map((q,i)=>{let st=answers[i]===null?"Not Attempted":(answers[i]===q.a?'<span class="correct">Correct ✓</span>':'<span class="wrong">Wrong ✗</span>');return `<div><b>Q${i+1}.</b> ${esc(q.q)}<br>Your Answer: ${answers[i]===null?"-":esc(q.o[answers[i]])} • Correct: ${esc(q.o[q.a])} • ${st}</div>`}).join("")}</div>
+<button class="submitBtn" onclick="startNewAttempt()">↻ Start New Attempt</button>
+<button class="submitBtn" style="background:#670f9e;margin-top:8px" onclick="location.href='tests.html'">← Back to Tests</button></div>`;
+window.scrollTo(0,0);
+}
+function startNewAttempt(){
+  localStorage.removeItem(lastKey);
+  const u=new URL(location.href); u.searchParams.delete("attempt"); location.href=u.toString();
 }
 function tick(){
 if(submitted) return;
@@ -143,29 +187,26 @@ const t=document.getElementById("timer");
 t.textContent=`${String(h).padStart(2,"0")}:${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;
 t.classList.toggle("warn",left<5*60*1000);
 }
-setInterval(tick,1000);tick();renderQ();
-document.getElementById("submitBtn").addEventListener("click",()=>{
-const c=counts();
-document.getElementById("modalText").textContent=`Answered: ${c.a+c.am} • Not Answered: ${c.na} • Not Visited: ${c.nv} • Marked: ${c.m+c.am}. Are you sure?`;
-document.getElementById("modal").style.display="flex";
-});
-document.getElementById("cancelSubmit").addEventListener("click",()=>{document.getElementById("modal").style.display="none";});
-document.getElementById("confirmSubmit").addEventListener("click",()=>{document.getElementById("modal").style.display="none";doSubmit();});
+// If already submitted, show result and block exam
+if(submitted){showResult();}
+else{
+  setInterval(tick,1000);tick();renderQ();
+  document.getElementById("submitBtn").addEventListener("click",()=>{
+    const c=counts();
+    document.getElementById("modalText").textContent=`Answered: ${c.a+c.am} • Not Answered: ${c.na} • Not Visited: ${c.nv} • Marked: ${c.m+c.am}. Are you sure?`;
+    document.getElementById("modal").style.display="flex";
+  });
+  document.getElementById("cancelSubmit").addEventListener("click",()=>{document.getElementById("modal").style.display="none";});
+  document.getElementById("confirmSubmit").addEventListener("click",()=>{document.getElementById("modal").style.display="none";doSubmit();});
+}
 function doSubmit(){
 if(submitted) return; submitted=true;
-localStorage.removeItem(key);
-let correct=0,wrong=0,attempted=0;
-let perMark=per!==null?per:(totalMarks/totalQ);
-questions.forEach((q,i)=>{if(answers[i]!==null){attempted++;if(answers[i]===q.a)correct++;else wrong++;}});
-let score=correct*perMark + wrong*neg;
-score=Math.max(0,Math.round(score*100)/100);
-document.getElementById("wrap").innerHTML=`
-<div class="result"><h2>✅ Test Submitted!</h2><div class="score">${score} / ${totalMarks}</div>
-<p><b>${esc(tName)}</b><br>Correct: ${correct} • Wrong: ${wrong} • Attempted: ${attempted} / ${totalQ}<br>Correct: ${per!==null?"+ "+per+" Mark":"As per Question Paper"} • Wrong: ${neg} Mark<br><span style="color:#888;font-size:12px">Demo Evaluation - Frontend only. Final result will be verified by Backend.</span></p>
-<div class="review">${questions.slice(0,Math.min(totalQ,10)).map((q,i)=>{let st=answers[i]===null?"Not Attempted":(answers[i]===q.a?'<span class="correct">Correct ✓</span>':'<span class="wrong">Wrong ✗</span>');return `<div><b>Q${i+1}.</b> ${esc(q.q)}<br>Your Answer: ${answers[i]===null?"-":esc(q.o[answers[i]])} • Correct: ${esc(q.o[q.a])} • ${st}</div>`}).join("")}</div>
-<button class="submitBtn" onclick="location.href='tests.html'">← Back to Tests</button></div>`;
-window.scrollTo(0,0);
+const r=calcScore();
+state.submitted=true; state.score=r.score; state.submittedAt=Date.now();
+saveState(); showResult();
 }
+// Save on page hide / close also
+window.addEventListener("beforeunload",()=>{if(!submitted) saveState();});
 </script>
 </body>
 </html>
