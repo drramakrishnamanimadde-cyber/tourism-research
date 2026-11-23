@@ -109,7 +109,6 @@ const per=perRaw===undefined||perRaw===null||perRaw===""?null:validFloat(perRaw,
 const invalidPer=perRaw!==undefined && perRaw!==null && perRaw!=="" && per===null;
 const invalidMarking=per!==null && (q<=0 || marks<=0 || Math.abs(per*q-marks)>1e-9);
 const countsValid=q>0 && marks>0 && !invalidCounts && (correct+wrong<=q);
-// V2.6 FIX: score=abc => Invalid, not silent re-calc
 let scoreRaw=p.get("score")??data.score;
 let score=null;
 let invalidScore=false;
@@ -127,10 +126,11 @@ score=correct*perCalc + wrong*neg;
 score=Math.max(0,score);
 score=Math.round(score*100)/100;
 }
+// V2.7 FIX: Don't clamp bad score to marks - mark Invalid instead
+// score=100 in 25 marks test => Invalid, not 25
 if(score!==null){
-score=Math.max(0,score);
-if(marks>0) score=Math.min(score,marks);
 score=Math.round(score*100)/100;
+if(score<0 || (marks>0 && score>marks)) invalidScore=true;
 }
 const attempted=correct+wrong;
 const skipped=(q>0 && countsValid)?Math.max(0,q-attempted):0;
