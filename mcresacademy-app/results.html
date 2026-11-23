@@ -93,7 +93,8 @@ if(raw) data=JSON.parse(raw);
 if(!data || typeof data!=="object" || Array.isArray(data)) data={};
 let legacyTestName="";
 try{ legacyTestName=safeGet("mcres_last_test")||""; }catch(e){ legacyTestName=""; }
-const examId=String(p.get("id")||data.id||"").slice(0,80);
+// V2.9 FIX 1: Don't slice examId - let regex reject >80 chars ID
+const examId=String(p.get("id")||data.id||"");
 const testName=String(p.get("test")||data.test||data.testName||legacyTestName||"Last Test").slice(0,100);
 const q=validInt(p.get("q")??data.q,0,0,1000);
 const marks=validInt(p.get("marks")??data.marks,0,0,10000);
@@ -109,8 +110,6 @@ const per=perRaw===undefined||perRaw===null||perRaw===""?null:validFloat(perRaw,
 const invalidPer=perRaw!==undefined && perRaw!==null && perRaw!=="" && per===null;
 const invalidMarking=per!==null && (q<=0 || marks<=0 || Math.abs(per*q-marks)>1e-9);
 const countsValid=q>0 && marks>0 && !invalidCounts && (correct+wrong<=q);
-// V2.8 FIX: Legacy "25/25" - denominator must equal marks, else Invalid
-// "25/abc" => Invalid, "25/200" in 25 marks test => Invalid, "25/25" => Valid
 let scoreRaw=p.get("score")??data.score;
 let score=null;
 let invalidScore=false;
@@ -141,6 +140,20 @@ const attempted=correct+wrong;
 const skipped=(q>0 && countsValid)?Math.max(0,q-attempted):0;
 const accuracy=(attempted>0 && countsValid)?Math.round((correct/attempted)*100):0;
 document.getElementById("testName").textContent=testName;
+// V2.9 FIX 2: Retake link OUTSIDE validation block - works even on Invalid result
+// Valid ID only - regex rejects >80 chars, bad chars
+const retakeBtn=document.getElementById("retakeBtn");
+if(examId && /^[A-Za-z0-9][A-Za-z0-9\-_]{0,79}$/.test(examId)){
+let u=`test-instructions.html?id=${encodeURIComponent(examId)}&test=${encodeURIComponent(testName)}`;
+if(q>0) u+=`&q=${encodeURIComponent(q)}`;
+if(marks>0) u+=`&marks=${encodeURIComponent(marks)}`;
+u+=`&time=${encodeURIComponent(time)}`;
+u+=`&neg=${encodeURIComponent(neg)}`;
+if(per!==null) u+=`&per=${encodeURIComponent(per)}`;
+retakeBtn.href=u;
+}else{
+retakeBtn.style.display="none";
+}
 if(score===null || !countsValid || invalidCounts || invalidPer || invalidMarking || invalidScore){
 document.getElementById("score").textContent="-";
 document.getElementById("scoreLabel").textContent="Complete a test to see your score here";
@@ -167,17 +180,6 @@ else if(pct>=40) m="Good! Practice More 📚";
 else if(pct>=20) m="Keep Trying! You can improve 💪";
 else m="Don't Give Up! Try Again 📚";
 document.getElementById("msg").textContent=m;
-if(examId && /^[A-Za-z0-9][A-Za-z0-9\-_]{0,79}$/.test(examId)){
-let u=`test-instructions.html?id=${encodeURIComponent(examId)}&test=${encodeURIComponent(testName)}`;
-if(q>0) u+=`&q=${encodeURIComponent(q)}`;
-if(marks>0) u+=`&marks=${encodeURIComponent(marks)}`;
-u+=`&time=${encodeURIComponent(time)}`;
-u+=`&neg=${encodeURIComponent(neg)}`;
-if(per!==null) u+=`&per=${encodeURIComponent(per)}`;
-document.getElementById("retakeBtn").href=u;
-}else{
-document.getElementById("retakeBtn").style.display="none";
-}
 }
 </script>
 </body>
