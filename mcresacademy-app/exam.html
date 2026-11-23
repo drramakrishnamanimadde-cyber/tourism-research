@@ -69,7 +69,8 @@ function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").repl
 const p=new URLSearchParams(location.search);
 const tNameRaw=p.get("test");
 const tName=tNameRaw===null?"Demo Test":tNameRaw.slice(0,100);
-const testId=(p.get("id")||"").trim();
+// V14 FIX 2: Test ID also strict - NO trim(). Spaces => Invalid Test ID
+const testId=p.get("id")||"";
 function showError(title,msg,showNewBtn){
   try{document.getElementById("timer").textContent="BLOCKED";}catch(e){}
   try{document.getElementById("wrap").innerHTML=`<div class="errBox"><h2>⚠️ ${esc(title)}</h2><p>${esc(msg)}<br><br>Test ID: <b>${esc(testId||"-")}</b> • Test: <b>${esc(tName)}</b></p>
@@ -121,7 +122,6 @@ let attemptId="";
 let attemptSource="";
 const rawAttempt=p.get("attempt");
 if(rawAttempt!==null){
-  // V13 FIX 1: NO trim() - spaces in Attempt ID are rejected
   const urlAttempt=rawAttempt;
   if(!/^[A-Za-z0-9_-]{1,64}$/.test(urlAttempt)){
     showError("Invalid Attempt ID","URL లో Attempt ID ఖాళీగా ఉంది లేదా తప్పుగా ఉంది. Tests List నుండి మళ్ళీ Open చేయండి.",false);
@@ -280,7 +280,6 @@ function showResult(){
   const r=calcScore();
   let displayScore = r.score;
   if(submitted){
-    // V13 FIX 2: Score mismatch tolerance 0.01 -> 1e-9
     if(typeof state.score==="number" && Math.abs(state.score - r.score)>0.000000001){
       showError("Score Mismatch","Stored Score ("+state.score+") మరియు Recalculated Score ("+r.score+") సరిపోవట్లేదు. ఈ Attempt డేటా పాడై ఉండవచ్చు.",true);
       return;
@@ -315,14 +314,19 @@ t.classList.toggle("warn",left<5*60*1000);
 }
 if(submitted){showResult();}
 else{
-  setInterval(tick,1000);tick();renderQ();
-  document.getElementById("submitBtn").addEventListener("click",()=>{
-    const c=counts();
-    document.getElementById("modalText").textContent=`Answered: ${c.a+c.am} • Not Answered: ${c.na} • Not Visited: ${c.nv} • Marked: ${c.m+c.am}. Are you sure?`;
-    document.getElementById("modal").style.display="flex";
-  });
-  document.getElementById("cancelSubmit").addEventListener("click",()=>{document.getElementById("modal").style.display="none";});
-  document.getElementById("confirmSubmit").addEventListener("click",()=>{document.getElementById("modal").style.display="none";doSubmit();});
+  // V14 FIX 1: If tick() auto-submitted (expired), do NOT renderQ / attach listeners
+  setInterval(tick,1000);
+  tick();
+  if(!submitted){
+    renderQ();
+    document.getElementById("submitBtn").addEventListener("click",()=>{
+      const c=counts();
+      document.getElementById("modalText").textContent=`Answered: ${c.a+c.am} • Not Answered: ${c.na} • Not Visited: ${c.nv} • Marked: ${c.m+c.am}. Are you sure?`;
+      document.getElementById("modal").style.display="flex";
+    });
+    document.getElementById("cancelSubmit").addEventListener("click",()=>{document.getElementById("modal").style.display="none";});
+    document.getElementById("confirmSubmit").addEventListener("click",()=>{document.getElementById("modal").style.display="none";doSubmit();});
+  }
 }
 function doSubmit(){
 if(submitted) return;
