@@ -57,7 +57,7 @@ body{background:#f5f0ff;padding:16px;padding-bottom:40px;color:#222}
 <div class="testMeta" id="testMeta">200 Questions • 200 Marks • Duration: 180 Minutes<br>Negative Marking: -0.25 for each wrong answer</div>
 </div>
 <div class="info">
-<b>⚠️ ముఖ్య గమనిక:</b> Start Test నొక్కిన తర్వాత Timer Start అవుతుంది. Time ముగిసిన తర్వాత Test Submit చేయాల్సి ఉంటుంది. Refresh / Page Close చేస్తే Timer ప్రవర్తన ప్రస్తుత Attempt నియమాలపై ఆధారపడి ఉంటుంది.
+<b>⚠️ ముఖ్య గమనిక:</b> Start Test నొక్కిన తర్వాత Timer Start అవుతుంది. Time ముగిసిన తర్వాత Test Submit చేయాల్సి ఉంటుంది. Refresh / Page Close చేసినా, అదే Browser లో Attempt Data అందుబాటులో ఉంటే పరీక్షను మిగిలిన సమయంతో కొనసాగించవచ్చు. Browser Storage అందుబాటులో లేకపోతే లేదా Data తొలగించబడితే సమస్య రావచ్చు.
 </div>
 <div class="rules">
 <h3>General Instructions</h3>
@@ -90,11 +90,10 @@ body{background:#f5f0ff;padding:16px;padding-bottom:40px;color:#222}
 </div>
 <button class="startBtn" id="startBtn" disabled>Start Test →</button>
 <button class="backBtn" onclick="history.back()">← Back to Tests</button>
-<div class="note">ℹ️ ఈ పేజీలో చూపించే మార్కులు / సమయం ప్రదర్శన కోసం మాత్రమే. నిజమైన పరీక్షా నియమాలు Backend లో నిర్ధారించబడతాయి. Palette రంగులు exam.html లో కూడా ఇదే విధంగా ఉంటాయి.</div>
+<div class="note">ℹ️ ప్రస్తుతం ఇది MCRES ACADEMY Demo Examination System. నిజమైన పరీక్షల కోసం పరీక్షా నియమాలు, సమాధానాల ధృవీకరణ, ఫలితాల లెక్కింపు Server-side లో అమలు చేయబడతాయి. Palette రంగులు exam.html లో కూడా ఇదే విధంగా ఉంటాయి.</div>
 <div class="footer"><b>MCRES ACADEMY - Aspire - Achieve</b><br>An educational programme by Mallaiah Center for River & Earth Sciences (MCRES)<br>Founder & Director: Dr Ramakrishna Manimadde</div>
 <script>
 function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");}
-// Strict validation: invalid / out-of-range -> safe default
 function validInt(raw,def,min,max){
 const n=Number(raw);
 if(!Number.isFinite(n)||!Number.isInteger(n)||n<min||n>max) return def;
@@ -106,26 +105,30 @@ if(!Number.isFinite(n)||n<min||n>max) return def;
 return n;
 }
 const p=new URLSearchParams(location.search);
-// FIX: Read examId from URL - tests.html sends id=TG-DEMO-001 etc. Must forward to exam.html
-const examId=(p.get("id")||"TG-DEMO-001").slice(0,50);
+// V3 FIX 1: Strict Exam ID validation - no auto-fallback to Demo. Invalid => "" => Block Start
+const rawId=p.get("id")||"";
+const examId=/^[A-Za-z0-9][A-Za-z0-9\-_]{0,79}$/.test(rawId) ? rawId : "";
 const tName=(p.get("test")||"Constable Grand Test - 1").slice(0,100);
 const q=validInt(p.get("q"),200,1,1000);
 const marks=validInt(p.get("marks"),200,1,1000);
 const time=validInt(p.get("time"),180,1,600);
-// per-question marks: only if explicitly given via ?per= , otherwise do NOT assume equal marks
 const perRaw=p.get("per");
 const per=perRaw===null?null:validFloat(perRaw,null,0.25,10);
-const neg=validFloat(p.get("neg"),-0.25,-2,0);
+// V3 FIX 2: Invalid per / Mismatch per*q != marks => Block Start
+const invalidPer=perRaw!==null && per===null;
+const invalidMarking=per!==null && Math.abs(per*q-marks)>1e-9;
 const perText=per===null?"As per Question Paper":"+"+per+" Mark";
 document.getElementById("testName").textContent=tName;
-document.getElementById("testMeta").innerHTML=`${esc(String(q))} Questions • ${esc(String(marks))} Marks • Duration: ${esc(String(time))} Minutes<br>Negative Marking: ${esc(String(neg))} for each wrong answer`;
+document.getElementById("testMeta").innerHTML=`${esc(String(q))} Questions • ${esc(String(marks))} Marks • Duration: ${esc(String(time))} Minutes<br>Negative Marking: ${esc(String(validFloat(p.get("neg"),-0.25,-2,0))} for each wrong answer`;
+const neg=validFloat(p.get("neg"),-0.25,-2,0);
 document.getElementById("markingList").innerHTML=`<li>Correct Answer: <b>${esc(perText)}</b></li><li>Wrong Answer: <b>${esc(String(neg))} Mark</b></li><li>Not Attempted: <b>0 Mark</b></li>`;
 const agree=document.getElementById("agreeCheck");
 const startBtn=document.getElementById("startBtn");
 agree.addEventListener("change",()=>{ startBtn.disabled=!agree.checked; });
 startBtn.addEventListener("click",()=>{
 if(!agree.checked) return;
-// FIX: Forward id to exam.html - V16 validation needs it
+if(!examId){ alert("Invalid Test ID. Please return to Test Series."); return; }
+if(invalidPer || invalidMarking){ alert("Invalid Marking Scheme. Please return to Test Series."); return; }
 let url=`exam.html?id=${encodeURIComponent(examId)}&test=${encodeURIComponent(tName)}&q=${encodeURIComponent(q)}&marks=${encodeURIComponent(marks)}&time=${encodeURIComponent(time)}&neg=${encodeURIComponent(neg)}`;
 if(per!==null) url+=`&per=${encodeURIComponent(per)}`;
 location.href=url;
