@@ -21,10 +21,21 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;bac
 .search input{width:100%;padding:13px 40px 13px 16px;border:1px solid rgba(255,255,255,.85);border-radius:14px;font-size:15px;background:#fff;outline:none;box-shadow:0 8px 18px rgba(0,0,0,.20)}
 .search input:focus{border-color:#ffc400}
 .clearBtn{position:absolute;right:10px;top:50%;transform:translateY(-50%);border:0;background:#eee;width:26px;height:26px;border-radius:50%;cursor:pointer;font-size:14px;display:none}
-/* --- CARDS - COLOURFUL 3D --- */
+/* --- CARDS - EACH TAB DIFFERENT COLOUR 3D --- */
 .card{max-width:480px;margin:14px auto;background:linear-gradient(180deg,#ffffff 0%,#fff9e6 45%,#f3eeff 100%);border:2px solid #fff;border-radius:18px;padding:16px;box-shadow:0 14px 28px rgba(0,0,0,.28), 0 4px 0 rgba(255,157,0,.55), inset 0 1px 0 #fff, inset 0 -3px 0 rgba(124,58,237,.12);display:flex;align-items:flex-start;gap:12px;cursor:pointer;width:100%;text-align:left;position:relative;z-index:1}
 .card:focus{outline:2px solid #670f9e;outline-offset:2px}
 .card:active{transform:scale(.98);box-shadow:0 6px 14px rgba(0,0,0,.25)}
+#list .card:nth-child(1){background:linear-gradient(180deg,#ffffff,#e0f2ff);border-color:#bae6fd;box-shadow:0 14px 28px rgba(0,0,0,.28), 0 4px 0 #38bdf8, inset 0 1px 0 #fff}
+#list .card:nth-child(2){background:linear-gradient(180deg,#ffffff,#ffe4ec);border-color:#fbcfe8;box-shadow:0 14px 28px rgba(0,0,0,.28), 0 4px 0 #f472b6, inset 0 1px 0 #fff}
+#list .card:nth-child(3){background:linear-gradient(180deg,#ffffff,#ffedd5);border-color:#fed7aa;box-shadow:0 14px 28px rgba(0,0,0,.28), 0 4px 0 #fb923c, inset 0 1px 0 #fff}
+#list .card:nth-child(4){background:linear-gradient(180deg,#ffffff,#dcfce7);border-color:#bbf7d0;box-shadow:0 14px 28px rgba(0,0,0,.28), 0 4px 0 #4ade80, inset 0 1px 0 #fff}
+#list .card:nth-child(5){background:linear-gradient(180deg,#ffffff,#fef9c3);border-color:#fef08a;box-shadow:0 14px 28px rgba(0,0,0,.28), 0 4px 0 #facc15, inset 0 1px 0 #fff}
+#list .card:nth-child(6){background:linear-gradient(180deg,#ffffff,#e0e7ff);border-color:#c7d2fe;box-shadow:0 14px 28px rgba(0,0,0,.28), 0 4px 0 #60a5fa, inset 0 1px 0 #fff}
+#list .card:nth-child(7){background:linear-gradient(180deg,#ffffff,#ccfbf1);border-color:#99f6e4;box-shadow:0 14px 28px rgba(0,0,0,.28), 0 4px 0 #2dd4bf, inset 0 1px 0 #fff}
+#list .card:nth-child(8){background:linear-gradient(180deg,#ffffff,#ede9fe);border-color:#ddd6fe;box-shadow:0 14px 28px rgba(0,0,0,.28), 0 4px 0 #a78bfa, inset 0 1px 0 #fff}
+#list .card:nth-child(9){background:linear-gradient(180deg,#ffffff,#fee2e2);border-color:#fecaca;box-shadow:0 14px 28px rgba(0,0,0,.28), 0 4px 0 #f87171, inset 0 1px 0 #fff}
+#list .card:nth-child(10){background:linear-gradient(180deg,#ffffff,#ffedd5);border-color:#fdba74;box-shadow:0 14px 28px rgba(0,0,0,.28), 0 4px 0 #ff7b00, inset 0 1px 0 #fff}
+#list .card:nth-child(11){background:linear-gradient(180deg,#ffffff,#fdf4ff);border-color:#f5d0fe;box-shadow:0 14px 28px rgba(0,0,0,.28), 0 4px 0 #e879f9, inset 0 1px 0 #fff}
 .num{width:42px;height:42px;min-width:42px;border-radius:13px;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:17px;box-shadow:0 6px 12px rgba(0,0,0,.30), inset 0 2px 0 rgba(255,255,255,.55), inset 0 -3px 0 rgba(0,0,0,.18);text-shadow:0 2px 3px rgba(0,0,0,.30)}
 .cardText{display:block;flex:1;min-width:0}
 .cardTitle{display:block;font-size:16.5px;line-height:1.35;color:#2d0a5e;font-weight:900;word-break:break-word;text-shadow:0 1px 0 rgba(255,255,255,.8)}
