@@ -6,19 +6,22 @@
 <title>Test Series - MCRES ACADEMY | Aspire - Achieve</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,-apple-system,Arial,sans-serif}
-body{background:#f5f0ff;padding:16px;padding-bottom:40px;color:#222}
-.top{max-width:480px;margin:0 auto;text-align:center;padding:14px 10px 8px}
-.top img{width:96px;height:96px;object-fit:contain;margin-bottom:4px}
-.top h1{color:#0d7a6b;font-size:25px;letter-spacing:.3px;line-height:1.2;font-weight:900}
-.top .tagline{color:#e91e63;font-size:18px;font-weight:800;margin-top:2px;letter-spacing:.2px}
-.top .sub{font-size:13px;color:#333;margin-top:6px;font-weight:700}
-.top .tag{font-size:12px;color:#666;margin-top:4px;line-height:1.5}
-.founder{display:inline-block;background:#00796b;color:#fff;font-size:12px;font-weight:700;padding:7px 12px;border-radius:20px;margin-top:10px}
-.search{max-width:480px;margin:14px auto 4px;position:relative}
-.search input{width:100%;padding:13px 40px 13px 16px;border:1px solid #e5d5f5;border-radius:14px;font-size:15px;background:#fff;outline:none}
-.search input:focus{border-color:#670f9e}
+body{background:linear-gradient(160deg,#4a1d9e 0%,#6d28d9 35%,#7c3aed 60%,#3b1d8f 100%);min-height:100vh;padding:16px;padding-bottom:40px;color:#222;position:relative;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(circle at 15% 20%, rgba(255,255,255,.22) 0 45px, transparent 46px),radial-gradient(circle at 88% 12%, rgba(255,255,255,.18) 0 70px, transparent 71px),radial-gradient(circle at 85% 65%, rgba(255,255,255,.14) 0 55px, transparent 56px),radial-gradient(circle at 8% 75%, rgba(255,255,255,.12) 0 65px, transparent 66px),radial-gradient(circle at 50% 95%, rgba(255,255,255,.10) 0 90px, transparent 91px)}
+.top{max-width:480px;margin:0 auto;text-align:center;padding:14px 10px 8px;position:relative;z-index:1}
+.top img{width:96px;height:96px;object-fit:contain;margin-bottom:4px;background:#fff;padding:6px;border-radius:22px;box-shadow:0 12px 30px rgba(0,0,0,.35), inset 0 2px 0 rgba(255,255,255,.9)}
+.top h1{color:#ffc400;-webkit-text-stroke:1px #ff9d00;text-shadow:0 1px 0 #ff9d00,0 2px 0 #ff8a00,0 3px 0 #f07c00,0 4px 0 #e06e00,0 5px 0 #c95f00,0 6px 0 #b35500,0 7px 2px rgba(0,0,0,.25),0 12px 22px rgba(0,0,0,.45);font-size:30px;letter-spacing:.3px;line-height:1.2;font-weight:900}
+.top .tagline{display:inline-block;margin:8px 0 8px;padding:6px 20px;font-size:16px;font-weight:900;letter-spacing:1.5px;font-style:italic;color:#fff;background:linear-gradient(90deg,#ff7b00,#ff2d55,#7c3aed);border-radius:999px;box-shadow:0 8px 18px rgba(0,0,0,.35), inset 0 2px 0 rgba(255,255,255,.5);text-shadow:0 2px 4px rgba(0,0,0,.35)}
+.top .sub{font-size:13px;color:#fff;margin-top:6px;font-weight:700;text-shadow:0 2px 6px rgba(0,0,0,.4)}
+.top .tag{font-size:13px;color:#fff;margin-top:6px;line-height:1.55;text-shadow:0 2px 6px rgba(0,0,0,.4)}
+.top .tag b{color:#ffe135}
+.founder{display:block;max-width:400px;margin:12px auto 0;background:linear-gradient(180deg,#ffffff,#fff7d6);border:2px solid #ffc400;border-radius:18px;padding:12px 12px 13px;box-shadow:0 14px 28px rgba(255,180,0,.35), 0 12px 24px rgba(0,0,0,.35), 0 4px 0 #ff9d00, inset 0 1px 0 #fff;font-size:13px;font-weight:800;letter-spacing:.5px;color:#4a1d9e;line-height:1.4;text-transform:uppercase}
+.founder span{display:block;margin-top:3px;font-size:20px;font-weight:900;line-height:1.25;font-style:italic;letter-spacing:.2px;text-transform:none;background:linear-gradient(90deg,#ff7b00 0%,#ff2d55 30%,#7c3aed 60%,#00a8ff 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;filter:drop-shadow(0 2px 0 rgba(255,157,0,.25)) drop-shadow(0 3px 5px rgba(0,0,0,.20))}
+.search{max-width:480px;margin:14px auto 4px;position:relative;z-index:1}
+.search input{width:100%;padding:13px 40px 13px 16px;border:1px solid rgba(255,255,255,.85);border-radius:14px;font-size:15px;background:#fff;outline:none;box-shadow:0 8px 18px rgba(0,0,0,.20)}
+.search input:focus{border-color:#ffc400}
 .clearBtn{position:absolute;right:10px;top:50%;transform:translateY(-50%);border:0;background:#eee;width:26px;height:26px;border-radius:50%;cursor:pointer;font-size:14px;display:none}
-.card{max-width:480px;margin:12px auto;background:#fff;border-radius:16px;padding:16px;box-shadow:0 4px 12px rgba(0,0,0,.06);display:flex;align-items:flex-start;gap:12px;cursor:pointer;width:100%;text-align:left}
+.card{max-width:480px;margin:12px auto;background:linear-gradient(180deg,#ffffff,#f3eeff);border:1px solid rgba(255,255,255,.9);border-radius:16px;padding:16px;box-shadow:0 10px 22px rgba(0,0,0,.22), inset 0 1px 0 #fff;display:flex;align-items:flex-start;gap:12px;cursor:pointer;width:100%;text-align:left;position:relative;z-index:1}
 .card:focus{outline:2px solid #670f9e;outline-offset:2px}
 .card:active{transform:scale(.98)}
 .num{width:38px;height:38px;min-width:38px;border-radius:11px;background:#670f9e;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px}
@@ -28,20 +31,20 @@ body{background:#f5f0ff;padding:16px;padding-bottom:40px;color:#222}
 .view{margin-left:auto;background:#ff8703;color:#fff;font-size:12px;font-weight:700;padding:7px 12px;border-radius:20px;white-space:nowrap;flex-shrink:0}
 .view.paid{background:#670f9e}
 .view.free{background:#0d7a6b}
-.back{display:block;text-align:center;margin:16px auto;max-width:480px;color:#670f9e;font-weight:700;background:#fff;padding:13px;border-radius:12px;cursor:pointer;border:1px solid #e5d5f5;width:100%;font-size:15px;font-family:inherit}
+.back{display:block;text-align:center;margin:16px auto;max-width:480px;color:#670f9e;font-weight:700;background:#fff;padding:13px;border-radius:12px;cursor:pointer;border:1px solid #e5d5f5;width:100%;font-size:15px;font-family:inherit;position:relative;z-index:1}
 .c1{background:#38bdf8}.c2{background:#34d399}.c3{background:#fbbf24}.c4{background:#a78bfa}.c5{background:#f472b6}.c6{background:#fb923c}.c7{background:#4ade80}.c8{background:#facc15}.c9{background:#60a5fa}.c10{background:#f87171}.c11{background:#a78bfa}
 .badge{display:inline-block;background:#fff3e0;color:#e65100;font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;margin-top:6px}
 .badge.free{background:#e0f2f1;color:#00796b}
-.empty{max-width:480px;margin:20px auto;text-align:center;color:#888;font-size:14px;background:#fff;padding:20px;border-radius:14px;line-height:1.6}
+.empty{max-width:480px;margin:20px auto;text-align:center;color:#888;font-size:14px;background:#fff;padding:20px;border-radius:14px;line-height:1.6;position:relative;z-index:1}
 .empty button{margin-top:12px;background:#670f9e;color:#fff;border:0;padding:9px 18px;border-radius:20px;cursor:pointer;font-weight:700}
-.payBox{max-width:480px;margin:10px auto;background:#fff;border-radius:18px;padding:22px;text-align:center;box-shadow:0 4px 16px rgba(0,0,0,.08)}
+.payBox{max-width:480px;margin:10px auto;background:#fff;border-radius:18px;padding:22px;text-align:center;box-shadow:0 10px 24px rgba(0,0,0,.22);position:relative;z-index:1}
 .payBox h2{font-size:19px;color:#670f9e}.payBox p{font-size:14px;color:#555;margin:10px 0;line-height:1.6}
 .payBox ul{text-align:left;font-size:13.5px;color:#333;line-height:1.8;margin:12px 0;padding-left:18px}
 .payBox .price{font-size:20px;font-weight:800;color:#111;margin:8px 0}
 .payBtn{display:block;width:100%;background:#ccc;color:#fff;border:0;padding:14px;border-radius:12px;font-weight:800;font-size:15px;cursor:not-allowed;margin-top:10px}
 .startBtn{display:block;width:100%;background:#0d7a6b;color:#fff;border:0;padding:14px;border-radius:12px;font-weight:800;font-size:15px;cursor:pointer;margin-top:10px}
-.footer{max-width:480px;margin:24px auto 0;text-align:center;font-size:12px;color:#777;line-height:1.6}
-.footer b{color:#333}
+.footer{max-width:480px;margin:24px auto 0;text-align:center;font-size:12px;color:rgba(255,255,255,.85);line-height:1.6;position:relative;z-index:1;text-shadow:0 1px 3px rgba(0,0,0,.4)}
+.footer b{color:#fff}
 </style>
 </head>
 <body>
@@ -50,8 +53,8 @@ body{background:#f5f0ff;padding:16px;padding-bottom:40px;color:#222}
 <h1>MCRES ACADEMY</h1>
 <div class="tagline">Aspire - Achieve</div>
 <div class="sub">Online Test Series & Assessment Platform</div>
-<div class="tag">A coaching and examination-preparation initiative of<br><b>Mallaiah Center for River & Earth Sciences (MCRES)</b></div>
-<div class="founder">Founder & Director: Dr Ramakrishna Manimadde</div>
+<div class="tag">A coaching and examination-preparation initiative<br>of<br><b>Mallaiah Center for River &amp; Earth Sciences<br>(MCRES)</b></div>
+<div class="founder">✦ Founder &amp; Director ✦<span>Dr Ramakrishna Manimadde</span></div>
 </div>
 <div class="search" id="searchWrap"><input id="searchInput" placeholder="🔍 Search - Ex: Police, Group-I, 200, TET..." aria-label="Search tests"><button class="clearBtn" id="clearBtn" aria-label="Clear search">✕</button></div>
 <div id="list"></div>
