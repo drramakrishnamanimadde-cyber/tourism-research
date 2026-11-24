@@ -21,18 +21,19 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;bac
 .search input{width:100%;padding:13px 40px 13px 16px;border:1px solid rgba(255,255,255,.85);border-radius:14px;font-size:15px;background:#fff;outline:none;box-shadow:0 8px 18px rgba(0,0,0,.20)}
 .search input:focus{border-color:#ffc400}
 .clearBtn{position:absolute;right:10px;top:50%;transform:translateY(-50%);border:0;background:#eee;width:26px;height:26px;border-radius:50%;cursor:pointer;font-size:14px;display:none}
-.card{max-width:480px;margin:12px auto;background:linear-gradient(180deg,#ffffff,#f3eeff);border:1px solid rgba(255,255,255,.9);border-radius:16px;padding:16px;box-shadow:0 10px 22px rgba(0,0,0,.22), inset 0 1px 0 #fff;display:flex;align-items:flex-start;gap:12px;cursor:pointer;width:100%;text-align:left;position:relative;z-index:1}
+/* --- CARDS - COLOURFUL 3D --- */
+.card{max-width:480px;margin:14px auto;background:linear-gradient(180deg,#ffffff 0%,#fff9e6 45%,#f3eeff 100%);border:2px solid #fff;border-radius:18px;padding:16px;box-shadow:0 14px 28px rgba(0,0,0,.28), 0 4px 0 rgba(255,157,0,.55), inset 0 1px 0 #fff, inset 0 -3px 0 rgba(124,58,237,.12);display:flex;align-items:flex-start;gap:12px;cursor:pointer;width:100%;text-align:left;position:relative;z-index:1}
 .card:focus{outline:2px solid #670f9e;outline-offset:2px}
-.card:active{transform:scale(.98)}
-.num{width:38px;height:38px;min-width:38px;border-radius:11px;background:#670f9e;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px}
+.card:active{transform:scale(.98);box-shadow:0 6px 14px rgba(0,0,0,.25)}
+.num{width:42px;height:42px;min-width:42px;border-radius:13px;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:17px;box-shadow:0 6px 12px rgba(0,0,0,.30), inset 0 2px 0 rgba(255,255,255,.55), inset 0 -3px 0 rgba(0,0,0,.18);text-shadow:0 2px 3px rgba(0,0,0,.30)}
 .cardText{display:block;flex:1;min-width:0}
-.cardTitle{display:block;font-size:15.5px;line-height:1.35;color:#1a1a1a;font-weight:700;word-break:break-word}
-.cardDesc{display:block;font-size:12.5px;color:#666;margin-top:4px;line-height:1.4}
-.view{margin-left:auto;background:#ff8703;color:#fff;font-size:12px;font-weight:700;padding:7px 12px;border-radius:20px;white-space:nowrap;flex-shrink:0}
-.view.paid{background:#670f9e}
-.view.free{background:#0d7a6b}
+.cardTitle{display:block;font-size:16.5px;line-height:1.35;color:#2d0a5e;font-weight:900;word-break:break-word;text-shadow:0 1px 0 rgba(255,255,255,.8)}
+.cardDesc{display:block;font-size:13px;color:#5b4a7a;margin-top:5px;line-height:1.4;font-weight:600}
+.view{margin-left:auto;background:linear-gradient(180deg,#ffa726,#ff7b00);color:#fff;font-size:12.5px;font-weight:900;padding:8px 14px;border-radius:20px;white-space:nowrap;flex-shrink:0;box-shadow:0 6px 12px rgba(255,123,0,.45), inset 0 2px 0 rgba(255,255,255,.55), 0 3px 0 #e65100;text-shadow:0 1px 2px rgba(0,0,0,.25)}
+.view.paid{background:linear-gradient(180deg,#a78bfa,#670f9e);box-shadow:0 6px 12px rgba(103,15,158,.45), inset 0 2px 0 rgba(255,255,255,.55), 0 3px 0 #3b0a5e}
+.view.free{background:linear-gradient(180deg,#2dd4bf,#0d7a6b);box-shadow:0 6px 12px rgba(13,122,107,.45), inset 0 2px 0 rgba(255,255,255,.55), 0 3px 0 #065f52}
 .back{display:block;text-align:center;margin:16px auto;max-width:480px;color:#670f9e;font-weight:700;background:#fff;padding:13px;border-radius:12px;cursor:pointer;border:1px solid #e5d5f5;width:100%;font-size:15px;font-family:inherit;position:relative;z-index:1}
-.c1{background:#38bdf8}.c2{background:#34d399}.c3{background:#fbbf24}.c4{background:#a78bfa}.c5{background:#f472b6}.c6{background:#fb923c}.c7{background:#4ade80}.c8{background:#facc15}.c9{background:#60a5fa}.c10{background:#f87171}.c11{background:#a78bfa}
+.c1{background:linear-gradient(180deg,#7dd3fc,#38bdf8)}.c2{background:linear-gradient(180deg,#6ee7b7,#34d399)}.c3{background:linear-gradient(180deg,#fcd34d,#fbbf24)}.c4{background:linear-gradient(180deg,#c4b5fd,#a78bfa)}.c5{background:linear-gradient(180deg,#f9a8d4,#f472b6)}.c6{background:linear-gradient(180deg,#fdba74,#fb923c)}.c7{background:linear-gradient(180deg,#86efac,#4ade80)}.c8{background:linear-gradient(180deg,#fde047,#facc15)}.c9{background:linear-gradient(180deg,#93c5fd,#60a5fa)}.c10{background:linear-gradient(180deg,#fca5a5,#f87171)}.c11{background:linear-gradient(180deg,#c4b5fd,#a78bfa)}
 .badge{display:inline-block;background:#fff3e0;color:#e65100;font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;margin-top:6px}
 .badge.free{background:#e0f2f1;color:#00796b}
 .empty{max-width:480px;margin:20px auto;text-align:center;color:#888;font-size:14px;background:#fff;padding:20px;border-radius:14px;line-height:1.6;position:relative;z-index:1}
@@ -88,8 +89,6 @@ const subs={
 "cat-10":[{id:"sub-1001",name:"SET Subject Wise",desc:"25 Questions • 25 Marks"}],
 "cat-11":[{id:"sub-1101",name:"Mains Descriptive Notes",desc:"Notes"}],
 };
-// V16 COMPATIBLE: examId + q + marks + time(min) + neg + per must match exam.html validation
-// per = marks per question. marks must equal q * per. Ex: 200Q * 1 = 200 marks
 const testsData={
 "sub-402":[
 {id:"test-demo",name:"FREE Demo Test - Try Now",desc:"25 Questions • 25 Marks • No Negative • Free",status:"free",examId:"TG-DEMO-001",q:25,marks:25,time:30,neg:0,per:1},
