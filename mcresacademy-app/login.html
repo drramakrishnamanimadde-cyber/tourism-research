@@ -9,21 +9,26 @@
 body{background:linear-gradient(135deg,#a02ab0,#4737ed,#ff5722);background-size:200% 200%;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:16px;flex-direction:column;perspective:1000px}
 .card{background:linear-gradient(180deg,#ffffff,#fdf6ff);width:100%;max-width:380px;padding:28px 24px;border-radius:24px;text-align:center;
 box-shadow:0 25px 50px rgba(0,0,0,.35),0 10px 20px rgba(0,0,0,.2),inset 0 1px 0 #fff;
-transform:rotateX(4deg) translateY(0);transform-style:preserve-3d;transition:.3s}
-.card:active{transform:rotateX(0deg) translateY(2px)}
+transform:rotateX(4deg);transform-style:preserve-3d}
 .card img{width:115px;border-radius:50%;filter:drop-shadow(0 12px 18px rgba(0,0,0,.25));transform:translateZ(30px)}
-.card h1{color:#670f9e;font-size:24px;margin:10px 0 2px;text-shadow:0 2px 0 #e9d5ff;letter-spacing:.5px;transform:translateZ(20px)}
+.card h1{color:#670f9e;font-size:24px;margin:10px 0 2px;text-shadow:0 2px 0 #e9d5ff;letter-spacing:.5px}
 .card .tagline{color:#ff8703;font-size:14px;font-weight:900;margin-bottom:4px;letter-spacing:1px}
 .card p{font-size:14px;color:#555;margin-bottom:18px}
-input{width:100%;padding:14px 14px;border:2px solid #eee;border-radius:14px;margin-bottom:14px;font-size:15px;outline:none;background:#fff;
-box-shadow:inset 0 3px 6px rgba(0,0,0,.08),0 2px 0 #fff;transform:translateZ(10px)}
-input:focus{border-color:#670f9e;box-shadow:inset 0 3px 6px rgba(103,15,158,.1),0 0 0 3px #f3e8ff}
+input{width:100%;padding:14px;border-radius:14px;margin-bottom:14px;font-size:15px;outline:none;background:#fff;box-shadow:inset 0 3px 6px rgba(0,0,0,.08),0 2px 0 #fff}
+/* 1 - NAME - BLUE */
+.in-blue{border:2px solid #2196f3;box-shadow:inset 0 3px 6px rgba(33,150,243,.12),0 0 0 3px #e3f2fd}
+.in-blue:focus{border-color:#1565c0;box-shadow:0 0 0 4px #bbdefb}
+/* 2 - PHONE - GREEN */
+.in-green{border:2px solid #2e7d32;box-shadow:inset 0 3px 6px rgba(46,125,50,.12),0 0 0 3px #e8f5e9}
+.in-green:focus{border-color:#1b5e20;box-shadow:0 0 0 4px #c8e6c9}
+/* 3 - LOGIN - ORANGE 3D */
 .btn{width:100%;background:linear-gradient(180deg,#ffa726,#ff6d00);color:#fff;padding:15px;border:none;border-radius:14px;font-weight:800;font-size:17px;cursor:pointer;
-box-shadow:0 8px 0 #e65100,0 14px 20px rgba(255,109,0,.4);text-shadow:0 1px 2px rgba(0,0,0,.2);transform:translateZ(15px)}
-.btn:active{transform:translateY(6px) translateZ(10px);box-shadow:0 2px 0 #e65100,0 5px 10px rgba(255,109,0,.4)}
-.btn2{width:100%;background:linear-gradient(180deg,#fff,#ececec);color:#111;padding:14px;border:none;border-radius:14px;font-weight:700;font-size:15px;margin-top:14px;cursor:pointer;
-box-shadow:0 6px 0 #c9c9c9,0 10px 15px rgba(0,0,0,.12)}
-.btn2:active{transform:translateY(5px);box-shadow:0 1px 0 #c9c9c9}
+box-shadow:0 8px 0 #e65100,0 14px 20px rgba(255,109,0,.4);text-shadow:0 1px 2px rgba(0,0,0,.2)}
+.btn:active{transform:translateY(6px);box-shadow:0 2px 0 #e65100}
+/* 4 - GUEST - PURPLE 3D */
+.btn2{width:100%;background:linear-gradient(180deg,#b388ff,#670f9e);color:#fff;padding:14px;border:none;border-radius:14px;font-weight:800;font-size:15px;margin-top:14px;cursor:pointer;
+box-shadow:0 6px 0 #4a0072,0 10px 15px rgba(103,15,158,.3);text-shadow:0 1px 2px rgba(0,0,0,.2)}
+.btn2:active{transform:translateY(5px);box-shadow:0 1px 0 #4a0072}
 a{color:#670f9e;text-decoration:none;font-weight:700;font-size:14px}
 .footer{max-width:380px;margin:22px auto 0;text-align:center;font-size:12.5px;line-height:1.7;color:#fff;font-family:Georgia,"Times New Roman",serif;text-shadow:0 2px 4px rgba(0,0,0,.4)}
 .footer b{color:#fff}
@@ -36,8 +41,8 @@ a{color:#670f9e;text-decoration:none;font-weight:700;font-size:14px}
 <h1>MCRES ACADEMY</h1>
 <div class="tagline">Aspire - Achieve</div>
 <p>Welcome Back! Login to Continue Tests</p>
-<input type="text" id="name" placeholder="👤 Your Name">
-<input type="tel" id="phone" placeholder="📱 Mobile Number - 10 Digits" maxlength="10">
+<input type="text" id="name" class="in-blue" placeholder="👤 Your Name">
+<input type="tel" id="phone" class="in-green" placeholder="📱 Mobile Number - 10 Digits" maxlength="10">
 <button class="btn" onclick="login()">Login →</button>
 <button class="btn2" onclick="location.href='index.html'">Continue as Guest</button>
 <p style="margin-top:16px"><a href="index.html">← Back to Home</a></p>
