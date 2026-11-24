@@ -9,16 +9,55 @@
 <link rel="apple-touch-icon" href="logo.png">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,Arial,sans-serif}
-body{background:linear-gradient(135deg,#a02ab0,#4737ed);min-height:100vh;padding:16px}
-.top{max-width:480px;margin:0 auto;text-align:center;color:#fff;padding:20px 0}
-.top img{width:90px;border-radius:14px;background:#fff;padding:4px}
-.top h1{font-size:26px;margin:10px 0 4px}
-.top p{font-size:14px;opacity:.9}
-.card{background:#fff;border-radius:18px;padding:18px;margin:14px auto;max-width:480px}
-.card h2{color:#670f9e;font-size:18px;margin-bottom:10px}
-.btn{display:block;text-align:center;background:#ff8703;color:#fff;padding:14px;border-radius:12px;font-weight:700;text-decoration:none;margin-bottom:10px}
-.btn2{display:block;text-align:center;background:#f1f1f1;color:#111;padding:13px;border-radius:12px;font-weight:700;text-decoration:none;margin-bottom:10px}
-.small{font-size:13px;color:#666;text-align:center;margin-top:10px}
+body{
+  background:linear-gradient(160deg,#4a1d9e 0%,#6d28d9 35%,#7c3aed 60%,#3b1d8f 100%);
+  min-height:100vh;padding:16px;position:relative;overflow-x:hidden;
+}
+/* 3D Bubbles - Design Only */
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(255,255,255,.22) 0 45px, transparent 46px),
+    radial-gradient(circle at 88% 12%, rgba(255,255,255,.18) 0 70px, transparent 71px),
+    radial-gradient(circle at 85% 65%, rgba(255,255,255,.14) 0 55px, transparent 56px),
+    radial-gradient(circle at 8% 75%, rgba(255,255,255,.12) 0 65px, transparent 66px),
+    radial-gradient(circle at 50% 95%, rgba(255,255,255,.10) 0 90px, transparent 91px);
+}
+.top{max-width:480px;margin:0 auto;text-align:center;color:#fff;padding:20px 0;position:relative;z-index:1}
+.top img{
+  width:92px;border-radius:22px;background:#fff;padding:6px;
+  box-shadow:0 12px 30px rgba(0,0,0,.35), inset 0 2px 0 rgba(255,255,255,.9);
+}
+.top h1{
+  font-size:29px;margin:14px 0 4px;letter-spacing:.5px;
+  text-shadow:0 3px 0 rgba(0,0,0,.18), 0 8px 18px rgba(0,0,0,.35);
+}
+.top p{font-size:14px;opacity:.92;text-shadow:0 2px 8px rgba(0,0,0,.3)}
+.card{
+  background:linear-gradient(180deg, rgba(255,255,255,.92), rgba(214,203,255,.88));
+  border:1px solid rgba(255,255,255,.85);
+  border-radius:22px;padding:20px 18px;margin:14px auto;max-width:480px;
+  box-shadow:0 20px 40px rgba(0,0,0,.30), inset 0 1px 0 rgba(255,255,255,.95);
+  position:relative;z-index:1;
+}
+.card h2{color:#3b147e;font-size:22px;line-height:1.35;margin-bottom:16px;text-shadow:0 1px 0 rgba(255,255,255,.8)}
+.btn{
+  display:block;text-align:center;
+  background:linear-gradient(180deg,#ffb020,#ff8703 55%,#f97316);
+  color:#fff;padding:15px;border-radius:16px;font-weight:800;font-size:18px;text-decoration:none;margin-bottom:14px;
+  box-shadow:0 8px 18px rgba(255,135,3,.45), inset 0 2px 0 rgba(255,255,255,.65), inset 0 -3px 0 rgba(0,0,0,.08);
+  text-shadow:0 1px 2px rgba(0,0,0,.15);
+}
+.btn:active{transform:translateY(1px)}
+.btn2{
+  display:block;text-align:center;
+  background:linear-gradient(180deg,#ffffff,#e9e7ff);
+  color:#111;padding:14px;border-radius:16px;font-weight:700;font-size:17px;text-decoration:none;margin-bottom:12px;
+  box-shadow:0 8px 16px rgba(59,20,126,.18), inset 0 1px 0 #fff, inset 0 -2px 0 rgba(0,0,0,.05);
+  border:1px solid rgba(255,255,255,.9);
+}
+.btn2:active{transform:translateY(1px)}
+.small{font-size:13px;color:#4a3a65;text-align:center;margin-top:12px}
 </style>
 </head>
 <body>
