@@ -5,34 +5,73 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Profile - MCRES ACADEMY</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,Arial,sans-serif}
-body{background:#f5f0ff;padding:16px}
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,-apple-system,Arial,sans-serif}
+body{background:#f5f0ff;padding:16px;padding-bottom:40px;color:#222}
 .box{max-width:480px;margin:0 auto;text-align:center}
-h1{color:#670f9e;font-size:22px}
-.card{background:#fff;border-radius:18px;padding:22px;margin-top:16px;text-align:left}
-.card p{font-size:15px;margin-bottom:12px}
-.card b{color:#670f9e}
-.btn{display:block;background:#ff8703;color:#fff;padding:13px;border-radius:12px;font-weight:700;text-decoration:none;margin-top:14px;text-align:center}
-.btn2{display:block;background:#eee;color:#111;padding:13px;border-radius:12px;font-weight:700;text-decoration:none;margin-top:10px;text-align:center}
+.top{background:linear-gradient(135deg,#670f9e,#a020f0,#e91e63);border-radius:20px;padding:20px 14px 18px;box-shadow:0 10px 25px rgba(103,15,158,.28)}
+.top img{width:76px;height:76px;object-fit:contain;background:#fff;border-radius:50%;padding:6px;box-shadow:0 4px 12px rgba(0,0,0,.2)}
+.top h1{color:#fff;font-size:22px;font-weight:900;margin-top:8px}
+.top .tagline{color:#ffe082;font-size:16px;font-weight:800}
+.top .sub{font-size:12px;color:#fff;margin-top:4px;font-weight:700;opacity:.95}
+h1{color:#670f9e;font-size:22px;margin-top:14px}
+.card{background:#fff;border-radius:22px;padding:22px;margin-top:16px;box-shadow:0 8px 24px rgba(103,15,158,.12);border:1px solid #f0e6ff;text-align:center}
+.avatar{width:110px;height:110px;margin:0 auto;border-radius:50%;background:linear-gradient(135deg,#ff8703,#ff5722);display:flex;align-items:center;justify-content:center;font-size:48px;color:#fff;font-weight:900;box-shadow:0 8px 18px rgba(255,135,3,.35);border:4px solid #fff}
+.name{font-size:21px;font-weight:900;color:#111;margin-top:12px}
+.phone{font-size:14px;color:#666;margin-top:4px;font-weight:600}
+.badge{display:inline-block;background:#fff3e0;border:1px solid #ffe0b2;color:#e65100;font-size:12px;font-weight:800;padding:6px 12px;border-radius:999px;margin-top:10px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px;text-align:left}
+.stat{border-radius:16px;padding:14px 12px;box-shadow:0 3px 10px rgba(0,0,0,.05)}
+.stat b{display:block;font-size:18px;color:#111;line-height:1.2}
+.stat span{font-size:12px;color:#666;font-weight:700}
+.g{background:#e8f5e9;border-left:5px solid #2e7d32}.g b{color:#2e7d32}
+.o{background:#fff3e0;border-left:5px solid #ff8703}.o b{color:#e65100}
+.btn{display:block;background:linear-gradient(135deg,#ff8703,#ff5722);color:#fff;padding:14px;border-radius:14px;font-weight:800;text-decoration:none;margin-top:14px;box-shadow:0 6px 14px rgba(255,135,3,.3);text-align:center}
+.btn2{display:block;background:#670f9e;color:#fff;padding:14px;border-radius:14px;font-weight:800;text-decoration:none;margin-top:10px;box-shadow:0 6px 14px rgba(103,15,158,.3);text-align:center}
+.btn3{display:block;background:#fff;color:#c62828;border:2px solid #ffcdd2;padding:13px;border-radius:14px;font-weight:800;text-decoration:none;margin-top:10px;text-align:center}
+.note{max-width:480px;margin:14px auto;background:#fff;border:1px solid #f0e6ff;border-radius:14px;padding:12px;font-size:12.5px;line-height:1.6;color:#6a1b9a;text-align:center}
+.footer{max-width:480px;margin:20px auto 0;text-align:center;font-size:12px;color:#777;line-height:1.6}
+.footer b{color:#333}
 </style>
 </head>
 <body>
 <div class="box">
+<div class="top">
+<img src="logo-192.png" alt="MCRES ACADEMY Logo">
+<h1>MCRES ACADEMY</h1>
+<div class="tagline">Aspire - Achieve</div>
+<div class="sub">Online Test Series & Assessment Platform</div>
+</div>
+
 <h1>👤 My Profile</h1>
+
 <div class="card">
-<p><b>Name:</b> <span id="name">Guest User</span></p>
-<p><b>Mobile:</b> <span id="phone">Not Logged In</span></p>
-<p><b>Last Test:</b> <span id="test">No Test Yet</span></p>
-<p><b>Last Score:</b> <span id="score">-</span></p>
-<a class="btn" href="tests.html">Start New Test →</a>
+<div class="avatar" id="avatar">G</div>
+<div class="name" id="name">Guest User</div>
+<div class="phone" id="phone">Not Logged In</div>
+<div class="badge">✨ MCRES Student</div>
+
+<div class="grid">
+<div class="stat o"><span>📝 Last Test</span><b id="test">No Test Yet</b></div>
+<div class="stat g"><span>🏆 Last Score</span><b id="score">-</b></div>
+</div>
+
+<a class="btn" href="test-series.html">Start New Test →</a>
 <a class="btn2" href="index.html">Back to Home</a>
-<a class="btn2" href="#" onclick="logout()">Logout</a>
+<a class="btn2" href="results.html">📊 My Results</a>
+<a class="btn3" href="#" onclick="logout()">🚪 Logout</a>
 </div>
 </div>
+
+<div class="note">ℹ️ మీ Profile ఈ Phone లోనే Save అవుతుంది.</div>
+<div class="footer"><b>MCRES ACADEMY - Aspire - Achieve</b><br>An educational programme by Mallaiah Center for River & Earth Sciences (MCRES)<br>Founder & Director: Dr Ramakrishna Manimadde</div>
+
 <script>
 let n=localStorage.getItem("mcres_name");
 let p=localStorage.getItem("mcres_phone");
-if(n){document.getElementById("name").innerText=n;}
+if(n){
+  document.getElementById("name").innerText=n;
+  document.getElementById("avatar").innerText=n.trim().charAt(0).toUpperCase();
+}
 if(p){document.getElementById("phone").innerText="+91 "+p;}
 document.getElementById("test").innerText=localStorage.getItem("mcres_last_test")||"No Test Yet";
 document.getElementById("score").innerText=localStorage.getItem("mcres_last_score")||"-";
