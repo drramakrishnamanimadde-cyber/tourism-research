@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Test Series - MCRES ACADEMY | Aspire - Achieve</title>
+<title>Test Series - MALLAIAH ACADEMY | Aspire - Achieve</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,-apple-system,Arial,sans-serif}
 body{background:linear-gradient(160deg,#4a1d9e 0%,#6d28d9 35%,#7c3aed 60%,#3b1d8f 100%);min-height:100vh;padding:16px;padding-bottom:40px;color:#222;position:relative;overflow-x:hidden}
@@ -72,8 +72,8 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;bac
 </head>
 <body>
 <div class="top">
-<img src="logo-192.png" alt="MCRES ACADEMY Logo">
-<h1>MCRES ACADEMY</h1>
+<img src="logo-192.png" alt="MALLAIAH ACADEMY Logo">
+<h1>MALLAIAH ACADEMY</h1>
 <div class="tagline">Aspire - Achieve</div>
 <div class="sub">Online Test Series & Assessment Platform</div>
 <div class="tag">A coaching and examination-preparation initiative<br>of<br><b>Mallaiah Center for River &amp; Earth Sciences<br>(MCRES)</b></div>
@@ -82,7 +82,7 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;bac
 <div class="search" id="searchWrap"><input id="searchInput" placeholder="🔍 Search - Ex: Police, Group-I, 200, TET..." aria-label="Search tests"><button class="clearBtn" id="clearBtn" aria-label="Clear search">✕</button></div>
 <div id="list"></div>
 <button class="back" id="backBtn" style="display:none">← Back</button>
-<div class="footer"><b>MCRES ACADEMY - Aspire - Achieve</b><br>An educational programme by Mallaiah Center for River & Earth Sciences (MCRES)<br>Founder & Director: Dr Ramakrishna Manimadde</div>
+<div class="footer"><b>MALLAIAH ACADEMY - Aspire - Achieve</b><br>An educational programme by Mallaiah Center for River & Earth Sciences (MCRES)<br>Founder & Director: Dr Ramakrishna Manimadde</div>
 <script>
 const colors=["c1","c2","c3","c4","c5","c6","c7","c8","c9","c10","c11"];
 const categories=[
@@ -157,7 +157,7 @@ back.style.display="block";back.textContent="← Back to Tests";
 if(selectedTest.status==="free"){
 h=`<div class="payBox"><h2>✅ ${esc(selectedTest.name)}</h2><p>${esc(selectedTest.desc)}</p><div class="price">Price: FREE</div><p>Demo Test - No Payment Needed.<br>Click Start to open Instructions.</p><button class="startBtn" onclick="startFree()">Start Demo Test →</button></div>`;
 }else{
-h=`<div class="payBox"><h2>🔒 ${esc(selectedTest.name)}</h2><p>${esc(selectedTest.desc)}</p><div class="price">Price: To be announced</div><p style="font-size:13px;color:#888">Planned Features (under development):</p><ul><li>Real Exam Pattern & Timer</li><li>Automatic Evaluation</li><li>Result & Rank View</li><li>Solutions in Telugu & English</li></ul><p>Payment will be enabled after Razorpay setup.<br>For early access, contact MCRES ACADEMY.</p><button class="payBtn" disabled>Payment Coming Soon</button></div>`;
+h=`<div class="payBox"><h2>🔒 ${esc(selectedTest.name)}</h2><p>${esc(selectedTest.desc)}</p><div class="price">Price: To be announced</div><p style="font-size:13px;color:#888">Planned Features (under development):</p><ul><li>Real Exam Pattern & Timer</li><li>Automatic Evaluation</li><li>Result & Rank View</li><li>Solutions in Telugu & English</li></ul><p>Payment will be enabled after Razorpay setup.<br>For early access, contact MALLAIAH ACADEMY.</p><button class="payBtn" disabled>Payment Coming Soon</button></div>`;
 }
 list.innerHTML=h;return;
 }
