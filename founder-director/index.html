@@ -22,15 +22,15 @@
 body{font-family:"Plus Jakarta Sans",sans-serif;background:#fffaf5;color:#292524;overflow-x:hidden}
 a{text-decoration:none}
 .header{position:sticky;top:0;z-index:99;background:linear-gradient(90deg,#fff7ed 0%,#ffedd5 15%,#fed7aa 30%,#fbcfe8 55%,#ddd6fe 80%,#bfdbfe 100%);display:flex;justify-content:space-between;align-items:center;padding:8px 10px;box-shadow:0 8px 25px rgba(236,72,153,0.22)}
-.logo{display:flex;align-items:center;gap:8px}
-.logo-img{width:58px;height:58px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 3px #ffd700,0 0 18px rgba(249,115,22,0.6);clip-path:circle(46% at 50% 50%);transform:scale(1.06)}
-.logo-text{font-family:"Fraunces";font-weight:900;line-height:1}
+.logo{display:flex;align-items:center;gap:8px;min-width:0}
+.logo-img{width:58px;height:58px;flex-shrink:0;border-radius:50%;object-fit:cover;box-shadow:0 0 0 3px #ffd700,0 0 18px rgba(249,115,22,0.6);clip-path:circle(46% at 50% 50%);transform:scale(1.06)}
+.logo-text{font-family:"Fraunces";font-weight:900;line-height:1;min-width:0}
 .logo-text .hm1{font-size:23px}
-.logo-text .hsub{font-size:10.5px;font-weight:900;display:block;margin-top:5px}
+.logo-text .hsub{font-size:10.5px;font-weight:900;display:block;margin-top:5px;line-height:1.2}
 .nav{display:flex;gap:7px;align-items:center}
 .nav a{font-size:12.5px;font-weight:800;padding:7px 12px;border-radius:99px;color:#fff}
 .nav a.home{background:#f97316}.nav a.about{background:#8b5cf6}.nav a.research{background:#059669}.nav a.founder{background:#db2777}.nav a.contact{background:#0ea5e9}
-.hamburger{display:none;font-size:28px;cursor:pointer;background:#fff;border:2px solid #f97316;border-radius:12px;color:#ea580c;padding:1px 9px}
+.hamburger{display:none;font-size:28px;cursor:pointer;background:#fff;border:2px solid #f97316;border-radius:12px;color:#ea580c;padding:1px 9px;flex-shrink:0}
 .mob-menu{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#fff7ed;z-index:200;padding:30px}
 .mob-menu a{display:block;color:#7c2d12;padding:16px 0;border-bottom:1px solid rgba(124,45,18,0.1);font-size:18px;font-weight:700}
 .mob-menu .close{position:absolute;top:20px;right:20px;font-size:28px;background:none;border:none}
@@ -40,8 +40,8 @@ a{text-decoration:none}
 .sh{text-align:center;color:#9a3412;font-size:13px;margin-bottom:28px}
 .founder-hero{display:grid;grid-template-columns:0.9fr 1.1fr;gap:24px;align-items:start;background:#fff;border:1px solid #fed7aa;border-radius:20px;padding:28px;box-shadow:0 10px 30px rgba(249,115,22,0.12)}
 .founder-hero img{width:100%;border-radius:16px;object-fit:cover;aspect-ratio:4/4.4;object-position:top;box-shadow:0 10px 25px rgba(0,0,0,0.15)}
-.founder-hero h1{font-family:"Fraunces";font-size:32px;color:#1c1917;line-height:1.2}
-.founder-hero .role{color:#ea580c;font-weight:800;margin:8px 0}
+.founder-hero h1{font-family:"Fraunces";font-size:32px;color:#1c1917;line-height:1.2;overflow-wrap:break-word}
+.founder-hero .role{color:#ea580c;font-weight:800;margin:8px 0;overflow-wrap:break-word}
 .founder-hero p{font-size:13.5px;color:#57534e;line-height:1.75;margin-top:12px}
 .telugu{font-family:"Noto Sans Telugu",sans-serif;font-weight:700;color:#44403c;line-height:1.7}
 .card{background:#fff;border:1px solid #ffe4e6;border-radius:18px;padding:22px;margin-top:18px;box-shadow:0 10px 30px rgba(251,113,133,0.10)}
@@ -57,22 +57,22 @@ footer{background:#14082a;color:#d6d3d1;padding:40px 20px 20px;margin-top:40px}
 .foot p,.foot a{font-size:13px;color:#d6d3d1;line-height:1.7}
 .foot a{display:block;margin-bottom:8px}
 .copy{border-top:1px solid rgba(255,255,255,0.1);margin-top:26px;padding-top:16px;text-align:center;font-size:11.5px;color:#a8a29e}
-@media(max-width:900px){.nav{display:none}.hamburger{display:block}.founder-hero{grid-template-columns:1fr}.foot{grid-template-columns:1fr}.sec{padding:40px 16px}}
+@media(max-width:900px){.nav{display:none}.hamburger{display:block}.founder-hero{grid-template-columns:1fr}.foot{grid-template-columns:1fr}.sec{padding:40px 16px}.logo-text .hsub{font-size:9.5px}}
 </style>
 </head>
 <body>
 <div class="header">
 <div class="logo"><img src="/IMG-20261114-WA4304.jpg" alt="MCRES Logo" class="logo-img"><div class="logo-text"><div class="hm1">MCRES</div><span class="hsub">MALLAIAH CENTER FOR RIVER & EARTH SCIENCES</span></div></div>
-<div class="nav"><a class="home" href="/">Home</a><a class="about" href="/about/">About</a><a class="research" href="/research/">Research</a><a class="founder" href="/founder-director/">Founder & Director</a><a class="contact" href="/contact/">Contact</a></div>
-<button class="hamburger" onclick="document.getElementById('mob').style.display='block'">☰</button>
+<nav class="nav" aria-label="Main navigation"><a class="home" href="/">Home</a><a class="about" href="/about/">About</a><a class="research" href="/research/">Research</a><a class="founder" href="/founder-director/">Founder & Director</a><a class="contact" href="/contact/">Contact</a></nav>
+<button class="hamburger" aria-label="Open navigation menu" aria-expanded="false" onclick="document.getElementById('mob').style.display='block';this.setAttribute('aria-expanded','true')">☰</button>
 </div>
-<div id="mob" class="mob-menu"><button class="close" onclick="document.getElementById('mob').style.display='none'">✕</button><a href="/" onclick="document.getElementById('mob').style.display='none'">Home</a><a href="/about/" onclick="document.getElementById('mob').style.display='none'">About</a><a href="/research/" onclick="document.getElementById('mob').style.display='none'">Research</a><a href="/founder-director/" onclick="document.getElementById('mob').style.display='none'">Founder & Director</a><a href="/contact/" onclick="document.getElementById('mob').style.display='none'">Contact</a></div>
+<div id="mob" class="mob-menu" aria-label="Mobile navigation"><button class="close" aria-label="Close navigation menu" onclick="document.getElementById('mob').style.display='none'">✕</button><a href="/" onclick="document.getElementById('mob').style.display='none'">Home</a><a href="/about/" onclick="document.getElementById('mob').style.display='none'">About</a><a href="/research/" onclick="document.getElementById('mob').style.display='none'">Research</a><a href="/founder-director/" onclick="document.getElementById('mob').style.display='none'">Founder & Director</a><a href="/contact/" onclick="document.getElementById('mob').style.display='none'">Contact</a></div>
 <div class="sec">
 <div class="eyebrow">MCRES | Founder Profile</div>
 <h2>Founder & Director</h2>
 <div class="sh">Exploring Rivers • Decoding Earth • Advancing Science</div>
 <div class="founder-hero">
-<div><img src="/founder.jpg" alt="Dr. Ramakrishna Manimadde - Founder & Director, MCRES"><p class="telugu" style="text-align:center;margin-top:10px">డాక్టర్ రామకృష్ణ మనిమద్దె<br>వ్యవస్థాపకులు & సంచాలకులు, MCRES</p></div>
+<div><img src="/founder.jpg" alt="Dr. Ramakrishna Manimadde - Founder & Director, MCRES" loading="eager" fetchpriority="high"><p class="telugu" style="text-align:center;margin-top:10px">డాక్టర్ రామకృష్ణ మనిమద్దె<br>వ్యవస్థాపకులు & సంచాలకులు, MCRES</p></div>
 <div>
 <h1>Dr. Ramakrishna Manimadde</h1>
 <div class="role">Founder & Director, Mallaiah Center for River & Earth Sciences (MCRES)<br>Earth Scientist & River Systems Researcher</div>
