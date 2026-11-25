@@ -1,11 +1,12 @@
-const CACHE = "mcres-academy-v8";
-const CACHE_PREFIX = "mcres-academy-";
+const CACHE = "mallaiah-academy-v9";
+const CACHE_PREFIX = "mallaiah-academy-";
 const SCOPE = self.registration.scope;
 const FILES = [
   "./",
   "./index.html",
   "./login.html",
   "./tests.html",
+  "./test-instructions.html",
   "./exam.html",
   "./results.html",
   "./profile.html",
@@ -22,7 +23,7 @@ function putInCache(req, res) {
 }
 
 function offlineResponse() {
-  return new Response("Offline - MCRES Academy", {
+  return new Response("Offline - MALLAIAH Academy", {
     status: 503,
     statusText: "Service Unavailable",
     headers: { "Content-Type": "text/plain" },
