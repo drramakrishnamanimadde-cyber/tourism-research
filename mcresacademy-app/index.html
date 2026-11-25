@@ -32,7 +32,7 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;bac
 </head>
 <body>
 <div class="top">
-<img src="logo.png" alt="MCRES">
+<img src="logo.png" alt="MALLAIAH">
 <h1>MALLAIAH ACADEMY</h1>
 <div class="tagline">Aspire - Achieve</div>
 <p class="about">A coaching and examination-preparation initiative of<br><b>Mallaiah Center for River &amp; Earth Sciences (MCRES)</b></p>
@@ -50,8 +50,8 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;bac
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
     navigator.serviceWorker.register("./sw.js", { scope: "./" })
-      .then((reg) => { console.log("MCRES SW Registered:", reg.scope); reg.addEventListener("updatefound", () => { const newWorker = reg.installing; if (newWorker) { newWorker.addEventListener("statechange", () => { if (newWorker.state === "installed" && navigator.serviceWorker.controller) { console.log("New MCRES version available - reload to update"); } }); } }); })
-      .catch((err) => { console.log("MCRES SW Register Failed:", err); });
+      .then((reg) => { console.log("MALLAIAH SW Registered:", reg.scope); reg.addEventListener("updatefound", () => { const newWorker = reg.installing; if (newWorker) { newWorker.addEventListener("statechange", () => { if (newWorker.state === "installed" && navigator.serviceWorker.controller) { console.log("New MALLAIAH version available - reload to update"); } }); } }); })
+      .catch((err) => { console.log("MALLAIAH SW Register Failed:", err); });
   });
 }
 </script>
