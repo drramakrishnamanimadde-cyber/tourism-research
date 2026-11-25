@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Results - MCRES ACADEMY | Aspire - Achieve</title>
+<title>Results - MALLAIAH ACADEMY | Aspire - Achieve</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,-apple-system,Arial,sans-serif}
 body{background:#f5f0ff;padding:16px;padding-bottom:40px;color:#222}
@@ -43,8 +43,8 @@ h1{color:#670f9e;font-size:22px;margin-top:14px}
 <body>
 <div class="box">
 <div class="top">
-<img src="logo-192.png" alt="MCRES ACADEMY Logo">
-<h1>MCRES ACADEMY</h1>
+<img src="logo-192.png" alt="MALLAIAH ACADEMY Logo">
+<h1>MALLAIAH ACADEMY</h1>
 <div class="tagline">Aspire - Achieve</div>
 <div class="sub">Online Test Series & Assessment Platform</div>
 </div>
@@ -61,10 +61,49 @@ h1{color:#670f9e;font-size:22px;margin-top:14px}
 <div class="stat bl"><b id="vAccuracy">-</b><span>🎯 Accuracy</span></div>
 </div>
 <div class="detail" id="detail" style="display:none"></div>
-<a class="btn2" href="test-series.html">Take Another Test →</a>
+<a class="btn2" href="tests.html">Take Another Test →</a>
 <a class="btn" href="index.html">Back to Home</a>
-<a class="btn3" id="retakeBtn" href="test-series.html">🔄 Retake Same Test</a>
+<a class="btn3" id="retakeBtn" href="tests.html">🔄 Retake Same Test</a>
 </div>
 </div>
-<div class="note">ℹ️ ప్రస్తుతం ఇది MCRES ACADEMY Demo Examination System. నిజమైన పరీక్షల కోసం ఫలితాలు Server-side లో లెక్కించబడతాయి.</div>
-<div class="footer"><b>MCRES ACADEMY - Aspire - Achieve</b><br>An educational programme by Mallaiah Center for River
+<div class="note">ℹ️ ప్రస్తుతం ఇది MALLAIAH ACADEMY Demo Examination System. నిజమైన పరీక్షల కోసం ఫలితాలు Server-side లో లెక్కించబడతాయి.</div>
+<div class="footer"><b>MALLAIAH ACADEMY - Aspire - Achieve</b><br>An educational programme by Mallaiah Center for River &amp; Earth Sciences (MCRES)<br>Founder &amp; Director: Dr Ramakrishna Manimadde</div>
+<script>
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");}
+const p=new URLSearchParams(location.search);
+function numParam(n,def){const v=p.get(n); if(v===null) return def; const x=Number(v); return Number.isFinite(x)?x:def;}
+let data=null;
+try{ const raw=localStorage.getItem("mcres_last_result"); if(raw) data=JSON.parse(raw); }catch(e){ data=null; }
+let testName=p.get("test")||(data&&data.test)||"Last Test";
+let testId=p.get("id")||(data&&data.id)||"-";
+let q=numParam("q", data?data.q:0);
+let marks=numParam("marks", data?data.marks:0);
+let correct=numParam("correct", data?data.correct:0);
+let wrong=numParam("wrong", data?data.wrong:0);
+let scoreRaw=p.get("score");
+let score=scoreRaw!==null?Number(scoreRaw):(data?data.score:null);
+let neg=p.get("neg")!==null?Number(p.get("neg")):(data?data.neg:0);
+let skipped=Math.max(0,q-correct-wrong);
+let attempted=correct+wrong;
+let accuracy=attempted>0?Math.round((correct/attempted)*100):0;
+document.getElementById("testName").textContent=testName;
+if(score!==null && Number.isFinite(score)){
+  document.getElementById("score").textContent=score;
+  document.getElementById("scoreLabel").textContent="Out of "+marks+" Marks • "+testId;
+  document.getElementById("msg").textContent= score>=marks*0.5 ? "🎉 Great Job! Keep it up!" : "💪 Don't give up! Practice again!";
+  document.getElementById("grid").style.display="grid";
+  document.getElementById("vCorrect").textContent=correct;
+  document.getElementById("vWrong").textContent=wrong;
+  document.getElementById("vSkipped").textContent=skipped;
+  document.getElementById("vAccuracy").textContent=accuracy+"%";
+  let pct=marks>0?Math.min(100,Math.max(0,(score/marks)*100)):0;
+  document.querySelector(".score-ring").style.background="conic-gradient(#ff8703 0 "+pct+"%,#f0e6ff "+pct+"% 100%)";
+  let d=document.getElementById("detail");
+  d.style.display="block";
+  d.innerHTML="<b>Test ID:</b> "+esc(testId)+"<br><b>Total Questions:</b> "+q+"<br><b>Total Marks:</b> "+marks+"<br><b>Attempted:</b> "+attempted+"<br><b>Negative:</b> "+neg;
+} else {
+  document.getElementById("msg").textContent="No result found yet. Take a test first.";
+}
+</script>
+</body>
+</html>
