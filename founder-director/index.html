@@ -19,7 +19,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Fraunces:opsz,wght@9..144,700;9..144,800&family=Noto+Sans+Telugu:wght@500;700;800&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:"Plus Jakarta Sans",sans-serif;background:#fffaf5;color:#292524;overflow-x:hidden}
+body{font-family:"Plus Jakarta Sans",sans-serif;background:linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.65)),url('/charminar.jpg');background-size:cover;background-attachment:fixed;color:#292524;overflow-x:hidden}
 a{text-decoration:none}
 .header{position:sticky;top:0;z-index:99;background:linear-gradient(90deg,#fff7ed 0%,#ffedd5 15%,#fed7aa 30%,#fbcfe8 55%,#ddd6fe 80%,#bfdbfe 100%);display:flex;justify-content:space-between;align-items:center;padding:8px 10px;box-shadow:0 8px 25px rgba(236,72,153,0.22)}
 .logo{display:flex;align-items:center;gap:8px;min-width:0}
@@ -34,30 +34,55 @@ a{text-decoration:none}
 .mob-menu{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#fff7ed;z-index:200;padding:30px}
 .mob-menu a{display:block;color:#7c2d12;padding:16px 0;border-bottom:1px solid rgba(124,45,18,0.1);font-size:18px;font-weight:700}
 .mob-menu .close{position:absolute;top:20px;right:20px;font-size:28px;background:none;border:none}
-.sec{padding:54px 20px;max-width:1100px;margin:0 auto}
+.sec{padding:20px 12px;max-width:1100px;margin:0 auto}
+.main-box{background:rgba(255,255,255,.97);border-radius:20px;padding:20px;box-shadow:0 15px 40px rgba(0,0,0,.35)}
 .eyebrow{text-align:center;font-size:11px;letter-spacing:1.5px;font-weight:800;color:#db2777;text-transform:uppercase}
 .sec h2{text-align:center;font-family:"Fraunces";font-size:32px;color:#7c2d12;margin:8px 0}
-.sh{text-align:center;color:#9a3412;font-size:13px;margin-bottom:28px}
-.founder-hero{display:grid;grid-template-columns:0.9fr 1.1fr;gap:24px;align-items:start;background:#fff;border:1px solid #fed7aa;border-radius:20px;padding:28px;box-shadow:0 10px 30px rgba(249,115,22,0.12)}
-.founder-hero img{width:100%;border-radius:16px;object-fit:cover;aspect-ratio:4/4.4;object-position:top;box-shadow:0 10px 25px rgba(0,0,0,0.15)}
+.sh{text-align:center;color:#9a3412;font-size:13px;margin-bottom:18px}
+.hero-top{background:linear-gradient(180deg,#1a8a5c,#0d4f3c 60%,#062e22);color:#fff;padding:28px 18px;text-align:center;border-radius:16px;box-shadow:inset 0 -10px 25px rgba(0,0,0,.35),0 12px 25px rgba(0,0,0,.25);margin-bottom:20px}
+.hero-top .mcres-line{font-size:15px;font-weight:900;line-height:1.4}
+.hero-top .mcres-line .c1{color:#ffd700}.hero-top .mcres-line .c2{color:#7ee8ff}.hero-top .mcres-line .c3{color:#ff9ec6}.hero-top .mcres-line .c4{color:#b5ff9e}.hero-top .mcres-line .c5{color:#fff}
+.author-3d{display:inline-block;margin-top:14px;padding:12px 20px;border-radius:18px;background:linear-gradient(180deg,#3a2a00,#1a1200 60%,#000);border:1.5px solid #ffe9ae;box-shadow:0 5px 0 #7a5a00,0 12px 22px rgba(0,0,0,.55),inset 0 1.5px 0 rgba(255,255,255,.35);font-size:13px;font-weight:900;line-height:1.6;max-width:96%}
+.author-3d .a1{color:#7ee8ff}.author-3d .a2{color:#ff9ec6}.author-3d .a3{color:#ffcc70}.author-3d .a4{color:#ffe9ae}
+.founder-hero{display:grid;grid-template-columns:0.9fr 1.1fr;gap:24px;align-items:start;background:#fff;border:2px solid #ffd700;border-radius:20px;padding:22px;box-shadow:0 10px 30px rgba(249,115,22,0.18)}
+.photo-frame{border:4px solid #ffd700;border-radius:18px;padding:6px;background:linear-gradient(180deg,#fff8e6,#ffe9ae);box-shadow:0 12px 25px rgba(0,0,0,.25)}
+.photo-frame img{width:100%;border-radius:12px;object-fit:cover;aspect-ratio:4/4.4;object-position:top;display:block}
 .founder-hero h1{font-family:"Fraunces";font-size:32px;color:#1c1917;line-height:1.2;overflow-wrap:break-word}
 .founder-hero .role{color:#ea580c;font-weight:800;margin:8px 0;overflow-wrap:break-word}
 .founder-hero p{font-size:13.5px;color:#57534e;line-height:1.75;margin-top:12px}
 .telugu{font-family:"Noto Sans Telugu",sans-serif;font-weight:700;color:#44403c;line-height:1.7}
-.card{background:#fff;border:1px solid #ffe4e6;border-radius:18px;padding:22px;margin-top:18px;box-shadow:0 10px 30px rgba(251,113,133,0.10)}
-.card h3{font-size:18px;color:#7c2d12;margin-bottom:12px;font-family:"Fraunces"}
+.telugu-box{background:#fff8e6;border-left:5px solid #ffcc00;padding:12px;border-radius:10px;text-align:center;margin-top:12px}
+.card{background:#fff;border-radius:18px;padding:22px;margin-top:18px;box-shadow:0 10px 30px rgba(0,0,0,.10)}
+.card h3{font-size:20px;color:#fff;display:inline-block;padding:8px 16px;border-radius:99px;margin-bottom:14px;font-family:"Fraunces"}
 .card p,.card li{font-size:13.5px;color:#57534e;line-height:1.75}
 .card ul{padding-left:18px;margin-top:8px}
 .card li{margin-bottom:6px}
-.tagline{text-align:center;background:linear-gradient(135deg,#1e293b,#7c2d5f);color:#fff;padding:32px 20px;border-radius:20px;margin-top:24px}
+.card-exp{border:2px solid #fed7aa}
+.card-exp h3{background:linear-gradient(90deg,#f97316,#db2777)}
+.project-grid{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.project-grid span{font-size:12.5px;font-weight:800;padding:8px 12px;border-radius:99px;color:#fff}
+.p1{background:#059669}.p2{background:#0ea5e9}.p3{background:#8b5cf6}.p4{background:#db2777}.p5{background:#f97316}.p6{background:#0d9488}.p7{background:#2563eb}.p8{background:#ca8a04}
+.card-res{border:2px solid #bbf7d0;background:#f0fdf4}
+.card-res h3{background:linear-gradient(90deg,#059669,#0d4f3c)}
+.card-res li{background:#fff;padding:8px 12px;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.06);list-style:none;margin-left:-18px}
+.card-init{border:2px solid #bfdbfe;background:#eff6ff}
+.card-init h3{background:linear-gradient(90deg,#2563eb,#7c3aed)}
+.init-box{background:#fff;padding:14px;border-radius:12px;margin-top:12px;border-left:5px solid #2563eb}
+.card-mcres{border:2px solid #fbcfe8;background:#fdf2f8}
+.card-mcres h3{background:linear-gradient(90deg,#db2777,#7c2d12)}
+.tagline{text-align:center;background:linear-gradient(135deg,#062e22,#0d4f3c,#1a8a5c);color:#fff;padding:32px 20px;border-radius:20px;margin-top:24px;box-shadow:0 12px 25px rgba(0,0,0,.25);border:2px solid #ffd700}
 .tagline h2{color:#ffd700;font-size:26px}
-footer{background:#14082a;color:#d6d3d1;padding:40px 20px 20px;margin-top:40px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}
+.stats div{background:#e8f5e9;padding:14px;text-align:center;border-radius:12px;border:1px solid #bbf7d0}
+.stats div h2{font-size:22px;color:#0d4f3c;margin:0}
+.stats div span{font-size:12px;font-weight:800;color:#57534e}
+footer{background:#14082a;color:#d6d3d1;padding:40px 20px 20px;margin-top:20px;border-radius:20px}
 .foot{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:24px;max-width:1100px;margin:0 auto}
 .foot h3{color:#fff;font-family:"Fraunces";font-size:20px}
 .foot p,.foot a{font-size:13px;color:#d6d3d1;line-height:1.7}
 .foot a{display:block;margin-bottom:8px}
 .copy{border-top:1px solid rgba(255,255,255,0.1);margin-top:26px;padding-top:16px;text-align:center;font-size:11.5px;color:#a8a29e}
-@media(max-width:900px){.nav{display:none}.hamburger{display:block}.founder-hero{grid-template-columns:1fr}.foot{grid-template-columns:1fr}.sec{padding:40px 16px}.logo-text .hsub{font-size:9.5px}}
+@media(max-width:900px){.nav{display:none}.hamburger{display:block}.founder-hero{grid-template-columns:1fr}.foot{grid-template-columns:1fr}.sec{padding:12px 8px}.logo-text .hsub{font-size:9.5px}.stats{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -66,13 +91,21 @@ footer{background:#14082a;color:#d6d3d1;padding:40px 20px 20px;margin-top:40px}
 <nav class="nav" aria-label="Main navigation"><a class="home" href="/">Home</a><a class="about" href="/about/">About</a><a class="research" href="/research/">Research</a><a class="founder" href="/founder-director/">Founder & Director</a><a class="contact" href="/contact/">Contact</a></nav>
 <button class="hamburger" aria-label="Open navigation menu" aria-expanded="false" onclick="document.getElementById('mob').style.display='block';this.setAttribute('aria-expanded','true')">☰</button>
 </div>
-<div id="mob" class="mob-menu" aria-label="Mobile navigation"><button class="close" aria-label="Close navigation menu" onclick="document.getElementById('mob').style.display='none';document.querySelector('.hamburger').setAttribute('aria-expanded','false')">✕</button><a href="/" onclick="document.getElementById('mob').style.display='none';document.querySelector('.hamburger').setAttribute('aria-expanded','false')">Home</a><a href="/about/" onclick="document.getElementById('mob').style.display='none';document.querySelector('.hamburger').setAttribute('aria-expanded','false')">About</a><a href="/research/" onclick="document.getElementById('mob').style.display='none';document.querySelector('.hamburger').setAttribute('aria-expanded','false')">Research</a><a href="/founder-director/" onclick="document.getElementById('mob').style.display='none';document.querySelector('.hamburger').setAttribute('aria-expanded','false')">Founder & Director</a><a href="/contact/" onclick="document.getElementById('mob').style.display='none';document.querySelector('.hamburger').setAttribute('aria-expanded','false')">Contact</a></div>
+<div id="mob" class="mob-menu" aria-label="Mobile navigation"><button class="close" aria-label="Close navigation menu" onclick="document.getElementById('mob').style.display='none';document.querySelector('.hamburger').setAttribute('aria-expanded','false')">✕</button><a href="/" onclick="document.getElementById('mob').style.display='none'">Home</a><a href="/about/" onclick="document.getElementById('mob').style.display='none'">About</a><a href="/research/" onclick="document.getElementById('mob').style.display='none'">Research</a><a href="/founder-director/" onclick="document.getElementById('mob').style.display='none'">Founder & Director</a><a href="/contact/" onclick="document.getElementById('mob').style.display='none'">Contact</a></div>
+
 <div class="sec">
+<div class="main-box">
 <div class="eyebrow">MCRES | Founder Profile</div>
 <h2>Founder & Director</h2>
 <div class="sh">Exploring Rivers • Decoding Earth • Advancing Science</div>
+
+<div class="hero-top">
+<p class="mcres-line"><span class="c1">MCRES - MALLAIAH</span> <span class="c2">CENTER</span> <span class="c3">FOR</span><br><span class="c4">RIVER & EARTH</span> <span class="c5">SCIENCES</span></p>
+<p class="author-3d"><span class="a1">Dr</span> <span class="a2">RAMAKRISHNA</span> <span class="a3">MANIMADDE</span><br><span class="a4">FOUNDER & DIRECTOR • MCRES</span></p>
+</div>
+
 <div class="founder-hero">
-<div><img src="/founder.jpg" alt="Dr. Ramakrishna Manimadde - Founder & Director, MCRES" loading="eager" fetchpriority="high"><p class="telugu" lang="te" style="text-align:center;margin-top:10px">డాక్టర్ రామకృష్ణ మనిమద్దె<br>వ్యవస్థాపకులు & సంచాలకులు, MCRES</p></div>
+<div><div class="photo-frame"><img src="/founder.jpg" alt="Dr. Ramakrishna Manimadde - Founder & Director, MCRES" loading="eager" fetchpriority="high"></div><div class="telugu-box"><p class="telugu" lang="te" style="text-align:center;margin:0">డాక్టర్ రామకృష్ణ మనిమద్దె<br>వ్యవస్థాపకులు & సంచాలకులు, MCRES</p></div></div>
 <div>
 <h1>Dr. Ramakrishna Manimadde</h1>
 <div class="role">Founder & Director, Mallaiah Center for River & Earth Sciences (MCRES)<br>Earth Scientist & River Systems Researcher</div>
@@ -82,12 +115,27 @@ footer{background:#14082a;color:#d6d3d1;padding:40px 20px 20px;margin-top:40px}
 <p class="telugu" lang="te">డాక్టర్ రామకృష్ణ మనిమద్దె నదులు, భూమి, నీటి వనరులు మరియు మానవ కార్యకలాపాల మధ్య సంబంధాలను అర్థం చేసుకోవడంపై ఆసక్తి ఉన్న భూ విజ్ఞాన శాస్త్రవేత్త మరియు నదీ వ్యవస్థల పరిశోధకులు. భూగర్భ శాస్త్రం, భూగోళ శాస్త్రం, జల శాస్త్రం మరియు పర్యావరణ శాస్త్రాలను కలిపి నదీ వ్యవస్థలను శాస్త్రీయంగా అధ్యయనం చేయడం మరియు ఆ జ్ఞానాన్ని సమాజానికి అందించడం ఆయన లక్ష్యం.</p>
 </div>
 </div>
-<div class="card"><h3>Professional Experience</h3><p>He has professional experience in geological investigations, field surveys, and water-resource development projects through his work as a Geologist with WAPCOS.</p><p style="margin-top:10px">His professional assignments included soil classification, field investigations, and spatial data collection associated with major irrigation and water-resource projects, including:</p><ul><li>Pranahita–Chevella Sujala Sravanthi</li><li>Handri-Neeva Sujala Sravanthi</li><li>Galeru-Nagari Sujala Sravanthi</li><li>Dummugudem Project</li><li>Gouravelli Project</li><li>Velugodu Project</li><li>Srisailam Right Branch Canal (SRBC)</li><li>Telugu Ganga Project</li></ul><p style="margin-top:10px">These assignments provided practical exposure to geological field investigations, soil assessment, GNSS/HNSS-based field surveys and spatial data collection, contributing to his understanding of water-resource development and field-based environmental assessments.</p></div>
-<div class="card"><h3>Research Interests</h3><ul><li>River Systems and River Basin Studies</li><li>River Hydrology and Water Management</li><li>Geology and Geomorphology</li><li>Geography</li><li>Groundwater Resources</li><li>Urban River–Human Interactions</li><li>Flood Vulnerability and Environmental Change</li><li>Palynology</li><li>Environmental Sciences</li><li>GIS and Spatial Analysis</li></ul></div>
-<div class="card"><h3>Research Initiatives & Science Communication</h3><p><b>1. Integrated Assessment of the Musi River System (MCRES-FRP-01)</b><br>An interdisciplinary research initiative examining river–urban interactions, flood vulnerability, and environmental change in the Musi River system, with particular attention to the Hyderabad urban corridor.</p><p style="margin-top:12px"><b>2. Mella Duppalapally Tank Study (MCRES-VTR-01)</b><br>A field-based research initiative focused on understanding the local tank system, its environmental characteristics, and its significance for local water resources.</p><p style="margin-top:12px"><b>3. Science Communication</b><br>He contributes to public scientific awareness through science-oriented articles and knowledge dissemination, particularly on river systems, groundwater resources, environmental issues, and the relationship between society and natural systems.</p></div>
-<div class="card"><h3>About MCRES</h3><p>Mallaiah Center for River & Earth Sciences (MCRES) is an independent, non-governmental research initiative established in memory of the founder's father, Mallaiah.</p><p style="margin-top:10px">The institution aims to promote scientific research, interdisciplinary understanding, and public awareness in Earth Sciences and River Systems, with particular attention to rivers, water resources, environmental processes, and sustainable management.</p><p style="margin-top:10px">As its Founder and Director, Dr. Ramakrishna Manimadde provides the institution's research direction and intellectual leadership.</p></div>
+
+<div class="card card-exp"><h3>💼 Professional Experience</h3><p>He has professional experience in geological investigations, field surveys, and water-resource development projects through his work as a Geologist with WAPCOS.</p><p style="margin-top:10px">His professional assignments included soil classification, field investigations, and spatial data collection associated with major irrigation and water-resource projects, including:</p>
+<div class="project-grid"><span class="p1">Pranahita–Chevella Sujala Sravanthi</span><span class="p2">Handri-Neeva Sujala Sravanthi</span><span class="p3">Galeru-Nagari Sujala Sravanthi</span><span class="p4">Dummugudem Project</span><span class="p5">Gouravelli Project</span><span class="p6">Velugodu Project</span><span class="p7">Srisailam Right Branch Canal (SRBC)</span><span class="p8">Telugu Ganga Project</span></div>
+<p style="margin-top:12px">These assignments provided practical exposure to geological field investigations, soil assessment, GNSS/HNSS-based field surveys and spatial data collection, contributing to his understanding of water-resource development and field-based environmental assessments.</p></div>
+
+<div class="card card-res"><h3>🔬 Research Interests</h3><ul><li>River Systems and River Basin Studies</li><li>River Hydrology and Water Management</li><li>Geology and Geomorphology</li><li>Geography</li><li>Groundwater Resources</li><li>Urban River–Human Interactions</li><li>Flood Vulnerability and Environmental Change</li><li>Palynology</li><li>Environmental Sciences</li><li>GIS and Spatial Analysis</li></ul></div>
+
+<div class="card card-init"><h3>🚀 Research Initiatives & Science Communication</h3>
+<div class="init-box"><p><b>1. Integrated Assessment of the Musi River System (MCRES-FRP-01)</b><br>An interdisciplinary research initiative examining river–urban interactions, flood vulnerability, and environmental change in the Musi River system, with particular attention to the Hyderabad urban corridor.</p></div>
+<div class="init-box"><p><b>2. Mella Duppalapally Tank Study (MCRES-VTR-01)</b><br>A field-based research initiative focused on understanding the local tank system, its environmental characteristics, and its significance for local water resources.</p></div>
+<div class="init-box"><p><b>3. Science Communication</b><br>He contributes to public scientific awareness through science-oriented articles and knowledge dissemination, particularly on river systems, groundwater resources, environmental issues, and the relationship between society and natural systems.</p></div>
+</div>
+
+<div class="card card-mcres"><h3>🏛️ About MCRES</h3><p>Mallaiah Center for River & Earth Sciences (MCRES) is an independent, non-governmental research initiative established in memory of the founder's father, Mallaiah.</p><p style="margin-top:10px">The institution aims to promote scientific research, interdisciplinary understanding, and public awareness in Earth Sciences and River Systems, with particular attention to rivers, water resources, environmental processes, and sustainable management.</p><p style="margin-top:10px">As its Founder and Director, Dr. Ramakrishna Manimadde provides the institution's research direction and intellectual leadership.</p></div>
+
 <div class="tagline"><div style="font-size:11px;letter-spacing:1.5px;color:#fde68a;font-weight:800">MCRES TAGLINE</div><h2>Exploring Rivers • Decoding Earth • Advancing Science</h2><p style="font-size:13.5px;color:#e7d6d6;line-height:1.7;max-width:650px;margin:12px auto 0">Professional Vision: To contribute to a scientifically informed society through research, knowledge dissemination, and a deeper understanding of rivers, Earth systems, water resources, and environmental challenges.</p><p style="margin-top:16px;font-weight:800">Website: https://mcres.in</p></div>
+
+<div class="stats"><div><h2>8+</h2><span>Major Irrigation Projects</span></div><div><h2>10+</h2><span>Research Interests</span></div><div><h2>MCRES</h2><span>Founder & Director</span></div></div>
+
 </div>
 <footer><div class="foot"><div><h3>MCRES</h3><p>Mallaiah Center for River & Earth Sciences<br>Exploring Rivers • Decoding Earth • Advancing Science</p></div><div><b style="color:#fff">Explore</b><a href="/about/">About MCRES</a><a href="/research/">Research</a><a href="/founder-director/">Founder & Director</a></div><div><b style="color:#fff">Resources</b><a href="/info-desk/">Info Desk</a><a href="/contact/">Contact</a></div></div><div class="copy">© Mallaiah Center for River & Earth Sciences (MCRES). All rights reserved.</div></footer>
+</div>
 </body>
 </html>
